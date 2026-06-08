@@ -71,21 +71,45 @@ function filingHtml(f, nameMatch) {
     </div>`;
 }
 
+function filingRow(f) {
+    const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
+    const desc = f.desc && f.desc !== f.form ? ` — ${esc(f.desc)}` : "";
+    return `<li class="flrow">
+        <span class="flform">${esc(f.form)}</span>
+        <a class="fllink" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.date)}${desc} ↗</a>
+        <span class="flwhen">${esc(when)}</span>
+    </li>`;
+}
+
+function filingsListHtml(it) {
+    // Nothing to expand -> the headline line already conveys filing status.
+    const fs = it.cik ? (it.filings || []) : [];
+    if (!fs.length) return "";
+    const rows = fs.map(filingRow).join("");
+    return `<details class="card-details">
+        <summary>${fs.length} recent filing${fs.length > 1 ? "s" : ""} · last 90 days</summary>
+        <ul class="filing-list">${rows}</ul>
+    </details>`;
+}
+
 function cardHtml(it, i) {
     const verified = it.name_match === "verified";
     const hot = verified && it.filing && it.filing.fresh;
     const coName = it.display_name || it.name;
     const redditUrl = `https://www.reddit.com/r/wallstreetbets/search/?q=%24${encodeURIComponent(it.ticker)}`;
     return `<article class="card ${hot ? "hot" : ""}">
-        <div class="rank">${i + 1}</div>
-        <div class="tick">
-            <div class="tick-row">
-                <a class="ticker" href="${redditUrl}" target="_blank" rel="noopener">$${esc(it.ticker)}</a>
-                <span class="coname">${esc(coName)}</span>
+        <div class="card-main">
+            <div class="rank">${i + 1}</div>
+            <div class="tick">
+                <div class="tick-row">
+                    <a class="ticker" href="${redditUrl}" target="_blank" rel="noopener">$${esc(it.ticker)}</a>
+                    <span class="coname">${esc(coName)}</span>
+                </div>
+                <div class="attention">${momentum(it)}</div>
             </div>
-            <div class="attention">${momentum(it)}</div>
+            <div class="filing">${filingHtml(it.filing, it.name_match)}</div>
         </div>
-        <div class="filing">${filingHtml(it.filing, it.name_match)}</div>
+        ${filingsListHtml(it)}
     </article>`;
 }
 

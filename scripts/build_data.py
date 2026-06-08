@@ -31,7 +31,10 @@ TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik}.json"
 
 TOP_N = 30          # how many trending tickers to keep
-FRESH_DAYS = 7      # a filing this recent gets the "fresh" highlight
+FRESH_DAYS = 7         # a filing this recent gets the "fresh" highlight
+WINDOW_DAYS = 90       # per-firm list shows material filings this recent
+HEADLINE_MAX_DAYS = 365  # ignore ancient filings as the card headline (ETF junk)
+MAX_FILINGS = 25       # cap per firm (bounds JSON size)
 SEC_PAUSE = 0.15    # polite gap between SEC calls (limit is 10 req/sec)
 
 # Forms that carry real disclosure content (skip Form 4 insider noise etc.)
@@ -138,37 +141,65 @@ def load_ticker_map():
     return out
 
 
-def latest_material_filing(cik, today):
-    """Return the most recent material filing for a CIK, or None."""
+def build_filing(recent, i, cik_int, today):
+    """Construct one filing dict from index i of a filings.recent block."""
+    forms = recent["form"]
+    date = recent["filingDate"][i]
+    acc = recent["accessionNumber"][i]
+    acc_nodash = acc.replace("-", "")
+    doc = recent["primaryDocument"][i]
+    try:
+        days_ago = (today - datetime.strptime(date, "%Y-%m-%d").date()).days
+    except ValueError:
+        days_ago = None
+    base = f"https://www.sec.gov/Archives/edgar/data/{cik_int}/{acc_nodash}"
+    return {
+        "form": forms[i],
+        "date": date,
+        "days_ago": days_ago,
+        "fresh": days_ago is not None and days_ago <= FRESH_DAYS,
+        "desc": recent.get("primaryDocDescription", [""] * len(forms))[i] or forms[i],
+        "doc_url": f"{base}/{doc}" if doc else f"{base}/",
+        "index_url": f"{base}/{acc}-index.htm",
+    }
+
+
+def recent_filings(cik, today):
+    """Fetch a CIK's submissions once and return (headline, windowed_list).
+
+    headline = most recent material filing of any date (drives the card's top
+               line + fresh/hot), or None.
+    windowed_list = material filings within WINDOW_DAYS, newest-first, capped
+               at MAX_FILINGS (the click-to-expand list; may be empty).
+
+    filings.recent is newest-first, so we stop as soon as we pass the window.
+    Note: only filings.recent is read. For a hyper-active filer whose recent[]
+    is saturated, older material filings can spill into filings.files shards
+    and won't appear here. Rare and acceptable for a 90-day window.
+    """
     data = get_json(SUBMISSIONS_URL.format(cik=cik))
     time.sleep(SEC_PAUSE)
     if not data:
-        return None
+        return None, []
     recent = data.get("filings", {}).get("recent", {})
     forms = recent.get("form", [])
+    cik_int = int(cik)
+    headline = None
+    windowed = []
     for i, form in enumerate(forms):
         if form not in MATERIAL_FORMS:
             continue
-        date = recent["filingDate"][i]
-        acc = recent["accessionNumber"][i]
-        acc_nodash = acc.replace("-", "")
-        doc = recent["primaryDocument"][i]
-        cik_int = int(cik)
-        try:
-            days_ago = (today - datetime.strptime(date, "%Y-%m-%d").date()).days
-        except ValueError:
-            days_ago = None
-        base = f"https://www.sec.gov/Archives/edgar/data/{cik_int}/{acc_nodash}"
-        return {
-            "form": form,
-            "date": date,
-            "days_ago": days_ago,
-            "fresh": days_ago is not None and days_ago <= FRESH_DAYS,
-            "desc": recent.get("primaryDocDescription", [""] * len(forms))[i] or form,
-            "doc_url": f"{base}/{doc}" if doc else f"{base}/",
-            "index_url": f"{base}/{acc}-index.htm",
-        }
-    return None
+        f = build_filing(recent, i, cik_int, today)
+        if (headline is None and f["days_ago"] is not None
+                and f["days_ago"] <= HEADLINE_MAX_DAYS):
+            headline = f                       # newest recent material = headline
+        if f["days_ago"] is None or f["days_ago"] > WINDOW_DAYS:
+            break                              # nothing later is within window
+        # Trim doc_url from list entries (they link via index_url) to stay lean.
+        windowed.append({k: v for k, v in f.items() if k != "doc_url"})
+        if len(windowed) >= MAX_FILINGS:
+            break
+    return headline, windowed
 
 
 def main():
@@ -209,10 +240,12 @@ def main():
             name_match = "mismatch"
         display_name = prettify(sec_name) if sec_name else ape_name
 
-        filing = latest_material_filing(cik, today) if cik else None
+        filing, filings = recent_filings(cik, today) if cik else (None, [])
         if cik:
+            extra = max(len(filings) - 1, 0)
             print(f"  {ticker:6s} cik={cik} {name_match:8s} "
-                  f"filing={filing['form'] if filing else '-'}")
+                  f"filing={filing['form'] if filing else '-'} "
+                  f"(+{extra} in {WINDOW_DAYS}d)")
         else:
             print(f"  {ticker:6s} (no SEC match - ETF/crypto/foreign)")
 
@@ -229,6 +262,7 @@ def main():
             "upvotes": row.get("upvotes", 0),
             "cik": cik,
             "filing": filing,
+            "filings": filings,
         })
 
     # Hot = VERIFIED name match AND a fresh material filing. A mismatched
@@ -249,6 +283,7 @@ def main():
             "filings": "SEC EDGAR submissions API (real-time)",
         },
         "fresh_days": FRESH_DAYS,
+        "window_days": WINDOW_DAYS,
         "count": len(items),
         "items": items,
     }

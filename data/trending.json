@@ -1,10 +1,11 @@
 {
-  "updated_utc": "2026-06-08T20:38:47Z",
+  "updated_utc": "2026-06-08T20:57:20Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "filings": "SEC EDGAR submissions API (real-time)"
   },
   "fresh_days": 7,
+  "window_days": 90,
   "count": 30,
   "items": [
     {
@@ -14,10 +15,10 @@
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 269,
+      "mentions": 272,
       "mentions_24h_ago": 35,
-      "mention_change_pct": 668.6,
-      "upvotes": 1703,
+      "mention_change_pct": 677.1,
+      "upvotes": 1718,
       "cik": "0000789019",
       "filing": {
         "form": "8-K",
@@ -27,7 +28,41 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/d26760d8k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/0001193125-26-258667-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/0001193125-26-258667-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-14",
+          "days_ago": 25,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526224155/0001193125-26-224155-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/0001193125-26-191507-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191457/0001193125-26-191457-index.htm"
+        }
+      ]
     },
     {
       "rank": 7,
@@ -36,9 +71,9 @@
       "sec_name": "Broadcom Inc.",
       "display_name": "Broadcom Inc.",
       "name_match": "verified",
-      "mentions": 115,
-      "mentions_24h_ago": 46,
-      "mention_change_pct": 150.0,
+      "mentions": 114,
+      "mentions_24h_ago": 47,
+      "mention_change_pct": 142.6,
       "upvotes": 338,
       "cik": "0001730168",
       "filing": {
@@ -49,7 +84,49 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/avgo-20260603.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/0001730168-26-000051-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-03",
+          "days_ago": 5,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/0001730168-26-000051-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-21",
+          "days_ago": 48,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000039/0001730168-26-000039-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-06",
+          "days_ago": 63,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/0001193125-26-144028-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-02",
+          "days_ago": 67,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526140574/0001193125-26-140574-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-03-11",
+          "days_ago": 89,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000016/0001730168-26-000016-index.htm"
+        }
+      ]
     },
     {
       "rank": 10,
@@ -58,10 +135,10 @@
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 80,
-      "mentions_24h_ago": 45,
-      "mention_change_pct": 77.8,
-      "upvotes": 1059,
+      "mentions": 82,
+      "mentions_24h_ago": 47,
+      "mention_change_pct": 74.5,
+      "upvotes": 1072,
       "cik": "0000936340",
       "filing": {
         "form": "8-K",
@@ -71,19 +148,101 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/dte-20260605.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 24,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000119/0000936340-26-000119-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-12",
+          "days_ago": 27,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000115/0000936340-26-000115-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-01",
+          "days_ago": 38,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000083/0000936340-26-000083-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000081/0000936340-26-000081-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000079/0000936340-26-000079-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-23",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000071/0000936340-26-000071-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-17",
+          "days_ago": 83,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000068/0000936340-26-000068-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-03-12",
+          "days_ago": 88,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000064/0000936340-26-000064-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-03-12",
+          "days_ago": 88,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000062/0000936340-26-000062-index.htm"
+        }
+      ]
     },
     {
-      "rank": 14,
+      "rank": 12,
       "ticker": "AM",
       "name": "Antero Midstream",
       "sec_name": "Antero Midstream Corp",
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
-      "mentions": 60,
+      "mentions": 62,
       "mentions_24h_ago": 15,
-      "mention_change_pct": 300.0,
-      "upvotes": 172,
+      "mention_change_pct": 313.3,
+      "upvotes": 173,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -93,7 +252,65 @@
         "desc": "FORM 8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926070571/tm2616932d1_8k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926070571/0001104659-26-070571-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926070571/0001104659-26-070571-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-12",
+          "days_ago": 27,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926059010/0001104659-26-059010-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926051547/0001104659-26-051547-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926051518/0001104659-26-051518-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-23",
+          "days_ago": 46,
+          "fresh": false,
+          "desc": "DEFINITIVE ADDITIONAL PROXY SOLICITING MATERIALS",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000130817926000333/0001308179-26-000333-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-23",
+          "days_ago": 46,
+          "fresh": false,
+          "desc": "DEFINITIVE PROXY STATEMENT",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000130817926000332/0001308179-26-000332-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-01",
+          "days_ago": 68,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926038597/0001104659-26-038597-index.htm"
+        }
+      ]
     },
     {
       "rank": 17,
@@ -115,7 +332,209 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/d130937d8k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/0001193125-26-261038-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-08",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/0001193125-26-261038-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-08",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526260709/0001193125-26-260709-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-08",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526260706/0001193125-26-260706-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526257683/0001193125-26-257683-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-03",
+          "days_ago": 5,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526255709/0001193125-26-255709-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526253781/0001193125-26-253781-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-01",
+          "days_ago": 7,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526251680/0001193125-26-251680-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-01",
+          "days_ago": 7,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526249768/0001193125-26-249768-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-29",
+          "days_ago": 10,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526248642/0001193125-26-248642-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-28",
+          "days_ago": 11,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526245455/0001193125-26-245455-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-27",
+          "days_ago": 12,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526242094/0001193125-26-242094-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-26",
+          "days_ago": 13,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526239603/0001193125-26-239603-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-26",
+          "days_ago": 13,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526237907/0001193125-26-237907-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-26",
+          "days_ago": 13,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526237911/0001193125-26-237911-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-22",
+          "days_ago": 17,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526237133/0001193125-26-237133-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-21",
+          "days_ago": 18,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526234764/0001193125-26-234764-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-19",
+          "days_ago": 20,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526231031/0001193125-26-231031-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-18",
+          "days_ago": 21,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526229090/0001193125-26-229090-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-18",
+          "days_ago": 21,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526227918/0001193125-26-227918-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 24,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526225361/0001193125-26-225361-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-14",
+          "days_ago": 25,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526224281/0001193125-26-224281-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-13",
+          "days_ago": 26,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526221889/0001193125-26-221889-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-12",
+          "days_ago": 27,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526219762/0001193125-26-219762-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526216867/0001193125-26-216867-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526215754/0001193125-26-215754-index.htm"
+        }
+      ]
     },
     {
       "rank": 21,
@@ -127,7 +546,7 @@
       "mentions": 40,
       "mentions_24h_ago": 22,
       "mention_change_pct": 81.8,
-      "upvotes": 261,
+      "upvotes": 265,
       "cik": "0001652044",
       "filing": {
         "form": "8-K",
@@ -137,7 +556,193 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/d36818d8k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/0001193125-26-259830-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/0001193125-26-259830-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000059/0001652044-26-000059-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526258001/0001193125-26-258001-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526257724/0001193125-26-257724-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526257702/0001193125-26-257702-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526257690/0001193125-26-257690-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526256375/0001193125-26-256375-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252439/0001193125-26-252439-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252392/0001193125-26-252392-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252374/0001193125-26-252374-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252362/0001193125-26-252362-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-21",
+          "days_ago": 18,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526234488/0001193125-26-234488-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-18",
+          "days_ago": 21,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526228923/0001193125-26-228923-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526216986/0001193125-26-216986-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526215570/0001193125-26-215570-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-05",
+          "days_ago": 34,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526205120/0001193125-26-205120-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-05",
+          "days_ago": 34,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526204938/0001193125-26-204938-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/0001652044-26-000048-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/0001652044-26-000043-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-24",
+          "days_ago": 45,
+          "fresh": false,
+          "desc": "DEFINITIVE ADDITIONAL PROXY SOLICITING MATERIALS",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000130817926000343/0001308179-26-000343-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-24",
+          "days_ago": 45,
+          "fresh": false,
+          "desc": "DEFINITIVE PROXY STATEMENT",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000130817926000342/0001308179-26-000342-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-10",
+          "days_ago": 59,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000034/0001652044-26-000034-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-02",
+          "days_ago": 67,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000031/0001652044-26-000031-index.htm"
+        }
+      ]
     },
     {
       "rank": 22,
@@ -146,10 +751,10 @@
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 38,
+      "mentions": 39,
       "mentions_24h_ago": 13,
-      "mention_change_pct": 192.3,
-      "upvotes": 99,
+      "mention_change_pct": 200.0,
+      "upvotes": 100,
       "cik": "0001652044",
       "filing": {
         "form": "8-K",
@@ -159,7 +764,193 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/d36818d8k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/0001193125-26-259830-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/0001193125-26-259830-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000059/0001652044-26-000059-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526258001/0001193125-26-258001-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526257724/0001193125-26-257724-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526257702/0001193125-26-257702-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526257690/0001193125-26-257690-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-04",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526256375/0001193125-26-256375-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252439/0001193125-26-252439-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252392/0001193125-26-252392-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252374/0001193125-26-252374-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-06-02",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526252362/0001193125-26-252362-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-21",
+          "days_ago": 18,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526234488/0001193125-26-234488-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-18",
+          "days_ago": 21,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526228923/0001193125-26-228923-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526216986/0001193125-26-216986-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526215570/0001193125-26-215570-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-05",
+          "days_ago": 34,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526205120/0001193125-26-205120-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-05",
+          "days_ago": 34,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526204938/0001193125-26-204938-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/0001652044-26-000048-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/0001652044-26-000043-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-24",
+          "days_ago": 45,
+          "fresh": false,
+          "desc": "DEFINITIVE ADDITIONAL PROXY SOLICITING MATERIALS",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000130817926000343/0001308179-26-000343-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-24",
+          "days_ago": 45,
+          "fresh": false,
+          "desc": "DEFINITIVE PROXY STATEMENT",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000130817926000342/0001308179-26-000342-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-10",
+          "days_ago": 59,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000034/0001652044-26-000034-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-02",
+          "days_ago": 67,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000031/0001652044-26-000031-index.htm"
+        }
+      ]
     },
     {
       "rank": 24,
@@ -171,7 +962,7 @@
       "mentions": 32,
       "mentions_24h_ago": 11,
       "mention_change_pct": 190.9,
-      "upvotes": 584,
+      "upvotes": 582,
       "cik": "0001018724",
       "filing": {
         "form": "424B5",
@@ -181,7 +972,129 @@
         "desc": "424B5",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926071190/tm2613616-1_424b5.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926071190/0001104659-26-071190-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "424B5",
+          "date": "2026-06-08",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926071190/0001104659-26-071190-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-22",
+          "days_ago": 17,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926065717/0001104659-26-065717-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-04",
+          "days_ago": 35,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926054974/0001104659-26-054974-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/0001018724-26-000014-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000012/0001018724-26-000012-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-14",
+          "days_ago": 55,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926042880/0001104659-26-042880-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-09",
+          "days_ago": 60,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926041034/0001104659-26-041034-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-09",
+          "days_ago": 60,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926041030/0001104659-26-041030-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-09",
+          "days_ago": 60,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926041026/0001104659-26-041026-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-16",
+          "days_ago": 84,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926028556/0001104659-26-028556-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-13",
+          "days_ago": 87,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926027729/0001104659-26-027729-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-03-13",
+          "days_ago": 87,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926027669/0001104659-26-027669-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-03-12",
+          "days_ago": 88,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926027125/0001104659-26-027125-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-03-11",
+          "days_ago": 89,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926026082/0001104659-26-026082-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-03-10",
+          "days_ago": 90,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926025560/0001104659-26-025560-index.htm"
+        }
+      ]
     },
     {
       "rank": 25,
@@ -190,10 +1103,10 @@
       "sec_name": "Robinhood Markets, Inc.",
       "display_name": "Robinhood Markets, Inc.",
       "name_match": "verified",
-      "mentions": 29,
+      "mentions": 30,
       "mentions_24h_ago": 7,
-      "mention_change_pct": 314.3,
-      "upvotes": 70,
+      "mention_change_pct": 328.6,
+      "upvotes": 72,
       "cik": "0001783879",
       "filing": {
         "form": "8-K",
@@ -203,7 +1116,73 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/hood-20260602.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/0001783879-26-000068-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-03",
+          "days_ago": 5,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/0001783879-26-000068-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-08",
+          "days_ago": 31,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000065/0001783879-26-000065-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000062/0001783879-26-000062-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-28",
+          "days_ago": 41,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000061/0001783879-26-000061-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-22",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000119312526170533/0001193125-26-170533-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-22",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000053/0001783879-26-000053-index.htm"
+        },
+        {
+          "form": "8-K/A",
+          "date": "2026-03-24",
+          "days_ago": 76,
+          "fresh": false,
+          "desc": "8-K/A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000047/0001783879-26-000047-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-24",
+          "days_ago": 76,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000045/0001783879-26-000045-index.htm"
+        }
+      ]
     },
     {
       "rank": 29,
@@ -213,8 +1192,8 @@
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
       "mentions": 27,
-      "mentions_24h_ago": 34,
-      "mention_change_pct": -20.6,
+      "mentions_24h_ago": 35,
+      "mention_change_pct": -22.9,
       "upvotes": 59,
       "cik": "0001819994",
       "filing": {
@@ -225,7 +1204,137 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/rklb-20260603.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/0001819994-26-000056-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/0001819994-26-000056-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-21",
+          "days_ago": 18,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000048/0001819994-26-000048-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-20",
+          "days_ago": 19,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000045/0001819994-26-000045-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-20",
+          "days_ago": 19,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000044/0001819994-26-000044-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-12",
+          "days_ago": 27,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000033/0001819994-26-000033-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-08",
+          "days_ago": 31,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000799/0001753926-26-000799-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-07",
+          "days_ago": 32,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000028/0001819994-26-000028-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-07",
+          "days_ago": 32,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000027/0001819994-26-000027-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-14",
+          "days_ago": 55,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000654/0001753926-26-000654-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-06",
+          "days_ago": 63,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026023925/0001628280-26-023925-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-06",
+          "days_ago": 63,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026023922/0001628280-26-023922-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-30",
+          "days_ago": 70,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000568/0001753926-26-000568-index.htm"
+        },
+        {
+          "form": "PRE 14A",
+          "date": "2026-03-27",
+          "days_ago": 73,
+          "fresh": false,
+          "desc": "PRE 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026021744/0001628280-26-021744-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-17",
+          "days_ago": 83,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026018789/0001628280-26-018789-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-03-17",
+          "days_ago": 83,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026018770/0001628280-26-018770-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-12",
+          "days_ago": 88,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000016/0001819994-26-000016-index.htm"
+        }
+      ]
     },
     {
       "rank": 1,
@@ -234,20 +1343,13 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 381,
+      "mentions": 380,
       "mentions_24h_ago": 107,
-      "mention_change_pct": 256.1,
-      "upvotes": 1397,
+      "mention_change_pct": 255.1,
+      "upvotes": 1406,
       "cik": "0000884394",
-      "filing": {
-        "form": "SC 13G/A",
-        "date": "1999-06-10",
-        "days_ago": 9860,
-        "fresh": false,
-        "desc": "AMENDMENT FILING",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/884394/000089542199000223/",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/884394/000089542199000223/0000895421-99-000223-index.htm"
-      }
+      "filing": null,
+      "filings": []
     },
     {
       "rank": 2,
@@ -257,9 +1359,9 @@
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
       "mentions": 375,
-      "mentions_24h_ago": 86,
-      "mention_change_pct": 336.0,
-      "upvotes": 3533,
+      "mentions_24h_ago": 90,
+      "mention_change_pct": 316.7,
+      "upvotes": 3514,
       "cik": "0000723125",
       "filing": {
         "form": "8-K",
@@ -269,7 +1371,41 @@
         "desc": "FORM 8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/tm2610810d1_8k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-04-01",
+          "days_ago": 68,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-25",
+          "days_ago": 75,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926034174/0001104659-26-034174-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-03-19",
+          "days_ago": 81,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/0000723125-26-000006-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-18",
+          "days_ago": 82,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000004/0000723125-26-000004-index.htm"
+        }
+      ]
     },
     {
       "rank": 4,
@@ -278,10 +1414,10 @@
       "sec_name": "Marvell Technology, Inc.",
       "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
-      "mentions": 184,
-      "mentions_24h_ago": 58,
-      "mention_change_pct": 217.2,
-      "upvotes": 564,
+      "mentions": 182,
+      "mentions_24h_ago": 60,
+      "mention_change_pct": 203.3,
+      "upvotes": 546,
       "cik": "0001835632",
       "filing": {
         "form": "10-Q",
@@ -291,7 +1427,89 @@
         "desc": "FORM 10-Q",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/mrvl-20260502.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/0001835632-26-000019-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-28",
+          "days_ago": 11,
+          "fresh": false,
+          "desc": "FORM 10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/0001835632-26-000019-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-27",
+          "days_ago": 12,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000014/0001835632-26-000014-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-13",
+          "days_ago": 26,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000110465926060262/0001104659-26-060262-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-05-13",
+          "days_ago": 26,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000110465926060253/0001104659-26-060253-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-15",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526157134/0001193125-26-157134-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-04-06",
+          "days_ago": 63,
+          "fresh": false,
+          "desc": "424B5",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526142958/0001193125-26-142958-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-31",
+          "days_ago": 69,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526134462/0001193125-26-134462-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-19",
+          "days_ago": 81,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000162828026019851/0001628280-26-019851-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-19",
+          "days_ago": 81,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526115987/0001193125-26-115987-index.htm"
+        },
+        {
+          "form": "10-K",
+          "date": "2026-03-11",
+          "days_ago": 89,
+          "fresh": false,
+          "desc": "FORM 10-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000011/0001835632-26-000011-index.htm"
+        }
+      ]
     },
     {
       "rank": 5,
@@ -300,10 +1518,10 @@
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 158,
-      "mentions_24h_ago": 74,
-      "mention_change_pct": 113.5,
-      "upvotes": 498,
+      "mentions": 156,
+      "mentions_24h_ago": 75,
+      "mention_change_pct": 108.0,
+      "upvotes": 484,
       "cik": "0001045810",
       "filing": {
         "form": "10-Q",
@@ -313,7 +1531,57 @@
         "desc": "10-Q",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/0001045810-26-000052-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-20",
+          "days_ago": 19,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/0001045810-26-000052-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-20",
+          "days_ago": 19,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/0001045810-26-000051-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-12",
+          "days_ago": 27,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000037/0001045810-26-000037-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-05-12",
+          "days_ago": 27,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000036/0001045810-26-000036-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-08",
+          "days_ago": 31,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000028/0001045810-26-000028-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-27",
+          "days_ago": 42,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000026/0001045810-26-000026-index.htm"
+        }
+      ]
     },
     {
       "rank": 6,
@@ -322,10 +1590,10 @@
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 142,
-      "mentions_24h_ago": 82,
-      "mention_change_pct": 73.2,
-      "upvotes": 513,
+      "mentions": 145,
+      "mentions_24h_ago": 81,
+      "mention_change_pct": 79.0,
+      "upvotes": 514,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
@@ -335,7 +1603,8 @@
         "desc": "DEFA14A",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/d67222ddefa14a.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/0001193125-25-326661-index.htm"
-      }
+      },
+      "filings": []
     },
     {
       "rank": 8,
@@ -347,7 +1616,7 @@
       "mentions": 113,
       "mentions_24h_ago": 14,
       "mention_change_pct": 707.1,
-      "upvotes": 444,
+      "upvotes": 448,
       "cik": "0000320193",
       "filing": {
         "form": "10-Q",
@@ -357,7 +1626,33 @@
         "desc": "10-Q",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 38,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/0000320193-26-000011-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-20",
+          "days_ago": 49,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/0001140361-26-015711-index.htm"
+        }
+      ]
     },
     {
       "rank": 9,
@@ -366,10 +1661,10 @@
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 102,
+      "mentions": 103,
       "mentions_24h_ago": 37,
-      "mention_change_pct": 175.7,
-      "upvotes": 895,
+      "mention_change_pct": 178.4,
+      "upvotes": 898,
       "cik": "0001318605",
       "filing": {
         "form": "10-K/A",
@@ -379,7 +1674,41 @@
         "desc": "FORM 10-K/A",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/tm2611837d1_10ka.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "10-K/A",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "FORM 10-K/A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-23",
+          "days_ago": 46,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/0001628280-26-026673-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-22",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026551/0001628280-26-026551-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-02",
+          "days_ago": 67,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026022956/0001628280-26-022956-index.htm"
+        }
+      ]
     },
     {
       "rank": 11,
@@ -388,10 +1717,10 @@
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 65,
+      "mentions": 67,
       "mentions_24h_ago": 17,
-      "mention_change_pct": 282.4,
-      "upvotes": 271,
+      "mention_change_pct": 294.1,
+      "upvotes": 284,
       "cik": "0001326801",
       "filing": {
         "form": "8-K",
@@ -401,19 +1730,77 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/meta-20260527.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/0001628280-26-039193-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-29",
+          "days_ago": 10,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/0001628280-26-039193-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-04",
+          "days_ago": 35,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526204128/0001193125-26-204128-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/0001628280-26-028526-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/0001628280-26-028364-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-16",
+          "days_ago": 53,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025533/0001628280-26-025533-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-16",
+          "days_ago": 53,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/0001628280-26-025532-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-14",
+          "days_ago": 55,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025108/0001628280-26-025108-index.htm"
+        }
+      ]
     },
     {
-      "rank": 12,
+      "rank": 13,
       "ticker": "SPCX",
       "name": "Collaborative Investment Series Trust - The SPAC and New Issue ETF",
       "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
       "display_name": "Space Exploration Technologies Corp",
       "name_match": "mismatch",
-      "mentions": 64,
+      "mentions": 59,
       "mentions_24h_ago": 41,
-      "mention_change_pct": 56.1,
-      "upvotes": 1590,
+      "mention_change_pct": 43.9,
+      "upvotes": 1576,
       "cik": "0001181412",
       "filing": {
         "form": "S-1/A",
@@ -423,21 +1810,48 @@
         "desc": "S-1/A",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "S-1/A",
+          "date": "2026-06-03",
+          "days_ago": 5,
+          "fresh": true,
+          "desc": "S-1/A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
+        },
+        {
+          "form": "S-1/A",
+          "date": "2026-06-01",
+          "days_ago": 7,
+          "fresh": true,
+          "desc": "S-1/A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/0001628280-26-039276-index.htm"
+        },
+        {
+          "form": "S-1",
+          "date": "2026-05-20",
+          "days_ago": 19,
+          "fresh": false,
+          "desc": "S-1",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
+        }
+      ]
     },
     {
-      "rank": 13,
+      "rank": 14,
       "ticker": "VOO",
       "name": "Vanguard S&P 500 ETF",
       "sec_name": null,
       "display_name": "Vanguard S&P 500 ETF",
       "name_match": "no_cik",
-      "mentions": 62,
-      "mentions_24h_ago": 85,
-      "mention_change_pct": -27.1,
-      "upvotes": 347,
+      "mentions": 59,
+      "mentions_24h_ago": 83,
+      "mention_change_pct": -28.9,
+      "upvotes": 345,
       "cik": null,
-      "filing": null
+      "filing": null,
+      "filings": []
     },
     {
       "rank": 15,
@@ -446,10 +1860,10 @@
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 52,
-      "mentions_24h_ago": 11,
-      "mention_change_pct": 372.7,
-      "upvotes": 139,
+      "mentions": 54,
+      "mentions_24h_ago": 12,
+      "mention_change_pct": 350.0,
+      "upvotes": 143,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -459,7 +1873,81 @@
         "desc": "6-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926064092/nbis-20260331x6k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926064092/0001104659-26-064092-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "6-K",
+          "date": "2026-05-20",
+          "days_ago": 19,
+          "fresh": false,
+          "desc": "6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926064092/0001104659-26-064092-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-05-13",
+          "days_ago": 26,
+          "fresh": false,
+          "desc": "FORM 6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926059872/0001104659-26-059872-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-05-01",
+          "days_ago": 38,
+          "fresh": false,
+          "desc": "FORM 6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926053464/0001104659-26-053464-index.htm"
+        },
+        {
+          "form": "20-F",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "20-F",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/0001104659-26-052948-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-03-20",
+          "days_ago": 80,
+          "fresh": false,
+          "desc": "FORM 6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926032735/0001104659-26-032735-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-03-18",
+          "days_ago": 82,
+          "fresh": false,
+          "desc": "FORM 6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926029863/0001104659-26-029863-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-03-17",
+          "days_ago": 83,
+          "fresh": false,
+          "desc": "FORM 6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926029074/0001104659-26-029074-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-03-16",
+          "days_ago": 84,
+          "fresh": false,
+          "desc": "FORM 6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926027886/0001104659-26-027886-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-03-11",
+          "days_ago": 89,
+          "fresh": false,
+          "desc": "FORM 6-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/0001104659-26-026163-index.htm"
+        }
+      ]
     },
     {
       "rank": 16,
@@ -469,8 +1957,8 @@
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
       "mentions": 46,
-      "mentions_24h_ago": 34,
-      "mention_change_pct": 35.3,
+      "mentions_24h_ago": 33,
+      "mention_change_pct": 39.4,
       "upvotes": 160,
       "cik": "0000002488",
       "filing": {
@@ -481,32 +1969,52 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/d118163d8k.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/0001193125-26-226746-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 24,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/0001193125-26-226746-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-06",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000076/0000002488-26-000076-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-05",
+          "days_ago": 34,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000072/0000002488-26-000072-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-03-27",
+          "days_ago": 73,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526129084/0001193125-26-129084-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-03-27",
+          "days_ago": 73,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526129057/0001193125-26-129057-index.htm"
+        }
+      ]
     },
     {
       "rank": 18,
-      "ticker": "ASTS",
-      "name": "AST SpaceMobile",
-      "sec_name": "AST SpaceMobile, Inc.",
-      "display_name": "AST SpaceMobile, Inc.",
-      "name_match": "verified",
-      "mentions": 43,
-      "mentions_24h_ago": 33,
-      "mention_change_pct": 30.3,
-      "upvotes": 114,
-      "cik": "0001780312",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-11",
-        "days_ago": 28,
-        "fresh": false,
-        "desc": "10-Q",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/asts-20260331.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
-      }
-    },
-    {
-      "rank": 19,
       "ticker": "LFVN",
       "name": "Lifevantage",
       "sec_name": "Lifevantage Corp",
@@ -515,7 +2023,7 @@
       "mentions": 43,
       "mentions_24h_ago": 25,
       "mention_change_pct": 72.0,
-      "upvotes": 384,
+      "upvotes": 386,
       "cik": "0000849146",
       "filing": {
         "form": "8-K",
@@ -525,7 +2033,97 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/lfvn-20260506.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-06",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-06",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208922/0001193125-26-208922-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-16",
+          "days_ago": 53,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526159324/0001193125-26-159324-index.htm"
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "ticker": "ASTS",
+      "name": "AST SpaceMobile",
+      "sec_name": "AST SpaceMobile, Inc.",
+      "display_name": "AST SpaceMobile, Inc.",
+      "name_match": "verified",
+      "mentions": 42,
+      "mentions_24h_ago": 32,
+      "mention_change_pct": 31.2,
+      "upvotes": 111,
+      "cik": "0001780312",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-11",
+        "days_ago": 28,
+        "fresh": false,
+        "desc": "10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/asts-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-28",
+          "days_ago": 41,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019387/0001493152-26-019387-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-28",
+          "days_ago": 41,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019384/0001493152-26-019384-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-20",
+          "days_ago": 49,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226018012/0001493152-26-018012-index.htm"
+        }
+      ]
     },
     {
       "rank": 20,
@@ -539,7 +2137,8 @@
       "mention_change_pct": 272.7,
       "upvotes": 107,
       "cik": null,
-      "filing": null
+      "filing": null,
+      "filings": []
     },
     {
       "rank": 23,
@@ -548,10 +2147,10 @@
       "sec_name": "ServiceNow, Inc.",
       "display_name": "ServiceNow, Inc.",
       "name_match": "verified",
-      "mentions": 34,
+      "mentions": 35,
       "mentions_24h_ago": 16,
-      "mention_change_pct": 112.5,
-      "upvotes": 133,
+      "mention_change_pct": 118.8,
+      "upvotes": 134,
       "cik": "0001373715",
       "filing": {
         "form": "8-K",
@@ -561,10 +2160,140 @@
         "desc": "8-K",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/now-20260521.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/0001373715-26-000065-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-22",
+          "days_ago": 17,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/0001373715-26-000065-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 24,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000119312526226644/0001193125-26-226644-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000058/0001373715-26-000058-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-23",
+          "days_ago": 46,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000056/0001373715-26-000056-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-22",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000054/0001373715-26-000054-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-06",
+          "days_ago": 63,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000040/0001373715-26-000040-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-06",
+          "days_ago": 63,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000039/0001373715-26-000039-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-01",
+          "days_ago": 68,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000030/0001373715-26-000030-index.htm"
+        }
+      ]
     },
     {
       "rank": 26,
+      "ticker": "BB",
+      "name": "BlackBerry",
+      "sec_name": "BLACKBERRY Ltd",
+      "display_name": "BLACKBERRY Ltd",
+      "name_match": "verified",
+      "mentions": 29,
+      "mentions_24h_ago": 9,
+      "mention_change_pct": 222.2,
+      "upvotes": 70,
+      "cik": "0001070235",
+      "filing": {
+        "form": "DEFA14A",
+        "date": "2026-05-11",
+        "days_ago": 28,
+        "fresh": false,
+        "desc": "DEFA14A",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000055/a2026proxynotice.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000055/0001070235-26-000055-index.htm"
+      },
+      "filings": [
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000055/0001070235-26-000055-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-05-11",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000054/0001070235-26-000054-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-08",
+          "days_ago": 31,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000051/0001070235-26-000051-index.htm"
+        },
+        {
+          "form": "10-K",
+          "date": "2026-04-09",
+          "days_ago": 60,
+          "fresh": false,
+          "desc": "10-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000039/0001070235-26-000039-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-09",
+          "days_ago": 60,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000029/0001070235-26-000029-index.htm"
+        }
+      ]
+    },
+    {
+      "rank": 27,
       "ticker": "YOU",
       "name": "CLEAR Secure",
       "sec_name": "Clear Secure, Inc.",
@@ -583,19 +2312,69 @@
         "desc": "10-Q",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1856314/000162828026030937/you-20260331.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000162828026030937/0001628280-26-030937-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-06",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000162828026030937/0001628280-26-030937-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-06",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000013/0001856314-26-000013-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-22",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000119312526170726/0001193125-26-170726-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-22",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000119312526170704/0001193125-26-170704-index.htm"
+        },
+        {
+          "form": "PRE 14A",
+          "date": "2026-04-08",
+          "days_ago": 61,
+          "fresh": false,
+          "desc": "PRE 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000119312526147733/0001193125-26-147733-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-19",
+          "days_ago": 81,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000095014226000784/0000950142-26-000784-index.htm"
+        }
+      ]
     },
     {
-      "rank": 27,
+      "rank": 28,
       "ticker": "RDDT",
       "name": "Reddit",
       "sec_name": "Reddit, Inc.",
       "display_name": "Reddit, Inc.",
       "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 33,
-      "mention_change_pct": -12.1,
-      "upvotes": 141,
+      "mentions": 28,
+      "mentions_24h_ago": 32,
+      "mention_change_pct": -12.5,
+      "upvotes": 136,
       "cik": "0001713445",
       "filing": {
         "form": "10-Q",
@@ -605,51 +2384,105 @@
         "desc": "10-Q",
         "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/rddt-20260331.htm",
         "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
-      }
-    },
-    {
-      "rank": 28,
-      "ticker": "BB",
-      "name": "BlackBerry",
-      "sec_name": "BLACKBERRY Ltd",
-      "display_name": "BLACKBERRY Ltd",
-      "name_match": "verified",
-      "mentions": 28,
-      "mentions_24h_ago": 9,
-      "mention_change_pct": 211.1,
-      "upvotes": 69,
-      "cik": "0001070235",
-      "filing": {
-        "form": "DEFA14A",
-        "date": "2026-05-11",
-        "days_ago": 28,
-        "fresh": false,
-        "desc": "DEFA14A",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000055/a2026proxynotice.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000055/0001070235-26-000055-index.htm"
-      }
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 38,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000067/0001713445-26-000067-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-23",
+          "days_ago": 46,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000061/0001713445-26-000061-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-23",
+          "days_ago": 46,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000060/0001713445-26-000060-index.htm"
+        }
+      ]
     },
     {
       "rank": 30,
-      "ticker": "ORCL",
-      "name": "Oracle",
-      "sec_name": "ORACLE CORP",
-      "display_name": "Oracle Corp",
+      "ticker": "ES",
+      "name": "Eversource Energy",
+      "sec_name": "EVERSOURCE ENERGY",
+      "display_name": "Eversource Energy",
       "name_match": "verified",
-      "mentions": 25,
-      "mentions_24h_ago": 5,
-      "mention_change_pct": 400.0,
-      "upvotes": 59,
-      "cik": "0001341439",
+      "mentions": 24,
+      "mentions_24h_ago": 2,
+      "mention_change_pct": 1100.0,
+      "upvotes": 80,
+      "cik": "0000072741",
       "filing": {
-        "form": "8-K",
-        "date": "2026-05-12",
-        "days_ago": 27,
+        "form": "10-Q",
+        "date": "2026-05-07",
+        "days_ago": 32,
         "fresh": false,
-        "desc": "8-K",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/d76569d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/0001193125-26-219708-index.htm"
-      }
+        "desc": "10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/72741/000162828026032278/es-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/72741/000162828026032278/0001628280-26-032278-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-07",
+          "days_ago": 32,
+          "fresh": false,
+          "desc": "10-Q",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/72741/000162828026032278/0001628280-26-032278-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-06",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/72741/000110465926056267/0001104659-26-056267-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-31",
+          "days_ago": 69,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/72741/000110465926037912/0001104659-26-037912-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-03-27",
+          "days_ago": 73,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/72741/000110465926036085/0001104659-26-036085-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-03-27",
+          "days_ago": 73,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/72741/000110465926036077/0001104659-26-036077-index.htm"
+        }
+      ]
     }
   ]
 }

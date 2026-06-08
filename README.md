@@ -32,6 +32,8 @@ data/trending.json  ->  static dashboard
   (8-K, 10-K, 10-Q, S-1, DEF 14A, 13D/G, …), flags filings ≤ 7 days old.
   Each ticker→CIK match is **validated against SEC's official company name**;
   conflicts are flagged `unverified` and never surfaced as a confident filing.
+  Clicking a firm **expands its material filings from the last 90 days** — that
+  list comes free from the same submissions request, no extra API calls.
 - `.github/workflows/update.yml` — runs hourly, commits `data/trending.json`.
 - `index.html` / `styles.css` / `app.js` — static dashboard, reads the JSON.
 
