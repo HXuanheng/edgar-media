@@ -23,16 +23,18 @@ jobs:
           python-version: "3.12"
 
       - name: Build trending.json
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}   # optional; absent -> labels only
         run: python scripts/build_data.py
 
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- data/trending.json; then
+          if git diff --quiet -- data/trending.json data/summaries.json; then
             echo "no change"
           else
-            git add data/trending.json
+            git add data/trending.json data/summaries.json
             git commit -m "data: refresh trending [skip ci]"
             git push
           fi

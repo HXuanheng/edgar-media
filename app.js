@@ -50,7 +50,11 @@ function momentum(it) {
 function filingHtml(f, nameMatch) {
     if (!f) return `<div class="filing-none">no recent material filing</div>`;
     const meta = `${f.days_ago != null ? daysLabel(f.days_ago) : f.date}`;
+    // ai_summary (Gemini prose) > summary (SEC item-code label) > raw form code.
+    // Fallback chain keeps older trending.json (no new fields) rendering.
+    const label = f.ai_summary || f.summary || f.form;
     if (nameMatch === "mismatch") {
+        // Unverified match: stay cautious, show the form code only.
         return `<div class="filing-stale">
             <span class="warn">⚠ unverified ticker/name match</span><br>
             <span class="filing-form">${esc(f.form)}</span>
@@ -60,23 +64,24 @@ function filingHtml(f, nameMatch) {
     }
     if (f.fresh) {
         return `<div class="filing-fresh">
-            <span class="badge">🔥 ${esc(f.form)} · ${esc(meta)}</span><br>
-            <a href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.desc || f.form)}</a>
+            <span class="badge">🔥 ${esc(label)} · ${esc(meta)}</span><br>
+            <a href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.form)} ↗</a>
         </div>`;
     }
     return `<div class="filing-stale">
-        <span class="filing-form">${esc(f.form)}</span>
-        <span class="filing-meta">· ${esc(meta)}</span><br>
+        <span class="filing-form">${esc(label)}</span>
+        <span class="filing-meta">· ${esc(f.form)} · ${esc(meta)}</span><br>
         <a class="filing-meta" href="${esc(f.index_url)}" target="_blank" rel="noopener">view on SEC ↗</a>
     </div>`;
 }
 
 function filingRow(f) {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
-    const desc = f.desc && f.desc !== f.form ? ` — ${esc(f.desc)}` : "";
+    const label = f.ai_summary || f.summary || f.form;
+    const extra = label && label !== f.form ? ` — ${esc(label)}` : "";
     return `<li class="flrow">
         <span class="flform">${esc(f.form)}</span>
-        <a class="fllink" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.date)}${desc} ↗</a>
+        <a class="fllink" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.date)}${extra} ↗</a>
         <span class="flwhen">${esc(when)}</span>
     </li>`;
 }
@@ -154,7 +159,7 @@ function applyView() {
 
     if (q && view.length === 0) {
         $("#list").innerHTML =
-            `<div class="empty-search">“${esc(searchInput.value.trim())}” isn’t trending right now — not in the current list.</div>`;
+            `<div class="empty-search">“${esc(searchInput.value.trim())}” is not trending right now.</div>`;
         return;
     }
     $("#list").innerHTML = view.map(cardHtml).join("");

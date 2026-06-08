@@ -18,6 +18,7 @@ import html
 import io
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -37,6 +38,19 @@ HEADLINE_MAX_DAYS = 365  # ignore ancient filings as the card headline (ETF junk
 MAX_FILINGS = 25       # cap per firm (bounds JSON size)
 SEC_PAUSE = 0.15    # polite gap between SEC calls (limit is 10 req/sec)
 
+# --- Gemini (optional, free) ----------------------------------------------
+# One-sentence prose summary of FRESH headline filings, via Google's free
+# Gemini API. Cached by accession in data/summaries.json so each filing is
+# summarized once ever. No key -> skipped entirely (item-code labels still
+# show). Key comes from the GEMINI_API_KEY env var (a GitHub Actions secret).
+GEMINI_MODEL = "gemini-2.5-flash"   # must be a current free-tier Flash model
+GEMINI_URL = ("https://generativelanguage.googleapis.com/v1beta/"
+              "models/{model}:generateContent?key={key}")
+GEMINI_PAUSE = 4.0     # ~15 req/min, well inside the free-tier RPM limit
+GEMINI_MAX_CHARS = 50000  # filing text fed to the model (covers an 8-K fully)
+AI_MAX_DAYS = 10       # only summarize headline filings this recent (bounds volume)
+MAX_AI_PER_RUN = 20    # cap new summaries per run; backlog drains over hours
+
 # Forms that carry real disclosure content (skip Form 4 insider noise etc.)
 MATERIAL_FORMS = {
     "8-K", "10-K", "10-Q", "10-K/A", "10-Q/A", "8-K/A",
@@ -46,7 +60,74 @@ MATERIAL_FORMS = {
     "SC 13D", "SC 13G", "SC 13D/A", "SC 13G/A", "SC TO-T", "SC 14D9",
 }
 
+# Form code -> plain-English label (the free, can't-be-wrong summary baseline).
+FORM_LABELS = {
+    "8-K": "Material event",
+    "8-K/A": "Material event (amended)",
+    "10-K": "Annual report",
+    "10-K/A": "Annual report (amended)",
+    "10-Q": "Quarterly report",
+    "10-Q/A": "Quarterly report (amended)",
+    "S-1": "IPO / new securities",
+    "S-1/A": "IPO registration (amended)",
+    "S-4": "M&A / exchange registration",
+    "424B4": "IPO pricing prospectus",
+    "424B5": "Shelf offering prospectus",
+    "6-K": "Foreign issuer update",
+    "20-F": "Annual report (foreign)",
+    "40-F": "Annual report (foreign)",
+    "F-1": "IPO registration (foreign)",
+    "DEF 14A": "Proxy statement",
+    "DEFA14A": "Proxy materials (additional)",
+    "PRE 14A": "Preliminary proxy",
+    "SC 13D": "Activist / large stake",
+    "SC 13D/A": "Activist stake (amended)",
+    "SC 13G": "Passive large stake",
+    "SC 13G/A": "Passive stake (amended)",
+    "SC TO-T": "Tender offer",
+    "SC 14D9": "Tender offer response",
+}
+
+# 8-K item code -> what actually happened. These are SEC's own tags, shipped
+# in filings.recent["items"], so the label is authoritative (never guessed).
+# 9.01 (financial exhibits) is dropped -- it's attachments, not the event.
+ITEM_LABELS = {
+    "1.01": "Material agreement signed",
+    "1.02": "Material agreement terminated",
+    "1.03": "Bankruptcy",
+    "2.01": "Acquisition / disposition completed",
+    "2.02": "Earnings released",
+    "2.03": "New debt obligation",
+    "2.05": "Restructuring / costs",
+    "3.01": "Delisting notice",
+    "3.02": "Unregistered share sale",
+    "4.01": "Auditor change",
+    "4.02": "Financials no longer reliable",
+    "5.01": "Change in control",
+    "5.02": "Executive / board change",
+    "5.03": "Bylaw / charter change",
+    "5.07": "Shareholder vote results",
+    "7.01": "Other material update",
+    "8.01": "Other material update",
+}
+
+
+def filing_summary(form, items_raw):
+    """Plain-English label for a filing: 8-K item codes if present, else form."""
+    if form.startswith("8-K") and items_raw:
+        seen = []
+        for code in items_raw.split(","):
+            label = ITEM_LABELS.get(code.strip())
+            if label and label not in seen:
+                seen.append(label)
+        if seen:
+            return "; ".join(seen)
+        return FORM_LABELS.get("8-K", "8-K")
+    return FORM_LABELS.get(form, form)
+
+
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "trending.json")
+SUMMARIES_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "summaries.json")
 
 
 # --- name matching --------------------------------------------------------
@@ -123,6 +204,134 @@ def get_json(url, retries=3, pause=1.0):
     return None
 
 
+def get_text(url, retries=3, pause=1.0):
+    """GET a URL and return decoded text (for filing documents, which are HTML)."""
+    last = None
+    for attempt in range(retries):
+        try:
+            req = Request(url, headers={
+                "User-Agent": UA,
+                "Accept-Encoding": "gzip",
+            })
+            with urlopen(req, timeout=30) as resp:
+                raw = resp.read()
+                if resp.headers.get("Content-Encoding") == "gzip":
+                    raw = gzip.GzipFile(fileobj=io.BytesIO(raw)).read()
+                return raw.decode("utf-8", errors="replace")
+        except (HTTPError, URLError, TimeoutError) as e:
+            last = e
+            time.sleep(pause * (attempt + 1))
+    print(f"  ! failed {url}: {last}", file=sys.stderr)
+    return None
+
+
+# --- AI summary (optional, free Gemini) -----------------------------------
+def strip_html(s, limit=GEMINI_MAX_CHARS):
+    """Crude HTML -> text for feeding a filing to the model. Truncated."""
+    if not s:
+        return ""
+    s = re.sub(r"(?is)<(script|style).*?</\1>", " ", s)   # drop noisy blocks
+    s = re.sub(r"(?s)<[^>]+>", " ", s)                    # strip tags
+    s = html.unescape(s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s[:limit]
+
+
+def gemini_summarize(text, form, key, retries=3, pause=1.0):
+    """One-sentence summary of filing text via Gemini, or None on any failure."""
+    if not text:
+        return None
+    url = GEMINI_URL.format(model=GEMINI_MODEL, key=key)
+    prompt = (f"Summarize this SEC {form} filing for a retail investor in ONE "
+              f"factual sentence (max 25 words), no preamble:\n\n{text}")
+    body = json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "maxOutputTokens": 120,
+            "temperature": 0.2,
+            # 2.5 Flash is a thinking model; thinking tokens count against the
+            # output budget. We want a quick one-liner, so disable thinking or
+            # the budget gets eaten and the answer comes back truncated/empty.
+            "thinkingConfig": {"thinkingBudget": 0},
+        },
+    }).encode("utf-8")
+    last = None
+    for attempt in range(retries):
+        try:
+            req = Request(url, data=body,
+                          headers={"Content-Type": "application/json"})
+            with urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            cands = data.get("candidates")
+            if not cands:                       # empty -> safety block / no output
+                return None
+            parts = cands[0].get("content", {}).get("parts", [])
+            txt = "".join(p.get("text", "") for p in parts).strip()
+            return txt or None
+        except HTTPError as e:
+            last = e
+            if e.code in (429, 503):            # rate-limited / loading -> back off
+                time.sleep(pause * (attempt + 1) * 2)
+                continue
+            print(f"  ! gemini {e.code}: {e.reason}", file=sys.stderr)
+            return None                         # bad key / bad request -> bail fast
+        except (URLError, TimeoutError, ValueError) as e:
+            last = e
+            time.sleep(pause * (attempt + 1))
+    print(f"  ! gemini failed: {last}", file=sys.stderr)
+    return None
+
+
+def load_summaries():
+    """Load the accession -> summary cache (committed, persists across runs)."""
+    try:
+        with open(SUMMARIES_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, ValueError):
+        return {}
+
+
+def save_summaries(cache):
+    os.makedirs(os.path.dirname(SUMMARIES_PATH), exist_ok=True)
+    with open(SUMMARIES_PATH, "w", encoding="utf-8") as f:
+        json.dump(cache, f, indent=2, ensure_ascii=False)
+
+
+def summarize_fresh(items, cache, key):
+    """Attach ai_summary to recent headline filings (cached by accession).
+
+    Only the prominent headline filing per firm, filed within AI_MAX_DAYS, is
+    summarized (<=1 call each), capped at MAX_AI_PER_RUN per run; the rest drain
+    over later hourly runs via the cache. No key -> nothing happens (labels
+    still show). Returns # new.
+    """
+    made = 0
+    for it in items:
+        f = it.get("filing")
+        if not f:
+            continue
+        days = f.get("days_ago")
+        if days is None or days > AI_MAX_DAYS:
+            continue
+        acc = f.get("accession")
+        if not acc:
+            continue
+        if acc in cache:                        # already summarized -> reuse
+            f["ai_summary"] = cache[acc]["summary"]
+            continue
+        if not key or made >= MAX_AI_PER_RUN:   # no key, or hit the per-run cap
+            continue
+        text = strip_html(get_text(f.get("doc_url")))
+        summary = gemini_summarize(text, f.get("form", ""), key)
+        if summary:
+            f["ai_summary"] = summary
+            cache[acc] = {"summary": summary, "model": GEMINI_MODEL}
+            made += 1
+            print(f"    ~ gemini {it['ticker']:6s} {f['form']:6s} -> {summary[:70]}")
+            time.sleep(GEMINI_PAUSE)
+    return made
+
+
 # --- pipeline -------------------------------------------------------------
 def load_ticker_map():
     """SEC ticker -> {"cik": 10-digit CIK, "sec_name": official title}.
@@ -148,6 +357,7 @@ def build_filing(recent, i, cik_int, today):
     acc = recent["accessionNumber"][i]
     acc_nodash = acc.replace("-", "")
     doc = recent["primaryDocument"][i]
+    items_raw = recent.get("items", [""] * len(forms))[i]
     try:
         days_ago = (today - datetime.strptime(date, "%Y-%m-%d").date()).days
     except ValueError:
@@ -159,6 +369,8 @@ def build_filing(recent, i, cik_int, today):
         "days_ago": days_ago,
         "fresh": days_ago is not None and days_ago <= FRESH_DAYS,
         "desc": recent.get("primaryDocDescription", [""] * len(forms))[i] or forms[i],
+        "summary": filing_summary(forms[i], items_raw),
+        "accession": acc,                      # cache key for AI summaries
         "doc_url": f"{base}/{doc}" if doc else f"{base}/",
         "index_url": f"{base}/{acc}-index.htm",
     }
@@ -205,6 +417,8 @@ def recent_filings(cik, today):
 def main():
     now = datetime.now(timezone.utc)
     today = now.date()
+    gemini_key = os.environ.get("GEMINI_API_KEY")
+    summaries = load_summaries()
 
     print("fetching ApeWisdom (Reddit attention)...")
     ape = get_json(APEWISDOM_URL)
@@ -264,6 +478,15 @@ def main():
             "filing": filing,
             "filings": filings,
         })
+
+    # AI prose layer: one-sentence summary on fresh headline filings, free via
+    # Gemini, cached by accession. Falls back to item-code labels on any miss.
+    made = summarize_fresh(items, summaries, gemini_key)
+    if gemini_key:
+        save_summaries(summaries)
+        print(f"gemini: {made} new summaries, {len(summaries)} cached total")
+    else:
+        print("gemini: no GEMINI_API_KEY -> AI summaries skipped (labels only)")
 
     # Hot = VERIFIED name match AND a fresh material filing. A mismatched
     # match is never surfaced as confident.
