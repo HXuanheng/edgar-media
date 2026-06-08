@@ -14,6 +14,7 @@ SEC requires a descriptive User-Agent or it returns HTTP 403.
 """
 
 import gzip
+import html
 import io
 import json
 import os
@@ -45,6 +46,54 @@ MATERIAL_FORMS = {
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "trending.json")
 
 
+# --- name matching --------------------------------------------------------
+# Tokens dropped before comparing names: legal forms and generic noise.
+NAME_NOISE = {
+    "the", "inc", "incorporated", "corp", "corporation", "co", "company",
+    "ltd", "limited", "plc", "llc", "lp", "llp", "sa", "ag", "nv",
+    "holdings", "holding", "group", "class", "cl",
+}
+
+
+def clean_name(s):
+    """Lowercase, strip punctuation, drop legal/noise tokens -> token list."""
+    if not s:
+        return []
+    low = "".join(c if c.isalnum() or c.isspace() else " " for c in s.lower())
+    return [t for t in low.split() if t and t not in NAME_NOISE]
+
+
+def name_similarity(a, b):
+    """True if two company names plausibly refer to the same entity.
+
+    Conservative: only a clear conflict is treated as a mismatch.
+    """
+    ta, tb = clean_name(a), clean_name(b)
+    if not ta or not tb:
+        return False
+    sa, sb = set(ta), set(tb)
+    if sa <= sb or sb <= sa:          # one name's tokens contain the other's
+        return True
+    if ta[0] == tb[0]:                # same first significant token
+        return True
+    if len(sa & sb) / len(sa | sb) >= 0.5:      # Jaccard overlap
+        return True
+    # Rebrand / contained name (e.g. 'strategy' inside 'microstrategy').
+    # Require a long token so coincidental fragments don't match
+    # ('spac' must NOT match 'space').
+    for x in sa:
+        if len(x) >= 6 and any(x in y or y in x for y in sb):
+            return True
+    return False
+
+
+def prettify(s):
+    """Title-case all-caps SEC names ('APPLE INC.' -> 'Apple Inc.')."""
+    if s and s.isupper():
+        return s.title()
+    return s
+
+
 # --- http helpers ---------------------------------------------------------
 def get_json(url, retries=3, pause=1.0):
     """GET a URL and parse JSON, with retries and gzip handling."""
@@ -69,14 +118,20 @@ def get_json(url, retries=3, pause=1.0):
 
 
 # --- pipeline -------------------------------------------------------------
-def load_ticker_to_cik():
-    """SEC ticker -> zero-padded 10-digit CIK map."""
+def load_ticker_map():
+    """SEC ticker -> {"cik": 10-digit CIK, "sec_name": official title}.
+
+    Single company_tickers.json request; the official name comes free with it.
+    """
     data = get_json(TICKERS_URL)
     if not data:
         return {}
     out = {}
     for row in data.values():
-        out[row["ticker"].upper()] = str(row["cik_str"]).zfill(10)
+        out[row["ticker"].upper()] = {
+            "cik": str(row["cik_str"]).zfill(10),
+            "sec_name": row.get("title", ""),
+        }
     return out
 
 
@@ -124,25 +179,47 @@ def main():
         sys.exit(1)
     results = ape["results"][:TOP_N]
 
-    print("loading SEC ticker->CIK map...")
-    cik_map = load_ticker_to_cik()
+    print("loading SEC ticker map...")
+    cik_map = load_ticker_map()
 
     items = []
     for row in results:
         ticker = row["ticker"].upper()
+        # ApeWisdom returns HTML-encoded names ("S&amp;P"); decode so the
+        # front-end escapes exactly once.
+        ape_name = html.unescape(row.get("name") or ticker)
         m, m0 = row.get("mentions", 0), row.get("mentions_24h_ago", 0)
         change = round((m - m0) / m0 * 100, 1) if m0 else None
-        cik = cik_map.get(ticker)
+
+        entry = cik_map.get(ticker)
+        cik = entry["cik"] if entry else None
+        sec_name = entry["sec_name"] if entry else None
+        if not cik:
+            name_match = "no_cik"
+        elif not ape_name or ape_name.strip().upper() == ticker:
+            # ApeWisdom gave no real name (just the ticker) -> nothing to
+            # contradict SEC's authoritative ticker map; trust it.
+            name_match = "verified"
+        elif name_similarity(ape_name, sec_name):
+            name_match = "verified"
+        else:
+            name_match = "mismatch"
+        display_name = prettify(sec_name) if sec_name else ape_name
+
         filing = latest_material_filing(cik, today) if cik else None
         if cik:
-            print(f"  {ticker:6s} cik={cik} "
+            print(f"  {ticker:6s} cik={cik} {name_match:8s} "
                   f"filing={filing['form'] if filing else '-'}")
         else:
             print(f"  {ticker:6s} (no SEC match - ETF/crypto/foreign)")
+
         items.append({
             "rank": row.get("rank"),
             "ticker": ticker,
-            "name": row.get("name", ticker),
+            "name": ape_name,
+            "sec_name": sec_name,
+            "display_name": display_name,
+            "name_match": name_match,
             "mentions": m,
             "mentions_24h_ago": m0,
             "mention_change_pct": change,
@@ -151,9 +228,14 @@ def main():
             "filing": filing,
         })
 
-    # Hot first: trending AND a fresh material filing.
+    # Hot = VERIFIED name match AND a fresh material filing. A mismatched
+    # match is never surfaced as confident.
+    def is_hot(x):
+        return (x["name_match"] == "verified"
+                and x["filing"] and x["filing"]["fresh"])
+
     items.sort(key=lambda x: (
-        not (x["filing"] and x["filing"]["fresh"]),  # fresh-filing items first
+        not is_hot(x),                               # hot items first
         x["rank"] if x["rank"] is not None else 999,
     ))
 
@@ -171,8 +253,10 @@ def main():
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
-    hot = sum(1 for x in items if x["filing"] and x["filing"]["fresh"])
-    print(f"\nwrote {OUT_PATH}: {len(items)} tickers, {hot} with a fresh filing")
+    hot = sum(1 for x in items if is_hot(x))
+    mism = sum(1 for x in items if x["name_match"] == "mismatch")
+    print(f"\nwrote {OUT_PATH}: {len(items)} tickers, "
+          f"{hot} hot (verified + fresh), {mism} name-mismatch")
 
 
 if __name__ == "__main__":

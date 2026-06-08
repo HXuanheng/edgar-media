@@ -30,6 +30,8 @@ data/trending.json  ->  static dashboard
 - `scripts/build_data.py` — pure-stdlib pipeline. Pulls the top ~30 trending
   tickers, maps each to its SEC CIK, fetches the latest **material** filing
   (8-K, 10-K, 10-Q, S-1, DEF 14A, 13D/G, …), flags filings ≤ 7 days old.
+  Each ticker→CIK match is **validated against SEC's official company name**;
+  conflicts are flagged `unverified` and never surfaced as a confident filing.
 - `.github/workflows/update.yml` — runs hourly, commits `data/trending.json`.
 - `index.html` / `styles.css` / `app.js` — static dashboard, reads the JSON.
 

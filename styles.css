@@ -115,6 +115,8 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .filing-stale .filing-form { color: var(--text-muted); }
 .filing-meta { color: var(--text-muted); font-size: 0.8rem; }
 .filing-none { color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
+.warn { color: #b45309; font-weight: 600; font-size: 0.8rem; }
+body.dark-mode .warn { color: #fbbf24; }
 
 @media (max-width: 620px) {
     .card { grid-template-columns: 1.8rem 1fr; }

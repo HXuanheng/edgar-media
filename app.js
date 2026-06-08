@@ -47,9 +47,17 @@ function momentum(it) {
     return `${mentions} mentions <span class="${cls}">${arrow} ${Math.abs(c)}%</span> <span style="opacity:.7">vs 24h</span>`;
 }
 
-function filingHtml(f) {
+function filingHtml(f, nameMatch) {
     if (!f) return `<div class="filing-none">no recent material filing</div>`;
     const meta = `${f.days_ago != null ? daysLabel(f.days_ago) : f.date}`;
+    if (nameMatch === "mismatch") {
+        return `<div class="filing-stale">
+            <span class="warn">⚠ unverified ticker/name match</span><br>
+            <span class="filing-form">${esc(f.form)}</span>
+            <span class="filing-meta">· ${esc(meta)}</span><br>
+            <a class="filing-meta" href="${esc(f.index_url)}" target="_blank" rel="noopener">view on SEC ↗</a>
+        </div>`;
+    }
     if (f.fresh) {
         return `<div class="filing-fresh">
             <span class="badge">🔥 ${esc(f.form)} · ${esc(meta)}</span><br>
@@ -64,18 +72,20 @@ function filingHtml(f) {
 }
 
 function cardHtml(it, i) {
-    const hot = it.filing && it.filing.fresh;
+    const verified = it.name_match === "verified";
+    const hot = verified && it.filing && it.filing.fresh;
+    const coName = it.display_name || it.name;
     const redditUrl = `https://www.reddit.com/r/wallstreetbets/search/?q=%24${encodeURIComponent(it.ticker)}`;
     return `<article class="card ${hot ? "hot" : ""}">
         <div class="rank">${i + 1}</div>
         <div class="tick">
             <div class="tick-row">
                 <a class="ticker" href="${redditUrl}" target="_blank" rel="noopener">$${esc(it.ticker)}</a>
-                <span class="coname">${esc(it.name)}</span>
+                <span class="coname">${esc(coName)}</span>
             </div>
             <div class="attention">${momentum(it)}</div>
         </div>
-        <div class="filing">${filingHtml(it.filing)}</div>
+        <div class="filing">${filingHtml(it.filing, it.name_match)}</div>
     </article>`;
 }
 
