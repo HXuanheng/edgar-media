@@ -175,8 +175,7 @@ fetch("./data/trending.json", { cache: "no-store" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((data) => {
         $("#updated").textContent =
-            `Updated ${timeAgo(data.updated_utc)} · ${data.count} trending tickers · ` +
-            `attention from Reddit, filings from SEC EDGAR`;
+            `Updated ${timeAgo(data.updated_utc)} · filings from SEC EDGAR`;
         allItems = data.items || [];
         const savedCount = parseInt(localStorage.getItem("count"), 10) || DEFAULT_COUNT;
         if (countSel) countSel.value = String(savedCount);
