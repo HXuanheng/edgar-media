@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDGAR Media — Trending Disclosures</title>
+    <meta name="description" content="What Reddit is paying attention to, joined with the official SEC filing behind it. Live trending tickers and their latest material disclosures.">
+    <meta name="author" content="Xuanheng Huang">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="EDGAR Media — Trending Disclosures">
+    <meta property="og:description" content="What Reddit is watching, joined with the official SEC filing behind it.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📑</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-row">
+            <div class="brand">
+                <span class="brand-mark">📑</span>
+                <span class="brand-name">EDGAR&nbsp;Media</span>
+            </div>
+            <nav class="header-nav">
+                <a href="https://hxuanheng.github.io/" target="_blank" rel="noopener">About the author</a>
+                <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="container">
+            <section class="intro">
+                <h1>Trending disclosures</h1>
+                <p class="lede">
+                    What Reddit is paying attention to — joined with the
+                    <strong>official SEC filing</strong> behind it. Tickers heating up
+                    that <em>also</em> filed something material in the last week are
+                    flagged <span class="fresh-pill">🔥 fresh</span>.
+                </p>
+                <p class="updated" id="updated">Loading…</p>
+            </section>
+
+            <section id="list" class="cards" aria-live="polite">
+                <div class="loading">Loading trending disclosures…</div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                <strong>How it works.</strong> Attention = Reddit mention counts via
+                <a href="https://apewisdom.io" target="_blank" rel="noopener">ApeWisdom</a>
+                (≈ hourly). Filings = the
+                <a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces" target="_blank" rel="noopener">SEC EDGAR</a>
+                submissions API (real-time). Reddit chatter is a noisy, retail-skewed
+                attention proxy — not investment advice. A trending ticker often has
+                <em>no</em> fresh filing; that's expected.
+            </p>
+            <p class="byline">
+                Built by <a href="https://hxuanheng.github.io/" target="_blank" rel="noopener">Xuanheng Huang</a>
+                · <a href="https://github.com/HXuanheng/edgar-media" target="_blank" rel="noopener">source</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

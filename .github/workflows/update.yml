@@ -1,0 +1,38 @@
+name: Update trending data
+
+on:
+  schedule:
+    - cron: "0 * * * *"   # hourly (GitHub cron can run 5-30 min late; that's fine)
+  workflow_dispatch:        # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build trending.json
+        run: python scripts/build_data.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/trending.json; then
+            echo "no change"
+          else
+            git add data/trending.json
+            git commit -m "data: refresh trending [skip ci]"
+            git push
+          fi

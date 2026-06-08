@@ -1,0 +1,565 @@
+{
+  "updated_utc": "2026-06-08T19:33:59Z",
+  "source": {
+    "attention": "ApeWisdom (Reddit mentions, ~hourly)",
+    "filings": "SEC EDGAR submissions API (real-time)"
+  },
+  "fresh_days": 7,
+  "count": 30,
+  "items": [
+    {
+      "rank": 3,
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "mentions": 254,
+      "mentions_24h_ago": 34,
+      "mention_change_pct": 647.1,
+      "upvotes": 1492,
+      "cik": "0000789019",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-05",
+        "days_ago": 3,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/d26760d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/0001193125-26-258667-index.htm"
+      }
+    },
+    {
+      "rank": 7,
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "mentions": 111,
+      "mentions_24h_ago": 48,
+      "mention_change_pct": 131.2,
+      "upvotes": 310,
+      "cik": "0001730168",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-03",
+        "days_ago": 5,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/avgo-20260603.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/0001730168-26-000051-index.htm"
+      }
+    },
+    {
+      "rank": 10,
+      "ticker": "DTE",
+      "name": "DTE Energy",
+      "mentions": 77,
+      "mentions_24h_ago": 43,
+      "mention_change_pct": 79.1,
+      "upvotes": 900,
+      "cik": "0000936340",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-05",
+        "days_ago": 3,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/dte-20260605.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm"
+      }
+    },
+    {
+      "rank": 13,
+      "ticker": "AM",
+      "name": "Antero Midstream",
+      "mentions": 59,
+      "mentions_24h_ago": 13,
+      "mention_change_pct": 353.8,
+      "upvotes": 174,
+      "cik": "0001623925",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-04",
+        "days_ago": 4,
+        "fresh": true,
+        "desc": "FORM 8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926070571/tm2616932d1_8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926070571/0001104659-26-070571-index.htm"
+      }
+    },
+    {
+      "rank": 14,
+      "ticker": "SPCX",
+      "name": "Collaborative Investment Series Trust - The SPAC and New Issue ETF",
+      "mentions": 59,
+      "mentions_24h_ago": 45,
+      "mention_change_pct": 31.1,
+      "upvotes": 1565,
+      "cik": "0001181412",
+      "filing": {
+        "form": "S-1/A",
+        "date": "2026-06-03",
+        "days_ago": 5,
+        "fresh": true,
+        "desc": "S-1/A",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
+      }
+    },
+    {
+      "rank": 15,
+      "ticker": "MSTR",
+      "name": "MicroStrategy",
+      "mentions": 48,
+      "mentions_24h_ago": 18,
+      "mention_change_pct": 166.7,
+      "upvotes": 479,
+      "cik": "0001050446",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-08",
+        "days_ago": 0,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/d130937d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/0001193125-26-261038-index.htm"
+      }
+    },
+    {
+      "rank": 21,
+      "ticker": "GOOG",
+      "name": "Alphabet (Google)",
+      "mentions": 38,
+      "mentions_24h_ago": 21,
+      "mention_change_pct": 81.0,
+      "upvotes": 249,
+      "cik": "0001652044",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-05",
+        "days_ago": 3,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/d36818d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/0001193125-26-259830-index.htm"
+      }
+    },
+    {
+      "rank": 22,
+      "ticker": "GOOGL",
+      "name": "Alphabet (Google)",
+      "mentions": 35,
+      "mentions_24h_ago": 12,
+      "mention_change_pct": 191.7,
+      "upvotes": 90,
+      "cik": "0001652044",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-05",
+        "days_ago": 3,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/d36818d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526259830/0001193125-26-259830-index.htm"
+      }
+    },
+    {
+      "rank": 23,
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "mentions": 32,
+      "mentions_24h_ago": 11,
+      "mention_change_pct": 190.9,
+      "upvotes": 583,
+      "cik": "0001018724",
+      "filing": {
+        "form": "424B5",
+        "date": "2026-06-08",
+        "days_ago": 0,
+        "fresh": true,
+        "desc": "424B5",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926071190/tm2613616-1_424b5.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926071190/0001104659-26-071190-index.htm"
+      }
+    },
+    {
+      "rank": 24,
+      "ticker": "RKLB",
+      "name": "Rocket Lab USA",
+      "mentions": 31,
+      "mentions_24h_ago": 33,
+      "mention_change_pct": -6.1,
+      "upvotes": 75,
+      "cik": "0001819994",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-05",
+        "days_ago": 3,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/rklb-20260603.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/0001819994-26-000056-index.htm"
+      }
+    },
+    {
+      "rank": 28,
+      "ticker": "HOOD",
+      "name": "Robinhood",
+      "mentions": 27,
+      "mentions_24h_ago": 7,
+      "mention_change_pct": 285.7,
+      "upvotes": 65,
+      "cik": "0001783879",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-03",
+        "days_ago": 5,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/hood-20260602.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/0001783879-26-000068-index.htm"
+      }
+    },
+    {
+      "rank": 30,
+      "ticker": "IT",
+      "name": "Gartner",
+      "mentions": 22,
+      "mentions_24h_ago": 6,
+      "mention_change_pct": 266.7,
+      "upvotes": 92,
+      "cik": "0000749251",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-02",
+        "days_ago": 6,
+        "fresh": true,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/749251/000074925126000198/it-20260528.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/749251/000074925126000198/0000749251-26-000198-index.htm"
+      }
+    },
+    {
+      "rank": 1,
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "mentions": 365,
+      "mentions_24h_ago": 85,
+      "mention_change_pct": 329.4,
+      "upvotes": 3401,
+      "cik": "0000723125",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-04-01",
+        "days_ago": 68,
+        "fresh": false,
+        "desc": "FORM 8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/tm2610810d1_8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
+      }
+    },
+    {
+      "rank": 2,
+      "ticker": "SPY",
+      "name": "SPDR S&amp;P 500 ETF Trust",
+      "mentions": 349,
+      "mentions_24h_ago": 99,
+      "mention_change_pct": 252.5,
+      "upvotes": 1274,
+      "cik": "0000884394",
+      "filing": {
+        "form": "SC 13G/A",
+        "date": "1999-06-10",
+        "days_ago": 9860,
+        "fresh": false,
+        "desc": "AMENDMENT FILING",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/884394/000089542199000223/",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/884394/000089542199000223/0000895421-99-000223-index.htm"
+      }
+    },
+    {
+      "rank": 4,
+      "ticker": "MRVL",
+      "name": "Marvell Technology Group",
+      "mentions": 178,
+      "mentions_24h_ago": 57,
+      "mention_change_pct": 212.3,
+      "upvotes": 571,
+      "cik": "0001835632",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-28",
+        "days_ago": 11,
+        "fresh": false,
+        "desc": "FORM 10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/mrvl-20260502.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/0001835632-26-000019-index.htm"
+      }
+    },
+    {
+      "rank": 5,
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "mentions": 154,
+      "mentions_24h_ago": 79,
+      "mention_change_pct": 94.9,
+      "upvotes": 493,
+      "cik": "0001045810",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-20",
+        "days_ago": 19,
+        "fresh": false,
+        "desc": "10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/0001045810-26-000052-index.htm"
+      }
+    },
+    {
+      "rank": 6,
+      "ticker": "QQQ",
+      "name": "Invesco QQQ ETF",
+      "mentions": 136,
+      "mentions_24h_ago": 86,
+      "mention_change_pct": 58.1,
+      "upvotes": 473,
+      "cik": "0001067839",
+      "filing": {
+        "form": "DEFA14A",
+        "date": "2025-12-19",
+        "days_ago": 171,
+        "fresh": false,
+        "desc": "DEFA14A",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/d67222ddefa14a.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/0001193125-25-326661-index.htm"
+      }
+    },
+    {
+      "rank": 8,
+      "ticker": "AAPL",
+      "name": "Apple",
+      "mentions": 96,
+      "mentions_24h_ago": 7,
+      "mention_change_pct": 1271.4,
+      "upvotes": 392,
+      "cik": "0000320193",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-01",
+        "days_ago": 38,
+        "fresh": false,
+        "desc": "10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
+      }
+    },
+    {
+      "rank": 9,
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "mentions": 96,
+      "mentions_24h_ago": 38,
+      "mention_change_pct": 152.6,
+      "upvotes": 812,
+      "cik": "0001318605",
+      "filing": {
+        "form": "10-K/A",
+        "date": "2026-04-30",
+        "days_ago": 39,
+        "fresh": false,
+        "desc": "FORM 10-K/A",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/tm2611837d1_10ka.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm"
+      }
+    },
+    {
+      "rank": 11,
+      "ticker": "VOO",
+      "name": "Vanguard S&amp;P 500 ETF",
+      "mentions": 68,
+      "mentions_24h_ago": 83,
+      "mention_change_pct": -18.1,
+      "upvotes": 354,
+      "cik": null,
+      "filing": null
+    },
+    {
+      "rank": 12,
+      "ticker": "META",
+      "name": "Meta Platforms (Facebook)",
+      "mentions": 61,
+      "mentions_24h_ago": 15,
+      "mention_change_pct": 306.7,
+      "upvotes": 262,
+      "cik": "0001326801",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-29",
+        "days_ago": 10,
+        "fresh": false,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/meta-20260527.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/0001628280-26-039193-index.htm"
+      }
+    },
+    {
+      "rank": 16,
+      "ticker": "AMD",
+      "name": "AMD",
+      "mentions": 45,
+      "mentions_24h_ago": 33,
+      "mention_change_pct": 36.4,
+      "upvotes": 165,
+      "cik": "0000002488",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-15",
+        "days_ago": 24,
+        "fresh": false,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/d118163d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/0001193125-26-226746-index.htm"
+      }
+    },
+    {
+      "rank": 17,
+      "ticker": "ASTS",
+      "name": "AST SpaceMobile",
+      "mentions": 43,
+      "mentions_24h_ago": 34,
+      "mention_change_pct": 26.5,
+      "upvotes": 111,
+      "cik": "0001780312",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-11",
+        "days_ago": 28,
+        "fresh": false,
+        "desc": "10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/asts-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
+      }
+    },
+    {
+      "rank": 18,
+      "ticker": "LFVN",
+      "name": "Lifevantage",
+      "mentions": 43,
+      "mentions_24h_ago": 25,
+      "mention_change_pct": 72.0,
+      "upvotes": 372,
+      "cik": "0000849146",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-06",
+        "days_ago": 33,
+        "fresh": false,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/lfvn-20260506.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
+      }
+    },
+    {
+      "rank": 19,
+      "ticker": "SOXL",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "mentions": 41,
+      "mentions_24h_ago": 11,
+      "mention_change_pct": 272.7,
+      "upvotes": 108,
+      "cik": null,
+      "filing": null
+    },
+    {
+      "rank": 20,
+      "ticker": "NBIS",
+      "name": "Nebius Group",
+      "mentions": 41,
+      "mentions_24h_ago": 11,
+      "mention_change_pct": 272.7,
+      "upvotes": 103,
+      "cik": "0001513845",
+      "filing": {
+        "form": "6-K",
+        "date": "2026-05-20",
+        "days_ago": 19,
+        "fresh": false,
+        "desc": "6-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926064092/nbis-20260331x6k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926064092/0001104659-26-064092-index.htm"
+      }
+    },
+    {
+      "rank": 25,
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "mentions": 30,
+      "mentions_24h_ago": 14,
+      "mention_change_pct": 114.3,
+      "upvotes": 218,
+      "cik": "0001373715",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-22",
+        "days_ago": 17,
+        "fresh": false,
+        "desc": "8-K",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/now-20260521.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/0001373715-26-000065-index.htm"
+      }
+    },
+    {
+      "rank": 26,
+      "ticker": "YOU",
+      "name": "CLEAR Secure",
+      "mentions": 30,
+      "mentions_24h_ago": 5,
+      "mention_change_pct": 500.0,
+      "upvotes": 244,
+      "cik": "0001856314",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-06",
+        "days_ago": 33,
+        "fresh": false,
+        "desc": "10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1856314/000162828026030937/you-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000162828026030937/0001628280-26-030937-index.htm"
+      }
+    },
+    {
+      "rank": 27,
+      "ticker": "RDDT",
+      "name": "Reddit",
+      "mentions": 30,
+      "mentions_24h_ago": 35,
+      "mention_change_pct": -14.3,
+      "upvotes": 140,
+      "cik": "0001713445",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-01",
+        "days_ago": 38,
+        "fresh": false,
+        "desc": "10-Q",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/rddt-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
+      }
+    },
+    {
+      "rank": 29,
+      "ticker": "BB",
+      "name": "BlackBerry",
+      "mentions": 24,
+      "mentions_24h_ago": 9,
+      "mention_change_pct": 166.7,
+      "upvotes": 55,
+      "cik": "0001070235",
+      "filing": {
+        "form": "DEFA14A",
+        "date": "2026-05-11",
+        "days_ago": 28,
+        "fresh": false,
+        "desc": "DEFA14A",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000055/a2026proxynotice.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1070235/000107023526000055/0001070235-26-000055-index.htm"
+      }
+    }
+  ]
+}
