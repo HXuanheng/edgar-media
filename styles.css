@@ -154,16 +154,6 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .card-details summary::before { content: "▸ "; }
 .card-details[open] summary::before { content: "▾ "; }
 .card-details summary:hover { color: var(--primary-color); }
-/* collapsible AI summary "scroll menu" */
-.summary-body {
-    padding: 0 1.1rem 0.7rem;
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: var(--text);
-    max-height: 7rem;
-    overflow-y: auto;
-}
-
 .filing-list { list-style: none; margin: 0; padding: 0 1.1rem 0.7rem; }
 .flrow {
     display: flex;
@@ -176,6 +166,23 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; }
 .fllink { flex: 1 1 auto; }
 .flwhen { flex: 0 0 auto; color: var(--text-muted); font-size: 0.8rem; }
+
+/* per-row AI summary: rows with one open into a scroll menu, rows without
+   stay plain (triangle slot reserved so both align). */
+.row-summary > summary { cursor: pointer; list-style: none; }
+.row-summary > summary::-webkit-details-marker { display: none; }
+.row-summary > summary::before { content: "\25B8"; flex: 0 0 0.7rem; color: var(--text-muted); }
+.row-summary[open] > summary::before { content: "\25BE"; }
+.row-summary > summary:hover { color: var(--primary-color); }
+.flrow-plain::before { content: "\25B8"; flex: 0 0 0.7rem; visibility: hidden; }
+.summary-body {
+    padding: 0.15rem 0 0.5rem 1.4rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text);
+    max-height: 7rem;
+    overflow-y: auto;
+}
 
 .rank { font-weight: 700; color: var(--text-muted); font-size: 1.05rem; text-align: center; }
 

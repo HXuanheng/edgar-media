@@ -297,41 +297,43 @@ def save_summaries(cache):
         json.dump(cache, f, indent=2, ensure_ascii=False)
 
 
-def summarize_fresh(items, cache, key):
-    """Attach ai_summary to recent headline filings (cached by accession).
-
-    Only the prominent headline filing per firm, filed within AI_MAX_DAYS, is
-    summarized (<=1 call each), capped at MAX_AI_PER_RUN per run; the rest drain
-    over later hourly runs via the cache. No key -> nothing happens (labels
-    still show). Returns # new.
+def attach_summaries(items, cache, key):
+    """Summarize each recent filing row (within AI_MAX_DAYS) and attach
+    ai_summary to it. Cached by accession so a filing is summarized once ever;
+    new ones capped at MAX_AI_PER_RUN per run, the rest drain over later runs.
+    Verified-match firms only. No key -> only already-cached rows get a summary
+    (labels still show on the rest). Returns # of new summaries made.
     """
     made = 0
     for it in items:
         if it.get("name_match") != "verified":
             continue                            # skip unverified-match firms
-        f = it.get("filing")
-        if not f:
-            continue
-        days = f.get("days_ago")
-        if days is None or days > AI_MAX_DAYS:
-            continue
-        acc = f.get("accession")
-        if not acc:
-            continue
-        if acc in cache:                        # already summarized -> reuse
-            f["ai_summary"] = cache[acc]["summary"]
-            continue
-        if not key or made >= MAX_AI_PER_RUN:   # no key, or hit the per-run cap
-            continue
-        text = strip_html(get_text(f.get("doc_url")))
-        summary = gemini_summarize(text, f.get("form", ""), key)
-        if summary:
-            f["ai_summary"] = summary
-            cache[acc] = {"summary": summary, "model": GEMINI_MODEL}
-            made += 1
-            print(f"    ~ gemini {it['ticker']:6s} {f['form']:6s} -> {summary[:70]}")
-            time.sleep(GEMINI_PAUSE)
+        for row in it.get("filings", []):
+            acc = row.get("accession")
+            if not acc:
+                continue
+            if acc not in cache:                # not summarized yet
+                days = row.get("days_ago")
+                if (key and made < MAX_AI_PER_RUN
+                        and days is not None and days <= AI_MAX_DAYS):
+                    text = strip_html(get_text(row.get("doc_url")))
+                    summary = gemini_summarize(text, row.get("form", ""), key)
+                    if summary:
+                        cache[acc] = {"summary": summary, "model": GEMINI_MODEL}
+                        made += 1
+                        print(f"    ~ gemini {it['ticker']:6s} {row['form']:6s}"
+                              f" -> {summary[:70]}")
+                        time.sleep(GEMINI_PAUSE)
+            if acc in cache:                    # attach (existing or just-made)
+                row["ai_summary"] = cache[acc]["summary"]
     return made
+
+
+def strip_doc_urls(items):
+    """Drop doc_url from windowed rows before writing (kept only for fetching)."""
+    for it in items:
+        for row in it.get("filings", []):
+            row.pop("doc_url", None)
 
 
 # --- pipeline -------------------------------------------------------------
@@ -409,8 +411,9 @@ def recent_filings(cik, today):
             headline = f                       # newest recent material = headline
         if f["days_ago"] is None or f["days_ago"] > WINDOW_DAYS:
             break                              # nothing later is within window
-        # Trim doc_url from list entries (they link via index_url) to stay lean.
-        windowed.append({k: v for k, v in f.items() if k != "doc_url"})
+        # Keep the full dict (incl. doc_url) so each row can be summarized;
+        # doc_url is stripped from the output later to stay lean.
+        windowed.append(dict(f))
         if len(windowed) >= MAX_FILINGS:
             break
     return headline, windowed
@@ -481,9 +484,10 @@ def main():
             "filings": filings,
         })
 
-    # AI prose layer: one-sentence summary on fresh headline filings, free via
-    # Gemini, cached by accession. Falls back to item-code labels on any miss.
-    made = summarize_fresh(items, summaries, gemini_key)
+    # AI prose layer: one-sentence summary per recent filing row, free via
+    # Gemini, cached by accession. Rows without one just show the item-code label.
+    made = attach_summaries(items, summaries, gemini_key)
+    strip_doc_urls(items)
     if gemini_key:
         save_summaries(summaries)
         print(f"gemini: {made} new summaries, {len(summaries)} cached total")

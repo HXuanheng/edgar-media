@@ -77,13 +77,19 @@ function filingHtml(f, nameMatch) {
 
 function filingRow(f) {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
-    const label = f.ai_summary || f.summary || f.form;
-    const extra = label && label !== f.form ? ` — ${esc(label)}` : "";
-    return `<li class="flrow">
-        <span class="flform">${esc(f.form)}</span>
-        <a class="fllink" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.date)}${extra} ↗</a>
-        <span class="flwhen">${esc(when)}</span>
-    </li>`;
+    const lbl = f.summary && f.summary !== f.form ? ` — ${esc(f.summary)}` : "";
+    const main = `<span class="flform">${esc(f.form)}</span>
+        <a class="fllink" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.date)}${lbl} ↗</a>
+        <span class="flwhen">${esc(when)}</span>`;
+    // Rows with an AI summary become a click-to-open scroll menu; rows without
+    // one stay as a plain row (the summary is simply missing for that filing).
+    if (f.ai_summary) {
+        return `<li><details class="row-summary">
+            <summary class="flrow">${main}</summary>
+            <div class="summary-body">${esc(f.ai_summary)}</div>
+        </details></li>`;
+    }
+    return `<li class="flrow flrow-plain">${main}</li>`;
 }
 
 function filingsListHtml(it) {
@@ -94,18 +100,6 @@ function filingsListHtml(it) {
     return `<details class="card-details">
         <summary>${fs.length} recent filing${fs.length > 1 ? "s" : ""} · last 90 days</summary>
         <ul class="filing-list">${rows}</ul>
-    </details>`;
-}
-
-function summaryMenuHtml(it) {
-    // Collapsible scroll menu holding the full Gemini prose for the headline
-    // filing. Only for verified matches (don't show a summary we can't trust
-    // belongs to this company). Absent -> nothing renders.
-    const f = it.filing;
-    if (it.name_match !== "verified" || !f || !f.ai_summary) return "";
-    return `<details class="card-details card-summary">
-        <summary>📄 ${esc(f.form)} summary</summary>
-        <div class="summary-body">${esc(f.ai_summary)}</div>
     </details>`;
 }
 
@@ -126,7 +120,6 @@ function cardHtml(it, i) {
             </div>
             <div class="filing">${filingHtml(it.filing, it.name_match)}</div>
         </div>
-        ${summaryMenuHtml(it)}
         ${filingsListHtml(it)}
     </article>`;
 }
