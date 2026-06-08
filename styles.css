@@ -77,12 +77,13 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .controls {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.9rem;
     font-size: 0.85rem;
     color: var(--text-muted);
 }
-#show-count {
+.controls select {
     font-family: inherit;
     font-size: 0.85rem;
     color: var(--text);
@@ -93,7 +94,27 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
     cursor: pointer;
     transition: border-color var(--transition);
 }
-#show-count:hover { border-color: var(--secondary-color); }
+.controls select:hover { border-color: var(--secondary-color); }
+#search {
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--text);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.4rem 0.7rem;
+    min-width: 14rem;
+    flex: 1 1 12rem;
+    transition: border-color var(--transition);
+}
+#search::placeholder { color: var(--text-muted); }
+#search:focus { outline: none; border-color: var(--secondary-color); }
+.empty-search {
+    padding: 1.5rem 0;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-muted);
+}
 
 /* cards */
 .cards { display: flex; flex-direction: column; gap: 0.75rem; }

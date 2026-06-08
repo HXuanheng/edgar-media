@@ -113,24 +113,62 @@ function cardHtml(it, i) {
     </article>`;
 }
 
-// --- count selector + render ---
+// --- controls: search + sort + count -> one render pipeline ---
 const DEFAULT_COUNT = 10;
 let allItems = [];
 
-function renderList(n) {
-    $("#list").innerHTML = allItems.length
-        ? allItems.slice(0, n).map(cardHtml).join("")
-        : `<div class="loading">No data yet.</div>`;
+const searchInput = $("#search");
+const sortSel = $("#sort-by");
+const countSel = $("#show-count");
+
+const filingDays = (it) => (it.filing ? it.filing.days_ago : null) ?? Infinity;
+
+function sortItems(list, key) {
+    if (key === "mentions")
+        return list.sort((a, b) => (b.mentions || 0) - (a.mentions || 0));
+    if (key === "momentum")
+        return list.sort((a, b) =>
+            (b.mention_change_pct ?? -Infinity) - (a.mention_change_pct ?? -Infinity));
+    if (key === "filing")
+        return list.sort((a, b) => filingDays(a) - filingDays(b));
+    return list;   // "default" -> keep backend (hot-first) order
 }
 
-const countSel = $("#show-count");
-if (countSel) {
-    countSel.addEventListener("change", () => {
-        const n = parseInt(countSel.value, 10) || DEFAULT_COUNT;
-        localStorage.setItem("count", n);
-        renderList(n);
-    });
+// filter (search) -> sort -> slice (count) -> render
+function applyView() {
+    if (!allItems.length) {
+        $("#list").innerHTML = `<div class="loading">No data yet.</div>`;
+        return;
+    }
+    const q = (searchInput?.value || "").trim().toLowerCase();
+    const sortKey = sortSel?.value || "default";
+    const n = parseInt(countSel?.value, 10) || DEFAULT_COUNT;
+
+    let list = sortItems(allItems.slice(), sortKey);
+    if (q) {
+        list = list.filter((it) =>
+            it.ticker.toLowerCase().includes(q) ||
+            (it.display_name || it.name || "").toLowerCase().includes(q));
+    }
+    const view = q ? list : list.slice(0, n);   // count applies only when not searching
+
+    if (q && view.length === 0) {
+        $("#list").innerHTML =
+            `<div class="empty-search">“${esc(searchInput.value.trim())}” isn’t trending right now — not in the current list.</div>`;
+        return;
+    }
+    $("#list").innerHTML = view.map(cardHtml).join("");
 }
+
+if (searchInput) searchInput.addEventListener("input", applyView);
+if (sortSel) sortSel.addEventListener("change", () => {
+    localStorage.setItem("sort", sortSel.value);
+    applyView();
+});
+if (countSel) countSel.addEventListener("change", () => {
+    localStorage.setItem("count", parseInt(countSel.value, 10) || DEFAULT_COUNT);
+    applyView();
+});
 
 // --- load ---
 fetch("./data/trending.json", { cache: "no-store" })
@@ -140,9 +178,10 @@ fetch("./data/trending.json", { cache: "no-store" })
             `Updated ${timeAgo(data.updated_utc)} · ${data.count} trending tickers · ` +
             `attention from Reddit, filings from SEC EDGAR`;
         allItems = data.items || [];
-        const saved = parseInt(localStorage.getItem("count"), 10) || DEFAULT_COUNT;
-        if (countSel) countSel.value = String(saved);
-        renderList(saved);
+        const savedCount = parseInt(localStorage.getItem("count"), 10) || DEFAULT_COUNT;
+        if (countSel) countSel.value = String(savedCount);
+        if (sortSel) sortSel.value = localStorage.getItem("sort") || "default";
+        applyView();
     })
     .catch((e) => {
         $("#updated").textContent = "";

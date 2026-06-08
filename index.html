@@ -40,6 +40,14 @@
                 </p> -->
                 <p class="updated" id="updated">Loading…</p>
                 <div class="controls">
+                    <input type="search" id="search" placeholder="Search ticker or company…" autocomplete="off" aria-label="Search ticker or company">
+                    <label for="sort-by">Sort</label>
+                    <select id="sort-by">
+                        <option value="default">Trending</option>
+                        <option value="mentions">Most mentions</option>
+                        <option value="momentum">24h jump</option>
+                        <option value="filing">Recent filing</option>
+                    </select>
                     <label for="show-count">Show</label>
                     <select id="show-count">
                         <option value="10">Top 10</option>
@@ -57,7 +65,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p>
+            <!-- <p>
                 <strong>How it works.</strong> Attention = Reddit mention counts via
                 <a href="https://apewisdom.io" target="_blank" rel="noopener">ApeWisdom</a>
                 (≈ hourly). Filings = the
@@ -65,7 +73,7 @@
                 submissions API (real-time). Reddit chatter is a noisy, retail-skewed
                 attention proxy — not investment advice. A trending ticker often has
                 <em>no</em> fresh filing; that's expected.
-            </p>
+            </p> -->
             <p class="byline">
                 Built by <a href="https://hxuanheng.github.io/" target="_blank" rel="noopener">Xuanheng Huang</a>
                 · <a href="https://github.com/HXuanheng/edgar-media" target="_blank" rel="noopener">source</a>
