@@ -47,20 +47,24 @@ OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "trending.json"
 
 
 # --- name matching --------------------------------------------------------
-# Tokens dropped before comparing names: legal forms and generic noise.
+# Tokens dropped before comparing names: legal forms, fund/ETF boilerplate,
+# and generic noise. Stripping these focuses the match on distinctive words
+# (e.g. "Invesco QQQ ETF" vs "Invesco QQQ Trust, Series 1" -> both "invesco qqq").
 NAME_NOISE = {
     "the", "inc", "incorporated", "corp", "corporation", "co", "company",
     "ltd", "limited", "plc", "llc", "lp", "llp", "sa", "ag", "nv",
     "holdings", "holding", "group", "class", "cl",
+    "etf", "trust", "fund", "index", "series", "shares",
 }
 
 
 def clean_name(s):
-    """Lowercase, strip punctuation, drop legal/noise tokens -> token list."""
+    """Lowercase, strip punctuation, drop noise/numeric tokens -> token list."""
     if not s:
         return []
     low = "".join(c if c.isalnum() or c.isspace() else " " for c in s.lower())
-    return [t for t in low.split() if t and t not in NAME_NOISE]
+    return [t for t in low.split()
+            if t and not t.isdigit() and t not in NAME_NOISE]
 
 
 def name_similarity(a, b):
@@ -74,15 +78,14 @@ def name_similarity(a, b):
     sa, sb = set(ta), set(tb)
     if sa <= sb or sb <= sa:          # one name's tokens contain the other's
         return True
-    if ta[0] == tb[0]:                # same first significant token
-        return True
-    if len(sa & sb) / len(sa | sb) >= 0.5:      # Jaccard overlap
+    if len(sa & sb) / len(sa | sb) >= 0.5:      # majority token overlap
         return True
     # Rebrand / contained name (e.g. 'strategy' inside 'microstrategy').
-    # Require a long token so coincidental fragments don't match
-    # ('spac' must NOT match 'space').
+    # Require a long token AND a *proper* substring (x != y) so a single
+    # shared token doesn't trigger it ('american' must NOT match 'american'
+    # alone) and short fragments don't ('spac' must NOT match 'space').
     for x in sa:
-        if len(x) >= 6 and any(x in y or y in x for y in sb):
+        if len(x) >= 6 and any(x != y and (x in y or y in x) for y in sb):
             return True
     return False
 
