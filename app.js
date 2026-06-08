@@ -113,6 +113,25 @@ function cardHtml(it, i) {
     </article>`;
 }
 
+// --- count selector + render ---
+const DEFAULT_COUNT = 10;
+let allItems = [];
+
+function renderList(n) {
+    $("#list").innerHTML = allItems.length
+        ? allItems.slice(0, n).map(cardHtml).join("")
+        : `<div class="loading">No data yet.</div>`;
+}
+
+const countSel = $("#show-count");
+if (countSel) {
+    countSel.addEventListener("change", () => {
+        const n = parseInt(countSel.value, 10) || DEFAULT_COUNT;
+        localStorage.setItem("count", n);
+        renderList(n);
+    });
+}
+
 // --- load ---
 fetch("./data/trending.json", { cache: "no-store" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -120,10 +139,10 @@ fetch("./data/trending.json", { cache: "no-store" })
         $("#updated").textContent =
             `Updated ${timeAgo(data.updated_utc)} · ${data.count} trending tickers · ` +
             `attention from Reddit, filings from SEC EDGAR`;
-        const items = data.items || [];
-        $("#list").innerHTML = items.length
-            ? items.map(cardHtml).join("")
-            : `<div class="loading">No data yet.</div>`;
+        allItems = data.items || [];
+        const saved = parseInt(localStorage.getItem("count"), 10) || DEFAULT_COUNT;
+        if (countSel) countSel.value = String(saved);
+        renderList(saved);
     })
     .catch((e) => {
         $("#updated").textContent = "";

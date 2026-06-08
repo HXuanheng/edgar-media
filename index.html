@@ -33,15 +33,20 @@
     <main class="content">
         <div class="container">
             <section class="intro">
-                <h1>Trending disclosures</h1>
-                <p class="lede">
-                    What Reddit is paying attention to — joined with the
-                    <strong>official SEC filing</strong> behind it. Tickers heating up
-                    that <em>also</em> filed something material in the last week are
-                    flagged <span class="fresh-pill">🔥 fresh</span>.
+                <h1>Trending on Reddit</h1>
+                <!-- <p class="lede">
+                    <strong>SEC filing</strong> of companies trending on Reddit.
                     Click any firm to see all its disclosures from the last 90 days.
-                </p>
+                </p> -->
                 <p class="updated" id="updated">Loading…</p>
+                <div class="controls">
+                    <label for="show-count">Show</label>
+                    <select id="show-count">
+                        <option value="10">Top 10</option>
+                        <option value="20">Top 20</option>
+                        <option value="30">Top 30</option>
+                    </select>
+                </div>
             </section>
 
             <section id="list" class="cards" aria-live="polite">
