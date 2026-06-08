@@ -307,6 +307,8 @@ def summarize_fresh(items, cache, key):
     """
     made = 0
     for it in items:
+        if it.get("name_match") != "verified":
+            continue                            # skip unverified-match firms
         f = it.get("filing")
         if not f:
             continue

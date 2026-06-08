@@ -50,9 +50,9 @@ function momentum(it) {
 function filingHtml(f, nameMatch) {
     if (!f) return `<div class="filing-none">no recent material filing</div>`;
     const meta = `${f.days_ago != null ? daysLabel(f.days_ago) : f.date}`;
-    // ai_summary (Gemini prose) > summary (SEC item-code label) > raw form code.
-    // Fallback chain keeps older trending.json (no new fields) rendering.
-    const label = f.ai_summary || f.summary || f.form;
+    // Compact label on the card = SEC item-code label (or form). The full
+    // Gemini prose lives in the collapsible summary menu, not inline here.
+    const label = f.summary || f.form;
     if (nameMatch === "mismatch") {
         // Unverified match: stay cautious, show the form code only.
         return `<div class="filing-stale">
@@ -97,6 +97,18 @@ function filingsListHtml(it) {
     </details>`;
 }
 
+function summaryMenuHtml(it) {
+    // Collapsible scroll menu holding the full Gemini prose for the headline
+    // filing. Only for verified matches (don't show a summary we can't trust
+    // belongs to this company). Absent -> nothing renders.
+    const f = it.filing;
+    if (it.name_match !== "verified" || !f || !f.ai_summary) return "";
+    return `<details class="card-details card-summary">
+        <summary>📄 ${esc(f.form)} summary</summary>
+        <div class="summary-body">${esc(f.ai_summary)}</div>
+    </details>`;
+}
+
 function cardHtml(it, i) {
     const verified = it.name_match === "verified";
     const hot = verified && it.filing && it.filing.fresh;
@@ -114,6 +126,7 @@ function cardHtml(it, i) {
             </div>
             <div class="filing">${filingHtml(it.filing, it.name_match)}</div>
         </div>
+        ${summaryMenuHtml(it)}
         ${filingsListHtml(it)}
     </article>`;
 }

@@ -154,6 +154,16 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .card-details summary::before { content: "▸ "; }
 .card-details[open] summary::before { content: "▾ "; }
 .card-details summary:hover { color: var(--primary-color); }
+/* collapsible AI summary "scroll menu" */
+.summary-body {
+    padding: 0 1.1rem 0.7rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text);
+    max-height: 7rem;
+    overflow-y: auto;
+}
+
 .filing-list { list-style: none; margin: 0; padding: 0 1.1rem 0.7rem; }
 .flrow {
     display: flex;
