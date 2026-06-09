@@ -23,8 +23,10 @@ jobs:
           python-version: "3.12"
 
       - name: Build trending.json
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}   # optional; absent -> labels only
+        env:                                              # all optional; free provider chain, absent -> skipped
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python scripts/build_data.py
 
       - name: Commit if changed

@@ -38,18 +38,42 @@ HEADLINE_MAX_DAYS = 365  # ignore ancient filings as the card headline (ETF junk
 MAX_FILINGS = 25       # cap per firm (bounds JSON size)
 SEC_PAUSE = 0.15    # polite gap between SEC calls (limit is 10 req/sec)
 
-# --- Gemini (optional, free) ----------------------------------------------
-# One-sentence prose summary of FRESH headline filings, via Google's free
-# Gemini API. Cached by accession in data/summaries.json so each filing is
-# summarized once ever. No key -> skipped entirely (item-code labels still
-# show). Key comes from the GEMINI_API_KEY env var (a GitHub Actions secret).
-GEMINI_MODEL = "gemini-2.5-flash"   # must be a current free-tier Flash model
+# --- AI summary providers (all optional, all free) ------------------------
+# One-sentence prose summary of FRESH headline filings. We try a chain of free
+# providers in order; when one is out of its daily quota (HTTP 429) we fall
+# through to the next, so their free allowances STACK. Cached by accession in
+# data/summaries.json so each filing is summarized once ever. No keys set -> AI
+# summaries skipped (item-code labels still show). Keys come from env vars
+# (GitHub Actions secrets); a provider with no key is silently skipped.
+#   GEMINI_API_KEY      -> Google AI Studio (free, no card)   aistudio.google.com
+#   GROQ_API_KEY        -> Groq Console      (free, no card)   console.groq.com
+#   OPENROUTER_API_KEY  -> OpenRouter        (free, no card)   openrouter.ai
+# Tried top to bottom: good quality first, huge-quota overflow last. Free RPD
+# figures are approximate and per-model; check each console for current limits.
+AI_PROVIDERS = [
+    {"name": "gemini-lite", "kind": "gemini", "key_env": "GEMINI_API_KEY",
+     "model": "gemini-2.5-flash-lite"},                                # ~1000/day
+    {"name": "groq-70b", "kind": "openai", "key_env": "GROQ_API_KEY",
+     "url": "https://api.groq.com/openai/v1/chat/completions",
+     "model": "llama-3.3-70b-versatile"},                             # ~1000/day
+    {"name": "openrouter", "kind": "openai", "key_env": "OPENROUTER_API_KEY",
+     "url": "https://openrouter.ai/api/v1/chat/completions",
+     "model": "openai/gpt-oss-120b:free"},                            # ~50/day (no card)
+    {"name": "groq-8b", "kind": "openai", "key_env": "GROQ_API_KEY",
+     "url": "https://api.groq.com/openai/v1/chat/completions",
+     "model": "llama-3.1-8b-instant"},                                # ~14400/day overflow
+]
 GEMINI_URL = ("https://generativelanguage.googleapis.com/v1beta/"
               "models/{model}:generateContent?key={key}")
-GEMINI_PAUSE = 4.0     # ~15 req/min, well inside the free-tier RPM limit
+AI_PAUSE = 4.0         # pause after each successful call; keeps us under RPM caps
 GEMINI_MAX_CHARS = 50000  # filing text fed to the model (covers an 8-K fully)
-AI_MAX_DAYS = 10       # only summarize headline filings this recent (bounds volume)
-MAX_AI_PER_RUN = 20    # cap new summaries per run; backlog drains over hours
+AI_MAX_DAYS = int(os.environ.get("AI_MAX_DAYS", "10"))       # filings this recent
+MAX_AI_PER_RUN = int(os.environ.get("MAX_AI_PER_RUN", "20"))  # cap new per run
+
+
+def active_providers():
+    """Providers whose API key env var is set, in chain order."""
+    return [p for p in AI_PROVIDERS if os.environ.get(p["key_env"])]
 
 # Forms that carry real disclosure content (skip Form 4 insider noise etc.)
 MATERIAL_FORMS = {
@@ -204,6 +228,24 @@ def get_json(url, retries=3, pause=1.0):
     return None
 
 
+def decode_filing(raw, content_type=""):
+    """Decode filing bytes to text. SEC filings are usually UTF-8 but many are
+    Windows-1252 (¥ £ € — and smart quotes), whose bytes are invalid UTF-8 and
+    were turning into U+FFFD. Try the declared charset, then strict UTF-8, then
+    cp1252; only mojibake-replace as a last resort."""
+    charset = None
+    if "charset=" in content_type.lower():
+        charset = content_type.lower().split("charset=")[-1].split(";")[0].strip()
+    for enc in (charset, "utf-8", "cp1252"):
+        if not enc:
+            continue
+        try:
+            return raw.decode(enc)
+        except (UnicodeDecodeError, LookupError):
+            continue
+    return raw.decode("utf-8", errors="replace")
+
+
 def get_text(url, retries=3, pause=1.0):
     """GET a URL and return decoded text (for filing documents, which are HTML)."""
     last = None
@@ -217,7 +259,7 @@ def get_text(url, retries=3, pause=1.0):
                 raw = resp.read()
                 if resp.headers.get("Content-Encoding") == "gzip":
                     raw = gzip.GzipFile(fileobj=io.BytesIO(raw)).read()
-                return raw.decode("utf-8", errors="replace")
+                return decode_filing(raw, resp.headers.get("Content-Type", ""))
         except (HTTPError, URLError, TimeoutError) as e:
             last = e
             time.sleep(pause * (attempt + 1))
@@ -237,49 +279,92 @@ def strip_html(s, limit=GEMINI_MAX_CHARS):
     return s[:limit]
 
 
-def gemini_summarize(text, form, key, retries=3, pause=1.0):
-    """One-sentence summary of filing text via Gemini, or None on any failure."""
-    if not text:
-        return None
-    url = GEMINI_URL.format(model=GEMINI_MODEL, key=key)
-    prompt = (f"Summarize this SEC {form} filing for a retail investor in ONE "
-              f"factual sentence (max 25 words), no preamble:\n\n{text}")
+def _summary_prompt(text, form):
+    return (f"Summarize this SEC {form} filing for a retail investor in ONE "
+            f"factual sentence (max 25 words), no preamble:\n\n{text}")
+
+
+def _gemini_call(model, prompt, key):
+    """One Gemini generateContent call -> (text|None, 'ok'|'quota'|'fail')."""
+    url = GEMINI_URL.format(model=model, key=key)
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "maxOutputTokens": 120,
             "temperature": 0.2,
-            # 2.5 Flash is a thinking model; thinking tokens count against the
-            # output budget. We want a quick one-liner, so disable thinking or
-            # the budget gets eaten and the answer comes back truncated/empty.
+            # 2.5 Flash(-Lite) is a thinking model; thinking tokens eat the
+            # output budget, so disable thinking or the answer comes back empty.
             "thinkingConfig": {"thinkingBudget": 0},
         },
     }).encode("utf-8")
-    last = None
-    for attempt in range(retries):
-        try:
-            req = Request(url, data=body,
-                          headers={"Content-Type": "application/json"})
-            with urlopen(req, timeout=30) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-            cands = data.get("candidates")
-            if not cands:                       # empty -> safety block / no output
-                return None
-            parts = cands[0].get("content", {}).get("parts", [])
-            txt = "".join(p.get("text", "") for p in parts).strip()
-            return txt or None
-        except HTTPError as e:
-            last = e
-            if e.code in (429, 503):            # rate-limited / loading -> back off
-                time.sleep(pause * (attempt + 1) * 2)
-                continue
-            print(f"  ! gemini {e.code}: {e.reason}", file=sys.stderr)
-            return None                         # bad key / bad request -> bail fast
-        except (URLError, TimeoutError, ValueError) as e:
-            last = e
-            time.sleep(pause * (attempt + 1))
-    print(f"  ! gemini failed: {last}", file=sys.stderr)
-    return None
+    try:
+        req = Request(url, data=body,
+                      headers={"Content-Type": "application/json"})
+        with urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except HTTPError as e:
+        return None, ("quota" if e.code == 429 else "fail")
+    except (URLError, TimeoutError, ValueError):
+        return None, "fail"
+    cands = data.get("candidates")
+    if not cands:                               # safety block / no output
+        return None, "fail"
+    parts = cands[0].get("content", {}).get("parts", [])
+    txt = "".join(p.get("text", "") for p in parts).strip()
+    return (txt or None), ("ok" if txt else "fail")
+
+
+def _openai_call(url, model, prompt, key):
+    """One OpenAI-compatible chat call (Groq, OpenRouter, ...) -> (text|None, status)."""
+    body = json.dumps({
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 120,
+        "temperature": 0.2,
+    }).encode("utf-8")
+    try:
+        req = Request(url, data=body, headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {key}",
+        })
+        with urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except HTTPError as e:
+        return None, ("quota" if e.code == 429 else "fail")
+    except (URLError, TimeoutError, ValueError):
+        return None, "fail"
+    try:
+        txt = (data["choices"][0]["message"]["content"] or "").strip()
+    except (KeyError, IndexError, TypeError):
+        return None, "fail"
+    return (txt or None), ("ok" if txt else "fail")
+
+
+def ai_summarize(text, form, providers, exhausted):
+    """One-sentence summary via the first provider with quota left. Mutates
+    `exhausted` (set of provider names) so a 429'd provider is skipped for the
+    rest of the run. Returns (summary|None, provider_name|None)."""
+    if not text:
+        return None, None
+    prompt = _summary_prompt(text, form)
+    for p in providers:
+        if p["name"] in exhausted:
+            continue
+        key = os.environ.get(p["key_env"])
+        if not key:
+            continue
+        if p["kind"] == "gemini":
+            txt, status = _gemini_call(p["model"], prompt, key)
+        else:
+            txt, status = _openai_call(p["url"], p["model"], prompt, key)
+        if status == "ok":
+            return txt, p["name"]
+        if status == "quota":                   # out of daily quota -> drop it
+            exhausted.add(p["name"])
+            print(f"    . {p['name']} hit 429 (quota) -> falling through",
+                  file=sys.stderr)
+        # 'fail' (transient/other) -> just try the next provider for this filing
+    return None, None
 
 
 def load_summaries():
@@ -297,13 +382,16 @@ def save_summaries(cache):
         json.dump(cache, f, indent=2, ensure_ascii=False)
 
 
-def attach_summaries(items, cache, key):
+def attach_summaries(items, cache):
     """Summarize each recent filing row (within AI_MAX_DAYS) and attach
     ai_summary to it. Cached by accession so a filing is summarized once ever;
     new ones capped at MAX_AI_PER_RUN per run, the rest drain over later runs.
-    Verified-match firms only. No key -> only already-cached rows get a summary
-    (labels still show on the rest). Returns # of new summaries made.
+    Verified-match firms only. Uses the free provider chain (active_providers);
+    no keys -> only already-cached rows get a summary (labels still show on the
+    rest). Stops early once every provider is out of quota. Returns # made.
     """
+    providers = active_providers()
+    exhausted = set()
     made = 0
     for it in items:
         if it.get("name_match") != "verified":
@@ -312,18 +400,20 @@ def attach_summaries(items, cache, key):
             acc = row.get("accession")
             if not acc:
                 continue
-            if acc not in cache:                # not summarized yet
+            if (acc not in cache and providers       # not summarized yet
+                    and len(exhausted) < len(providers)  # not all out of quota
+                    and made < MAX_AI_PER_RUN):
                 days = row.get("days_ago")
-                if (key and made < MAX_AI_PER_RUN
-                        and days is not None and days <= AI_MAX_DAYS):
+                if days is not None and days <= AI_MAX_DAYS:
                     text = strip_html(get_text(row.get("doc_url")))
-                    summary = gemini_summarize(text, row.get("form", ""), key)
+                    summary, prov = ai_summarize(text, row.get("form", ""),
+                                                 providers, exhausted)
                     if summary:
-                        cache[acc] = {"summary": summary, "model": GEMINI_MODEL}
+                        cache[acc] = {"summary": summary, "model": prov}
                         made += 1
-                        print(f"    ~ gemini {it['ticker']:6s} {row['form']:6s}"
-                              f" -> {summary[:70]}")
-                        time.sleep(GEMINI_PAUSE)
+                        print(f"    ~ {prov:11s} {it['ticker']:6s} {row['form']:6s}"
+                              f" -> {summary[:60]}")
+                        time.sleep(AI_PAUSE)
             if acc in cache:                    # attach (existing or just-made)
                 row["ai_summary"] = cache[acc]["summary"]
     return made
@@ -420,9 +510,17 @@ def recent_filings(cik, today):
 
 
 def main():
+    # Summaries can contain non-cp1252 chars (¥, €, narrow no-break space, smart
+    # quotes); printing them to a Windows cp1252 console otherwise crashes the
+    # run. GitHub Actions is already UTF-8. Make stdout/stderr never fail on print.
+    for _stream in (sys.stdout, sys.stderr):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
     now = datetime.now(timezone.utc)
     today = now.date()
-    gemini_key = os.environ.get("GEMINI_API_KEY")
     summaries = load_summaries()
 
     print("fetching ApeWisdom (Reddit attention)...")
@@ -484,15 +582,18 @@ def main():
             "filings": filings,
         })
 
-    # AI prose layer: one-sentence summary per recent filing row, free via
-    # Gemini, cached by accession. Rows without one just show the item-code label.
-    made = attach_summaries(items, summaries, gemini_key)
+    # AI prose layer: one-sentence summary per recent filing row, free via the
+    # provider chain, cached by accession. Rows without one show the item label.
+    made = attach_summaries(items, summaries)
     strip_doc_urls(items)
-    if gemini_key:
+    provs = active_providers()
+    if provs:
         save_summaries(summaries)
-        print(f"gemini: {made} new summaries, {len(summaries)} cached total")
+        names = ", ".join(p["key_env"].split("_")[0].lower()
+                          for p in {p["key_env"]: p for p in provs}.values())
+        print(f"AI: {made} new summaries ({names}), {len(summaries)} cached total")
     else:
-        print("gemini: no GEMINI_API_KEY -> AI summaries skipped (labels only)")
+        print("AI: no provider keys set -> summaries skipped (labels only)")
 
     # Hot = VERIFIED name match AND a fresh material filing. A mismatched
     # match is never surfaced as confident.
