@@ -76,13 +76,91 @@ async function toggleVote(id, voted) {
 
 // ───────────────────────────── rendering ────────────────────────────
 
-function filingRef(accession, company) {
-    if (!accession) return "";
-    const f = (company?.filings || []).find((x) => x.accession === accession);
-    if (f) {
-        return `<a class="cmt-filing" href="${esc(f.index_url)}" target="_blank" rel="noopener">re: ${esc(f.form)} · ${esc(f.date)} ↗</a>`;
+// Filing references live inline in the body as @[label](accession) tokens, inserted
+// via the @-mention picker. Render escapes the body first, then turns each token
+// into a link — but ONLY when the accession matches a real filing of this company
+// (so a hand-typed @[x](javascript:…) can never become a live href).
+function renderBody(body, company) {
+    let html = esc(body);
+    html = html.replace(/@\[([^\]]+)\]\(([^)]+)\)/g, (_whole, label, acc) => {
+        const f = (company?.filings || []).find((x) => x.accession === acc);
+        // label and acc are already escaped (they come out of esc(body)); don't re-escape.
+        return f
+            ? `<a class="cmt-filing" href="${esc(f.index_url)}" target="_blank" rel="noopener">@${label} ↗</a>`
+            : `<span class="cmt-mention-dead">@${label}</span>`;
+    });
+    return html;
+}
+
+// The first valid filing reference in a body -> the comments.accession column
+// (kept for indexing / "comments on this filing"). Only real accessions count.
+function firstAccession(body, company) {
+    const m = body.match(/@\[[^\]]+\]\(([^)]+)\)/);
+    const acc = m?.[1];
+    return acc && (company?.filings || []).some((f) => f.accession === acc) ? acc : null;
+}
+
+// ── @-mention picker ──────────────────────────────────────────────
+// The active "@query" immediately left of the caret (null if none).
+function mentionCtx(textarea) {
+    const pos = textarea.selectionStart;
+    const left = textarea.value.slice(0, pos);
+    const m = left.match(/(^|\s)@([^\s@[\]]*)$/);
+    return m ? { query: m[2], at: pos - m[2].length - 1 } : null;
+}
+function mentionPopupFor(textarea) {
+    const p = textarea.nextElementSibling;
+    return p && p.classList.contains("mention-pop") ? p : null;
+}
+function updateMentionPopup(textarea, company) {
+    const popup = mentionPopupFor(textarea);
+    if (!popup) return;
+    const ctx = mentionCtx(textarea);
+    if (!ctx) { popup.hidden = true; popup.innerHTML = ""; return; }
+    const q = ctx.query.toLowerCase();
+    const matches = (company?.filings || [])
+        .filter((f) => f.accession)
+        .filter((f) => !q || `${f.form} ${f.date} ${f.summary || ""}`.toLowerCase().includes(q))
+        .slice(0, 8);
+    if (!matches.length) { popup.hidden = true; popup.innerHTML = ""; return; }
+    popup.innerHTML = matches.map((f, i) =>
+        `<button type="button" class="mention-item${i === 0 ? " active" : ""}" data-acc="${esc(f.accession)}" data-label="${esc(f.form + " · " + f.date)}">
+            <span class="mi-form">${esc(f.form)}</span> <span class="mi-date">${esc(f.date)}</span>${f.summary && f.summary !== f.form ? ` <span class="mi-sum">${esc(f.summary)}</span>` : ""}
+        </button>`).join("");
+    popup.hidden = false;
+}
+function insertMention(textarea, item) {
+    const popup = mentionPopupFor(textarea);
+    const ctx = mentionCtx(textarea);
+    const at = ctx ? ctx.at : textarea.selectionStart;
+    const token = `@[${item.dataset.label}](${item.dataset.acc}) `;
+    const before = textarea.value.slice(0, at);
+    const after = textarea.value.slice(textarea.selectionStart);
+    textarea.value = before + token + after;
+    const np = before.length + token.length;
+    textarea.setSelectionRange(np, np);
+    if (popup) { popup.hidden = true; popup.innerHTML = ""; }
+    textarea.focus();
+}
+function mentionKeydown(e, textarea) {
+    const popup = mentionPopupFor(textarea);
+    if (!popup || popup.hidden) return;
+    const items = [...popup.querySelectorAll(".mention-item")];
+    if (!items.length) return;
+    let idx = Math.max(0, items.findIndex((i) => i.classList.contains("active")));
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        items[idx].classList.remove("active");
+        idx = e.key === "ArrowDown" ? (idx + 1) % items.length : (idx - 1 + items.length) % items.length;
+        items[idx].classList.add("active");
+        items[idx].scrollIntoView({ block: "nearest" });
+    } else if (e.key === "Enter" || e.key === "Tab") {
+        e.preventDefault();
+        insertMention(textarea, items[idx]);
+    } else if (e.key === "Escape") {
+        e.preventDefault();
+        popup.hidden = true;
     }
-    return `<span class="cmt-filing">re: filing</span>`;
 }
 
 function avatarHtml(c) {
@@ -102,12 +180,11 @@ function commentHtml(c, replies, company, ctx) {
         <span class="comment-author">${esc(removed ? "—" : name)}</span>
         <span class="comment-time">${esc(timeAgo(c.created_at))}</span>
         ${c.edited && !removed ? `<span class="comment-edited">· edited</span>` : ""}
-        ${removed ? "" : filingRef(c.accession, company)}
     </div>`;
 
     const bodyHtml = removed
         ? `<p class="comment-body comment-removed">[comment removed]</p>`
-        : `<p class="comment-body">${esc(c.body)}</p>`;
+        : `<p class="comment-body">${renderBody(c.body, company)}</p>`;
 
     let actions = "";
     if (!removed) {
@@ -129,6 +206,7 @@ function commentHtml(c, replies, company, ctx) {
     const editForm = (mine && !removed)
         ? `<form class="cmt-edit-form" data-act="edit-submit" data-id="${c.id}" hidden>
              <textarea name="body" required>${esc(c.body)}</textarea>
+             <div class="mention-pop" hidden></div>
              <div class="cmt-composer-row">
                <button type="submit" class="auth-btn auth-btn-primary">Save</button>
                <button type="button" class="cmt-link" data-act="edit-cancel" data-id="${c.id}">Cancel</button>
@@ -136,8 +214,9 @@ function commentHtml(c, replies, company, ctx) {
         : "";
 
     const replyForm = (ctx.full && ctx.user && !c.parent_id && !removed)
-        ? `<form class="cmt-reply-form" data-act="reply-submit" data-parent="${c.id}" data-accession="${esc(c.accession || "")}" hidden>
-             <textarea name="body" placeholder="Reply…" required></textarea>
+        ? `<form class="cmt-reply-form" data-act="reply-submit" data-parent="${c.id}" hidden>
+             <textarea name="body" placeholder="Reply… (type @ to reference a filing)" required></textarea>
+             <div class="mention-pop" hidden></div>
              <div class="cmt-composer-row">
                <button type="submit" class="auth-btn auth-btn-primary">Reply</button>
                <button type="button" class="cmt-link" data-act="reply-cancel" data-id="${c.id}">Cancel</button>
@@ -161,19 +240,13 @@ function commentHtml(c, replies, company, ctx) {
     </div>`;
 }
 
-function composerHtml(ctx, company) {
+function composerHtml(ctx, _company) {
     if (!ctx.user)
         return `<div class="cmt-signin"><button class="auth-btn" data-act="signin">Sign in to comment</button></div>`;
-    const opts = (company?.filings || [])
-        .filter((f) => f.accession)
-        .map((f) => `<option value="${esc(f.accession)}">${esc(f.form)} · ${esc(f.date)}</option>`)
-        .join("");
     return `<form class="cmt-composer" data-act="new-submit">
-        <textarea name="body" placeholder="Add a comment…" required></textarea>
+        <textarea name="body" placeholder="Add a comment… (type @ to reference a filing)" required></textarea>
+        <div class="mention-pop" hidden></div>
         <div class="cmt-composer-row">
-            <select name="accession" aria-label="Reference a filing">
-                <option value="">General (no filing)</option>${opts}
-            </select>
             <button type="submit" class="auth-btn auth-btn-primary">Post</button>
         </div></form>`;
 }
@@ -304,15 +377,40 @@ function wire(mount) {
         if (!body) return;
 
         if (act === "new-submit") {
-            const accession = form.accession?.value || null;
+            const accession = firstAccession(body, st.company);
             if (await guard(mount, postComment(st.cik, body, accession, null))) { form.reset(); render(mount); }
         } else if (act === "reply-submit") {
-            const accession = form.dataset.accession || null;
+            const accession = firstAccession(body, st.company);
             if (await guard(mount, postComment(st.cik, body, accession, form.dataset.parent))) render(mount);
         } else if (act === "edit-submit") {
+            // body only — the client has no UPDATE grant on accession (column-level RLS),
+            // so the inline tokens carry any reference change; the column stays as first set.
             if (await guard(mount, editComment(form.dataset.id, body))) render(mount);
         }
     });
+
+    // @-mention picker: filter as you type, navigate with arrows, pick with
+    // Enter/Tab/click. Works in the composer, reply, and edit textareas.
+    mount.addEventListener("input", (e) => {
+        const ta = e.target.closest('textarea[name="body"]');
+        if (ta) updateMentionPopup(ta, state.get(mount)?.company);
+    });
+    mount.addEventListener("keydown", (e) => {
+        const ta = e.target.closest('textarea[name="body"]');
+        if (ta) mentionKeydown(e, ta);
+    });
+    mount.addEventListener("mousedown", (e) => {
+        const item = e.target.closest(".mention-item");
+        if (!item) return;
+        e.preventDefault();   // keep the textarea focused (don't blur-hide before select)
+        const ta = item.closest(".mention-pop")?.previousElementSibling;
+        if (ta) insertMention(ta, item);
+    });
+    mount.addEventListener("blur", (e) => {
+        const ta = e.target.closest?.('textarea[name="body"]');
+        const popup = ta && mentionPopupFor(ta);
+        if (popup) setTimeout(() => { popup.hidden = true; }, 150);
+    }, true);
 }
 
 // ───────────────────────────── public API ───────────────────────────

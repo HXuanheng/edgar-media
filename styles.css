@@ -322,6 +322,24 @@ body.dark-mode .warn { color: #fbbf24; }
     border: 1px solid var(--border); border-radius: 8px; padding: 0.3rem 0.5rem; cursor: pointer;
 }
 
+/* @-mention filing picker */
+.mention-pop {
+    border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg);
+    box-shadow: var(--shadow); max-height: 12rem; overflow-y: auto; margin: -0.2rem 0 0.4rem;
+}
+.mention-pop[hidden] { display: none; }
+.mention-item {
+    display: block; width: 100%; text-align: left; cursor: pointer;
+    background: none; border: none; border-bottom: 1px solid var(--border);
+    padding: 0.4rem 0.6rem; font: inherit; font-size: 0.82rem; color: var(--text);
+}
+.mention-item:last-child { border-bottom: none; }
+.mention-item.active, .mention-item:hover { background: var(--bg); }
+.mi-form { font-weight: 600; color: var(--primary-color); }
+.mi-date { color: var(--text-muted); }
+.mi-sum  { color: var(--text-muted); }
+.cmt-mention-dead { color: var(--text-muted); }   /* @ref to a filing no longer in window */
+
 .comment { padding: 0.6rem 0; border-top: 1px dashed var(--border); }
 .comment.reply { margin-left: 1.4rem; border-top: 1px dotted var(--border); }
 .comment.deleted .comment-author { opacity: 0.6; }
