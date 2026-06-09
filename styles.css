@@ -155,34 +155,36 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .card-details[open] summary::before { content: "▾ "; }
 .card-details summary:hover { color: var(--primary-color); }
 .filing-list { list-style: none; margin: 0; padding: 0 1.1rem 0.7rem; }
-.flrow {
-    display: flex;
-    align-items: baseline;
-    gap: 0.7rem;
-    padding: 0.35rem 0;
-    border-top: 1px dashed var(--border);
-    font-size: 0.85rem;
-}
+.flrow { padding: 0.5rem 0; border-top: 1px dashed var(--border); font-size: 0.85rem; }
+/* header line: form code (left scan-anchor) · date · when ... View on SEC */
+.fl-head { display: flex; align-items: baseline; gap: 0.7rem; }
 .flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; }
-.fllink { flex: 1 1 auto; }
+.fl-date { flex: 1 1 auto; color: var(--text-muted); }
 .flwhen { flex: 0 0 auto; color: var(--text-muted); font-size: 0.8rem; }
+.fl-sec { flex: 0 0 auto; font-size: 0.78rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; }
+.fl-sec:hover { color: var(--secondary-color); }
 
-/* per-row AI summary: rows with one open into a scroll menu, rows without
-   stay plain (triangle slot reserved so both align). */
-.row-summary > summary { cursor: pointer; list-style: none; }
-.row-summary > summary::-webkit-details-marker { display: none; }
-.row-summary > summary::before { content: "\25B8"; flex: 0 0 0.7rem; color: var(--text-muted); }
-.row-summary[open] > summary::before { content: "\25BE"; }
-.row-summary > summary:hover { color: var(--primary-color); }
-.flrow-plain::before { content: "\25B8"; flex: 0 0 0.7rem; visibility: hidden; }
-.summary-body {
-    padding: 0.15rem 0 0.5rem 1.4rem;
-    font-size: 0.85rem;
-    line-height: 1.5;
+/* AI summary = the headline body; 2-line clamp + click-to-expand (no JS toggle) */
+.fl-summary {
+    margin: 0.3rem 0 0;
     color: var(--text);
-    max-height: 7rem;
-    overflow-y: auto;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
+.fl-label { font-style: italic; color: var(--text-muted); font-weight: 600; }
+.fl-expand:checked ~ .fl-summary { -webkit-line-clamp: unset; overflow: visible; }
+.fl-more { display: none; margin-top: 0.1rem; font-size: 0.78rem; color: var(--primary-color); cursor: pointer; }
+.fl-summary.clamped ~ .fl-more { display: inline-block; }   /* only when it overflows 2 lines */
+.fl-more::after { content: "Show more"; }
+.fl-expand:checked ~ .fl-more::after { content: "Show less"; }
+.fl-more:hover { color: var(--secondary-color); }
+
+/* lead filing summary on the always-visible card face — the prominent headline */
+.card-summary { padding: 0 1.1rem 0.2rem; }
 
 .rank { font-weight: 700; color: var(--text-muted); font-size: 1.05rem; text-align: center; }
 
@@ -211,6 +213,8 @@ body.dark-mode .warn { color: #fbbf24; }
 @media (max-width: 620px) {
     .card-main { grid-template-columns: 1.8rem 1fr; }
     .filing { grid-column: 1 / -1; text-align: left; max-width: none; padding-top: 0.4rem; border-top: 1px dashed var(--border); }
+    .fl-head { flex-wrap: wrap; }
+    .fl-sec { margin-left: auto; }   /* drops to its own line, stays right-aligned */
 }
 
 /* footer */
