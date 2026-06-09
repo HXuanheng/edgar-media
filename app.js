@@ -100,20 +100,27 @@ function filingsListHtml(it) {
     // "More" rows = the rest of the 90-day window minus the lead (by reference).
     const rest = all.filter((f) => f !== lead);
     const leadRow = `<ul class="filing-list filing-lead">${filingRow(lead, it.ticker)}</ul>`;
-    let more = "";
-    if (rest.length) {
-        const id = `more-${(it.ticker || "").replace(/[^a-z0-9]/gi, "")}`;
-        const n = rest.length;
-        const rows = rest.map((f) => filingRow(f, it.ticker)).join("");
-        // Hidden checkbox toggles both labels + the rows via CSS (no JS). The "open"
-        // label leads; when checked it hides and "show less" shows at the bottom —
-        // so the control sits below the rows once expanded.
-        more = `<input type="checkbox" id="${id}" class="more-toggle" hidden>
-            <label class="more-open" for="${id}">${n} more filing${n > 1 ? "s" : ""} · last 90 days</label>
-            <ul class="filing-list more-rows">${rows}</ul>
-            <label class="more-close" for="${id}">show less</label>`;
+    // Single filing -> a "Latest filings" label, no toggle.
+    if (!rest.length) {
+        return `<div class="card-filings">${warn}
+            <div class="filing-head"><span class="filing-head-label">Latest filings</span></div>
+            ${leadRow}</div>`;
     }
-    return `<div class="card-filings">${warn}${leadRow}${more}</div>`;
+    const id = `more-${(it.ticker || "").replace(/[^a-z0-9]/gi, "")}`;
+    const n = rest.length;
+    const rows = rest.map((f) => filingRow(f, it.ticker)).join("");
+    // Checkbox first, then the header (with both toggle labels) and the rows -> the
+    // control lives in the fixed header at the top, so collapsing never needs a scroll.
+    return `<div class="card-filings">${warn}
+        <input type="checkbox" id="${id}" class="more-toggle" hidden>
+        <div class="filing-head">
+            <span class="filing-head-label">Latest filings</span>
+            <label class="more-open" for="${id}">show ${n} more</label>
+            <label class="more-close" for="${id}">show less</label>
+        </div>
+        ${leadRow}
+        <ul class="filing-list more-rows">${rows}</ul>
+    </div>`;
 }
 
 function cardHtml(it, i) {
