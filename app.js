@@ -74,7 +74,7 @@ function filingHtml(f, nameMatch) {
     </div>`;
 }
 
-function filingRow(f) {
+function filingRow(f, prefix) {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
     const lbl = f.summary && f.summary !== f.form ? ` · ${esc(f.summary)}` : "";
     const formDate = `<span class="flform">${esc(f.form)}</span>
@@ -87,7 +87,10 @@ function filingRow(f) {
     // tied to a hidden checkbox) reveals it inline. The SEC link is an interactive
     // descendant, so it navigates without toggling the row. Pure CSS, no JS.
     if (f.ai_summary) {
-        const id = `flx-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
+        // Namespace by ticker: tickers sharing a CIK (e.g. GOOG/GOOGL) repeat
+        // the same accessions, so accession alone yields duplicate DOM ids and
+        // a <label for> would toggle the first card's checkbox, not this one.
+        const id = `flx-${(prefix || "").replace(/[^a-z0-9]/gi, "")}-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
         return `<li class="flrow flrow-ai">
             <input type="checkbox" id="${id}" class="fl-expand" hidden>
             <label class="fl-head" for="${id}">${formDate}<span class="fl-tag">Summary</span>${tail}</label>
@@ -101,7 +104,7 @@ function filingsListHtml(it) {
     // Nothing to expand -> the headline line already conveys filing status.
     const fs = it.cik ? (it.filings || []) : [];
     if (!fs.length) return "";
-    const rows = fs.map(filingRow).join("");
+    const rows = fs.map((f) => filingRow(f, it.ticker)).join("");
     return `<details class="card-details">
         <summary>${fs.length} recent filing${fs.length > 1 ? "s" : ""} · last 90 days</summary>
         <ul class="filing-list">${rows}</ul>
