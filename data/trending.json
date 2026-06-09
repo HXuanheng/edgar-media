@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-06-09T11:26:55Z",
+  "updated_utc": "2026-06-09T14:49:19Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "filings": "SEC EDGAR submissions API (real-time)"
@@ -9,16 +9,16 @@
   "count": 29,
   "items": [
     {
-      "rank": 3,
+      "rank": 2,
       "ticker": "MSFT",
       "name": "Microsoft",
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 292,
-      "mentions_24h_ago": 62,
-      "mention_change_pct": 371.0,
-      "upvotes": 4173,
+      "mentions": 324,
+      "mentions_24h_ago": 121,
+      "mention_change_pct": 167.8,
+      "upvotes": 4584,
       "cik": "0000789019",
       "filing": {
         "form": "8-K",
@@ -86,23 +86,56 @@
       "sec_name": "Broadcom Inc.",
       "display_name": "Broadcom Inc.",
       "name_match": "verified",
-      "mentions": 113,
-      "mentions_24h_ago": 69,
-      "mention_change_pct": 63.8,
-      "upvotes": 305,
+      "mentions": 101,
+      "mentions_24h_ago": 85,
+      "mention_change_pct": 18.8,
+      "upvotes": 294,
       "cik": "0001730168",
       "filing": {
-        "form": "8-K",
-        "date": "2026-06-03",
-        "days_ago": 6,
+        "form": "S-4",
+        "date": "2026-06-09",
+        "days_ago": 0,
         "fresh": true,
-        "desc": "8-K",
-        "summary": "Earnings released; Other material update",
-        "accession": "0001730168-26-000051",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/avgo-20260603.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/0001730168-26-000051-index.htm"
+        "desc": "S-4",
+        "summary": "M&A / exchange registration",
+        "accession": "0001193125-26-263128",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263128/d227938ds4.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263128/0001193125-26-263128-index.htm"
       },
       "filings": [
+        {
+          "form": "S-4",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "S-4",
+          "summary": "M&A / exchange registration",
+          "accession": "0001193125-26-263128",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263128/0001193125-26-263128-index.htm",
+          "ai_summary": "Broadcom Inc. is offering to exchange its existing senior notes for new, freely tradable senior notes."
+        },
+        {
+          "form": "S-4",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "S-4",
+          "summary": "M&A / exchange registration",
+          "accession": "0001193125-26-263125",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263125/0001193125-26-263125-index.htm",
+          "ai_summary": "Broadcom is offering to exchange existing notes for new, freely tradable notes to satisfy registration requirements."
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001730168-26-000054",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000054/0001730168-26-000054-index.htm",
+          "ai_summary": "Broadcom reported Q2 2026 revenue of $22.2 billion, net income of $9.3 billion, and cash + $19.6 billion, driven by higher product and subscription sales across all regions."
+        },
         {
           "form": "8-K",
           "date": "2026-06-03",
@@ -166,23 +199,34 @@
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 89,
-      "mentions_24h_ago": 40,
-      "mention_change_pct": 122.5,
-      "upvotes": 1626,
+      "mentions": 83,
+      "mentions_24h_ago": 47,
+      "mention_change_pct": 76.6,
+      "upvotes": 1680,
       "cik": "0000936340",
       "filing": {
-        "form": "8-K",
-        "date": "2026-06-05",
-        "days_ago": 4,
+        "form": "424B5",
+        "date": "2026-06-09",
+        "days_ago": 0,
         "fresh": true,
-        "desc": "8-K",
-        "summary": "Other material update",
-        "accession": "0000936340-26-000122",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/dte-20260605.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm"
+        "desc": "424B5",
+        "summary": "Shelf offering prospectus",
+        "accession": "0001193125-26-263051",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/d153009d424b5.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm"
       },
       "filings": [
+        {
+          "form": "424B5",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "424B5",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001193125-26-263051",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm",
+          "ai_summary": "DTE Energy is issuing unsecured junior subordinated debentures maturing July 1 2058, paying a fixed rate until 2033 then resetting to 5‑year Treasury + spread (no lower than the initial rate), with optional interest deferrals up to 10 years and redemption rights at 100‑102% of principal."
+        },
         {
           "form": "8-K",
           "date": "2026-06-05",
@@ -292,16 +336,96 @@
       ]
     },
     {
-      "rank": 14,
+      "rank": 15,
+      "ticker": "OPEN",
+      "name": "Opendoor",
+      "sec_name": "Opendoor Technologies Inc.",
+      "display_name": "Opendoor Technologies Inc.",
+      "name_match": "verified",
+      "mentions": 57,
+      "mentions_24h_ago": 5,
+      "mention_change_pct": 1040.0,
+      "upvotes": 2349,
+      "cik": "0001801169",
+      "filing": {
+        "form": "DEFA14A",
+        "date": "2026-06-02",
+        "days_ago": 7,
+        "fresh": true,
+        "desc": "DEFA14A",
+        "summary": "Proxy materials (additional)",
+        "accession": "0001140361-26-023784",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126023784/ef20075456_defa14a.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126023784/0001140361-26-023784-index.htm"
+      },
+      "filings": [
+        {
+          "form": "DEFA14A",
+          "date": "2026-06-02",
+          "days_ago": 7,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001140361-26-023784",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126023784/0001140361-26-023784-index.htm",
+          "ai_summary": "Opendoor’s CEO Kaz Nejatian urges shareholders, via a June 2, 2026 proxy filing, to vote against proxy‑advisor recommendations and support the company’s board."
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-07",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001801169-26-000014",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000180116926000014/0001801169-26-000014-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-07",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001801169-26-000013",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000180116926000013/0001801169-26-000013-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-28",
+          "days_ago": 42,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001140361-26-017466",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126017466/0001140361-26-017466-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-28",
+          "days_ago": 42,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001140361-26-017460",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126017460/0001140361-26-017460-index.htm"
+        }
+      ],
+      "tickers": [
+        "OPEN"
+      ]
+    },
+    {
+      "rank": 18,
       "ticker": "AM",
       "name": "Antero Midstream",
       "sec_name": "Antero Midstream Corp",
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
-      "mentions": 58,
-      "mentions_24h_ago": 33,
-      "mention_change_pct": 75.8,
-      "upvotes": 134,
+      "mentions": 45,
+      "mentions_24h_ago": 54,
+      "mention_change_pct": -16.7,
+      "upvotes": 100,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -393,16 +517,210 @@
       ]
     },
     {
-      "rank": 18,
+      "rank": 20,
+      "ticker": "RKLB",
+      "name": "Rocket Lab USA",
+      "sec_name": "Rocket Lab Corp",
+      "display_name": "Rocket Lab Corp",
+      "name_match": "verified",
+      "mentions": 41,
+      "mentions_24h_ago": 35,
+      "mention_change_pct": 17.1,
+      "upvotes": 441,
+      "cik": "0001819994",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-05",
+        "days_ago": 4,
+        "fresh": true,
+        "desc": "8-K",
+        "summary": "Executive / board change",
+        "accession": "0001819994-26-000056",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/rklb-20260603.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/0001819994-26-000056-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001819994-26-000056",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/0001819994-26-000056-index.htm",
+          "ai_summary": "Rocket Lab appointed Agostino Ricupati as Vice President, Corporate Controller, and Chief Accounting Officer."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-21",
+          "days_ago": 19,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001819994-26-000048",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000048/0001819994-26-000048-index.htm",
+          "ai_summary": "Rocket Lab held its 2026 annual meeting, electing director Edward H. Frank, ratifying Deloitte, approving executive compensation, and authorizing a subsidiary merger."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-20",
+          "days_ago": 20,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001819994-26-000045",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000045/0001819994-26-000045-index.htm",
+          "ai_summary": "Rocket Lab signed a $3 billion equity distribution agreement with numerous banks to sell common shares through forward and collared transactions, paying up to 2% commission on each sale."
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-20",
+          "days_ago": 20,
+          "fresh": false,
+          "desc": "424B5",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001819994-26-000044",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000044/0001819994-26-000044-index.htm",
+          "ai_summary": "Rocket Lab may sell up to $3 billion of common stock through designated agents and forward‑sale agreements, using the net proceeds for growth, acquisitions and working capital."
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-12",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001819994-26-000033",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000033/0001819994-26-000033-index.htm",
+          "ai_summary": "Rocket Lab’s 2026 annual meeting is on May 20, 2026, and shareholders of record must cast proxy votes on the board’s proposals before that date."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-08",
+          "days_ago": 32,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001753926-26-000799",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000799/0001753926-26-000799-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-07",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001819994-26-000028",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000028/0001819994-26-000028-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-07",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001819994-26-000027",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000027/0001819994-26-000027-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-14",
+          "days_ago": 56,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Unregistered share sale; Other material update",
+          "accession": "0001753926-26-000654",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000654/0001753926-26-000654-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-06",
+          "days_ago": 64,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001628280-26-023925",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026023925/0001628280-26-023925-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-06",
+          "days_ago": 64,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001628280-26-023922",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026023922/0001628280-26-023922-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-30",
+          "days_ago": 71,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Executive / board change",
+          "accession": "0001753926-26-000568",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000568/0001753926-26-000568-index.htm"
+        },
+        {
+          "form": "PRE 14A",
+          "date": "2026-03-27",
+          "days_ago": 74,
+          "fresh": false,
+          "desc": "PRE 14A",
+          "summary": "Preliminary proxy",
+          "accession": "0001628280-26-021744",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026021744/0001628280-26-021744-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-17",
+          "days_ago": 84,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001628280-26-018789",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026018789/0001628280-26-018789-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-03-17",
+          "days_ago": 84,
+          "fresh": false,
+          "desc": "424B5",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001628280-26-018770",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026018770/0001628280-26-018770-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-12",
+          "days_ago": 89,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001819994-26-000016",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000016/0001819994-26-000016-index.htm"
+        }
+      ],
+      "tickers": [
+        "RKLB"
+      ]
+    },
+    {
+      "rank": 23,
       "ticker": "GOOG",
       "name": "Alphabet (Google)",
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 83,
-      "mentions_24h_ago": 29,
-      "mention_change_pct": 186.2,
-      "upvotes": 4113,
+      "mentions": 66,
+      "mentions_24h_ago": 47,
+      "mention_change_pct": 40.4,
+      "upvotes": 4338,
       "cik": "0001652044",
       "filing": {
         "form": "8-K",
@@ -668,210 +986,16 @@
       ]
     },
     {
-      "rank": 20,
-      "ticker": "RKLB",
-      "name": "Rocket Lab USA",
-      "sec_name": "Rocket Lab Corp",
-      "display_name": "Rocket Lab Corp",
-      "name_match": "verified",
-      "mentions": 39,
-      "mentions_24h_ago": 33,
-      "mention_change_pct": 18.2,
-      "upvotes": 412,
-      "cik": "0001819994",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-06-05",
-        "days_ago": 4,
-        "fresh": true,
-        "desc": "8-K",
-        "summary": "Executive / board change",
-        "accession": "0001819994-26-000056",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/rklb-20260603.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/0001819994-26-000056-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-06-05",
-          "days_ago": 4,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001819994-26-000056",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000056/0001819994-26-000056-index.htm",
-          "ai_summary": "Rocket Lab appointed Agostino Ricupati as Vice President, Corporate Controller, and Chief Accounting Officer."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-21",
-          "days_ago": 19,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001819994-26-000048",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000048/0001819994-26-000048-index.htm",
-          "ai_summary": "Rocket Lab held its 2026 annual meeting, electing director Edward H. Frank, ratifying Deloitte, approving executive compensation, and authorizing a subsidiary merger."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-20",
-          "days_ago": 20,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001819994-26-000045",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000045/0001819994-26-000045-index.htm",
-          "ai_summary": "Rocket Lab signed a $3 billion equity distribution agreement with numerous banks to sell common shares through forward and collared transactions, paying up to 2% commission on each sale."
-        },
-        {
-          "form": "424B5",
-          "date": "2026-05-20",
-          "days_ago": 20,
-          "fresh": false,
-          "desc": "424B5",
-          "summary": "Shelf offering prospectus",
-          "accession": "0001819994-26-000044",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000044/0001819994-26-000044-index.htm",
-          "ai_summary": "Rocket Lab may sell up to $3 billion of common stock through designated agents and forward‑sale agreements, using the net proceeds for growth, acquisitions and working capital."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-12",
-          "days_ago": 28,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001819994-26-000033",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000033/0001819994-26-000033-index.htm",
-          "ai_summary": "Rocket Lab’s 2026 annual meeting is on May 20, 2026, and shareholders of record must cast proxy votes on the board’s proposals before that date."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-08",
-          "days_ago": 32,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001753926-26-000799",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000799/0001753926-26-000799-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-07",
-          "days_ago": 33,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001819994-26-000028",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000028/0001819994-26-000028-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-07",
-          "days_ago": 33,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001819994-26-000027",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000027/0001819994-26-000027-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-14",
-          "days_ago": 56,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Unregistered share sale; Other material update",
-          "accession": "0001753926-26-000654",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000654/0001753926-26-000654-index.htm"
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-04-06",
-          "days_ago": 64,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001628280-26-023925",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026023925/0001628280-26-023925-index.htm"
-        },
-        {
-          "form": "DEF 14A",
-          "date": "2026-04-06",
-          "days_ago": 64,
-          "fresh": false,
-          "desc": "DEF 14A",
-          "summary": "Proxy statement",
-          "accession": "0001628280-26-023922",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026023922/0001628280-26-023922-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-30",
-          "days_ago": 71,
-          "fresh": false,
-          "desc": "FORM 8-K",
-          "summary": "Executive / board change",
-          "accession": "0001753926-26-000568",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000175392626000568/0001753926-26-000568-index.htm"
-        },
-        {
-          "form": "PRE 14A",
-          "date": "2026-03-27",
-          "days_ago": 74,
-          "fresh": false,
-          "desc": "PRE 14A",
-          "summary": "Preliminary proxy",
-          "accession": "0001628280-26-021744",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026021744/0001628280-26-021744-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-17",
-          "days_ago": 84,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001628280-26-018789",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026018789/0001628280-26-018789-index.htm"
-        },
-        {
-          "form": "424B5",
-          "date": "2026-03-17",
-          "days_ago": 84,
-          "fresh": false,
-          "desc": "424B5",
-          "summary": "Shelf offering prospectus",
-          "accession": "0001628280-26-018770",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000162828026018770/0001628280-26-018770-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-12",
-          "days_ago": 89,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001819994-26-000016",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000016/0001819994-26-000016-index.htm"
-        }
-      ],
-      "tickers": [
-        "RKLB"
-      ]
-    },
-    {
-      "rank": 22,
+      "rank": 28,
       "ticker": "AMZN",
       "name": "Amazon",
       "sec_name": "AMAZON COM INC",
       "display_name": "Amazon Com Inc",
       "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 12,
-      "mention_change_pct": 200.0,
-      "upvotes": 224,
+      "mentions": 28,
+      "mentions_24h_ago": 21,
+      "mention_change_pct": 33.3,
+      "upvotes": 209,
       "cik": "0001018724",
       "filing": {
         "form": "424B5",
@@ -1033,387 +1157,113 @@
       ]
     },
     {
-      "rank": 23,
-      "ticker": "MSTR",
-      "name": "MicroStrategy",
-      "sec_name": "Strategy Inc",
-      "display_name": "Strategy Inc",
+      "rank": 30,
+      "ticker": "HOOD",
+      "name": "Robinhood",
+      "sec_name": "Robinhood Markets, Inc.",
+      "display_name": "Robinhood Markets, Inc.",
       "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 23,
-      "mention_change_pct": 56.5,
-      "upvotes": 556,
-      "cik": "0001050446",
+      "mentions": 24,
+      "mentions_24h_ago": 15,
+      "mention_change_pct": 60.0,
+      "upvotes": 90,
+      "cik": "0001783879",
       "filing": {
         "form": "8-K",
-        "date": "2026-06-08",
-        "days_ago": 1,
+        "date": "2026-06-03",
+        "days_ago": 6,
         "fresh": true,
         "desc": "8-K",
-        "summary": "Other material update",
-        "accession": "0001193125-26-261038",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/d130937d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/0001193125-26-261038-index.htm"
+        "summary": "Shareholder vote results",
+        "accession": "0001783879-26-000068",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/hood-20260602.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/0001783879-26-000068-index.htm"
       },
       "filings": [
         {
           "form": "8-K",
-          "date": "2026-06-08",
-          "days_ago": 1,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-261038",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526261038/0001193125-26-261038-index.htm",
-          "ai_summary": "Strategy Inc's shareholders approved changing dividend payments for its Variable Rate Series A Perpetual Stretch Preferred Stock (STRC) from monthly to semi-monthly."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-08",
-          "days_ago": 1,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-260709",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526260709/0001193125-26-260709-index.htm",
-          "ai_summary": "Strategy Inc sold common stock for $181 million, acquired 1,550 bitcoins for $101.3 million, and holds a $1 billion USD reserve."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-06-08",
-          "days_ago": 1,
-          "fresh": true,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-260706",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526260706/0001193125-26-260706-index.htm",
-          "ai_summary": "Strategy Inc filed additional proxy materials, including an X (Twitter) thread, for its 2026 Annual Meeting of Shareholders."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-06-04",
-          "days_ago": 5,
-          "fresh": true,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-257683",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526257683/0001193125-26-257683-index.htm",
-          "ai_summary": "Strategy Inc. is proposing a semi-monthly dividend to increase liquidity and price stability for shareholders."
-        },
-        {
-          "form": "DEFA14A",
           "date": "2026-06-03",
           "days_ago": 6,
           "fresh": true,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-255709",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526255709/0001193125-26-255709-index.htm",
-          "ai_summary": "Strategy Inc. posted a video proposing to double dividend frequency, with polls closing in early June for shareholder approval."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-06-02",
-          "days_ago": 7,
-          "fresh": true,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-253781",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526253781/0001193125-26-253781-index.htm",
-          "ai_summary": "Strategy Inc is proposing to move dividend payments from monthly to semi-monthly, and shareholders should vote."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-06-01",
-          "days_ago": 8,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-251680",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526251680/0001193125-26-251680-index.htm",
-          "ai_summary": "Strategy Inc filed additional proxy materials related to its 2026 Annual Meeting, including a reply to a social media comment about meeting proposals."
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001783879-26-000068",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000068/0001783879-26-000068-index.htm",
+          "ai_summary": "Robinhood Markets, Inc. stockholders re-elected directors, approved executive compensation, and ratified Ernst & Young LLP as their independent auditor at the 2026 Annual Meeting."
         },
         {
           "form": "8-K",
-          "date": "2026-06-01",
-          "days_ago": 8,
+          "date": "2026-05-08",
+          "days_ago": 32,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-249768",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526249768/0001193125-26-249768-index.htm",
-          "ai_summary": "Strategy Inc sold 801,994 shares of common stock for $128.3 million, sold 32 bitcoins for $2.5 million, and declared cash dividends on its preferred stocks."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-29",
-          "days_ago": 11,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-248642",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526248642/0001193125-26-248642-index.htm",
-          "ai_summary": "Strategy Inc is soliciting shareholder votes for its 2026 Annual Meeting, including a proposal for semi-monthly dividends."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-28",
-          "days_ago": 12,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-245455",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526245455/0001193125-26-245455-index.htm",
-          "ai_summary": "Strategy Inc. is asking shareholders to vote on increasing dividend frequency from monthly to twice monthly for improved stability and liquidity."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-27",
-          "days_ago": 13,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-242094",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526242094/0001193125-26-242094-index.htm",
-          "ai_summary": "Strategy Inc. is proposing to increase its dividend payment frequency from monthly to twice monthly."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-26",
-          "days_ago": 14,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-239603",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526239603/0001193125-26-239603-index.htm",
-          "ai_summary": "Strategy Inc is soliciting votes to change preferred stock dividend payments from monthly to semi-monthly."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-26",
-          "days_ago": 14,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-237907",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526237907/0001193125-26-237907-index.htm",
-          "ai_summary": "Strategy Inc disclosed it made no ATM share sales or bitcoin purchases in May, now holds 843,738 BTC bought for $63.87 billion, has an $871 million USD reserve, and issued a capital‑structure update."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-26",
-          "days_ago": 14,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-237911",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526237911/0001193125-26-237911-index.htm",
-          "ai_summary": "Strategy Inc. hired Alliance Advisors to solicit proxy votes for Proposal 5 (paying a $10,000 base fee plus per‑call/text and vote fees) and announced a website update proposing semi‑monthly dividends on its STRC preferred stock."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-22",
-          "days_ago": 18,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-237133",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526237133/0001193125-26-237133-index.htm",
-          "ai_summary": "Strategy Inc. filed a definitive proxy statement announcing its June 8, 2026 shareholder vote to change Stretch Preferred’s dividend from monthly to semi‑monthly, with the record date April 17 and materials available online."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-21",
-          "days_ago": 19,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-234764",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526234764/0001193125-26-234764-index.htm",
-          "ai_summary": "Strategy Inc filed a definitive proxy statement for its 2026 annual meeting, urging shareholders to vote on moving Stretch Preferred dividends from monthly to semi‑monthly."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-19",
-          "days_ago": 21,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-231031",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526231031/0001193125-26-231031-index.htm",
-          "ai_summary": "Strategy Inc filed a definitive proxy statement for its 2026 annual meeting (record date April 17, 2026), making materials available online and requiring proxy cards for voting."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-18",
-          "days_ago": 22,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-229090",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526229090/0001193125-26-229090-index.htm",
-          "ai_summary": "Strategy Inc filed a definitive proxy statement for its 2026 annual meeting (record date April 17, 2026), directing shareholders to review the materials online."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-18",
-          "days_ago": 22,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-227918",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526227918/0001193125-26-227918-index.htm",
-          "ai_summary": "Strategy Inc disclosed that in the week ending May 17 it sold 19.5 million STRC preferred shares for $1.95 billion and used the proceeds to buy 843,738 BTC at an average $63.87 per coin."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-15",
-          "days_ago": 25,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-225361",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526225361/0001193125-26-225361-index.htm",
-          "ai_summary": "Strategy Inc. will repurchase about $1.5 billion of its 0% 2029 convertible senior notes for roughly $1.38 billion, fund it with cash, ATM sales, or bitcoin, and cancel the notes, leaving $1.5 billion of notes still outstanding."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-14",
-          "days_ago": 26,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-224281",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526224281/0001193125-26-224281-index.htm",
-          "ai_summary": "Strategy Inc. announced its 2026 Annual Meeting proxy materials are available online (record date April 17, 2026) and can be requested in print free of charge."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-13",
-          "days_ago": 27,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-221889",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526221889/0001193125-26-221889-index.htm",
-          "ai_summary": "Strategy Inc filed a definitive proxy statement for its 2026 annual meeting (record date April 17, 2026), directing shareholders to review the materials online."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-12",
-          "days_ago": 28,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-219762",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526219762/0001193125-26-219762-index.htm",
-          "ai_summary": "Strategy Inc. filed a definitive proxy stating shareholders should vote for the semi‑monthly dividend amendment and all other 2026 meeting proposals."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-11",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-216867",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526216867/0001193125-26-216867-index.htm",
-          "ai_summary": "Strategy Inc. filed a definitive proxy statement announcing its 2026 annual meeting (record date April 17, 2026) and a shareholder proposal to double the dividend frequency."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-11",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-215754",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526215754/0001193125-26-215754-index.htm",
-          "ai_summary": "Strategy Inc disclosed May 4‑10 ATM sales raising $43 million, used the proceeds to purchase 535 BTC at an average $61.86 per coin."
-        }
-      ],
-      "tickers": [
-        "MSTR"
-      ]
-    },
-    {
-      "rank": 27,
-      "ticker": "OPEN",
-      "name": "Opendoor",
-      "sec_name": "Opendoor Technologies Inc.",
-      "display_name": "Opendoor Technologies Inc.",
-      "name_match": "verified",
-      "mentions": 32,
-      "mentions_24h_ago": 5,
-      "mention_change_pct": 540.0,
-      "upvotes": 2092,
-      "cik": "0001801169",
-      "filing": {
-        "form": "DEFA14A",
-        "date": "2026-06-02",
-        "days_ago": 7,
-        "fresh": true,
-        "desc": "DEFA14A",
-        "summary": "Proxy materials (additional)",
-        "accession": "0001140361-26-023784",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126023784/ef20075456_defa14a.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126023784/0001140361-26-023784-index.htm"
-      },
-      "filings": [
-        {
-          "form": "DEFA14A",
-          "date": "2026-06-02",
-          "days_ago": 7,
-          "fresh": true,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001140361-26-023784",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126023784/0001140361-26-023784-index.htm",
-          "ai_summary": "Opendoor’s CEO Kaz Nejatian urges shareholders, via a June 2, 2026 proxy filing, to vote against proxy‑advisor recommendations and support the company’s board."
+          "summary": "Executive / board change",
+          "accession": "0001783879-26-000065",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000065/0001783879-26-000065-index.htm"
         },
         {
           "form": "10-Q",
-          "date": "2026-05-07",
-          "days_ago": 33,
+          "date": "2026-04-29",
+          "days_ago": 41,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
-          "accession": "0001801169-26-000014",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000180116926000014/0001801169-26-000014-index.htm"
+          "accession": "0001783879-26-000062",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000062/0001783879-26-000062-index.htm"
         },
         {
           "form": "8-K",
-          "date": "2026-05-07",
-          "days_ago": 33,
+          "date": "2026-04-28",
+          "days_ago": 42,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001801169-26-000013",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000180116926000013/0001801169-26-000013-index.htm"
+          "summary": "Earnings released",
+          "accession": "0001783879-26-000061",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000061/0001783879-26-000061-index.htm"
         },
         {
           "form": "DEFA14A",
-          "date": "2026-04-28",
-          "days_ago": 42,
+          "date": "2026-04-22",
+          "days_ago": 48,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
-          "accession": "0001140361-26-017466",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126017466/0001140361-26-017466-index.htm"
+          "accession": "0001193125-26-170533",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000119312526170533/0001193125-26-170533-index.htm"
         },
         {
           "form": "DEF 14A",
-          "date": "2026-04-28",
-          "days_ago": 42,
+          "date": "2026-04-22",
+          "days_ago": 48,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
-          "accession": "0001140361-26-017460",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1801169/000114036126017460/0001140361-26-017460-index.htm"
+          "accession": "0001783879-26-000053",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000053/0001783879-26-000053-index.htm"
+        },
+        {
+          "form": "8-K/A",
+          "date": "2026-03-24",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "8-K/A",
+          "summary": "Executive / board change",
+          "accession": "0001783879-26-000047",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000047/0001783879-26-000047-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-24",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; New debt obligation; Other material update",
+          "accession": "0001783879-26-000045",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000045/0001783879-26-000045-index.htm"
         }
       ],
       "tickers": [
-        "OPEN"
+        "HOOD"
       ]
     },
     {
@@ -1423,10 +1273,10 @@
       "sec_name": "MICRON TECHNOLOGY INC",
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
-      "mentions": 378,
-      "mentions_24h_ago": 198,
-      "mention_change_pct": 90.9,
-      "upvotes": 1511,
+      "mentions": 360,
+      "mentions_24h_ago": 265,
+      "mention_change_pct": 35.8,
+      "upvotes": 1671,
       "cik": "0000723125",
       "filing": {
         "form": "8-K",
@@ -1486,16 +1336,16 @@
       ]
     },
     {
-      "rank": 2,
+      "rank": 3,
       "ticker": "SPY",
       "name": "SPDR S&P 500 ETF Trust",
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 317,
-      "mentions_24h_ago": 178,
-      "mention_change_pct": 78.1,
-      "upvotes": 1714,
+      "mentions": 300,
+      "mentions_24h_ago": 249,
+      "mention_change_pct": 20.5,
+      "upvotes": 1660,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
@@ -1510,10 +1360,10 @@
       "sec_name": "Marvell Technology, Inc.",
       "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
-      "mentions": 160,
-      "mentions_24h_ago": 99,
-      "mention_change_pct": 61.6,
-      "upvotes": 555,
+      "mentions": 163,
+      "mentions_24h_ago": 124,
+      "mention_change_pct": 31.5,
+      "upvotes": 604,
       "cik": "0001835632",
       "filing": {
         "form": "10-Q",
@@ -1638,15 +1488,102 @@
     },
     {
       "rank": 5,
+      "ticker": "QQQ",
+      "name": "Invesco QQQ ETF",
+      "sec_name": "INVESCO QQQ TRUST, SERIES 1",
+      "display_name": "Invesco Qqq Trust, Series 1",
+      "name_match": "verified",
+      "mentions": 144,
+      "mentions_24h_ago": 102,
+      "mention_change_pct": 41.2,
+      "upvotes": 726,
+      "cik": "0001067839",
+      "filing": {
+        "form": "DEFA14A",
+        "date": "2025-12-19",
+        "days_ago": 172,
+        "fresh": false,
+        "desc": "DEFA14A",
+        "summary": "Proxy materials (additional)",
+        "accession": "0001193125-25-326661",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/d67222ddefa14a.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/0001193125-25-326661-index.htm"
+      },
+      "filings": [],
+      "tickers": [
+        "QQQ"
+      ]
+    },
+    {
+      "rank": 6,
+      "ticker": "AAPL",
+      "name": "Apple",
+      "sec_name": "Apple Inc.",
+      "display_name": "Apple Inc.",
+      "name_match": "verified",
+      "mentions": 142,
+      "mentions_24h_ago": 25,
+      "mention_change_pct": 468.0,
+      "upvotes": 540,
+      "cik": "0000320193",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-01",
+        "days_ago": 39,
+        "fresh": false,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0000320193-26-000013",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0000320193-26-000013",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0000320193-26-000011",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/0000320193-26-000011-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-20",
+          "days_ago": 50,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001140361-26-015711",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/0001140361-26-015711-index.htm"
+        }
+      ],
+      "tickers": [
+        "AAPL"
+      ]
+    },
+    {
+      "rank": 7,
       "ticker": "NVDA",
       "name": "NVIDIA",
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 156,
-      "mentions_24h_ago": 80,
-      "mention_change_pct": 95.0,
-      "upvotes": 570,
+      "mentions": 125,
+      "mentions_24h_ago": 121,
+      "mention_change_pct": 3.3,
+      "upvotes": 449,
       "cik": "0001045810",
       "filing": {
         "form": "10-Q",
@@ -1730,103 +1667,16 @@
       ]
     },
     {
-      "rank": 6,
-      "ticker": "QQQ",
-      "name": "Invesco QQQ ETF",
-      "sec_name": "INVESCO QQQ TRUST, SERIES 1",
-      "display_name": "Invesco Qqq Trust, Series 1",
-      "name_match": "verified",
-      "mentions": 138,
-      "mentions_24h_ago": 80,
-      "mention_change_pct": 72.5,
-      "upvotes": 648,
-      "cik": "0001067839",
-      "filing": {
-        "form": "DEFA14A",
-        "date": "2025-12-19",
-        "days_ago": 172,
-        "fresh": false,
-        "desc": "DEFA14A",
-        "summary": "Proxy materials (additional)",
-        "accession": "0001193125-25-326661",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/d67222ddefa14a.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1067839/000119312525326661/0001193125-25-326661-index.htm"
-      },
-      "filings": [],
-      "tickers": [
-        "QQQ"
-      ]
-    },
-    {
-      "rank": 7,
-      "ticker": "AAPL",
-      "name": "Apple",
-      "sec_name": "Apple Inc.",
-      "display_name": "Apple Inc.",
-      "name_match": "verified",
-      "mentions": 129,
-      "mentions_24h_ago": 20,
-      "mention_change_pct": 545.0,
-      "upvotes": 519,
-      "cik": "0000320193",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-01",
-        "days_ago": 39,
-        "fresh": false,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0000320193-26-000013",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-05-01",
-          "days_ago": 39,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0000320193-26-000013",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000320193-26-000011",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/0000320193-26-000011-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-20",
-          "days_ago": 50,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001140361-26-015711",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/0001140361-26-015711-index.htm"
-        }
-      ],
-      "tickers": [
-        "AAPL"
-      ]
-    },
-    {
       "rank": 9,
       "ticker": "TSLA",
       "name": "Tesla",
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 96,
-      "mentions_24h_ago": 43,
-      "mention_change_pct": 123.3,
-      "upvotes": 1542,
+      "mentions": 88,
+      "mentions_24h_ago": 49,
+      "mention_change_pct": 79.6,
+      "upvotes": 1646,
       "cik": "0001318605",
       "filing": {
         "form": "10-K/A",
@@ -1892,10 +1742,10 @@
       "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
       "display_name": "Space Exploration Technologies Corp",
       "name_match": "mismatch",
-      "mentions": 75,
-      "mentions_24h_ago": 40,
-      "mention_change_pct": 87.5,
-      "upvotes": 839,
+      "mentions": 79,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": 79.5,
+      "upvotes": 897,
       "cik": "0001181412",
       "filing": {
         "form": "S-1/A",
@@ -1943,115 +1793,15 @@
     },
     {
       "rank": 12,
-      "ticker": "META",
-      "name": "Meta Platforms (Facebook)",
-      "sec_name": "Meta Platforms, Inc.",
-      "display_name": "Meta Platforms, Inc.",
-      "name_match": "verified",
-      "mentions": 68,
-      "mentions_24h_ago": 28,
-      "mention_change_pct": 142.9,
-      "upvotes": 188,
-      "cik": "0001326801",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-29",
-        "days_ago": 11,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Shareholder vote results",
-        "accession": "0001628280-26-039193",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/meta-20260527.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/0001628280-26-039193-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-29",
-          "days_ago": 11,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001628280-26-039193",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/0001628280-26-039193-index.htm",
-          "ai_summary": "Meta Platforms shareholders re-elected all twelve directors and ratified Ernst & Young as their auditor, while rejecting all twelve shareholder proposals."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-04",
-          "days_ago": 36,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-204128",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526204128/0001193125-26-204128-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-04-30",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001628280-26-028526",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/0001628280-26-028526-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-29",
-          "days_ago": 41,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001628280-26-028364",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/0001628280-26-028364-index.htm"
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-04-16",
-          "days_ago": 54,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001628280-26-025533",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025533/0001628280-26-025533-index.htm"
-        },
-        {
-          "form": "DEF 14A",
-          "date": "2026-04-16",
-          "days_ago": 54,
-          "fresh": false,
-          "desc": "DEF 14A",
-          "summary": "Proxy statement",
-          "accession": "0001628280-26-025532",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/0001628280-26-025532-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-14",
-          "days_ago": 56,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001628280-26-025108",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025108/0001628280-26-025108-index.htm"
-        }
-      ],
-      "tickers": [
-        "META"
-      ]
-    },
-    {
-      "rank": 13,
       "ticker": "NBIS",
       "name": "Nebius Group",
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 64,
-      "mentions_24h_ago": 17,
-      "mention_change_pct": 276.5,
-      "upvotes": 170,
+      "mentions": 65,
+      "mentions_24h_ago": 27,
+      "mention_change_pct": 140.7,
+      "upvotes": 179,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -2163,125 +1913,39 @@
       ]
     },
     {
-      "rank": 15,
-      "ticker": "ASTS",
-      "name": "AST SpaceMobile",
-      "sec_name": "AST SpaceMobile, Inc.",
-      "display_name": "AST SpaceMobile, Inc.",
-      "name_match": "verified",
-      "mentions": 48,
-      "mentions_24h_ago": 31,
-      "mention_change_pct": 54.8,
-      "upvotes": 325,
-      "cik": "0001780312",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-11",
-        "days_ago": 29,
-        "fresh": false,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001193125-26-216950",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/asts-20260331.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-05-11",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-216950",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. reported a net loss of $191 million for Q1 2026, driven by increased operating expenses and a significant loss from a Block 2 BB7 satellite."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-11",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001193125-26-216946",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. announced its first quarter 2026 financial results and provided a business update via press release and presentation."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-04-28",
-          "days_ago": 42,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001493152-26-019387",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019387/0001493152-26-019387-index.htm"
-        },
-        {
-          "form": "DEF 14A",
-          "date": "2026-04-28",
-          "days_ago": 42,
-          "fresh": false,
-          "desc": "DEF 14A",
-          "summary": "Proxy statement",
-          "accession": "0001493152-26-019384",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019384/0001493152-26-019384-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-20",
-          "days_ago": 50,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001493152-26-018012",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226018012/0001493152-26-018012-index.htm"
-        }
-      ],
-      "tickers": [
-        "ASTS"
-      ]
-    },
-    {
-      "rank": 16,
-      "ticker": "VOO",
-      "name": "Vanguard S&P 500 ETF",
-      "sec_name": null,
-      "display_name": "Vanguard S&P 500 ETF",
-      "name_match": "no_cik",
-      "mentions": 46,
-      "mentions_24h_ago": 112,
-      "mention_change_pct": -58.9,
-      "upvotes": 101,
-      "cik": null,
-      "filing": null,
-      "filings": []
-    },
-    {
-      "rank": 17,
+      "rank": 13,
       "ticker": "APLD",
       "name": "Applied Blockchain",
       "sec_name": "Applied Digital Corp.",
       "display_name": "Applied Digital Corp.",
       "name_match": "mismatch",
-      "mentions": 46,
+      "mentions": 60,
       "mentions_24h_ago": 3,
-      "mention_change_pct": 1433.3,
-      "upvotes": 133,
+      "mention_change_pct": 1900.0,
+      "upvotes": 158,
       "cik": "0001144879",
       "filing": {
         "form": "8-K",
-        "date": "2026-05-05",
-        "days_ago": 35,
-        "fresh": false,
+        "date": "2026-06-09",
+        "days_ago": 0,
+        "fresh": true,
         "desc": "8-K",
-        "summary": "Material agreement signed; Acquisition / disposition completed; Other material update",
-        "accession": "0001493152-26-021333",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226021333/form8-k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226021333/0001493152-26-021333-index.htm"
+        "summary": "Other material update",
+        "accession": "0001493152-26-027857",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027857/form8-k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027857/0001493152-26-027857-index.htm"
       },
       "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001493152-26-027857",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027857/0001493152-26-027857-index.htm"
+        },
         {
           "form": "8-K",
           "date": "2026-05-05",
@@ -2355,16 +2019,197 @@
       ]
     },
     {
-      "rank": 21,
+      "rank": 14,
+      "ticker": "META",
+      "name": "Meta Platforms (Facebook)",
+      "sec_name": "Meta Platforms, Inc.",
+      "display_name": "Meta Platforms, Inc.",
+      "name_match": "verified",
+      "mentions": 59,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": 34.1,
+      "upvotes": 175,
+      "cik": "0001326801",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-29",
+        "days_ago": 11,
+        "fresh": false,
+        "desc": "8-K",
+        "summary": "Shareholder vote results",
+        "accession": "0001628280-26-039193",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/meta-20260527.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/0001628280-26-039193-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-29",
+          "days_ago": 11,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001628280-26-039193",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026039193/0001628280-26-039193-index.htm",
+          "ai_summary": "Meta Platforms shareholders re-elected all twelve directors and ratified Ernst & Young as their auditor, while rejecting all twelve shareholder proposals."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-04",
+          "days_ago": 36,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001193125-26-204128",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526204128/0001193125-26-204128-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001628280-26-028526",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/0001628280-26-028526-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 41,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001628280-26-028364",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/0001628280-26-028364-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-16",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001628280-26-025533",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025533/0001628280-26-025533-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-16",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001628280-26-025532",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/0001628280-26-025532-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-14",
+          "days_ago": 56,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001628280-26-025108",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025108/0001628280-26-025108-index.htm"
+        }
+      ],
+      "tickers": [
+        "META"
+      ]
+    },
+    {
+      "rank": 16,
+      "ticker": "ASTS",
+      "name": "AST SpaceMobile",
+      "sec_name": "AST SpaceMobile, Inc.",
+      "display_name": "AST SpaceMobile, Inc.",
+      "name_match": "verified",
+      "mentions": 55,
+      "mentions_24h_ago": 42,
+      "mention_change_pct": 31.0,
+      "upvotes": 368,
+      "cik": "0001780312",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-11",
+        "days_ago": 29,
+        "fresh": false,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001193125-26-216950",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/asts-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-11",
+          "days_ago": 29,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001193125-26-216950",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm",
+          "ai_summary": "AST SpaceMobile, Inc. reported a net loss of $191 million for Q1 2026, driven by increased operating expenses and a significant loss from a Block 2 BB7 satellite."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 29,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001193125-26-216946",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm",
+          "ai_summary": "AST SpaceMobile, Inc. announced its first quarter 2026 financial results and provided a business update via press release and presentation."
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-28",
+          "days_ago": 42,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001493152-26-019387",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019387/0001493152-26-019387-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-28",
+          "days_ago": 42,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001493152-26-019384",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019384/0001493152-26-019384-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-20",
+          "days_ago": 50,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001493152-26-018012",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226018012/0001493152-26-018012-index.htm"
+        }
+      ],
+      "tickers": [
+        "ASTS"
+      ]
+    },
+    {
+      "rank": 17,
       "ticker": "RDDT",
       "name": "Reddit",
       "sec_name": "Reddit, Inc.",
       "display_name": "Reddit, Inc.",
       "name_match": "verified",
-      "mentions": 39,
-      "mentions_24h_ago": 17,
-      "mention_change_pct": 129.4,
-      "upvotes": 173,
+      "mentions": 47,
+      "mentions_24h_ago": 25,
+      "mention_change_pct": 88.0,
+      "upvotes": 196,
       "cik": "0001713445",
       "filing": {
         "form": "10-Q",
@@ -2424,86 +2269,42 @@
       ]
     },
     {
-      "rank": 24,
-      "ticker": "LFVN",
-      "name": "Lifevantage",
-      "sec_name": "Lifevantage Corp",
-      "display_name": "Lifevantage Corp",
-      "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 26,
-      "mention_change_pct": 38.5,
-      "upvotes": 446,
-      "cik": "0000849146",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-06",
-        "days_ago": 34,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Earnings released",
-        "accession": "0001193125-26-208934",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/lfvn-20260506.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-06",
-          "days_ago": 34,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001193125-26-208934",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-06",
-          "days_ago": 34,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-208922",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208922/0001193125-26-208922-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-16",
-          "days_ago": 54,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001193125-26-159324",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526159324/0001193125-26-159324-index.htm"
-        }
-      ],
-      "tickers": [
-        "LFVN"
-      ]
+      "rank": 19,
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "sec_name": null,
+      "display_name": "Vanguard S&P 500 ETF",
+      "name_match": "no_cik",
+      "mentions": 44,
+      "mentions_24h_ago": 85,
+      "mention_change_pct": -48.2,
+      "upvotes": 99,
+      "cik": null,
+      "filing": null,
+      "filings": []
     },
     {
-      "rank": 25,
-      "ticker": "AMD",
-      "name": "AMD",
-      "sec_name": "ADVANCED MICRO DEVICES INC",
-      "display_name": "Advanced Micro Devices Inc",
+      "rank": 21,
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "sec_name": "Sandisk Corp",
+      "display_name": "Sandisk Corp",
       "name_match": "verified",
-      "mentions": 33,
-      "mentions_24h_ago": 43,
-      "mention_change_pct": -23.3,
-      "upvotes": 108,
-      "cik": "0000002488",
+      "mentions": 39,
+      "mentions_24h_ago": 13,
+      "mention_change_pct": 200.0,
+      "upvotes": 472,
+      "cik": "0002023554",
       "filing": {
         "form": "8-K",
         "date": "2026-05-15",
         "days_ago": 25,
         "fresh": false,
         "desc": "8-K",
-        "summary": "Material agreement signed; Material agreement terminated; New debt obligation; Executive / board change; Shareholder vote results",
-        "accession": "0001193125-26-226746",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/d118163d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/0001193125-26-226746-index.htm"
+        "summary": "Other material update",
+        "accession": "0001193125-26-224694",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/d157363d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
       },
       "filings": [
         {
@@ -2512,82 +2313,56 @@
           "days_ago": 25,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Material agreement signed; Material agreement terminated; New debt obligation; Executive / board change; Shareholder vote results",
-          "accession": "0001193125-26-226746",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/0001193125-26-226746-index.htm",
-          "ai_summary": "AMD signed a five‑year, $5 billion revolving credit facility and raised its commercial‑paper limit to $5.5 billion, while shareholders approved an amendment to its 2023 equity‑incentive plan."
+          "summary": "Other material update",
+          "accession": "0001193125-26-224694",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
         },
         {
           "form": "10-Q",
-          "date": "2026-05-06",
-          "days_ago": 34,
+          "date": "2026-05-01",
+          "days_ago": 39,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
-          "accession": "0000002488-26-000076",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000076/0000002488-26-000076-index.htm"
+          "accession": "0001628280-26-029401",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026029401/0001628280-26-029401-index.htm"
         },
         {
           "form": "8-K",
-          "date": "2026-05-05",
-          "days_ago": 35,
+          "date": "2026-04-30",
+          "days_ago": 40,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released; Other material update",
-          "accession": "0000002488-26-000072",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000072/0000002488-26-000072-index.htm"
+          "accession": "0001628280-26-028879",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026028879/0001628280-26-028879-index.htm"
         },
         {
-          "form": "DEFA14A",
-          "date": "2026-03-27",
-          "days_ago": 74,
+          "form": "8-K",
+          "date": "2026-03-25",
+          "days_ago": 76,
           "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001193125-26-129084",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526129084/0001193125-26-129084-index.htm"
-        },
-        {
-          "form": "DEF 14A",
-          "date": "2026-03-27",
-          "days_ago": 74,
-          "fresh": false,
-          "desc": "DEF 14A",
-          "summary": "Proxy statement",
-          "accession": "0001193125-26-129057",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526129057/0001193125-26-129057-index.htm"
+          "desc": "8-K",
+          "summary": "Material agreement signed; Other material update",
+          "accession": "0001193125-26-122705",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526122705/0001193125-26-122705-index.htm"
         }
       ],
       "tickers": [
-        "AMD"
+        "SNDK"
       ]
     },
     {
-      "rank": 26,
-      "ticker": "SOXL",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "sec_name": null,
-      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "name_match": "no_cik",
-      "mentions": 33,
-      "mentions_24h_ago": 24,
-      "mention_change_pct": 37.5,
-      "upvotes": 64,
-      "cik": null,
-      "filing": null,
-      "filings": []
-    },
-    {
-      "rank": 28,
+      "rank": 22,
       "ticker": "NOW",
       "name": "ServiceNow",
       "sec_name": "ServiceNow, Inc.",
       "display_name": "ServiceNow, Inc.",
       "name_match": "verified",
-      "mentions": 31,
-      "mentions_24h_ago": 15,
-      "mention_change_pct": 106.7,
-      "upvotes": 87,
+      "mentions": 38,
+      "mentions_24h_ago": 25,
+      "mention_change_pct": 52.0,
+      "upvotes": 100,
       "cik": "0001373715",
       "filing": {
         "form": "8-K",
@@ -2690,27 +2465,27 @@
       ]
     },
     {
-      "rank": 29,
-      "ticker": "INTC",
-      "name": "Intel",
-      "sec_name": "INTEL CORP",
-      "display_name": "Intel Corp",
+      "rank": 24,
+      "ticker": "AMD",
+      "name": "AMD",
+      "sec_name": "ADVANCED MICRO DEVICES INC",
+      "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
-      "mentions": 28,
-      "mentions_24h_ago": 8,
-      "mention_change_pct": 250.0,
-      "upvotes": 52,
-      "cik": "0000050863",
+      "mentions": 34,
+      "mentions_24h_ago": 46,
+      "mention_change_pct": -26.1,
+      "upvotes": 111,
+      "cik": "0000002488",
       "filing": {
         "form": "8-K",
         "date": "2026-05-15",
         "days_ago": 25,
         "fresh": false,
         "desc": "8-K",
-        "summary": "Shareholder vote results",
-        "accession": "0000050863-26-000118",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000118/intc-20260513.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000118/0000050863-26-000118-index.htm"
+        "summary": "Material agreement signed; Material agreement terminated; New debt obligation; Executive / board change; Shareholder vote results",
+        "accession": "0001193125-26-226746",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/d118163d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/0001193125-26-226746-index.htm"
       },
       "filings": [
         {
@@ -2719,174 +2494,198 @@
           "days_ago": 25,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0000050863-26-000118",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000118/0000050863-26-000118-index.htm",
-          "ai_summary": "Intel's 2026 annual meeting saw election of all directors and approval of accounting firm, say‑on‑pay, and plan amendments, while three shareholder proposals were rejected."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-197845",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000119312526197845/0001193125-26-197845-index.htm"
-        },
-        {
-          "form": "424B5",
-          "date": "2026-04-29",
-          "days_ago": 41,
-          "fresh": false,
-          "desc": "424B5",
-          "summary": "Shelf offering prospectus",
-          "accession": "0001193125-26-192240",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000119312526192240/0001193125-26-192240-index.htm"
-        },
-        {
-          "form": "424B5",
-          "date": "2026-04-27",
-          "days_ago": 43,
-          "fresh": false,
-          "desc": "424B5",
-          "summary": "Shelf offering prospectus",
-          "accession": "0001193125-26-179479",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000119312526179479/0001193125-26-179479-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-24",
-          "days_ago": 46,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0000050863-26-000083",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000083/0000050863-26-000083-index.htm"
+          "summary": "Material agreement signed; Material agreement terminated; New debt obligation; Executive / board change; Shareholder vote results",
+          "accession": "0001193125-26-226746",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/0001193125-26-226746-index.htm",
+          "ai_summary": "AMD signed a five‑year, $5 billion revolving credit facility and raised its commercial‑paper limit to $5.5 billion, while shareholders approved an amendment to its 2023 equity‑incentive plan."
         },
         {
           "form": "10-Q",
-          "date": "2026-04-24",
-          "days_ago": 46,
+          "date": "2026-05-06",
+          "days_ago": 34,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
-          "accession": "0000050863-26-000079",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000079/0000050863-26-000079-index.htm"
+          "accession": "0000002488-26-000076",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000076/0000002488-26-000076-index.htm"
         },
         {
           "form": "8-K",
-          "date": "2026-04-23",
-          "days_ago": 47,
+          "date": "2026-05-05",
+          "days_ago": 35,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000050863-26-000077",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000077/0000050863-26-000077-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-08",
-          "days_ago": 62,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0000050863-26-000072",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000072/0000050863-26-000072-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-03",
-          "days_ago": 67,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0000050863-26-000069",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000069/0000050863-26-000069-index.htm"
+          "summary": "Earnings released; Other material update",
+          "accession": "0000002488-26-000072",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000072/0000002488-26-000072-index.htm"
         },
         {
           "form": "DEFA14A",
-          "date": "2026-03-23",
-          "days_ago": 78,
+          "date": "2026-03-27",
+          "days_ago": 74,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
-          "accession": "0000050863-26-000062",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000062/0000050863-26-000062-index.htm"
+          "accession": "0001193125-26-129084",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526129084/0001193125-26-129084-index.htm"
         },
         {
           "form": "DEF 14A",
-          "date": "2026-03-23",
-          "days_ago": 78,
+          "date": "2026-03-27",
+          "days_ago": 74,
           "fresh": false,
-          "desc": "DEFINITIVE PROXY STATEMENT",
+          "desc": "DEF 14A",
           "summary": "Proxy statement",
-          "accession": "0000050863-26-000061",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000061/0000050863-26-000061-index.htm"
+          "accession": "0001193125-26-129057",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526129057/0001193125-26-129057-index.htm"
         }
       ],
       "tickers": [
-        "INTC"
+        "AMD"
       ]
     },
     {
-      "rank": 30,
-      "ticker": "ORCL",
-      "name": "Oracle",
-      "sec_name": "ORACLE CORP",
-      "display_name": "Oracle Corp",
+      "rank": 25,
+      "ticker": "LFVN",
+      "name": "Lifevantage",
+      "sec_name": "Lifevantage Corp",
+      "display_name": "Lifevantage Corp",
       "name_match": "verified",
-      "mentions": 25,
-      "mentions_24h_ago": 9,
-      "mention_change_pct": 177.8,
-      "upvotes": 103,
-      "cik": "0001341439",
+      "mentions": 32,
+      "mentions_24h_ago": 40,
+      "mention_change_pct": -20.0,
+      "upvotes": 348,
+      "cik": "0000849146",
       "filing": {
         "form": "8-K",
-        "date": "2026-05-12",
-        "days_ago": 28,
+        "date": "2026-05-06",
+        "days_ago": 34,
         "fresh": false,
         "desc": "8-K",
-        "summary": "Executive / board change; Other material update",
-        "accession": "0001193125-26-219708",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/d76569d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/0001193125-26-219708-index.htm"
+        "summary": "Earnings released",
+        "accession": "0001193125-26-208934",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/lfvn-20260506.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
       },
       "filings": [
         {
           "form": "8-K",
-          "date": "2026-05-12",
-          "days_ago": 28,
+          "date": "2026-05-06",
+          "days_ago": 34,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Executive / board change; Other material update",
-          "accession": "0001193125-26-219708",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/0001193125-26-219708-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-06",
-          "days_ago": 64,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change; Other material update",
-          "accession": "0001193125-26-142939",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526142939/0001193125-26-142939-index.htm"
+          "summary": "Earnings released",
+          "accession": "0001193125-26-208934",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
         },
         {
           "form": "10-Q",
-          "date": "2026-03-11",
-          "days_ago": 90,
+          "date": "2026-05-06",
+          "days_ago": 34,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
-          "accession": "0001193125-26-101045",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526101045/0001193125-26-101045-index.htm"
+          "accession": "0001193125-26-208922",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208922/0001193125-26-208922-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-16",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001193125-26-159324",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526159324/0001193125-26-159324-index.htm"
         }
       ],
       "tickers": [
-        "ORCL"
+        "LFVN"
       ]
+    },
+    {
+      "rank": 26,
+      "ticker": "GMM",
+      "name": "Global Mofy Metaverse",
+      "sec_name": "Global Mofy AI Ltd",
+      "display_name": "Global Mofy AI Ltd",
+      "name_match": "verified",
+      "mentions": 31,
+      "mentions_24h_ago": 2,
+      "mention_change_pct": 1450.0,
+      "upvotes": 100,
+      "cik": "0001913749",
+      "filing": {
+        "form": "6-K",
+        "date": "2026-05-26",
+        "days_ago": 14,
+        "fresh": false,
+        "desc": "REPORT OF FOREIGN PRIVATE ISSUER",
+        "summary": "Foreign issuer update",
+        "accession": "0001213900-26-061042",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1913749/000121390026061042/ea0292107-6k_global.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1913749/000121390026061042/0001213900-26-061042-index.htm"
+      },
+      "filings": [
+        {
+          "form": "6-K",
+          "date": "2026-05-26",
+          "days_ago": 14,
+          "fresh": false,
+          "desc": "REPORT OF FOREIGN PRIVATE ISSUER",
+          "summary": "Foreign issuer update",
+          "accession": "0001213900-26-061042",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1913749/000121390026061042/0001213900-26-061042-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-05-26",
+          "days_ago": 14,
+          "fresh": false,
+          "desc": "PROSPECTUS SUPPLEMENT",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001213900-26-060808",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1913749/000121390026060808/0001213900-26-060808-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-04-30",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "REPORT OF FOREIGN PRIVATE ISSUER",
+          "summary": "Foreign issuer update",
+          "accession": "0001213900-26-050359",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1913749/000121390026050359/0001213900-26-050359-index.htm"
+        },
+        {
+          "form": "6-K",
+          "date": "2026-03-24",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "REPORT OF FOREIGN PRIVATE ISSUER",
+          "summary": "Foreign issuer update",
+          "accession": "0001213900-26-033612",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1913749/000121390026033612/0001213900-26-033612-index.htm"
+        }
+      ],
+      "tickers": [
+        "GMM"
+      ]
+    },
+    {
+      "rank": 29,
+      "ticker": "SOXL",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "sec_name": null,
+      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "name_match": "no_cik",
+      "mentions": 27,
+      "mentions_24h_ago": 30,
+      "mention_change_pct": -10.0,
+      "upvotes": 52,
+      "cik": null,
+      "filing": null,
+      "filings": []
     }
   ]
 }
