@@ -1,5 +1,12 @@
 // EDGAR Media — render trending.json into the dashboard.
 
+import { esc, timeAgo, momentum, filingsListHtml } from "./js/util.js";
+import { isConfigured } from "./js/config.js";
+import { setItems } from "./js/store.js";
+import * as auth from "./js/auth.js";
+import * as router from "./js/router.js";
+import { renderInlinePanel } from "./js/comments.js";
+
 const $ = (s) => document.querySelector(s);
 
 // --- dark mode (persisted) ---
@@ -15,112 +22,21 @@ toggle.addEventListener("click", () => {
     applyTheme(dark);
 });
 
-// --- helpers ---
-function timeAgo(iso) {
-    const then = new Date(iso).getTime();
-    if (Number.isNaN(then)) return "";
-    const mins = Math.round((Date.now() - then) / 60000);
-    if (mins < 1) return "just now";
-    if (mins < 60) return `${mins} min ago`;
-    const hrs = Math.round(mins / 60);
-    if (hrs < 24) return `${hrs} h ago`;
-    return `${Math.round(hrs / 24)} d ago`;
-}
+// --- card ---
+function tickerId(it) { return (it.ticker || "").replace(/[^a-z0-9]/gi, ""); }
 
-function daysLabel(d) {
-    if (d === 0) return "today";
-    if (d === 1) return "yesterday";
-    return `${d} days ago`;
-}
-
-function esc(s) {
-    return String(s).replace(/[&<>"]/g, (c) =>
-        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-}
-
-function momentum(it) {
-    const { mention_change_pct: c, mentions } = it;
-    if (c === null || c === undefined)
-        return `${mentions} mentions`;
-    const arrow = c >= 0 ? "▲" : "▼";
-    const cls = c >= 0 ? "chg-up" : "chg-down";
-    return `${mentions} mentions <span class="${cls}">${arrow} ${Math.abs(c)}%</span> <span style="opacity:.7">vs 24h</span>`;
-}
-
-function filingRow(f, prefix) {
-    const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
-    const fire = f.fresh ? "🔥 " : "";   // very recent (<=7 days) -> flame on the age
-    const lbl = f.summary && f.summary !== f.form ? ` · ${esc(f.summary)}` : "";
-    // Form code IS the link to the SEC filing (the ↗ cues the external jump); it's
-    // an interactive descendant, so on summary rows clicking it navigates without
-    // toggling the row open.
-    const formDate = `<a class="flform" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.form)} ↗</a>
-        <span class="fl-date">${esc(f.date)}${lbl}</span>`;
-    // age, pushed to the right edge (.flwhen has margin-left:auto)
-    const tail = `<span class="flwhen">${fire}${esc(when)}</span>`;
-    // Summarized row stays a one-liner with a "Summary" tag (next to the
-    // description it annotates) as the expand cue; clicking the header (a <label>
-    // tied to a hidden checkbox) reveals it inline. The SEC link is an interactive
-    // descendant, so it navigates without toggling the row. Pure CSS, no JS.
-    if (f.ai_summary) {
-        // Namespace by ticker: tickers sharing a CIK (e.g. GOOG/GOOGL) repeat
-        // the same accessions, so accession alone yields duplicate DOM ids and
-        // a <label for> would toggle the first card's checkbox, not this one.
-        const id = `flx-${(prefix || "").replace(/[^a-z0-9]/gi, "")}-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
-        return `<li class="flrow flrow-ai">
-            <input type="checkbox" id="${id}" class="fl-expand" hidden>
-            <label class="fl-head" for="${id}">${formDate}<span class="fl-tag">Summary</span>${tail}</label>
-            <p class="fl-summary"><em class="fl-label">Summary:</em> ${esc(f.ai_summary)}</p>
-        </li>`;
-    }
-    return `<li class="flrow flrow-plain"><div class="fl-head">${formDate}${tail}</div></li>`;
-}
-
-function filingsListHtml(it) {
-    const head = it.filing;
-    const all = it.cik ? (it.filings || []) : [];
-    const warn = it.name_match === "mismatch"
-        ? `<p class="filing-warn"><span class="warn">⚠ unverified ticker/name match</span></p>`
-        : "";
-    // Match the headline within the 90-day window (by accession, or date+form if a
-    // headline ever lacks one).
-    const matchHead = head
-        ? (head.accession
-            ? (f) => f.accession === head.accession
-            : (f) => f.date === head.date && f.form === head.form)
-        : () => false;
-    // Lead = the latest filing, shown directly as the first row (no menu). Prefer
-    // the in-window copy because only it carries the ai_summary (-> Summary button);
-    // fall back to the headline if it's older than the window, then to the newest
-    // in-window filing. No filing at all -> a muted note, no menu.
-    const lead = all.find(matchHead) || head || all[0] || null;
-    if (!lead) {
-        return `<div class="card-filings">${warn}<p class="filing-none">no recent material filing</p></div>`;
-    }
-    // "More" rows = the rest of the 90-day window minus the lead (by reference).
-    const rest = all.filter((f) => f !== lead);
-    const leadRow = `<ul class="filing-list filing-lead">${filingRow(lead, it.ticker)}</ul>`;
-    // Single filing -> a "Latest filings" label, no toggle.
-    if (!rest.length) {
-        return `<div class="card-filings">${warn}
-            <div class="filing-head"><span class="filing-head-label">Latest filings</span></div>
-            ${leadRow}</div>`;
-    }
-    const id = `more-${(it.ticker || "").replace(/[^a-z0-9]/gi, "")}`;
-    const n = rest.length;
-    const rows = rest.map((f) => filingRow(f, it.ticker)).join("");
-    // Checkbox first, then the header (with both toggle labels) and the rows -> the
-    // control lives in the fixed header at the top, so collapsing never needs a scroll.
-    return `<div class="card-filings">${warn}
-        <input type="checkbox" id="${id}" class="more-toggle" hidden>
-        <div class="filing-head">
-            <span class="filing-head-label">Latest filings</span>
-            <label class="more-open" for="${id}">show ${n} more</label>
-            <label class="more-close" for="${id}">show less</label>
+// Per-card comments footer: a CSS-checkbox expander (same pattern as .more-toggle)
+// whose .card-comments panel is lazy-loaded on first open. Only shown for companies
+// with a CIK, and only when Supabase is configured (otherwise the live site is
+// byte-for-byte unchanged).
+function commentsFooter(it) {
+    if (!isConfigured || !it.cik) return "";
+    const id = `cmt-${tickerId(it)}`;
+    return `<input type="checkbox" id="${id}" class="cmt-toggle" hidden>
+        <div class="card-comments-bar">
+            <label class="cmt-toggle-label" for="${id}">💬 Comments<span class="cmt-count"></span></label>
         </div>
-        ${leadRow}
-        <ul class="filing-list more-rows">${rows}</ul>
-    </div>`;
+        <div class="card-comments" data-cik="${esc(it.cik)}"></div>`;
 }
 
 function cardHtml(it, i) {
@@ -148,6 +64,7 @@ function cardHtml(it, i) {
             </div>
         </div>
         ${filingsListHtml(it)}
+        ${commentsFooter(it)}
     </article>`;
 }
 
@@ -210,21 +127,51 @@ if (countSel) countSel.addEventListener("change", () => {
     applyView();
 });
 
+// Lazy-load a card's inline comments the first time its panel is opened. One
+// delegated listener on #list survives the innerHTML re-renders in applyView.
+function initCommentPanels() {
+    const list = $("#list");
+    if (!list) return;
+    list.addEventListener("change", (e) => {
+        const cb = e.target.closest(".cmt-toggle");
+        if (!cb || !cb.checked) return;
+        const card = cb.closest(".card");
+        const panel = card?.querySelector(".card-comments");
+        if (!panel || panel.dataset.loaded) return;
+        panel.dataset.loaded = "1";
+        const cik = panel.dataset.cik;
+        const company = allItems.find((it) => String(it.cik) === String(cik));
+        const countEl = card.querySelector(".cmt-count");
+        renderInlinePanel(cik, panel, company, (n) => {
+            if (countEl) countEl.textContent = n ? ` (${n})` : "";
+        });
+    });
+}
+
 // --- load ---
+auth.init();   // header sign-in/out (no-op until Supabase is configured)
+initCommentPanels();
+
 fetch("./data/trending.json", { cache: "no-store" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((data) => {
         $("#updated").textContent =
             `Updated ${timeAgo(data.updated_utc)} · filings from SEC EDGAR`;
         allItems = data.items || [];
+        setItems(allItems);            // share with the per-company page
         const savedCount = parseInt(localStorage.getItem("count"), 10) || DEFAULT_COUNT;
         if (countSel) countSel.value = String(savedCount);
         if (sortSel) sortSel.value = localStorage.getItem("sort") || "default";
         applyView();
+        router.init();                 // resolve any #/company/… deep link
     })
     .catch((e) => {
         $("#updated").textContent = "";
         $("#list").innerHTML =
             `<div class="loading">Couldn't load data (${esc(e.message)}). ` +
             `The hourly updater may not have run yet.</div>`;
+        // Still resolve the store + start the router so a #/company/… deep link
+        // shows "not found" instead of hanging forever on `await ready`.
+        setItems([]);
+        router.init();
     });
