@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-06-09T20:06:16Z",
+  "updated_utc": "2026-06-09T22:23:32Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "filings": "SEC EDGAR submissions API (real-time)"
@@ -9,16 +9,96 @@
   "count": 30,
   "items": [
     {
+      "rank": 2,
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "sec_name": "MICRON TECHNOLOGY INC",
+      "display_name": "Micron Technology Inc",
+      "name_match": "verified",
+      "mentions": 437,
+      "mentions_24h_ago": 377,
+      "mention_change_pct": 15.9,
+      "upvotes": 2189,
+      "cik": "0000723125",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-09",
+        "days_ago": 0,
+        "fresh": true,
+        "desc": "FORM 8-K",
+        "summary": "Executive / board change",
+        "accession": "0001104659-26-071845",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/tm2617112d1_8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/0001104659-26-071845-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "FORM 8-K",
+          "summary": "Executive / board change",
+          "accession": "0001104659-26-071845",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/0001104659-26-071845-index.htm",
+          "ai_summary": "Micron Technology appointed Alexis Black Björlin as an independent director and member of the Governance and Sustainability Committee."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-01",
+          "days_ago": 69,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Other material update",
+          "accession": "0001104659-26-038249",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-25",
+          "days_ago": 76,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Other material update",
+          "accession": "0001104659-26-034174",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926034174/0001104659-26-034174-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-03-19",
+          "days_ago": 82,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0000723125-26-000006",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/0000723125-26-000006-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-18",
+          "days_ago": 83,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0000723125-26-000004",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000004/0000723125-26-000004-index.htm"
+        }
+      ],
+      "tickers": [
+        "MU"
+      ]
+    },
+    {
       "rank": 3,
       "ticker": "MSFT",
       "name": "Microsoft",
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 297,
-      "mentions_24h_ago": 261,
-      "mention_change_pct": 13.8,
-      "upvotes": 3082,
+      "mentions": 296,
+      "mentions_24h_ago": 273,
+      "mention_change_pct": 8.4,
+      "upvotes": 1020,
       "cik": "0000789019",
       "filing": {
         "form": "8-K",
@@ -86,10 +166,10 @@
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 94,
-      "mentions_24h_ago": 79,
-      "mention_change_pct": 19.0,
-      "upvotes": 437,
+      "mentions": 100,
+      "mentions_24h_ago": 86,
+      "mention_change_pct": 16.3,
+      "upvotes": 485,
       "cik": "0000936340",
       "filing": {
         "form": "424B5",
@@ -229,10 +309,10 @@
       "sec_name": "Broadcom Inc.",
       "display_name": "Broadcom Inc.",
       "name_match": "verified",
-      "mentions": 90,
-      "mentions_24h_ago": 111,
-      "mention_change_pct": -18.9,
-      "upvotes": 283,
+      "mentions": 91,
+      "mentions_24h_ago": 113,
+      "mention_change_pct": -19.5,
+      "upvotes": 305,
       "cik": "0001730168",
       "filing": {
         "form": "S-4",
@@ -336,16 +416,16 @@
       ]
     },
     {
-      "rank": 14,
+      "rank": 15,
       "ticker": "OPEN",
       "name": "Opendoor",
       "sec_name": "Opendoor Technologies Inc.",
       "display_name": "Opendoor Technologies Inc.",
       "name_match": "verified",
-      "mentions": 63,
-      "mentions_24h_ago": 7,
-      "mention_change_pct": 800.0,
-      "upvotes": 2457,
+      "mentions": 56,
+      "mentions_24h_ago": 12,
+      "mention_change_pct": 366.7,
+      "upvotes": 286,
       "cik": "0001801169",
       "filing": {
         "form": "DEFA14A",
@@ -416,16 +496,16 @@
       ]
     },
     {
-      "rank": 20,
+      "rank": 18,
       "ticker": "AM",
       "name": "Antero Midstream",
       "sec_name": "Antero Midstream Corp",
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
-      "mentions": 53,
-      "mentions_24h_ago": 58,
-      "mention_change_pct": -8.6,
-      "upvotes": 107,
+      "mentions": 52,
+      "mentions_24h_ago": 67,
+      "mention_change_pct": -22.4,
+      "upvotes": 102,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -517,15 +597,15 @@
       ]
     },
     {
-      "rank": 23,
+      "rank": 22,
       "ticker": "RKLB",
       "name": "Rocket Lab USA",
       "sec_name": "Rocket Lab Corp",
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
-      "mentions": 45,
-      "mentions_24h_ago": 30,
-      "mention_change_pct": 50.0,
+      "mentions": 46,
+      "mentions_24h_ago": 27,
+      "mention_change_pct": 70.4,
       "upvotes": 491,
       "cik": "0001819994",
       "filing": {
@@ -717,10 +797,10 @@
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 31,
-      "mentions_24h_ago": 39,
-      "mention_change_pct": -20.5,
-      "upvotes": 2149,
+      "mentions": 27,
+      "mentions_24h_ago": 40,
+      "mention_change_pct": -32.5,
+      "upvotes": 50,
       "cik": "0001652044",
       "filing": {
         "form": "8-K",
@@ -985,90 +1065,161 @@
       ]
     },
     {
+      "rank": 29,
+      "ticker": "TE",
+      "name": "T1 Energy",
+      "sec_name": "T1 Energy Inc.",
+      "display_name": "T1 Energy Inc.",
+      "name_match": "verified",
+      "mentions": 26,
+      "mentions_24h_ago": 1,
+      "mention_change_pct": 2500.0,
+      "upvotes": 879,
+      "cik": "0001992243",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-08",
+        "days_ago": 1,
+        "fresh": true,
+        "desc": "CURRENT REPORT",
+        "summary": "Unregistered share sale",
+        "accession": "0001213900-26-065997",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026065997/ea0293886-8k_t1energy.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026065997/0001213900-26-065997-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-08",
+          "days_ago": 1,
+          "fresh": true,
+          "desc": "CURRENT REPORT",
+          "summary": "Unregistered share sale",
+          "accession": "0001213900-26-065997",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026065997/0001213900-26-065997-index.htm",
+          "ai_summary": "T1 Energy announced a $32 million acquisition of KORE Power, paying $9.6 million in company stock at closing plus up to $15.1 million in additional stock‑based earn‑outs."
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-05-18",
+          "days_ago": 22,
+          "fresh": false,
+          "desc": "PROXY STATEMENT",
+          "summary": "Proxy statement",
+          "accession": "0001213900-26-058457",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026058457/0001213900-26-058457-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-12",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001992243-26-000014",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000199224326000014/0001992243-26-000014-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-12",
+          "days_ago": 28,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001213900-26-054706",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026054706/0001213900-26-054706-index.htm"
+        },
+        {
+          "form": "PRE 14A",
+          "date": "2026-05-07",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "PROXY STATEMENT",
+          "summary": "Preliminary proxy",
+          "accession": "0001213900-26-053410",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026053410/0001213900-26-053410-index.htm"
+        },
+        {
+          "form": "10-K/A",
+          "date": "2026-04-30",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "AMENDMENT NO. 1 TO FORM 10-K",
+          "summary": "Annual report (amended)",
+          "accession": "0001213900-26-049667",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026049667/0001213900-26-049667-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-27",
+          "days_ago": 43,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Executive / board change",
+          "accession": "0001213900-26-048030",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026048030/0001213900-26-048030-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-17",
+          "days_ago": 53,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Material agreement signed; New debt obligation; Other material update",
+          "accession": "0001213900-26-045173",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026045173/0001213900-26-045173-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-04-16",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "PROSPECTUS SUPPLEMENT",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001213900-26-044732",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026044732/0001213900-26-044732-index.htm"
+        },
+        {
+          "form": "10-K",
+          "date": "2026-03-31",
+          "days_ago": 70,
+          "fresh": false,
+          "desc": "10-K",
+          "summary": "Annual report",
+          "accession": "0001992243-26-000007",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000199224326000007/0001992243-26-000007-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-31",
+          "days_ago": 70,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Earnings released; Executive / board change; Other material update",
+          "accession": "0001213900-26-036817",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026036817/0001213900-26-036817-index.htm"
+        }
+      ],
+      "tickers": [
+        "TE"
+      ]
+    },
+    {
       "rank": 1,
       "ticker": "SPY",
       "name": "SPDR S&P 500 ETF Trust",
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 538,
-      "mentions_24h_ago": 364,
-      "mention_change_pct": 47.8,
-      "upvotes": 2228,
+      "mentions": 572,
+      "mentions_24h_ago": 373,
+      "mention_change_pct": 53.4,
+      "upvotes": 2264,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
       "tickers": [
         "SPY"
-      ]
-    },
-    {
-      "rank": 2,
-      "ticker": "MU",
-      "name": "Micron Technology",
-      "sec_name": "MICRON TECHNOLOGY INC",
-      "display_name": "Micron Technology Inc",
-      "name_match": "verified",
-      "mentions": 412,
-      "mentions_24h_ago": 373,
-      "mention_change_pct": 10.5,
-      "upvotes": 2006,
-      "cik": "0000723125",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-04-01",
-        "days_ago": 69,
-        "fresh": false,
-        "desc": "FORM 8-K",
-        "summary": "Other material update",
-        "accession": "0001104659-26-038249",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/tm2610810d1_8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-04-01",
-          "days_ago": 69,
-          "fresh": false,
-          "desc": "FORM 8-K",
-          "summary": "Other material update",
-          "accession": "0001104659-26-038249",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-25",
-          "days_ago": 76,
-          "fresh": false,
-          "desc": "FORM 8-K",
-          "summary": "Other material update",
-          "accession": "0001104659-26-034174",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926034174/0001104659-26-034174-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-03-19",
-          "days_ago": 82,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0000723125-26-000006",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/0000723125-26-000006-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-18",
-          "days_ago": 83,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000723125-26-000004",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000004/0000723125-26-000004-index.htm"
-        }
-      ],
-      "tickers": [
-        "MU"
       ]
     },
     {
@@ -1078,10 +1229,10 @@
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 251,
-      "mentions_24h_ago": 140,
-      "mention_change_pct": 79.3,
-      "upvotes": 961,
+      "mentions": 266,
+      "mentions_24h_ago": 149,
+      "mention_change_pct": 78.5,
+      "upvotes": 1020,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
@@ -1106,10 +1257,10 @@
       "sec_name": "Marvell Technology, Inc.",
       "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
-      "mentions": 165,
+      "mentions": 163,
       "mentions_24h_ago": 179,
-      "mention_change_pct": -7.8,
-      "upvotes": 560,
+      "mention_change_pct": -8.9,
+      "upvotes": 592,
       "cik": "0001835632",
       "filing": {
         "form": "10-Q",
@@ -1239,10 +1390,10 @@
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 158,
-      "mentions_24h_ago": 156,
-      "mention_change_pct": 1.3,
-      "upvotes": 580,
+      "mentions": 160,
+      "mentions_24h_ago": 161,
+      "mention_change_pct": -0.6,
+      "upvotes": 591,
       "cik": "0001045810",
       "filing": {
         "form": "10-Q",
@@ -1327,15 +1478,71 @@
     },
     {
       "rank": 7,
+      "ticker": "SPCX",
+      "name": "Collaborative Investment Series Trust - The SPAC and New Issue ETF",
+      "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
+      "display_name": "Space Exploration Technologies Corp",
+      "name_match": "mismatch",
+      "mentions": 116,
+      "mentions_24h_ago": 57,
+      "mention_change_pct": 103.5,
+      "upvotes": 2236,
+      "cik": "0001181412",
+      "filing": {
+        "form": "S-1/A",
+        "date": "2026-06-03",
+        "days_ago": 6,
+        "fresh": true,
+        "desc": "S-1/A",
+        "summary": "IPO registration (amended)",
+        "accession": "0001628280-26-040364",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
+      },
+      "filings": [
+        {
+          "form": "S-1/A",
+          "date": "2026-06-03",
+          "days_ago": 6,
+          "fresh": true,
+          "desc": "S-1/A",
+          "summary": "IPO registration (amended)",
+          "accession": "0001628280-26-040364",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
+        },
+        {
+          "form": "S-1/A",
+          "date": "2026-06-01",
+          "days_ago": 8,
+          "fresh": false,
+          "desc": "S-1/A",
+          "summary": "IPO registration (amended)",
+          "accession": "0001628280-26-039276",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/0001628280-26-039276-index.htm"
+        },
+        {
+          "form": "S-1",
+          "date": "2026-05-20",
+          "days_ago": 20,
+          "fresh": false,
+          "desc": "S-1",
+          "summary": "IPO / new securities",
+          "accession": "0001628280-26-036936",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
+        }
+      ]
+    },
+    {
+      "rank": 8,
       "ticker": "AAPL",
       "name": "Apple",
       "sec_name": "Apple Inc.",
       "display_name": "Apple Inc.",
       "name_match": "verified",
-      "mentions": 118,
-      "mentions_24h_ago": 99,
-      "mention_change_pct": 19.2,
-      "upvotes": 254,
+      "mentions": 105,
+      "mentions_24h_ago": 114,
+      "mention_change_pct": -7.9,
+      "upvotes": 259,
       "cik": "0000320193",
       "filing": {
         "form": "10-Q",
@@ -1385,72 +1592,97 @@
       ]
     },
     {
-      "rank": 8,
-      "ticker": "SPCX",
-      "name": "Collaborative Investment Series Trust - The SPAC and New Issue ETF",
-      "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
-      "display_name": "Space Exploration Technologies Corp",
-      "name_match": "mismatch",
-      "mentions": 106,
-      "mentions_24h_ago": 63,
+      "rank": 11,
+      "ticker": "ASTS",
+      "name": "AST SpaceMobile",
+      "sec_name": "AST SpaceMobile, Inc.",
+      "display_name": "AST SpaceMobile, Inc.",
+      "name_match": "verified",
+      "mentions": 69,
+      "mentions_24h_ago": 41,
       "mention_change_pct": 68.3,
-      "upvotes": 1443,
-      "cik": "0001181412",
+      "upvotes": 445,
+      "cik": "0001780312",
       "filing": {
-        "form": "S-1/A",
-        "date": "2026-06-03",
-        "days_ago": 6,
-        "fresh": true,
-        "desc": "S-1/A",
-        "summary": "IPO registration (amended)",
-        "accession": "0001628280-26-040364",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
+        "form": "10-Q",
+        "date": "2026-05-11",
+        "days_ago": 29,
+        "fresh": false,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001193125-26-216950",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/asts-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
       },
       "filings": [
         {
-          "form": "S-1/A",
-          "date": "2026-06-03",
-          "days_ago": 6,
-          "fresh": true,
-          "desc": "S-1/A",
-          "summary": "IPO registration (amended)",
-          "accession": "0001628280-26-040364",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
+          "form": "10-Q",
+          "date": "2026-05-11",
+          "days_ago": 29,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001193125-26-216950",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm",
+          "ai_summary": "AST SpaceMobile, Inc. reported a net loss of $191 million for Q1 2026, driven by increased operating expenses and a significant loss from a Block 2 BB7 satellite."
         },
         {
-          "form": "S-1/A",
-          "date": "2026-06-01",
-          "days_ago": 8,
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 29,
           "fresh": false,
-          "desc": "S-1/A",
-          "summary": "IPO registration (amended)",
-          "accession": "0001628280-26-039276",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/0001628280-26-039276-index.htm"
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001193125-26-216946",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm",
+          "ai_summary": "AST SpaceMobile, Inc. announced its first quarter 2026 financial results and provided a business update via press release and presentation."
         },
         {
-          "form": "S-1",
-          "date": "2026-05-20",
-          "days_ago": 20,
+          "form": "DEFA14A",
+          "date": "2026-04-28",
+          "days_ago": 42,
           "fresh": false,
-          "desc": "S-1",
-          "summary": "IPO / new securities",
-          "accession": "0001628280-26-036936",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001493152-26-019387",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019387/0001493152-26-019387-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-28",
+          "days_ago": 42,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001493152-26-019384",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019384/0001493152-26-019384-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-20",
+          "days_ago": 50,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001493152-26-018012",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226018012/0001493152-26-018012-index.htm"
         }
+      ],
+      "tickers": [
+        "ASTS"
       ]
     },
     {
-      "rank": 11,
+      "rank": 12,
       "ticker": "META",
       "name": "Meta Platforms (Facebook)",
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 70,
-      "mentions_24h_ago": 61,
-      "mention_change_pct": 14.8,
-      "upvotes": 154,
+      "mentions": 63,
+      "mentions_24h_ago": 62,
+      "mention_change_pct": 1.6,
+      "upvotes": 132,
       "cik": "0001326801",
       "filing": {
         "form": "8-K",
@@ -1541,203 +1773,16 @@
       ]
     },
     {
-      "rank": 12,
-      "ticker": "ASTS",
-      "name": "AST SpaceMobile",
-      "sec_name": "AST SpaceMobile, Inc.",
-      "display_name": "AST SpaceMobile, Inc.",
-      "name_match": "verified",
-      "mentions": 68,
-      "mentions_24h_ago": 43,
-      "mention_change_pct": 58.1,
-      "upvotes": 436,
-      "cik": "0001780312",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-11",
-        "days_ago": 29,
-        "fresh": false,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001193125-26-216950",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/asts-20260331.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-05-11",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-216950",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. reported a net loss of $191 million for Q1 2026, driven by increased operating expenses and a significant loss from a Block 2 BB7 satellite."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-11",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001193125-26-216946",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. announced its first quarter 2026 financial results and provided a business update via press release and presentation."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-04-28",
-          "days_ago": 42,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001493152-26-019387",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019387/0001493152-26-019387-index.htm"
-        },
-        {
-          "form": "DEF 14A",
-          "date": "2026-04-28",
-          "days_ago": 42,
-          "fresh": false,
-          "desc": "DEF 14A",
-          "summary": "Proxy statement",
-          "accession": "0001493152-26-019384",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226019384/0001493152-26-019384-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-20",
-          "days_ago": 50,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001493152-26-018012",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226018012/0001493152-26-018012-index.htm"
-        }
-      ],
-      "tickers": [
-        "ASTS"
-      ]
-    },
-    {
       "rank": 13,
-      "ticker": "APLD",
-      "name": "Applied Blockchain",
-      "sec_name": "Applied Digital Corp.",
-      "display_name": "Applied Digital Corp.",
-      "name_match": "mismatch",
-      "mentions": 68,
-      "mentions_24h_ago": 1,
-      "mention_change_pct": 6700.0,
-      "upvotes": 176,
-      "cik": "0001144879",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-06-09",
-        "days_ago": 0,
-        "fresh": true,
-        "desc": "8-K",
-        "summary": "Other material update",
-        "accession": "0001493152-26-027857",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027857/form8-k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027857/0001493152-26-027857-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-06-09",
-          "days_ago": 0,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001493152-26-027857",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027857/0001493152-26-027857-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-05",
-          "days_ago": 35,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; Acquisition / disposition completed; Other material update",
-          "accession": "0001493152-26-021333",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226021333/0001493152-26-021333-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-23",
-          "days_ago": 47,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001144879-26-000036",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000036/0001144879-26-000036-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-16",
-          "days_ago": 54,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001493152-26-017092",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226017092/0001493152-26-017092-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-04-08",
-          "days_ago": 62,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001144879-26-000030",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000030/0001144879-26-000030-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-08",
-          "days_ago": 62,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001144879-26-000029",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000029/0001144879-26-000029-index.htm"
-        },
-        {
-          "form": "8-K/A",
-          "date": "2026-04-01",
-          "days_ago": 69,
-          "fresh": false,
-          "desc": "8-K/A",
-          "summary": "Material agreement signed",
-          "accession": "0001493152-26-014498",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226014498/0001493152-26-014498-index.htm"
-        },
-        {
-          "form": "8-K/A",
-          "date": "2026-03-13",
-          "days_ago": 88,
-          "fresh": false,
-          "desc": "8-K/A",
-          "summary": "Executive / board change",
-          "accession": "0001493152-26-010113",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226010113/0001493152-26-010113-index.htm"
-        }
-      ]
-    },
-    {
-      "rank": 15,
       "ticker": "RDDT",
       "name": "Reddit",
       "sec_name": "Reddit, Inc.",
       "display_name": "Reddit, Inc.",
       "name_match": "verified",
-      "mentions": 63,
-      "mentions_24h_ago": 31,
-      "mention_change_pct": 103.2,
-      "upvotes": 277,
+      "mentions": 62,
+      "mentions_24h_ago": 30,
+      "mention_change_pct": 106.7,
+      "upvotes": 271,
       "cik": "0001713445",
       "filing": {
         "form": "10-Q",
@@ -1797,16 +1842,154 @@
       ]
     },
     {
+      "rank": 14,
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "sec_name": "Tesla, Inc.",
+      "display_name": "Tesla, Inc.",
+      "name_match": "verified",
+      "mentions": 59,
+      "mentions_24h_ago": 106,
+      "mention_change_pct": -44.3,
+      "upvotes": 508,
+      "cik": "0001318605",
+      "filing": {
+        "form": "10-K/A",
+        "date": "2026-04-30",
+        "days_ago": 40,
+        "fresh": false,
+        "desc": "FORM 10-K/A",
+        "summary": "Annual report (amended)",
+        "accession": "0001104659-26-053166",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/tm2611837d1_10ka.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-K/A",
+          "date": "2026-04-30",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "FORM 10-K/A",
+          "summary": "Annual report (amended)",
+          "accession": "0001104659-26-053166",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-23",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001628280-26-026673",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/0001628280-26-026673-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-22",
+          "days_ago": 48,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001628280-26-026551",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026551/0001628280-26-026551-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-02",
+          "days_ago": 68,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001628280-26-022956",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026022956/0001628280-26-022956-index.htm"
+        }
+      ],
+      "tickers": [
+        "TSLA"
+      ]
+    },
+    {
       "rank": 16,
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "sec_name": "Sandisk Corp",
+      "display_name": "Sandisk Corp",
+      "name_match": "verified",
+      "mentions": 55,
+      "mentions_24h_ago": 25,
+      "mention_change_pct": 120.0,
+      "upvotes": 196,
+      "cik": "0002023554",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-15",
+        "days_ago": 25,
+        "fresh": false,
+        "desc": "8-K",
+        "summary": "Other material update",
+        "accession": "0001193125-26-224694",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/d157363d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 25,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001193125-26-224694",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001628280-26-029401",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026029401/0001628280-26-029401-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001628280-26-028879",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026028879/0001628280-26-028879-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-25",
+          "days_ago": 76,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; Other material update",
+          "accession": "0001193125-26-122705",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526122705/0001193125-26-122705-index.htm"
+        }
+      ],
+      "tickers": [
+        "SNDK"
+      ]
+    },
+    {
+      "rank": 17,
       "ticker": "NBIS",
       "name": "Nebius Group",
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 63,
-      "mentions_24h_ago": 46,
-      "mention_change_pct": 37.0,
-      "upvotes": 138,
+      "mentions": 53,
+      "mentions_24h_ago": 56,
+      "mention_change_pct": -5.4,
+      "upvotes": 128,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -1918,154 +2101,31 @@
       ]
     },
     {
-      "rank": 17,
-      "ticker": "TSLA",
-      "name": "Tesla",
-      "sec_name": "Tesla, Inc.",
-      "display_name": "Tesla, Inc.",
-      "name_match": "verified",
-      "mentions": 61,
-      "mentions_24h_ago": 97,
-      "mention_change_pct": -37.1,
-      "upvotes": 514,
-      "cik": "0001318605",
-      "filing": {
-        "form": "10-K/A",
-        "date": "2026-04-30",
-        "days_ago": 40,
-        "fresh": false,
-        "desc": "FORM 10-K/A",
-        "summary": "Annual report (amended)",
-        "accession": "0001104659-26-053166",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/tm2611837d1_10ka.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-K/A",
-          "date": "2026-04-30",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "FORM 10-K/A",
-          "summary": "Annual report (amended)",
-          "accession": "0001104659-26-053166",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-04-23",
-          "days_ago": 47,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001628280-26-026673",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/0001628280-26-026673-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-22",
-          "days_ago": 48,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001628280-26-026551",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026551/0001628280-26-026551-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-02",
-          "days_ago": 68,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001628280-26-022956",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026022956/0001628280-26-022956-index.htm"
-        }
-      ],
-      "tickers": [
-        "TSLA"
-      ]
-    },
-    {
-      "rank": 18,
-      "ticker": "SNDK",
-      "name": "Sandisk",
-      "sec_name": "Sandisk Corp",
-      "display_name": "Sandisk Corp",
-      "name_match": "verified",
-      "mentions": 56,
-      "mentions_24h_ago": 18,
-      "mention_change_pct": 211.1,
-      "upvotes": 192,
-      "cik": "0002023554",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-15",
-        "days_ago": 25,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Other material update",
-        "accession": "0001193125-26-224694",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/d157363d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-15",
-          "days_ago": 25,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-224694",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-01",
-          "days_ago": 39,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001628280-26-029401",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026029401/0001628280-26-029401-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001628280-26-028879",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026028879/0001628280-26-028879-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-25",
-          "days_ago": 76,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; Other material update",
-          "accession": "0001193125-26-122705",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526122705/0001193125-26-122705-index.htm"
-        }
-      ],
-      "tickers": [
-        "SNDK"
-      ]
-    },
-    {
       "rank": 19,
+      "ticker": "SOXL",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "sec_name": null,
+      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "name_match": "no_cik",
+      "mentions": 52,
+      "mentions_24h_ago": 40,
+      "mention_change_pct": 30.0,
+      "upvotes": 111,
+      "cik": null,
+      "filing": null,
+      "filings": []
+    },
+    {
+      "rank": 20,
       "ticker": "NOW",
       "name": "ServiceNow",
       "sec_name": "ServiceNow, Inc.",
       "display_name": "ServiceNow, Inc.",
       "name_match": "verified",
-      "mentions": 54,
-      "mentions_24h_ago": 30,
-      "mention_change_pct": 80.0,
-      "upvotes": 160,
+      "mentions": 51,
+      "mentions_24h_ago": 36,
+      "mention_change_pct": 41.7,
+      "upvotes": 172,
       "cik": "0001373715",
       "filing": {
         "form": "8-K",
@@ -2175,9 +2235,9 @@
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
       "mentions": 47,
-      "mentions_24h_ago": 45,
-      "mention_change_pct": 4.4,
-      "upvotes": 154,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": 6.8,
+      "upvotes": 188,
       "cik": "0000002488",
       "filing": {
         "form": "8-K",
@@ -2248,46 +2308,16 @@
       ]
     },
     {
-      "rank": 22,
-      "ticker": "SOXL",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "sec_name": null,
-      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "name_match": "no_cik",
-      "mentions": 47,
-      "mentions_24h_ago": 41,
-      "mention_change_pct": 14.6,
-      "upvotes": 100,
-      "cik": null,
-      "filing": null,
-      "filings": []
-    },
-    {
-      "rank": 24,
-      "ticker": "VOO",
-      "name": "Vanguard S&P 500 ETF",
-      "sec_name": null,
-      "display_name": "Vanguard S&P 500 ETF",
-      "name_match": "no_cik",
-      "mentions": 43,
-      "mentions_24h_ago": 66,
-      "mention_change_pct": -34.8,
-      "upvotes": 112,
-      "cik": null,
-      "filing": null,
-      "filings": []
-    },
-    {
-      "rank": 25,
+      "rank": 23,
       "ticker": "GMM",
       "name": "Global Mofy Metaverse",
       "sec_name": "Global Mofy AI Ltd",
       "display_name": "Global Mofy AI Ltd",
       "name_match": "verified",
-      "mentions": 41,
-      "mentions_24h_ago": 5,
-      "mention_change_pct": 720.0,
-      "upvotes": 131,
+      "mentions": 42,
+      "mentions_24h_ago": 6,
+      "mention_change_pct": 600.0,
+      "upvotes": 133,
       "cik": "0001913749",
       "filing": {
         "form": "6-K",
@@ -2347,19 +2377,160 @@
       ]
     },
     {
-      "rank": 26,
+      "rank": 24,
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "sec_name": null,
+      "display_name": "Vanguard S&P 500 ETF",
+      "name_match": "no_cik",
+      "mentions": 40,
+      "mentions_24h_ago": 62,
+      "mention_change_pct": -35.5,
+      "upvotes": 95,
+      "cik": null,
+      "filing": null,
+      "filings": []
+    },
+    {
+      "rank": 25,
       "ticker": "SOXS",
       "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
       "sec_name": null,
       "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
       "name_match": "no_cik",
       "mentions": 39,
-      "mentions_24h_ago": 19,
-      "mention_change_pct": 105.3,
-      "upvotes": 55,
+      "mentions_24h_ago": 17,
+      "mention_change_pct": 129.4,
+      "upvotes": 58,
       "cik": null,
       "filing": null,
       "filings": []
+    },
+    {
+      "rank": 26,
+      "ticker": "APLD",
+      "name": "Applied Blockchain",
+      "sec_name": "Applied Digital Corp.",
+      "display_name": "Applied Digital Corp.",
+      "name_match": "mismatch",
+      "mentions": 37,
+      "mentions_24h_ago": 29,
+      "mention_change_pct": 27.6,
+      "upvotes": 70,
+      "cik": "0001144879",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-09",
+        "days_ago": 0,
+        "fresh": true,
+        "desc": "8-K",
+        "summary": "Other material update",
+        "accession": "0001493152-26-027984",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027984/form8-k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027984/0001493152-26-027984-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001493152-26-027984",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027984/0001493152-26-027984-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001493152-26-027979",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027979/0001493152-26-027979-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001493152-26-027857",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226027857/0001493152-26-027857-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-05",
+          "days_ago": 35,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; Acquisition / disposition completed; Other material update",
+          "accession": "0001493152-26-021333",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226021333/0001493152-26-021333-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-23",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001144879-26-000036",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000036/0001144879-26-000036-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-16",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001493152-26-017092",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226017092/0001493152-26-017092-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-08",
+          "days_ago": 62,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001144879-26-000030",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000030/0001144879-26-000030-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-08",
+          "days_ago": 62,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001144879-26-000029",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000029/0001144879-26-000029-index.htm"
+        },
+        {
+          "form": "8-K/A",
+          "date": "2026-04-01",
+          "days_ago": 69,
+          "fresh": false,
+          "desc": "8-K/A",
+          "summary": "Material agreement signed",
+          "accession": "0001493152-26-014498",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226014498/0001493152-26-014498-index.htm"
+        },
+        {
+          "form": "8-K/A",
+          "date": "2026-03-13",
+          "days_ago": 88,
+          "fresh": false,
+          "desc": "8-K/A",
+          "summary": "Executive / board change",
+          "accession": "0001493152-26-010113",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1144879/000149315226010113/0001493152-26-010113-index.htm"
+        }
+      ]
     },
     {
       "rank": 27,
@@ -2368,10 +2539,10 @@
       "sec_name": "Clear Secure, Inc.",
       "display_name": "Clear Secure, Inc.",
       "name_match": "verified",
-      "mentions": 33,
-      "mentions_24h_ago": 30,
-      "mention_change_pct": 10.0,
-      "upvotes": 131,
+      "mentions": 32,
+      "mentions_24h_ago": 29,
+      "mention_change_pct": 10.3,
+      "upvotes": 142,
       "cik": "0001856314",
       "filing": {
         "form": "10-Q",
@@ -2451,75 +2622,16 @@
       ]
     },
     {
-      "rank": 29,
-      "ticker": "LFVN",
-      "name": "Lifevantage",
-      "sec_name": "Lifevantage Corp",
-      "display_name": "Lifevantage Corp",
-      "name_match": "verified",
-      "mentions": 30,
-      "mentions_24h_ago": 43,
-      "mention_change_pct": -30.2,
-      "upvotes": 307,
-      "cik": "0000849146",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-06",
-        "days_ago": 34,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Earnings released",
-        "accession": "0001193125-26-208934",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/lfvn-20260506.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-06",
-          "days_ago": 34,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001193125-26-208934",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-06",
-          "days_ago": 34,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-208922",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208922/0001193125-26-208922-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-16",
-          "days_ago": 54,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001193125-26-159324",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526159324/0001193125-26-159324-index.htm"
-        }
-      ],
-      "tickers": [
-        "LFVN"
-      ]
-    },
-    {
       "rank": 30,
       "ticker": "IWM",
       "name": "BlackRock Institutional Trust Company N.A. - BTC iShares Russell 2000",
       "sec_name": null,
       "display_name": "BlackRock Institutional Trust Company N.A. - BTC iShares Russell 2000",
       "name_match": "no_cik",
-      "mentions": 27,
-      "mentions_24h_ago": 9,
-      "mention_change_pct": 200.0,
-      "upvotes": 67,
+      "mentions": 25,
+      "mentions_24h_ago": 11,
+      "mention_change_pct": 127.3,
+      "upvotes": 35,
       "cik": null,
       "filing": null,
       "filings": []
