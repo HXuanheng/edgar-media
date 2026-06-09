@@ -164,27 +164,16 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .fl-sec { flex: 0 0 auto; font-size: 0.78rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; }
 .fl-sec:hover { color: var(--secondary-color); }
 
-/* AI summary = the headline body; 2-line clamp + click-to-expand (no JS toggle) */
-.fl-summary {
-    margin: 0.3rem 0 0;
-    color: var(--text);
-    line-height: 1.5;
-    font-size: 0.9rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-}
-.fl-label { font-style: italic; color: var(--text-muted); font-weight: 600; }
-.fl-expand:checked ~ .fl-summary { -webkit-line-clamp: unset; overflow: visible; }
-.fl-more { display: none; margin-top: 0.1rem; font-size: 0.78rem; color: var(--primary-color); cursor: pointer; }
-.fl-summary.clamped ~ .fl-more { display: inline-block; }   /* only when it overflows 2 lines */
-.fl-more::after { content: "Show more"; }
-.fl-expand:checked ~ .fl-more::after { content: "Show less"; }
-.fl-more:hover { color: var(--secondary-color); }
+/* summarized rows collapse to a one-liner; click the header to reveal inline */
+.flrow-ai > .fl-head { cursor: pointer; }
+.flrow-ai > .fl-head::before { content: "\25B8"; flex: 0 0 0.7rem; color: var(--text-muted); }
+.fl-expand:checked ~ .fl-head::before { content: "\25BE"; }
+.flrow-ai > .fl-head:hover { color: var(--primary-color); }
+.flrow-plain > .fl-head::before { content: "\25B8"; flex: 0 0 0.7rem; visibility: hidden; }  /* align form codes */
 
-/* lead filing summary on the always-visible card face — the prominent headline */
-.card-summary { padding: 0 1.1rem 0.2rem; }
+.fl-summary { display: none; margin: 0.35rem 0 0.1rem; color: var(--text); line-height: 1.5; font-size: 0.9rem; }
+.fl-expand:checked ~ .fl-summary { display: block; }
+.fl-label { font-style: italic; color: var(--text-muted); font-weight: 600; }
 
 .rank { font-weight: 700; color: var(--text-muted); font-size: 1.05rem; text-align: center; }
 

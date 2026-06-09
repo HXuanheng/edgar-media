@@ -77,32 +77,22 @@ function filingHtml(f, nameMatch) {
 function filingRow(f) {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
     const lbl = f.summary && f.summary !== f.form ? ` · ${esc(f.summary)}` : "";
-    const head = `<div class="fl-head">
-        <span class="flform">${esc(f.form)}</span>
+    const inner = `<span class="flform">${esc(f.form)}</span>
         <span class="fl-date">${esc(f.date)}${lbl}</span>
         <span class="flwhen">${esc(when)}</span>
-        <a class="fl-sec" href="${esc(f.index_url)}" target="_blank" rel="noopener">View on SEC ↗</a>
-    </div>`;
-    // When a filing has an AI summary it IS the row's headline body, shown inline
-    // (2-line clamp + expand via CSS). Rows without one stay a clean one-liner.
+        <a class="fl-sec" href="${esc(f.index_url)}" target="_blank" rel="noopener">View on SEC ↗</a>`;
+    // Summarized row stays a one-liner; clicking the header (a <label> tied to a
+    // hidden checkbox) reveals the summary inline. The SEC link is an interactive
+    // descendant, so it navigates without toggling the row. Pure CSS, no JS.
     if (f.ai_summary) {
         const id = `flx-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
-        return `<li class="flrow flrow-ai">${head}
+        return `<li class="flrow flrow-ai">
             <input type="checkbox" id="${id}" class="fl-expand" hidden>
+            <label class="fl-head" for="${id}">${inner}</label>
             <p class="fl-summary"><em class="fl-label">Summary:</em> ${esc(f.ai_summary)}</p>
-            <label for="${id}" class="fl-more"></label></li>`;
+        </li>`;
     }
-    return `<li class="flrow flrow-plain">${head}</li>`;
-}
-
-// Lead filing's summary, promoted onto the always-visible card face so the
-// value is seen without expanding anything. SEC link lives in the badge above.
-function leadSummaryHtml(f) {
-    if (!f || !f.ai_summary) return "";
-    const id = `flxlead-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
-    return `<input type="checkbox" id="${id}" class="fl-expand" hidden>
-        <p class="card-summary fl-summary"><em class="fl-label">Latest:</em> ${esc(f.ai_summary)}</p>
-        <label for="${id}" class="fl-more"></label>`;
+    return `<li class="flrow flrow-plain"><div class="fl-head">${inner}</div></li>`;
 }
 
 function filingsListHtml(it) {
@@ -133,7 +123,6 @@ function cardHtml(it, i) {
             </div>
             <div class="filing">${filingHtml(it.filing, it.name_match)}</div>
         </div>
-        ${leadSummaryHtml(it.filing)}
         ${filingsListHtml(it)}
     </article>`;
 }
@@ -183,24 +172,7 @@ function applyView() {
         return;
     }
     $("#list").innerHTML = view.map(cardHtml).join("");
-    markClampedSummaries();
 }
-
-// "Show more/less" should appear only when a summary actually overflows its
-// 2-line clamp — pure CSS can't detect that, so flag overflowing ones here.
-// Rows inside a closed <details> measure as zero; the toggle listener re-runs
-// this when a card's filing list is opened.
-function markClampedSummaries() {
-    document.querySelectorAll(".fl-summary").forEach((p) => {
-        if (p.classList.contains("clamped")) return;   // measured already
-        if (!p.clientHeight) return;                    // hidden (collapsed) -> skip
-        p.classList.toggle("clamped", p.scrollHeight > p.clientHeight + 1);
-    });
-}
-
-// <details> toggle doesn't bubble -> capture so opening a filing list re-measures
-// its now-visible summaries. (Listener on the persistent #list survives re-renders.)
-$("#list")?.addEventListener("toggle", markClampedSummaries, true);
 
 if (searchInput) searchInput.addEventListener("input", applyView);
 if (sortSel) sortSel.addEventListener("change", () => {

@@ -326,11 +326,6 @@ def attach_summaries(items, cache, key):
                         time.sleep(GEMINI_PAUSE)
             if acc in cache:                    # attach (existing or just-made)
                 row["ai_summary"] = cache[acc]["summary"]
-        # Carry the summary onto the lead filing too (separate dict, same
-        # accession) so it surfaces on the always-visible card face.
-        lead = it.get("filing")
-        if lead and lead.get("accession") in cache:
-            lead["ai_summary"] = cache[lead["accession"]]["summary"]
     return made
 
 
