@@ -202,7 +202,7 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 
 /* filing area: the latest filing shows directly as the first row; the rest live
    behind the "N more filings" menu below it. */
-.card-filings { border-top: 1px solid var(--border); padding-bottom: 0.35rem; }
+.card-filings { padding-bottom: 0.35rem; }
 .filing-warn { padding: 0.5rem 1.1rem 0; margin: 0; }
 .filing-lead .flrow { border-top: none; }   /* lead is first -> no divider above it */
 .filing-none { padding: 0.6rem 1.1rem; margin: 0; color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
@@ -211,7 +211,19 @@ body.dark-mode .warn { color: #fbbf24; }
 
 @media (max-width: 620px) {
     .card-main { grid-template-columns: 1.8rem 1fr; }
-    .fl-head { flex-wrap: wrap; }
+    /* Phone: each row becomes two tidy lines — form code + age aligned at the
+       edges on top, date/desc (and Summary tag) below — so the form and "days
+       ago" line up cleanly instead of the age wrapping to a ragged second line. */
+    .fl-head {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 0.7rem; row-gap: 0.1rem;
+        align-items: baseline;
+    }
+    .flform { grid-area: 1 / 1; }
+    .flwhen { grid-area: 1 / 2; margin-left: 0; justify-self: end; }
+    .fl-date { grid-area: 2 / 1; }
+    .fl-tag  { grid-area: 2 / 2; justify-self: end; }
 }
 
 /* footer */
