@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    <script type="module" src="app.js"></script>
 </head>
 <body>
     <header class="site-header">
@@ -25,13 +25,14 @@
             </a>
             <nav class="header-nav">
                 <a href="https://hxuanheng.github.io/" target="_blank" rel="noopener">About</a>
+                <span id="auth-slot"></span>
                 <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
             </nav>
         </div>
     </header>
 
     <main class="content">
-        <div class="container">
+        <div class="container" id="home-view">
             <section class="intro">
                 <h1>Trending on Reddit</h1>
                 <!-- <p class="lede">
@@ -61,6 +62,7 @@
                 <div class="loading">Loading trending disclosures…</div>
             </section>
         </div>
+        <div class="container" id="company-view" hidden></div>
     </main>
 
     <footer class="site-footer">
@@ -80,5 +82,8 @@
             </p>
         </div>
     </footer>
+
+    <!-- sign-in modal (populated by js/auth.js; stays empty/dormant until Supabase is configured) -->
+    <div id="auth-modal" class="modal" hidden></div>
 </body>
 </html>
