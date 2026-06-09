@@ -3,9 +3,26 @@
 // when Supabase isn't configured (header renders exactly as before).
 
 import { supabase, isConfigured, initClient } from "./supabaseClient.js";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js";
 import { esc } from "./util.js";
 
 const HASH_KEY = "post_signin_hash";   // remember the deep link across the OAuth round-trip
+
+// Which sign-in methods to show, auto-detected from the project so we never show a
+// button for a provider that isn't enabled (otherwise clicking it errors
+// "provider is not enabled"). Defaults to email-only until settings load.
+let providers = { google: false, github: false, email: true };
+async function fetchProviders() {
+    try {
+        const r = await fetch(`${SUPABASE_URL}/auth/v1/settings`, { headers: { apikey: SUPABASE_ANON_KEY } });
+        const s = await r.json();
+        providers = {
+            google: !!s.external?.google,
+            github: !!s.external?.github,
+            email:  s.external?.email !== false,
+        };
+    } catch { /* keep defaults -> only magic link shows */ }
+}
 
 let currentUser = null;
 let currentProfile = null;
@@ -68,6 +85,7 @@ export async function init() {
     started = true;
 
     await initClient();   // lazily loads the SDK; does not block app.js's data fetch
+    await fetchProviders();
 
     // Pick up an existing session, then keep it in sync.
     const { data: { session } } = await supabase.auth.getSession();
@@ -119,14 +137,17 @@ function buildModal() {
     const host = document.getElementById("auth-modal");
     if (!host || host.dataset.built) return;
     host.dataset.built = "1";
+    const oauthBtns = [
+        providers.google ? `<button class="oauth-btn" data-auth="google">Continue with Google</button>` : "",
+        providers.github ? `<button class="oauth-btn" data-auth="github">Continue with GitHub</button>` : "",
+    ].join("");
+    const divider = oauthBtns ? `<div class="modal-or"><span>or</span></div>` : "";
     host.innerHTML = `
         <div class="modal-backdrop" data-auth="close"></div>
         <div class="modal-card" role="dialog" aria-modal="true" aria-label="Sign in">
             <button class="modal-x" data-auth="close" aria-label="Close">✕</button>
             <h2 class="modal-title">Sign in to comment</h2>
-            <button class="oauth-btn" data-auth="google">Continue with Google</button>
-            <button class="oauth-btn" data-auth="github">Continue with GitHub</button>
-            <div class="modal-or"><span>or</span></div>
+            ${oauthBtns}${divider}
             <form class="magic-form" data-auth="magic">
                 <input type="email" name="email" placeholder="you@email.com" required autocomplete="email">
                 <button type="submit" class="auth-btn auth-btn-primary">Send magic link</button>
@@ -136,8 +157,8 @@ function buildModal() {
 
     host.querySelectorAll('[data-auth="close"]').forEach((el) =>
         el.addEventListener("click", closeModal));
-    host.querySelector('[data-auth="google"]').addEventListener("click", signInGoogle);
-    host.querySelector('[data-auth="github"]').addEventListener("click", signInGitHub);
+    host.querySelector('[data-auth="google"]')?.addEventListener("click", signInGoogle);
+    host.querySelector('[data-auth="github"]')?.addEventListener("click", signInGitHub);
     host.querySelector('[data-auth="magic"]').addEventListener("submit", async (e) => {
         e.preventDefault();
         const email = e.target.email.value.trim();
