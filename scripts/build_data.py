@@ -516,6 +516,45 @@ def recent_filings(cik, today):
     return headline, windowed
 
 
+def merge_same_cik(items):
+    """Collapse verified entries that share a CIK into one card. Dual-class
+    tickers (GOOG/GOOGL, and the like) are the same issuer with identical SEC
+    filings, so showing two cards is redundant. We sum their Reddit attention,
+    keep every ticker (most-mentioned first), and recompute the 24h change.
+    Non-verified or CIK-less rows (ETFs, mismatches) are left untouched.
+    Output order follows each issuer's first appearance.
+    """
+    out = []
+    by_cik = {}
+    for it in items:
+        cik = it.get("cik")
+        if not cik or it.get("name_match") != "verified":
+            out.append(it)
+            continue
+        base = by_cik.get(cik)
+        if base is None:
+            it["_tickers"] = [(it["ticker"], it.get("mentions", 0))]
+            by_cik[cik] = it
+            out.append(it)
+            continue
+        base["mentions"] += it.get("mentions", 0)
+        base["mentions_24h_ago"] += it.get("mentions_24h_ago", 0)
+        base["upvotes"] = base.get("upvotes", 0) + it.get("upvotes", 0)
+        if it.get("rank") is not None:
+            base["rank"] = (it["rank"] if base.get("rank") is None
+                            else min(base["rank"], it["rank"]))
+        base["_tickers"].append((it["ticker"], it.get("mentions", 0)))
+    for it in by_cik.values():
+        m0 = it["mentions_24h_ago"]
+        it["mention_change_pct"] = (round((it["mentions"] - m0) / m0 * 100, 1)
+                                    if m0 else None)
+        tickers = [t for t, _ in sorted(it.pop("_tickers"),
+                                        key=lambda x: x[1], reverse=True)]
+        it["tickers"] = tickers          # all classes, most-mentioned first
+        it["ticker"] = tickers[0]        # primary = most-mentioned class
+    return out
+
+
 def main():
     # Summaries can contain non-cp1252 chars (¥, €, narrow no-break space, smart
     # quotes); printing them to a Windows cp1252 console otherwise crashes the
@@ -588,6 +627,9 @@ def main():
             "filing": filing,
             "filings": filings,
         })
+
+    # Collapse dual-class tickers (GOOG/GOOGL) into one card per issuer (CIK).
+    items = merge_same_cik(items)
 
     # AI prose layer: one-sentence summary per recent filing row, free via the
     # provider chain, cached by accession. Rows without one show the item label.

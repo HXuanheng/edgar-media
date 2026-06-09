@@ -190,6 +190,7 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .tick { min-width: 0; }
 .tick-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
 .ticker { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; }
+.ticker-sep { color: var(--text-muted); font-weight: 400; margin: 0 0.3rem; }
 .coname { color: var(--text-muted); font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; }
 .attention { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.15rem; }
 .chg-up { color: var(--green); font-weight: 600; }

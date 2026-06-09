@@ -115,10 +115,14 @@ function cardHtml(it, i) {
     const verified = it.name_match === "verified";
     const hot = verified && it.filing && it.filing.fresh;
     const coName = it.display_name || it.name;
-    // Ticker -> the company's EDGAR filing page (no page exists for CIK-less
-    // tickers like ETFs, so those render as plain non-link text).
+    // Ticker(s) -> the company's EDGAR filing page (no page exists for CIK-less
+    // tickers like ETFs, so those render as plain non-link text). Dual-class
+    // issuers (GOOG/GOOGL) are merged into one card carrying every ticker.
+    const tickers = (it.tickers && it.tickers.length) ? it.tickers : [it.ticker];
     const ticker = it.cik
-        ? `<a class="ticker" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener">$${esc(it.ticker)}</a>`
+        ? tickers.map((t) =>
+            `<a class="ticker" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener">$${esc(t)}</a>`
+          ).join(`<span class="ticker-sep">·</span>`)
         : `<span class="ticker">$${esc(it.ticker)}</span>`;
     return `<article class="card ${hot ? "hot" : ""}">
         <div class="card-main">
@@ -169,9 +173,11 @@ function applyView() {
 
     let list = sortItems(allItems.slice(), sortKey);
     if (q) {
-        list = list.filter((it) =>
-            it.ticker.toLowerCase().includes(q) ||
-            (it.display_name || it.name || "").toLowerCase().includes(q));
+        list = list.filter((it) => {
+            const tks = (it.tickers && it.tickers.length) ? it.tickers : [it.ticker];
+            return tks.some((t) => t.toLowerCase().includes(q)) ||
+                (it.display_name || it.name || "").toLowerCase().includes(q);
+        });
     }
     const view = q ? list : list.slice(0, n);   // count applies only when not searching
 
