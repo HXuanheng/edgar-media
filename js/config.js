@@ -13,8 +13,8 @@
 // Until both values are filled in with real ones, the comments/accounts UI stays
 // completely dormant and the site renders exactly as before (isConfigured === false).
 
-export const SUPABASE_URL = "https://YOUR-PROJECT-REF.supabase.co";
-export const SUPABASE_ANON_KEY = "YOUR-ANON-PUBLIC-KEY";
+export const SUPABASE_URL = "https://jdwqdwbmmbliananybva.supabase.co";
+export const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impkd3Fkd2JtbWJsaWFuYW55YnZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMTQ2NTMsImV4cCI6MjA5NjU5MDY1M30.91iIoIo7Ybo2zAPZd8MGvRYYTGtSPnjPrWtPPC8XgCE";
 
 export const isConfigured =
   /^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/.test(SUPABASE_URL) &&
