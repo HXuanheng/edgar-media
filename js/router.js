@@ -42,7 +42,7 @@ function renderCompany(companyEl, it) {
         return;
     }
     companyEl.innerHTML = `${companyHeaderHtml(it)}
-        <article class="card company-card">${filingsListHtml(it)}</article>
+        <article class="card company-card">${filingsListHtml(it, "co")}</article>
         <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
             <div class="card-comments" data-cik="${esc(it.cik || "")}"></div>
         </section>`;

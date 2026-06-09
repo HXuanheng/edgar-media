@@ -34,7 +34,7 @@ export function momentum(it) {
     return `${mentions} mentions <span class="${cls}">${arrow} ${Math.abs(c)}%</span> <span style="opacity:.7">vs 24h</span>`;
 }
 
-export function filingRow(f, prefix) {
+export function filingRow(f, prefix, ns = "") {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
     const fire = f.fresh ? "🔥 " : "";   // very recent (<=7 days) -> flame on the age
     const lbl = f.summary && f.summary !== f.form ? ` · ${esc(f.summary)}` : "";
@@ -53,7 +53,7 @@ export function filingRow(f, prefix) {
         // Namespace by ticker: tickers sharing a CIK (e.g. GOOG/GOOGL) repeat
         // the same accessions, so accession alone yields duplicate DOM ids and
         // a <label for> would toggle the first card's checkbox, not this one.
-        const id = `flx-${(prefix || "").replace(/[^a-z0-9]/gi, "")}-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
+        const id = `flx-${ns}${(prefix || "").replace(/[^a-z0-9]/gi, "")}-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
         return `<li class="flrow flrow-ai">
             <input type="checkbox" id="${id}" class="fl-expand" hidden>
             <label class="fl-head" for="${id}">${formDate}<span class="fl-tag">Summary</span>${tail}</label>
@@ -63,7 +63,7 @@ export function filingRow(f, prefix) {
     return `<li class="flrow flrow-plain"><div class="fl-head">${formDate}${tail}</div></li>`;
 }
 
-export function filingsListHtml(it) {
+export function filingsListHtml(it, ns = "") {
     const head = it.filing;
     const all = it.cik ? (it.filings || []) : [];
     const warn = it.name_match === "mismatch"
@@ -86,16 +86,16 @@ export function filingsListHtml(it) {
     }
     // "More" rows = the rest of the 90-day window minus the lead (by reference).
     const rest = all.filter((f) => f !== lead);
-    const leadRow = `<ul class="filing-list filing-lead">${filingRow(lead, it.ticker)}</ul>`;
+    const leadRow = `<ul class="filing-list filing-lead">${filingRow(lead, it.ticker, ns)}</ul>`;
     // Single filing -> a "Latest filings" label, no toggle.
     if (!rest.length) {
         return `<div class="card-filings">${warn}
             <div class="filing-head"><span class="filing-head-label">Latest filings</span></div>
             ${leadRow}</div>`;
     }
-    const id = `more-${(it.ticker || "").replace(/[^a-z0-9]/gi, "")}`;
+    const id = `more-${ns}${(it.ticker || "").replace(/[^a-z0-9]/gi, "")}`;
     const n = rest.length;
-    const rows = rest.map((f) => filingRow(f, it.ticker)).join("");
+    const rows = rest.map((f) => filingRow(f, it.ticker, ns)).join("");
     // Checkbox first, then the header (with both toggle labels) and the rows -> the
     // control lives in the fixed header at the top, so collapsing never needs a scroll.
     return `<div class="card-filings">${warn}
