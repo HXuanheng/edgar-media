@@ -308,6 +308,7 @@ async function render(mount) {
     if (!st) return;
     const { cik, company, full } = st;
     const ctx = { full, user: getUser(), isAdmin: isAdmin(), counts: {}, myVotes: new Set() };
+    if (ctx.user) ensureSubmissions(company);   // warm full filing history so the first @ is instant
 
     let rows = [];
     try {
