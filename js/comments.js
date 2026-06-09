@@ -273,11 +273,14 @@ function commentHtml(c, replies, company, ctx) {
              </div></form>`
         : "";
 
+    // Replies are collapsed by default everywhere; the count is a toggle that
+    // reveals/hides them inline (works in both the card panel and the full page).
     let repliesHtml = "";
-    if (ctx.full && replies.length) {
-        repliesHtml = `<div class="comment-replies">${replies.map((r) => commentHtml(r, [], company, ctx)).join("")}</div>`;
-    } else if (!ctx.full && replies.length) {
-        repliesHtml = `<div class="comment-replies-count">${replies.length} ${replies.length === 1 ? "reply" : "replies"}</div>`;
+    if (replies.length) {
+        const lbl = `${replies.length} ${replies.length === 1 ? "reply" : "replies"}`;
+        repliesHtml = `
+            <button class="cmt-link replies-toggle" data-act="toggle-replies" data-id="${c.id}" data-label="${lbl}">▸ ${lbl}</button>
+            <div class="comment-replies" data-replies="${c.id}" hidden>${replies.map((r) => commentHtml(r, [], company, ctx)).join("")}</div>`;
     }
 
     return `<div class="comment ${c.parent_id ? "reply" : ""} ${removed ? "deleted" : ""}" data-cid="${c.id}">
@@ -384,6 +387,14 @@ function wire(mount) {
         }
         if (act === "reply-cancel") {
             mount.querySelector(`.cmt-reply-form[data-parent="${id}"]`)?.setAttribute("hidden", "");
+            return;
+        }
+        if (act === "toggle-replies") {
+            const box = mount.querySelector(`.comment-replies[data-replies="${id}"]`);
+            if (box) {
+                box.hidden = !box.hidden;
+                btn.textContent = `${box.hidden ? "▸" : "▾"} ${btn.dataset.label}`;
+            }
             return;
         }
         if (act === "edit") {

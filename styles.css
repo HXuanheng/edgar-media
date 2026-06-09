@@ -354,7 +354,7 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 .comment-body { margin: 0.25rem 0 0.35rem; font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
 .comment-removed { color: var(--text-muted); font-style: italic; }
 .comment-replies { margin-top: 0.4rem; }
-.comment-replies-count { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+.replies-toggle { display: inline-block; margin-top: 0.3rem; font-weight: 600; }
 
 .cmt-actions { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.15rem; }
 .cmt-actions:empty { display: none; }
