@@ -76,28 +76,78 @@ async function toggleVote(id, voted) {
 
 // ───────────────────────────── rendering ────────────────────────────
 
+const ACCESSION_RE = /^\d{10}-\d{2}-\d{6}$/;
+
+// Deterministically build the SEC EDGAR index URL for a filing from CIK + accession.
+// Always an sec.gov URL, so it's safe to link any well-formed accession (even ones
+// outside the site's 90-day window) without a lookup.
+function secIndexUrl(cik, accession) {
+    const cikNum = String(Number(cik));               // strip leading zeros
+    return `https://www.sec.gov/Archives/edgar/data/${cikNum}/${accession.replace(/-/g, "")}/${accession}-index.htm`;
+}
+
+// Per-company filing list for the @-picker. Starts as the site's 90-day window and
+// is upgraded to the company's FULL SEC history (data.sec.gov) on demand, cached.
+const subsCache = new Map();     // cik -> filings[]
+const subsPending = new Map();   // cik -> Promise
+function getFilings(company) {
+    return (company?.cik && subsCache.get(String(company.cik))) || company?.filings || [];
+}
+function ensureSubmissions(company) {
+    const cik = company?.cik && String(company.cik);
+    if (!cik) return Promise.resolve();
+    if (subsCache.has(cik)) return Promise.resolve();
+    if (subsPending.has(cik)) return subsPending.get(cik);
+    const p = fetch(`https://data.sec.gov/submissions/CIK${cik}.json`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((j) => {
+            const rec = j?.filings?.recent;
+            if (rec?.accessionNumber) {
+                // keep the rich 90-day entries (they carry summary / ai_summary) and
+                // fill in the rest of the recent history (up to ~1000 filings) from SEC.
+                const known = new Map((company?.filings || []).map((f) => [f.accession, f]));
+                subsCache.set(cik, rec.accessionNumber.map((acc, i) => known.get(acc) || {
+                    accession: acc,
+                    form: rec.form[i],
+                    date: rec.filingDate[i],
+                    summary: rec.form[i],
+                    index_url: secIndexUrl(cik, acc),
+                }));
+            } else {
+                subsCache.set(cik, company?.filings || []);
+            }
+        })
+        .catch(() => { /* leave the 90-day fallback in place */ })
+        .finally(() => subsPending.delete(cik));
+    subsPending.set(cik, p);
+    return p;
+}
+
 // Filing references live inline in the body as @[label](accession) tokens, inserted
-// via the @-mention picker. Render escapes the body first, then turns each token
-// into a link — but ONLY when the accession matches a real filing of this company
-// (so a hand-typed @[x](javascript:…) can never become a live href).
+// via the @-mention picker. Render escapes the body first, then turns each token into
+// a link. A token only becomes a live <a> when its accession is well-formed (and the
+// URL is always sec.gov, built from CIK+accession) — so a hand-typed @[x](javascript:…)
+// can never become a live href.
 function renderBody(body, company) {
     let html = esc(body);
+    const filings = getFilings(company);
     html = html.replace(/@\[([^\]]+)\]\(([^)]+)\)/g, (_whole, label, acc) => {
-        const f = (company?.filings || []).find((x) => x.accession === acc);
         // label and acc are already escaped (they come out of esc(body)); don't re-escape.
-        return f
-            ? `<a class="cmt-filing" href="${esc(f.index_url)}" target="_blank" rel="noopener">@${label} ↗</a>`
+        const f = filings.find((x) => x.accession === acc);
+        let url = f?.index_url;
+        if (!url && company?.cik && ACCESSION_RE.test(acc)) url = secIndexUrl(company.cik, acc);
+        return url
+            ? `<a class="cmt-filing" href="${esc(url)}" target="_blank" rel="noopener">@${label} ↗</a>`
             : `<span class="cmt-mention-dead">@${label}</span>`;
     });
     return html;
 }
 
 // The first valid filing reference in a body -> the comments.accession column
-// (kept for indexing / "comments on this filing"). Only real accessions count.
-function firstAccession(body, company) {
+// (kept for indexing / "comments on this filing"). Any well-formed accession counts.
+function firstAccession(body) {
     const m = body.match(/@\[[^\]]+\]\(([^)]+)\)/);
-    const acc = m?.[1];
-    return acc && (company?.filings || []).some((f) => f.accession === acc) ? acc : null;
+    return m && ACCESSION_RE.test(m[1]) ? m[1] : null;
 }
 
 // ── @-mention picker ──────────────────────────────────────────────
@@ -118,7 +168,7 @@ function updateMentionPopup(textarea, company) {
     const ctx = mentionCtx(textarea);
     if (!ctx) { popup.hidden = true; popup.innerHTML = ""; return; }
     const q = ctx.query.toLowerCase();
-    const matches = (company?.filings || [])
+    const matches = getFilings(company)
         .filter((f) => f.accession)
         .filter((f) => !q || `${f.form} ${f.date} ${f.summary || ""}`.toLowerCase().includes(q))
         .slice(0, 8);
@@ -377,10 +427,10 @@ function wire(mount) {
         if (!body) return;
 
         if (act === "new-submit") {
-            const accession = firstAccession(body, st.company);
+            const accession = firstAccession(body);
             if (await guard(mount, postComment(st.cik, body, accession, null))) { form.reset(); render(mount); }
         } else if (act === "reply-submit") {
-            const accession = firstAccession(body, st.company);
+            const accession = firstAccession(body);
             if (await guard(mount, postComment(st.cik, body, accession, form.dataset.parent))) render(mount);
         } else if (act === "edit-submit") {
             // body only — the client has no UPDATE grant on accession (column-level RLS),
@@ -393,7 +443,15 @@ function wire(mount) {
     // Enter/Tab/click. Works in the composer, reply, and edit textareas.
     mount.addEventListener("input", (e) => {
         const ta = e.target.closest('textarea[name="body"]');
-        if (ta) updateMentionPopup(ta, state.get(mount)?.company);
+        if (!ta) return;
+        const company = state.get(mount)?.company;
+        updateMentionPopup(ta, company);
+        // Lazily upgrade suggestions from the 90-day window to the full SEC history,
+        // then refresh the popup if it's still open on this textarea.
+        ensureSubmissions(company).then(() => {
+            const pop = mentionPopupFor(ta);
+            if (pop && !pop.hidden && mentionCtx(ta)) updateMentionPopup(ta, company);
+        });
     });
     mount.addEventListener("keydown", (e) => {
         const ta = e.target.closest('textarea[name="body"]');
