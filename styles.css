@@ -177,7 +177,7 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
     padding: 0.05rem 0.45rem;
     border-radius: 999px;
 }
-.flrow-ai > .fl-head:hover .fl-tag { color: var(--primary-color); background: var(--accent-color); }
+.fl-tag:hover { color: var(--primary-color); background: var(--accent-color); }
 .fl-expand:checked ~ .fl-head .fl-tag { display: none; }   /* body's "Summary:" label takes over when open */
 
 .fl-summary { display: none; margin: 0.35rem 0 0.1rem; color: var(--text); line-height: 1.5; font-size: 0.9rem; }
