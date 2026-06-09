@@ -50,9 +50,8 @@ function momentum(it) {
 function filingHtml(f, nameMatch) {
     if (!f) return `<div class="filing-none">no recent material filing</div>`;
     const meta = `${f.days_ago != null ? daysLabel(f.days_ago) : f.date}`;
-    // Compact label on the card = SEC item-code label (or form). The full
-    // Gemini prose lives in the collapsible summary menu, not inline here.
-    const label = f.summary || f.form;
+    // Card badge shows only freshness + date; the form is the link, and the
+    // item-code label now lives in the per-row summary list, not here.
     if (nameMatch === "mismatch") {
         // Unverified match: stay cautious, show the form code only.
         return `<div class="filing-stale">
@@ -64,13 +63,13 @@ function filingHtml(f, nameMatch) {
     }
     if (f.fresh) {
         return `<div class="filing-fresh">
-            <span class="badge">🔥 ${esc(label)} · ${esc(meta)}</span><br>
+            <span class="badge">🔥 ${esc(meta)}</span><br>
             <a href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.form)} ↗</a>
         </div>`;
     }
     return `<div class="filing-stale">
-        <span class="filing-form">${esc(label)}</span>
-        <span class="filing-meta">· ${esc(f.form)} · ${esc(meta)}</span><br>
+        <span class="filing-form">${esc(f.form)}</span>
+        <span class="filing-meta">· ${esc(meta)}</span><br>
         <a class="filing-meta" href="${esc(f.index_url)}" target="_blank" rel="noopener">view on SEC ↗</a>
     </div>`;
 }
