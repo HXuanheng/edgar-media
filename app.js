@@ -112,13 +112,17 @@ function cardHtml(it, i) {
     const verified = it.name_match === "verified";
     const hot = verified && it.filing && it.filing.fresh;
     const coName = it.display_name || it.name;
-    const redditUrl = `https://www.reddit.com/r/wallstreetbets/search/?q=%24${encodeURIComponent(it.ticker)}`;
+    // Ticker -> the company's EDGAR filing page (no page exists for CIK-less
+    // tickers like ETFs, so those render as plain non-link text).
+    const ticker = it.cik
+        ? `<a class="ticker" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener">$${esc(it.ticker)}</a>`
+        : `<span class="ticker">$${esc(it.ticker)}</span>`;
     return `<article class="card ${hot ? "hot" : ""}">
         <div class="card-main">
             <div class="rank">${i + 1}</div>
             <div class="tick">
                 <div class="tick-row">
-                    <a class="ticker" href="${redditUrl}" target="_blank" rel="noopener">$${esc(it.ticker)}</a>
+                    ${ticker}
                     <span class="coname">${esc(coName)}</span>
                 </div>
                 <div class="attention">${momentum(it)}</div>
