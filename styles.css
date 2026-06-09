@@ -159,17 +159,26 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 /* header line: form code (left scan-anchor) · date · when ... View on SEC */
 .fl-head { display: flex; align-items: baseline; gap: 0.7rem; }
 .flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; }
-.fl-date { flex: 1 1 auto; color: var(--text-muted); }
-.flwhen { flex: 0 0 auto; color: var(--text-muted); font-size: 0.8rem; }
+.fl-date { flex: 0 1 auto; color: var(--text-muted); }
+.flwhen { flex: 0 0 auto; margin-left: auto; color: var(--text-muted); font-size: 0.8rem; }
 .fl-sec { flex: 0 0 auto; font-size: 0.78rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; }
 .fl-sec:hover { color: var(--secondary-color); }
 
-/* summarized rows collapse to a one-liner; click the header to reveal inline */
+/* summarized rows collapse to a one-liner; a "Summary" tag cues the reveal,
+   click the header to open the summary inline. */
 .flrow-ai > .fl-head { cursor: pointer; }
-.flrow-ai > .fl-head::before { content: "\25B8"; flex: 0 0 0.7rem; color: var(--text-muted); }
-.fl-expand:checked ~ .fl-head::before { content: "\25BE"; }
-.flrow-ai > .fl-head:hover { color: var(--primary-color); }
-.flrow-plain > .fl-head::before { content: "\25B8"; flex: 0 0 0.7rem; visibility: hidden; }  /* align form codes */
+.fl-tag {
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    background: var(--border);
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+}
+.flrow-ai > .fl-head:hover .fl-tag { color: var(--primary-color); background: var(--accent-color); }
+.fl-expand:checked ~ .fl-head .fl-tag { display: none; }   /* body's "Summary:" label takes over when open */
 
 .fl-summary { display: none; margin: 0.35rem 0 0.1rem; color: var(--text); line-height: 1.5; font-size: 0.9rem; }
 .fl-expand:checked ~ .fl-summary { display: block; }

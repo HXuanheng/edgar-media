@@ -77,22 +77,24 @@ function filingHtml(f, nameMatch) {
 function filingRow(f) {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
     const lbl = f.summary && f.summary !== f.form ? ` · ${esc(f.summary)}` : "";
-    const inner = `<span class="flform">${esc(f.form)}</span>
-        <span class="fl-date">${esc(f.date)}${lbl}</span>
-        <span class="flwhen">${esc(when)}</span>
+    const formDate = `<span class="flform">${esc(f.form)}</span>
+        <span class="fl-date">${esc(f.date)}${lbl}</span>`;
+    // when + link cluster — pushed to the right edge (.flwhen has margin-left:auto)
+    const tail = `<span class="flwhen">${esc(when)}</span>
         <a class="fl-sec" href="${esc(f.index_url)}" target="_blank" rel="noopener">View on SEC ↗</a>`;
-    // Summarized row stays a one-liner; clicking the header (a <label> tied to a
-    // hidden checkbox) reveals the summary inline. The SEC link is an interactive
+    // Summarized row stays a one-liner with a "Summary" tag (next to the
+    // description it annotates) as the expand cue; clicking the header (a <label>
+    // tied to a hidden checkbox) reveals it inline. The SEC link is an interactive
     // descendant, so it navigates without toggling the row. Pure CSS, no JS.
     if (f.ai_summary) {
         const id = `flx-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
         return `<li class="flrow flrow-ai">
             <input type="checkbox" id="${id}" class="fl-expand" hidden>
-            <label class="fl-head" for="${id}">${inner}</label>
+            <label class="fl-head" for="${id}">${formDate}<span class="fl-tag">Summary</span>${tail}</label>
             <p class="fl-summary"><em class="fl-label">Summary:</em> ${esc(f.ai_summary)}</p>
         </li>`;
     }
-    return `<li class="flrow flrow-plain"><div class="fl-head">${inner}</div></li>`;
+    return `<li class="flrow flrow-plain"><div class="fl-head">${formDate}${tail}</div></li>`;
 }
 
 function filingsListHtml(it) {
