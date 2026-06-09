@@ -50,18 +50,23 @@ SEC_PAUSE = 0.15    # polite gap between SEC calls (limit is 10 req/sec)
 #   OPENROUTER_API_KEY  -> OpenRouter        (free, no card)   openrouter.ai
 # Tried top to bottom: good quality first, huge-quota overflow last. Free RPD
 # figures are approximate and per-model; check each console for current limits.
+# Groq's free tier is ~6000 tokens/min, so a big filing (a 10-K at 50k chars ~=
+# 12k tokens) is rejected outright. "max_chars" restricts a provider to filings
+# whose text fits: Groq is used only for short ones (most 8-Ks); longer filings
+# skip it and fall through to providers with room.
+GROQ_MAX_CHARS = 18000   # ~4.5k tokens, inside Groq's 6000 TPM free limit
 AI_PROVIDERS = [
     {"name": "gemini-lite", "kind": "gemini", "key_env": "GEMINI_API_KEY",
      "model": "gemini-2.5-flash-lite"},                                # ~1000/day
     {"name": "groq-70b", "kind": "openai", "key_env": "GROQ_API_KEY",
      "url": "https://api.groq.com/openai/v1/chat/completions",
-     "model": "llama-3.3-70b-versatile"},                             # ~1000/day
+     "model": "llama-3.3-70b-versatile", "max_chars": GROQ_MAX_CHARS}, # ~1000/day, short only
     {"name": "openrouter", "kind": "openai", "key_env": "OPENROUTER_API_KEY",
      "url": "https://openrouter.ai/api/v1/chat/completions",
      "model": "openai/gpt-oss-120b:free"},                            # ~50/day (no card)
     {"name": "groq-8b", "kind": "openai", "key_env": "GROQ_API_KEY",
      "url": "https://api.groq.com/openai/v1/chat/completions",
-     "model": "llama-3.1-8b-instant"},                                # ~14400/day overflow
+     "model": "llama-3.1-8b-instant", "max_chars": GROQ_MAX_CHARS},    # ~14400/day overflow, short only
 ]
 GEMINI_URL = ("https://generativelanguage.googleapis.com/v1beta/"
               "models/{model}:generateContent?key={key}")
@@ -353,6 +358,8 @@ def ai_summarize(text, form, providers, exhausted):
         key = os.environ.get(p["key_env"])
         if not key:
             continue
+        if p.get("max_chars") and len(text) > p["max_chars"]:
+            continue                            # filing too big for this provider's TPM
         if p["kind"] == "gemini":
             txt, status = _gemini_call(p["model"], prompt, key)
         else:
