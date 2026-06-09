@@ -135,35 +135,36 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .card-main {
     padding: 1rem 1.1rem;
     display: grid;
-    grid-template-columns: 2.2rem 1fr auto;
+    grid-template-columns: 2.2rem 1fr;
     gap: 0.5rem 1rem;
     align-items: center;
 }
 
 /* expandable per-firm filing list */
-.card-details summary {
-    cursor: pointer;
-    list-style: none;
-    user-select: none;
-    padding: 0.55rem 1.1rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--text-muted);
+/* "more filings" toggle — a quiet text control (no heavy bar). Collapsed: "N more…".
+   Expanded: rows show and the control moves to the bottom as "show less". Pure CSS. */
+.more-open, .more-close {
+    display: block; cursor: pointer; user-select: none;
+    padding: 0.45rem 1.1rem; border-top: 1px solid var(--border);
+    font-size: 0.78rem; color: var(--text-muted);
     transition: color var(--transition);
 }
-.card-details summary::-webkit-details-marker { display: none; }
-.card-details summary::before { content: "▸ "; }
-.card-details[open] summary::before { content: "▾ "; }
-.card-details summary:hover { color: var(--primary-color); }
-.filing-list { list-style: none; margin: 0; padding: 0 1.1rem 0.7rem; }
+.more-open::before  { content: "▾ "; }
+.more-close::before { content: "▴ "; }
+.more-open:hover, .more-close:hover { color: var(--primary-color); }
+.more-rows  { display: none; }
+.more-close { display: none; }
+.more-toggle:checked ~ .more-open  { display: none; }
+.more-toggle:checked ~ .more-rows  { display: block; }
+.more-toggle:checked ~ .more-close { display: block; }
+.filing-list { list-style: none; margin: 0; padding: 0 1.1rem; }
 .flrow { padding: 0.5rem 0; border-top: 1px dashed var(--border); font-size: 0.85rem; }
-/* header line: form code (left scan-anchor) · date · when ... View on SEC */
+/* header line: form code link (left scan-anchor) · date · summary ... age */
 .fl-head { display: flex; align-items: baseline; gap: 0.7rem; }
-.flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; }
+.flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; }
+.flform:hover { color: var(--secondary-color); }
 .fl-date { flex: 0 1 auto; color: var(--text-muted); }
 .flwhen { flex: 0 0 auto; margin-left: auto; color: var(--text-muted); font-size: 0.8rem; }
-.fl-sec { flex: 0 0 auto; font-size: 0.78rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; }
-.fl-sec:hover { color: var(--secondary-color); }
 
 /* summarized rows collapse to a one-liner; a "Summary" tag cues the reveal,
    click the header to open the summary inline. */
@@ -196,25 +197,18 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .chg-up { color: var(--green); font-weight: 600; }
 .chg-down { color: var(--red); font-weight: 600; }
 
-.filing { text-align: right; font-size: 0.85rem; max-width: 260px; }
-.filing-fresh { }
-.badge {
-    display: inline-block; background: var(--green-bg); color: var(--green);
-    font-weight: 600; border-radius: 999px; padding: 0.1rem 0.55rem; font-size: 0.8rem;
-    margin-bottom: 0.2rem;
-}
-.filing-form { font-weight: 600; }
-.filing-stale .filing-form { color: var(--text-muted); }
-.filing-meta { color: var(--text-muted); font-size: 0.8rem; }
-.filing-none { color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
+/* filing area: the latest filing shows directly as the first row; the rest live
+   behind the "N more filings" menu below it. */
+.card-filings { border-top: 1px solid var(--border); padding-bottom: 0.35rem; }
+.filing-warn { padding: 0.5rem 1.1rem 0; margin: 0; }
+.filing-lead .flrow { border-top: none; }   /* lead is first -> no divider above it */
+.filing-none { padding: 0.6rem 1.1rem; margin: 0; color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
 .warn { color: #b45309; font-weight: 600; font-size: 0.8rem; }
 body.dark-mode .warn { color: #fbbf24; }
 
 @media (max-width: 620px) {
     .card-main { grid-template-columns: 1.8rem 1fr; }
-    .filing { grid-column: 1 / -1; text-align: left; max-width: none; padding-top: 0.4rem; border-top: 1px dashed var(--border); }
     .fl-head { flex-wrap: wrap; }
-    .fl-sec { margin-left: auto; }   /* drops to its own line, stays right-aligned */
 }
 
 /* footer */

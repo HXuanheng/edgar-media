@@ -47,41 +47,17 @@ function momentum(it) {
     return `${mentions} mentions <span class="${cls}">${arrow} ${Math.abs(c)}%</span> <span style="opacity:.7">vs 24h</span>`;
 }
 
-function filingHtml(f, nameMatch) {
-    if (!f) return `<div class="filing-none">no recent material filing</div>`;
-    const meta = `${f.days_ago != null ? daysLabel(f.days_ago) : f.date}`;
-    // Card badge shows only freshness + date; the form is the link, and the
-    // item-code label now lives in the per-row summary list, not here.
-    if (nameMatch === "mismatch") {
-        // Unverified match: stay cautious, show the form code only.
-        return `<div class="filing-stale">
-            <span class="warn">⚠ unverified ticker/name match</span><br>
-            <span class="filing-form">${esc(f.form)}</span>
-            <span class="filing-meta">· ${esc(meta)}</span><br>
-            <a class="filing-meta" href="${esc(f.index_url)}" target="_blank" rel="noopener">view on SEC ↗</a>
-        </div>`;
-    }
-    if (f.fresh) {
-        return `<div class="filing-fresh">
-            <span class="badge">🔥 ${esc(meta)}</span><br>
-            <a href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.form)} ↗</a>
-        </div>`;
-    }
-    return `<div class="filing-stale">
-        <span class="filing-form">${esc(f.form)}</span>
-        <span class="filing-meta">· ${esc(meta)}</span><br>
-        <a class="filing-meta" href="${esc(f.index_url)}" target="_blank" rel="noopener">view on SEC ↗</a>
-    </div>`;
-}
-
 function filingRow(f, prefix) {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
+    const fire = f.fresh ? "🔥 " : "";   // very recent (<=7 days) -> flame on the age
     const lbl = f.summary && f.summary !== f.form ? ` · ${esc(f.summary)}` : "";
-    const formDate = `<span class="flform">${esc(f.form)}</span>
+    // Form code IS the link to the SEC filing (the ↗ cues the external jump); it's
+    // an interactive descendant, so on summary rows clicking it navigates without
+    // toggling the row open.
+    const formDate = `<a class="flform" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.form)} ↗</a>
         <span class="fl-date">${esc(f.date)}${lbl}</span>`;
-    // when + link cluster — pushed to the right edge (.flwhen has margin-left:auto)
-    const tail = `<span class="flwhen">${esc(when)}</span>
-        <a class="fl-sec" href="${esc(f.index_url)}" target="_blank" rel="noopener">View on SEC ↗</a>`;
+    // age, pushed to the right edge (.flwhen has margin-left:auto)
+    const tail = `<span class="flwhen">${fire}${esc(when)}</span>`;
     // Summarized row stays a one-liner with a "Summary" tag (next to the
     // description it annotates) as the expand cue; clicking the header (a <label>
     // tied to a hidden checkbox) reveals it inline. The SEC link is an interactive
@@ -101,14 +77,43 @@ function filingRow(f, prefix) {
 }
 
 function filingsListHtml(it) {
-    // Nothing to expand -> the headline line already conveys filing status.
-    const fs = it.cik ? (it.filings || []) : [];
-    if (!fs.length) return "";
-    const rows = fs.map((f) => filingRow(f, it.ticker)).join("");
-    return `<details class="card-details">
-        <summary>${fs.length} recent filing${fs.length > 1 ? "s" : ""} · last 90 days</summary>
-        <ul class="filing-list">${rows}</ul>
-    </details>`;
+    const head = it.filing;
+    const all = it.cik ? (it.filings || []) : [];
+    const warn = it.name_match === "mismatch"
+        ? `<p class="filing-warn"><span class="warn">⚠ unverified ticker/name match</span></p>`
+        : "";
+    // Match the headline within the 90-day window (by accession, or date+form if a
+    // headline ever lacks one).
+    const matchHead = head
+        ? (head.accession
+            ? (f) => f.accession === head.accession
+            : (f) => f.date === head.date && f.form === head.form)
+        : () => false;
+    // Lead = the latest filing, shown directly as the first row (no menu). Prefer
+    // the in-window copy because only it carries the ai_summary (-> Summary button);
+    // fall back to the headline if it's older than the window, then to the newest
+    // in-window filing. No filing at all -> a muted note, no menu.
+    const lead = all.find(matchHead) || head || all[0] || null;
+    if (!lead) {
+        return `<div class="card-filings">${warn}<p class="filing-none">no recent material filing</p></div>`;
+    }
+    // "More" rows = the rest of the 90-day window minus the lead (by reference).
+    const rest = all.filter((f) => f !== lead);
+    const leadRow = `<ul class="filing-list filing-lead">${filingRow(lead, it.ticker)}</ul>`;
+    let more = "";
+    if (rest.length) {
+        const id = `more-${(it.ticker || "").replace(/[^a-z0-9]/gi, "")}`;
+        const n = rest.length;
+        const rows = rest.map((f) => filingRow(f, it.ticker)).join("");
+        // Hidden checkbox toggles both labels + the rows via CSS (no JS). The "open"
+        // label leads; when checked it hides and "show less" shows at the bottom —
+        // so the control sits below the rows once expanded.
+        more = `<input type="checkbox" id="${id}" class="more-toggle" hidden>
+            <label class="more-open" for="${id}">${n} more filing${n > 1 ? "s" : ""} · last 90 days</label>
+            <ul class="filing-list more-rows">${rows}</ul>
+            <label class="more-close" for="${id}">show less</label>`;
+    }
+    return `<div class="card-filings">${warn}${leadRow}${more}</div>`;
 }
 
 function cardHtml(it, i) {
@@ -134,7 +139,6 @@ function cardHtml(it, i) {
                 </div>
                 <div class="attention">${momentum(it)}</div>
             </div>
-            <div class="filing">${filingHtml(it.filing, it.name_match)}</div>
         </div>
         ${filingsListHtml(it)}
     </article>`;
