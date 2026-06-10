@@ -1,8 +1,9 @@
 {
-  "updated_utc": "2026-06-10T16:57:59Z",
+  "updated_utc": "2026-06-10T17:17:35Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
-    "filings": "SEC EDGAR submissions API (real-time)"
+    "filings": "SEC EDGAR submissions API (real-time)",
+    "price": "Yahoo Finance / Stooq (~hourly, carry-forward on outage)"
   },
   "fresh_days": 7,
   "window_days": 90,
@@ -15,10 +16,10 @@
       "sec_name": "MICRON TECHNOLOGY INC",
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
-      "mentions": 279,
-      "mentions_24h_ago": 344,
-      "mention_change_pct": -18.9,
-      "upvotes": 1041,
+      "mentions": 267,
+      "mentions_24h_ago": 367,
+      "mention_change_pct": -27.2,
+      "upvotes": 1022,
       "cik": "0000723125",
       "filing": {
         "form": "8-K",
@@ -86,7 +87,22 @@
       ],
       "tickers": [
         "MU"
-      ]
+      ],
+      "price": {
+        "last": 896.43,
+        "prev_close": 1079.57,
+        "change_pct": -16.96,
+        "currency": "USD",
+        "spark": [
+          996.0,
+          864.01,
+          949.28,
+          935.89,
+          896.43
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 4,
@@ -95,10 +111,10 @@
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 193,
-      "mentions_24h_ago": 314,
-      "mention_change_pct": -38.5,
-      "upvotes": 664,
+      "mentions": 196,
+      "mentions_24h_ago": 322,
+      "mention_change_pct": -39.1,
+      "upvotes": 676,
       "cik": "0000789019",
       "filing": {
         "form": "8-K",
@@ -157,7 +173,22 @@
       ],
       "tickers": [
         "MSFT"
-      ]
+      ],
+      "price": {
+        "last": 402.28,
+        "prev_close": 427.34,
+        "change_pct": -5.86,
+        "currency": "USD",
+        "spark": [
+          428.05,
+          416.67,
+          411.74,
+          403.41,
+          402.28
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 7,
@@ -166,10 +197,10 @@
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 113,
-      "mentions_24h_ago": 87,
-      "mention_change_pct": 29.9,
-      "upvotes": 642,
+      "mentions": 114,
+      "mentions_24h_ago": 94,
+      "mention_change_pct": 21.3,
+      "upvotes": 639,
       "cik": "0000936340",
       "filing": {
         "form": "424B5",
@@ -300,7 +331,22 @@
       ],
       "tickers": [
         "DTE"
-      ]
+      ],
+      "price": {
+        "last": 147.5,
+        "prev_close": 141.81,
+        "change_pct": 4.02,
+        "currency": "USD",
+        "spark": [
+          145.77,
+          143.11,
+          145.95,
+          147.51,
+          147.5
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 11,
@@ -309,10 +355,10 @@
       "sec_name": "Super Micro Computer, Inc.",
       "display_name": "Super Micro Computer, Inc.",
       "name_match": "verified",
-      "mentions": 57,
+      "mentions": 58,
       "mentions_24h_ago": 7,
-      "mention_change_pct": 714.3,
-      "upvotes": 483,
+      "mention_change_pct": 728.6,
+      "upvotes": 487,
       "cik": "0001375365",
       "filing": {
         "form": "424B5",
@@ -412,19 +458,34 @@
       ],
       "tickers": [
         "SMCI"
-      ]
+      ],
+      "price": {
+        "last": 32.55,
+        "prev_close": 47.42,
+        "change_pct": -31.37,
+        "currency": "USD",
+        "spark": [
+          41.64,
+          43.99,
+          40.64,
+          32.54,
+          32.55
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 12,
+      "rank": 13,
       "ticker": "AVGO",
       "name": "Broadcom",
       "sec_name": "Broadcom Inc.",
       "display_name": "Broadcom Inc.",
       "name_match": "verified",
-      "mentions": 54,
+      "mentions": 55,
       "mentions_24h_ago": 98,
-      "mention_change_pct": -44.9,
-      "upvotes": 161,
+      "mention_change_pct": -43.9,
+      "upvotes": 162,
       "cik": "0001730168",
       "filing": {
         "form": "S-4",
@@ -515,19 +576,34 @@
       ],
       "tickers": [
         "AVGO"
-      ]
+      ],
+      "price": {
+        "last": 373.31,
+        "prev_close": 479.23,
+        "change_pct": -22.1,
+        "currency": "USD",
+        "spark": [
+          385.73,
+          396.6,
+          392.16,
+          373.3,
+          373.31
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 13,
+      "rank": 14,
       "ticker": "AM",
       "name": "Antero Midstream",
       "sec_name": "Antero Midstream Corp",
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
       "mentions": 53,
-      "mentions_24h_ago": 51,
-      "mention_change_pct": 3.9,
-      "upvotes": 171,
+      "mentions_24h_ago": 52,
+      "mention_change_pct": 1.9,
+      "upvotes": 173,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -616,19 +692,34 @@
       ],
       "tickers": [
         "AM"
-      ]
+      ],
+      "price": {
+        "last": 21.73,
+        "prev_close": 21.27,
+        "change_pct": 2.19,
+        "currency": "USD",
+        "spark": [
+          21.52,
+          21.33,
+          21.26,
+          21.74,
+          21.73
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 17,
+      "rank": 15,
       "ticker": "HOOD",
       "name": "Robinhood",
       "sec_name": "Robinhood Markets, Inc.",
       "display_name": "Robinhood Markets, Inc.",
       "name_match": "verified",
-      "mentions": 46,
-      "mentions_24h_ago": 21,
-      "mention_change_pct": 119.0,
-      "upvotes": 151,
+      "mentions": 47,
+      "mentions_24h_ago": 22,
+      "mention_change_pct": 113.6,
+      "upvotes": 155,
       "cik": "0001783879",
       "filing": {
         "form": "8-K",
@@ -726,19 +817,34 @@
       ],
       "tickers": [
         "HOOD"
-      ]
+      ],
+      "price": {
+        "last": 88.64,
+        "prev_close": 82.85,
+        "change_pct": 6.99,
+        "currency": "USD",
+        "spark": [
+          88.33,
+          82.47,
+          85.04,
+          83.77,
+          88.64
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 26,
+      "rank": 27,
       "ticker": "RKLB",
       "name": "Rocket Lab USA",
       "sec_name": "Rocket Lab Corp",
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 41,
-      "mention_change_pct": -29.3,
-      "upvotes": 85,
+      "mentions": 28,
+      "mentions_24h_ago": 43,
+      "mention_change_pct": -34.9,
+      "upvotes": 82,
       "cik": "0001819994",
       "filing": {
         "form": "8-K",
@@ -920,7 +1026,22 @@
       ],
       "tickers": [
         "RKLB"
-      ]
+      ],
+      "price": {
+        "last": 107.5,
+        "prev_close": 114.7,
+        "change_pct": -6.28,
+        "currency": "USD",
+        "spark": [
+          119.95,
+          110.08,
+          113.65,
+          108.23,
+          107.5
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 1,
@@ -929,16 +1050,31 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 618,
-      "mentions_24h_ago": 397,
-      "mention_change_pct": 55.7,
-      "upvotes": 2800,
+      "mentions": 626,
+      "mentions_24h_ago": 455,
+      "mention_change_pct": 37.6,
+      "upvotes": 2824,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
       "tickers": [
         "SPY"
-      ]
+      ],
+      "price": {
+        "last": 728.97,
+        "prev_close": 754.24,
+        "change_pct": -3.35,
+        "currency": "USD",
+        "spark": [
+          757.09,
+          737.55,
+          739.22,
+          737.05,
+          728.97
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 3,
@@ -947,9 +1083,9 @@
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 208,
-      "mentions_24h_ago": 179,
-      "mention_change_pct": 16.2,
+      "mentions": 203,
+      "mentions_24h_ago": 215,
+      "mention_change_pct": -5.6,
       "upvotes": 2418,
       "cik": "0001067839",
       "filing": {
@@ -966,7 +1102,22 @@
       "filings": [],
       "tickers": [
         "QQQ"
-      ]
+      ],
+      "price": {
+        "last": 696.49,
+        "prev_close": 744.21,
+        "change_pct": -6.41,
+        "currency": "USD",
+        "spark": [
+          705.06,
+          716.07,
+          707.83,
+          696.48,
+          696.49
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 5,
@@ -975,10 +1126,10 @@
       "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
       "display_name": "Space Exploration Technologies Corp",
       "name_match": "mismatch",
-      "mentions": 134,
-      "mentions_24h_ago": 82,
-      "mention_change_pct": 63.4,
-      "upvotes": 5622,
+      "mentions": 133,
+      "mentions_24h_ago": 86,
+      "mention_change_pct": 54.7,
+      "upvotes": 5628,
       "cik": "0001181412",
       "filing": {
         "form": "S-1/A",
@@ -1022,7 +1173,18 @@
           "accession": "0001628280-26-036936",
           "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
         }
-      ]
+      ],
+      "price": {
+        "last": 135.0,
+        "prev_close": 135.0,
+        "change_pct": 0.0,
+        "currency": "USD",
+        "spark": [
+          135.0
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-09"
+      }
     },
     {
       "rank": 6,
@@ -1031,10 +1193,10 @@
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 125,
-      "mentions_24h_ago": 133,
-      "mention_change_pct": -6.0,
-      "upvotes": 849,
+      "mentions": 129,
+      "mentions_24h_ago": 142,
+      "mention_change_pct": -9.2,
+      "upvotes": 777,
       "cik": "0001045810",
       "filing": {
         "form": "10-Q",
@@ -1115,7 +1277,22 @@
       ],
       "tickers": [
         "NVDA"
-      ]
+      ],
+      "price": {
+        "last": 202.2,
+        "prev_close": 214.75,
+        "change_pct": -5.84,
+        "currency": "USD",
+        "spark": [
+          218.66,
+          205.1,
+          208.64,
+          208.19,
+          202.2
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 8,
@@ -1124,10 +1301,10 @@
       "sec_name": "Marvell Technology, Inc.",
       "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
-      "mentions": 80,
-      "mentions_24h_ago": 154,
-      "mention_change_pct": -48.1,
-      "upvotes": 251,
+      "mentions": 79,
+      "mentions_24h_ago": 159,
+      "mention_change_pct": -50.3,
+      "upvotes": 253,
       "cik": "0001835632",
       "filing": {
         "form": "10-Q",
@@ -1238,7 +1415,22 @@
       ],
       "tickers": [
         "MRVL"
-      ]
+      ],
+      "price": {
+        "last": 256.1,
+        "prev_close": 301.65,
+        "change_pct": -15.1,
+        "currency": "USD",
+        "spark": [
+          316.43,
+          263.47,
+          288.85,
+          266.88,
+          256.1
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 9,
@@ -1247,10 +1439,10 @@
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 69,
-      "mentions_24h_ago": 84,
-      "mention_change_pct": -17.9,
-      "upvotes": 218,
+      "mentions": 68,
+      "mentions_24h_ago": 86,
+      "mention_change_pct": -20.9,
+      "upvotes": 211,
       "cik": "0001318605",
       "filing": {
         "form": "10-K/A",
@@ -1307,7 +1499,22 @@
       ],
       "tickers": [
         "TSLA"
-      ]
+      ],
+      "price": {
+        "last": 383.74,
+        "prev_close": 423.7,
+        "change_pct": -9.43,
+        "currency": "USD",
+        "spark": [
+          391.0,
+          408.95,
+          396.68,
+          383.73,
+          383.74
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 10,
@@ -1316,9 +1523,9 @@
       "sec_name": "Apple Inc.",
       "display_name": "Apple Inc.",
       "name_match": "verified",
-      "mentions": 62,
-      "mentions_24h_ago": 154,
-      "mention_change_pct": -59.7,
+      "mentions": 64,
+      "mentions_24h_ago": 166,
+      "mention_change_pct": -61.4,
       "upvotes": 151,
       "cik": "0000320193",
       "filing": {
@@ -1366,19 +1573,34 @@
       ],
       "tickers": [
         "AAPL"
-      ]
+      ],
+      "price": {
+        "last": 291.95,
+        "prev_close": 310.26,
+        "change_pct": -5.9,
+        "currency": "USD",
+        "spark": [
+          311.23,
+          307.34,
+          301.54,
+          290.55,
+          291.95
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 14,
+      "rank": 12,
       "ticker": "ORCL",
       "name": "Oracle",
       "sec_name": "ORACLE CORP",
       "display_name": "Oracle Corp",
       "name_match": "verified",
-      "mentions": 51,
-      "mentions_24h_ago": 21,
-      "mention_change_pct": 142.9,
-      "upvotes": 215,
+      "mentions": 57,
+      "mentions_24h_ago": 23,
+      "mention_change_pct": 147.8,
+      "upvotes": 232,
       "cik": "0001341439",
       "filing": {
         "form": "8-K",
@@ -1415,19 +1637,34 @@
       ],
       "tickers": [
         "ORCL"
-      ]
+      ],
+      "price": {
+        "last": 203.36,
+        "prev_close": 230.33,
+        "change_pct": -11.71,
+        "currency": "USD",
+        "spark": [
+          236.34,
+          213.68,
+          211.82,
+          205.81,
+          203.36
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 15,
+      "rank": 16,
       "ticker": "META",
       "name": "Meta Platforms (Facebook)",
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 49,
-      "mentions_24h_ago": 67,
-      "mention_change_pct": -26.9,
-      "upvotes": 130,
+      "mentions": 47,
+      "mentions_24h_ago": 74,
+      "mention_change_pct": -36.5,
+      "upvotes": 133,
       "cik": "0001326801",
       "filing": {
         "form": "8-K",
@@ -1515,19 +1752,34 @@
       ],
       "tickers": [
         "META"
-      ]
+      ],
+      "price": {
+        "last": 575.6,
+        "prev_close": 622.98,
+        "change_pct": -7.61,
+        "currency": "USD",
+        "spark": [
+          593.0,
+          585.39,
+          584.59,
+          575.59,
+          575.6
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 16,
+      "rank": 17,
       "ticker": "AMD",
       "name": "AMD",
       "sec_name": "ADVANCED MICRO DEVICES INC",
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
-      "mentions": 47,
-      "mentions_24h_ago": 37,
-      "mention_change_pct": 27.0,
-      "upvotes": 1120,
+      "mentions": 46,
+      "mentions_24h_ago": 42,
+      "mention_change_pct": 9.5,
+      "upvotes": 1155,
       "cik": "0000002488",
       "filing": {
         "form": "8-K",
@@ -1595,49 +1847,34 @@
       ],
       "tickers": [
         "AMD"
-      ]
+      ],
+      "price": {
+        "last": 452.54,
+        "prev_close": 542.52,
+        "change_pct": -16.59,
+        "currency": "USD",
+        "spark": [
+          523.2,
+          466.38,
+          490.33,
+          475.51,
+          452.54
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 18,
-      "ticker": "SOXS",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
-      "sec_name": null,
-      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
-      "name_match": "no_cik",
-      "mentions": 42,
-      "mentions_24h_ago": 24,
-      "mention_change_pct": 75.0,
-      "upvotes": 463,
-      "cik": null,
-      "filing": null,
-      "filings": []
-    },
-    {
-      "rank": 19,
-      "ticker": "SOXL",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "sec_name": null,
-      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "name_match": "no_cik",
-      "mentions": 41,
-      "mentions_24h_ago": 27,
-      "mention_change_pct": 51.9,
-      "upvotes": 94,
-      "cik": null,
-      "filing": null,
-      "filings": []
-    },
-    {
-      "rank": 20,
       "ticker": "NOW",
       "name": "ServiceNow",
       "sec_name": "ServiceNow, Inc.",
       "display_name": "ServiceNow, Inc.",
       "name_match": "verified",
-      "mentions": 39,
-      "mentions_24h_ago": 46,
-      "mention_change_pct": -15.2,
-      "upvotes": 172,
+      "mentions": 38,
+      "mentions_24h_ago": 49,
+      "mention_change_pct": -22.4,
+      "upvotes": 173,
       "cik": "0001373715",
       "filing": {
         "form": "8-K",
@@ -1737,19 +1974,34 @@
       ],
       "tickers": [
         "NOW"
-      ]
+      ],
+      "price": {
+        "last": 108.4,
+        "prev_close": 117.9,
+        "change_pct": -8.06,
+        "currency": "USD",
+        "spark": [
+          119.36,
+          112.45,
+          114.19,
+          106.97,
+          108.4
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 21,
+      "rank": 19,
       "ticker": "ASTS",
       "name": "AST SpaceMobile",
       "sec_name": "AST SpaceMobile, Inc.",
       "display_name": "AST SpaceMobile, Inc.",
       "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 58,
-      "mention_change_pct": -37.9,
-      "upvotes": 113,
+      "mentions": 38,
+      "mentions_24h_ago": 60,
+      "mention_change_pct": -36.7,
+      "upvotes": 125,
       "cik": "0001780312",
       "filing": {
         "form": "10-Q",
@@ -1818,7 +2070,82 @@
       ],
       "tickers": [
         "ASTS"
-      ]
+      ],
+      "price": {
+        "last": 89.63,
+        "prev_close": 107.73,
+        "change_pct": -16.8,
+        "currency": "USD",
+        "spark": [
+          107.29,
+          93.6,
+          92.06,
+          88.71,
+          89.63
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
+    },
+    {
+      "rank": 20,
+      "ticker": "SOXL",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "sec_name": null,
+      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "name_match": "no_cik",
+      "mentions": 37,
+      "mentions_24h_ago": 30,
+      "mention_change_pct": 23.3,
+      "upvotes": 88,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "price": {
+        "last": 181.73,
+        "prev_close": 280.54,
+        "change_pct": -35.22,
+        "currency": "USD",
+        "spark": [
+          262.7,
+          182.54,
+          211.44,
+          201.68,
+          181.73
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
+    },
+    {
+      "rank": 21,
+      "ticker": "SOXS",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
+      "sec_name": null,
+      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
+      "name_match": "no_cik",
+      "mentions": 37,
+      "mentions_24h_ago": 26,
+      "mention_change_pct": 42.3,
+      "upvotes": 463,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "price": {
+        "last": 6.53,
+        "prev_close": 4.91,
+        "change_pct": 32.93,
+        "currency": "USD",
+        "spark": [
+          5.2,
+          6.84,
+          5.69,
+          5.93,
+          6.53
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 22,
@@ -1827,10 +2154,10 @@
       "sec_name": "Sandisk Corp",
       "display_name": "Sandisk Corp",
       "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 47,
-      "mention_change_pct": -23.4,
-      "upvotes": 94,
+      "mentions": 37,
+      "mentions_24h_ago": 50,
+      "mention_change_pct": -26.0,
+      "upvotes": 95,
       "cik": "0002023554",
       "filing": {
         "form": "8-K",
@@ -1887,7 +2214,22 @@
       ],
       "tickers": [
         "SNDK"
-      ]
+      ],
+      "price": {
+        "last": 1641.5,
+        "prev_close": 1831.5,
+        "change_pct": -10.37,
+        "currency": "USD",
+        "spark": [
+          1759.68,
+          1559.32,
+          1642.0,
+          1646.54,
+          1641.5
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 23,
@@ -1897,9 +2239,9 @@
       "display_name": "Gartner Inc",
       "name_match": "verified",
       "mentions": 34,
-      "mentions_24h_ago": 21,
-      "mention_change_pct": 61.9,
-      "upvotes": 162,
+      "mentions_24h_ago": 22,
+      "mention_change_pct": 54.5,
+      "upvotes": 157,
       "cik": "0000749251",
       "filing": {
         "form": "8-K",
@@ -1967,34 +2309,34 @@
       ],
       "tickers": [
         "IT"
-      ]
+      ],
+      "price": {
+        "last": 156.88,
+        "prev_close": 164.75,
+        "change_pct": -4.78,
+        "currency": "USD",
+        "spark": [
+          164.87,
+          164.02,
+          160.35,
+          157.4,
+          156.88
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 24,
-      "ticker": "VOO",
-      "name": "Vanguard S&P 500 ETF",
-      "sec_name": null,
-      "display_name": "Vanguard S&P 500 ETF",
-      "name_match": "no_cik",
-      "mentions": 32,
-      "mentions_24h_ago": 45,
-      "mention_change_pct": -28.9,
-      "upvotes": 54,
-      "cik": null,
-      "filing": null,
-      "filings": []
-    },
-    {
-      "rank": 25,
       "ticker": "NBIS",
       "name": "Nebius Group",
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 31,
-      "mentions_24h_ago": 63,
-      "mention_change_pct": -50.8,
-      "upvotes": 59,
+      "mentions": 32,
+      "mentions_24h_ago": 64,
+      "mention_change_pct": -50.0,
+      "upvotes": 61,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -2093,87 +2435,63 @@
       ],
       "tickers": [
         "NBIS"
-      ]
-    },
-    {
-      "rank": 27,
-      "ticker": "RDDT",
-      "name": "Reddit",
-      "sec_name": "Reddit, Inc.",
-      "display_name": "Reddit, Inc.",
-      "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 47,
-      "mention_change_pct": -38.3,
-      "upvotes": 74,
-      "cik": "0001713445",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-01",
-        "days_ago": 40,
-        "fresh": false,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001713445-26-000069",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/rddt-20260331.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-05-01",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001713445-26-000069",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 41,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001713445-26-000067",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000067/0001713445-26-000067-index.htm"
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-04-23",
-          "days_ago": 48,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001713445-26-000061",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000061/0001713445-26-000061-index.htm"
-        },
-        {
-          "form": "DEF 14A",
-          "date": "2026-04-23",
-          "days_ago": 48,
-          "fresh": false,
-          "desc": "DEF 14A",
-          "summary": "Proxy statement",
-          "accession": "0001713445-26-000060",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000060/0001713445-26-000060-index.htm"
-        }
       ],
-      "tickers": [
-        "RDDT"
-      ]
+      "price": {
+        "last": 216.15,
+        "prev_close": 251.68,
+        "change_pct": -14.12,
+        "currency": "USD",
+        "spark": [
+          259.67,
+          227.81,
+          218.0,
+          220.12,
+          216.15
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
-      "rank": 28,
+      "rank": 25,
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "sec_name": null,
+      "display_name": "Vanguard S&P 500 ETF",
+      "name_match": "no_cik",
+      "mentions": 31,
+      "mentions_24h_ago": 47,
+      "mention_change_pct": -34.0,
+      "upvotes": 48,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "price": {
+        "last": 670.26,
+        "prev_close": 693.36,
+        "change_pct": -3.33,
+        "currency": "USD",
+        "spark": [
+          696.06,
+          678.0,
+          679.68,
+          677.7,
+          670.26
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
+    },
+    {
+      "rank": 26,
       "ticker": "USO",
       "name": "United States Commodity Funds LLC - United States Oil Fund",
       "sec_name": "United States Oil Fund, LP",
       "display_name": "United States Oil Fund, LP",
       "name_match": "verified",
       "mentions": 28,
-      "mentions_24h_ago": 9,
-      "mention_change_pct": 211.1,
+      "mentions_24h_ago": 12,
+      "mention_change_pct": 133.3,
       "upvotes": 60,
       "cik": "0001327068",
       "filing": {
@@ -2251,19 +2569,172 @@
       ],
       "tickers": [
         "USO"
-      ]
+      ],
+      "price": {
+        "last": 135.76,
+        "prev_close": 140.86,
+        "change_pct": -3.62,
+        "currency": "USD",
+        "spark": [
+          136.74,
+          133.02,
+          135.15,
+          131.3,
+          135.76
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
+    },
+    {
+      "rank": 28,
+      "ticker": "GLD",
+      "name": "SSgA SPDR Gold Shares",
+      "sec_name": "SPDR GOLD TRUST",
+      "display_name": "Spdr Gold Trust",
+      "name_match": "verified",
+      "mentions": 27,
+      "mentions_24h_ago": 5,
+      "mention_change_pct": 440.0,
+      "upvotes": 66,
+      "cik": "0001222333",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-05",
+        "days_ago": 36,
+        "fresh": false,
+        "desc": "FORM 10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001437749-26-014926",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1222333/000143774926014926/gld20260331_10q.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1222333/000143774926014926/0001437749-26-014926-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-05",
+          "days_ago": 36,
+          "fresh": false,
+          "desc": "FORM 10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001437749-26-014926",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1222333/000143774926014926/0001437749-26-014926-index.htm"
+        }
+      ],
+      "tickers": [
+        "GLD"
+      ],
+      "price": {
+        "last": 377.7,
+        "prev_close": 407.87,
+        "change_pct": -7.4,
+        "currency": "USD",
+        "spark": [
+          411.27,
+          396.24,
+          397.27,
+          390.78,
+          377.7
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     },
     {
       "rank": 29,
+      "ticker": "RDDT",
+      "name": "Reddit",
+      "sec_name": "Reddit, Inc.",
+      "display_name": "Reddit, Inc.",
+      "name_match": "verified",
+      "mentions": 27,
+      "mentions_24h_ago": 48,
+      "mention_change_pct": -43.8,
+      "upvotes": 71,
+      "cik": "0001713445",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-01",
+        "days_ago": 40,
+        "fresh": false,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001713445-26-000069",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/rddt-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001713445-26-000069",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 41,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001713445-26-000067",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000067/0001713445-26-000067-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-23",
+          "days_ago": 48,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001713445-26-000061",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000061/0001713445-26-000061-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-23",
+          "days_ago": 48,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001713445-26-000060",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000060/0001713445-26-000060-index.htm"
+        }
+      ],
+      "tickers": [
+        "RDDT"
+      ],
+      "price": {
+        "last": 175.25,
+        "prev_close": 169.49,
+        "change_pct": 3.4,
+        "currency": "USD",
+        "spark": [
+          183.91,
+          173.45,
+          171.13,
+          178.11,
+          175.25
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
+    },
+    {
+      "rank": 30,
       "ticker": "LFVN",
       "name": "Lifevantage",
       "sec_name": "Lifevantage Corp",
       "display_name": "Lifevantage Corp",
       "name_match": "verified",
-      "mentions": 28,
-      "mentions_24h_ago": 28,
-      "mention_change_pct": 0.0,
-      "upvotes": 493,
+      "mentions": 26,
+      "mentions_24h_ago": 27,
+      "mention_change_pct": -3.7,
+      "upvotes": 462,
       "cik": "0000849146",
       "filing": {
         "form": "8-K",
@@ -2310,46 +2781,22 @@
       ],
       "tickers": [
         "LFVN"
-      ]
-    },
-    {
-      "rank": 30,
-      "ticker": "GLD",
-      "name": "SSgA SPDR Gold Shares",
-      "sec_name": "SPDR GOLD TRUST",
-      "display_name": "Spdr Gold Trust",
-      "name_match": "verified",
-      "mentions": 27,
-      "mentions_24h_ago": 3,
-      "mention_change_pct": 800.0,
-      "upvotes": 65,
-      "cik": "0001222333",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-05",
-        "days_ago": 36,
-        "fresh": false,
-        "desc": "FORM 10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001437749-26-014926",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1222333/000143774926014926/gld20260331_10q.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1222333/000143774926014926/0001437749-26-014926-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-05-05",
-          "days_ago": 36,
-          "fresh": false,
-          "desc": "FORM 10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001437749-26-014926",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1222333/000143774926014926/0001437749-26-014926-index.htm"
-        }
       ],
-      "tickers": [
-        "GLD"
-      ]
+      "price": {
+        "last": 9.41,
+        "prev_close": 8.32,
+        "change_pct": 13.1,
+        "currency": "USD",
+        "spark": [
+          9.31,
+          9.97,
+          10.7,
+          9.5,
+          9.41
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      }
     }
   ]
 }

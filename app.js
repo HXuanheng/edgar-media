@@ -1,6 +1,6 @@
 // EDGAR Media — render trending.json into the dashboard.
 
-import { esc, timeAgo, momentum, filingsListHtml } from "./js/util.js";
+import { esc, timeAgo, momentum, priceHtml, filingsListHtml } from "./js/util.js";
 import { isConfigured } from "./js/config.js";
 import { setItems } from "./js/store.js";
 import * as auth from "./js/auth.js";
@@ -59,6 +59,7 @@ function cardHtml(it, i) {
                 <div class="tick-row">
                     ${ticker}
                     <span class="coname">${esc(coName)}</span>
+                    ${priceHtml(it)}
                 </div>
                 <div class="attention">${momentum(it)}</div>
             </div>

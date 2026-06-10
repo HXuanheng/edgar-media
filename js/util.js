@@ -63,6 +63,53 @@ export function filingRow(f, prefix, ns = "") {
     return `<li class="flrow flrow-plain"><div class="fl-head">${formDate}${tail}</div></li>`;
 }
 
+// Tiny inline trend line for the 5-day closes. Normalized min->max so the shape
+// always fills the box; colored by overall direction. <2 points -> nothing.
+export function sparklineSvg(spark, up) {
+    if (!Array.isArray(spark) || spark.length < 2) return "";
+    const w = 72, h = 22, pad = 3;
+    const min = Math.min(...spark), max = Math.max(...spark);
+    const span = max - min || 1;
+    const n = spark.length;
+    const xy = (v, i) => [
+        pad + (i * (w - 2 * pad)) / (n - 1),
+        pad + (h - 2 * pad) * (1 - (v - min) / span),         // y is flipped
+    ];
+    const pts = spark.map((v, i) => xy(v, i).map((z) => z.toFixed(1)).join(",")).join(" ");
+    const [ex, ey] = xy(spark[n - 1], n - 1);                 // last point -> anchor dot
+    // No preserveAspectRatio override: viewBox matches width/height so the
+    // 1.75px stroke isn't squashed horizontally.
+    return `<svg class="spark ${up ? "spark-up" : "spark-down"}" viewBox="0 0 ${w} ${h}"`
+        + ` width="${w}" height="${h}" aria-hidden="true">`
+        + `<polyline points="${pts}" fill="none" stroke-width="1.75"`
+        + ` stroke-linejoin="round" stroke-linecap="round"/>`
+        + `<circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="1.9"/></svg>`;
+}
+
+// Market-price chip: last price + day change % (reusing the .chg-up/.chg-down
+// colors from momentum) + sparkline. No price (foreign/crypto/outage) -> "".
+// A carried-forward (stale) price is labelled with its as_of date so it is never
+// shown as if live. Built at build time in scripts/build_data.py.
+export function priceHtml(it) {
+    const p = it.price;
+    if (!p || p.last == null) return "";
+    const c = p.change_pct;
+    const up = (c ?? 0) >= 0;
+    const last = Number(p.last).toLocaleString(undefined, {
+        minimumFractionDigits: 2, maximumFractionDigits: 2,
+    });
+    // Currency rides inside .px-last (muted) so it hugs the number; change %,
+    // sparkline and the stale note are separate flex items. No leading spaces:
+    // a stray text node becomes an anonymous flex item and doubles the gap.
+    const cur = p.currency ? `<span class="px-cur">${esc(p.currency)}</span>` : "";
+    const chg = (c === null || c === undefined) ? "" :
+        `<span class="${up ? "chg-up" : "chg-down"}">${up ? "▲" : "▼"} ${Math.abs(c)}%</span>`;
+    const stale = p.stale && p.as_of
+        ? `<span class="px-stale">· as of ${esc(p.as_of)}</span>` : "";
+    return `<div class="price"><span class="px-last">${esc(last)}${cur}</span>`
+        + `${chg}${sparklineSvg(p.spark, up)}${stale}</div>`;
+}
+
 export function filingsListHtml(it, ns = "") {
     const head = it.filing;
     const all = it.cik ? (it.filings || []) : [];

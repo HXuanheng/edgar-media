@@ -3,7 +3,7 @@
 // Hash routing because GitHub Pages has no server rewrites — deep links never 404.
 
 import { ready, findByTicker, findByCik } from "./store.js";
-import { esc, momentum, filingsListHtml } from "./util.js";
+import { esc, momentum, priceHtml, filingsListHtml } from "./util.js";
 import { renderFullThread } from "./comments.js";
 
 function parseHash() {
@@ -30,7 +30,7 @@ function companyHeaderHtml(it) {
         : `<span class="ticker">$${esc(it.ticker)}</span>`;
     return `<div class="company-head">
         <a class="back-link" href="#/">← All trending</a>
-        <div class="tick-row">${ticker}<span class="coname">${esc(coName)}</span></div>
+        <div class="tick-row">${ticker}<span class="coname">${esc(coName)}</span>${priceHtml(it)}</div>
         <div class="attention">${momentum(it)}</div>
     </div>`;
 }

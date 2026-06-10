@@ -38,6 +38,28 @@ HEADLINE_MAX_DAYS = 365  # ignore ancient filings as the card headline (ETF junk
 MAX_FILINGS = 25       # cap per firm (bounds JSON size)
 SEC_PAUSE = 0.15    # polite gap between SEC calls (limit is 10 req/sec)
 
+# --- market price (free, no key; keyed provider optional) -----------------
+# Last quote + day change + a 5-day sparkline per firm, fetched at build time
+# (Yahoo/Stooq send no CORS headers, so a static page can't fetch them live).
+# Tried in order; a keyed provider is skipped unless its env var is set (same
+# rule as the AI chain below). Default path is keyless Yahoo -> Stooq. Setting
+# TWELVEDATA_API_KEY (free, 800 req/day, no card -> twelvedata.com) promotes a
+# contractually-supported API to primary with no code change -- the long-run
+# escape hatch if a keyless endpoint ever dies for good. Reliability also comes
+# from carry-forward (load_prev_prices): if every source is down for a ticker we
+# reuse last run's price (shown as stale via its as_of), never a blank.
+YAHOO_URL = ("https://query1.finance.yahoo.com/v8/finance/chart/"
+             "{sym}?interval=1d&range=5d")
+STOOQ_URL = "https://stooq.com/q/d/l/?s={sym}.us&i=d"          # daily OHLCV CSV
+TWELVEDATA_URL = ("https://api.twelvedata.com/time_series?symbol={sym}"
+                  "&interval=1day&outputsize=6&apikey={key}")  # 1 call = quote+spark
+PRICE_PAUSE = 0.2      # polite gap between price calls
+PRICE_PROVIDERS = [
+    {"name": "twelvedata", "kind": "twelvedata", "key_env": "TWELVEDATA_API_KEY"},
+    {"name": "yahoo", "kind": "yahoo"},
+    {"name": "stooq", "kind": "stooq"},
+]
+
 # --- AI summary providers (all optional, all free) ------------------------
 # One-sentence prose summary of FRESH headline filings. We try a chain of free
 # providers in order; when one is out of its daily quota (HTTP 429) we fall
@@ -433,6 +455,145 @@ def strip_doc_urls(items):
             row.pop("doc_url", None)
 
 
+# --- market price ---------------------------------------------------------
+def _price_yahoo(ticker):
+    """Yahoo v8 chart (free, no key). near-real-time price + 5-day closes."""
+    data = get_json(YAHOO_URL.format(sym=ticker.upper()))
+    try:
+        res = data["chart"]["result"][0]
+        meta = res["meta"]
+        last = meta.get("regularMarketPrice")
+        prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+        if last is None or not prev:
+            return None
+        closes = [c for c in res["indicators"]["quote"][0].get("close", [])
+                  if c is not None]
+        spark = [round(c, 2) for c in closes][-5:]
+        if not spark or spark[-1] != round(last, 2):   # ensure latest point shows
+            spark = (spark + [round(last, 2)])[-5:]
+        ts = meta.get("regularMarketTime")
+        as_of = (datetime.fromtimestamp(ts, timezone.utc).date().isoformat()
+                 if ts else None)
+        return {
+            "last": round(last, 2),
+            "prev_close": round(prev, 2),
+            "change_pct": round((last - prev) / prev * 100, 2),
+            "currency": meta.get("currency") or "USD",
+            "spark": spark,
+            "source": "yahoo",
+            "as_of": as_of,
+        }
+    except (KeyError, IndexError, TypeError, ZeroDivisionError):
+        return None
+
+
+def _price_stooq(ticker):
+    """Stooq daily CSV (free, no key). EOD close; stable fallback for Yahoo."""
+    csv = get_text(STOOQ_URL.format(sym=ticker.lower()))
+    if not csv:
+        return None
+    rows = [r for r in csv.strip().splitlines() if r]
+    if len(rows) < 2 or not rows[0].lower().startswith("date"):
+        return None                                    # "No data" page etc.
+    closes, last_date = [], None
+    for r in rows[-6:]:                                 # Date,Open,High,Low,Close,Vol
+        parts = r.split(",")
+        if len(parts) < 5:
+            continue
+        try:
+            closes.append(float(parts[4]))
+            last_date = parts[0]
+        except ValueError:
+            continue
+    if not closes:
+        return None
+    last = closes[-1]
+    prev = closes[-2] if len(closes) >= 2 else last
+    return {
+        "last": round(last, 2),
+        "prev_close": round(prev, 2),
+        "change_pct": round((last - prev) / prev * 100, 2) if prev else 0.0,
+        "currency": "USD",
+        "spark": [round(c, 2) for c in closes[-5:]],
+        "source": "stooq",
+        "as_of": last_date,
+    }
+
+
+def _price_twelvedata(ticker, key):
+    """Twelve Data time_series (sanctioned API, free key). One call yields the
+    latest close, the prior close, and the 5-day sparkline (newest first)."""
+    data = get_json(TWELVEDATA_URL.format(sym=ticker.upper(), key=key))
+    try:
+        if not data or data.get("status") == "error":
+            return None
+        vals = data.get("values") or []
+        closes = [float(v["close"]) for v in vals if v.get("close")]
+        if not closes:
+            return None
+        last = closes[0]
+        prev = closes[1] if len(closes) > 1 else last
+        return {
+            "last": round(last, 2),
+            "prev_close": round(prev, 2),
+            "change_pct": round((last - prev) / prev * 100, 2) if prev else 0.0,
+            "currency": (data.get("meta") or {}).get("currency") or "USD",
+            "spark": [round(c, 2) for c in reversed(closes[:5])],  # oldest->newest
+            "source": "twelvedata",
+            "as_of": (vals[0].get("datetime") or "")[:10] or None,
+        }
+    except (KeyError, IndexError, ValueError, TypeError, ZeroDivisionError):
+        return None
+
+
+def fetch_price(ticker, prev):
+    """Price object for a ticker, walking PRICE_PROVIDERS in order. Keyed
+    providers are skipped unless their env var is set (like active_providers).
+    If every live source fails, reuse last run's price (carry-forward) so an
+    outage degrades to a stale quote, never a blank. Never raises."""
+    for p in PRICE_PROVIDERS:
+        env = p.get("key_env")
+        key = os.environ.get(env) if env else None
+        if env and not key:
+            continue                                   # keyed provider, no key
+        try:
+            kind = p["kind"]
+            if kind == "yahoo":
+                got = _price_yahoo(ticker)
+            elif kind == "stooq":
+                got = _price_stooq(ticker)
+            elif kind == "twelvedata":
+                got = _price_twelvedata(ticker, key)
+            else:
+                got = None
+        except Exception as e:                         # a quote must never kill the run
+            print(f"  ! price {p['name']} {ticker}: {e}", file=sys.stderr)
+            got = None
+        if got:
+            return got
+    return prev.get(ticker)                             # carry-forward (or None)
+
+
+def load_prev_prices():
+    """ticker -> last run's price object, for carry-forward when every live
+    source is down. Reads the committed trending.json; missing/corrupt -> {}.
+    Keyed by every class so dual-class issuers carry forward either way."""
+    try:
+        with open(OUT_PATH, encoding="utf-8") as f:
+            prev = json.load(f)
+    except (FileNotFoundError, ValueError):
+        return {}
+    out = {}
+    for it in prev.get("items", []):
+        pr = it.get("price")
+        if not pr:
+            continue
+        for t in (it.get("tickers") or [it.get("ticker")]):
+            if t:
+                out[t] = pr
+    return out
+
+
 # --- pipeline -------------------------------------------------------------
 def load_ticker_map():
     """SEC ticker -> {"cik": 10-digit CIK, "sec_name": official title}.
@@ -631,6 +792,26 @@ def main():
     # Collapse dual-class tickers (GOOG/GOOGL) into one card per issuer (CIK).
     items = merge_same_cik(items)
 
+    # Market price: last quote + day change + 5-day sparkline, fetched per
+    # displayed card (after the merge so a dual-class issuer is fetched once, by
+    # its primary class). Free + keyless (Yahoo -> Stooq); carry-forward reuses
+    # last run's price when every source is down, so an outage shows as stale,
+    # never blank.
+    print("fetching market prices (Yahoo -> Stooq, carry-forward on outage)...")
+    prev_prices = load_prev_prices()
+    carried = 0
+    for it in items:
+        pr = fetch_price(it["ticker"], prev_prices)
+        if pr:
+            if pr is prev_prices.get(it["ticker"]):    # reused -> mark stale
+                pr = {**pr, "stale": True}             # copy; don't mutate the map
+                carried += 1
+            it["price"] = pr
+        time.sleep(PRICE_PAUSE)
+    priced = sum(1 for x in items if x.get("price"))
+    print(f"prices: {priced}/{len(items)} priced, "
+          f"{carried} carried forward (live sources unavailable)")
+
     # AI prose layer: one-sentence summary per recent filing row, free via the
     # provider chain, cached by accession. Rows without one show the item label.
     made = attach_summaries(items, summaries)
@@ -660,6 +841,7 @@ def main():
         "source": {
             "attention": "ApeWisdom (Reddit mentions, ~hourly)",
             "filings": "SEC EDGAR submissions API (real-time)",
+            "price": "Yahoo Finance / Stooq (~hourly, carry-forward on outage)",
         },
         "fresh_days": FRESH_DAYS,
         "window_days": WINDOW_DAYS,
