@@ -41,13 +41,15 @@ function renderCompany(companyEl, it) {
             <p class="cmt-empty">Company not found in the current trending set.</p></div>`;
         return;
     }
+    // Thread key = CIK, or the ticker for no-CIK ETFs (so they get a discussion too).
+    const threadKey = it.cik || it.ticker;
     companyEl.innerHTML = `${companyHeaderHtml(it)}
         <article class="card company-card">${filingsListHtml(it, "co")}</article>
         <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
-            <div class="card-comments" data-cik="${esc(it.cik || "")}"></div>
+            <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
         </section>`;
     const mount = companyEl.querySelector(".card-comments");
-    if (it.cik) renderFullThread(it.cik, mount, it);
+    if (threadKey) renderFullThread(threadKey, mount, it);
     else mount.innerHTML = `<p class="cmt-empty">No SEC company record to attach a discussion to.</p>`;
     window.scrollTo(0, 0);
 }

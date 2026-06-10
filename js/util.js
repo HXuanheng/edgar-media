@@ -131,10 +131,10 @@ export function filingsListHtml(it, ns = "") {
     // in-window filing. No filing at all -> a muted note, no menu.
     const lead = all.find(matchHead) || head || all[0] || null;
     if (!lead) {
-        // wrong_cik: the warn already explains it. Funds: say so plainly instead
-        // of the bleak "no recent material filing".
+        // wrong_cik: the warn already explains it. Funds: the ETF badge already
+        // says it -> leave the filing area empty rather than adding a note.
         const none = it.name_match === "wrong_cik" ? ""
-            : it.is_fund ? "ETF · tracks an index — no company filings"
+            : it.is_fund ? ""
             : "no recent material filing";
         const noneHtml = none ? `<p class="filing-none">${esc(none)}</p>` : "";
         return `<div class="card-filings">${warn}${noneHtml}</div>`;

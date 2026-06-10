@@ -30,13 +30,16 @@ function tickerId(it) { return (it.ticker || "").replace(/[^a-z0-9]/gi, ""); }
 // with a CIK, and only when Supabase is configured (otherwise the live site is
 // byte-for-byte unchanged).
 function commentsFooter(it) {
-    if (!isConfigured || !it.cik) return "";
+    if (!isConfigured) return "";
+    // Thread key = CIK when the ticker is SEC-registered, else the ticker itself
+    // (so no-CIK ETFs like VOO/SOXL still get a discussion). Distinct keyspaces:
+    // a symbol never collides with a 10-digit CIK.
     const id = `cmt-${tickerId(it)}`;
     return `<input type="checkbox" id="${id}" class="cmt-toggle" hidden>
         <div class="card-comments-bar">
             <label class="cmt-toggle-label" for="${id}">💬 Comments<span class="cmt-count"></span></label>
         </div>
-        <div class="card-comments" data-cik="${esc(it.cik)}"></div>`;
+        <div class="card-comments" data-cik="${esc(it.cik || it.ticker)}"></div>`;
 }
 
 function cardHtml(it, i) {
@@ -141,10 +144,11 @@ function initCommentPanels() {
         const panel = card?.querySelector(".card-comments");
         if (!panel || panel.dataset.loaded) return;
         panel.dataset.loaded = "1";
-        const cik = panel.dataset.cik;
-        const company = allItems.find((it) => String(it.cik) === String(cik));
+        const key = panel.dataset.cik;   // CIK or, for no-CIK ETFs, the ticker
+        const company = allItems.find(
+            (it) => String(it.cik) === String(key) || it.ticker === key);
         const countEl = card.querySelector(".cmt-count");
-        renderInlinePanel(cik, panel, company, (n) => {
+        renderInlinePanel(key, panel, company, (n) => {
             if (countEl) countEl.textContent = n ? ` (${n})` : "";
         });
     });
