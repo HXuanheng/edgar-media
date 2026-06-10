@@ -292,9 +292,12 @@ body.dark-mode .warn { color: #fbbf24; }
     .tick-row { row-gap: 0.1rem; }
     .tick-row .price { margin: 0.15rem 0 0; flex-basis: 100%; justify-content: flex-start; }
 
-    /* touch targets */
-    .filing-head, .card-comments-bar { padding-top: 0.7rem; padding-bottom: 0.55rem; }
-    .more-open, .more-close, .cmt-toggle-label, .replies-toggle {
+    /* touch targets — the whole .filing-head / .card-comments-bar row is the tap
+       area, so size THOSE. Do NOT set display on .more-open/.more-close: that
+       would override their base display:none toggle and show both at once. */
+    .filing-head { padding-top: 0.7rem; padding-bottom: 0.55rem; min-height: 44px; align-items: center; }
+    .card-comments-bar { padding-top: 0.7rem; padding-bottom: 0.55rem; min-height: 44px; }
+    .cmt-toggle-label, .replies-toggle {
         display: inline-flex; align-items: center; min-height: 44px;
     }
     .mentions-link { display: inline-flex; align-items: center; min-height: 32px; }
