@@ -213,6 +213,10 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .spark-down circle { fill: var(--red); stroke: none; }
 .px-stale { color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
 .company-head .price { font-size: 1rem; }
+/* ETF/fund pill next to the company name */
+.tag-etf { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em;
+    color: var(--text-muted); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0.05rem 0.3rem; text-transform: uppercase; align-self: center; }
 /* price sits to the RIGHT of the firm name on the ticker row. It never shrinks;
    the name ellipsizes (min-width:0) so a long name can't crowd it. On a narrow
    card the row wraps and the chip drops to its own line -> graceful fallback. */

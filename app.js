@@ -59,6 +59,7 @@ function cardHtml(it, i) {
                 <div class="tick-row">
                     ${ticker}
                     <span class="coname">${esc(coName)}</span>
+                    ${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}
                     ${priceHtml(it)}
                 </div>
                 <div class="attention">${momentum(it)}</div>

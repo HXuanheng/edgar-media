@@ -30,7 +30,7 @@ function companyHeaderHtml(it) {
         : `<span class="ticker">$${esc(it.ticker)}</span>`;
     return `<div class="company-head">
         <a class="back-link" href="#/">← All trending</a>
-        <div class="tick-row">${ticker}<span class="coname">${esc(coName)}</span>${priceHtml(it)}</div>
+        <div class="tick-row">${ticker}<span class="coname">${esc(coName)}</span>${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
         <div class="attention">${momentum(it)}</div>
     </div>`;
 }

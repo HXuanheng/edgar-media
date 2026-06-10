@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-06-10T19:40:47Z",
+  "updated_utc": "2026-06-10T21:25:12Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "filings": "SEC EDGAR submissions API (real-time)",
@@ -7,19 +7,95 @@
   },
   "fresh_days": 7,
   "window_days": 90,
-  "count": 30,
+  "count": 29,
   "items": [
     {
       "rank": 2,
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "sec_name": "ORACLE CORP",
+      "display_name": "Oracle Corp",
+      "name_match": "verified",
+      "mentions": 269,
+      "mentions_24h_ago": 22,
+      "mention_change_pct": 1122.7,
+      "upvotes": 1261,
+      "cik": "0001341439",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-10",
+        "days_ago": 0,
+        "fresh": true,
+        "desc": "8-K",
+        "summary": "Earnings released; Other material update",
+        "accession": "0001193125-26-265848",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/orcl-20260610.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/0001193125-26-265848-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-10",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001193125-26-265848",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/0001193125-26-265848-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-12",
+          "days_ago": 29,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change; Other material update",
+          "accession": "0001193125-26-219708",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/0001193125-26-219708-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-06",
+          "days_ago": 65,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change; Other material update",
+          "accession": "0001193125-26-142939",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526142939/0001193125-26-142939-index.htm"
+        }
+      ],
+      "tickers": [
+        "ORCL"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 201.26,
+        "prev_close": 230.33,
+        "change_pct": -12.62,
+        "currency": "USD",
+        "spark": [
+          236.34,
+          213.68,
+          211.82,
+          205.81,
+          201.26
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 3,
       "ticker": "MU",
       "name": "Micron Technology",
       "sec_name": "MICRON TECHNOLOGY INC",
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
-      "mentions": 238,
-      "mentions_24h_ago": 404,
-      "mention_change_pct": -41.1,
-      "upvotes": 922,
+      "mentions": 239,
+      "mentions_24h_ago": 424,
+      "mention_change_pct": -43.6,
+      "upvotes": 964,
       "cik": "0000723125",
       "filing": {
         "form": "8-K",
@@ -88,33 +164,35 @@
       "tickers": [
         "MU"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 901.92,
+        "last": 891.88,
         "prev_close": 1079.57,
-        "change_pct": -16.46,
+        "change_pct": -17.39,
         "currency": "USD",
         "spark": [
           996.0,
           864.01,
           949.28,
           935.89,
-          901.92
+          891.88
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 4,
+      "rank": 5,
       "ticker": "MSFT",
       "name": "Microsoft",
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 187,
-      "mentions_24h_ago": 298,
-      "mention_change_pct": -37.2,
-      "upvotes": 668,
+      "mentions": 186,
+      "mentions_24h_ago": 299,
+      "mention_change_pct": -37.8,
+      "upvotes": 670,
       "cik": "0000789019",
       "filing": {
         "form": "8-K",
@@ -174,33 +252,105 @@
       "tickers": [
         "MSFT"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 398.92,
+        "last": 397.36,
         "prev_close": 427.34,
-        "change_pct": -6.65,
+        "change_pct": -7.02,
         "currency": "USD",
         "spark": [
           428.05,
           416.67,
           411.74,
           403.41,
-          398.92
+          397.36
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
       "rank": 7,
+      "ticker": "SPCX",
+      "name": "Collaborative Investment Series Trust - The SPAC and New Issue ETF",
+      "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
+      "display_name": "Space Exploration Technologies Corp",
+      "name_match": "verified",
+      "mentions": 133,
+      "mentions_24h_ago": 113,
+      "mention_change_pct": 17.7,
+      "upvotes": 2028,
+      "cik": "0001181412",
+      "filing": {
+        "form": "S-1/A",
+        "date": "2026-06-03",
+        "days_ago": 7,
+        "fresh": true,
+        "desc": "S-1/A",
+        "summary": "IPO registration (amended)",
+        "accession": "0001628280-26-040364",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
+      },
+      "filings": [
+        {
+          "form": "S-1/A",
+          "date": "2026-06-03",
+          "days_ago": 7,
+          "fresh": true,
+          "desc": "S-1/A",
+          "summary": "IPO registration (amended)",
+          "accession": "0001628280-26-040364",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. (SpaceX) is filing an S-1/A to register 555,555,555 shares of Class A common stock for its initial public offering at an expected price of $135.00 per share."
+        },
+        {
+          "form": "S-1/A",
+          "date": "2026-06-01",
+          "days_ago": 9,
+          "fresh": false,
+          "desc": "S-1/A",
+          "summary": "IPO registration (amended)",
+          "accession": "0001628280-26-039276",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/0001628280-26-039276-index.htm"
+        },
+        {
+          "form": "S-1",
+          "date": "2026-05-20",
+          "days_ago": 21,
+          "fresh": false,
+          "desc": "S-1",
+          "summary": "IPO / new securities",
+          "accession": "0001628280-26-036936",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
+        }
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 135.0,
+        "prev_close": 135.0,
+        "change_pct": 0.0,
+        "currency": "USD",
+        "spark": [
+          135.0
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-09"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 8,
       "ticker": "DTE",
       "name": "DTE Energy",
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 110,
-      "mentions_24h_ago": 90,
-      "mention_change_pct": 22.2,
-      "upvotes": 555,
+      "mentions": 113,
+      "mentions_24h_ago": 93,
+      "mention_change_pct": 21.5,
+      "upvotes": 773,
       "cik": "0000936340",
       "filing": {
         "form": "424B5",
@@ -332,21 +482,23 @@
       "tickers": [
         "DTE"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 146.73,
+        "last": 146.07,
         "prev_close": 141.81,
-        "change_pct": 3.47,
+        "change_pct": 3.0,
         "currency": "USD",
         "spark": [
           142.73,
           145.77,
           143.11,
           145.95,
-          146.73
+          146.07
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
       "rank": 9,
@@ -355,10 +507,10 @@
       "sec_name": "Super Micro Computer, Inc.",
       "display_name": "Super Micro Computer, Inc.",
       "name_match": "verified",
-      "mentions": 78,
-      "mentions_24h_ago": 4,
-      "mention_change_pct": 1850.0,
-      "upvotes": 541,
+      "mentions": 107,
+      "mentions_24h_ago": 6,
+      "mention_change_pct": 1683.3,
+      "upvotes": 1351,
       "cik": "0001375365",
       "filing": {
         "form": "424B5",
@@ -459,33 +611,35 @@
       "tickers": [
         "SMCI"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 29.9,
+        "last": 29.27,
         "prev_close": 47.42,
-        "change_pct": -36.95,
+        "change_pct": -38.27,
         "currency": "USD",
         "spark": [
           46.9,
           41.64,
           43.99,
           40.64,
-          29.9
+          29.27
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 12,
+      "rank": 10,
       "ticker": "AVGO",
       "name": "Broadcom",
       "sec_name": "Broadcom Inc.",
       "display_name": "Broadcom Inc.",
       "name_match": "verified",
-      "mentions": 57,
-      "mentions_24h_ago": 89,
-      "mention_change_pct": -36.0,
-      "upvotes": 163,
+      "mentions": 73,
+      "mentions_24h_ago": 91,
+      "mention_change_pct": -19.8,
+      "upvotes": 260,
       "cik": "0001730168",
       "filing": {
         "form": "S-4",
@@ -577,21 +731,23 @@
       "tickers": [
         "AVGO"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 373.56,
+        "last": 372.1,
         "prev_close": 479.23,
-        "change_pct": -22.05,
+        "change_pct": -22.35,
         "currency": "USD",
         "spark": [
+          418.91,
           385.73,
           396.6,
           392.16,
-          373.57,
-          373.56
+          372.1
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
       "rank": 14,
@@ -601,9 +757,9 @@
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
       "mentions": 54,
-      "mentions_24h_ago": 53,
-      "mention_change_pct": 1.9,
-      "upvotes": 169,
+      "mentions_24h_ago": 54,
+      "mention_change_pct": 0.0,
+      "upvotes": 151,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -693,21 +849,23 @@
       "tickers": [
         "AM"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 21.7,
+        "last": 21.49,
         "prev_close": 21.27,
-        "change_pct": 2.02,
+        "change_pct": 1.03,
         "currency": "USD",
         "spark": [
           21.58,
           21.52,
           21.33,
           21.26,
-          21.7
+          21.49
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
       "rank": 15,
@@ -716,10 +874,10 @@
       "sec_name": "Robinhood Markets, Inc.",
       "display_name": "Robinhood Markets, Inc.",
       "name_match": "verified",
-      "mentions": 51,
-      "mentions_24h_ago": 19,
-      "mention_change_pct": 168.4,
-      "upvotes": 118,
+      "mentions": 54,
+      "mentions_24h_ago": 18,
+      "mention_change_pct": 200.0,
+      "upvotes": 124,
       "cik": "0001783879",
       "filing": {
         "form": "8-K",
@@ -818,33 +976,35 @@
       "tickers": [
         "HOOD"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 87.39,
+        "last": 86.36,
         "prev_close": 82.85,
-        "change_pct": 5.48,
+        "change_pct": 4.24,
         "currency": "USD",
         "spark": [
           88.33,
           82.47,
           85.04,
           83.77,
-          87.39
+          86.36
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 22,
+      "rank": 21,
       "ticker": "GOOGL",
       "name": "Alphabet (Google)",
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 34,
-      "mentions_24h_ago": 27,
-      "mention_change_pct": 25.9,
-      "upvotes": 101,
+      "mentions": 62,
+      "mentions_24h_ago": 55,
+      "mention_change_pct": 12.7,
+      "upvotes": 323,
       "cik": "0001652044",
       "filing": {
         "form": "8-K",
@@ -1105,35 +1265,38 @@
         }
       ],
       "tickers": [
-        "GOOGL"
+        "GOOGL",
+        "GOOG"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 356.99,
+        "last": 356.38,
         "prev_close": 358.99,
-        "change_pct": -0.56,
+        "change_pct": -0.73,
         "currency": "USD",
         "spark": [
           372.19,
           368.53,
           363.31,
           364.26,
-          356.99
+          356.38
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 26,
+      "rank": 27,
       "ticker": "RKLB",
       "name": "Rocket Lab USA",
       "sec_name": "Rocket Lab Corp",
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 45,
-      "mention_change_pct": -35.6,
-      "upvotes": 88,
+      "mentions": 31,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": -29.5,
+      "upvotes": 99,
       "cik": "0001819994",
       "filing": {
         "form": "8-K",
@@ -1316,21 +1479,23 @@
       "tickers": [
         "RKLB"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 105.25,
+        "last": 105.05,
         "prev_close": 114.7,
-        "change_pct": -8.23,
+        "change_pct": -8.41,
         "currency": "USD",
         "spark": [
           119.95,
           110.08,
           113.65,
           108.23,
-          105.25
+          105.05
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
       "rank": 1,
@@ -1339,43 +1504,45 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 573,
-      "mentions_24h_ago": 528,
-      "mention_change_pct": 8.5,
-      "upvotes": 2427,
+      "mentions": 574,
+      "mentions_24h_ago": 554,
+      "mention_change_pct": 3.6,
+      "upvotes": 2403,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
       "tickers": [
         "SPY"
       ],
+      "quote_type": "ETF",
       "price": {
-        "last": 727.29,
+        "last": 725.43,
         "prev_close": 754.24,
-        "change_pct": -3.57,
+        "change_pct": -3.82,
         "currency": "USD",
         "spark": [
           757.09,
           737.55,
           739.22,
           737.05,
-          727.29
+          725.43
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": true
     },
     {
-      "rank": 3,
+      "rank": 4,
       "ticker": "QQQ",
       "name": "Invesco QQQ ETF",
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 192,
-      "mentions_24h_ago": 247,
-      "mention_change_pct": -22.3,
-      "upvotes": 2028,
+      "mentions": 196,
+      "mentions_24h_ago": 261,
+      "mention_change_pct": -24.9,
+      "upvotes": 2170,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
@@ -1392,88 +1559,23 @@
       "tickers": [
         "QQQ"
       ],
+      "quote_type": "ETF",
       "price": {
-        "last": 696.33,
+        "last": 693.69,
         "prev_close": 744.21,
-        "change_pct": -6.43,
+        "change_pct": -6.79,
         "currency": "USD",
         "spark": [
           740.61,
           705.06,
           716.07,
           707.83,
-          696.33
+          693.69
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
-    },
-    {
-      "rank": 5,
-      "ticker": "SPCX",
-      "name": "Collaborative Investment Series Trust - The SPAC and New Issue ETF",
-      "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
-      "display_name": "Space Exploration Technologies Corp",
-      "name_match": "mismatch",
-      "mentions": 134,
-      "mentions_24h_ago": 99,
-      "mention_change_pct": 35.4,
-      "upvotes": 1960,
-      "cik": "0001181412",
-      "filing": {
-        "form": "S-1/A",
-        "date": "2026-06-03",
-        "days_ago": 7,
-        "fresh": true,
-        "desc": "S-1/A",
-        "summary": "IPO registration (amended)",
-        "accession": "0001628280-26-040364",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
       },
-      "filings": [
-        {
-          "form": "S-1/A",
-          "date": "2026-06-03",
-          "days_ago": 7,
-          "fresh": true,
-          "desc": "S-1/A",
-          "summary": "IPO registration (amended)",
-          "accession": "0001628280-26-040364",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm"
-        },
-        {
-          "form": "S-1/A",
-          "date": "2026-06-01",
-          "days_ago": 9,
-          "fresh": false,
-          "desc": "S-1/A",
-          "summary": "IPO registration (amended)",
-          "accession": "0001628280-26-039276",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/0001628280-26-039276-index.htm"
-        },
-        {
-          "form": "S-1",
-          "date": "2026-05-20",
-          "days_ago": 21,
-          "fresh": false,
-          "desc": "S-1",
-          "summary": "IPO / new securities",
-          "accession": "0001628280-26-036936",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
-        }
-      ],
-      "price": {
-        "last": 135.0,
-        "prev_close": 135.0,
-        "change_pct": 0.0,
-        "currency": "USD",
-        "spark": [
-          135.0
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-09"
-      }
+      "is_fund": true
     },
     {
       "rank": 6,
@@ -1482,10 +1584,10 @@
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 122,
-      "mentions_24h_ago": 154,
-      "mention_change_pct": -20.8,
-      "upvotes": 1081,
+      "mentions": 145,
+      "mentions_24h_ago": 161,
+      "mention_change_pct": -9.9,
+      "upvotes": 1217,
       "cik": "0001045810",
       "filing": {
         "form": "10-Q",
@@ -1567,97 +1669,35 @@
       "tickers": [
         "NVDA"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 201.43,
+        "last": 200.42,
         "prev_close": 214.75,
-        "change_pct": -6.2,
+        "change_pct": -6.67,
         "currency": "USD",
         "spark": [
           218.66,
           205.1,
           208.64,
           208.19,
-          201.43
+          200.42
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
-    },
-    {
-      "rank": 8,
-      "ticker": "ORCL",
-      "name": "Oracle",
-      "sec_name": "ORACLE CORP",
-      "display_name": "Oracle Corp",
-      "name_match": "verified",
-      "mentions": 106,
-      "mentions_24h_ago": 24,
-      "mention_change_pct": 341.7,
-      "upvotes": 375,
-      "cik": "0001341439",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-12",
-        "days_ago": 29,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Executive / board change; Other material update",
-        "accession": "0001193125-26-219708",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/d76569d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/0001193125-26-219708-index.htm"
       },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-12",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change; Other material update",
-          "accession": "0001193125-26-219708",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526219708/0001193125-26-219708-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-06",
-          "days_ago": 65,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change; Other material update",
-          "accession": "0001193125-26-142939",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526142939/0001193125-26-142939-index.htm"
-        }
-      ],
-      "tickers": [
-        "ORCL"
-      ],
-      "price": {
-        "last": 202.37,
-        "prev_close": 230.33,
-        "change_pct": -12.14,
-        "currency": "USD",
-        "spark": [
-          236.34,
-          213.68,
-          211.82,
-          205.81,
-          202.37
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-10"
-      }
+      "is_fund": false
     },
     {
-      "rank": 10,
+      "rank": 11,
       "ticker": "MRVL",
       "name": "Marvell Technology Group",
       "sec_name": "Marvell Technology, Inc.",
       "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
       "mentions": 66,
-      "mentions_24h_ago": 166,
-      "mention_change_pct": -60.2,
-      "upvotes": 211,
+      "mentions_24h_ago": 162,
+      "mention_change_pct": -59.3,
+      "upvotes": 200,
       "cik": "0001835632",
       "filing": {
         "form": "10-Q",
@@ -1769,33 +1809,35 @@
       "tickers": [
         "MRVL"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 256.5,
+        "last": 252.59,
         "prev_close": 301.65,
-        "change_pct": -14.97,
+        "change_pct": -16.26,
         "currency": "USD",
         "spark": [
           316.43,
           263.47,
           288.85,
           266.88,
-          256.5
+          252.59
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 11,
+      "rank": 12,
       "ticker": "TSLA",
       "name": "Tesla",
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 64,
-      "mentions_24h_ago": 67,
-      "mention_change_pct": -4.5,
-      "upvotes": 187,
+      "mentions": 65,
+      "mentions_24h_ago": 59,
+      "mention_change_pct": 10.2,
+      "upvotes": 196,
       "cik": "0001318605",
       "filing": {
         "form": "10-K/A",
@@ -1853,21 +1895,23 @@
       "tickers": [
         "TSLA"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 382.2,
+        "last": 381.59,
         "prev_close": 423.7,
-        "change_pct": -9.79,
+        "change_pct": -9.94,
         "currency": "USD",
         "spark": [
           418.45,
           391.0,
           408.95,
           396.68,
-          382.2
+          381.59
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
       "rank": 13,
@@ -1876,10 +1920,10 @@
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 57,
-      "mentions_24h_ago": 71,
-      "mention_change_pct": -19.7,
-      "upvotes": 180,
+      "mentions": 65,
+      "mentions_24h_ago": 67,
+      "mention_change_pct": -3.0,
+      "upvotes": 191,
       "cik": "0001326801",
       "filing": {
         "form": "8-K",
@@ -1968,107 +2012,35 @@
       "tickers": [
         "META"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 573.18,
+        "last": 570.98,
         "prev_close": 622.98,
-        "change_pct": -7.99,
+        "change_pct": -8.35,
         "currency": "USD",
         "spark": [
           627.57,
           593.0,
           585.39,
           584.59,
-          573.18
+          570.98
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
       "rank": 16,
-      "ticker": "AAPL",
-      "name": "Apple",
-      "sec_name": "Apple Inc.",
-      "display_name": "Apple Inc.",
-      "name_match": "verified",
-      "mentions": 50,
-      "mentions_24h_ago": 117,
-      "mention_change_pct": -57.3,
-      "upvotes": 127,
-      "cik": "0000320193",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-01",
-        "days_ago": 40,
-        "fresh": false,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0000320193-26-000013",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-05-01",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0000320193-26-000013",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 41,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000320193-26-000011",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/0000320193-26-000011-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-20",
-          "days_ago": 51,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001140361-26-015711",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/0001140361-26-015711-index.htm"
-        }
-      ],
-      "tickers": [
-        "AAPL"
-      ],
-      "price": {
-        "last": 292.47,
-        "prev_close": 310.26,
-        "change_pct": -5.73,
-        "currency": "USD",
-        "spark": [
-          311.23,
-          307.34,
-          301.54,
-          290.55,
-          292.47
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-10"
-      }
-    },
-    {
-      "rank": 17,
       "ticker": "AMD",
       "name": "AMD",
       "sec_name": "ADVANCED MICRO DEVICES INC",
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
-      "mentions": 50,
-      "mentions_24h_ago": 46,
-      "mention_change_pct": 8.7,
-      "upvotes": 1338,
+      "mentions": 49,
+      "mentions_24h_ago": 48,
+      "mention_change_pct": 2.1,
+      "upvotes": 1478,
       "cik": "0000002488",
       "filing": {
         "form": "8-K",
@@ -2137,33 +2109,229 @@
       "tickers": [
         "AMD"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 453.71,
+        "last": 452.4,
         "prev_close": 542.52,
-        "change_pct": -16.37,
+        "change_pct": -16.61,
         "currency": "USD",
         "spark": [
           523.2,
           466.38,
           490.33,
           475.51,
-          453.71
+          452.4
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 17,
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "sec_name": null,
+      "display_name": "Vanguard S&P 500 ETF",
+      "name_match": "no_cik",
+      "mentions": 43,
+      "mentions_24h_ago": 43,
+      "mention_change_pct": 0.0,
+      "upvotes": 100,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "quote_type": "ETF",
+      "price": {
+        "last": 667.05,
+        "prev_close": 693.36,
+        "change_pct": -3.79,
+        "currency": "USD",
+        "spark": [
+          696.06,
+          678.0,
+          679.68,
+          677.7,
+          667.05
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      },
+      "is_fund": true
     },
     {
       "rank": 18,
+      "ticker": "AAPL",
+      "name": "Apple",
+      "sec_name": "Apple Inc.",
+      "display_name": "Apple Inc.",
+      "name_match": "verified",
+      "mentions": 39,
+      "mentions_24h_ago": 114,
+      "mention_change_pct": -65.8,
+      "upvotes": 79,
+      "cik": "0000320193",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-01",
+        "days_ago": 40,
+        "fresh": false,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0000320193-26-000013",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0000320193-26-000013",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/0000320193-26-000013-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 41,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0000320193-26-000011",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/0000320193-26-000011-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-20",
+          "days_ago": 51,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001140361-26-015711",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/0001140361-26-015711-index.htm"
+        }
+      ],
+      "tickers": [
+        "AAPL"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 291.58,
+        "prev_close": 310.26,
+        "change_pct": -6.02,
+        "currency": "USD",
+        "spark": [
+          311.23,
+          307.34,
+          301.54,
+          290.55,
+          291.58
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 19,
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "sec_name": "Sandisk Corp",
+      "display_name": "Sandisk Corp",
+      "name_match": "verified",
+      "mentions": 39,
+      "mentions_24h_ago": 58,
+      "mention_change_pct": -32.8,
+      "upvotes": 83,
+      "cik": "0002023554",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-15",
+        "days_ago": 26,
+        "fresh": false,
+        "desc": "8-K",
+        "summary": "Other material update",
+        "accession": "0001193125-26-224694",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/d157363d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 26,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001193125-26-224694",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001628280-26-029401",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026029401/0001628280-26-029401-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 41,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001628280-26-028879",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026028879/0001628280-26-028879-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-25",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; Other material update",
+          "accession": "0001193125-26-122705",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526122705/0001193125-26-122705-index.htm"
+        }
+      ],
+      "tickers": [
+        "SNDK"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 1643.23,
+        "prev_close": 1831.5,
+        "change_pct": -10.28,
+        "currency": "USD",
+        "spark": [
+          1759.68,
+          1559.32,
+          1642.0,
+          1646.54,
+          1643.23
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-10"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 20,
       "ticker": "NOW",
       "name": "ServiceNow",
       "sec_name": "ServiceNow, Inc.",
       "display_name": "ServiceNow, Inc.",
       "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 56,
-      "mention_change_pct": -35.7,
-      "upvotes": 101,
+      "mentions": 37,
+      "mentions_24h_ago": 50,
+      "mention_change_pct": -26.0,
+      "upvotes": 106,
       "cik": "0001373715",
       "filing": {
         "form": "8-K",
@@ -2264,147 +2432,67 @@
       "tickers": [
         "NOW"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 106.53,
+        "last": 106.06,
         "prev_close": 117.9,
-        "change_pct": -9.65,
+        "change_pct": -10.04,
         "currency": "USD",
         "spark": [
           119.36,
           112.45,
           114.19,
           106.97,
-          106.53
+          106.06
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
-    },
-    {
-      "rank": 19,
-      "ticker": "SNDK",
-      "name": "Sandisk",
-      "sec_name": "Sandisk Corp",
-      "display_name": "Sandisk Corp",
-      "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 58,
-      "mention_change_pct": -37.9,
-      "upvotes": 85,
-      "cik": "0002023554",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-15",
-        "days_ago": 26,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Other material update",
-        "accession": "0001193125-26-224694",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/d157363d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
       },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-15",
-          "days_ago": 26,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-224694",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526224694/0001193125-26-224694-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-01",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001628280-26-029401",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026029401/0001628280-26-029401-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 41,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001628280-26-028879",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026028879/0001628280-26-028879-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-25",
-          "days_ago": 77,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; Other material update",
-          "accession": "0001193125-26-122705",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526122705/0001193125-26-122705-index.htm"
-        }
-      ],
-      "tickers": [
-        "SNDK"
-      ],
-      "price": {
-        "last": 1653.0,
-        "prev_close": 1831.5,
-        "change_pct": -9.75,
-        "currency": "USD",
-        "spark": [
-          1759.68,
-          1559.32,
-          1642.0,
-          1646.54,
-          1653.0
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-10"
-      }
+      "is_fund": false
     },
     {
-      "rank": 20,
-      "ticker": "VOO",
-      "name": "Vanguard S&P 500 ETF",
+      "rank": 22,
+      "ticker": "SOXS",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
       "sec_name": null,
-      "display_name": "Vanguard S&P 500 ETF",
+      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
       "name_match": "no_cik",
-      "mentions": 35,
+      "mentions": 33,
       "mentions_24h_ago": 39,
-      "mention_change_pct": -10.3,
-      "upvotes": 53,
+      "mention_change_pct": -15.4,
+      "upvotes": 499,
       "cik": null,
       "filing": null,
       "filings": [],
+      "quote_type": "ETF",
       "price": {
-        "last": 668.81,
-        "prev_close": 693.36,
-        "change_pct": -3.54,
+        "last": 6.57,
+        "prev_close": 4.91,
+        "change_pct": 33.81,
         "currency": "USD",
         "spark": [
-          696.06,
-          678.0,
-          679.68,
-          677.7,
-          668.81
+          5.2,
+          6.84,
+          5.69,
+          5.93,
+          6.57
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": true
     },
     {
-      "rank": 21,
+      "rank": 23,
       "ticker": "ASTS",
       "name": "AST SpaceMobile",
       "sec_name": "AST SpaceMobile, Inc.",
       "display_name": "AST SpaceMobile, Inc.",
       "name_match": "verified",
-      "mentions": 35,
-      "mentions_24h_ago": 66,
-      "mention_change_pct": -47.0,
-      "upvotes": 113,
+      "mentions": 33,
+      "mentions_24h_ago": 69,
+      "mention_change_pct": -52.2,
+      "upvotes": 97,
       "cik": "0001780312",
       "filing": {
         "form": "10-Q",
@@ -2474,33 +2562,35 @@
       "tickers": [
         "ASTS"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 88.15,
+        "last": 87.32,
         "prev_close": 107.73,
-        "change_pct": -18.18,
+        "change_pct": -18.95,
         "currency": "USD",
         "spark": [
           107.29,
           93.6,
           92.06,
           88.71,
-          88.15
+          87.32
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 23,
+      "rank": 24,
       "ticker": "IT",
       "name": "Gartner",
       "sec_name": "GARTNER INC",
       "display_name": "Gartner Inc",
       "name_match": "verified",
-      "mentions": 33,
-      "mentions_24h_ago": 23,
-      "mention_change_pct": 43.5,
-      "upvotes": 160,
+      "mentions": 32,
+      "mentions_24h_ago": 25,
+      "mention_change_pct": 28.0,
+      "upvotes": 161,
       "cik": "0000749251",
       "filing": {
         "form": "8-K",
@@ -2569,33 +2659,35 @@
       "tickers": [
         "IT"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 155.75,
+        "last": 154.91,
         "prev_close": 164.75,
-        "change_pct": -5.46,
+        "change_pct": -5.97,
         "currency": "USD",
         "spark": [
+          164.87,
           164.02,
           160.35,
           157.4,
-          155.76,
-          155.75
+          154.91
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 24,
+      "rank": 25,
       "ticker": "USO",
       "name": "United States Commodity Funds LLC - United States Oil Fund",
       "sec_name": "United States Oil Fund, LP",
       "display_name": "United States Oil Fund, LP",
       "name_match": "verified",
-      "mentions": 31,
-      "mentions_24h_ago": 15,
-      "mention_change_pct": 106.7,
-      "upvotes": 71,
+      "mentions": 32,
+      "mentions_24h_ago": 14,
+      "mention_change_pct": 128.6,
+      "upvotes": 77,
       "cik": "0001327068",
       "filing": {
         "form": "8-K",
@@ -2673,33 +2765,35 @@
       "tickers": [
         "USO"
       ],
+      "quote_type": "ETF",
       "price": {
-        "last": 134.46,
+        "last": 134.3,
         "prev_close": 140.86,
-        "change_pct": -4.54,
+        "change_pct": -4.66,
         "currency": "USD",
         "spark": [
           136.74,
           133.02,
           135.15,
           131.3,
-          134.46
+          134.3
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": true
     },
     {
-      "rank": 25,
+      "rank": 26,
       "ticker": "GLD",
       "name": "SSgA SPDR Gold Shares",
       "sec_name": "SPDR GOLD TRUST",
       "display_name": "Spdr Gold Trust",
       "name_match": "verified",
-      "mentions": 30,
-      "mentions_24h_ago": 8,
-      "mention_change_pct": 275.0,
-      "upvotes": 72,
+      "mentions": 32,
+      "mentions_24h_ago": 11,
+      "mention_change_pct": 190.9,
+      "upvotes": 84,
       "cik": "0001222333",
       "filing": {
         "form": "10-Q",
@@ -2727,93 +2821,35 @@
       "tickers": [
         "GLD"
       ],
+      "quote_type": "ETF",
       "price": {
-        "last": 375.35,
+        "last": 374.58,
         "prev_close": 407.87,
-        "change_pct": -7.97,
+        "change_pct": -8.16,
         "currency": "USD",
         "spark": [
           411.27,
           396.24,
           397.27,
           390.78,
-          375.35
+          374.58
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
-    },
-    {
-      "rank": 27,
-      "ticker": "SOXS",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
-      "sec_name": null,
-      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
-      "name_match": "no_cik",
-      "mentions": 28,
-      "mentions_24h_ago": 38,
-      "mention_change_pct": -26.3,
-      "upvotes": 472,
-      "cik": null,
-      "filing": null,
-      "filings": [],
-      "price": {
-        "last": 6.47,
-        "prev_close": 4.91,
-        "change_pct": 31.77,
-        "currency": "USD",
-        "spark": [
-          5.2,
-          6.84,
-          5.69,
-          5.93,
-          6.47
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": true
     },
     {
       "rank": 28,
-      "ticker": "SOXL",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "sec_name": null,
-      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "name_match": "no_cik",
-      "mentions": 27,
-      "mentions_24h_ago": 46,
-      "mention_change_pct": -41.3,
-      "upvotes": 66,
-      "cik": null,
-      "filing": null,
-      "filings": [],
-      "price": {
-        "last": 183.23,
-        "prev_close": 280.54,
-        "change_pct": -34.69,
-        "currency": "USD",
-        "spark": [
-          262.7,
-          182.54,
-          211.44,
-          201.68,
-          183.23
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-10"
-      }
-    },
-    {
-      "rank": 29,
       "ticker": "NBIS",
       "name": "Nebius Group",
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 27,
-      "mentions_24h_ago": 68,
-      "mention_change_pct": -60.3,
-      "upvotes": 52,
+      "mentions": 31,
+      "mentions_24h_ago": 57,
+      "mention_change_pct": -45.6,
+      "upvotes": 56,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -2913,33 +2949,35 @@
       "tickers": [
         "NBIS"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 212.41,
+        "last": 211.69,
         "prev_close": 251.68,
-        "change_pct": -15.61,
+        "change_pct": -15.89,
         "currency": "USD",
         "spark": [
+          259.67,
           227.81,
           218.0,
           220.12,
-          212.4,
-          212.41
+          211.69
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     },
     {
-      "rank": 30,
+      "rank": 29,
       "ticker": "LFVN",
       "name": "Lifevantage",
       "sec_name": "Lifevantage Corp",
       "display_name": "Lifevantage Corp",
       "name_match": "verified",
-      "mentions": 26,
-      "mentions_24h_ago": 29,
-      "mention_change_pct": -10.3,
-      "upvotes": 556,
+      "mentions": 30,
+      "mentions_24h_ago": 28,
+      "mention_change_pct": 7.1,
+      "upvotes": 552,
       "cik": "0000849146",
       "filing": {
         "form": "8-K",
@@ -2987,21 +3025,23 @@
       "tickers": [
         "LFVN"
       ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 9.6,
+        "last": 9.48,
         "prev_close": 8.32,
-        "change_pct": 15.38,
+        "change_pct": 13.94,
         "currency": "USD",
         "spark": [
           9.31,
           9.97,
           10.7,
           9.5,
-          9.6
+          9.48
         ],
         "source": "yahoo",
         "as_of": "2026-06-10"
-      }
+      },
+      "is_fund": false
     }
   ]
 }

@@ -482,6 +482,11 @@ def _price_yahoo(ticker):
             "spark": spark,
             "source": "yahoo",
             "as_of": as_of,
+            # Transient identity (stripped before the price object is stored):
+            # Yahoo is a free third source for security type + name, used by
+            # reconcile_identity to classify ETFs and adjudicate name matches.
+            "_quote_type": meta.get("instrumentType"),
+            "_yahoo_name": meta.get("longName") or meta.get("shortName"),
         }
     except (KeyError, IndexError, TypeError, ZeroDivisionError):
         return None
@@ -677,6 +682,42 @@ def recent_filings(cik, today):
     return headline, windowed
 
 
+# --- identity reconciliation (Yahoo as a free third source) ---------------
+# Yahoo's chart response (fetched with the price) carries the security type and
+# its real name. We use it to (1) classify ETFs/funds and (2) break ties when
+# the ApeWisdom name and the SEC name disagree -- the two-source matcher can't
+# tell which side is wrong, a third source can.
+FUND_TYPES = {"ETF", "MUTUALFUND", "INDEX"}
+FUND_NAME_HINTS = ("etf", "etn", "proshares", "direxion", "ishares", "vanguard",
+                   "spdr", "invesco qqq", "global x", "roundhill")
+
+
+def looks_like_fund(item):
+    """ETF/fund? Trust Yahoo's instrumentType when present; else fall back to
+    strong issuer keywords in the (ApeWisdom) name."""
+    qt = (item.get("quote_type") or "").upper()
+    if qt:
+        return qt in FUND_TYPES        # Yahoo knows -> authoritative
+    name = (item.get("name") or "").lower()
+    return any(h in name for h in FUND_NAME_HINTS)
+
+
+def reconcile_identity(items):
+    """Tag funds and resolve 'mismatch' name matches using Yahoo's name as a
+    tiebreaker (set transiently as _yahoo_name during the price fetch)."""
+    for it in items:
+        it["is_fund"] = looks_like_fund(it)
+        yn = it.pop("_yahoo_name", None)          # transient; never persisted
+        if it.get("name_match") != "mismatch":
+            continue
+        if yn and it.get("sec_name") and name_similarity(yn, it["sec_name"]):
+            it["name_match"] = "verified"          # SEC corroborated by Yahoo
+        elif yn and name_similarity(yn, it.get("name") or ""):
+            it["name_match"] = "wrong_cik"         # SEC CIK is the odd one out
+            it["filing"] = None                    # don't show an unrelated filing
+            it["filings"] = []
+
+
 def merge_same_cik(items):
     """Collapse verified entries that share a CIK into one card. Dual-class
     tickers (GOOG/GOOGL, and the like) are the same issuer with identical SEC
@@ -803,14 +844,28 @@ def main():
     for it in items:
         pr = fetch_price(it["ticker"], prev_prices)
         if pr:
-            if pr is prev_prices.get(it["ticker"]):    # reused -> mark stale
-                pr = {**pr, "stale": True}             # copy; don't mutate the map
+            carried_now = pr is prev_prices.get(it["ticker"])
+            if pr.get("_quote_type"):              # Yahoo identity -> onto the item
+                it["quote_type"] = pr["_quote_type"]
+            if pr.get("_yahoo_name"):
+                it["_yahoo_name"] = pr["_yahoo_name"]   # transient (reconcile pops it)
+            pr = {k: v for k, v in pr.items() if not k.startswith("_")}  # strip + copy
+            if carried_now:
+                pr["stale"] = True                 # sources down -> last known
                 carried += 1
             it["price"] = pr
         time.sleep(PRICE_PAUSE)
     priced = sum(1 for x in items if x.get("price"))
     print(f"prices: {priced}/{len(items)} priced, "
           f"{carried} carried forward (live sources unavailable)")
+
+    # Reconcile identity with Yahoo (type + name): tag ETFs and resolve any
+    # name mismatches the ApeWisdom-vs-SEC comparison couldn't adjudicate.
+    reconcile_identity(items)
+    funds = sum(1 for x in items if x.get("is_fund"))
+    print(f"identity: {funds} funds tagged, "
+          f"{sum(1 for x in items if x['name_match'] == 'wrong_cik')} wrong-cik, "
+          f"{sum(1 for x in items if x['name_match'] == 'mismatch')} still unverified")
 
     # AI prose layer: one-sentence summary per recent filing row, free via the
     # provider chain, cached by accession. Rows without one show the item label.

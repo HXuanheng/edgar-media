@@ -115,6 +115,8 @@ export function filingsListHtml(it, ns = "") {
     const all = it.cik ? (it.filings || []) : [];
     const warn = it.name_match === "mismatch"
         ? `<p class="filing-warn"><span class="warn">⚠ unverified ticker/name match</span></p>`
+        : it.name_match === "wrong_cik"
+        ? `<p class="filing-warn"><span class="warn">⚠ couldn't confirm an SEC company for this ticker</span></p>`
         : "";
     // Match the headline within the 90-day window (by accession, or date+form if a
     // headline ever lacks one).
@@ -129,7 +131,13 @@ export function filingsListHtml(it, ns = "") {
     // in-window filing. No filing at all -> a muted note, no menu.
     const lead = all.find(matchHead) || head || all[0] || null;
     if (!lead) {
-        return `<div class="card-filings">${warn}<p class="filing-none">no recent material filing</p></div>`;
+        // wrong_cik: the warn already explains it. Funds: say so plainly instead
+        // of the bleak "no recent material filing".
+        const none = it.name_match === "wrong_cik" ? ""
+            : it.is_fund ? "ETF · tracks an index — no company filings"
+            : "no recent material filing";
+        const noneHtml = none ? `<p class="filing-none">${esc(none)}</p>` : "";
+        return `<div class="card-filings">${warn}${noneHtml}</div>`;
     }
     // "More" rows = the rest of the 90-day window minus the lead (by reference).
     const rest = all.filter((f) => f !== lead);
