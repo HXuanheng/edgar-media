@@ -160,6 +160,10 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .more-toggle:checked ~ .filing-head .more-open  { display: none; }
 .more-toggle:checked ~ .filing-head .more-close { display: inline; }
 .more-toggle:checked ~ .more-rows { display: block; }
+/* whole header row toggles -> pointer + highlight the cue on row hover */
+label.filing-head { cursor: pointer; }
+label.filing-head:hover .more-open,
+label.filing-head:hover .more-close { color: var(--primary-color); }
 .filing-list { list-style: none; margin: 0; padding: 0 1.1rem; }
 .flrow { padding: 0.5rem 0; border-top: 1px dashed var(--border); font-size: 0.85rem; }
 /* header line: form code link (left scan-anchor) · date · summary ... age */
@@ -232,7 +236,7 @@ h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
    behind the "N more filings" menu below it. */
 .card-filings { padding-bottom: 0.35rem; }
 .filing-warn { padding: 0.5rem 1.1rem 0; margin: 0; }
-.filing-lead .flrow { border-top: none; }   /* lead is first -> no divider above it */
+.filing-lead .flrow:first-child { border-top: none; }   /* only the first lead row has no divider above it; rows below it keep dashed separators */
 .filing-none { padding: 0.6rem 1.1rem; margin: 0; color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
 .warn { color: #b45309; font-weight: 600; font-size: 0.8rem; }
 body.dark-mode .warn { color: #fbbf24; }

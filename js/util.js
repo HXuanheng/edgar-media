@@ -141,6 +141,7 @@ export function filingsListHtml(it, ns = "") {
             : it.is_fund ? ""
             : "no recent material filing";
         const noneHtml = none ? `<p class="filing-none">${esc(none)}</p>` : "";
+        if (!warn && !noneHtml) return "";   // nothing to show (e.g. an ETF) -> render nothing
         return `<div class="card-filings">${warn}${noneHtml}</div>`;
     }
     // Show the first leadN filings directly; the rest go behind the toggle. The
@@ -162,13 +163,15 @@ export function filingsListHtml(it, ns = "") {
     const rows = hidden.map((f) => filingRow(f, it.ticker, ns)).join("");
     // Checkbox first, then the header (with both toggle labels) and the rows -> the
     // control lives in the fixed header at the top, so collapsing never needs a scroll.
+    // The whole header row is the toggle (one <label>), not just the "show more"
+    // text -> bigger click target. more-open/close are spans shown via the checkbox.
     return `<div class="card-filings">${warn}
         <input type="checkbox" id="${id}" class="more-toggle" hidden>
-        <div class="filing-head">
+        <label class="filing-head" for="${id}">
             <span class="filing-head-label">Latest filings</span>
-            <label class="more-open" for="${id}">show ${n} more</label>
-            <label class="more-close" for="${id}">show less</label>
-        </div>
+            <span class="more-open">show ${n} more</span>
+            <span class="more-close">show less</span>
+        </label>
         ${leadRows}
         <ul class="filing-list more-rows">${rows}</ul>
     </div>`;

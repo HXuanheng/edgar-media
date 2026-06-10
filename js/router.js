@@ -43,8 +43,11 @@ function renderCompany(companyEl, it) {
     }
     // Thread key = CIK, or the ticker for no-CIK ETFs (so they get a discussion too).
     const threadKey = it.cik || it.ticker;
+    // Skip the filings card entirely when there's nothing to show (e.g. an ETF) so
+    // the landing page doesn't show an empty bordered line.
+    const filingsHtml = filingsListHtml(it, "co");
     companyEl.innerHTML = `${companyHeaderHtml(it)}
-        <article class="card company-card">${filingsListHtml(it, "co")}</article>
+        ${filingsHtml ? `<article class="card company-card">${filingsHtml}</article>` : ""}
         <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
             <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
         </section>`;
