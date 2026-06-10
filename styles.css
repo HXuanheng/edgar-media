@@ -37,6 +37,7 @@ body {
     background: var(--bg);
     transition: background var(--transition), color var(--transition);
 }
+html, body { overflow-x: hidden; }   /* backstop: no element can force a sideways scroll */
 
 .container { width: 100%; max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
 
@@ -197,7 +198,7 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
 
 .tick { min-width: 0; }
 .tick-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
-.ticker { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; }
+.ticker { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; overflow-wrap: anywhere; }
 .ticker-sep { color: var(--text-muted); font-weight: 400; margin: 0 0.3rem; }
 .coname { color: var(--text-muted); font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; }
 .attention { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.15rem; }
@@ -256,6 +257,51 @@ body.dark-mode .warn { color: #fbbf24; }
     .flwhen { grid-column: 2; grid-row: 1; margin-left: 0; justify-self: end; }
     .fl-date { grid-column: 1 / -1; grid-row: 2; }   /* date + filing label get the whole row */
     .fl-tag  { grid-column: 1 / -1; grid-row: 3; justify-self: start; }   /* Summary pill below */
+
+    /* layout breathing room */
+    .content { padding-top: 1.5rem; }
+    .intro { margin-bottom: 1.25rem; }
+    h1 { font-size: 1.6rem; }
+    .container { padding: 0 1rem; }
+    .card-main { padding: 0.85rem 0.9rem; }
+    /* keep filing rows / comments flush with the tightened card padding */
+    .filing-head, .filing-list, .filing-warn, .filing-none,
+    .card-comments-bar, .card-comments { padding-left: 0.9rem; padding-right: 0.9rem; }
+    .site-footer { margin-top: 2rem; padding: 1.25rem 0; }
+
+    /* header */
+    .header-row { padding: 0.7rem 1rem; }
+    .header-nav { gap: 0.9rem; }
+    #theme-toggle { min-height: 40px; min-width: 40px; padding: 0.4rem 0.55rem; }
+    .auth-btn { min-height: 40px; }
+
+    /* controls -> search full width on its own row; two selects share the next row */
+    .controls {
+        display: grid;
+        grid-template-columns: auto 1fr auto 1fr;   /* Sort [sel]  Show [sel] */
+        gap: 0.5rem;
+        align-items: center;
+    }
+    #search { grid-column: 1 / -1; min-width: 0; width: 100%; flex: none; padding: 0.55rem 0.7rem; }
+    .controls label { white-space: nowrap; }
+    .controls select { width: 100%; padding: 0.45rem 0.5rem; }
+    #search, .controls select { font-size: 16px; }   /* >=16px stops iOS zoom-on-focus */
+
+    /* price chip drops to its own line, left-aligned (not floated right) */
+    .tick-row { row-gap: 0.1rem; }
+    .tick-row .price { margin: 0.15rem 0 0; flex-basis: 100%; justify-content: flex-start; }
+
+    /* touch targets */
+    .filing-head, .card-comments-bar { padding-top: 0.7rem; padding-bottom: 0.55rem; }
+    .more-open, .more-close, .cmt-toggle-label, .replies-toggle {
+        display: inline-flex; align-items: center; min-height: 44px;
+    }
+    .mentions-link { display: inline-flex; align-items: center; min-height: 32px; }
+    .back-link { display: inline-flex; align-items: center; min-height: 40px; }
+
+    /* company landing header scale */
+    .company-head .tick-row { font-size: 1.05rem; }
+    .company-head .price { font-size: 0.92rem; }
 }
 
 /* footer */
@@ -418,4 +464,30 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
     .comment.reply { margin-left: 0.8rem; }
     .cmt-composer-row { align-items: stretch; }
     .cmt-composer-row select { flex: 1 1 auto; }
+
+    .cmt-composer textarea, .cmt-edit-form textarea, .cmt-reply-form textarea {
+        min-height: 3.6rem; font-size: 16px;
+    }
+    .cmt-composer-row select, .magic-form input { font-size: 16px; }
+    .cmt-composer-row .auth-btn-primary { flex: 1 1 auto; min-height: 44px; }
+    .cmt-actions { flex-wrap: wrap; row-gap: 0.35rem; column-gap: 1rem; }   /* degrade, don't overflow */
+    .vote-btn { min-height: 38px; padding: 0.3rem 0.7rem; }
+    .cmt-link { display: inline-flex; align-items: center; min-height: 38px; padding: 0.3rem 0.1rem; }
+    .mention-pop { max-height: 40vh; }
+    .mention-item { padding: 0.55rem 0.6rem; }
+}
+
+/* tightest phones */
+@media (max-width: 360px) {
+    .container { padding: 0 0.75rem; }
+    h1 { font-size: 1.45rem; }
+    .brand { font-size: 1.05rem; }
+    .brand-mark { font-size: 1.15rem; }
+    .header-nav { gap: 0.7rem; font-size: 0.85rem; }
+    .header-row { padding: 0.65rem 0.75rem; }
+    .controls { grid-template-columns: auto 1fr; }   /* stack the two selects */
+    .tick-row .price .spark { display: none; }       /* drop decorative spark on the card */
+    .company-head .tick-row { font-size: 1rem; }
+    .company-head .price .spark { width: 60px; height: 20px; }   /* keep, shrink, on the hero */
+    .comment.reply { margin-left: 0.5rem; padding-left: 0.5rem; }
 }
