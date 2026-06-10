@@ -27,11 +27,15 @@ export function esc(s) {
 
 export function momentum(it) {
     const { mention_change_pct: c, mentions } = it;
+    // The count comes from ApeWisdom -> link to its per-ticker page so anyone can
+    // verify the mentions (24h breakdown, users, WSB split). New tab.
+    const url = `https://apewisdom.io/stocks/${encodeURIComponent(it.ticker)}/`;
+    const link = `<a class="mentions-link" href="${url}" target="_blank" rel="noopener">${mentions} mentions</a>`;
     if (c === null || c === undefined)
-        return `${mentions} mentions`;
+        return link;
     const arrow = c >= 0 ? "▲" : "▼";
     const cls = c >= 0 ? "chg-up" : "chg-down";
-    return `${mentions} mentions <span class="${cls}">${arrow} ${Math.abs(c)}%</span> <span style="opacity:.7">vs 24h</span>`;
+    return `${link} <span class="${cls}">${arrow} ${Math.abs(c)}%</span> <span style="opacity:.7">vs 24h</span>`;
 }
 
 export function filingRow(f, prefix, ns = "") {
@@ -139,18 +143,23 @@ export function filingsListHtml(it, ns = "") {
         const noneHtml = none ? `<p class="filing-none">${esc(none)}</p>` : "";
         return `<div class="card-filings">${warn}${noneHtml}</div>`;
     }
-    // "More" rows = the rest of the 90-day window minus the lead (by reference).
-    const rest = all.filter((f) => f !== lead);
-    const leadRow = `<ul class="filing-list filing-lead">${filingRow(lead, it.ticker, ns)}</ul>`;
-    // Single filing -> a "Latest filings" label, no toggle.
-    if (!rest.length) {
+    // Show the first leadN filings directly; the rest go behind the toggle. The
+    // landing page (ns "co") leads with 3, the home cards with 1.
+    const leadN = ns === "co" ? 3 : 1;
+    const rest = all.filter((f) => f !== lead);          // newest-first, minus lead
+    const ordered = [lead, ...rest];
+    const shown = ordered.slice(0, leadN);
+    const hidden = ordered.slice(leadN);
+    const leadRows = `<ul class="filing-list filing-lead">${shown.map((f) => filingRow(f, it.ticker, ns)).join("")}</ul>`;
+    // No remainder -> a "Latest filings" label, no toggle.
+    if (!hidden.length) {
         return `<div class="card-filings">${warn}
             <div class="filing-head"><span class="filing-head-label">Latest filings</span></div>
-            ${leadRow}</div>`;
+            ${leadRows}</div>`;
     }
     const id = `more-${ns}${(it.ticker || "").replace(/[^a-z0-9]/gi, "")}`;
-    const n = rest.length;
-    const rows = rest.map((f) => filingRow(f, it.ticker, ns)).join("");
+    const n = hidden.length;
+    const rows = hidden.map((f) => filingRow(f, it.ticker, ns)).join("");
     // Checkbox first, then the header (with both toggle labels) and the rows -> the
     // control lives in the fixed header at the top, so collapsing never needs a scroll.
     return `<div class="card-filings">${warn}
@@ -160,7 +169,7 @@ export function filingsListHtml(it, ns = "") {
             <label class="more-open" for="${id}">show ${n} more</label>
             <label class="more-close" for="${id}">show less</label>
         </div>
-        ${leadRow}
+        ${leadRows}
         <ul class="filing-list more-rows">${rows}</ul>
     </div>`;
 }

@@ -46,16 +46,14 @@ function cardHtml(it, i) {
     const verified = it.name_match === "verified";
     const hot = verified && it.filing && it.filing.fresh;
     const coName = it.display_name || it.name;
-    // Ticker(s) -> the company's EDGAR filing page (no page exists for CIK-less
-    // tickers like ETFs, so those render as plain non-link text). Dual-class
-    // issuers (GOOG/GOOGL) are merged into one card carrying every ticker.
+    // Ticker(s) -> the firm's landing page (#/company/…); the EDGAR link now lives
+    // on the landing page only. Dual-class issuers (GOOG/GOOGL) are merged into one
+    // card carrying every ticker; each class deep-links to the same company page.
     const tickers = (it.tickers && it.tickers.length) ? it.tickers : [it.ticker];
-    const ticker = it.cik
-        ? tickers.map((t) =>
-            `<a class="ticker" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener">$${esc(t)}</a>`
-          ).join(`<span class="ticker-sep">·</span>`)
-        : `<span class="ticker">$${esc(it.ticker)}</span>`;
-    return `<article class="card ${hot ? "hot" : ""}">
+    const ticker = tickers.map((t) =>
+        `<a class="ticker" href="#/company/${encodeURIComponent(t)}">$${esc(t)}</a>`
+      ).join(`<span class="ticker-sep">·</span>`);
+    return `<article class="card ${hot ? "hot" : ""}" data-ticker="${esc(it.ticker)}">
         <div class="card-main">
             <div class="rank">${i + 1}</div>
             <div class="tick">
@@ -154,9 +152,28 @@ function initCommentPanels() {
     });
 }
 
+// Click anywhere in a card's HEADER (.card-main: rank/ticker/name/price/mentions)
+// -> the firm's landing page. Real controls win (the ticker's own link, the
+// mentions -> ApeWisdom link, comment toggles), and a click that ends a text
+// selection is ignored. Filings/comments areas are outside .card-main, so they
+// don't navigate. One delegated listener survives applyView re-renders.
+function initCardNav() {
+    const list = $("#list");
+    if (!list) return;
+    list.addEventListener("click", (e) => {
+        if (e.target.closest("a, button, label, input")) return;
+        if (window.getSelection()?.toString()) return;
+        const head = e.target.closest(".card-main");
+        if (!head) return;
+        const t = head.closest(".card")?.dataset.ticker;
+        if (t) location.hash = `#/company/${encodeURIComponent(t)}`;
+    });
+}
+
 // --- load ---
 auth.init();   // header sign-in/out (no-op until Supabase is configured)
 initCommentPanels();
+initCardNav();
 
 fetch("./data/trending.json", { cache: "no-store" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
