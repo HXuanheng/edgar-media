@@ -31,9 +31,11 @@ function companyHeaderHtml(it) {
     const edgar = it.cik
         ? `<a class="fl-sec edgar-link" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener" aria-label="Open ${esc(it.ticker)} on SEC EDGAR">↗</a>`
         : "";
+    // Name + its EDGAR ↗ as one tight unit so the arrow hugs the company name.
+    const nameGroup = `<span class="co-edgar"><span class="coname">${esc(coName)}</span>${edgar}</span>`;
     return `<div class="company-head">
         <a class="back-link" href="#/">← All trending</a>
-        <div class="tick-row">${ticker}<span class="coname">${esc(coName)}</span>${edgar}${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
+        <div class="tick-row">${ticker}${nameGroup}${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
         <div class="attention">${momentum(it)}</div>
     </div>`;
 }
