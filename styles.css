@@ -460,7 +460,7 @@ body.dark-mode .warn { color: #fbbf24; }
 .cmt-toggle-label:hover { color: var(--primary-color); }
 .cmt-toggle-label::after { content: " ▾"; }
 .cmt-toggle:checked ~ .card-comments-bar .cmt-toggle-label::after { content: " ▴"; }
-.cmt-count { color: var(--text-muted); }
+.cmt-count { color: var(--text-muted); margin-left: 0.3rem; }
 .card-comments { display: none; padding: 0 1.1rem 0.8rem; }
 .cmt-toggle:checked ~ .card-comments { display: block; }
 
@@ -521,13 +521,16 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 
 .cmt-actions { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.15rem; }
 .cmt-actions:empty { display: none; }
+/* like = a simple heart (outline ♡ / filled ♥), no pill border */
 .vote-btn {
-    font: inherit; font-size: 0.78rem; cursor: pointer; color: var(--text-muted);
-    background: none; border: 1px solid var(--border); border-radius: 999px;
-    padding: 0.1rem 0.5rem; transition: color var(--transition), border-color var(--transition);
+    font: inherit; font-size: 0.8rem; cursor: pointer; color: var(--text-muted);
+    background: none; border: none; padding: 0.1rem 0.2rem;
+    display: inline-flex; align-items: center; gap: 0.25rem;
+    transition: color var(--transition);
 }
-.vote-btn:hover { border-color: var(--secondary-color); color: var(--primary-color); }
-.vote-btn.voted { color: var(--primary-color); border-color: var(--primary-color); font-weight: 600; }
+.vote-btn .heart { font-size: 1rem; line-height: 1; }
+.vote-btn:hover { color: #e0245e; }
+.vote-btn.voted { color: #e0245e; }
 .cmt-link {
     font: inherit; font-size: 0.78rem; cursor: pointer; color: var(--text-muted);
     background: none; border: none; padding: 0; transition: color var(--transition);

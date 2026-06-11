@@ -147,7 +147,7 @@ function initCommentPanels() {
             (it) => String(it.cik) === String(key) || it.ticker === key);
         const countEl = card.querySelector(".cmt-count");
         renderInlinePanel(key, panel, company, (n) => {
-            if (countEl) countEl.textContent = n ? ` (${n})` : "";
+            if (countEl) countEl.textContent = n ? `(${n})` : "";
         });
     });
 }

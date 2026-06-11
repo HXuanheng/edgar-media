@@ -248,7 +248,7 @@ function commentHtml(c, replies, company, ctx) {
     if (!removed) {
         const voted = ctx.myVotes.has(c.id);
         const votes = ctx.counts[c.id] || 0;
-        actions += `<button class="vote-btn ${voted ? "voted" : ""}" data-act="vote" data-id="${c.id}" data-voted="${voted ? 1 : 0}" title="Upvote">▲ <span class="vote-n">${votes}</span></button>`;
+        actions += `<button class="vote-btn ${voted ? "voted" : ""}" data-act="vote" data-id="${c.id}" data-voted="${voted ? 1 : 0}" title="${voted ? "Unlike" : "Like"}"><span class="heart">${voted ? "♥" : "♡"}</span> <span class="vote-n">${votes}</span></button>`;
         if (ctx.full && ctx.user && !c.parent_id)
             actions += `<button class="cmt-link" data-act="reply" data-id="${c.id}">Reply</button>`;
         if (mine) {
@@ -383,9 +383,19 @@ function wire(mount) {
         if (act === "vote") {
             if (!getUser()) return openModal();
             btn.disabled = true;   // block the double-click race -> duplicate-key error
-            const voted = btn.dataset.voted === "1";
-            if (await guard(mount, toggleVote(id, voted))) render(mount);
-            else btn.disabled = false;
+            const wasVoted = btn.dataset.voted === "1";
+            if (await guard(mount, toggleVote(id, wasVoted))) {
+                // Update just this button in place — a full render(mount) would rebuild the
+                // thread and collapse any open reply box / expanded replies.
+                const nowVoted = !wasVoted;
+                btn.dataset.voted = nowVoted ? "1" : "0";
+                btn.classList.toggle("voted", nowVoted);
+                btn.title = nowVoted ? "Unlike" : "Like";
+                const h = btn.querySelector(".heart"); if (h) h.textContent = nowVoted ? "♥" : "♡";
+                const n = btn.querySelector(".vote-n");
+                if (n) n.textContent = Math.max(0, (parseInt(n.textContent, 10) || 0) + (nowVoted ? 1 : -1));
+            }
+            btn.disabled = false;
             return;
         }
         if (act === "reply") {
