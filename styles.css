@@ -171,7 +171,7 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
 .fl-head { display: flex; align-items: baseline; gap: 0.7rem; }
 .flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; }
 .flform:hover { color: var(--secondary-color); }
-.fl-date { color: var(--text-muted); font-weight: 400; }   /* muted date inside the form link */
+.fl-date { color: inherit; }   /* match the form code's color + weight -> "8-K · date" is one unit */
 .fl-desc { flex: 0 1 auto; min-width: 0; color: var(--text-muted); }   /* plain-English label */
 .flwhen { flex: 0 0 auto; margin-left: auto; color: var(--text-muted); font-size: 0.8rem; }
 
