@@ -50,10 +50,23 @@ export async function render(container, userId) {
     const avatar = p.avatar_url
         ? `<img class="acc-avatar-img" src="${esc(p.avatar_url)}" alt="" referrerpolicy="no-referrer">`
         : `<span class="acc-avatar-img acc-avatar-fallback">${esc(name.slice(0, 1).toUpperCase())}</span>`;
-    const subBits = [p.profession, p.investment_style].filter(Boolean).map(esc).join(" · ");
     const url = safeUrl(p.website);
     const since = monthYear(p.created_at);
     const isMe = getUser()?.id === p.id;
+
+    // Clear "Label: value" rows; each only shows when its field is filled.
+    const row = (label, valueHtml) =>
+        valueHtml ? `<div class="pf-row"><dt>${esc(label)}</dt><dd>${valueHtml}</dd></div>` : "";
+    const websiteHtml = url
+        ? `<a href="${esc(url)}" target="_blank" rel="noopener nofollow">${esc(url.replace(/^https?:\/\//, ""))}</a>` : "";
+    const fields = [
+        row("Name", realName ? esc(realName) : ""),
+        row("Profession", p.profession ? esc(p.profession) : ""),
+        row("Investment style", p.investment_style ? esc(p.investment_style) : ""),
+        row("Website", websiteHtml),
+        row("About", p.background ? `<span class="pf-bio">${esc(p.background)}</span>` : ""),
+        row("Member since", since ? esc(since) : ""),
+    ].join("");
 
     container.innerHTML = `<div class="profile-page">
         <a class="back-link" href="#/">← Back</a>
@@ -62,13 +75,9 @@ export async function render(container, userId) {
                 <span class="acc-avatar profile-avatar">${avatar}</span>
                 <div class="profile-id">
                     <h1 class="profile-name">${esc(name)}</h1>
-                    ${realName ? `<p class="profile-realname">${esc(realName)}</p>` : ""}
-                    ${subBits ? `<p class="profile-sub">${subBits}</p>` : ""}
                 </div>
             </div>
-            ${p.background ? `<p class="profile-bio">${esc(p.background)}</p>` : ""}
-            ${url ? `<p class="profile-website"><a href="${esc(url)}" target="_blank" rel="noopener nofollow">${esc(url.replace(/^https?:\/\//, ""))}</a></p>` : ""}
-            ${since ? `<p class="profile-meta">Member since ${esc(since)}</p>` : ""}
+            ${fields ? `<dl class="profile-fields">${fields}</dl>` : `<p class="cmt-empty">No profile details yet.</p>`}
             ${isMe ? `<p class="profile-edit"><a href="#/account">Edit your profile →</a></p>` : ""}
         </article>
     </div>`;

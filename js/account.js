@@ -159,7 +159,6 @@ export async function render(container) {
 
         <form class="acc-form" data-acc="form">
             ${FIELDS.map((f) => fieldHtml(f, p)).join("")}
-            <p class="acc-note">Profile details are public — anyone can see them next to your comments. Your email is never shown.</p>
             <div class="acc-actions">
                 <button type="submit" class="auth-btn auth-btn-primary">Save</button>
                 <span class="acc-flash" data-acc="flash" hidden></span>
