@@ -119,7 +119,7 @@ export async function render(container) {
     const user = getUser();
     if (!user) {
         container.innerHTML = `<div class="account-page">
-            <a class="back-link" href="#/">← Back</a>
+            <a class="back-link" href="#/" data-back>← Back</a>
             <h1 class="account-title">Your account</h1>
             <p class="cmt-empty">Sign in to view and edit your profile.</p>
             <button class="auth-btn auth-btn-primary" data-acc="signin">Sign in</button>
@@ -142,7 +142,7 @@ export async function render(container) {
     const p = prof || {};
 
     container.innerHTML = `<div class="account-page">
-        <a class="back-link" href="#/">← Back</a>
+        <a class="back-link" href="#/" data-back>← Back</a>
         <h1 class="account-title">Your account</h1>
         <p class="acc-email">Signed in as <strong>${esc(user.email || "")}</strong> <span class="acc-private">· email is private</span></p>
         <p class="acc-viewpublic"><a href="#/u/${esc(user.id)}">View public profile ↗</a></p>
@@ -189,5 +189,5 @@ export async function render(container) {
         flash.classList.toggle("cmt-flash-err", !!error);
         if (!error) reloadProfile();   // refresh the header name
     });
-    window.scrollTo(0, 0);
+    if (location.hash.replace(/^#/, "").startsWith("/account")) window.scrollTo(0, 0);
 }

@@ -39,9 +39,9 @@ export async function render(container, userId) {
 
     if (!p) {
         container.innerHTML = `<div class="profile-page">
-            <a class="back-link" href="#/">← Back</a>
+            <a class="back-link" href="#/" data-back>← Back</a>
             <p class="cmt-empty">This profile doesn’t exist.</p></div>`;
-        window.scrollTo(0, 0);
+        if (location.hash.replace(/^#/, "").startsWith("/u/")) window.scrollTo(0, 0);   // don't clobber scroll if we've navigated away
         return;
     }
 
@@ -69,7 +69,7 @@ export async function render(container, userId) {
     ].join("");
 
     container.innerHTML = `<div class="profile-page">
-        <a class="back-link" href="#/">← Back</a>
+        <a class="back-link" href="#/" data-back>← Back</a>
         <article class="card profile-card">
             <div class="profile-head">
                 <span class="acc-avatar profile-avatar">${avatar}</span>
@@ -81,5 +81,5 @@ export async function render(container, userId) {
             ${isMe ? `<p class="profile-edit"><a href="#/account">Edit your profile →</a></p>` : ""}
         </article>
     </div>`;
-    window.scrollTo(0, 0);
+    if (location.hash.replace(/^#/, "").startsWith("/u/")) window.scrollTo(0, 0);   // don't clobber scroll if we've navigated away
 }

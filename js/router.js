@@ -71,31 +71,58 @@ function renderCompany(companyEl, it) {
     const mount = companyEl.querySelector(".card-comments");
     if (threadKey) renderFullThread(threadKey, mount, it);
     else mount.innerHTML = `<p class="cmt-empty">No SEC company record to attach a discussion to.</p>`;
-    window.scrollTo(0, 0);
 }
 
 let homeEl, companyEl, accountEl, profileEl;
+let renderedCompanyKey = null;          // which company is currently in the DOM
+const scrollByHash = new Map();         // hash -> last scroll position on that page
+const normHash = (h) => (!h || h === "#" || h === "#/") ? "#/" : h;   // "" and "#/" are the same page
+let prevHash = normHash(location.hash); // the page we're on, so we can save its scroll
+
+// We restore scroll ourselves (the browser's auto restore fights our re-renders).
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+function applyScroll() {
+    const y = scrollByHash.get(normHash(location.hash)) || 0;
+    // Re-assert over a few frames: showing a view + async content (comments) can nudge
+    // the scroll back to 0 just after we set it, so keep restoring until it sticks.
+    let n = 0;
+    const tick = () => {
+        window.scrollTo(0, y);
+        if (++n < 18 && Math.abs(window.scrollY - y) > 2)
+            (n < 6 ? requestAnimationFrame(tick) : setTimeout(tick, 30));
+    };
+    tick();
+}
 
 async function route() {
+    // Remember where we were on the page we're leaving — route() runs while that page
+    // is still in the DOM, so window.scrollY is its position. Lets Back restore the spot.
+    scrollByHash.set(prevHash, window.scrollY);
     await ready;
     const r = parseHash();
     showView(r.view);
-    if (r.view === "home") {
-        if (companyEl) companyEl.innerHTML = "";
-        if (accountEl) accountEl.innerHTML = "";
-        if (profileEl) profileEl.innerHTML = "";
-        return;
-    }
+
     if (r.view === "account") {
         account.render(accountEl);
-        return;
-    }
-    if (r.view === "profile") {
+    } else if (r.view === "profile") {
         profile.render(profileEl, r.userId);
-        return;
+    } else if (r.view === "company") {
+        // Re-render only when the company actually changes; otherwise keep the existing
+        // DOM (and its expanded replies) so coming Back lands on the exact same view.
+        const key = r.cik ? `cik/${r.cik}` : `t/${r.ticker}`;
+        if (key !== renderedCompanyKey) {
+            const it = r.cik ? findByCik(r.cik) : findByTicker(r.ticker);
+            renderCompany(companyEl, it);
+            renderedCompanyKey = key;
+        }
+        applyScroll();
+    } else {   // home — keep the company DOM around so a Back to it is instant + in place
+        if (accountEl) accountEl.innerHTML = "";
+        if (profileEl) profileEl.innerHTML = "";
+        applyScroll();
     }
-    const it = r.cik ? findByCik(r.cik) : findByTicker(r.ticker);
-    renderCompany(companyEl, it);
+    prevHash = normHash(location.hash);
 }
 
 export function init() {
@@ -103,6 +130,15 @@ export function init() {
     companyEl = document.getElementById("company-view");
     accountEl = document.getElementById("account-view");
     profileEl = document.getElementById("profile-view");
+    // "← Back" links (profile / account) return to the actual previous page + scroll,
+    // instead of always jumping to home.
+    document.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-back]");
+        if (!b) return;
+        e.preventDefault();
+        if (history.length > 1) history.back();
+        else location.hash = "#/";
+    });
     window.addEventListener("hashchange", route);
     route();
 }
