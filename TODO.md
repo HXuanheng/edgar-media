@@ -59,17 +59,20 @@ model ids + pricing before building.)
 
 ## 🧭 UI / account / firm-page ideas (parked, evaluated)
 
-### 1. Move header controls (About / sign-in / dark mode) to a floating side control
+### 1. Move header controls (About / sign-in / dark mode) to a floating control — ✅ BUILT (bottom-right FAB)
 Intent: make the top-right header less invasive.
-**Verdict: do it selectively, not wholesale.**
-- ⚠️ Bottom-right is already occupied by the floating PDF widget — avoid collision.
-- Account + About in a floating blob hurts discoverability (users expect them top-right);
-  likely lowers sign-in rather than reducing clutter. Floating elements also overlap
-  content, esp. on mobile — can be *more* invasive.
-- **Recommended:** theme toggle → small floating button is fine. Keep Account + About
-  top-right but lighter — collapse into one avatar / ▾ menu. If the real issue is the
-  sticky header eating vertical space, consider an **auto-hide-on-scroll header** instead.
-- [ ] Decide: floating theme toggle only, vs. collapse-to-menu, vs. auto-hide header.
+**Decision (2026-06-12): bottom-right FAB speed-dial.** A single round trigger (`☰`) pinned
+to the bottom-right corner opens a small popover menu that expands upward: **About · sign-in ·
+dark mode**. The header keeps only the brand. (`.fab`/`.fab-menu` in `index.html` + `styles.css`;
+open/close + the self-labelling theme row live in `app.js`. Control IDs `#auth-slot`/`#theme-toggle`
+unchanged so `auth.js` and the theme logic were untouched.)
+- Behaviour: outside-click / Esc closes; picking About or sign-in closes; flipping the theme
+  keeps the menu open so you see it land. Theme row self-labels (`🌙 Dark mode` / `☀️ Light mode`).
+- ⚠️ A real bottom-right **PDF widget** is still planned (see §3 / the agent ideas) and would
+  collide with this FAB. Decision deferred: when it ships, stack them vertically or move one.
+- ⚠️ Accepted tradeoff: sign-in is one tap deeper, which can lower sign-ups. **Watch the
+  sign-in rate; if it dips,** surface sign-in more (badge the trigger when logged-out, or make
+  the trigger the user avatar when logged-in).
 
 ### 2. Account / profile page — ✅ BUILT (needs SQL migration run once)
 Fields: photo, display name, first/last name, website, profession, investment style, background.

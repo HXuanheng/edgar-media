@@ -17,10 +17,10 @@
          that changes JS/CSS, so returning visitors get the new files immediately instead
          of a stale cached copy. GitHub Pages caches assets ~10 min; with this, a single
          normal refresh is enough — no hard reload needed. -->
-    <link rel="stylesheet" href="styles.css?v=2026-06-11l">
+    <link rel="stylesheet" href="styles.css?v=2026-06-12c">
     <script>
       (function () {
-        var V = "2026-06-11l";   // ⬅️ BUMP on each JS/CSS deploy (keep styles.css ?v= in sync)
+        var V = "2026-06-12c";   // ⬅️ BUMP on each JS/CSS deploy (keep styles.css ?v= in sync)
         // Map every ./js/*.js module to a versioned URL so the whole import graph busts
         // together when V changes (static imports otherwise keep their cached copies).
         var mods = ["config", "store", "supabaseClient", "chart", "util", "auth",
@@ -45,13 +45,20 @@
                 <span class="brand-mark">📣</span>
                 <span class="brand-name">EDGAR&nbsp;Media</span>
             </a>
-            <nav class="header-nav">
-                <a href="https://hxuanheng.github.io/" target="_blank" rel="noopener">About</a>
-                <span id="auth-slot"></span>
-                <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-            </nav>
         </div>
     </header>
+
+    <!-- floating bottom-right controls: a single button that opens a small menu
+         (About · sign-in · dark mode). Detached from the header. Toggled in app.js. -->
+    <div class="fab" id="fab" data-open="false">
+        <div class="fab-menu" id="fab-menu" role="menu" aria-label="Site controls">
+            <a class="fab-item" href="https://hxuanheng.github.io/" target="_blank" rel="noopener" role="menuitem">About</a>
+            <span id="auth-slot"></span>
+            <button id="theme-toggle" class="fab-item" role="menuitemcheckbox" aria-label="Toggle dark mode">🌙 Dark mode</button>
+        </div>
+        <button class="fab-trigger" id="fab-trigger" aria-label="Open menu"
+                aria-haspopup="true" aria-expanded="false" aria-controls="fab-menu">☰</button>
+    </div>
 
     <main class="content">
         <div class="container" id="home-view">

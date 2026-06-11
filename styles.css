@@ -59,13 +59,57 @@ a:hover { color: var(--secondary-color); }
 .brand { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 1.15rem; color: inherit; text-decoration: none; }
 .brand:hover { opacity: 0.75; }
 .brand-mark { font-size: 1.3rem; }
-.header-nav { display: flex; align-items: center; gap: 1.25rem; font-size: 0.9rem; }
-#theme-toggle {
-    background: none; border: 1px solid var(--border); border-radius: 999px;
-    cursor: pointer; font-size: 1rem; padding: 0.25rem 0.55rem; line-height: 1;
-    transition: border-color var(--transition);
+/* controls collapsed into a bottom-right floating button (FAB) that opens a
+   small popover menu: About · sign-in · dark mode. Detached from the header. */
+.fab {
+    position: fixed; bottom: 1.1rem; right: 1.1rem; z-index: 60;
+    /* menu sits above the trigger in DOM; `column` keeps the trigger pinned to the
+       corner and lets the menu expand upward from it. */
+    display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem;
 }
-#theme-toggle:hover { border-color: var(--secondary-color); }
+.fab-trigger {
+    width: 3rem; height: 3rem; flex: 0 0 auto; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--card-bg); color: inherit; border: 1px solid var(--border);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    cursor: pointer; font-size: 1.25rem; line-height: 1;
+    transition: background var(--transition), border-color var(--transition),
+                box-shadow var(--transition), transform var(--transition);
+}
+.fab-trigger:hover { box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22); }
+.fab[data-open="true"] .fab-trigger { transform: rotate(90deg); border-color: var(--secondary-color); }
+
+/* the popover panel */
+.fab-menu {
+    display: flex; flex-direction: column; align-items: stretch; gap: 0.1rem;
+    min-width: 10rem; padding: 0.4rem;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.9rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.20);
+    transform-origin: bottom right;
+    opacity: 0; transform: translateY(0.4rem) scale(0.96); pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+}
+.fab[data-open="true"] .fab-menu { opacity: 1; transform: none; pointer-events: auto; }
+.fab-menu:empty, .fab-menu #auth-slot:empty { display: none; }
+
+/* every menu row gets the same flat, left-aligned look — neutralise the pill
+   borders the auth buttons carry in their old header context */
+.fab-menu .fab-item,
+.fab-menu .auth-btn,
+.fab-menu .auth-me {
+    display: flex; align-items: center; gap: 0.5rem;
+    width: 100%; min-height: 2.4rem; box-sizing: border-box;
+    justify-content: flex-start; text-align: left; white-space: nowrap;
+    background: none; border: 0; border-radius: 0.55rem;
+    padding: 0.4rem 0.6rem; font: inherit; font-size: 0.92rem; max-width: none;
+    color: inherit; cursor: pointer; transition: background var(--transition);
+}
+.fab-menu .fab-item:hover,
+.fab-menu .auth-btn:hover,
+.fab-menu .auth-me:hover { background: var(--hover-bg, rgba(127, 127, 127, 0.12)); opacity: 1; }
+/* account link + sign-out stack as their own rows inside the slot */
+.fab-menu #auth-slot { display: flex; flex-direction: column; align-items: stretch; gap: 0.1rem; width: 100%; }
+.fab-menu .auth-name { font-size: 0.92rem; color: inherit; }
 
 /* intro */
 .content { padding: 2.5rem 0 1rem; }
@@ -351,8 +395,7 @@ body.dark-mode .warn { color: #fbbf24; }
 
     /* header */
     .header-row { padding: 0.7rem 1rem; }
-    .header-nav { gap: 0.9rem; }
-    #theme-toggle { min-height: 40px; min-width: 40px; padding: 0.4rem 0.55rem; }
+    .fab { bottom: 0.9rem; right: 0.9rem; }
     .auth-btn { min-height: 40px; }
 
     /* controls -> search full width on its own row; two selects share the next row */
@@ -652,7 +695,6 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
     h1 { font-size: 1.45rem; }
     .brand { font-size: 1.05rem; }
     .brand-mark { font-size: 1.15rem; }
-    .header-nav { gap: 0.7rem; font-size: 0.85rem; }
     .header-row { padding: 0.65rem 0.75rem; }
     .controls { grid-template-columns: auto 1fr; }   /* stack the two selects */
     .tick-row .price .spark { display: none; }       /* drop decorative spark on the card */

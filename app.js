@@ -13,7 +13,7 @@ const $ = (s) => document.querySelector(s);
 const toggle = $("#theme-toggle");
 function applyTheme(dark) {
     document.body.classList.toggle("dark-mode", dark);
-    toggle.textContent = dark ? "☀️" : "🌙";
+    toggle.textContent = dark ? "☀️ Light mode" : "🌙 Dark mode";
 }
 applyTheme(localStorage.getItem("theme") === "dark");
 toggle.addEventListener("click", () => {
@@ -21,6 +21,33 @@ toggle.addEventListener("click", () => {
     localStorage.setItem("theme", dark ? "dark" : "light");
     applyTheme(dark);
 });
+
+// --- floating controls menu (bottom-right FAB speed-dial) ---
+const fab = $("#fab");
+const fabTrigger = $("#fab-trigger");
+if (fab && fabTrigger) {
+    const setOpen = (open) => {
+        fab.dataset.open = open ? "true" : "false";
+        fabTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    fabTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setOpen(fab.dataset.open !== "true");
+    });
+    // click outside / Escape closes it
+    document.addEventListener("click", (e) => {
+        if (fab.dataset.open === "true" && !fab.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setOpen(false);
+    });
+    // picking About or a sign-in/out action closes the menu; flipping the theme
+    // keeps it open so you can see the change land.
+    $("#fab-menu").addEventListener("click", (e) => {
+        if (e.target.closest("#theme-toggle")) return;
+        if (e.target.closest("a, button")) setOpen(false);
+    });
+}
 
 // --- card ---
 function tickerId(it) { return (it.ticker || "").replace(/[^a-z0-9]/gi, ""); }
