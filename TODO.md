@@ -102,7 +102,14 @@ statement, cash-flow statement.
 
 ---
 
+## 🛠 Deploy note
+- **Cache-buster:** `index.html` has a version token `V` (currently `2026-06-11a`) used in an
+  import map that versions the whole `./js/*.js` graph, plus the `styles.css?v=` link. **Bump
+  `V` (both spots) on every deploy that changes JS/CSS** so visitors get new files on one normal
+  refresh (no hard reload). Forgetting = users see stale JS for ~10 min (Pages cache).
+
 ## ✅ Done (recent)
+- Cache-buster: import-map version token in `index.html` busts the full JS module graph + CSS.
 - Public profile pages (`#/u/<id>`, `js/profile.js`) + comment authors are clickable to them.
   Read-only; email never shown. Account page links to "View public profile".
 - Styled in-app confirm/prompt dialog (`js/dialog.js`) replaces the native browser popups for

@@ -13,8 +13,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script type="module" src="app.js"></script>
+    <!-- Cache-buster: bump V below (and the styles.css ?v= to match) on every deploy
+         that changes JS/CSS, so returning visitors get the new files immediately instead
+         of a stale cached copy. GitHub Pages caches assets ~10 min; with this, a single
+         normal refresh is enough — no hard reload needed. -->
+    <link rel="stylesheet" href="styles.css?v=2026-06-11a">
+    <script>
+      (function () {
+        var V = "2026-06-11a";   // ⬅️ BUMP on each JS/CSS deploy (keep styles.css ?v= in sync)
+        // Map every ./js/*.js module to a versioned URL so the whole import graph busts
+        // together when V changes (static imports otherwise keep their cached copies).
+        var mods = ["config", "store", "supabaseClient", "chart", "util", "auth",
+                    "comments", "dialog", "router", "account", "profile"];
+        var imports = {};
+        mods.forEach(function (m) { imports["./js/" + m + ".js"] = "./js/" + m + ".js?v=" + V; });
+        var im = document.createElement("script");
+        im.type = "importmap";
+        im.textContent = JSON.stringify({ imports: imports });
+        document.head.appendChild(im);
+        var app = document.createElement("script");
+        app.type = "module";
+        app.src = "app.js?v=" + V;
+        document.head.appendChild(app);
+      })();
+    </script>
 </head>
 <body>
     <header class="site-header">
