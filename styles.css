@@ -169,7 +169,7 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
 .flrow { padding: 0.5rem 0; border-top: 1px dashed var(--border); font-size: 0.85rem; }
 /* header line: form code link (left scan-anchor) · date · summary ... age */
 .fl-head { display: flex; align-items: baseline; gap: 0.7rem; }
-.flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; }
+.flform { flex: 0 0 auto; min-width: 4.5rem; font-weight: 600; color: var(--primary-color); white-space: nowrap; line-height: 1.2; }
 .flform:hover { color: var(--secondary-color); }
 .fl-date { color: inherit; }   /* match the form code's color + weight -> "8-K · date" is one unit */
 .fl-desc { flex: 0 1 auto; min-width: 0; color: var(--text-muted); }   /* plain-English label */
@@ -254,7 +254,10 @@ body.dark-mode .warn { color: #fbbf24; }
         column-gap: 0.7rem; row-gap: 0.15rem;
         align-items: baseline;
     }
-    .flform { grid-column: 1; grid-row: 1; }
+    /* shrink the link to its text: a grid item defaults to justify-self:stretch,
+       which made the <a> fill the whole 1fr column -> tapping anywhere in the left
+       of the row opened the filing. Pin it to content width. */
+    .flform { grid-column: 1; grid-row: 1; justify-self: start; min-width: 0; }
     .flwhen { grid-column: 2; grid-row: 1; margin-left: 0; justify-self: end; }
     .fl-desc { grid-column: 1 / -1; grid-row: 2; }   /* description gets its own row */
     .fl-tag  { grid-column: 1 / -1; grid-row: 3; justify-self: start; }   /* Summary pill below */
