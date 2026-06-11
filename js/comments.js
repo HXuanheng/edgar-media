@@ -427,13 +427,13 @@ function wire(mount) {
         }
         if (act === "remove") {
             if (!(await confirmDialog({
-                title: "Remove comment",
-                message: "Hide this comment as an admin? It stays in the thread as a tombstone.",
-                confirmLabel: "Remove", danger: true,
+                title: "Delete comment",
+                message: "Permanently delete this comment as an admin? It’s removed completely with no trace — and any replies to it are deleted too. This can’t be undone.",
+                confirmLabel: "Delete", danger: true,
             }))) return;
-            // admin moderation goes through the SECURITY DEFINER RPC (sets mod_state),
-            // not a direct UPDATE — the client has no mod_state write grant.
-            if (await guard(mount, supabase.rpc("moderate_hide", { comment_id: id }))) render(mount);
+            // Hard delete via the SECURITY DEFINER RPC (admin-checked). The row is gone —
+            // no tombstone — and FK cascades take its replies, votes and reports with it.
+            if (await guard(mount, supabase.rpc("moderate_delete", { comment_id: id }))) render(mount);
             return;
         }
         if (act === "report") {

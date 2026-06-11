@@ -158,6 +158,18 @@ end $$;
 revoke all on function public.moderate_hide(uuid) from public, anon;
 grant execute on function public.moderate_hide(uuid) to authenticated;
 
+-- admin-only HARD delete: removes the row entirely (no tombstone). SECURITY DEFINER so
+-- it bypasses the "no DELETE policy" on comments. Cascades via FKs to the comment's
+-- replies, votes and reports — so nothing is left behind to show a comment existed.
+create or replace function public.moderate_delete(comment_id uuid)
+  returns void language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'admin only'; end if;
+  delete from public.comments where id = comment_id;
+end $$;
+revoke all on function public.moderate_delete(uuid) from public, anon;
+grant execute on function public.moderate_delete(uuid) to authenticated;
+
 -- ─────────────────────────────── RLS ──────────────────────────────
 
 alter table public.profiles enable row level security;
