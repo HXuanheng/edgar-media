@@ -566,6 +566,18 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 .acc-actions { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.4rem; }
 .acc-flash { font-size: 0.85rem; color: var(--text-muted); }
 .account-page .back-link { margin-bottom: 0.6rem; }
+.acc-opt { font-weight: 400; color: var(--text-muted); font-size: 0.78rem; }
+
+/* avatar uploader */
+.acc-avatar-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
+.acc-avatar { flex: 0 0 auto; width: 72px; height: 72px; border-radius: 50%; overflow: hidden;
+    border: 1px solid var(--border); }
+.acc-avatar-img { width: 100%; height: 100%; object-fit: cover; display: flex;
+    align-items: center; justify-content: center; }
+.acc-avatar-fallback { background: var(--accent-color); color: #fff; font-size: 1.8rem; font-weight: 700; }
+.acc-avatar-ctl { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+.acc-upload { cursor: pointer; }
+.acc-avatar-status { font-size: 0.8rem; color: var(--text-muted); }
 @media (max-width: 620px) {
     .acc-field input, .acc-field select, .acc-field textarea { font-size: 16px; }   /* >=16px stops iOS zoom */
 }

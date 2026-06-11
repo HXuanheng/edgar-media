@@ -72,14 +72,17 @@ Intent: make the top-right header less invasive.
 - [ ] Decide: floating theme toggle only, vs. collapse-to-menu, vs. auto-hide header.
 
 ### 2. Account / profile page — ✅ BUILT (needs SQL migration run once)
-Fields: display name, first/last name, website, profession, investment style, background.
+Fields: photo, display name, first/last name, website, profession, investment style, background.
 - New `#/account` route (`js/account.js`) + edit form; reached via the header avatar link.
+- Profile photo: client-side downscale (≤512px) → upload to a public `avatars` Storage
+  bucket → save the public URL to `profiles.avatar_url`. OAuth (Google/GitHub) sign-ins
+  still auto-fill their photo. Non-essential fields are marked "(optional)".
 - Extended `public.profiles` with the new columns + column-level UPDATE grant
   (`supabase/schema.sql`). **All profile fields are PUBLIC** (profiles is world-readable);
   the login **email stays private** (in auth.users, shown read-only, never stored here).
-- [ ] **ACTION: run the new `alter table ... add column` + `grant update(...)` lines from
-  `supabase/schema.sql` in the Supabase SQL editor** — until then, saving errors with
-  "column does not exist".
+- [ ] **ACTION: run the new `alter table ... add column` + `grant update(...)` lines AND the
+  avatar Storage bucket/policy block from `supabase/schema.sql` in the Supabase SQL editor**
+  — until then, saving errors with "column does not exist" and photo upload has no bucket.
 - [ ] Optional follow-up: if any field (e.g. background) should be private-to-you, move it
   to a separate owner-only table with stricter RLS.
 - Investment style is stored as plain text from a dropdown — later it can flavor the
