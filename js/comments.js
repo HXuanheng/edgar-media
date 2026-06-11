@@ -249,15 +249,16 @@ function commentHtml(c, replies, company, ctx) {
         const voted = ctx.myVotes.has(c.id);
         const votes = ctx.counts[c.id] || 0;
         actions += `<button class="vote-btn ${voted ? "voted" : ""}" data-act="vote" data-id="${c.id}" data-voted="${voted ? 1 : 0}" title="${voted ? "Unlike" : "Like"}"><span class="heart">${voted ? "♥" : "♡"}</span> <span class="vote-n">${votes}</span></button>`;
-        if (ctx.full && ctx.user && !c.parent_id)
+        if (ctx.user && !c.parent_id)
             actions += `<button class="cmt-link" data-act="reply" data-id="${c.id}">Reply</button>`;
         if (mine) {
             actions += `<button class="cmt-link" data-act="edit" data-id="${c.id}">Edit</button>`;
-            actions += `<button class="cmt-link" data-act="delete" data-id="${c.id}">Delete</button>`;
+            if (!ctx.isAdmin)   // admins use the hard Remove below (no tombstone left behind)
+                actions += `<button class="cmt-link" data-act="delete" data-id="${c.id}">Delete</button>`;
         } else if (ctx.user) {
             actions += `<button class="cmt-link" data-act="report" data-id="${c.id}">Report</button>`;
         }
-        if (ctx.isAdmin && !mine)
+        if (ctx.isAdmin)   // admin can hard-delete ANY comment, including their own
             actions += `<button class="cmt-link cmt-link-danger" data-act="remove" data-id="${c.id}">Remove</button>`;
     }
 
@@ -271,7 +272,7 @@ function commentHtml(c, replies, company, ctx) {
              </div></form>`
         : "";
 
-    const replyForm = (ctx.full && ctx.user && !c.parent_id && !removed)
+    const replyForm = (ctx.user && !c.parent_id && !removed)
         ? `<form class="cmt-reply-form" data-act="reply-submit" data-parent="${c.id}" hidden>
              <textarea name="body" placeholder="Reply… (type @ to reference a filing)" required></textarea>
              <div class="mention-pop" hidden></div>

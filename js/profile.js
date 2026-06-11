@@ -33,7 +33,7 @@ export async function render(container, userId) {
     await initClient();
     const { data: p } = await supabase
         .from("profiles")
-        .select("id, display_name, avatar_url, first_name, last_name, website, profession, background, investment_style, created_at")
+        .select("id, display_name, avatar_url, first_name, last_name, website, profession, background, investment_style, created_at, role")
         .eq("id", userId)
         .maybeSingle();
 
@@ -74,7 +74,7 @@ export async function render(container, userId) {
             <div class="profile-head">
                 <span class="acc-avatar profile-avatar">${avatar}</span>
                 <div class="profile-id">
-                    <h1 class="profile-name">${esc(name)}</h1>
+                    <h1 class="profile-name">${esc(name)}${p.role === "admin" ? `<span class="profile-badge">admin</span>` : ""}</h1>
                 </div>
             </div>
             ${fields ? `<dl class="profile-fields">${fields}</dl>` : `<p class="cmt-empty">No profile details yet.</p>`}
