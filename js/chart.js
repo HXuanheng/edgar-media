@@ -148,6 +148,8 @@ export function priceChartHtml(it) {
 const cssEsc = (s) => (window.CSS && CSS.escape)
     ? CSS.escape(s) : String(s).replace(/["\\]/g, "\\$&");
 
+// Reveal (un-collapse + expand summary + flash) one filing row. Scrolling is the
+// caller's job so a multi-row jump scrolls once, not once per row.
 function revealRow(row) {
     // If the row lives behind the "show N more" toggle, open it first.
     const moreList = row.closest(".more-rows");
@@ -158,7 +160,6 @@ function revealRow(row) {
     // Open the AI-summary expander if this row has one.
     const exp = row.querySelector(".fl-expand");
     if (exp) exp.checked = true;
-    row.scrollIntoView({ behavior: "smooth", block: "center" });
     row.classList.remove("flash");
     void row.offsetWidth;                                  // restart the flash animation
     row.classList.add("flash");
@@ -168,13 +169,25 @@ export function wireChart(companyEl, it) {
     const svg = companyEl.querySelector(".price-chart .pc-svg");
     if (!svg) return;
     const jump = (g) => {
-        const acc = g.getAttribute("data-acc");
+        // A marker stands for a whole filing day, so highlight EVERY filing that
+        // day (the stacked dots) -- not just the newest. Match by date; fall back
+        // to the lead accession only if the date attr is somehow missing.
         const date = g.getAttribute("data-date");
-        let row = acc
-            ? companyEl.querySelector(`.flrow[data-acc="${cssEsc(acc)}"]`) : null;
-        if (!row && date)
-            row = companyEl.querySelector(`.flrow[data-date="${cssEsc(date)}"]`);
-        if (row) revealRow(row);
+        const acc = g.getAttribute("data-acc");
+        let rows = date
+            ? [...companyEl.querySelectorAll(`.flrow[data-date="${cssEsc(date)}"]`)]
+            : [];
+        if (!rows.length && acc) {
+            const r = companyEl.querySelector(`.flrow[data-acc="${cssEsc(acc)}"]`);
+            if (r) rows = [r];
+        }
+        if (!rows.length) return;
+        // Clear any leftover flash from a previous click so only this marker's
+        // rows are highlighted (the class outlives its 1.4s animation otherwise).
+        companyEl.querySelectorAll(".flrow.flash")
+            .forEach((r) => r.classList.remove("flash"));
+        rows.forEach(revealRow);
+        rows[0].scrollIntoView({ behavior: "smooth", block: "center" });   // top (newest)
     };
     svg.addEventListener("click", (e) => {
         const g = e.target.closest(".pc-fmark");
