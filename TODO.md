@@ -57,6 +57,44 @@ model ids + pricing before building.)
 
 ---
 
+## 🧭 UI / account / firm-page ideas (parked, evaluated)
+
+### 1. Move header controls (About / sign-in / dark mode) to a floating side control
+Intent: make the top-right header less invasive.
+**Verdict: do it selectively, not wholesale.**
+- ⚠️ Bottom-right is already occupied by the floating PDF widget — avoid collision.
+- Account + About in a floating blob hurts discoverability (users expect them top-right);
+  likely lowers sign-in rather than reducing clutter. Floating elements also overlap
+  content, esp. on mobile — can be *more* invasive.
+- **Recommended:** theme toggle → small floating button is fine. Keep Account + About
+  top-right but lighter — collapse into one avatar / ▾ menu. If the real issue is the
+  sticky header eating vertical space, consider an **auto-hide-on-scroll header** instead.
+- [ ] Decide: floating theme toggle only, vs. collapse-to-menu, vs. auto-hide header.
+
+### 2. Account / profile page
+Fields: name, surname, email, website, profession, background, investment style, etc.
+- Builds on the existing Supabase auth (comments already use it). Needs a `profiles`
+  table + Row-Level Security + a profile form.
+- **Decide which fields are public** (shown next to comments) **vs private** (email,
+  background). Don't expose PII by default.
+- "Investment style" is a useful hook — later it can flavor the persona-agents or let
+  users filter/sort the feed.
+- [ ] Define the public/private field split + RLS policy.
+
+### 3. Firm landing-page menu: Overview / Financials
+Tabs on the per-company page: Overview, then Financials = balance sheet, income
+statement, cash-flow statement.
+- **Data source:** SEC EDGAR XBRL **`companyfacts`** API (us-gaap tags) — free, official;
+  we already call EDGAR in `scripts/build_data.py`.
+- ⚠️ `companyfacts` JSON is large → fetch on-demand or top-N only, not all firms at build.
+- ⚠️ XBRL tag-mapping varies across filers → start with a few headline metrics in
+  Overview, expand later.
+- Keep it tabbed + lazy-rendered ("not invasive"). This is the part most at risk of
+  Yahoo-Finance-clone vibes — keep it framed as "the data behind the filing/buzz."
+- [ ] Start with Overview headline metrics; add full statements incrementally.
+
+---
+
 ## ✅ Done (recent)
 - Reverted to original indigo palette; kept the cuter rounded fonts/cards/badges.
 - Brand/site name = "EDGAR Media" (header + tab title); H1 tagline = "What's Popping?".
