@@ -249,8 +249,8 @@ function commentHtml(c, replies, company, ctx) {
         const voted = ctx.myVotes.has(c.id);
         const votes = ctx.counts[c.id] || 0;
         actions += `<button class="vote-btn ${voted ? "voted" : ""}" data-act="vote" data-id="${c.id}" data-voted="${voted ? 1 : 0}" title="${voted ? "Unlike" : "Like"}"><span class="heart">${voted ? "♥" : "♡"}</span> <span class="vote-n">${votes}</span></button>`;
-        if (ctx.user && !c.parent_id)
-            actions += `<button class="cmt-link" data-act="reply" data-id="${c.id}">Reply</button>`;
+        if (ctx.user)
+            actions += `<button class="cmt-link" data-act="reply" data-id="${c.id}" data-name="${esc(name)}" data-isreply="${c.parent_id ? 1 : 0}">Reply</button>`;
         if (mine) {
             actions += `<button class="cmt-link" data-act="edit" data-id="${c.id}">Edit</button>`;
             if (!ctx.isAdmin)   // admins use the hard Remove below (no tombstone left behind)
@@ -272,8 +272,11 @@ function commentHtml(c, replies, company, ctx) {
              </div></form>`
         : "";
 
-    const replyForm = (ctx.user && !c.parent_id && !removed)
-        ? `<form class="cmt-reply-form" data-act="reply-submit" data-parent="${c.id}" hidden>
+    // Flat, one level: replying to a reply still attaches to the ROOT, so threads never
+    // nest deeper than one. Opening a reply-to-a-reply prefills "@name" for context.
+    const rootId = c.parent_id || c.id;
+    const replyForm = (ctx.user && !removed)
+        ? `<form class="cmt-reply-form" data-act="reply-submit" data-parent="${rootId}" data-replyfor="${c.id}" hidden>
              <textarea name="body" placeholder="Reply… (type @ to reference a filing)" required></textarea>
              <div class="mention-pop" hidden></div>
              <div class="cmt-composer-row">
@@ -409,12 +412,22 @@ function wire(mount) {
             return;
         }
         if (act === "reply") {
-            const f = mount.querySelector(`.cmt-reply-form[data-parent="${id}"]`);
-            if (f) { f.hidden = !f.hidden; if (!f.hidden) f.querySelector("textarea")?.focus(); }
+            const f = mount.querySelector(`.cmt-reply-form[data-replyfor="${id}"]`);
+            if (f) {
+                f.hidden = !f.hidden;
+                if (!f.hidden) {
+                    const ta = f.querySelector("textarea");
+                    // Replying to a reply: prefill "@name " so the flat reply shows who it answers.
+                    if (ta && !ta.value && btn.dataset.isreply === "1" && btn.dataset.name)
+                        ta.value = `@${btn.dataset.name} `;
+                    ta?.focus();
+                    if (ta) ta.setSelectionRange(ta.value.length, ta.value.length);
+                }
+            }
             return;
         }
         if (act === "reply-cancel") {
-            mount.querySelector(`.cmt-reply-form[data-parent="${id}"]`)?.setAttribute("hidden", "");
+            mount.querySelector(`.cmt-reply-form[data-replyfor="${id}"]`)?.setAttribute("hidden", "");
             return;
         }
         if (act === "toggle-replies") {
