@@ -41,11 +41,15 @@ export function momentum(it) {
 export function filingRow(f, prefix, ns = "") {
     const when = f.days_ago != null ? daysLabel(f.days_ago) : f.date;
     const fire = f.fresh ? "🔥 " : "";   // very recent (<=7 days) -> flame on the age
-    // Form code + filing date read as one unit ("an 8-K from 2026-06-05") and the
-    // whole group is the SEC link (the ↗ cues the external jump). It's an
-    // interactive descendant, so on summary rows clicking it navigates without
-    // toggling the row open. The plain-English description follows separately.
-    const formDate = `<a class="flform" href="${esc(f.index_url)}" target="_blank" rel="noopener">${esc(f.form)} <span class="fl-date">· ${esc(f.date)}</span> ↗</a>`;
+    // Form code + filing date are one PLAIN (non-link) unit. Opening SEC is a
+    // separate, deliberate control -- the small ↗ link -- so a stray tap on the
+    // row never sends you off-site. On summary rows tapping the text expands the
+    // summary (it's a non-interactive descendant of the toggle <label>); the ↗ is
+    // an interactive descendant, so it navigates without toggling.
+    const idGroup = `<span class="fl-id">`
+        + `<span class="flform">${esc(f.form)} <span class="fl-date">· ${esc(f.date)}</span></span>`
+        + `<a class="fl-sec" href="${esc(f.index_url)}" target="_blank" rel="noopener" aria-label="Open ${esc(f.form)} on SEC EDGAR">↗</a>`
+        + `</span>`;
     const desc = f.summary && f.summary !== f.form ? `<span class="fl-desc">${esc(f.summary)}</span>` : "";
     // age, pushed to the right edge (.flwhen has margin-left:auto)
     const tail = `<span class="flwhen">${fire}${esc(when)}</span>`;
@@ -60,11 +64,11 @@ export function filingRow(f, prefix, ns = "") {
         const id = `flx-${ns}${(prefix || "").replace(/[^a-z0-9]/gi, "")}-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
         return `<li class="flrow flrow-ai">
             <input type="checkbox" id="${id}" class="fl-expand" hidden>
-            <label class="fl-head" for="${id}">${formDate}${desc}<span class="fl-tag">Summary</span>${tail}</label>
+            <label class="fl-head" for="${id}">${idGroup}${desc}<span class="fl-tag">Summary</span>${tail}</label>
             <p class="fl-summary"><em class="fl-label">Summary:</em> ${esc(f.ai_summary)}</p>
         </li>`;
     }
-    return `<li class="flrow flrow-plain"><div class="fl-head">${formDate}${desc}${tail}</div></li>`;
+    return `<li class="flrow flrow-plain"><div class="fl-head">${idGroup}${desc}${tail}</div></li>`;
 }
 
 // Tiny inline trend line for the 5-day closes. Normalized min->max so the shape
