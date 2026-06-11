@@ -355,6 +355,15 @@ async function render(mount) {
     mount.innerHTML = `${head}${composerHtml(ctx, company)}<div class="cmt-flash" hidden></div><div class="cmt-list">${listHtml}</div>${footer}`;
 }
 
+// After a re-render (which collapses every reply list), reveal one parent's replies
+// so a just-posted reply stays visible instead of snapping shut.
+function openReplies(mount, parentId) {
+    const box = mount.querySelector(`.comment-replies[data-replies="${parentId}"]`);
+    const btn = mount.querySelector(`.replies-toggle[data-id="${parentId}"]`);
+    if (box) box.hidden = false;
+    if (btn && btn.dataset.label) btn.textContent = `▾ ${btn.dataset.label}`;
+}
+
 function flash(mount, text, isErr) {
     const el = mount.querySelector(".cmt-flash");
     if (!el) return;
@@ -474,7 +483,11 @@ function wire(mount) {
             if (await guard(mount, postComment(st.cik, body, accession, null))) { form.reset(); render(mount); }
         } else if (act === "reply-submit") {
             const accession = firstAccession(body);
-            if (await guard(mount, postComment(st.cik, body, accession, form.dataset.parent))) render(mount);
+            const parent = form.dataset.parent;
+            if (await guard(mount, postComment(st.cik, body, accession, parent))) {
+                await render(mount);
+                openReplies(mount, parent);   // keep the thread open on the new reply
+            }
         } else if (act === "edit-submit") {
             // body only — the client has no UPDATE grant on accession (column-level RLS),
             // so the inline tokens carry any reference change; the column stays as first set.
