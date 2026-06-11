@@ -98,7 +98,7 @@ export function sparklineSvg(spark, up) {
 // colors from momentum) + sparkline. No price (foreign/crypto/outage) -> "".
 // A carried-forward (stale) price is labelled with its as_of date so it is never
 // shown as if live. Built at build time in scripts/build_data.py.
-export function priceHtml(it) {
+export function priceHtml(it, spark = true) {
     const p = it.price;
     if (!p || p.last == null) return "";
     const c = p.change_pct;
@@ -119,8 +119,12 @@ export function priceHtml(it) {
         `<span class="${up ? "chg-up" : "chg-down"}">${up ? "▲" : "▼"} ${Math.abs(c)}%</span>`;
     const stale = p.stale && p.as_of
         ? `<span class="px-stale">· as of ${esc(p.as_of)}</span>` : "";
+    // The company page passes spark=false: a full price chart sits right below the
+    // header there, so the inline 5-day sparkline would be redundant (and its 5-day
+    // shape next to the daily % is exactly the cross-period confusion to avoid).
+    const sparkSvg = spark ? sparklineSvg(sp, sparkUp) : "";
     return `<div class="price"><span class="px-last">${esc(last)}${cur}</span>`
-        + `${chg}${sparklineSvg(sp, sparkUp)}${stale}</div>`;
+        + `${chg}${sparkSvg}${stale}</div>`;
 }
 
 export function filingsListHtml(it, ns = "") {

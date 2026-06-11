@@ -36,7 +36,7 @@ function companyHeaderHtml(it) {
     const nameGroup = `<span class="co-edgar"><span class="coname">${esc(coName)}</span>${edgar}</span>`;
     return `<div class="company-head">
         <a class="back-link" href="#/">← All trending</a>
-        <div class="tick-row">${ticker}${nameGroup}${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
+        <div class="tick-row">${ticker}${nameGroup}${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it, false)}</div>
         <div class="attention">${momentum(it)}</div>
     </div>`;
 }

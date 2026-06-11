@@ -260,6 +260,9 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
     flex-wrap: wrap; gap: 0.3rem 0.8rem; margin-bottom: 0.25rem; }
 .chart-title { font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
     letter-spacing: 0.02em; }
+/* right side of the chart head: the span's own % change + the toggle buttons */
+.chart-ctrls { display: inline-flex; align-items: center; gap: 0.5rem; }
+.chart-span-chg { font-size: 0.82rem; }   /* colour via .chg-up/.chg-down */
 /* time-span toggle (1M / 3M) -- pill buttons, the selected one filled */
 .chart-spans { display: inline-flex; gap: 0.25rem; }
 .chart-span { font: inherit; font-size: 0.72rem; font-weight: 600; line-height: 1;

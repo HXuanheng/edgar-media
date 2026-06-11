@@ -159,6 +159,23 @@ function buildChartBody(full, it, spanDays) {
     return legend + svg;
 }
 
+// Change over a span's visible window (first vs last close) -> the labelled %
+// shown next to the buttons, coloured to match the line. Slicing mirrors
+// buildChartBody so the number always matches the drawn window.
+function spanChange(full, spanDays) {
+    const cutoff = ms(full[full.length - 1][0]) - spanDays * 86400000;
+    let h = full.filter(([d]) => ms(d) >= cutoff);
+    if (h.length < 2) h = full.slice(-2);
+    const a = h[0][1], b = h[h.length - 1][1];
+    const pct = a ? (b - a) / a * 100 : 0;
+    return { pct, up: pct >= 0 };
+}
+function spanChgHtml(full, spanDays) {
+    const { pct, up } = spanChange(full, spanDays);
+    return `<span class="chart-span-chg ${up ? "chg-up" : "chg-down"}">`
+        + `${up ? "▲" : "▼"} ${Math.abs(pct).toFixed(2)}%</span>`;
+}
+
 export function priceChartHtml(it) {
     const full = unpackHist(it.price && it.price.history);
     if (full.length < 2) return "";
@@ -168,7 +185,10 @@ export function priceChartHtml(it) {
     return `<article class="card chart-card">
         <div class="chart-head">
             <span class="chart-title">Price</span>
-            <div class="chart-spans">${spanBtns}</div>
+            <div class="chart-ctrls">
+                ${spanChgHtml(full, DEFAULT_SPAN)}
+                <div class="chart-spans">${spanBtns}</div>
+            </div>
         </div>
         <div class="price-chart">${buildChartBody(full, it, DEFAULT_SPAN)}</div>
     </article>`;
@@ -240,8 +260,11 @@ export function wireChart(companyEl, it) {
         if (!btn) return;
         const full = unpackHist(it.price && it.price.history);
         if (full.length < 2) return;
-        box.innerHTML = buildChartBody(full, it, +btn.getAttribute("data-days"));
+        const days = +btn.getAttribute("data-days");
+        box.innerHTML = buildChartBody(full, it, days);
         spans.querySelectorAll(".chart-span")
             .forEach((b) => b.classList.toggle("active", b === btn));
+        const lbl = companyEl.querySelector(".chart-span-chg");
+        if (lbl) lbl.outerHTML = spanChgHtml(full, days);   // refresh labelled % for the span
     });
 }
