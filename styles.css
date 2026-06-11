@@ -252,6 +252,45 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
 .tick-row .price { margin: 0 0 0 auto; align-items: baseline; flex-shrink: 0; }
 .tick-row .coname { min-width: 0; }
 
+/* per-firm price chart (company page): 3-month close line + filing markers,
+   colored/tagged by form type. Hand-rolled SVG in js/chart.js. */
+.chart-card { margin-bottom: 1.5rem; padding: 0.7rem 0.9rem 0.5rem; }
+.chart-card:hover { transform: none; }           /* stable while clicking markers */
+.chart-head { display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.3rem 0.8rem; margin-bottom: 0.25rem; }
+.chart-title { font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
+    letter-spacing: 0.02em; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 0.7rem; }
+.lg-chip { display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.72rem; color: var(--text-muted); }
+.lg-chip i { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+.price-chart { width: 100%; }
+.pc-svg { display: block; width: 100%; height: auto; overflow: visible; }
+/* keep strokes a constant width regardless of how far the viewBox is scaled */
+.pc-line, .pc-grid, .pc-fmark-line { vector-effect: non-scaling-stroke; }
+.pc-line { stroke: #6366f1; stroke-width: 1.6;
+    stroke-linejoin: round; stroke-linecap: round; }
+.pc-last-dot { fill: #6366f1; }
+.pc-last-lbl { font-weight: 700; fill: var(--text); }
+.pc-grid { stroke: var(--border); stroke-width: 1; stroke-dasharray: 2 3; }
+.pc-axis { fill: var(--text-muted); font-size: 9px; }
+.pc-fmark-line { stroke-width: 1.2; stroke-dasharray: 3 3; stroke-opacity: 0.5; }
+.pc-dot { stroke: var(--card-bg); stroke-width: 1; }   /* halo so dots read on the line */
+.pc-fmark { cursor: pointer; }
+.pc-fmark:hover .pc-fmark-line,
+.pc-fmark:focus-visible .pc-fmark-line { stroke-opacity: 1; stroke-width: 1.8; }
+.pc-fmark:focus { outline: none; }
+.pc-fmark:focus-visible .pc-dot { stroke: var(--text); }
+/* brief highlight on the filing row a marker jumps you to */
+.flrow.flash { animation: flrow-flash 1.4s ease-out; }
+@keyframes flrow-flash {
+    from { background: var(--accent-color); }
+    to { background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .flrow.flash { animation: none; outline: 2px solid var(--accent-color); }
+}
+
 /* filing area: the latest filing shows directly as the first row; the rest live
    behind the "N more filings" menu below it. */
 .card-filings { padding-bottom: 0.35rem; }

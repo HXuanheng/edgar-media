@@ -49,10 +49,11 @@ SEC_PAUSE = 0.15    # polite gap between SEC calls (limit is 10 req/sec)
 # from carry-forward (load_prev_prices): if every source is down for a ticker we
 # reuse last run's price (shown as stale via its as_of), never a blank.
 YAHOO_URL = ("https://query1.finance.yahoo.com/v8/finance/chart/"
-             "{sym}?interval=1d&range=5d")
+             "{sym}?interval=1d&range=3mo")    # 3mo covers the 90-day filing window
 STOOQ_URL = "https://stooq.com/q/d/l/?s={sym}.us&i=d"          # daily OHLCV CSV
 TWELVEDATA_URL = ("https://api.twelvedata.com/time_series?symbol={sym}"
-                  "&interval=1day&outputsize=6&apikey={key}")  # 1 call = quote+spark
+                  "&interval=1day&outputsize=70&apikey={key}")  # quote+spark+history
+HISTORY_DAYS = 70      # trading days kept for the per-firm price chart (~3 months)
 PRICE_PAUSE = 0.2      # polite gap between price calls
 PRICE_PROVIDERS = [
     {"name": "twelvedata", "kind": "twelvedata", "key_env": "TWELVEDATA_API_KEY"},
@@ -466,8 +467,18 @@ def _price_yahoo(ticker):
         prev = meta.get("chartPreviousClose") or meta.get("previousClose")
         if last is None or not prev:
             return None
-        closes = [c for c in res["indicators"]["quote"][0].get("close", [])
-                  if c is not None]
+        raw = res["indicators"]["quote"][0].get("close", [])
+        stamps = res.get("timestamp", []) or []
+        # Dated daily closes for the per-firm chart. Yahoo's timestamp[] aligns
+        # 1:1 with the raw close[] (nulls = market holidays) -> zip then drop nulls.
+        history = []
+        for t, c in zip(stamps, raw):
+            if c is None:
+                continue
+            d = datetime.fromtimestamp(t, timezone.utc).date().isoformat()
+            history.append([d, round(c, 2)])
+        history = history[-HISTORY_DAYS:]
+        closes = [c for c in raw if c is not None]
         spark = [round(c, 2) for c in closes][-5:]
         if not spark or spark[-1] != round(last, 2):   # ensure latest point shows
             spark = (spark + [round(last, 2)])[-5:]
@@ -480,6 +491,7 @@ def _price_yahoo(ticker):
             "change_pct": round((last - prev) / prev * 100, 2),
             "currency": meta.get("currency") or "USD",
             "spark": spark,
+            "history": history,
             "source": "yahoo",
             "as_of": as_of,
             # Transient identity (stripped before the price object is stored):
@@ -500,18 +512,20 @@ def _price_stooq(ticker):
     rows = [r for r in csv.strip().splitlines() if r]
     if len(rows) < 2 or not rows[0].lower().startswith("date"):
         return None                                    # "No data" page etc.
-    closes, last_date = [], None
-    for r in rows[-6:]:                                 # Date,Open,High,Low,Close,Vol
+    data = []
+    for r in rows[1:]:                                  # Date,Open,High,Low,Close,Vol
         parts = r.split(",")
         if len(parts) < 5:
             continue
         try:
-            closes.append(float(parts[4]))
-            last_date = parts[0]
+            data.append([parts[0], float(parts[4])])
         except ValueError:
             continue
-    if not closes:
+    if not data:
         return None
+    history = [[d, round(c, 2)] for d, c in data[-HISTORY_DAYS:]]
+    closes = [c for _, c in data]
+    last_date = data[-1][0]
     last = closes[-1]
     prev = closes[-2] if len(closes) >= 2 else last
     return {
@@ -520,6 +534,7 @@ def _price_stooq(ticker):
         "change_pct": round((last - prev) / prev * 100, 2) if prev else 0.0,
         "currency": "USD",
         "spark": [round(c, 2) for c in closes[-5:]],
+        "history": history,
         "source": "stooq",
         "as_of": last_date,
     }
@@ -538,12 +553,17 @@ def _price_twelvedata(ticker, key):
             return None
         last = closes[0]
         prev = closes[1] if len(closes) > 1 else last
+        # values are newest-first -> reverse to oldest->newest for the chart.
+        hist_pairs = [[(v.get("datetime") or "")[:10], round(float(v["close"]), 2)]
+                      for v in vals if v.get("close") and v.get("datetime")]
+        history = list(reversed(hist_pairs))[-HISTORY_DAYS:]
         return {
             "last": round(last, 2),
             "prev_close": round(prev, 2),
             "change_pct": round((last - prev) / prev * 100, 2) if prev else 0.0,
             "currency": (data.get("meta") or {}).get("currency") or "USD",
             "spark": [round(c, 2) for c in reversed(closes[:5])],  # oldest->newest
+            "history": history,
             "source": "twelvedata",
             "as_of": (vals[0].get("datetime") or "")[:10] or None,
         }

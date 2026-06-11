@@ -62,13 +62,13 @@ export function filingRow(f, prefix, ns = "") {
         // the same accessions, so accession alone yields duplicate DOM ids and
         // a <label for> would toggle the first card's checkbox, not this one.
         const id = `flx-${ns}${(prefix || "").replace(/[^a-z0-9]/gi, "")}-${(f.accession || "").replace(/[^a-z0-9]/gi, "")}`;
-        return `<li class="flrow flrow-ai">
+        return `<li class="flrow flrow-ai" data-acc="${esc(f.accession || "")}" data-date="${esc(f.date)}">
             <input type="checkbox" id="${id}" class="fl-expand" hidden>
             <label class="fl-head" for="${id}">${idGroup}${desc}<span class="fl-tag">Summary</span>${tail}</label>
             <p class="fl-summary"><em class="fl-label">Summary:</em> ${esc(f.ai_summary)}</p>
         </li>`;
     }
-    return `<li class="flrow flrow-plain"><div class="fl-head">${idGroup}${desc}${tail}</div></li>`;
+    return `<li class="flrow flrow-plain" data-acc="${esc(f.accession || "")}" data-date="${esc(f.date)}"><div class="fl-head">${idGroup}${desc}${tail}</div></li>`;
 }
 
 // Tiny inline trend line for the 5-day closes. Normalized min->max so the shape

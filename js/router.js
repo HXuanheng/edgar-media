@@ -4,6 +4,7 @@
 
 import { ready, findByTicker, findByCik } from "./store.js";
 import { esc, momentum, priceHtml, filingsListHtml } from "./util.js";
+import { priceChartHtml, wireChart } from "./chart.js";
 import { renderFullThread } from "./comments.js";
 
 function parseHash() {
@@ -51,11 +52,15 @@ function renderCompany(companyEl, it) {
     // Skip the filings card entirely when there's nothing to show (e.g. an ETF) so
     // the landing page doesn't show an empty bordered line.
     const filingsHtml = filingsListHtml(it, "co");
+    // Price chart sits between the header (mention/momentum) and the filings card;
+    // returns "" when there's no price history, so the section just disappears.
     companyEl.innerHTML = `${companyHeaderHtml(it)}
+        ${priceChartHtml(it)}
         ${filingsHtml ? `<article class="card company-card">${filingsHtml}</article>` : ""}
         <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
             <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
         </section>`;
+    wireChart(companyEl, it);              // clickable filing markers -> jump to row
     const mount = companyEl.querySelector(".card-comments");
     if (threadKey) renderFullThread(threadKey, mount, it);
     else mount.innerHTML = `<p class="cmt-empty">No SEC company record to attach a discussion to.</p>`;
