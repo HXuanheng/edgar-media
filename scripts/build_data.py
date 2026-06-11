@@ -464,8 +464,7 @@ def _price_yahoo(ticker):
         res = data["chart"]["result"][0]
         meta = res["meta"]
         last = meta.get("regularMarketPrice")
-        prev = meta.get("chartPreviousClose") or meta.get("previousClose")
-        if last is None or not prev:
+        if last is None:
             return None
         raw = res["indicators"]["quote"][0].get("close", [])
         stamps = res.get("timestamp", []) or []
@@ -478,6 +477,13 @@ def _price_yahoo(ticker):
             d = datetime.fromtimestamp(t, timezone.utc).date().isoformat()
             history.append([d, round(c, 2)])
         history = history[-HISTORY_DAYS:]
+        # Day change = last vs the PRIOR session's close. Yahoo's meta previousClose/
+        # chartPreviousClose are the close *before the chart range starts* (~3 months
+        # ago with range=3mo), so take yesterday's close from the series itself.
+        prev = (history[-2][1] if len(history) >= 2
+                else meta.get("previousClose") or meta.get("chartPreviousClose"))
+        if not prev:
+            return None
         closes = [c for c in raw if c is not None]
         spark = [round(c, 2) for c in closes][-5:]
         if not spark or spark[-1] != round(last, 2):   # ensure latest point shows

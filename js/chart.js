@@ -44,11 +44,11 @@ const PAD_L = 12, PAD_R = 48, PAD_T = 22, PAD_B = 24;
 const PLOT_TOP = PAD_T, PLOT_BOT = H - PAD_B;
 const MARK_TOP = 8;                                        // marker pin head y
 
-// Selectable time spans (label, days). 3M is the default and the max: filing
-// markers only exist for the last ~90 days (the SEC list window), so 3M shows them
-// all and 1M is a zoom-in. Both just slice the same 3-month series client-side.
+// Selectable time spans (label, days). 1M is the default (the recent picture);
+// 3M is the max, since filing markers only exist for the last ~90 days (the SEC
+// list window). Both just slice the same 3-month series client-side.
 const SPANS = [["1M", 30], ["3M", 90]];
-const DEFAULT_SPAN = 90;
+const DEFAULT_SPAN = 30;
 
 // price.history is stored compactly as two parallel CSV strings ({t,c}) to keep the
 // committed JSON small. Accept that, the legacy [[date,close],...] array, or nothing.
@@ -79,7 +79,10 @@ function buildChartBody(full, it, spanDays) {
     const X = (t) => PAD_L + ((t - t0) / tSpan) * (W - PAD_L - PAD_R);
     const Y = (v) => PLOT_TOP + (1 - (v - lo) / vSpan) * (PLOT_BOT - PLOT_TOP);
 
-    // Price line.
+    // Price line. Coloured by the direction over THIS window (first vs last close)
+    // so the line's colour always matches the shape on screen.
+    const upWin = closes[closes.length - 1] >= closes[0];
+    const dirCls = upWin ? "pc-up" : "pc-down";
     const pts = hist.map(([d, c]) => `${X(ms(d)).toFixed(1)},${Y(c).toFixed(1)}`)
         .join(" ");
     const lastC = closes[closes.length - 1];
@@ -145,8 +148,8 @@ function buildChartBody(full, it, spanDays) {
     const svg = `<svg class="pc-svg" viewBox="0 0 ${W} ${H}" role="img"`
         + ` aria-label="Price history with filing markers">`
         + grid
-        + `<polyline class="pc-line" points="${pts}" fill="none"/>`
-        + `<circle class="pc-last-dot" cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="3.2"/>`
+        + `<polyline class="pc-line ${dirCls}" points="${pts}" fill="none"/>`
+        + `<circle class="pc-last-dot ${dirCls}" cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="3.2"/>`
         + `<text class="pc-axis pc-last-lbl" x="${(lx + 6).toFixed(1)}" y="${(ly + 3.5).toFixed(1)}">${lastLbl}</text>`
         + marks
         + `<text class="pc-axis pc-xstart" x="${PAD_L}" y="${H - 8}">${fmtDate(hist[0][0])}</text>`

@@ -102,7 +102,12 @@ export function priceHtml(it) {
     const p = it.price;
     if (!p || p.last == null) return "";
     const c = p.change_pct;
-    const up = (c ?? 0) >= 0;
+    const up = (c ?? 0) >= 0;                  // day-change sign -> % arrow colour
+    // Colour the sparkline by its OWN shape (first vs last close), not the day
+    // change, so the mini-line's colour always matches the direction it draws.
+    const sp = p.spark;
+    const sparkUp = Array.isArray(sp) && sp.length >= 2
+        ? sp[sp.length - 1] >= sp[0] : up;
     const last = Number(p.last).toLocaleString(undefined, {
         minimumFractionDigits: 2, maximumFractionDigits: 2,
     });
@@ -115,7 +120,7 @@ export function priceHtml(it) {
     const stale = p.stale && p.as_of
         ? `<span class="px-stale">· as of ${esc(p.as_of)}</span>` : "";
     return `<div class="price"><span class="px-last">${esc(last)}${cur}</span>`
-        + `${chg}${sparklineSvg(p.spark, up)}${stale}</div>`;
+        + `${chg}${sparklineSvg(sp, sparkUp)}${stale}</div>`;
 }
 
 export function filingsListHtml(it, ns = "") {

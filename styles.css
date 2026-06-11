@@ -280,9 +280,13 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
 .pc-svg { display: block; width: 100%; height: auto; overflow: visible; }
 /* keep strokes a constant width regardless of how far the viewBox is scaled */
 .pc-line, .pc-grid, .pc-fmark-line { vector-effect: non-scaling-stroke; }
-.pc-line { stroke: #6366f1; stroke-width: 1.6;
+.pc-line { stroke: var(--text-muted); stroke-width: 1.6;
     stroke-linejoin: round; stroke-linecap: round; }
-.pc-last-dot { fill: #6366f1; }
+.pc-line.pc-up { stroke: var(--green); }      /* colour matches the line's own shape */
+.pc-line.pc-down { stroke: var(--red); }
+.pc-last-dot { fill: var(--text-muted); }
+.pc-last-dot.pc-up { fill: var(--green); }
+.pc-last-dot.pc-down { fill: var(--red); }
 .pc-last-lbl { font-weight: 700; fill: var(--text); }
 .pc-grid { stroke: var(--border); stroke-width: 1; stroke-dasharray: 2 3; }
 .pc-axis { fill: var(--text-muted); font-size: 9px; }
