@@ -578,9 +578,41 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 .acc-avatar-ctl { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; }
 .acc-upload { cursor: pointer; }
 .acc-avatar-status { font-size: 0.8rem; color: var(--text-muted); }
+.acc-viewpublic { font-size: 0.85rem; margin-top: -0.8rem; margin-bottom: 1.2rem; }
 @media (max-width: 620px) {
     .acc-field input, .acc-field select, .acc-field textarea { font-size: 16px; }   /* >=16px stops iOS zoom */
 }
+
+/* ───────────────────────── in-app dialog (confirm / prompt) ───────────────────────── */
+.dialog-card { width: min(92vw, 24rem); gap: 0.4rem; }
+.dialog-message { color: var(--text-muted); font-size: 0.9rem; line-height: 1.45; }
+.dialog-form { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.2rem; }
+.dialog-input {
+    font: inherit; font-size: 0.9rem; color: var(--text); background: var(--card-bg);
+    border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.7rem; width: 100%;
+}
+.dialog-input:focus { outline: none; border-color: var(--secondary-color); }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 0.6rem; }
+.auth-btn-danger { background: var(--red); color: #fff; border-color: var(--red); }
+.auth-btn-danger:hover { filter: brightness(0.93); border-color: var(--red); color: #fff; }
+@media (max-width: 620px) { .dialog-input { font-size: 16px; } }
+
+/* clickable comment author (photo + name -> public profile) */
+.comment-identity { display: inline-flex; align-items: center; gap: 0.4rem; color: inherit; text-decoration: none; }
+.comment-identity:hover .comment-author { color: var(--primary-color); text-decoration: underline; }
+
+/* ───────────────────────── public profile page (#/u/<id>) ───────────────────────── */
+.profile-page { max-width: 640px; }
+.profile-card { padding: 1.4rem 1.4rem 1.2rem; }
+.profile-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
+.profile-avatar { width: 80px; height: 80px; flex: 0 0 auto; }
+.profile-name { font-size: 1.5rem; margin: 0; }
+.profile-realname { color: var(--text); font-size: 0.95rem; margin: 0.1rem 0 0; }
+.profile-sub { color: var(--text-muted); font-size: 0.9rem; margin: 0.15rem 0 0; }
+.profile-bio { margin: 0.8rem 0 0; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+.profile-website { margin: 0.7rem 0 0; font-size: 0.9rem; }
+.profile-meta { margin: 0.7rem 0 0; font-size: 0.8rem; color: var(--text-muted); }
+.profile-edit { margin: 0.9rem 0 0; font-size: 0.85rem; }
 
 @media (max-width: 620px) {
     .auth-name { display: none; }

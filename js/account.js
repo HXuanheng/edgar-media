@@ -145,6 +145,7 @@ export async function render(container) {
         <a class="back-link" href="#/">← Back</a>
         <h1 class="account-title">Your account</h1>
         <p class="acc-email">Signed in as <strong>${esc(user.email || "")}</strong> <span class="acc-private">· email is private</span></p>
+        <p class="acc-viewpublic"><a href="#/u/${esc(user.id)}">View public profile ↗</a></p>
 
         <div class="acc-avatar-row">
             <span class="acc-avatar" data-acc="avatar">${avatarInner(p, user)}</span>

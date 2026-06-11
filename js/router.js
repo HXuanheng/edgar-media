@@ -7,10 +7,13 @@ import { esc, momentum, priceHtml, filingsListHtml } from "./util.js";
 import { priceChartHtml, wireChart } from "./chart.js";
 import { renderFullThread } from "./comments.js";
 import * as account from "./account.js";
+import * as profile from "./profile.js";
 
 function parseHash() {
     const h = (location.hash || "").replace(/^#/, "");
     if (/^\/account\/?$/i.test(h)) return { view: "account" };
+    const u = h.match(/^\/u\/([0-9a-fA-F-]{8,})\/?$/);
+    if (u) return { view: "profile", userId: u[1] };
     const m = h.match(/^\/company\/(?:cik\/(\d+)|([^/]+))\/?$/i);
     if (!m) return { view: "home" };
     return m[1]
@@ -22,6 +25,7 @@ function showView(view) {
     if (homeEl) homeEl.hidden = view !== "home";
     if (companyEl) companyEl.hidden = view !== "company";
     if (accountEl) accountEl.hidden = view !== "account";
+    if (profileEl) profileEl.hidden = view !== "profile";
 }
 
 function companyHeaderHtml(it) {
@@ -70,7 +74,7 @@ function renderCompany(companyEl, it) {
     window.scrollTo(0, 0);
 }
 
-let homeEl, companyEl, accountEl;
+let homeEl, companyEl, accountEl, profileEl;
 
 async function route() {
     await ready;
@@ -79,10 +83,15 @@ async function route() {
     if (r.view === "home") {
         if (companyEl) companyEl.innerHTML = "";
         if (accountEl) accountEl.innerHTML = "";
+        if (profileEl) profileEl.innerHTML = "";
         return;
     }
     if (r.view === "account") {
         account.render(accountEl);
+        return;
+    }
+    if (r.view === "profile") {
+        profile.render(profileEl, r.userId);
         return;
     }
     const it = r.cik ? findByCik(r.cik) : findByTicker(r.ticker);
@@ -93,6 +102,7 @@ export function init() {
     homeEl = document.getElementById("home-view");
     companyEl = document.getElementById("company-view");
     accountEl = document.getElementById("account-view");
+    profileEl = document.getElementById("profile-view");
     window.addEventListener("hashchange", route);
     route();
 }

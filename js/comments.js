@@ -6,6 +6,7 @@
 import { supabase, isConfigured, initClient } from "./supabaseClient.js";
 import { esc, timeAgo } from "./util.js";
 import { getUser, isAdmin, openModal, onChange } from "./auth.js";
+import { confirmDialog, promptDialog } from "./dialog.js";
 
 const state = new WeakMap();   // mount element -> { cik, company, full, onCount }
 
@@ -225,9 +226,16 @@ function commentHtml(c, replies, company, ctx) {
     const removed = c.is_deleted || c.mod_state === "hidden";
     const name = c.author?.display_name || "anon";
 
+    // Author photo + name link to the public profile (#/u/<id>). Removed/anon rows
+    // (no author_id) stay plain text with no link.
+    const identity = removed
+        ? `<span class="comment-author">—</span>`
+        : c.author_id
+            ? `<a class="comment-identity" href="#/u/${esc(c.author_id)}">${avatarHtml(c)}<span class="comment-author">${esc(name)}</span></a>`
+            : `${avatarHtml(c)}<span class="comment-author">${esc(name)}</span>`;
+
     const meta = `<div class="comment-meta">
-        ${removed ? "" : avatarHtml(c)}
-        <span class="comment-author">${esc(removed ? "—" : name)}</span>
+        ${identity}
         <span class="comment-time">${esc(timeAgo(c.created_at))}</span>
         ${c.edited && !removed ? `<span class="comment-edited">· edited</span>` : ""}
     </div>`;
@@ -409,19 +417,31 @@ function wire(mount) {
             return;
         }
         if (act === "delete") {
-            if (!confirm("Delete your comment?")) return;
+            if (!(await confirmDialog({
+                title: "Delete comment",
+                message: "This permanently removes your comment. This can’t be undone.",
+                confirmLabel: "Delete", danger: true,
+            }))) return;
             if (await guard(mount, deleteComment(id))) render(mount);
             return;
         }
         if (act === "remove") {
-            if (!confirm("Remove this comment (admin)?")) return;
+            if (!(await confirmDialog({
+                title: "Remove comment",
+                message: "Hide this comment as an admin? It stays in the thread as a tombstone.",
+                confirmLabel: "Remove", danger: true,
+            }))) return;
             // admin moderation goes through the SECURITY DEFINER RPC (sets mod_state),
             // not a direct UPDATE — the client has no mod_state write grant.
             if (await guard(mount, supabase.rpc("moderate_hide", { comment_id: id }))) render(mount);
             return;
         }
         if (act === "report") {
-            const reason = prompt("Report this comment — reason (optional):", "");
+            const reason = await promptDialog({
+                title: "Report comment",
+                message: "Why are you reporting this? (optional)",
+                placeholder: "Reason", confirmLabel: "Report",
+            });
             if (reason === null) return;   // cancelled
             await guard(mount, reportComment(id, reason), "Reported. Thanks.");
             return;

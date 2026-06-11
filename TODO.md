@@ -103,6 +103,10 @@ statement, cash-flow statement.
 ---
 
 ## ✅ Done (recent)
+- Public profile pages (`#/u/<id>`, `js/profile.js`) + comment authors are clickable to them.
+  Read-only; email never shown. Account page links to "View public profile".
+- Styled in-app confirm/prompt dialog (`js/dialog.js`) replaces the native browser popups for
+  delete / admin-remove / report. Owner can self-grant admin via one SQL line (see below).
 - Account/profile page (`#/account`) — edit form + extended `profiles` schema (pending the
   one-time SQL migration in Supabase). See section 2 above.
 - Reverted to original indigo palette; kept the cuter rounded fonts/cards/badges.
