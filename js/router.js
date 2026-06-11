@@ -23,14 +23,17 @@ function show(homeEl, companyEl, onHome) {
 function companyHeaderHtml(it) {
     const coName = it.display_name || it.name;
     const tickers = (it.tickers && it.tickers.length) ? it.tickers : [it.ticker];
-    const ticker = it.cik
-        ? tickers.map((t) =>
-            `<a class="ticker" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener">$${esc(t)}</a>`
-          ).join(`<span class="ticker-sep">·</span>`)
-        : `<span class="ticker">$${esc(it.ticker)}</span>`;
+    // Ticker is plain text here (you're already on the firm's page). EDGAR is a
+    // small, deliberate ↗ link (same pattern as filing rows) so the firm header
+    // can't open an external page by accident. Only when the firm has a CIK.
+    const ticker = tickers.map((t) => `<span class="ticker">$${esc(t)}</span>`)
+        .join(`<span class="ticker-sep">·</span>`);
+    const edgar = it.cik
+        ? `<a class="fl-sec edgar-link" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener" aria-label="Open ${esc(it.ticker)} on SEC EDGAR">EDGAR ↗</a>`
+        : "";
     return `<div class="company-head">
         <a class="back-link" href="#/">← All trending</a>
-        <div class="tick-row">${ticker}<span class="coname">${esc(coName)}</span>${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
+        <div class="tick-row">${ticker}${edgar}<span class="coname">${esc(coName)}</span>${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
         <div class="attention">${momentum(it)}</div>
     </div>`;
 }
