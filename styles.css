@@ -260,7 +260,19 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
     flex-wrap: wrap; gap: 0.3rem 0.8rem; margin-bottom: 0.25rem; }
 .chart-title { font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
     letter-spacing: 0.02em; }
-.chart-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 0.7rem; }
+/* time-span toggle (1M / 3M) -- pill buttons, the selected one filled */
+.chart-spans { display: inline-flex; gap: 0.25rem; }
+.chart-span { font: inherit; font-size: 0.72rem; font-weight: 600; line-height: 1;
+    color: var(--text-muted); background: transparent; border: 1px solid var(--border);
+    border-radius: 999px; padding: 0.22rem 0.55rem; cursor: pointer;
+    transition: background var(--transition), color var(--transition),
+        border-color var(--transition); }
+.chart-span:hover { color: var(--text); border-color: var(--secondary-color); }
+.chart-span.active { background: var(--primary-color); border-color: var(--primary-color);
+    color: #fff; }
+/* legend now sits just above the chart (updates with the span) */
+.chart-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 0.7rem;
+    margin: 0 0 0.3rem; min-height: 0.9rem; }
 .lg-chip { display: inline-flex; align-items: center; gap: 0.3rem;
     font-size: 0.72rem; color: var(--text-muted); }
 .lg-chip i { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }

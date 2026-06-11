@@ -44,10 +44,30 @@ const PAD_L = 12, PAD_R = 48, PAD_T = 22, PAD_B = 24;
 const PLOT_TOP = PAD_T, PLOT_BOT = H - PAD_B;
 const MARK_TOP = 8;                                        // marker pin head y
 
-export function priceChartHtml(it) {
-    const p = it.price;
-    const hist = p && p.history;
-    if (!Array.isArray(hist) || hist.length < 2) return "";
+// Selectable time spans (label, days). 3M is the default and the max: filing
+// markers only exist for the last ~90 days (the SEC list window), so 3M shows them
+// all and 1M is a zoom-in. Both just slice the same 3-month series client-side.
+const SPANS = [["1M", 30], ["3M", 90]];
+const DEFAULT_SPAN = 90;
+
+// price.history is stored compactly as two parallel CSV strings ({t,c}) to keep the
+// committed JSON small. Accept that, the legacy [[date,close],...] array, or nothing.
+function unpackHist(h) {
+    if (Array.isArray(h)) return h;
+    if (h && typeof h.t === "string" && typeof h.c === "string") {
+        const d = h.t.split(","), c = h.c.split(",");
+        return d.map((dd, i) => [dd, Number(c[i])]).filter((p) => dd != null);
+    }
+    return [];
+}
+
+// Build the chart body (legend + SVG) for one span. Slicing the full series here
+// (not refetching) is what makes the span buttons instant.
+function buildChartBody(full, it, spanDays) {
+    const tEnd = ms(full[full.length - 1][0]);
+    const cutoff = tEnd - spanDays * 86400000;
+    let hist = full.filter(([d]) => ms(d) >= cutoff);
+    if (hist.length < 2) hist = full.slice(-2);              // span shorter than data gap
 
     const t0 = ms(hist[0][0]), t1 = ms(hist[hist.length - 1][0]);
     const tSpan = (t1 - t0) || 1;
@@ -78,7 +98,7 @@ export function priceChartHtml(it) {
             + `<text class="pc-axis pc-grid-lbl" x="${PAD_L + 2}" y="${(+y - 3).toFixed(1)}">${lbl}</text>`;
     }).join("");
 
-    // Filing markers: group filings by date (within the price window), newest-first.
+    // Filing markers: group filings by date (within the visible window), newest-first.
     const filings = (it.cik ? it.filings : null) || [];
     const byDate = new Map();
     for (const f of filings) {
@@ -120,11 +140,10 @@ export function priceChartHtml(it) {
     present.sort((a, b) => (rankOf(a) - rankOf(b)) || a.localeCompare(b));
     const chips = present.map((form) =>
         `<span class="lg-chip"><i style="background:${formColor(form)}"></i>${esc(form)}</span>`);
-    const legend = chips.length
-        ? `<div class="chart-legend">${chips.join("")}</div>` : "";
+    const legend = `<div class="chart-legend">${chips.join("")}</div>`;
 
     const svg = `<svg class="pc-svg" viewBox="0 0 ${W} ${H}" role="img"`
-        + ` aria-label="Price over the last 3 months with filing markers">`
+        + ` aria-label="Price history with filing markers">`
         + grid
         + `<polyline class="pc-line" points="${pts}" fill="none"/>`
         + `<circle class="pc-last-dot" cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="3.2"/>`
@@ -134,12 +153,21 @@ export function priceChartHtml(it) {
         + `<text class="pc-axis pc-xend" x="${W - PAD_R}" y="${H - 8}" text-anchor="end">${fmtDate(hist[hist.length - 1][0])}</text>`
         + `</svg>`;
 
+    return legend + svg;
+}
+
+export function priceChartHtml(it) {
+    const full = unpackHist(it.price && it.price.history);
+    if (full.length < 2) return "";
+    const spanBtns = SPANS.map(([lbl, days]) =>
+        `<button type="button" class="chart-span${days === DEFAULT_SPAN ? " active" : ""}"`
+        + ` data-days="${days}">${lbl}</button>`).join("");
     return `<article class="card chart-card">
         <div class="chart-head">
-            <span class="chart-title">Price · 3 months</span>
-            ${legend}
+            <span class="chart-title">Price</span>
+            <div class="chart-spans">${spanBtns}</div>
         </div>
-        <div class="price-chart">${svg}</div>
+        <div class="price-chart">${buildChartBody(full, it, DEFAULT_SPAN)}</div>
     </article>`;
 }
 
@@ -166,8 +194,10 @@ function revealRow(row) {
 }
 
 export function wireChart(companyEl, it) {
-    const svg = companyEl.querySelector(".price-chart .pc-svg");
-    if (!svg) return;
+    // Listen on the .price-chart container (stable), not the SVG: switching span
+    // replaces the SVG, but the container — and these listeners — persist.
+    const box = companyEl.querySelector(".price-chart");
+    if (!box) return;
     const jump = (g) => {
         // A marker stands for a whole filing day, so highlight EVERY filing that
         // day (the stacked dots) -- not just the newest. Match by date; fall back
@@ -189,14 +219,26 @@ export function wireChart(companyEl, it) {
         rows.forEach(revealRow);
         rows[0].scrollIntoView({ behavior: "smooth", block: "center" });   // top (newest)
     };
-    svg.addEventListener("click", (e) => {
+    box.addEventListener("click", (e) => {
         const g = e.target.closest(".pc-fmark");
         if (g) jump(g);
     });
     // Keyboard: markers are focusable (tabindex) -> Enter/Space activates.
-    svg.addEventListener("keydown", (e) => {
+    box.addEventListener("keydown", (e) => {
         if (e.key !== "Enter" && e.key !== " ") return;
         const g = e.target.closest(".pc-fmark");
         if (g) { e.preventDefault(); jump(g); }
+    });
+
+    // Span buttons: re-slice the same series (no refetch) and swap the chart body.
+    const spans = companyEl.querySelector(".chart-spans");
+    if (spans) spans.addEventListener("click", (e) => {
+        const btn = e.target.closest(".chart-span");
+        if (!btn) return;
+        const full = unpackHist(it.price && it.price.history);
+        if (full.length < 2) return;
+        box.innerHTML = buildChartBody(full, it, +btn.getAttribute("data-days"));
+        spans.querySelectorAll(".chart-span")
+            .forEach((b) => b.classList.toggle("active", b === btn));
     });
 }
