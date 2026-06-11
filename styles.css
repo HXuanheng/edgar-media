@@ -241,6 +241,7 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
 .spark-up circle { fill: var(--green); stroke: none; }    /* "you are here" dot */
 .spark-down circle { fill: var(--red); stroke: none; }
 .px-stale { color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
+.px-period { color: var(--text-muted); font-size: 0.8rem; }   /* "today" tag on the daily % */
 .company-head .price { font-size: 1rem; }
 /* ETF/fund pill next to the company name */
 .tag-etf { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em;

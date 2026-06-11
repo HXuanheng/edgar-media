@@ -98,7 +98,7 @@ export function sparklineSvg(spark, up) {
 // colors from momentum) + sparkline. No price (foreign/crypto/outage) -> "".
 // A carried-forward (stale) price is labelled with its as_of date so it is never
 // shown as if live. Built at build time in scripts/build_data.py.
-export function priceHtml(it, spark = true) {
+export function priceHtml(it, spark = true, dayLabel = false) {
     const p = it.price;
     if (!p || p.last == null) return "";
     const c = p.change_pct;
@@ -117,6 +117,11 @@ export function priceHtml(it, spark = true) {
     const cur = p.currency ? `<span class="px-cur">${esc(p.currency)}</span>` : "";
     const chg = (c === null || c === undefined) ? "" :
         `<span class="${up ? "chg-up" : "chg-down"}">${up ? "▲" : "▼"} ${Math.abs(c)}%</span>`;
+    // Period tag for the daily % (company page only) so it's clearly "today's move"
+    // -- distinct from the chart's selected-span change just below it. "today" not
+    // "vs 24h": it's vs the previous close (~72h over a weekend), not a rolling 24h.
+    const period = (dayLabel && c != null)
+        ? `<span class="px-period">today</span>` : "";
     const stale = p.stale && p.as_of
         ? `<span class="px-stale">· as of ${esc(p.as_of)}</span>` : "";
     // The company page passes spark=false: a full price chart sits right below the
@@ -124,7 +129,7 @@ export function priceHtml(it, spark = true) {
     // shape next to the daily % is exactly the cross-period confusion to avoid).
     const sparkSvg = spark ? sparklineSvg(sp, sparkUp) : "";
     return `<div class="price"><span class="px-last">${esc(last)}${cur}</span>`
-        + `${chg}${sparkSvg}${stale}</div>`;
+        + `${chg}${period}${sparkSvg}${stale}</div>`;
 }
 
 export function filingsListHtml(it, ns = "") {
