@@ -71,15 +71,19 @@ Intent: make the top-right header less invasive.
   sticky header eating vertical space, consider an **auto-hide-on-scroll header** instead.
 - [ ] Decide: floating theme toggle only, vs. collapse-to-menu, vs. auto-hide header.
 
-### 2. Account / profile page
-Fields: name, surname, email, website, profession, background, investment style, etc.
-- Builds on the existing Supabase auth (comments already use it). Needs a `profiles`
-  table + Row-Level Security + a profile form.
-- **Decide which fields are public** (shown next to comments) **vs private** (email,
-  background). Don't expose PII by default.
-- "Investment style" is a useful hook — later it can flavor the persona-agents or let
-  users filter/sort the feed.
-- [ ] Define the public/private field split + RLS policy.
+### 2. Account / profile page — ✅ BUILT (needs SQL migration run once)
+Fields: display name, first/last name, website, profession, investment style, background.
+- New `#/account` route (`js/account.js`) + edit form; reached via the header avatar link.
+- Extended `public.profiles` with the new columns + column-level UPDATE grant
+  (`supabase/schema.sql`). **All profile fields are PUBLIC** (profiles is world-readable);
+  the login **email stays private** (in auth.users, shown read-only, never stored here).
+- [ ] **ACTION: run the new `alter table ... add column` + `grant update(...)` lines from
+  `supabase/schema.sql` in the Supabase SQL editor** — until then, saving errors with
+  "column does not exist".
+- [ ] Optional follow-up: if any field (e.g. background) should be private-to-you, move it
+  to a separate owner-only table with stricter RLS.
+- Investment style is stored as plain text from a dropdown — later it can flavor the
+  persona-agents or filter the feed.
 
 ### 3. Firm landing-page menu: Overview / Financials
 Tabs on the per-company page: Overview, then Financials = balance sheet, income
@@ -96,6 +100,8 @@ statement, cash-flow statement.
 ---
 
 ## ✅ Done (recent)
+- Account/profile page (`#/account`) — edit form + extended `profiles` schema (pending the
+  one-time SQL migration in Supabase). See section 2 above.
 - Reverted to original indigo palette; kept the cuter rounded fonts/cards/badges.
 - Brand/site name = "EDGAR Media" (header + tab title); H1 tagline = "What's Popping?".
 - Removed the "· filings from SEC EDGAR" label next to the Updated line.

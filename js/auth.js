@@ -33,6 +33,15 @@ export function getUser() { return currentUser; }
 export function getProfile() { return currentProfile; }
 export function isAdmin() { return currentProfile?.role === "admin"; }
 
+// Re-fetch the current user's profile and refresh the header slot. Called after the
+// account page saves so a changed display name / avatar shows immediately.
+export async function reloadProfile() {
+    if (!currentUser) return;
+    currentProfile = await loadProfile(currentUser);
+    renderSlot();
+    emit();
+}
+
 // Subscribe to auth changes; fires immediately with the current state, returns an
 // unsubscribe fn.
 export function onChange(cb) {
@@ -123,7 +132,7 @@ function renderSlot() {
             ? `<img class="auth-avatar" src="${esc(currentProfile.avatar_url)}" alt="" referrerpolicy="no-referrer">`
             : `<span class="auth-avatar auth-avatar-fallback">${esc(name.slice(0, 1).toUpperCase())}</span>`;
         slot.innerHTML = `
-            <span class="auth-me" title="${esc(name)}">${avatar}<span class="auth-name">${esc(name)}</span></span>
+            <a class="auth-me" href="#/account" title="${esc(name)} — your account">${avatar}<span class="auth-name">${esc(name)}</span></a>
             <button class="auth-btn" data-auth="signout">Sign out</button>`;
         slot.querySelector('[data-auth="signout"]').addEventListener("click", signOut);
     } else {

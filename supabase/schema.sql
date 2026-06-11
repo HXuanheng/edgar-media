@@ -17,6 +17,16 @@ create table if not exists public.profiles (
   created_at   timestamptz not null default now()
 );
 
+-- account-page profile detail fields. ALL PUBLIC: profiles is world-readable via the
+-- profiles_select_all policy below, so NEVER store anything private here (the login
+-- email stays in auth.users, not in this table). Idempotent — safe to re-run.
+alter table public.profiles add column if not exists first_name       text;
+alter table public.profiles add column if not exists last_name        text;
+alter table public.profiles add column if not exists website          text;
+alter table public.profiles add column if not exists profession       text;
+alter table public.profiles add column if not exists background       text;
+alter table public.profiles add column if not exists investment_style text;
+
 -- comments: keyed by company CIK, optional filing accession, one-level threading.
 create table if not exists public.comments (
   id           uuid primary key default gen_random_uuid(),
@@ -167,7 +177,8 @@ create policy profiles_update_own on public.profiles for update to authenticated
 -- (authenticated/anon) to only ever write display_name / avatar_url. role is changed
 -- only from the dashboard / service_role, which these grants don't affect.
 revoke update on public.profiles from authenticated, anon;
-grant  update (display_name, avatar_url) on public.profiles to authenticated;
+grant  update (display_name, avatar_url, first_name, last_name, website,
+               profession, background, investment_style) on public.profiles to authenticated;
 
 -- comments: world-readable (so threads stay intact even when a parent is soft-deleted;
 -- the client renders deleted/hidden rows as a tombstone and never shows the body).

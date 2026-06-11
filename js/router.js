@@ -6,9 +6,11 @@ import { ready, findByTicker, findByCik } from "./store.js";
 import { esc, momentum, priceHtml, filingsListHtml } from "./util.js";
 import { priceChartHtml, wireChart } from "./chart.js";
 import { renderFullThread } from "./comments.js";
+import * as account from "./account.js";
 
 function parseHash() {
     const h = (location.hash || "").replace(/^#/, "");
+    if (/^\/account\/?$/i.test(h)) return { view: "account" };
     const m = h.match(/^\/company\/(?:cik\/(\d+)|([^/]+))\/?$/i);
     if (!m) return { view: "home" };
     return m[1]
@@ -16,9 +18,10 @@ function parseHash() {
         : { view: "company", ticker: decodeURIComponent(m[2]) };
 }
 
-function show(homeEl, companyEl, onHome) {
-    if (homeEl) homeEl.hidden = !onHome;
-    if (companyEl) companyEl.hidden = onHome;
+function showView(view) {
+    if (homeEl) homeEl.hidden = view !== "home";
+    if (companyEl) companyEl.hidden = view !== "company";
+    if (accountEl) accountEl.hidden = view !== "account";
 }
 
 function companyHeaderHtml(it) {
@@ -67,24 +70,29 @@ function renderCompany(companyEl, it) {
     window.scrollTo(0, 0);
 }
 
-let homeEl, companyEl;
+let homeEl, companyEl, accountEl;
 
 async function route() {
     await ready;
     const r = parseHash();
+    showView(r.view);
     if (r.view === "home") {
-        show(homeEl, companyEl, true);
         if (companyEl) companyEl.innerHTML = "";
+        if (accountEl) accountEl.innerHTML = "";
+        return;
+    }
+    if (r.view === "account") {
+        account.render(accountEl);
         return;
     }
     const it = r.cik ? findByCik(r.cik) : findByTicker(r.ticker);
-    show(homeEl, companyEl, false);
     renderCompany(companyEl, it);
 }
 
 export function init() {
     homeEl = document.getElementById("home-view");
     companyEl = document.getElementById("company-view");
+    accountEl = document.getElementById("account-view");
     window.addEventListener("hashchange", route);
     route();
 }

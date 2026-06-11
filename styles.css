@@ -399,7 +399,9 @@ body.dark-mode .warn { color: #fbbf24; }
 /* ───────────────────────── accounts ───────────────────────── */
 #auth-slot { display: inline-flex; align-items: center; gap: 0.6rem; }
 #auth-slot:empty { display: none; }   /* dormant when unconfigured -> no nav layout shift */
-.auth-me { display: inline-flex; align-items: center; gap: 0.4rem; max-width: 11rem; }
+.auth-me { display: inline-flex; align-items: center; gap: 0.4rem; max-width: 11rem;
+    color: inherit; text-decoration: none; }
+.auth-me:hover { opacity: 0.75; }
 .auth-name { color: var(--text-muted); font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .auth-avatar {
     width: 1.5rem; height: 1.5rem; border-radius: 50%; object-fit: cover;
@@ -541,6 +543,32 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 .company-card { margin-bottom: 1.5rem; }
 .company-comments-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
 .company-comments .card-comments { display: block; padding: 0; }
+
+/* ─────────────────────── account / profile page ─────────────────────── */
+.account-page { max-width: 640px; }
+.account-title { font-size: 1.6rem; margin: 0.2rem 0 0.4rem; }
+.acc-email { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem; }
+.acc-email strong { color: var(--text); }
+.acc-private { font-size: 0.8rem; font-style: italic; }
+.acc-form { display: flex; flex-direction: column; gap: 0.9rem; }
+.acc-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.acc-label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+.acc-field input, .acc-field select, .acc-field textarea {
+    font: inherit; font-size: 0.9rem; color: var(--text); background: var(--card-bg);
+    border: 1px solid var(--border); border-radius: 10px; padding: 0.55rem 0.7rem; width: 100%;
+}
+.acc-field textarea { resize: vertical; min-height: 4.5rem; }
+.acc-field input:focus, .acc-field select:focus, .acc-field textarea:focus {
+    outline: none; border-color: var(--secondary-color);
+}
+.acc-hint { font-size: 0.78rem; color: var(--text-muted); }
+.acc-note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 0.2rem; }
+.acc-actions { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.4rem; }
+.acc-flash { font-size: 0.85rem; color: var(--text-muted); }
+.account-page .back-link { margin-bottom: 0.6rem; }
+@media (max-width: 620px) {
+    .acc-field input, .acc-field select, .acc-field textarea { font-size: 16px; }   /* >=16px stops iOS zoom */
+}
 
 @media (max-width: 620px) {
     .auth-name { display: none; }
