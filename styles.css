@@ -171,7 +171,7 @@ label.filing-head:hover .more-close { color: var(--primary-color); }
 .fl-head { display: flex; align-items: baseline; gap: 0.7rem; }
 /* form code + date: one PLAIN (non-link) identifier; opening SEC is the small ↗
    link beside it, so a stray tap on the row never leaves the site. */
-.fl-id { display: inline-flex; align-items: baseline; gap: 0.3rem; flex: 0 0 auto; }
+.fl-id { display: inline-flex; align-items: baseline; gap: 0.15rem; flex: 0 0 auto; }   /* keep the ↗ close to the date */
 .flform { font-weight: 600; color: var(--text); white-space: nowrap; line-height: 1.2; }
 .fl-date { color: inherit; }   /* date shares the form code's color/weight -> one unit */
 .fl-sec { flex: 0 0 auto; color: var(--primary-color); font-weight: 600; text-decoration: none;
@@ -262,7 +262,7 @@ body.dark-mode .warn { color: #fbbf24; }
     }
     /* form·date group on the left at its own width (not the full 1fr column) */
     .fl-id { grid-column: 1; grid-row: 1; justify-self: start; min-width: 0; }
-    .fl-sec { padding: 0.25rem 0.55rem; }   /* bigger ↗ so the one external link is hittable on touch */
+    .fl-sec { padding: 0.2rem 0.4rem; }   /* hittable on touch but kept near the date */
     .flwhen { grid-column: 2; grid-row: 1; margin-left: 0; justify-self: end; }
     .fl-desc { grid-column: 1 / -1; grid-row: 2; }   /* description gets its own row */
     .fl-tag  { grid-column: 1 / -1; grid-row: 3; justify-self: start; }   /* Summary pill below */

@@ -29,11 +29,11 @@ function companyHeaderHtml(it) {
     const ticker = tickers.map((t) => `<span class="ticker">$${esc(t)}</span>`)
         .join(`<span class="ticker-sep">·</span>`);
     const edgar = it.cik
-        ? `<a class="fl-sec edgar-link" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener" aria-label="Open ${esc(it.ticker)} on SEC EDGAR">EDGAR ↗</a>`
+        ? `<a class="fl-sec edgar-link" href="https://www.sec.gov/edgar/browse/?CIK=${esc(it.cik)}" target="_blank" rel="noopener" aria-label="Open ${esc(it.ticker)} on SEC EDGAR">↗</a>`
         : "";
     return `<div class="company-head">
         <a class="back-link" href="#/">← All trending</a>
-        <div class="tick-row">${ticker}${edgar}<span class="coname">${esc(coName)}</span>${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
+        <div class="tick-row">${ticker}<span class="coname">${esc(coName)}</span>${edgar}${it.is_fund ? `<span class="tag-etf">ETF</span>` : ""}${priceHtml(it)}</div>
         <div class="attention">${momentum(it)}</div>
     </div>`;
 }
