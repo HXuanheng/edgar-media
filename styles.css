@@ -400,7 +400,7 @@ body.dark-mode .warn { color: #fbbf24; }
 #auth-slot { display: inline-flex; align-items: center; gap: 0.6rem; }
 #auth-slot:empty { display: none; }   /* dormant when unconfigured -> no nav layout shift */
 .auth-me { display: inline-flex; align-items: center; gap: 0.4rem; max-width: 11rem;
-    color: inherit; text-decoration: none; }
+    color: inherit; text-decoration: none; transition: opacity var(--transition); }
 .auth-me:hover { opacity: 0.75; }
 .auth-name { color: var(--text-muted); font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .auth-avatar {
@@ -601,8 +601,8 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 @media (max-width: 620px) { .dialog-input { font-size: 16px; } }
 
 /* clickable comment author (photo + name -> public profile) */
-.comment-identity { display: inline-flex; align-items: center; gap: 0.4rem; color: inherit; text-decoration: none; }
-.comment-identity:hover .comment-author { color: var(--primary-color); text-decoration: underline; }
+.comment-identity { display: inline-flex; align-items: center; gap: 0.4rem; color: inherit; text-decoration: none; transition: opacity var(--transition); }
+.comment-identity:hover { opacity: 0.75; }   /* same fade as the header account link */
 
 /* ───────────────────────── public profile page (#/u/<id>) ───────────────────────── */
 .profile-page { max-width: 640px; }
