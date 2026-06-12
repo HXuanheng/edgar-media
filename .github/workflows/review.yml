@@ -1,0 +1,36 @@
+name: Weekly site review
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"   # Mondays 08:00 UTC (GitHub cron can run 5-30 min late)
+  workflow_dispatch:        # manual "Run workflow" button for testing
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-review
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright (chromium)
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@^1.48 >/dev/null 2>&1
+          npx playwright install --with-deps chromium
+
+      - name: Review live site -> Telegram
+        env:
+          SITE_URL: "https://hxuanheng.github.io/edgar-media/"
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: "917914083"
+        run: node scripts/review_site.mjs
