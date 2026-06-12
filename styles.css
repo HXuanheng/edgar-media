@@ -587,6 +587,9 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 .back-link { display: inline-block; font-size: 0.85rem; margin-bottom: 0.8rem; }
 .company-head .tick-row { font-size: 1.15rem; }
 .company-card { margin-bottom: 1.5rem; }
+/* Discussion sits below the tab panels; give it clear air + a divider so it
+   doesn't look welded to the financials card / filings card above it. */
+.company-comments { margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
 .company-comments-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
 .company-comments .card-comments { display: block; padding: 0; }
 
