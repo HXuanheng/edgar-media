@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: "30 8 * * 1"   # Mon 08:30 UTC, 30 min after the weekly review
   workflow_dispatch:
+    inputs:
+      force_llm:
+        description: "Force the LLM fix job even with no findings (auth test)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -83,8 +88,8 @@ jobs:
         run: |
           node scripts/review_site.mjs
           n=$(jq '.codeFindings | length' findings.json)
-          if [ "$n" -gt 0 ]; then echo "has_code=true" >> "$GITHUB_OUTPUT"; else echo "has_code=false" >> "$GITHUB_OUTPUT"; fi
-          echo "code findings: $n"
+          if [ "$n" -gt 0 ] || [ "${{ inputs.force_llm }}" = "true" ]; then echo "has_code=true" >> "$GITHUB_OUTPUT"; else echo "has_code=false" >> "$GITHUB_OUTPUT"; fi
+          echo "code findings: $n (force_llm=${{ inputs.force_llm }})"
       - uses: actions/upload-artifact@v4
         with:
           name: findings
