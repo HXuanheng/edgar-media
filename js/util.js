@@ -25,6 +25,26 @@ export function esc(s) {
         ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+// Compact money for the financials tables: $1.23B / $456.7M / $12,345. Keeps
+// the sign (negatives -> -$…, e.g. investing cash flow). Non-finite -> em dash.
+export function fmtUSD(n) {
+    if (n === null || n === undefined || !Number.isFinite(Number(n))) return "—";
+    const v = Number(n);
+    const sign = v < 0 ? "-" : "";
+    const a = Math.abs(v);
+    if (a >= 1e9) return `${sign}$${(a / 1e9).toFixed(2)}B`;
+    if (a >= 1e6) return `${sign}$${(a / 1e6).toFixed(1)}M`;
+    return `${sign}$${a.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+}
+
+// Plain number with thousands separators (e.g. diluted EPS 11.86). Non-finite -> "—".
+export function fmtNum(n, dp = 2) {
+    if (n === null || n === undefined || !Number.isFinite(Number(n))) return "—";
+    return Number(n).toLocaleString(undefined, {
+        minimumFractionDigits: 0, maximumFractionDigits: dp,
+    });
+}
+
 export function momentum(it) {
     const { mention_change_pct: c, mentions } = it;
     // The count comes from ApeWisdom -> link to its per-ticker page so anyone can

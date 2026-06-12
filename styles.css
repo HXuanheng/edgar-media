@@ -590,6 +590,49 @@ a.cmt-filing:hover { color: var(--primary-color); background: var(--accent-color
 .company-comments-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
 .company-comments .card-comments { display: block; padding: 0; }
 
+/* ── company-page tabs (Overview / Financials) ── */
+.co-tabs {
+    display: flex; gap: 0.4rem; margin: 0 0 1rem;
+    border-bottom: 1px solid var(--border);
+}
+.co-tab {
+    font: inherit; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+    color: var(--text-muted); background: none; border: none;
+    padding: 0.5rem 0.9rem; margin-bottom: -1px;        /* sit the underline on the row border */
+    border-bottom: 2px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+}
+.co-tab:hover { color: var(--text); }
+.co-tab.active { color: var(--text); border-bottom-color: var(--primary-color); }
+
+/* ── financials tab ── */
+.fin-card { padding: 0.4rem 0 0.6rem; }
+.fin-note { font-size: 0.78rem; font-style: italic; color: var(--text-muted); margin: 0.3rem 1.1rem 0.8rem; }
+.fin-stmt + .fin-stmt { border-top: 1px solid var(--border); }   /* separator between statements */
+.fin-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 0.7rem;
+    padding: 0.5rem 1.1rem 0.4rem; cursor: pointer;
+}
+.fin-head .fin-head-label { color: var(--text); font-weight: 700; font-size: 0.92rem; }
+label.fin-head:hover .more-open,
+label.fin-head:hover .more-close { color: var(--primary-color); }
+/* the global .more-* rules drive show/hide; bind them to .fin-head too */
+.more-toggle:checked ~ .fin-head .more-open  { display: none; }
+.more-toggle:checked ~ .fin-head .more-close { display: inline; }
+.fin-scroll { overflow-x: auto; padding: 0 1.1rem 0.6rem; }
+.fin-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+.fin-table th, .fin-table td { padding: 0.4rem 0.6rem; border-bottom: 1px dashed var(--border); white-space: nowrap; }
+.fin-table thead th { color: var(--text-muted); font-weight: 600; text-align: right; }
+.fin-table tbody td { text-align: right; font-variant-numeric: tabular-nums; }
+.fin-table .fin-rowlabel { text-align: left; font-weight: 600; color: var(--text); }
+.fin-table tbody tr:nth-child(even) { background: rgba(127, 127, 127, 0.06); }
+@media (max-width: 720px) {
+    /* keep the line-item label visible while the year columns scroll sideways */
+    .fin-table .fin-rowlabel { position: sticky; left: 0; background: var(--card-bg); }
+    .fin-table tbody tr:nth-child(even) .fin-rowlabel { background: var(--card-bg); }
+    .fin-head { padding-top: 0.7rem; padding-bottom: 0.6rem; }   /* bigger tap target */
+}
+
 /* ─────────────────────── account / profile page ─────────────────────── */
 .account-page { max-width: 640px; }
 .account-title { font-size: 1.6rem; margin: 0.2rem 0 0.4rem; }

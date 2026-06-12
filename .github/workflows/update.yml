@@ -33,10 +33,12 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- data/trending.json data/summaries.json; then
+          # porcelain (not `git diff --quiet`) so brand-new untracked per-firm
+          # financials files — a firm newly entering the top-30 — are detected too.
+          if [ -z "$(git status --porcelain -- data/trending.json data/summaries.json data/financials)" ]; then
             echo "no change"
           else
-            git add data/trending.json data/summaries.json
+            git add data/trending.json data/summaries.json data/financials
             git commit -m "data: refresh trending [skip ci]"
             git push
           fi

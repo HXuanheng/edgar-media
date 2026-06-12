@@ -14,6 +14,7 @@ SEC requires a descriptive User-Agent or it returns HTTP 403.
 """
 
 import gzip
+import hashlib
 import html
 import io
 import json
@@ -783,6 +784,221 @@ def merge_same_cik(items):
     return out
 
 
+# --- XBRL financials (SEC companyfacts) -----------------------------------
+# A compact, curated subset of each firm's audited annual figures, extracted at
+# build time from SEC's free XBRL `companyfacts` API and written one small file
+# per firm to data/financials/CIK{cik}.json. The static client lazy-loads only
+# the firm it's showing (the raw companyfacts JSON is 1-15 MB; the extract is
+# ~10 KB). This is the "data behind the filing/buzz" for the company page.
+COMPANYFACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json"
+FIN_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "financials")
+FIN_YEARS = 5          # most-recent fiscal years kept per line item
+FIN_ENABLED = os.environ.get("FIN_ENABLED", "1") == "1"   # 0 -> skip the big fetches locally
+
+# SEC stamps one canonical annual fact per fiscal year with a `frame`:
+#   duration concepts (income / cash-flow)   -> CY2024     (the full year)
+#   instant   concepts (balance-sheet point) -> CY2024Q4I  (the fiscal year-end)
+FRAME_DUR = re.compile(r"^CY(\d{4})$")
+FRAME_INST = re.compile(r"^CY(\d{4})Q4I$")
+
+# Curated line items. Each row = (label, kind, unit, [tag chain]). Tags are
+# tried in order; the first one carrying annual data wins (filers tag the same
+# concept differently). kind selects the annual frame (above); unit is the
+# companyfacts units bucket ("USD", or "USD/shares" for per-share figures).
+FIN_STATEMENTS = [
+    ("income", [
+        ("Revenue", "duration", "USD",
+         ["Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "SalesRevenueNet"]),
+        ("Cost of revenue", "duration", "USD",
+         ["CostOfRevenue", "CostOfGoodsAndServicesSold"]),
+        ("Gross profit", "duration", "USD", ["GrossProfit"]),
+        ("Operating income", "duration", "USD", ["OperatingIncomeLoss"]),
+        ("R&D expense", "duration", "USD", ["ResearchAndDevelopmentExpense"]),
+        ("Net income", "duration", "USD", ["NetIncomeLoss"]),
+        ("Diluted EPS", "duration", "USD/shares", ["EarningsPerShareDiluted"]),
+    ]),
+    ("balance", [
+        ("Total assets", "instant", "USD", ["Assets"]),
+        ("Current assets", "instant", "USD", ["AssetsCurrent"]),
+        ("Total liabilities", "instant", "USD", ["Liabilities"]),
+        ("Current liabilities", "instant", "USD", ["LiabilitiesCurrent"]),
+        ("Stockholders' equity", "instant", "USD",
+         ["StockholdersEquity",
+          "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"]),
+        ("Cash & equivalents", "instant", "USD",
+         ["CashAndCashEquivalentsAtCarryingValue"]),
+    ]),
+    ("cashflow", [
+        ("Operating cash flow", "duration", "USD",
+         ["NetCashProvidedByUsedInOperatingActivities"]),
+        ("Investing cash flow", "duration", "USD",
+         ["NetCashProvidedByUsedInInvestingActivities"]),
+        ("Financing cash flow", "duration", "USD",
+         ["NetCashProvidedByUsedInFinancingActivities"]),
+        ("Capital expenditure", "duration", "USD",
+         ["PaymentsToAcquirePropertyPlantAndEquipment"]),
+    ]),
+]
+
+
+def _is_annual(start, end):
+    """True if [start, end] spans roughly a fiscal year (~330-400 days) -> used to
+    keep full-year durations and drop quarterly / YTD-partial facts in the fallback."""
+    try:
+        d0 = datetime.strptime(start, "%Y-%m-%d")
+        d1 = datetime.strptime(end, "%Y-%m-%d")
+    except (ValueError, TypeError):
+        return False
+    return 330 <= (d1 - d0).days <= 400
+
+
+def annual_values(facts_list, kind):
+    """One concept's fact list -> {fiscal_year:int -> value} for annual figures.
+
+    Prefer the canonical `frame` fact per year (clean dedup across the quarterly
+    and restated duplicates). Fall back to 10-K facts for years/filers SEC didn't
+    frame (non-calendar fiscal years), keyed by the *period-end* year so a 10-K's
+    prior-year comparative lands on its own year, not the filing's. Arrays are
+    oldest-first, so a later restatement overwrites an earlier value; framed values
+    then override the fallback."""
+    pat = FRAME_INST if kind == "instant" else FRAME_DUR
+    framed, fallback = {}, {}
+    for f in facts_list:
+        val = f.get("val")
+        end = f.get("end")
+        if val is None or not end:
+            continue
+        fr = f.get("frame")
+        m = pat.match(fr) if fr else None
+        if m:
+            framed[int(m.group(1))] = val
+            continue
+        if not str(f.get("form", "")).startswith("10-K"):
+            continue                                   # audited annuals only
+        if kind == "duration" and not _is_annual(f.get("start"), end):
+            continue                                   # skip quarterly / YTD partials
+        try:
+            fallback[int(end[:4])] = val
+        except (ValueError, TypeError):
+            continue
+    vals = dict(fallback)
+    vals.update(framed)
+    return vals
+
+
+def extract_financials(facts, cik, ticker, now):
+    """companyfacts payload -> compact financials dict, or None if no usable
+    us-gaap annual data (foreign ifrs-full filers, funds, empty)."""
+    gaap = (facts or {}).get("facts", {}).get("us-gaap")
+    if not gaap:
+        return None
+    statements, years = {}, set()
+    for key, rows in FIN_STATEMENTS:
+        out_rows = []
+        for label, kind, unit, tags in rows:
+            # Merge the whole tag chain by year rather than taking the first tag
+            # with any data: filers switch tags across eras (e.g. MSFT used
+            # `Revenues` pre-2018, `RevenueFromContractWithCustomerExcludingAssessedTax`
+            # after), so one tag often holds only stale years. Union covers all
+            # years; the primary (first-listed) tag wins on the rare overlap.
+            values = {}
+            for tag in tags:
+                units = gaap.get(tag, {}).get("units", {}).get(unit)
+                if not units:
+                    continue
+                for yr, val in annual_values(units, kind).items():
+                    values.setdefault(yr, val)
+            if values:
+                out_rows.append({"label": label, "unit": unit, "values": values})
+                years.update(values)
+        if out_rows:
+            statements[key] = out_rows
+    if not statements:
+        return None
+    fiscal_years = sorted(years, reverse=True)[:FIN_YEARS]
+    keep = set(fiscal_years)
+    # Trim each row to the kept years (stringify year keys for JSON); drop rows and
+    # statements left empty (a concept only reported outside the recent window).
+    for skey in list(statements):
+        trimmed = []
+        for row in statements[skey]:
+            row["values"] = {str(y): v for y, v in row["values"].items() if y in keep}
+            if row["values"]:
+                trimmed.append(row)
+        if trimmed:
+            statements[skey] = trimmed
+        else:
+            del statements[skey]
+    if not statements:
+        return None
+    return {
+        "cik": cik,
+        "ticker": ticker,
+        "currency": "USD",
+        "fiscal_years": fiscal_years,
+        "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "source": "SEC EDGAR XBRL companyfacts",
+        "statements": statements,
+    }
+
+
+def _fin_path(cik):
+    return os.path.join(FIN_DIR, f"CIK{cik}.json")
+
+
+def load_existing_fin(cik):
+    try:
+        with open(_fin_path(cik), encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, ValueError):
+        return None
+
+
+def _fin_hash(fin):
+    """Hash of the meaningful content only (excludes `updated`) so a timestamp-only
+    diff never triggers a rewrite/commit."""
+    payload = {"fiscal_years": fin.get("fiscal_years"),
+               "statements": fin.get("statements")}
+    blob = json.dumps(payload, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()
+
+
+def build_financials(items, now):
+    """Fetch companyfacts for each verified, non-fund firm and write a compact
+    data/financials/CIK{cik}.json. Content-hash gated: a firm's file is rewritten
+    only when its curated numbers change (~quarterly), keeping hourly git churn
+    near zero. Foreign/funds/no-facts firms simply get no file (404 client-side)."""
+    if not FIN_ENABLED:
+        print("financials: disabled (FIN_ENABLED=0)")
+        return
+    os.makedirs(FIN_DIR, exist_ok=True)
+    written = unchanged = nofacts = 0
+    seen = set()
+    for it in items:
+        cik = it.get("cik")
+        if not cik or cik in seen:
+            continue
+        if it.get("is_fund") or it.get("name_match") != "verified":
+            continue
+        seen.add(cik)
+        facts = get_json(COMPANYFACTS_URL.format(cik=cik))
+        time.sleep(SEC_PAUSE)
+        fin = extract_financials(facts, cik, it.get("ticker"), now) if facts else None
+        if not fin:
+            nofacts += 1
+            continue
+        prev = load_existing_fin(cik)
+        if prev and _fin_hash(prev) == _fin_hash(fin):
+            unchanged += 1
+            continue
+        with open(_fin_path(cik), "w", encoding="utf-8") as f:
+            json.dump(fin, f, indent=2, ensure_ascii=False)
+        written += 1
+    print(f"financials: {written} written, {unchanged} unchanged, "
+          f"{nofacts} no us-gaap")
+
+
 def main():
     # Summaries can contain non-cp1252 chars (¥, €, narrow no-break space, smart
     # quotes); printing them to a Windows cp1252 console otherwise crashes the
@@ -892,6 +1108,11 @@ def main():
     print(f"identity: {funds} funds tagged, "
           f"{sum(1 for x in items if x['name_match'] == 'wrong_cik')} wrong-cik, "
           f"{sum(1 for x in items if x['name_match'] == 'mismatch')} still unverified")
+
+    # XBRL financials: one compact data/financials/CIK*.json per verified firm,
+    # lazy-loaded by the company page's Financials tab. Runs after identity is
+    # final (funds tagged, dual-class merged -> one fetch per CIK).
+    build_financials(items, now)
 
     # AI prose layer: one-sentence summary per recent filing row, free via the
     # provider chain, cached by accession. Rows without one show the item label.

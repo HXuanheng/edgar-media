@@ -74,7 +74,7 @@ unchanged so `auth.js` and the theme logic were untouched.)
   sign-in rate; if it dips,** surface sign-in more (badge the trigger when logged-out, or make
   the trigger the user avatar when logged-in).
 
-### 2. Account / profile page — ✅ BUILT (needs SQL migration run once)
+### 2. Account / profile page — ✅ BUILT (SQL migration run — verified live 2026-06-12)
 Fields: photo, display name, first/last name, website, profession, investment style, background.
 - New `#/account` route (`js/account.js`) + edit form; reached via the header avatar link.
 - Profile photo: client-side downscale (≤512px) → upload to a public `avatars` Storage
@@ -83,42 +83,58 @@ Fields: photo, display name, first/last name, website, profession, investment st
 - Extended `public.profiles` with the new columns + column-level UPDATE grant
   (`supabase/schema.sql`). **All profile fields are PUBLIC** (profiles is world-readable);
   the login **email stays private** (in auth.users, shown read-only, never stored here).
-- [ ] **ACTION: run the new `alter table ... add column` + `grant update(...)` lines AND the
-  avatar Storage bucket/policy block from `supabase/schema.sql` in the Supabase SQL editor**
-  — until then, saving errors with "column does not exist" and photo upload has no bucket.
+- [x] **DONE (verified live 2026-06-12): ran the `alter table ... add column` + `grant update(...)`
+  lines and the avatar Storage bucket/policy block.** Columns exist + populated; `avatars` bucket
+  live. Saving + photo upload work.
 - [ ] Optional follow-up: if any field (e.g. background) should be private-to-you, move it
   to a separate owner-only table with stricter RLS.
 - Investment style is stored as plain text from a dropdown — later it can flavor the
   persona-agents or filter the feed.
 
-### 3. Firm landing-page menu: Overview / Financials
-Tabs on the per-company page: Overview, then Financials = balance sheet, income
-statement, cash-flow statement.
-- **Data source:** SEC EDGAR XBRL **`companyfacts`** API (us-gaap tags) — free, official;
-  we already call EDGAR in `scripts/build_data.py`.
-- ⚠️ `companyfacts` JSON is large → fetch on-demand or top-N only, not all firms at build.
-- ⚠️ XBRL tag-mapping varies across filers → start with a few headline metrics in
-  Overview, expand later.
-- Keep it tabbed + lazy-rendered ("not invasive"). This is the part most at risk of
-  Yahoo-Finance-clone vibes — keep it framed as "the data behind the filing/buzz."
-- [ ] Start with Overview headline metrics; add full statements incrementally.
+### 3. Firm landing-page menu: Overview / Financials — ✅ BUILT (2026-06-12)
+Tabs on the per-company page: **Overview** (the existing chart + filings + Discussion,
+unchanged) + **Financials** (income statement, balance sheet, cash flow).
+- **Data source:** SEC EDGAR XBRL **`companyfacts`** API (us-gaap tags). Extracted at
+  **build time** (`build_financials()` in `scripts/build_data.py`) into one compact
+  `data/financials/CIK{cik}.json` per verified, non-fund firm (~5 KB each); the client
+  (`js/financials.js`) lazy-fetches only the firm it's showing. Raw companyfacts is
+  1–15 MB, so the build does the heavy fetch once/hour; visitors download ~5 KB.
+- **Extraction:** a curated PRIMARY→FALLBACK tag map per line item, *merged across the
+  whole chain by year* (filers switch tags across eras — e.g. MSFT `Revenues` pre-2018,
+  `RevenueFromContractWithCustomerExcludingAssessedTax` after). Annual figures via the
+  XBRL `frame` (`CYxxxx` / `CYxxxxQ4I`), with a 10-K/period-end-year fallback. Last 5 FY.
+- **Cost control:** content-hash write-gate — a firm's file is rewritten only when its
+  numbers change (~quarterly), so hourly git churn stays ~zero. CI commit step + the
+  `update.yml` change/`git add` now include `data/financials` (porcelain check so a firm
+  newly entering the top-30 is picked up).
+- **UI:** delegated `.co-tab` handler in `router.js`; Overview stays mounted (toggled via
+  `hidden`) so chart/comments wiring is never torn down. Three collapsible `.fin-table`s
+  (Income open by default), `$B/$M` via new `fmtUSD`/`fmtNum` in `util.js`, EPS plain.
+  Each statement wrapped in `.fin-stmt` so the shared `.more-toggle ~ .more-rows` CSS
+  doesn't leak the open state across statements.
+- Verified end-to-end (MSFT/AAPL values vs known 10-Ks, hash-gate no-churn, tab toggle,
+  Overview intact, 404→empty state for firms with no us-gaap).
+- [ ] Follow-ups: a few headline metrics on the Overview card too; gate refetch on the
+  newest 10-K/10-Q accession to trim build time; add tags if a prominent firm shows gaps.
 
 ---
 
 ## 🛠 Deploy note
-- **Cache-buster:** `index.html` has a version token `V` (currently `2026-06-11a`) used in an
+- **Cache-buster:** `index.html` has a version token `V` (currently `2026-06-12e`) used in an
   import map that versions the whole `./js/*.js` graph, plus the `styles.css?v=` link. **Bump
   `V` (both spots) on every deploy that changes JS/CSS** so visitors get new files on one normal
   refresh (no hard reload). Forgetting = users see stale JS for ~10 min (Pages cache).
 
 ## ✅ Done (recent)
+- **Financials tab** on the per-company page (XBRL companyfacts → build-time per-firm
+  `data/financials/CIK*.json` → lazy `js/financials.js`). See section 3 above.
 - Cache-buster: import-map version token in `index.html` busts the full JS module graph + CSS.
 - Public profile pages (`#/u/<id>`, `js/profile.js`) + comment authors are clickable to them.
   Read-only; email never shown. Account page links to "View public profile".
 - Styled in-app confirm/prompt dialog (`js/dialog.js`) replaces the native browser popups for
   delete / admin-remove / report. Owner can self-grant admin via one SQL line (see below).
-- Account/profile page (`#/account`) — edit form + extended `profiles` schema (pending the
-  one-time SQL migration in Supabase). See section 2 above.
+- Account/profile page (`#/account`) — edit form + extended `profiles` schema (SQL migration
+  run + verified live 2026-06-12). See section 2 above.
 - Reverted to original indigo palette; kept the cuter rounded fonts/cards/badges.
 - Brand/site name = "EDGAR Media" (header + tab title); H1 tagline = "What's Popping?".
 - Removed the "· filings from SEC EDGAR" label next to the Updated line.

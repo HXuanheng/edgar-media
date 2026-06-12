@@ -6,6 +6,7 @@ import { ready, findByTicker, findByCik } from "./store.js";
 import { esc, momentum, priceHtml, filingsListHtml } from "./util.js";
 import { priceChartHtml, wireChart } from "./chart.js";
 import { renderFullThread } from "./comments.js";
+import { renderFinancials } from "./financials.js";
 import * as account from "./account.js";
 import * as profile from "./profile.js";
 
@@ -61,11 +62,26 @@ function renderCompany(companyEl, it) {
     const filingsHtml = filingsListHtml(it, "co");
     // Price chart sits between the header (mention/momentum) and the filings card;
     // returns "" when there's no price history, so the section just disappears.
+    // Tabbed: Overview (the existing page) + Financials (lazy). Overview stays
+    // mounted (toggled via `hidden`, never destroyed) so the chart + comments
+    // wiring below is set up once and never torn down. Financials fetches its
+    // own small per-firm file the first time it's revealed (see the tab handler
+    // in init()). The financials mount keys on the real CIK (not threadKey, which
+    // may be a ticker for no-CIK ETFs) — no CIK -> the panel shows an empty note.
     companyEl.innerHTML = `${companyHeaderHtml(it)}
-        ${priceChartHtml(it)}
-        ${filingsHtml ? `<article class="card company-card">${filingsHtml}</article>` : ""}
-        <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
-            <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
+        <div class="co-tabs" role="tablist">
+            <button type="button" class="co-tab active" data-tab="overview" role="tab" aria-selected="true">Overview</button>
+            <button type="button" class="co-tab" data-tab="financials" role="tab" aria-selected="false">Financials</button>
+        </div>
+        <section class="co-panel" data-panel="overview">
+            ${priceChartHtml(it)}
+            ${filingsHtml ? `<article class="card company-card">${filingsHtml}</article>` : ""}
+            <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
+                <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
+            </section>
+        </section>
+        <section class="co-panel" data-panel="financials" hidden>
+            <div class="fin-mount" data-cik="${esc(it.cik || "")}"></div>
         </section>`;
     wireChart(companyEl, it);              // clickable filing markers -> jump to row
     const mount = companyEl.querySelector(".card-comments");
@@ -139,6 +155,29 @@ export function init() {
         if (history.length > 1) history.back();
         else location.hash = "#/";
     });
+    // Company-page tabs (Overview / Financials). Delegated on the persistent
+    // container so it survives renderCompany() re-renders. Overview is only
+    // hidden (never destroyed) so chart/comments wiring stays intact; Financials
+    // is lazy — renderFinancials self-guards, so calling it on each click is safe.
+    if (companyEl) {
+        companyEl.addEventListener("click", (e) => {
+            const tab = e.target.closest(".co-tab");
+            if (!tab || !companyEl.contains(tab)) return;
+            const name = tab.dataset.tab;
+            companyEl.querySelectorAll(".co-tab").forEach((t) => {
+                const on = t === tab;
+                t.classList.toggle("active", on);
+                t.setAttribute("aria-selected", on ? "true" : "false");
+            });
+            companyEl.querySelectorAll(".co-panel").forEach((p) => {
+                p.hidden = p.dataset.panel !== name;
+            });
+            if (name === "financials") {
+                const m = companyEl.querySelector(".fin-mount");
+                if (m) renderFinancials(m.dataset.cik, m);
+            }
+        });
+    }
     window.addEventListener("hashchange", route);
     route();
 }
