@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:\\Users\\XuanH\\Dropbox\\edgar-media\\.claude\\git-behind-check.js\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
