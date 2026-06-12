@@ -76,12 +76,12 @@ function renderCompany(companyEl, it) {
         <section class="co-panel" data-panel="overview">
             ${priceChartHtml(it)}
             ${filingsHtml ? `<article class="card company-card">${filingsHtml}</article>` : ""}
-            <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
-                <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
-            </section>
         </section>
         <section class="co-panel" data-panel="financials" hidden>
             <div class="fin-mount" data-cik="${esc(it.cik || "")}"></div>
+        </section>
+        <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
+            <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
         </section>`;
     wireChart(companyEl, it);              // clickable filing markers -> jump to row
     const mount = companyEl.querySelector(".card-comments");
