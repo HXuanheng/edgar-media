@@ -830,16 +830,10 @@ def merge_same_cik(items):
 COMPANYFACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json"
 FIN_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "financials")
 FIN_YEARS = 5          # most-recent fiscal years kept per line item
-FIN_SCHEMA = 2         # bump when the concept map / extraction logic changes -> forces
+FIN_SCHEMA = 3         # bump when the concept map / extraction logic changes -> forces
                        # a one-time refresh of every firm's file even if its accession
                        # is unchanged (otherwise the accession-gate would skip the fix)
 FIN_ENABLED = os.environ.get("FIN_ENABLED", "1") == "1"   # 0 -> skip the big fetches locally
-
-# SEC stamps one canonical annual fact per fiscal year with a `frame`:
-#   duration concepts (income / cash-flow)   -> CY2024     (the full year)
-#   instant   concepts (balance-sheet point) -> CY2024Q4I  (the fiscal year-end)
-FRAME_DUR = re.compile(r"^CY(\d{4})$")
-FRAME_INST = re.compile(r"^CY(\d{4})Q4I$")
 
 # Curated line items. Each row = (label, kind, unit, [tag chain]). Tags are
 # tried in order; the first one carrying annual data wins (filers tag the same
@@ -881,6 +875,40 @@ FIN_STATEMENTS = [
     ]),
 ]
 
+# Canonical line order per statement, so a derived row lands in its proper place.
+CANON_ORDER = {key: [lbl for (lbl, _k, _u, _t) in rows] for key, rows in FIN_STATEMENTS}
+
+
+def _derive_income(rows):
+    """Robustness against a single missing tag: fill gaps in the income statement
+    via exact accounting identities, never overwriting a reported value. Creates a
+    line if it's wholly absent but derivable.
+        Gross profit     = Revenue - Cost of revenue
+        Cost of revenue  = Revenue - Gross profit
+    Both are definitional, so a filer that reports any two of the three yields the
+    third for free."""
+    by = {r["label"]: r for r in rows}
+
+    def get(label):
+        return by[label]["values"] if label in by else None
+
+    def ensure(label):
+        if label not in by:
+            by[label] = {"label": label, "unit": "USD", "values": {}}
+            rows.append(by[label])
+        return by[label]["values"]
+
+    rev, cost = get("Revenue"), get("Cost of revenue")
+    if rev is not None and cost is not None:
+        gp = ensure("Gross profit")
+        for y in set(rev) & set(cost):
+            gp.setdefault(y, rev[y] - cost[y])
+    rev, gp = get("Revenue"), get("Gross profit")
+    if rev is not None and gp is not None:
+        cost = ensure("Cost of revenue")
+        for y in set(rev) & set(gp):
+            cost.setdefault(y, rev[y] - gp[y])
+
 
 def _is_annual(start, end):
     """True if [start, end] spans roughly a fiscal year (~330-400 days) -> used to
@@ -896,35 +924,39 @@ def _is_annual(start, end):
 def annual_values(facts_list, kind):
     """One concept's fact list -> {fiscal_year:int -> value} for annual figures.
 
-    Prefer the canonical `frame` fact per year (clean dedup across the quarterly
-    and restated duplicates). Fall back to 10-K facts for years/filers SEC didn't
-    frame (non-calendar fiscal years), keyed by the *period-end* year so a 10-K's
-    prior-year comparative lands on its own year, not the filing's. Arrays are
-    oldest-first, so a later restatement overwrites an earlier value; framed values
-    then override the fallback."""
-    pat = FRAME_INST if kind == "instant" else FRAME_DUR
-    framed, fallback = {}, {}
+    Keyed by the period-END year, which IS the fiscal-year label for essentially
+    every US filer (calendar-year filers and off-cycle ones alike: Apple FY2024
+    ends Sep-2024, Microsoft FY2024 ends Jun-2024, Marvell FY2025 ends Feb-2025 ->
+    all labelled by the end year). We deliberately ignore the XBRL `frame` (CYxxxx):
+    it is calendar-based and mislabels non-December filers, which produced shifted
+    and DUPLICATED years (a Marvell close of 2025-02-01 landing as both 2024 via the
+    frame and 2025 via the end date). One consistent key removes that whole class
+    of bug.
+
+    Annual = a fact whose fiscal period is the full year (fp == 'FY'); for durations
+    we also require a ~365-day span to drop the rare FY-tagged transition stub. A
+    10-K's prior-year comparatives are also fp=='FY', so they correctly populate
+    their own end-years. Facts are oldest-first, so a later restatement overwrites
+    an earlier value; a 10-K value is never overridden by a non-10-K one (e.g. an
+    8-K earnings release furnishing preliminary numbers)."""
+    out, have_10k = {}, set()
     for f in facts_list:
-        val = f.get("val")
-        end = f.get("end")
-        if val is None or not end:
+        val, end, fp = f.get("val"), f.get("end"), f.get("fp")
+        if val is None or not end or fp != "FY":
             continue
-        fr = f.get("frame")
-        m = pat.match(fr) if fr else None
-        if m:
-            framed[int(m.group(1))] = val
-            continue
-        if not str(f.get("form", "")).startswith("10-K"):
-            continue                                   # audited annuals only
         if kind == "duration" and not _is_annual(f.get("start"), end):
-            continue                                   # skip quarterly / YTD partials
+            continue
         try:
-            fallback[int(end[:4])] = val
+            year = int(end[:4])
         except (ValueError, TypeError):
             continue
-    vals = dict(fallback)
-    vals.update(framed)
-    return vals
+        is_10k = str(f.get("form", "")).startswith("10-K")
+        if year in have_10k and not is_10k:
+            continue                                   # keep the audited 10-K value
+        out[year] = val
+        if is_10k:
+            have_10k.add(year)
+    return out
 
 
 def extract_financials(facts, cik, ticker, now):
@@ -951,7 +983,13 @@ def extract_financials(facts, cik, ticker, now):
                     values.setdefault(yr, val)
             if values:
                 out_rows.append({"label": label, "unit": unit, "values": values})
-                years.update(values)
+        if key == "income":
+            _derive_income(out_rows)               # fill gaps via accounting identities
+        # Keep the canonical line order (derivation may have appended a created row).
+        order = CANON_ORDER[key]
+        out_rows.sort(key=lambda r: order.index(r["label"]) if r["label"] in order else 99)
+        for r in out_rows:
+            years.update(r["values"])
         if out_rows:
             statements[key] = out_rows
     if not statements:
