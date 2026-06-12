@@ -209,6 +209,31 @@ h1 { font-size: 2.3rem; font-weight: 700; letter-spacing: 0.01em; margin-bottom:
 .more-toggle:checked ~ .filing-head .more-open  { display: none; }
 .more-toggle:checked ~ .filing-head .more-close { display: inline; }
 .more-toggle:checked ~ .more-rows { display: block; }
+/* "more filings" cue at the END of the visible rows: a dashed divider with a small
+   pill of three dots straddling it. The dashed line is pinned to the TOP of this block,
+   so it lands exactly where the next row's divider would be -> same rhythm as the
+   inter-row separators, and no vertical jump when the rows expand (the pill hides and
+   the first hidden row's border-top takes its place). The pill's card-bg fill masks the
+   line behind it (works light + dark). The whole divider hides once expanded. */
+.more-ellipsis {
+    position: relative; display: block; cursor: pointer; user-select: none;
+    text-align: center; line-height: 0; padding: 0 1.1rem 0.5rem;
+}
+.more-ellipsis::before {                       /* dashed line, pinned to the top (row rhythm) */
+    content: ""; position: absolute; top: 0; left: 1.1rem; right: 1.1rem;
+    border-top: 1px dashed var(--border);
+}
+.more-dots {                                   /* slim pill straddling the top line */
+    position: relative; display: inline-flex; align-items: center; justify-content: center;
+    gap: 2px; height: 11px; padding: 0 6px; margin-top: -6px; vertical-align: top;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 999px;
+    transition: border-color var(--transition);
+}
+.more-dots i { width: 2px; height: 2px; border-radius: 50%;
+    background: var(--text-muted); transition: background var(--transition); }
+.more-ellipsis:hover .more-dots { border-color: var(--primary-color); }
+.more-ellipsis:hover .more-dots i { background: var(--primary-color); }
+.more-toggle:checked ~ .more-ellipsis { display: none; }
 /* whole header row toggles -> pointer + highlight the cue on row hover */
 label.filing-head { cursor: pointer; }
 label.filing-head:hover .more-open,

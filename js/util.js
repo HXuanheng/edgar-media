@@ -211,6 +211,7 @@ export function filingsListHtml(it, ns = "") {
             <span class="more-close">show less</span>
         </label>
         ${leadRows}
+        <label class="more-ellipsis" for="${id}" aria-label="Show ${n} more filings"><span class="more-dots"><i></i><i></i><i></i></span></label>
         <ul class="filing-list more-rows">${rows}</ul>
     </div>`;
 }
