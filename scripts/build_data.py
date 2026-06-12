@@ -21,7 +21,9 @@ import json
 import os
 import re
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -37,7 +39,8 @@ FRESH_DAYS = 7         # a filing this recent gets the "fresh" highlight
 WINDOW_DAYS = 90       # per-firm list shows material filings this recent
 HEADLINE_MAX_DAYS = 365  # ignore ancient filings as the card headline (ETF junk)
 MAX_FILINGS = 25       # cap per firm (bounds JSON size)
-SEC_PAUSE = 0.15    # polite gap between SEC calls (limit is 10 req/sec)
+# SEC/price request pacing is now enforced by the shared RateLimiter (see SEC_RATE
+# / PRICE_RATE below) so the parallel fetch loops stay under SEC's 10 req/s.
 
 # --- market price (free, no key; keyed provider optional) -----------------
 # Last quote + day change + a 5-day sparkline per firm, fetched at build time
@@ -55,7 +58,6 @@ STOOQ_URL = "https://stooq.com/q/d/l/?s={sym}.us&i=d"          # daily OHLCV CSV
 TWELVEDATA_URL = ("https://api.twelvedata.com/time_series?symbol={sym}"
                   "&interval=1day&outputsize=70&apikey={key}")  # quote+spark+history
 HISTORY_DAYS = 70      # trading days kept for the per-firm price chart (~3 months)
-PRICE_PAUSE = 0.2      # polite gap between price calls
 PRICE_PROVIDERS = [
     {"name": "twelvedata", "kind": "twelvedata", "key_env": "TWELVEDATA_API_KEY"},
     {"name": "yahoo", "kind": "yahoo"},
@@ -294,6 +296,40 @@ def get_text(url, retries=3, pause=1.0):
             time.sleep(pause * (attempt + 1))
     print(f"  ! failed {url}: {last}", file=sys.stderr)
     return None
+
+
+# --- concurrency ----------------------------------------------------------
+# A small thread pool overlaps the network latency of the per-firm SEC/price
+# fetches (those loops were sequential with fixed sleeps). A shared rate limiter
+# keeps us under SEC's 10 req/s guidance ACROSS threads — same request count as
+# before, just paced tightly instead of loosely, so it's both faster and no
+# heavier on SEC. Pure stdlib (concurrent.futures + threading), no deps.
+FETCH_WORKERS = 4
+SEC_RATE = 9            # *.sec.gov requests/sec ceiling (SEC's documented limit is 10)
+PRICE_RATE = 6         # price-provider requests/sec ceiling (Yahoo/Stooq, separate hosts)
+
+
+class RateLimiter:
+    """Thread-safe global rate cap: at most `rate` acquire()s per second across all
+    threads. Each caller reserves the next time-slot under a brief lock, then sleeps
+    OUTSIDE the lock, so threads pace evenly instead of bursting."""
+
+    def __init__(self, rate):
+        self._interval = 1.0 / rate
+        self._lock = threading.Lock()
+        self._next = 0.0
+
+    def acquire(self):
+        with self._lock:
+            scheduled = max(time.monotonic(), self._next)
+            self._next = scheduled + self._interval
+        delay = scheduled - time.monotonic()
+        if delay > 0:
+            time.sleep(delay)
+
+
+SEC_LIMITER = RateLimiter(SEC_RATE)
+PRICE_LIMITER = RateLimiter(PRICE_RATE)
 
 
 # --- AI summary (optional, free Gemini) -----------------------------------
@@ -588,6 +624,7 @@ def fetch_price(ticker, prev):
         key = os.environ.get(env) if env else None
         if env and not key:
             continue                                   # keyed provider, no key
+        PRICE_LIMITER.acquire()                        # global <=PRICE_RATE/s across threads
         try:
             kind = p["kind"]
             if kind == "yahoo":
@@ -683,8 +720,8 @@ def recent_filings(cik, today):
     is saturated, older material filings can spill into filings.files shards
     and won't appear here. Rare and acceptable for a 90-day window.
     """
+    SEC_LIMITER.acquire()
     data = get_json(SUBMISSIONS_URL.format(cik=cik))
-    time.sleep(SEC_PAUSE)
     if not data:
         return None, []
     recent = data.get("filings", {}).get("recent", {})
@@ -996,6 +1033,7 @@ def build_financials(items, now):
     os.makedirs(FIN_DIR, exist_ok=True)
     written = unchanged = skipped = nofacts = 0
     seen = set()
+    jobs = []                                          # (cik, ticker, latest_acc, prev)
     for it in items:
         cik = it.get("cik")
         if not cik or cik in seen:
@@ -1011,19 +1049,32 @@ def build_financials(items, now):
                                  or prev.get("based_on_accession") == latest_acc):
             skipped += 1
             continue
+        jobs.append((cik, it.get("ticker"), latest_acc, prev))
+
+    def fetch_one(job):
+        cik, ticker, latest_acc, prev = job
+        SEC_LIMITER.acquire()
         facts = get_json(COMPANYFACTS_URL.format(cik=cik))
-        time.sleep(SEC_PAUSE)
-        fin = extract_financials(facts, cik, it.get("ticker"), now) if facts else None
-        if not fin:
-            nofacts += 1
-            continue
-        fin["based_on_accession"] = latest_acc
-        if prev and _fin_hash(prev) == _fin_hash(fin):
-            unchanged += 1
-            continue
-        with open(_fin_path(cik), "w", encoding="utf-8") as f:
-            json.dump(fin, f, indent=2, ensure_ascii=False)
-        written += 1
+        try:
+            fin = extract_financials(facts, cik, ticker, now) if facts else None
+        except Exception as e:                         # bad XBRL must never kill the run
+            print(f"  ! financials {ticker}: {e}", file=sys.stderr)
+            fin = None
+        return cik, latest_acc, prev, fin
+
+    # Fetch (the slow, network-bound part) in parallel; write + count single-threaded.
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as pool:
+        for cik, latest_acc, prev, fin in pool.map(fetch_one, jobs):
+            if not fin:
+                nofacts += 1
+                continue
+            fin["based_on_accession"] = latest_acc
+            if prev and _fin_hash(prev) == _fin_hash(fin):
+                unchanged += 1
+                continue
+            with open(_fin_path(cik), "w", encoding="utf-8") as f:
+                json.dump(fin, f, indent=2, ensure_ascii=False)
+            written += 1
     print(f"financials: {written} written, {unchanged} unchanged, "
           f"{skipped} skipped (no new report), {nofacts} no us-gaap")
 
@@ -1052,8 +1103,11 @@ def main():
     print("loading SEC ticker map...")
     cik_map = load_ticker_map()
 
-    items = []
-    for row in results:
+    def build_item(row):
+        """Build one firm's item dict (incl. its submissions fetch). Pure per-row:
+        reads the shared read-only cik_map and writes only its own dict, so it's
+        safe to run across threads. Returns (item, log_line) so the caller can print
+        progress in input order instead of interleaved."""
         ticker = row["ticker"].upper()
         # ApeWisdom returns HTML-encoded names ("S&amp;P"); decode so the
         # front-end escapes exactly once.
@@ -1079,13 +1133,13 @@ def main():
         filing, filings = recent_filings(cik, today) if cik else (None, [])
         if cik:
             extra = max(len(filings) - 1, 0)
-            print(f"  {ticker:6s} cik={cik} {name_match:8s} "
-                  f"filing={filing['form'] if filing else '-'} "
-                  f"(+{extra} in {WINDOW_DAYS}d)")
+            log = (f"  {ticker:6s} cik={cik} {name_match:8s} "
+                   f"filing={filing['form'] if filing else '-'} "
+                   f"(+{extra} in {WINDOW_DAYS}d)")
         else:
-            print(f"  {ticker:6s} (no SEC match - ETF/crypto/foreign)")
+            log = f"  {ticker:6s} (no SEC match - ETF/crypto/foreign)"
 
-        items.append({
+        return {
             "rank": row.get("rank"),
             "ticker": ticker,
             "name": ape_name,
@@ -1099,7 +1153,15 @@ def main():
             "cik": cik,
             "filing": filing,
             "filings": filings,
-        })
+        }, log
+
+    # Fetch submissions concurrently (rate-limited under SEC's 10 req/s); pool.map
+    # preserves input order, so items + log lines stay in ApeWisdom rank order.
+    items = []
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as pool:
+        for item, log in pool.map(build_item, results):
+            print(log)
+            items.append(item)
 
     # Collapse dual-class tickers (GOOG/GOOGL) into one card per issuer (CIK).
     items = merge_same_cik(items)
@@ -1111,21 +1173,26 @@ def main():
     # never blank.
     print("fetching market prices (Yahoo -> Stooq, carry-forward on outage)...")
     prev_prices = load_prev_prices()
-    carried = 0
-    for it in items:
+
+    def price_item(it):
+        """Fetch + attach one firm's price (writes only its own dict). Returns True
+        if the quote was carried forward from last run (every live source down)."""
         pr = fetch_price(it["ticker"], prev_prices)
-        if pr:
-            carried_now = pr is prev_prices.get(it["ticker"])
-            if pr.get("_quote_type"):              # Yahoo identity -> onto the item
-                it["quote_type"] = pr["_quote_type"]
-            if pr.get("_yahoo_name"):
-                it["_yahoo_name"] = pr["_yahoo_name"]   # transient (reconcile pops it)
-            pr = {k: v for k, v in pr.items() if not k.startswith("_")}  # strip + copy
-            if carried_now:
-                pr["stale"] = True                 # sources down -> last known
-                carried += 1
-            it["price"] = pr
-        time.sleep(PRICE_PAUSE)
+        if not pr:
+            return False
+        carried_now = pr is prev_prices.get(it["ticker"])
+        if pr.get("_quote_type"):                  # Yahoo identity -> onto the item
+            it["quote_type"] = pr["_quote_type"]
+        if pr.get("_yahoo_name"):
+            it["_yahoo_name"] = pr["_yahoo_name"]   # transient (reconcile pops it)
+        pr = {k: v for k, v in pr.items() if not k.startswith("_")}  # strip + copy
+        if carried_now:
+            pr["stale"] = True                     # sources down -> last known
+        it["price"] = pr
+        return carried_now
+
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as pool:
+        carried = sum(1 for c in pool.map(price_item, items) if c)
     priced = sum(1 for x in items if x.get("price"))
     print(f"prices: {priced}/{len(items)} priced, "
           f"{carried} carried forward (live sources unavailable)")
