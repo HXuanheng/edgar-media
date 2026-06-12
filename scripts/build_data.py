@@ -843,6 +843,8 @@ FIN_STATEMENTS = [
     ("income", [
         ("Revenue", "duration", "USD",
          ["Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "RevenueFromContractWithCustomerIncludingAssessedTax",
+          "RegulatedAndUnregulatedOperatingRevenue",   # utilities (e.g. DTE)
           "SalesRevenueNet"]),
         ("Cost of revenue", "duration", "USD",
          ["CostOfRevenue", "CostOfGoodsAndServicesSold"]),
@@ -857,9 +859,12 @@ FIN_STATEMENTS = [
         ("Current assets", "instant", "USD", ["AssetsCurrent"]),
         ("Total liabilities", "instant", "USD", ["Liabilities"]),
         ("Current liabilities", "instant", "USD", ["LiabilitiesCurrent"]),
+        # Prefer TOTAL equity (incl. noncontrolling interest) so Assets = Liabilities
+        # + Equity ties for firms with minority interests (Tesla, etc.); fall back to
+        # parent-only where the total isn't separately tagged (most firms: identical).
         ("Stockholders' equity", "instant", "USD",
-         ["StockholdersEquity",
-          "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"]),
+         ["StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "StockholdersEquity"]),
         ("Cash & equivalents", "instant", "USD",
          ["CashAndCashEquivalentsAtCarryingValue"]),
     ]),
