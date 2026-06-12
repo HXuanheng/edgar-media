@@ -830,6 +830,9 @@ def merge_same_cik(items):
 COMPANYFACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json"
 FIN_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "financials")
 FIN_YEARS = 5          # most-recent fiscal years kept per line item
+FIN_SCHEMA = 2         # bump when the concept map / extraction logic changes -> forces
+                       # a one-time refresh of every firm's file even if its accession
+                       # is unchanged (otherwise the accession-gate would skip the fix)
 FIN_ENABLED = os.environ.get("FIN_ENABLED", "1") == "1"   # 0 -> skip the big fetches locally
 
 # SEC stamps one canonical annual fact per fiscal year with a `frame`:
@@ -852,7 +855,7 @@ FIN_STATEMENTS = [
         ("Gross profit", "duration", "USD", ["GrossProfit"]),
         ("Operating income", "duration", "USD", ["OperatingIncomeLoss"]),
         ("R&D expense", "duration", "USD", ["ResearchAndDevelopmentExpense"]),
-        ("Net income", "duration", "USD", ["NetIncomeLoss"]),
+        ("Net income", "duration", "USD", ["NetIncomeLoss", "ProfitLoss"]),
         ("Diluted EPS", "duration", "USD/shares", ["EarningsPerShareDiluted"]),
     ]),
     ("balance", [
@@ -973,6 +976,7 @@ def extract_financials(facts, cik, ticker, now):
         "cik": cik,
         "ticker": ticker,
         "currency": "USD",
+        "schema": FIN_SCHEMA,
         "fiscal_years": fiscal_years,
         "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": "SEC EDGAR XBRL companyfacts",
@@ -997,7 +1001,8 @@ def _fin_hash(fin):
     diff never triggers a rewrite/commit. Includes based_on_accession so a fresh
     10-Q that didn't move the curated numbers still records the new trigger (and is
     skipped on the next run)."""
-    payload = {"fiscal_years": fin.get("fiscal_years"),
+    payload = {"schema": fin.get("schema"),
+               "fiscal_years": fin.get("fiscal_years"),
                "statements": fin.get("statements"),
                "based_on_accession": fin.get("based_on_accession")}
     blob = json.dumps(payload, sort_keys=True, ensure_ascii=False)
@@ -1043,10 +1048,12 @@ def build_financials(items, now):
         seen.add(cik)
         prev = load_existing_fin(cik)
         latest_acc = latest_report_accession(it)
-        # Already have a file and no new report since -> no possible change, no fetch.
-        # (latest_acc is None = no 10-K/10-Q in the window = nothing new either.)
-        if prev is not None and (latest_acc is None
-                                 or prev.get("based_on_accession") == latest_acc):
+        # Already have a CURRENT-schema file and no new report since -> no possible
+        # change, no fetch. (latest_acc None = no 10-K/10-Q in window = nothing new.)
+        # A schema bump forces a refetch so extractor fixes reach existing files.
+        if (prev is not None and prev.get("schema") == FIN_SCHEMA
+                and (latest_acc is None
+                     or prev.get("based_on_accession") == latest_acc)):
             skipped += 1
             continue
         jobs.append((cik, it.get("ticker"), latest_acc, prev))
