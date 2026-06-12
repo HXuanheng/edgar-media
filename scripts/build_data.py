@@ -957,23 +957,44 @@ def load_existing_fin(cik):
 
 def _fin_hash(fin):
     """Hash of the meaningful content only (excludes `updated`) so a timestamp-only
-    diff never triggers a rewrite/commit."""
+    diff never triggers a rewrite/commit. Includes based_on_accession so a fresh
+    10-Q that didn't move the curated numbers still records the new trigger (and is
+    skipped on the next run)."""
     payload = {"fiscal_years": fin.get("fiscal_years"),
-               "statements": fin.get("statements")}
+               "statements": fin.get("statements"),
+               "based_on_accession": fin.get("based_on_accession")}
     blob = json.dumps(payload, sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()
 
 
+# Reports that update fundamentals -> a new one is our cue to refetch companyfacts.
+REPORT_FORMS = ("10-K", "10-Q", "10-K/A", "10-Q/A")
+
+
+def latest_report_accession(it):
+    """Accession of the firm's most recent 10-K/10-Q (it['filings'] is newest-first),
+    or None if none is in the window. Comes free from the submissions we already
+    fetched for the trending list — no extra request."""
+    for f in it.get("filings") or []:
+        if f.get("form") in REPORT_FORMS and f.get("accession"):
+            return f["accession"]
+    return None
+
+
 def build_financials(items, now):
-    """Fetch companyfacts for each verified, non-fund firm and write a compact
-    data/financials/CIK{cik}.json. Content-hash gated: a firm's file is rewritten
-    only when its curated numbers change (~quarterly), keeping hourly git churn
-    near zero. Foreign/funds/no-facts firms simply get no file (404 client-side)."""
+    """Write a compact data/financials/CIK{cik}.json per verified, non-fund firm.
+
+    Light by default: companyfacts is 0.3-1 MB gzipped per firm, but fundamentals
+    only move on a new 10-K/10-Q. So we SKIP the fetch entirely unless the firm's
+    latest 10-K/10-Q accession changed since we last built its file — the accession
+    comes free from the submissions already pulled for the trending list. Most hours
+    that means zero companyfacts downloads; a small burst only around earnings.
+    Foreign/funds/no-facts firms simply get no file (404 client-side)."""
     if not FIN_ENABLED:
         print("financials: disabled (FIN_ENABLED=0)")
         return
     os.makedirs(FIN_DIR, exist_ok=True)
-    written = unchanged = nofacts = 0
+    written = unchanged = skipped = nofacts = 0
     seen = set()
     for it in items:
         cik = it.get("cik")
@@ -982,13 +1003,21 @@ def build_financials(items, now):
         if it.get("is_fund") or it.get("name_match") != "verified":
             continue
         seen.add(cik)
+        prev = load_existing_fin(cik)
+        latest_acc = latest_report_accession(it)
+        # Already have a file and no new report since -> no possible change, no fetch.
+        # (latest_acc is None = no 10-K/10-Q in the window = nothing new either.)
+        if prev is not None and (latest_acc is None
+                                 or prev.get("based_on_accession") == latest_acc):
+            skipped += 1
+            continue
         facts = get_json(COMPANYFACTS_URL.format(cik=cik))
         time.sleep(SEC_PAUSE)
         fin = extract_financials(facts, cik, it.get("ticker"), now) if facts else None
         if not fin:
             nofacts += 1
             continue
-        prev = load_existing_fin(cik)
+        fin["based_on_accession"] = latest_acc
         if prev and _fin_hash(prev) == _fin_hash(fin):
             unchanged += 1
             continue
@@ -996,7 +1025,7 @@ def build_financials(items, now):
             json.dump(fin, f, indent=2, ensure_ascii=False)
         written += 1
     print(f"financials: {written} written, {unchanged} unchanged, "
-          f"{nofacts} no us-gaap")
+          f"{skipped} skipped (no new report), {nofacts} no us-gaap")
 
 
 def main():
