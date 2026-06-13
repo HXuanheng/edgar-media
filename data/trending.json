@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-06-13T20:15:27Z",
+  "updated_utc": "2026-06-13T22:02:59Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "filings": "SEC EDGAR submissions API (real-time)",
@@ -7,7 +7,7 @@
   },
   "fresh_days": 7,
   "window_days": 90,
-  "count": 30,
+  "count": 29,
   "items": [
     {
       "rank": 1,
@@ -16,10 +16,10 @@
       "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
       "display_name": "Space Exploration Technologies Corp",
       "name_match": "verified",
-      "mentions": 311,
-      "mentions_24h_ago": 2025,
-      "mention_change_pct": -84.6,
-      "upvotes": 15748,
+      "mentions": 248,
+      "mentions_24h_ago": 2116,
+      "mention_change_pct": -88.3,
+      "upvotes": 13252,
       "cik": "0001181412",
       "filing": {
         "form": "424B4",
@@ -101,16 +101,414 @@
       "is_fund": false
     },
     {
-      "rank": 4,
+      "rank": 5,
+      "ticker": "DTE",
+      "name": "DTE Energy",
+      "sec_name": "DTE ENERGY CO",
+      "display_name": "Dte Energy Co",
+      "name_match": "verified",
+      "mentions": 55,
+      "mentions_24h_ago": 136,
+      "mention_change_pct": -59.6,
+      "upvotes": 751,
+      "cik": "0000936340",
+      "filing": {
+        "form": "424B5",
+        "date": "2026-06-09",
+        "days_ago": 4,
+        "fresh": true,
+        "desc": "424B5",
+        "summary": "Shelf offering prospectus",
+        "accession": "0001193125-26-263051",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/d153009d424b5.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm"
+      },
+      "filings": [
+        {
+          "form": "424B5",
+          "date": "2026-06-09",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "424B5",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001193125-26-263051",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm",
+          "ai_summary": "DTE Energy is issuing unsecured junior subordinated debentures maturing July 1 2058, paying a fixed rate until 2033 then resetting to 5‑year Treasury + spread (no lower than the initial rate), with optional interest deferrals up to 10 years and redemption rights at 100‑102% of principal."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 8,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0000936340-26-000122",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm",
+          "ai_summary": "DTE Energy will meet with investors on June 8, 2026, and is providing its slide presentation and 2026 operating earnings guidance."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 29,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0000936340-26-000119",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000119/0000936340-26-000119-index.htm",
+          "ai_summary": "DTE Energy will meet with investors May 17-19, 2026, and will discuss 2026 operating earnings guidance."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-12",
+          "days_ago": 32,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0000936340-26-000115",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000115/0000936340-26-000115-index.htm",
+          "ai_summary": "DTE Energy shareholders re-elected all directors, ratified PricewaterhouseCoopers LLP as auditors, and approved executive compensation at their May 7, 2026 annual meeting."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-01",
+          "days_ago": 43,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0000936340-26-000083",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000083/0000936340-26-000083-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 44,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0000936340-26-000081",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000081/0000936340-26-000081-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 44,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0000936340-26-000079",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000079/0000936340-26-000079-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-23",
+          "days_ago": 82,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0000936340-26-000071",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000071/0000936340-26-000071-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-17",
+          "days_ago": 88,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed",
+          "accession": "0000936340-26-000068",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000068/0000936340-26-000068-index.htm"
+        }
+      ],
+      "tickers": [
+        "DTE"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 147.42,
+        "prev_close": 145.79,
+        "change_pct": 1.12,
+        "currency": "USD",
+        "spark": [
+          143.11,
+          145.95,
+          146.07,
+          145.79,
+          147.42
+        ],
+        "history": [
+          [
+            "2026-03-13",
+            149.57
+          ],
+          [
+            "2026-03-16",
+            149.26
+          ],
+          [
+            "2026-03-17",
+            149.34
+          ],
+          [
+            "2026-03-18",
+            147.01
+          ],
+          [
+            "2026-03-19",
+            147.14
+          ],
+          [
+            "2026-03-20",
+            141.57
+          ],
+          [
+            "2026-03-23",
+            142.29
+          ],
+          [
+            "2026-03-24",
+            143.32
+          ],
+          [
+            "2026-03-25",
+            143.45
+          ],
+          [
+            "2026-03-26",
+            144.39
+          ],
+          [
+            "2026-03-27",
+            144.47
+          ],
+          [
+            "2026-03-30",
+            146.06
+          ],
+          [
+            "2026-03-31",
+            146.22
+          ],
+          [
+            "2026-04-01",
+            147.12
+          ],
+          [
+            "2026-04-02",
+            148.04
+          ],
+          [
+            "2026-04-06",
+            147.67
+          ],
+          [
+            "2026-04-07",
+            148.27
+          ],
+          [
+            "2026-04-08",
+            148.78
+          ],
+          [
+            "2026-04-09",
+            150.98
+          ],
+          [
+            "2026-04-10",
+            149.68
+          ],
+          [
+            "2026-04-13",
+            147.51
+          ],
+          [
+            "2026-04-14",
+            147.74
+          ],
+          [
+            "2026-04-15",
+            146.75
+          ],
+          [
+            "2026-04-16",
+            146.97
+          ],
+          [
+            "2026-04-17",
+            146.98
+          ],
+          [
+            "2026-04-20",
+            145.87
+          ],
+          [
+            "2026-04-21",
+            143.47
+          ],
+          [
+            "2026-04-22",
+            143.57
+          ],
+          [
+            "2026-04-23",
+            147.4
+          ],
+          [
+            "2026-04-24",
+            146.88
+          ],
+          [
+            "2026-04-27",
+            146.5
+          ],
+          [
+            "2026-04-28",
+            148.58
+          ],
+          [
+            "2026-04-29",
+            147.03
+          ],
+          [
+            "2026-04-30",
+            151.69
+          ],
+          [
+            "2026-05-01",
+            148.79
+          ],
+          [
+            "2026-05-04",
+            146.73
+          ],
+          [
+            "2026-05-05",
+            143.5
+          ],
+          [
+            "2026-05-06",
+            142.44
+          ],
+          [
+            "2026-05-07",
+            142.0
+          ],
+          [
+            "2026-05-08",
+            140.6
+          ],
+          [
+            "2026-05-11",
+            142.43
+          ],
+          [
+            "2026-05-12",
+            142.58
+          ],
+          [
+            "2026-05-13",
+            142.0
+          ],
+          [
+            "2026-05-14",
+            143.8
+          ],
+          [
+            "2026-05-15",
+            139.78
+          ],
+          [
+            "2026-05-18",
+            141.35
+          ],
+          [
+            "2026-05-19",
+            143.15
+          ],
+          [
+            "2026-05-20",
+            142.77
+          ],
+          [
+            "2026-05-21",
+            143.75
+          ],
+          [
+            "2026-05-22",
+            145.3
+          ],
+          [
+            "2026-05-26",
+            144.62
+          ],
+          [
+            "2026-05-27",
+            145.27
+          ],
+          [
+            "2026-05-28",
+            143.38
+          ],
+          [
+            "2026-05-29",
+            142.87
+          ],
+          [
+            "2026-06-01",
+            139.83
+          ],
+          [
+            "2026-06-02",
+            142.65
+          ],
+          [
+            "2026-06-03",
+            141.81
+          ],
+          [
+            "2026-06-04",
+            142.73
+          ],
+          [
+            "2026-06-05",
+            145.77
+          ],
+          [
+            "2026-06-08",
+            143.11
+          ],
+          [
+            "2026-06-09",
+            145.95
+          ],
+          [
+            "2026-06-10",
+            146.07
+          ],
+          [
+            "2026-06-11",
+            145.79
+          ],
+          [
+            "2026-06-12",
+            147.42
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-12"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 6,
       "ticker": "MU",
       "name": "Micron Technology",
       "sec_name": "MICRON TECHNOLOGY INC",
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
-      "mentions": 76,
-      "mentions_24h_ago": 413,
-      "mention_change_pct": -81.6,
-      "upvotes": 541,
+      "mentions": 52,
+      "mentions_24h_ago": 385,
+      "mention_change_pct": -86.5,
+      "upvotes": 183,
       "cik": "0000723125",
       "filing": {
         "form": "8-K",
@@ -456,16 +854,405 @@
       "is_fund": false
     },
     {
-      "rank": 6,
+      "rank": 9,
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "sec_name": "Broadcom Inc.",
+      "display_name": "Broadcom Inc.",
+      "name_match": "verified",
+      "mentions": 42,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": -4.5,
+      "upvotes": 257,
+      "cik": "0001730168",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-11",
+        "days_ago": 2,
+        "fresh": true,
+        "desc": "8-K",
+        "summary": "Other material update",
+        "accession": "0001193125-26-266777",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526266777/d152717d8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526266777/0001193125-26-266777-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-11",
+          "days_ago": 2,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001193125-26-266777",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526266777/0001193125-26-266777-index.htm",
+          "ai_summary": "Broadcom Inc. announced cash tender offers for certain of its debt securities on June 11, 2026."
+        },
+        {
+          "form": "S-4",
+          "date": "2026-06-09",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "S-4",
+          "summary": "M&A / exchange registration",
+          "accession": "0001193125-26-263128",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263128/0001193125-26-263128-index.htm",
+          "ai_summary": "Broadcom Inc. is offering to exchange its existing senior notes for new, freely tradable senior notes."
+        },
+        {
+          "form": "S-4",
+          "date": "2026-06-09",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "S-4",
+          "summary": "M&A / exchange registration",
+          "accession": "0001193125-26-263125",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263125/0001193125-26-263125-index.htm",
+          "ai_summary": "Broadcom is offering to exchange existing notes for new, freely tradable notes to satisfy registration requirements."
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-06-09",
+          "days_ago": 4,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001730168-26-000054",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000054/0001730168-26-000054-index.htm",
+          "ai_summary": "Broadcom reported Q2 2026 revenue of $22.2 billion, net income of $9.3 billion, and cash + $19.6 billion, driven by higher product and subscription sales across all regions."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-03",
+          "days_ago": 10,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001730168-26-000051",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/0001730168-26-000051-index.htm",
+          "ai_summary": "Broadcom Inc. announced its Q2 2026 financial results and declared a quarterly cash dividend of $0.65 per share payable June 30, 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-21",
+          "days_ago": 53,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001730168-26-000039",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000039/0001730168-26-000039-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-06",
+          "days_ago": 68,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001193125-26-144028",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/0001193125-26-144028-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-02",
+          "days_ago": 72,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001193125-26-140574",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526140574/0001193125-26-140574-index.htm"
+        }
+      ],
+      "tickers": [
+        "AVGO"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 382.07,
+        "prev_close": 385.57,
+        "change_pct": -0.91,
+        "currency": "USD",
+        "spark": [
+          396.6,
+          392.16,
+          372.1,
+          385.57,
+          382.07
+        ],
+        "history": [
+          [
+            "2026-03-13",
+            322.16
+          ],
+          [
+            "2026-03-16",
+            324.92
+          ],
+          [
+            "2026-03-17",
+            321.31
+          ],
+          [
+            "2026-03-18",
+            315.93
+          ],
+          [
+            "2026-03-19",
+            319.84
+          ],
+          [
+            "2026-03-20",
+            310.51
+          ],
+          [
+            "2026-03-23",
+            322.51
+          ],
+          [
+            "2026-03-24",
+            318.29
+          ],
+          [
+            "2026-03-25",
+            318.81
+          ],
+          [
+            "2026-03-26",
+            309.42
+          ],
+          [
+            "2026-03-27",
+            300.68
+          ],
+          [
+            "2026-03-30",
+            293.41
+          ],
+          [
+            "2026-03-31",
+            309.51
+          ],
+          [
+            "2026-04-01",
+            313.49
+          ],
+          [
+            "2026-04-02",
+            314.55
+          ],
+          [
+            "2026-04-06",
+            314.43
+          ],
+          [
+            "2026-04-07",
+            333.97
+          ],
+          [
+            "2026-04-08",
+            350.63
+          ],
+          [
+            "2026-04-09",
+            354.91
+          ],
+          [
+            "2026-04-10",
+            371.55
+          ],
+          [
+            "2026-04-13",
+            379.75
+          ],
+          [
+            "2026-04-14",
+            380.78
+          ],
+          [
+            "2026-04-15",
+            396.72
+          ],
+          [
+            "2026-04-16",
+            398.47
+          ],
+          [
+            "2026-04-17",
+            406.54
+          ],
+          [
+            "2026-04-20",
+            399.63
+          ],
+          [
+            "2026-04-21",
+            402.17
+          ],
+          [
+            "2026-04-22",
+            422.65
+          ],
+          [
+            "2026-04-23",
+            419.94
+          ],
+          [
+            "2026-04-24",
+            422.76
+          ],
+          [
+            "2026-04-27",
+            418.2
+          ],
+          [
+            "2026-04-28",
+            399.83
+          ],
+          [
+            "2026-04-29",
+            405.45
+          ],
+          [
+            "2026-04-30",
+            417.43
+          ],
+          [
+            "2026-05-01",
+            421.28
+          ],
+          [
+            "2026-05-04",
+            416.5
+          ],
+          [
+            "2026-05-05",
+            427.36
+          ],
+          [
+            "2026-05-06",
+            425.44
+          ],
+          [
+            "2026-05-07",
+            412.56
+          ],
+          [
+            "2026-05-08",
+            430.0
+          ],
+          [
+            "2026-05-11",
+            428.43
+          ],
+          [
+            "2026-05-12",
+            419.3
+          ],
+          [
+            "2026-05-13",
+            416.79
+          ],
+          [
+            "2026-05-14",
+            439.79
+          ],
+          [
+            "2026-05-15",
+            425.19
+          ],
+          [
+            "2026-05-18",
+            420.71
+          ],
+          [
+            "2026-05-19",
+            411.07
+          ],
+          [
+            "2026-05-20",
+            417.76
+          ],
+          [
+            "2026-05-21",
+            414.57
+          ],
+          [
+            "2026-05-22",
+            414.14
+          ],
+          [
+            "2026-05-26",
+            422.01
+          ],
+          [
+            "2026-05-27",
+            421.86
+          ],
+          [
+            "2026-05-28",
+            426.58
+          ],
+          [
+            "2026-05-29",
+            446.77
+          ],
+          [
+            "2026-06-01",
+            459.97
+          ],
+          [
+            "2026-06-02",
+            481.57
+          ],
+          [
+            "2026-06-03",
+            479.23
+          ],
+          [
+            "2026-06-04",
+            418.91
+          ],
+          [
+            "2026-06-05",
+            385.73
+          ],
+          [
+            "2026-06-08",
+            396.6
+          ],
+          [
+            "2026-06-09",
+            392.16
+          ],
+          [
+            "2026-06-10",
+            372.1
+          ],
+          [
+            "2026-06-11",
+            385.57
+          ],
+          [
+            "2026-06-12",
+            382.07
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-12"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 12,
       "ticker": "SPCE",
       "name": "Virgin Galactic",
       "sec_name": "Virgin Galactic Holdings, Inc",
       "display_name": "Virgin Galactic Holdings, Inc",
       "name_match": "verified",
-      "mentions": 65,
-      "mentions_24h_ago": 513,
-      "mention_change_pct": -87.3,
-      "upvotes": 1071,
+      "mentions": 37,
+      "mentions_24h_ago": 547,
+      "mention_change_pct": -93.2,
+      "upvotes": 990,
       "cik": "0001706946",
       "filing": {
         "form": "8-K",
@@ -912,803 +1699,16 @@
       "is_fund": false
     },
     {
-      "rank": 8,
-      "ticker": "DTE",
-      "name": "DTE Energy",
-      "sec_name": "DTE ENERGY CO",
-      "display_name": "Dte Energy Co",
-      "name_match": "verified",
-      "mentions": 58,
-      "mentions_24h_ago": 141,
-      "mention_change_pct": -58.9,
-      "upvotes": 706,
-      "cik": "0000936340",
-      "filing": {
-        "form": "424B5",
-        "date": "2026-06-09",
-        "days_ago": 4,
-        "fresh": true,
-        "desc": "424B5",
-        "summary": "Shelf offering prospectus",
-        "accession": "0001193125-26-263051",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/d153009d424b5.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm"
-      },
-      "filings": [
-        {
-          "form": "424B5",
-          "date": "2026-06-09",
-          "days_ago": 4,
-          "fresh": true,
-          "desc": "424B5",
-          "summary": "Shelf offering prospectus",
-          "accession": "0001193125-26-263051",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm",
-          "ai_summary": "DTE Energy is issuing unsecured junior subordinated debentures maturing July 1 2058, paying a fixed rate until 2033 then resetting to 5‑year Treasury + spread (no lower than the initial rate), with optional interest deferrals up to 10 years and redemption rights at 100‑102% of principal."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-05",
-          "days_ago": 8,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0000936340-26-000122",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm",
-          "ai_summary": "DTE Energy will meet with investors on June 8, 2026, and is providing its slide presentation and 2026 operating earnings guidance."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-15",
-          "days_ago": 29,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0000936340-26-000119",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000119/0000936340-26-000119-index.htm",
-          "ai_summary": "DTE Energy will meet with investors May 17-19, 2026, and will discuss 2026 operating earnings guidance."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-12",
-          "days_ago": 32,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0000936340-26-000115",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000115/0000936340-26-000115-index.htm",
-          "ai_summary": "DTE Energy shareholders re-elected all directors, ratified PricewaterhouseCoopers LLP as auditors, and approved executive compensation at their May 7, 2026 annual meeting."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-01",
-          "days_ago": 43,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000936340-26-000083",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000083/0000936340-26-000083-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-04-30",
-          "days_ago": 44,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0000936340-26-000081",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000081/0000936340-26-000081-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 44,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0000936340-26-000079",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000079/0000936340-26-000079-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-23",
-          "days_ago": 82,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0000936340-26-000071",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000071/0000936340-26-000071-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-17",
-          "days_ago": 88,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed",
-          "accession": "0000936340-26-000068",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000068/0000936340-26-000068-index.htm"
-        }
-      ],
-      "tickers": [
-        "DTE"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 147.42,
-        "prev_close": 145.79,
-        "change_pct": 1.12,
-        "currency": "USD",
-        "spark": [
-          143.11,
-          145.95,
-          146.07,
-          145.79,
-          147.42
-        ],
-        "history": [
-          [
-            "2026-03-13",
-            149.57
-          ],
-          [
-            "2026-03-16",
-            149.26
-          ],
-          [
-            "2026-03-17",
-            149.34
-          ],
-          [
-            "2026-03-18",
-            147.01
-          ],
-          [
-            "2026-03-19",
-            147.14
-          ],
-          [
-            "2026-03-20",
-            141.57
-          ],
-          [
-            "2026-03-23",
-            142.29
-          ],
-          [
-            "2026-03-24",
-            143.32
-          ],
-          [
-            "2026-03-25",
-            143.45
-          ],
-          [
-            "2026-03-26",
-            144.39
-          ],
-          [
-            "2026-03-27",
-            144.47
-          ],
-          [
-            "2026-03-30",
-            146.06
-          ],
-          [
-            "2026-03-31",
-            146.22
-          ],
-          [
-            "2026-04-01",
-            147.12
-          ],
-          [
-            "2026-04-02",
-            148.04
-          ],
-          [
-            "2026-04-06",
-            147.67
-          ],
-          [
-            "2026-04-07",
-            148.27
-          ],
-          [
-            "2026-04-08",
-            148.78
-          ],
-          [
-            "2026-04-09",
-            150.98
-          ],
-          [
-            "2026-04-10",
-            149.68
-          ],
-          [
-            "2026-04-13",
-            147.51
-          ],
-          [
-            "2026-04-14",
-            147.74
-          ],
-          [
-            "2026-04-15",
-            146.75
-          ],
-          [
-            "2026-04-16",
-            146.97
-          ],
-          [
-            "2026-04-17",
-            146.98
-          ],
-          [
-            "2026-04-20",
-            145.87
-          ],
-          [
-            "2026-04-21",
-            143.47
-          ],
-          [
-            "2026-04-22",
-            143.57
-          ],
-          [
-            "2026-04-23",
-            147.4
-          ],
-          [
-            "2026-04-24",
-            146.88
-          ],
-          [
-            "2026-04-27",
-            146.5
-          ],
-          [
-            "2026-04-28",
-            148.58
-          ],
-          [
-            "2026-04-29",
-            147.03
-          ],
-          [
-            "2026-04-30",
-            151.69
-          ],
-          [
-            "2026-05-01",
-            148.79
-          ],
-          [
-            "2026-05-04",
-            146.73
-          ],
-          [
-            "2026-05-05",
-            143.5
-          ],
-          [
-            "2026-05-06",
-            142.44
-          ],
-          [
-            "2026-05-07",
-            142.0
-          ],
-          [
-            "2026-05-08",
-            140.6
-          ],
-          [
-            "2026-05-11",
-            142.43
-          ],
-          [
-            "2026-05-12",
-            142.58
-          ],
-          [
-            "2026-05-13",
-            142.0
-          ],
-          [
-            "2026-05-14",
-            143.8
-          ],
-          [
-            "2026-05-15",
-            139.78
-          ],
-          [
-            "2026-05-18",
-            141.35
-          ],
-          [
-            "2026-05-19",
-            143.15
-          ],
-          [
-            "2026-05-20",
-            142.77
-          ],
-          [
-            "2026-05-21",
-            143.75
-          ],
-          [
-            "2026-05-22",
-            145.3
-          ],
-          [
-            "2026-05-26",
-            144.62
-          ],
-          [
-            "2026-05-27",
-            145.27
-          ],
-          [
-            "2026-05-28",
-            143.38
-          ],
-          [
-            "2026-05-29",
-            142.87
-          ],
-          [
-            "2026-06-01",
-            139.83
-          ],
-          [
-            "2026-06-02",
-            142.65
-          ],
-          [
-            "2026-06-03",
-            141.81
-          ],
-          [
-            "2026-06-04",
-            142.73
-          ],
-          [
-            "2026-06-05",
-            145.77
-          ],
-          [
-            "2026-06-08",
-            143.11
-          ],
-          [
-            "2026-06-09",
-            145.95
-          ],
-          [
-            "2026-06-10",
-            146.07
-          ],
-          [
-            "2026-06-11",
-            145.79
-          ],
-          [
-            "2026-06-12",
-            147.42
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-12"
-      },
-      "is_fund": false
-    },
-    {
-      "rank": 12,
-      "ticker": "AVGO",
-      "name": "Broadcom",
-      "sec_name": "Broadcom Inc.",
-      "display_name": "Broadcom Inc.",
-      "name_match": "verified",
-      "mentions": 41,
-      "mentions_24h_ago": 48,
-      "mention_change_pct": -14.6,
-      "upvotes": 245,
-      "cik": "0001730168",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-06-11",
-        "days_ago": 2,
-        "fresh": true,
-        "desc": "8-K",
-        "summary": "Other material update",
-        "accession": "0001193125-26-266777",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526266777/d152717d8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526266777/0001193125-26-266777-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-06-11",
-          "days_ago": 2,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-266777",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526266777/0001193125-26-266777-index.htm",
-          "ai_summary": "Broadcom Inc. announced cash tender offers for certain of its debt securities on June 11, 2026."
-        },
-        {
-          "form": "S-4",
-          "date": "2026-06-09",
-          "days_ago": 4,
-          "fresh": true,
-          "desc": "S-4",
-          "summary": "M&A / exchange registration",
-          "accession": "0001193125-26-263128",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263128/0001193125-26-263128-index.htm",
-          "ai_summary": "Broadcom Inc. is offering to exchange its existing senior notes for new, freely tradable senior notes."
-        },
-        {
-          "form": "S-4",
-          "date": "2026-06-09",
-          "days_ago": 4,
-          "fresh": true,
-          "desc": "S-4",
-          "summary": "M&A / exchange registration",
-          "accession": "0001193125-26-263125",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526263125/0001193125-26-263125-index.htm",
-          "ai_summary": "Broadcom is offering to exchange existing notes for new, freely tradable notes to satisfy registration requirements."
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-06-09",
-          "days_ago": 4,
-          "fresh": true,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001730168-26-000054",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000054/0001730168-26-000054-index.htm",
-          "ai_summary": "Broadcom reported Q2 2026 revenue of $22.2 billion, net income of $9.3 billion, and cash + $19.6 billion, driven by higher product and subscription sales across all regions."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-03",
-          "days_ago": 10,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001730168-26-000051",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/0001730168-26-000051-index.htm",
-          "ai_summary": "Broadcom Inc. announced its Q2 2026 financial results and declared a quarterly cash dividend of $0.65 per share payable June 30, 2026."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-21",
-          "days_ago": 53,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001730168-26-000039",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000039/0001730168-26-000039-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-06",
-          "days_ago": 68,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-144028",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/0001193125-26-144028-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-02",
-          "days_ago": 72,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001193125-26-140574",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526140574/0001193125-26-140574-index.htm"
-        }
-      ],
-      "tickers": [
-        "AVGO"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 382.07,
-        "prev_close": 385.57,
-        "change_pct": -0.91,
-        "currency": "USD",
-        "spark": [
-          396.6,
-          392.16,
-          372.1,
-          385.57,
-          382.07
-        ],
-        "history": [
-          [
-            "2026-03-13",
-            322.16
-          ],
-          [
-            "2026-03-16",
-            324.92
-          ],
-          [
-            "2026-03-17",
-            321.31
-          ],
-          [
-            "2026-03-18",
-            315.93
-          ],
-          [
-            "2026-03-19",
-            319.84
-          ],
-          [
-            "2026-03-20",
-            310.51
-          ],
-          [
-            "2026-03-23",
-            322.51
-          ],
-          [
-            "2026-03-24",
-            318.29
-          ],
-          [
-            "2026-03-25",
-            318.81
-          ],
-          [
-            "2026-03-26",
-            309.42
-          ],
-          [
-            "2026-03-27",
-            300.68
-          ],
-          [
-            "2026-03-30",
-            293.41
-          ],
-          [
-            "2026-03-31",
-            309.51
-          ],
-          [
-            "2026-04-01",
-            313.49
-          ],
-          [
-            "2026-04-02",
-            314.55
-          ],
-          [
-            "2026-04-06",
-            314.43
-          ],
-          [
-            "2026-04-07",
-            333.97
-          ],
-          [
-            "2026-04-08",
-            350.63
-          ],
-          [
-            "2026-04-09",
-            354.91
-          ],
-          [
-            "2026-04-10",
-            371.55
-          ],
-          [
-            "2026-04-13",
-            379.75
-          ],
-          [
-            "2026-04-14",
-            380.78
-          ],
-          [
-            "2026-04-15",
-            396.72
-          ],
-          [
-            "2026-04-16",
-            398.47
-          ],
-          [
-            "2026-04-17",
-            406.54
-          ],
-          [
-            "2026-04-20",
-            399.63
-          ],
-          [
-            "2026-04-21",
-            402.17
-          ],
-          [
-            "2026-04-22",
-            422.65
-          ],
-          [
-            "2026-04-23",
-            419.94
-          ],
-          [
-            "2026-04-24",
-            422.76
-          ],
-          [
-            "2026-04-27",
-            418.2
-          ],
-          [
-            "2026-04-28",
-            399.83
-          ],
-          [
-            "2026-04-29",
-            405.45
-          ],
-          [
-            "2026-04-30",
-            417.43
-          ],
-          [
-            "2026-05-01",
-            421.28
-          ],
-          [
-            "2026-05-04",
-            416.5
-          ],
-          [
-            "2026-05-05",
-            427.36
-          ],
-          [
-            "2026-05-06",
-            425.44
-          ],
-          [
-            "2026-05-07",
-            412.56
-          ],
-          [
-            "2026-05-08",
-            430.0
-          ],
-          [
-            "2026-05-11",
-            428.43
-          ],
-          [
-            "2026-05-12",
-            419.3
-          ],
-          [
-            "2026-05-13",
-            416.79
-          ],
-          [
-            "2026-05-14",
-            439.79
-          ],
-          [
-            "2026-05-15",
-            425.19
-          ],
-          [
-            "2026-05-18",
-            420.71
-          ],
-          [
-            "2026-05-19",
-            411.07
-          ],
-          [
-            "2026-05-20",
-            417.76
-          ],
-          [
-            "2026-05-21",
-            414.57
-          ],
-          [
-            "2026-05-22",
-            414.14
-          ],
-          [
-            "2026-05-26",
-            422.01
-          ],
-          [
-            "2026-05-27",
-            421.86
-          ],
-          [
-            "2026-05-28",
-            426.58
-          ],
-          [
-            "2026-05-29",
-            446.77
-          ],
-          [
-            "2026-06-01",
-            459.97
-          ],
-          [
-            "2026-06-02",
-            481.57
-          ],
-          [
-            "2026-06-03",
-            479.23
-          ],
-          [
-            "2026-06-04",
-            418.91
-          ],
-          [
-            "2026-06-05",
-            385.73
-          ],
-          [
-            "2026-06-08",
-            396.6
-          ],
-          [
-            "2026-06-09",
-            392.16
-          ],
-          [
-            "2026-06-10",
-            372.1
-          ],
-          [
-            "2026-06-11",
-            385.57
-          ],
-          [
-            "2026-06-12",
-            382.07
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-12"
-      },
-      "is_fund": false
-    },
-    {
       "rank": 19,
       "ticker": "AMZN",
       "name": "Amazon",
       "sec_name": "AMAZON COM INC",
       "display_name": "Amazon Com Inc",
       "name_match": "verified",
-      "mentions": 20,
-      "mentions_24h_ago": 47,
-      "mention_change_pct": -57.4,
-      "upvotes": 13,
+      "mentions": 18,
+      "mentions_24h_ago": 53,
+      "mention_change_pct": -66.0,
+      "upvotes": 18,
       "cik": "0001018724",
       "filing": {
         "form": "8-K",
@@ -2138,16 +2138,371 @@
       "is_fund": false
     },
     {
-      "rank": 21,
+      "rank": 20,
+      "ticker": "RDDT",
+      "name": "Reddit",
+      "sec_name": "Reddit, Inc.",
+      "display_name": "Reddit, Inc.",
+      "name_match": "verified",
+      "mentions": 16,
+      "mentions_24h_ago": 66,
+      "mention_change_pct": -75.8,
+      "upvotes": 81,
+      "cik": "0001713445",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-10",
+        "days_ago": 3,
+        "fresh": true,
+        "desc": "8-K",
+        "summary": "Shareholder vote results",
+        "accession": "0001713445-26-000088",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000088/rddt-20260608.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000088/0001713445-26-000088-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-10",
+          "days_ago": 3,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001713445-26-000088",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000088/0001713445-26-000088-index.htm",
+          "ai_summary": "Reddit's stockholders elected directors, ratified KPMG as auditor, and approved executive compensation at their June 8, 2026 meeting."
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-01",
+          "days_ago": 43,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001713445-26-000069",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 44,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001713445-26-000067",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000067/0001713445-26-000067-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-23",
+          "days_ago": 51,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001713445-26-000061",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000061/0001713445-26-000061-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-23",
+          "days_ago": 51,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001713445-26-000060",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000060/0001713445-26-000060-index.htm"
+        }
+      ],
+      "tickers": [
+        "RDDT"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 162.1,
+        "prev_close": 173.26,
+        "change_pct": -6.44,
+        "currency": "USD",
+        "spark": [
+          171.13,
+          178.11,
+          172.21,
+          173.26,
+          162.1
+        ],
+        "history": [
+          [
+            "2026-03-13",
+            132.36
+          ],
+          [
+            "2026-03-16",
+            140.0
+          ],
+          [
+            "2026-03-17",
+            144.33
+          ],
+          [
+            "2026-03-18",
+            142.79
+          ],
+          [
+            "2026-03-19",
+            138.12
+          ],
+          [
+            "2026-03-20",
+            139.85
+          ],
+          [
+            "2026-03-23",
+            140.96
+          ],
+          [
+            "2026-03-24",
+            136.12
+          ],
+          [
+            "2026-03-25",
+            139.63
+          ],
+          [
+            "2026-03-26",
+            127.26
+          ],
+          [
+            "2026-03-27",
+            121.84
+          ],
+          [
+            "2026-03-30",
+            124.13
+          ],
+          [
+            "2026-03-31",
+            134.65
+          ],
+          [
+            "2026-04-01",
+            136.18
+          ],
+          [
+            "2026-04-02",
+            136.0
+          ],
+          [
+            "2026-04-06",
+            138.34
+          ],
+          [
+            "2026-04-07",
+            141.14
+          ],
+          [
+            "2026-04-08",
+            145.0
+          ],
+          [
+            "2026-04-09",
+            138.38
+          ],
+          [
+            "2026-04-10",
+            139.73
+          ],
+          [
+            "2026-04-13",
+            149.35
+          ],
+          [
+            "2026-04-14",
+            154.54
+          ],
+          [
+            "2026-04-15",
+            158.48
+          ],
+          [
+            "2026-04-16",
+            162.45
+          ],
+          [
+            "2026-04-17",
+            163.8
+          ],
+          [
+            "2026-04-20",
+            166.28
+          ],
+          [
+            "2026-04-21",
+            156.82
+          ],
+          [
+            "2026-04-22",
+            164.31
+          ],
+          [
+            "2026-04-23",
+            152.96
+          ],
+          [
+            "2026-04-24",
+            154.89
+          ],
+          [
+            "2026-04-27",
+            160.21
+          ],
+          [
+            "2026-04-28",
+            147.93
+          ],
+          [
+            "2026-04-29",
+            147.75
+          ],
+          [
+            "2026-04-30",
+            147.23
+          ],
+          [
+            "2026-05-01",
+            166.48
+          ],
+          [
+            "2026-05-04",
+            169.07
+          ],
+          [
+            "2026-05-05",
+            171.63
+          ],
+          [
+            "2026-05-06",
+            166.56
+          ],
+          [
+            "2026-05-07",
+            163.95
+          ],
+          [
+            "2026-05-08",
+            155.8
+          ],
+          [
+            "2026-05-11",
+            159.51
+          ],
+          [
+            "2026-05-12",
+            152.35
+          ],
+          [
+            "2026-05-13",
+            154.12
+          ],
+          [
+            "2026-05-14",
+            156.31
+          ],
+          [
+            "2026-05-15",
+            158.17
+          ],
+          [
+            "2026-05-18",
+            159.11
+          ],
+          [
+            "2026-05-19",
+            154.88
+          ],
+          [
+            "2026-05-20",
+            146.72
+          ],
+          [
+            "2026-05-21",
+            150.04
+          ],
+          [
+            "2026-05-22",
+            141.67
+          ],
+          [
+            "2026-05-26",
+            144.64
+          ],
+          [
+            "2026-05-27",
+            154.19
+          ],
+          [
+            "2026-05-28",
+            167.69
+          ],
+          [
+            "2026-05-29",
+            176.0
+          ],
+          [
+            "2026-06-01",
+            177.85
+          ],
+          [
+            "2026-06-02",
+            169.13
+          ],
+          [
+            "2026-06-03",
+            169.49
+          ],
+          [
+            "2026-06-04",
+            183.91
+          ],
+          [
+            "2026-06-05",
+            173.45
+          ],
+          [
+            "2026-06-08",
+            171.13
+          ],
+          [
+            "2026-06-09",
+            178.11
+          ],
+          [
+            "2026-06-10",
+            172.21
+          ],
+          [
+            "2026-06-11",
+            173.26
+          ],
+          [
+            "2026-06-12",
+            162.1
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-12"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 22,
       "ticker": "ADBE",
       "name": "Adobe",
       "sec_name": "ADOBE INC.",
       "display_name": "Adobe Inc.",
       "name_match": "verified",
-      "mentions": 17,
-      "mentions_24h_ago": 227,
-      "mention_change_pct": -92.5,
-      "upvotes": 44,
+      "mentions": 14,
+      "mentions_24h_ago": 95,
+      "mention_change_pct": -85.3,
+      "upvotes": 37,
       "cik": "0000796343",
       "filing": {
         "form": "8-K",
@@ -2483,16 +2838,16 @@
       "is_fund": false
     },
     {
-      "rank": 22,
+      "rank": 24,
       "ticker": "PLTR",
       "name": "Palantir",
       "sec_name": "Palantir Technologies Inc.",
       "display_name": "Palantir Technologies Inc.",
       "name_match": "verified",
-      "mentions": 17,
-      "mentions_24h_ago": 19,
-      "mention_change_pct": -10.5,
-      "upvotes": 50,
+      "mentions": 14,
+      "mentions_24h_ago": 22,
+      "mention_change_pct": -36.4,
+      "upvotes": 46,
       "cik": "0001321655",
       "filing": {
         "form": "8-K",
@@ -2844,10 +3199,10 @@
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 14,
-      "mentions_24h_ago": 40,
-      "mention_change_pct": -65.0,
-      "upvotes": 45,
+      "mentions": 24,
+      "mentions_24h_ago": 62,
+      "mention_change_pct": -61.3,
+      "upvotes": 89,
       "cik": "0001652044",
       "filing": {
         "form": "8-K",
@@ -3119,7 +3474,8 @@
         }
       ],
       "tickers": [
-        "GOOG"
+        "GOOG",
+        "GOOGL"
       ],
       "quote_type": "EQUITY",
       "price": {
@@ -3398,7 +3754,7 @@
       "is_fund": false
     },
     {
-      "rank": 29,
+      "rank": 27,
       "ticker": "YOU",
       "name": "CLEAR Secure",
       "sec_name": "Clear Secure, Inc.",
@@ -3407,7 +3763,7 @@
       "mentions": 13,
       "mentions_24h_ago": 42,
       "mention_change_pct": -69.0,
-      "upvotes": 30,
+      "upvotes": 33,
       "cik": "0001856314",
       "filing": {
         "form": "8-K",
@@ -3773,353 +4129,418 @@
       "is_fund": false
     },
     {
-      "rank": 30,
-      "ticker": "RDDT",
-      "name": "Reddit",
-      "sec_name": "Reddit, Inc.",
-      "display_name": "Reddit, Inc.",
+      "rank": 28,
+      "ticker": "MRVL",
+      "name": "Marvell Technology Group",
+      "sec_name": "Marvell Technology, Inc.",
+      "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
-      "mentions": 13,
-      "mentions_24h_ago": 59,
-      "mention_change_pct": -78.0,
-      "upvotes": 58,
-      "cik": "0001713445",
+      "mentions": 11,
+      "mentions_24h_ago": 41,
+      "mention_change_pct": -73.2,
+      "upvotes": 23,
+      "cik": "0001835632",
       "filing": {
-        "form": "8-K",
-        "date": "2026-06-10",
-        "days_ago": 3,
+        "form": "DEFA14A",
+        "date": "2026-06-11",
+        "days_ago": 2,
         "fresh": true,
-        "desc": "8-K",
-        "summary": "Shareholder vote results",
-        "accession": "0001713445-26-000088",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000088/rddt-20260608.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000088/0001713445-26-000088-index.htm"
+        "desc": "DEFA14A",
+        "summary": "Proxy materials (additional)",
+        "accession": "0001193125-26-267699",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526267699/d107557ddefa14a.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526267699/0001193125-26-267699-index.htm"
       },
       "filings": [
         {
+          "form": "DEFA14A",
+          "date": "2026-06-11",
+          "days_ago": 2,
+          "fresh": true,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001193125-26-267699",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526267699/0001193125-26-267699-index.htm",
+          "ai_summary": "Marvell Technology's proxy supplement removes Daniel Durn as a director nominee due to his new CFO role."
+        },
+        {
           "form": "8-K",
-          "date": "2026-06-10",
-          "days_ago": 3,
+          "date": "2026-06-11",
+          "days_ago": 2,
           "fresh": true,
           "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001713445-26-000088",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000088/0001713445-26-000088-index.htm",
-          "ai_summary": "Reddit's stockholders elected directors, ratified KPMG as auditor, and approved executive compensation at their June 8, 2026 meeting."
+          "summary": "Executive / board change; Other material update",
+          "accession": "0001193125-26-267688",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526267688/0001193125-26-267688-index.htm",
+          "ai_summary": "Marvell Technology's CFO resigned, and Daniel Durn was appointed as the new CFO with a significant compensation package."
         },
         {
           "form": "10-Q",
-          "date": "2026-05-01",
-          "days_ago": 43,
+          "date": "2026-05-28",
+          "days_ago": 16,
           "fresh": false,
-          "desc": "10-Q",
+          "desc": "FORM 10-Q",
           "summary": "Quarterly report",
-          "accession": "0001713445-26-000069",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000069/0001713445-26-000069-index.htm"
+          "accession": "0001835632-26-000019",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/0001835632-26-000019-index.htm",
+          "ai_summary": "Marvell Technology, Inc. reported net income of $34.5 million for the quarter ended May 2, 2026, driven by increased net revenue and recent acquisitions."
         },
         {
           "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 44,
+          "date": "2026-05-27",
+          "days_ago": 17,
           "fresh": false,
-          "desc": "8-K",
+          "desc": "FORM 8-K",
           "summary": "Earnings released",
-          "accession": "0001713445-26-000067",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000067/0001713445-26-000067-index.htm"
+          "accession": "0001835632-26-000014",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000014/0001835632-26-000014-index.htm",
+          "ai_summary": "Marvell Technology, Inc. filed an 8-K to report its first quarter fiscal year 2027 financial results and announce a conference call."
         },
         {
           "form": "DEFA14A",
-          "date": "2026-04-23",
-          "days_ago": 51,
+          "date": "2026-05-13",
+          "days_ago": 31,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
-          "accession": "0001713445-26-000061",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000061/0001713445-26-000061-index.htm"
+          "accession": "0001104659-26-060262",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000110465926060262/0001104659-26-060262-index.htm",
+          "ai_summary": "Marvell Technology, Inc. filed additional proxy materials to inform shareholders about their upcoming 2026 annual meeting and how to vote on proposals."
         },
         {
           "form": "DEF 14A",
-          "date": "2026-04-23",
-          "days_ago": 51,
+          "date": "2026-05-13",
+          "days_ago": 31,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
-          "accession": "0001713445-26-000060",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000060/0001713445-26-000060-index.htm"
+          "accession": "0001104659-26-060253",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000110465926060253/0001104659-26-060253-index.htm",
+          "ai_summary": "This SEC DEF 14A filing is a definitive proxy statement from Marvell Technology, Inc. for its annual stockholder meeting on June 25, 2026, to elect directors, approve executive compensation, ratify auditors, and vote on a stockholder proposal."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-15",
+          "days_ago": 59,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; Other material update",
+          "accession": "0001193125-26-157134",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526157134/0001193125-26-157134-index.htm"
+        },
+        {
+          "form": "424B5",
+          "date": "2026-04-06",
+          "days_ago": 68,
+          "fresh": false,
+          "desc": "424B5",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001193125-26-142958",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526142958/0001193125-26-142958-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-31",
+          "days_ago": 74,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Unregistered share sale; Bylaw / charter change; Other material update",
+          "accession": "0001193125-26-134462",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526134462/0001193125-26-134462-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-19",
+          "days_ago": 86,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001628280-26-019851",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000162828026019851/0001628280-26-019851-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-19",
+          "days_ago": 86,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001193125-26-115987",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526115987/0001193125-26-115987-index.htm"
         }
       ],
       "tickers": [
-        "RDDT"
+        "MRVL"
       ],
       "quote_type": "EQUITY",
       "price": {
-        "last": 162.1,
-        "prev_close": 173.26,
-        "change_pct": -6.44,
+        "last": 279.7,
+        "prev_close": 280.71,
+        "change_pct": -0.36,
         "currency": "USD",
         "spark": [
-          171.13,
-          178.11,
-          172.21,
-          173.26,
-          162.1
+          288.85,
+          266.88,
+          252.59,
+          280.71,
+          279.7
         ],
         "history": [
           [
             "2026-03-13",
-            132.36
+            87.86
           ],
           [
             "2026-03-16",
-            140.0
+            91.58
           ],
           [
             "2026-03-17",
-            144.33
+            90.79
           ],
           [
             "2026-03-18",
-            142.79
+            87.62
           ],
           [
             "2026-03-19",
-            138.12
+            89.53
           ],
           [
             "2026-03-20",
-            139.85
+            87.91
           ],
           [
             "2026-03-23",
-            140.96
+            90.16
           ],
           [
             "2026-03-24",
-            136.12
+            92.36
           ],
           [
             "2026-03-25",
-            139.63
+            98.45
           ],
           [
             "2026-03-26",
-            127.26
+            97.68
           ],
           [
             "2026-03-27",
-            121.84
+            94.88
           ],
           [
             "2026-03-30",
-            124.13
+            87.81
           ],
           [
             "2026-03-31",
-            134.65
+            99.05
           ],
           [
             "2026-04-01",
-            136.18
+            106.71
           ],
           [
             "2026-04-02",
-            136.0
+            107.11
           ],
           [
             "2026-04-06",
-            138.34
+            109.51
           ],
           [
             "2026-04-07",
-            141.14
+            109.38
           ],
           [
             "2026-04-08",
-            145.0
+            114.45
           ],
           [
             "2026-04-09",
-            138.38
+            119.93
           ],
           [
             "2026-04-10",
-            139.73
+            128.49
           ],
           [
             "2026-04-13",
-            149.35
+            131.3
           ],
           [
             "2026-04-14",
-            154.54
+            133.83
           ],
           [
             "2026-04-15",
-            158.48
+            134.6
           ],
           [
             "2026-04-16",
-            162.45
+            133.37
           ],
           [
             "2026-04-17",
-            163.8
+            139.69
           ],
           [
             "2026-04-20",
-            166.28
+            147.84
           ],
           [
             "2026-04-21",
-            156.82
+            151.31
           ],
           [
             "2026-04-22",
-            164.31
+            157.32
           ],
           [
             "2026-04-23",
-            152.96
+            165.56
           ],
           [
             "2026-04-24",
-            154.89
+            164.31
           ],
           [
             "2026-04-27",
-            160.21
+            158.21
           ],
           [
             "2026-04-28",
-            147.93
+            153.23
           ],
           [
             "2026-04-29",
-            147.75
+            156.57
           ],
           [
             "2026-04-30",
-            147.23
+            165.15
           ],
           [
             "2026-05-01",
-            166.48
+            164.95
           ],
           [
             "2026-05-04",
-            169.07
+            163.66
           ],
           [
             "2026-05-05",
-            171.63
+            168.75
           ],
           [
             "2026-05-06",
-            166.56
+            172.15
           ],
           [
             "2026-05-07",
-            163.95
+            160.01
           ],
           [
             "2026-05-08",
-            155.8
+            170.13
           ],
           [
             "2026-05-11",
-            159.51
+            170.84
           ],
           [
             "2026-05-12",
-            152.35
+            164.5
           ],
           [
             "2026-05-13",
-            154.12
+            177.95
           ],
           [
             "2026-05-14",
-            156.31
+            182.58
           ],
           [
             "2026-05-15",
-            158.17
+            176.89
           ],
           [
             "2026-05-18",
-            159.11
+            168.93
           ],
           [
             "2026-05-19",
-            154.88
+            176.27
           ],
           [
             "2026-05-20",
-            146.72
+            186.8
           ],
           [
             "2026-05-21",
-            150.04
+            190.69
           ],
           [
             "2026-05-22",
-            141.67
+            196.33
           ],
           [
             "2026-05-26",
-            144.64
+            208.26
           ],
           [
             "2026-05-27",
-            154.19
+            198.7
           ],
           [
             "2026-05-28",
-            167.69
+            204.83
           ],
           [
             "2026-05-29",
-            176.0
+            205.0
           ],
           [
             "2026-06-01",
-            177.85
+            219.43
           ],
           [
             "2026-06-02",
-            169.13
+            290.79
           ],
           [
             "2026-06-03",
-            169.49
+            301.65
           ],
           [
             "2026-06-04",
-            183.91
+            316.43
           ],
           [
             "2026-06-05",
-            173.45
+            263.47
           ],
           [
             "2026-06-08",
-            171.13
+            288.85
           ],
           [
             "2026-06-09",
-            178.11
+            266.88
           ],
           [
             "2026-06-10",
-            172.21
+            252.59
           ],
           [
             "2026-06-11",
-            173.26
+            280.71
           ],
           [
             "2026-06-12",
-            162.1
+            279.7
           ]
         ],
         "source": "yahoo",
@@ -4134,10 +4555,10 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 122,
-      "mentions_24h_ago": 590,
-      "mention_change_pct": -79.3,
-      "upvotes": 1425,
+      "mentions": 91,
+      "mentions_24h_ago": 587,
+      "mention_change_pct": -84.5,
+      "upvotes": 1582,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
@@ -4427,10 +4848,10 @@
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 106,
-      "mentions_24h_ago": 399,
-      "mention_change_pct": -73.4,
-      "upvotes": 772,
+      "mentions": 88,
+      "mentions_24h_ago": 417,
+      "mention_change_pct": -78.9,
+      "upvotes": 743,
       "cik": "0000789019",
       "filing": {
         "form": "8-K",
@@ -4767,16 +5188,16 @@
       "is_fund": false
     },
     {
-      "rank": 5,
+      "rank": 4,
       "ticker": "TSLA",
       "name": "Tesla",
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 65,
-      "mentions_24h_ago": 199,
-      "mention_change_pct": -67.3,
-      "upvotes": 535,
+      "mentions": 55,
+      "mentions_24h_ago": 216,
+      "mention_change_pct": -74.5,
+      "upvotes": 531,
       "cik": "0001318605",
       "filing": {
         "form": "10-K/A",
@@ -5117,10 +5538,10 @@
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 59,
-      "mentions_24h_ago": 199,
-      "mention_change_pct": -70.4,
-      "upvotes": 228,
+      "mentions": 50,
+      "mentions_24h_ago": 202,
+      "mention_change_pct": -75.2,
+      "upvotes": 224,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
@@ -5414,16 +5835,16 @@
       "is_fund": true
     },
     {
-      "rank": 9,
+      "rank": 8,
       "ticker": "NVDA",
       "name": "NVIDIA",
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 53,
-      "mentions_24h_ago": 118,
-      "mention_change_pct": -55.1,
-      "upvotes": 276,
+      "mentions": 46,
+      "mentions_24h_ago": 130,
+      "mention_change_pct": -64.6,
+      "upvotes": 250,
       "cik": "0001045810",
       "filing": {
         "form": "10-Q",
@@ -5788,10 +6209,10 @@
       "sec_name": "AST SpaceMobile, Inc.",
       "display_name": "AST SpaceMobile, Inc.",
       "name_match": "verified",
-      "mentions": 48,
-      "mentions_24h_ago": 222,
-      "mention_change_pct": -78.4,
-      "upvotes": 227,
+      "mentions": 42,
+      "mentions_24h_ago": 224,
+      "mention_change_pct": -81.2,
+      "upvotes": 217,
       "cik": "0001780312",
       "filing": {
         "form": "10-Q",
@@ -6139,15 +6560,305 @@
     },
     {
       "rank": 11,
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "sec_name": null,
+      "display_name": "Vanguard S&P 500 ETF",
+      "name_match": "no_cik",
+      "mentions": 38,
+      "mentions_24h_ago": 58,
+      "mention_change_pct": -34.5,
+      "upvotes": 57,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "quote_type": "ETF",
+      "price": {
+        "last": 681.95,
+        "prev_close": 678.23,
+        "change_pct": 0.55,
+        "currency": "USD",
+        "spark": [
+          679.68,
+          677.7,
+          667.05,
+          678.23,
+          681.95
+        ],
+        "history": [
+          [
+            "2026-03-13",
+            609.09
+          ],
+          [
+            "2026-03-16",
+            615.19
+          ],
+          [
+            "2026-03-17",
+            616.89
+          ],
+          [
+            "2026-03-18",
+            608.38
+          ],
+          [
+            "2026-03-19",
+            606.75
+          ],
+          [
+            "2026-03-20",
+            597.94
+          ],
+          [
+            "2026-03-23",
+            604.43
+          ],
+          [
+            "2026-03-24",
+            602.38
+          ],
+          [
+            "2026-03-25",
+            605.66
+          ],
+          [
+            "2026-03-26",
+            594.92
+          ],
+          [
+            "2026-03-27",
+            582.96
+          ],
+          [
+            "2026-03-30",
+            580.93
+          ],
+          [
+            "2026-03-31",
+            597.55
+          ],
+          [
+            "2026-04-01",
+            602.3
+          ],
+          [
+            "2026-04-02",
+            602.99
+          ],
+          [
+            "2026-04-06",
+            605.67
+          ],
+          [
+            "2026-04-07",
+            606.04
+          ],
+          [
+            "2026-04-08",
+            621.34
+          ],
+          [
+            "2026-04-09",
+            625.02
+          ],
+          [
+            "2026-04-10",
+            624.6
+          ],
+          [
+            "2026-04-13",
+            630.72
+          ],
+          [
+            "2026-04-14",
+            638.35
+          ],
+          [
+            "2026-04-15",
+            643.45
+          ],
+          [
+            "2026-04-16",
+            644.86
+          ],
+          [
+            "2026-04-17",
+            652.78
+          ],
+          [
+            "2026-04-20",
+            651.54
+          ],
+          [
+            "2026-04-21",
+            647.25
+          ],
+          [
+            "2026-04-22",
+            653.9
+          ],
+          [
+            "2026-04-23",
+            651.26
+          ],
+          [
+            "2026-04-24",
+            656.42
+          ],
+          [
+            "2026-04-27",
+            657.5
+          ],
+          [
+            "2026-04-28",
+            654.26
+          ],
+          [
+            "2026-04-29",
+            654.24
+          ],
+          [
+            "2026-04-30",
+            660.58
+          ],
+          [
+            "2026-05-01",
+            662.52
+          ],
+          [
+            "2026-05-04",
+            660.12
+          ],
+          [
+            "2026-05-05",
+            665.3
+          ],
+          [
+            "2026-05-06",
+            674.66
+          ],
+          [
+            "2026-05-07",
+            672.54
+          ],
+          [
+            "2026-05-08",
+            678.04
+          ],
+          [
+            "2026-05-11",
+            679.52
+          ],
+          [
+            "2026-05-12",
+            678.67
+          ],
+          [
+            "2026-05-13",
+            682.41
+          ],
+          [
+            "2026-05-14",
+            687.73
+          ],
+          [
+            "2026-05-15",
+            679.44
+          ],
+          [
+            "2026-05-18",
+            678.91
+          ],
+          [
+            "2026-05-19",
+            674.59
+          ],
+          [
+            "2026-05-20",
+            681.57
+          ],
+          [
+            "2026-05-21",
+            682.84
+          ],
+          [
+            "2026-05-22",
+            685.55
+          ],
+          [
+            "2026-05-26",
+            690.01
+          ],
+          [
+            "2026-05-27",
+            689.96
+          ],
+          [
+            "2026-05-28",
+            693.91
+          ],
+          [
+            "2026-05-29",
+            695.49
+          ],
+          [
+            "2026-06-01",
+            697.3
+          ],
+          [
+            "2026-06-02",
+            698.26
+          ],
+          [
+            "2026-06-03",
+            693.36
+          ],
+          [
+            "2026-06-04",
+            696.06
+          ],
+          [
+            "2026-06-05",
+            678.0
+          ],
+          [
+            "2026-06-08",
+            679.68
+          ],
+          [
+            "2026-06-09",
+            677.7
+          ],
+          [
+            "2026-06-10",
+            667.05
+          ],
+          [
+            "2026-06-11",
+            678.23
+          ],
+          [
+            "2026-06-12",
+            681.95
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-12"
+      },
+      "is_fund": true
+    },
+    {
+      "rank": 13,
       "ticker": "RKLB",
       "name": "Rocket Lab USA",
       "sec_name": "Rocket Lab Corp",
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
-      "mentions": 44,
-      "mentions_24h_ago": 261,
-      "mention_change_pct": -83.1,
-      "upvotes": 960,
+      "mentions": 36,
+      "mentions_24h_ago": 268,
+      "mention_change_pct": -86.6,
+      "upvotes": 953,
       "cik": "0001819994",
       "filing": {
         "form": "8-K",
@@ -6597,306 +7308,16 @@
       "is_fund": false
     },
     {
-      "rank": 13,
-      "ticker": "VOO",
-      "name": "Vanguard S&P 500 ETF",
-      "sec_name": null,
-      "display_name": "Vanguard S&P 500 ETF",
-      "name_match": "no_cik",
-      "mentions": 40,
-      "mentions_24h_ago": 55,
-      "mention_change_pct": -27.3,
-      "upvotes": 70,
-      "cik": null,
-      "filing": null,
-      "filings": [],
-      "quote_type": "ETF",
-      "price": {
-        "last": 681.95,
-        "prev_close": 678.23,
-        "change_pct": 0.55,
-        "currency": "USD",
-        "spark": [
-          679.68,
-          677.7,
-          667.05,
-          678.23,
-          681.95
-        ],
-        "history": [
-          [
-            "2026-03-13",
-            609.09
-          ],
-          [
-            "2026-03-16",
-            615.19
-          ],
-          [
-            "2026-03-17",
-            616.89
-          ],
-          [
-            "2026-03-18",
-            608.38
-          ],
-          [
-            "2026-03-19",
-            606.75
-          ],
-          [
-            "2026-03-20",
-            597.94
-          ],
-          [
-            "2026-03-23",
-            604.43
-          ],
-          [
-            "2026-03-24",
-            602.38
-          ],
-          [
-            "2026-03-25",
-            605.66
-          ],
-          [
-            "2026-03-26",
-            594.92
-          ],
-          [
-            "2026-03-27",
-            582.96
-          ],
-          [
-            "2026-03-30",
-            580.93
-          ],
-          [
-            "2026-03-31",
-            597.55
-          ],
-          [
-            "2026-04-01",
-            602.3
-          ],
-          [
-            "2026-04-02",
-            602.99
-          ],
-          [
-            "2026-04-06",
-            605.67
-          ],
-          [
-            "2026-04-07",
-            606.04
-          ],
-          [
-            "2026-04-08",
-            621.34
-          ],
-          [
-            "2026-04-09",
-            625.02
-          ],
-          [
-            "2026-04-10",
-            624.6
-          ],
-          [
-            "2026-04-13",
-            630.72
-          ],
-          [
-            "2026-04-14",
-            638.35
-          ],
-          [
-            "2026-04-15",
-            643.45
-          ],
-          [
-            "2026-04-16",
-            644.86
-          ],
-          [
-            "2026-04-17",
-            652.78
-          ],
-          [
-            "2026-04-20",
-            651.54
-          ],
-          [
-            "2026-04-21",
-            647.25
-          ],
-          [
-            "2026-04-22",
-            653.9
-          ],
-          [
-            "2026-04-23",
-            651.26
-          ],
-          [
-            "2026-04-24",
-            656.42
-          ],
-          [
-            "2026-04-27",
-            657.5
-          ],
-          [
-            "2026-04-28",
-            654.26
-          ],
-          [
-            "2026-04-29",
-            654.24
-          ],
-          [
-            "2026-04-30",
-            660.58
-          ],
-          [
-            "2026-05-01",
-            662.52
-          ],
-          [
-            "2026-05-04",
-            660.12
-          ],
-          [
-            "2026-05-05",
-            665.3
-          ],
-          [
-            "2026-05-06",
-            674.66
-          ],
-          [
-            "2026-05-07",
-            672.54
-          ],
-          [
-            "2026-05-08",
-            678.04
-          ],
-          [
-            "2026-05-11",
-            679.52
-          ],
-          [
-            "2026-05-12",
-            678.67
-          ],
-          [
-            "2026-05-13",
-            682.41
-          ],
-          [
-            "2026-05-14",
-            687.73
-          ],
-          [
-            "2026-05-15",
-            679.44
-          ],
-          [
-            "2026-05-18",
-            678.91
-          ],
-          [
-            "2026-05-19",
-            674.59
-          ],
-          [
-            "2026-05-20",
-            681.57
-          ],
-          [
-            "2026-05-21",
-            682.84
-          ],
-          [
-            "2026-05-22",
-            685.55
-          ],
-          [
-            "2026-05-26",
-            690.01
-          ],
-          [
-            "2026-05-27",
-            689.96
-          ],
-          [
-            "2026-05-28",
-            693.91
-          ],
-          [
-            "2026-05-29",
-            695.49
-          ],
-          [
-            "2026-06-01",
-            697.3
-          ],
-          [
-            "2026-06-02",
-            698.26
-          ],
-          [
-            "2026-06-03",
-            693.36
-          ],
-          [
-            "2026-06-04",
-            696.06
-          ],
-          [
-            "2026-06-05",
-            678.0
-          ],
-          [
-            "2026-06-08",
-            679.68
-          ],
-          [
-            "2026-06-09",
-            677.7
-          ],
-          [
-            "2026-06-10",
-            667.05
-          ],
-          [
-            "2026-06-11",
-            678.23
-          ],
-          [
-            "2026-06-12",
-            681.95
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-12"
-      },
-      "is_fund": true
-    },
-    {
       "rank": 14,
       "ticker": "SNDK",
       "name": "Sandisk",
       "sec_name": "Sandisk Corp",
       "display_name": "Sandisk Corp",
       "name_match": "verified",
-      "mentions": 37,
-      "mentions_24h_ago": 191,
-      "mention_change_pct": -80.6,
-      "upvotes": 91,
+      "mentions": 33,
+      "mentions_24h_ago": 188,
+      "mention_change_pct": -82.4,
+      "upvotes": 76,
       "cik": "0002023554",
       "filing": {
         "form": "8-K",
@@ -7237,10 +7658,10 @@
       "sec_name": "ADVANCED MICRO DEVICES INC",
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 55,
-      "mention_change_pct": -34.5,
-      "upvotes": 84,
+      "mentions": 29,
+      "mentions_24h_ago": 57,
+      "mention_change_pct": -49.1,
+      "upvotes": 80,
       "cik": "0000002488",
       "filing": {
         "form": "8-K",
@@ -7587,359 +8008,15 @@
     },
     {
       "rank": 16,
-      "ticker": "IBKR",
-      "name": "Interactive Brokers",
-      "sec_name": "Interactive Brokers Group, Inc.",
-      "display_name": "Interactive Brokers Group, Inc.",
-      "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 25,
-      "mention_change_pct": 16.0,
-      "upvotes": 61,
-      "cik": "0001381197",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-05-07",
-        "days_ago": 37,
-        "fresh": false,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001381197-26-000093",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000093/ibkr-20260331.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000093/0001381197-26-000093-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-05-07",
-          "days_ago": 37,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001381197-26-000093",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000093/0001381197-26-000093-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-29",
-          "days_ago": 45,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001381197-26-000085",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000085/0001381197-26-000085-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-21",
-          "days_ago": 53,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001381197-26-000078",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000078/0001381197-26-000078-index.htm"
-        },
-        {
-          "form": "10-K/A",
-          "date": "2026-03-31",
-          "days_ago": 74,
-          "fresh": false,
-          "desc": "10-K/A",
-          "summary": "Annual report (amended)",
-          "accession": "0001381197-26-000072",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000072/0001381197-26-000072-index.htm"
-        }
-      ],
-      "tickers": [
-        "IBKR"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 90.81,
-        "prev_close": 88.83,
-        "change_pct": 2.23,
-        "currency": "USD",
-        "spark": [
-          87.35,
-          86.33,
-          85.42,
-          88.83,
-          90.81
-        ],
-        "history": [
-          [
-            "2026-03-13",
-            66.19
-          ],
-          [
-            "2026-03-16",
-            68.28
-          ],
-          [
-            "2026-03-17",
-            68.63
-          ],
-          [
-            "2026-03-18",
-            68.45
-          ],
-          [
-            "2026-03-19",
-            67.69
-          ],
-          [
-            "2026-03-20",
-            65.47
-          ],
-          [
-            "2026-03-23",
-            67.84
-          ],
-          [
-            "2026-03-24",
-            66.12
-          ],
-          [
-            "2026-03-25",
-            68.68
-          ],
-          [
-            "2026-03-26",
-            66.2
-          ],
-          [
-            "2026-03-27",
-            64.2
-          ],
-          [
-            "2026-03-30",
-            63.69
-          ],
-          [
-            "2026-03-31",
-            67.07
-          ],
-          [
-            "2026-04-01",
-            67.91
-          ],
-          [
-            "2026-04-02",
-            67.74
-          ],
-          [
-            "2026-04-06",
-            68.62
-          ],
-          [
-            "2026-04-07",
-            68.11
-          ],
-          [
-            "2026-04-08",
-            72.31
-          ],
-          [
-            "2026-04-09",
-            71.93
-          ],
-          [
-            "2026-04-10",
-            71.21
-          ],
-          [
-            "2026-04-13",
-            74.55
-          ],
-          [
-            "2026-04-14",
-            77.1
-          ],
-          [
-            "2026-04-15",
-            79.69
-          ],
-          [
-            "2026-04-16",
-            79.38
-          ],
-          [
-            "2026-04-17",
-            81.71
-          ],
-          [
-            "2026-04-20",
-            81.25
-          ],
-          [
-            "2026-04-21",
-            79.62
-          ],
-          [
-            "2026-04-22",
-            78.11
-          ],
-          [
-            "2026-04-23",
-            75.9
-          ],
-          [
-            "2026-04-24",
-            76.62
-          ],
-          [
-            "2026-04-27",
-            77.59
-          ],
-          [
-            "2026-04-28",
-            77.49
-          ],
-          [
-            "2026-04-29",
-            77.05
-          ],
-          [
-            "2026-04-30",
-            79.5
-          ],
-          [
-            "2026-05-01",
-            80.46
-          ],
-          [
-            "2026-05-04",
-            81.72
-          ],
-          [
-            "2026-05-05",
-            83.91
-          ],
-          [
-            "2026-05-06",
-            87.04
-          ],
-          [
-            "2026-05-07",
-            83.71
-          ],
-          [
-            "2026-05-08",
-            84.42
-          ],
-          [
-            "2026-05-11",
-            84.91
-          ],
-          [
-            "2026-05-12",
-            84.59
-          ],
-          [
-            "2026-05-13",
-            85.12
-          ],
-          [
-            "2026-05-14",
-            88.28
-          ],
-          [
-            "2026-05-15",
-            87.0
-          ],
-          [
-            "2026-05-18",
-            86.12
-          ],
-          [
-            "2026-05-19",
-            83.45
-          ],
-          [
-            "2026-05-20",
-            83.79
-          ],
-          [
-            "2026-05-21",
-            83.83
-          ],
-          [
-            "2026-05-22",
-            81.35
-          ],
-          [
-            "2026-05-26",
-            82.89
-          ],
-          [
-            "2026-05-27",
-            80.95
-          ],
-          [
-            "2026-05-28",
-            83.11
-          ],
-          [
-            "2026-05-29",
-            86.97
-          ],
-          [
-            "2026-06-01",
-            88.69
-          ],
-          [
-            "2026-06-02",
-            88.72
-          ],
-          [
-            "2026-06-03",
-            87.15
-          ],
-          [
-            "2026-06-04",
-            87.06
-          ],
-          [
-            "2026-06-05",
-            84.4
-          ],
-          [
-            "2026-06-08",
-            87.35
-          ],
-          [
-            "2026-06-09",
-            86.33
-          ],
-          [
-            "2026-06-10",
-            85.42
-          ],
-          [
-            "2026-06-11",
-            88.83
-          ],
-          [
-            "2026-06-12",
-            90.81
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-12"
-      },
-      "is_fund": false
-    },
-    {
-      "rank": 17,
       "ticker": "NBIS",
       "name": "Nebius Group",
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 24,
+      "mentions": 29,
       "mentions_24h_ago": 61,
-      "mention_change_pct": -60.7,
-      "upvotes": 88,
+      "mention_change_pct": -52.5,
+      "upvotes": 140,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -8316,16 +8393,360 @@
       "is_fund": false
     },
     {
+      "rank": 17,
+      "ticker": "IBKR",
+      "name": "Interactive Brokers",
+      "sec_name": "Interactive Brokers Group, Inc.",
+      "display_name": "Interactive Brokers Group, Inc.",
+      "name_match": "verified",
+      "mentions": 26,
+      "mentions_24h_ago": 29,
+      "mention_change_pct": -10.3,
+      "upvotes": 57,
+      "cik": "0001381197",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-07",
+        "days_ago": 37,
+        "fresh": false,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001381197-26-000093",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000093/ibkr-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000093/0001381197-26-000093-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-07",
+          "days_ago": 37,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001381197-26-000093",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000093/0001381197-26-000093-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-29",
+          "days_ago": 45,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001381197-26-000085",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000085/0001381197-26-000085-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-21",
+          "days_ago": 53,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001381197-26-000078",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000078/0001381197-26-000078-index.htm"
+        },
+        {
+          "form": "10-K/A",
+          "date": "2026-03-31",
+          "days_ago": 74,
+          "fresh": false,
+          "desc": "10-K/A",
+          "summary": "Annual report (amended)",
+          "accession": "0001381197-26-000072",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1381197/000138119726000072/0001381197-26-000072-index.htm"
+        }
+      ],
+      "tickers": [
+        "IBKR"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 90.81,
+        "prev_close": 88.83,
+        "change_pct": 2.23,
+        "currency": "USD",
+        "spark": [
+          87.35,
+          86.33,
+          85.42,
+          88.83,
+          90.81
+        ],
+        "history": [
+          [
+            "2026-03-13",
+            66.19
+          ],
+          [
+            "2026-03-16",
+            68.28
+          ],
+          [
+            "2026-03-17",
+            68.63
+          ],
+          [
+            "2026-03-18",
+            68.45
+          ],
+          [
+            "2026-03-19",
+            67.69
+          ],
+          [
+            "2026-03-20",
+            65.47
+          ],
+          [
+            "2026-03-23",
+            67.84
+          ],
+          [
+            "2026-03-24",
+            66.12
+          ],
+          [
+            "2026-03-25",
+            68.68
+          ],
+          [
+            "2026-03-26",
+            66.2
+          ],
+          [
+            "2026-03-27",
+            64.2
+          ],
+          [
+            "2026-03-30",
+            63.69
+          ],
+          [
+            "2026-03-31",
+            67.07
+          ],
+          [
+            "2026-04-01",
+            67.91
+          ],
+          [
+            "2026-04-02",
+            67.74
+          ],
+          [
+            "2026-04-06",
+            68.62
+          ],
+          [
+            "2026-04-07",
+            68.11
+          ],
+          [
+            "2026-04-08",
+            72.31
+          ],
+          [
+            "2026-04-09",
+            71.93
+          ],
+          [
+            "2026-04-10",
+            71.21
+          ],
+          [
+            "2026-04-13",
+            74.55
+          ],
+          [
+            "2026-04-14",
+            77.1
+          ],
+          [
+            "2026-04-15",
+            79.69
+          ],
+          [
+            "2026-04-16",
+            79.38
+          ],
+          [
+            "2026-04-17",
+            81.71
+          ],
+          [
+            "2026-04-20",
+            81.25
+          ],
+          [
+            "2026-04-21",
+            79.62
+          ],
+          [
+            "2026-04-22",
+            78.11
+          ],
+          [
+            "2026-04-23",
+            75.9
+          ],
+          [
+            "2026-04-24",
+            76.62
+          ],
+          [
+            "2026-04-27",
+            77.59
+          ],
+          [
+            "2026-04-28",
+            77.49
+          ],
+          [
+            "2026-04-29",
+            77.05
+          ],
+          [
+            "2026-04-30",
+            79.5
+          ],
+          [
+            "2026-05-01",
+            80.46
+          ],
+          [
+            "2026-05-04",
+            81.72
+          ],
+          [
+            "2026-05-05",
+            83.91
+          ],
+          [
+            "2026-05-06",
+            87.04
+          ],
+          [
+            "2026-05-07",
+            83.71
+          ],
+          [
+            "2026-05-08",
+            84.42
+          ],
+          [
+            "2026-05-11",
+            84.91
+          ],
+          [
+            "2026-05-12",
+            84.59
+          ],
+          [
+            "2026-05-13",
+            85.12
+          ],
+          [
+            "2026-05-14",
+            88.28
+          ],
+          [
+            "2026-05-15",
+            87.0
+          ],
+          [
+            "2026-05-18",
+            86.12
+          ],
+          [
+            "2026-05-19",
+            83.45
+          ],
+          [
+            "2026-05-20",
+            83.79
+          ],
+          [
+            "2026-05-21",
+            83.83
+          ],
+          [
+            "2026-05-22",
+            81.35
+          ],
+          [
+            "2026-05-26",
+            82.89
+          ],
+          [
+            "2026-05-27",
+            80.95
+          ],
+          [
+            "2026-05-28",
+            83.11
+          ],
+          [
+            "2026-05-29",
+            86.97
+          ],
+          [
+            "2026-06-01",
+            88.69
+          ],
+          [
+            "2026-06-02",
+            88.72
+          ],
+          [
+            "2026-06-03",
+            87.15
+          ],
+          [
+            "2026-06-04",
+            87.06
+          ],
+          [
+            "2026-06-05",
+            84.4
+          ],
+          [
+            "2026-06-08",
+            87.35
+          ],
+          [
+            "2026-06-09",
+            86.33
+          ],
+          [
+            "2026-06-10",
+            85.42
+          ],
+          [
+            "2026-06-11",
+            88.83
+          ],
+          [
+            "2026-06-12",
+            90.81
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-12"
+      },
+      "is_fund": false
+    },
+    {
       "rank": 18,
       "ticker": "META",
       "name": "Meta Platforms (Facebook)",
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 22,
-      "mentions_24h_ago": 83,
-      "mention_change_pct": -73.5,
-      "upvotes": 153,
+      "mentions": 19,
+      "mentions_24h_ago": 88,
+      "mention_change_pct": -78.4,
+      "upvotes": 166,
       "cik": "0001326801",
       "filing": {
         "form": "8-K",
@@ -8691,16 +9112,16 @@
       "is_fund": false
     },
     {
-      "rank": 20,
+      "rank": 21,
       "ticker": "VTI",
       "name": "Vanguard Total Stock Market ETF",
       "sec_name": null,
       "display_name": "Vanguard Total Stock Market ETF",
       "name_match": "no_cik",
-      "mentions": 18,
-      "mentions_24h_ago": 36,
-      "mention_change_pct": -50.0,
-      "upvotes": 38,
+      "mentions": 15,
+      "mentions_24h_ago": 37,
+      "mention_change_pct": -59.5,
+      "upvotes": 23,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -8982,703 +9403,15 @@
     },
     {
       "rank": 23,
-      "ticker": "LFVN",
-      "name": "Lifevantage",
-      "sec_name": "Lifevantage Corp",
-      "display_name": "Lifevantage Corp",
-      "name_match": "verified",
-      "mentions": 16,
-      "mentions_24h_ago": 35,
-      "mention_change_pct": -54.3,
-      "upvotes": 226,
-      "cik": "0000849146",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-06",
-        "days_ago": 38,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Earnings released",
-        "accession": "0001193125-26-208934",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/lfvn-20260506.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-06",
-          "days_ago": 38,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001193125-26-208934",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208934/0001193125-26-208934-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-06",
-          "days_ago": 38,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-208922",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526208922/0001193125-26-208922-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-16",
-          "days_ago": 58,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001193125-26-159324",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/849146/000119312526159324/0001193125-26-159324-index.htm"
-        }
-      ],
-      "tickers": [
-        "LFVN"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 9.05,
-        "prev_close": 9.49,
-        "change_pct": -4.64,
-        "currency": "USD",
-        "spark": [
-          10.7,
-          9.5,
-          9.48,
-          9.49,
-          9.05
-        ],
-        "history": [
-          [
-            "2026-03-13",
-            5.19
-          ],
-          [
-            "2026-03-16",
-            5.15
-          ],
-          [
-            "2026-03-17",
-            4.77
-          ],
-          [
-            "2026-03-18",
-            4.65
-          ],
-          [
-            "2026-03-19",
-            4.73
-          ],
-          [
-            "2026-03-20",
-            4.67
-          ],
-          [
-            "2026-03-23",
-            4.54
-          ],
-          [
-            "2026-03-24",
-            4.33
-          ],
-          [
-            "2026-03-25",
-            4.29
-          ],
-          [
-            "2026-03-26",
-            4.29
-          ],
-          [
-            "2026-03-27",
-            4.3
-          ],
-          [
-            "2026-03-30",
-            4.4
-          ],
-          [
-            "2026-03-31",
-            4.32
-          ],
-          [
-            "2026-04-01",
-            4.2
-          ],
-          [
-            "2026-04-02",
-            4.25
-          ],
-          [
-            "2026-04-06",
-            4.18
-          ],
-          [
-            "2026-04-07",
-            4.04
-          ],
-          [
-            "2026-04-08",
-            4.07
-          ],
-          [
-            "2026-04-09",
-            4.02
-          ],
-          [
-            "2026-04-10",
-            4.15
-          ],
-          [
-            "2026-04-13",
-            4.17
-          ],
-          [
-            "2026-04-14",
-            4.14
-          ],
-          [
-            "2026-04-15",
-            4.35
-          ],
-          [
-            "2026-04-16",
-            4.57
-          ],
-          [
-            "2026-04-17",
-            4.78
-          ],
-          [
-            "2026-04-20",
-            5.13
-          ],
-          [
-            "2026-04-21",
-            4.91
-          ],
-          [
-            "2026-04-22",
-            4.9
-          ],
-          [
-            "2026-04-23",
-            4.96
-          ],
-          [
-            "2026-04-24",
-            5.08
-          ],
-          [
-            "2026-04-27",
-            5.51
-          ],
-          [
-            "2026-04-28",
-            5.19
-          ],
-          [
-            "2026-04-29",
-            5.05
-          ],
-          [
-            "2026-04-30",
-            5.05
-          ],
-          [
-            "2026-05-01",
-            5.43
-          ],
-          [
-            "2026-05-04",
-            5.13
-          ],
-          [
-            "2026-05-05",
-            5.49
-          ],
-          [
-            "2026-05-06",
-            6.0
-          ],
-          [
-            "2026-05-07",
-            5.02
-          ],
-          [
-            "2026-05-08",
-            5.34
-          ],
-          [
-            "2026-05-11",
-            5.14
-          ],
-          [
-            "2026-05-12",
-            5.15
-          ],
-          [
-            "2026-05-13",
-            5.27
-          ],
-          [
-            "2026-05-14",
-            5.12
-          ],
-          [
-            "2026-05-15",
-            5.17
-          ],
-          [
-            "2026-05-18",
-            5.19
-          ],
-          [
-            "2026-05-19",
-            5.26
-          ],
-          [
-            "2026-05-20",
-            5.25
-          ],
-          [
-            "2026-05-21",
-            5.37
-          ],
-          [
-            "2026-05-22",
-            5.61
-          ],
-          [
-            "2026-05-26",
-            6.93
-          ],
-          [
-            "2026-05-27",
-            8.05
-          ],
-          [
-            "2026-05-28",
-            7.67
-          ],
-          [
-            "2026-05-29",
-            7.87
-          ],
-          [
-            "2026-06-01",
-            9.43
-          ],
-          [
-            "2026-06-02",
-            8.62
-          ],
-          [
-            "2026-06-03",
-            8.32
-          ],
-          [
-            "2026-06-04",
-            9.31
-          ],
-          [
-            "2026-06-05",
-            9.97
-          ],
-          [
-            "2026-06-08",
-            10.7
-          ],
-          [
-            "2026-06-09",
-            9.5
-          ],
-          [
-            "2026-06-10",
-            9.48
-          ],
-          [
-            "2026-06-11",
-            9.49
-          ],
-          [
-            "2026-06-12",
-            9.05
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-12"
-      },
-      "is_fund": false
-    },
-    {
-      "rank": 24,
-      "ticker": "ARM",
-      "name": "Arm Holdings",
-      "sec_name": "ARM HOLDINGS PLC /UK",
-      "display_name": "Arm Holdings Plc /Uk",
-      "name_match": "verified",
-      "mentions": 16,
-      "mentions_24h_ago": 17,
-      "mention_change_pct": -5.9,
-      "upvotes": 49,
-      "cik": "0001973239",
-      "filing": {
-        "form": "20-F",
-        "date": "2026-05-26",
-        "days_ago": 18,
-        "fresh": false,
-        "desc": "20-F",
-        "summary": "Annual report (foreign)",
-        "accession": "0001973239-26-000097",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm"
-      },
-      "filings": [
-        {
-          "form": "20-F",
-          "date": "2026-05-26",
-          "days_ago": 18,
-          "fresh": false,
-          "desc": "20-F",
-          "summary": "Annual report (foreign)",
-          "accession": "0001973239-26-000097",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm"
-        },
-        {
-          "form": "6-K",
-          "date": "2026-05-06",
-          "days_ago": 38,
-          "fresh": false,
-          "desc": "6-K",
-          "summary": "Foreign issuer update",
-          "accession": "0001973239-26-000062",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000062/0001973239-26-000062-index.htm"
-        },
-        {
-          "form": "6-K",
-          "date": "2026-04-21",
-          "days_ago": 53,
-          "fresh": false,
-          "desc": "6-K",
-          "summary": "Foreign issuer update",
-          "accession": "0001973239-26-000059",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000059/0001973239-26-000059-index.htm"
-        },
-        {
-          "form": "6-K",
-          "date": "2026-03-24",
-          "days_ago": 81,
-          "fresh": false,
-          "desc": "6-K",
-          "summary": "Foreign issuer update",
-          "accession": "0001973239-26-000052",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000052/0001973239-26-000052-index.htm"
-        },
-        {
-          "form": "6-K",
-          "date": "2026-03-24",
-          "days_ago": 81,
-          "fresh": false,
-          "desc": "6-K",
-          "summary": "Foreign issuer update",
-          "accession": "0001973239-26-000050",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000050/0001973239-26-000050-index.htm"
-        }
-      ],
-      "tickers": [
-        "ARM"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 380.81,
-        "prev_close": 342.23,
-        "change_pct": 11.27,
-        "currency": "USD",
-        "spark": [
-          346.39,
-          324.86,
-          307.43,
-          342.23,
-          380.81
-        ],
-        "history": [
-          [
-            "2026-03-13",
-            115.75
-          ],
-          [
-            "2026-03-16",
-            121.7
-          ],
-          [
-            "2026-03-17",
-            127.31
-          ],
-          [
-            "2026-03-18",
-            128.36
-          ],
-          [
-            "2026-03-19",
-            129.82
-          ],
-          [
-            "2026-03-20",
-            132.35
-          ],
-          [
-            "2026-03-23",
-            136.89
-          ],
-          [
-            "2026-03-24",
-            134.96
-          ],
-          [
-            "2026-03-25",
-            157.07
-          ],
-          [
-            "2026-03-26",
-            154.8
-          ],
-          [
-            "2026-03-27",
-            144.13
-          ],
-          [
-            "2026-03-30",
-            136.96
-          ],
-          [
-            "2026-03-31",
-            151.28
-          ],
-          [
-            "2026-04-01",
-            155.07
-          ],
-          [
-            "2026-04-02",
-            149.11
-          ],
-          [
-            "2026-04-06",
-            148.77
-          ],
-          [
-            "2026-04-07",
-            143.86
-          ],
-          [
-            "2026-04-08",
-            148.91
-          ],
-          [
-            "2026-04-09",
-            149.79
-          ],
-          [
-            "2026-04-10",
-            148.93
-          ],
-          [
-            "2026-04-13",
-            157.58
-          ],
-          [
-            "2026-04-14",
-            161.22
-          ],
-          [
-            "2026-04-15",
-            159.34
-          ],
-          [
-            "2026-04-16",
-            162.33
-          ],
-          [
-            "2026-04-17",
-            166.73
-          ],
-          [
-            "2026-04-20",
-            175.1
-          ],
-          [
-            "2026-04-21",
-            175.49
-          ],
-          [
-            "2026-04-22",
-            196.57
-          ],
-          [
-            "2026-04-23",
-            204.61
-          ],
-          [
-            "2026-04-24",
-            234.81
-          ],
-          [
-            "2026-04-27",
-            215.88
-          ],
-          [
-            "2026-04-28",
-            198.65
-          ],
-          [
-            "2026-04-29",
-            201.69
-          ],
-          [
-            "2026-04-30",
-            210.32
-          ],
-          [
-            "2026-05-01",
-            211.18
-          ],
-          [
-            "2026-05-04",
-            203.26
-          ],
-          [
-            "2026-05-05",
-            208.84
-          ],
-          [
-            "2026-05-06",
-            237.3
-          ],
-          [
-            "2026-05-07",
-            213.31
-          ],
-          [
-            "2026-05-08",
-            213.27
-          ],
-          [
-            "2026-05-11",
-            212.65
-          ],
-          [
-            "2026-05-12",
-            207.92
-          ],
-          [
-            "2026-05-13",
-            221.21
-          ],
-          [
-            "2026-05-14",
-            228.5
-          ],
-          [
-            "2026-05-15",
-            209.16
-          ],
-          [
-            "2026-05-18",
-            215.12
-          ],
-          [
-            "2026-05-19",
-            223.15
-          ],
-          [
-            "2026-05-20",
-            256.73
-          ],
-          [
-            "2026-05-21",
-            298.23
-          ],
-          [
-            "2026-05-22",
-            306.51
-          ],
-          [
-            "2026-05-26",
-            321.22
-          ],
-          [
-            "2026-05-27",
-            302.71
-          ],
-          [
-            "2026-05-28",
-            335.27
-          ],
-          [
-            "2026-05-29",
-            353.29
-          ],
-          [
-            "2026-06-01",
-            408.85
-          ],
-          [
-            "2026-06-02",
-            402.71
-          ],
-          [
-            "2026-06-03",
-            411.83
-          ],
-          [
-            "2026-06-04",
-            393.44
-          ],
-          [
-            "2026-06-05",
-            342.93
-          ],
-          [
-            "2026-06-08",
-            346.39
-          ],
-          [
-            "2026-06-09",
-            324.86
-          ],
-          [
-            "2026-06-10",
-            307.43
-          ],
-          [
-            "2026-06-11",
-            342.23
-          ],
-          [
-            "2026-06-12",
-            380.81
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-12"
-      },
-      "is_fund": false
-    },
-    {
-      "rank": 25,
       "ticker": "IT",
       "name": "Gartner",
       "sec_name": "GARTNER INC",
       "display_name": "Gartner Inc",
       "name_match": "verified",
-      "mentions": 15,
-      "mentions_24h_ago": 33,
-      "mention_change_pct": -54.5,
-      "upvotes": 58,
+      "mentions": 14,
+      "mentions_24h_ago": 35,
+      "mention_change_pct": -60.0,
+      "upvotes": 56,
       "cik": "0000749251",
       "filing": {
         "form": "8-K",
@@ -10024,7 +9757,7 @@
       "is_fund": false
     },
     {
-      "rank": 27,
+      "rank": 25,
       "ticker": "SOXX",
       "name": "BlackRock Institutional Trust Company N.A. - BTC iShares PHLX Semicond",
       "sec_name": null,
@@ -10033,7 +9766,7 @@
       "mentions": 14,
       "mentions_24h_ago": 7,
       "mention_change_pct": 100.0,
-      "upvotes": 151,
+      "upvotes": 155,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -10314,338 +10047,294 @@
       "is_fund": true
     },
     {
-      "rank": 28,
-      "ticker": "IQ",
-      "name": "iQIYI",
-      "sec_name": "iQIYI, Inc.",
-      "display_name": "iQIYI, Inc.",
-      "name_match": "verified",
-      "mentions": 13,
-      "mentions_24h_ago": 13,
-      "mention_change_pct": 0.0,
-      "upvotes": 22,
-      "cik": "0001722608",
-      "filing": {
-        "form": "6-K",
-        "date": "2026-05-18",
-        "days_ago": 26,
-        "fresh": false,
-        "desc": "FORM 6-K",
-        "summary": "Foreign issuer update",
-        "accession": "0001193125-26-228899",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1722608/000119312526228899/d150529d6k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1722608/000119312526228899/0001193125-26-228899-index.htm"
-      },
-      "filings": [
-        {
-          "form": "6-K",
-          "date": "2026-05-18",
-          "days_ago": 26,
-          "fresh": false,
-          "desc": "FORM 6-K",
-          "summary": "Foreign issuer update",
-          "accession": "0001193125-26-228899",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1722608/000119312526228899/0001193125-26-228899-index.htm"
-        },
-        {
-          "form": "6-K",
-          "date": "2026-03-30",
-          "days_ago": 75,
-          "fresh": false,
-          "desc": "FORM 6-K",
-          "summary": "Foreign issuer update",
-          "accession": "0001193125-26-131759",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1722608/000119312526131759/0001193125-26-131759-index.htm"
-        },
-        {
-          "form": "20-F",
-          "date": "2026-03-16",
-          "days_ago": 89,
-          "fresh": false,
-          "desc": "20-F",
-          "summary": "Annual report (foreign)",
-          "accession": "0001193125-26-107079",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1722608/000119312526107079/0001193125-26-107079-index.htm"
-        }
-      ],
-      "tickers": [
-        "IQ"
-      ],
-      "quote_type": "EQUITY",
+      "rank": 29,
+      "ticker": "SOXS",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
+      "sec_name": null,
+      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bear 3X Share",
+      "name_match": "no_cik",
+      "mentions": 11,
+      "mentions_24h_ago": 8,
+      "mention_change_pct": 37.5,
+      "upvotes": 87,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "quote_type": "ETF",
       "price": {
-        "last": 1.03,
-        "prev_close": 1.03,
-        "change_pct": 0.0,
+        "last": 4.72,
+        "prev_close": 4.97,
+        "change_pct": -5.03,
         "currency": "USD",
         "spark": [
-          1.05,
-          1.04,
-          1.03,
-          1.03,
-          1.03
+          5.69,
+          5.93,
+          6.57,
+          4.97,
+          4.72
         ],
         "history": [
           [
             "2026-03-13",
-            1.31
+            41.3
           ],
           [
             "2026-03-16",
-            1.29
+            38.86
           ],
           [
             "2026-03-17",
-            1.26
+            38.07
           ],
           [
             "2026-03-18",
-            1.24
+            38.7
           ],
           [
             "2026-03-19",
-            1.23
+            38.11
           ],
           [
             "2026-03-20",
-            1.23
+            40.66
           ],
           [
             "2026-03-23",
-            1.25
+            39.19
           ],
           [
             "2026-03-24",
-            1.23
+            37.46
           ],
           [
             "2026-03-25",
-            1.28
+            36.02
           ],
           [
             "2026-03-26",
-            1.24
+            41.18
           ],
           [
             "2026-03-27",
-            1.2
+            43.1
           ],
           [
             "2026-03-30",
-            1.27
+            48.74
           ],
           [
             "2026-03-31",
-            1.35
+            39.86
           ],
           [
             "2026-04-01",
-            1.38
+            36.26
           ],
           [
             "2026-04-02",
-            1.39
+            35.93
           ],
           [
             "2026-04-06",
-            1.33
+            34.55
           ],
           [
             "2026-04-07",
-            1.32
+            33.43
           ],
           [
             "2026-04-08",
-            1.33
+            26.96
           ],
           [
             "2026-04-09",
-            1.28
+            25.2
           ],
           [
             "2026-04-10",
-            1.25
+            23.69
           ],
           [
             "2026-04-13",
-            1.27
+            22.42
           ],
           [
             "2026-04-14",
-            1.41
+            21.05
           ],
           [
             "2026-04-15",
-            1.41
+            20.94
           ],
           [
             "2026-04-16",
-            1.4
+            20.28
           ],
           [
             "2026-04-17",
-            1.41
+            18.87
           ],
           [
             "2026-04-20",
-            1.4
+            18.63
           ],
           [
             "2026-04-21",
-            1.32
+            18.2
           ],
           [
             "2026-04-22",
-            1.25
+            16.8
           ],
           [
             "2026-04-23",
-            1.2
+            15.7
           ],
           [
             "2026-04-24",
-            1.17
+            13.52
           ],
           [
             "2026-04-27",
-            1.11
+            14.03
           ],
           [
             "2026-04-28",
-            1.11
+            15.59
           ],
           [
             "2026-04-29",
-            1.16
+            14.4
           ],
           [
             "2026-04-30",
-            1.18
+            13.3
           ],
           [
             "2026-05-01",
-            1.22
+            12.98
           ],
           [
             "2026-05-04",
-            1.25
+            13.26
           ],
           [
             "2026-05-05",
-            1.2
+            11.51
           ],
           [
             "2026-05-06",
-            1.23
+            9.81
           ],
           [
             "2026-05-07",
-            1.21
+            10.6
           ],
           [
             "2026-05-08",
-            1.2
+            8.85
           ],
           [
             "2026-05-11",
-            1.17
+            8.2
           ],
           [
             "2026-05-12",
-            1.15
+            8.95
           ],
           [
             "2026-05-13",
-            1.18
+            8.35
           ],
           [
             "2026-05-14",
-            1.18
+            8.27
           ],
           [
             "2026-05-15",
-            1.16
+            9.23
           ],
           [
             "2026-05-18",
-            1.13
+            9.95
           ],
           [
             "2026-05-19",
-            1.11
+            9.93
           ],
           [
             "2026-05-20",
-            1.1
+            8.54
           ],
           [
             "2026-05-21",
-            1.1
+            8.29
           ],
           [
             "2026-05-22",
-            1.09
+            7.73
           ],
           [
             "2026-05-26",
-            1.1
+            6.29
           ],
           [
             "2026-05-27",
-            1.06
+            6.53
           ],
           [
             "2026-05-28",
-            1.13
+            6.31
           ],
           [
             "2026-05-29",
-            1.14
+            6.33
           ],
           [
             "2026-06-01",
-            1.17
+            6.26
           ],
           [
             "2026-06-02",
-            1.13
+            5.17
           ],
           [
             "2026-06-03",
-            1.08
+            4.91
           ],
           [
             "2026-06-04",
-            1.08
+            5.2
           ],
           [
             "2026-06-05",
-            1.05
+            6.84
           ],
           [
             "2026-06-08",
-            1.05
+            5.69
           ],
           [
             "2026-06-09",
-            1.04
+            5.93
           ],
           [
             "2026-06-10",
-            1.03
+            6.57
           ],
           [
             "2026-06-11",
-            1.03
+            4.97
           ],
           [
             "2026-06-12",
-            1.03
+            4.72
           ]
         ],
         "source": "yahoo",
         "as_of": "2026-06-12"
       },
-      "is_fund": false
+      "is_fund": true
     }
   ]
 }
