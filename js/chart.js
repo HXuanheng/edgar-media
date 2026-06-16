@@ -56,7 +56,7 @@ function unpackHist(h) {
     if (Array.isArray(h)) return h;
     if (h && typeof h.t === "string" && typeof h.c === "string") {
         const d = h.t.split(","), c = h.c.split(",");
-        return d.map((dd, i) => [dd, Number(c[i])]).filter((p) => dd != null);
+        return d.map((dd, i) => [dd, Number(c[i])]).filter(([dd]) => dd != null);
     }
     return [];
 }
@@ -70,23 +70,39 @@ function buildChartBody(full, it, spanDays) {
     if (hist.length < 2) hist = full.slice(-2);              // span shorter than data gap
 
     const t0 = ms(hist[0][0]), t1 = ms(hist[hist.length - 1][0]);
-    const tSpan = (t1 - t0) || 1;
+    const n = hist.length, iSpan = (n - 1) || 1, plotW = W - PAD_L - PAD_R;
     const closes = hist.map((h) => h[1]);
     const realLo = Math.min(...closes), realHi = Math.max(...closes);
     const padV = (realHi - realLo) * 0.06 || realHi * 0.01 || 1;   // breathing room
     const lo = realLo - padV, hi = realHi + padV;
     const vSpan = (hi - lo) || 1;
-    const X = (t) => PAD_L + ((t - t0) / tSpan) * (W - PAD_L - PAD_R);
+    // Index-based x: trading days sit at EQUAL spacing so weekends/holidays (no
+    // row) leave no gap — a calendar-time axis flat-lined across them and read as
+    // "skipped days". idxOf maps any date (incl. a filing on a non-trading day)
+    // to a fractional row index by interpolating in calendar time between the two
+    // surrounding rows, so markers stay aligned to the line.
+    const X = (i) => PAD_L + (i / iSpan) * plotW;
     const Y = (v) => PLOT_TOP + (1 - (v - lo) / vSpan) * (PLOT_BOT - PLOT_TOP);
+    const idxOf = (date) => {
+        const t = ms(date);
+        if (Number.isNaN(t) || t < t0 || t > t1) return null;     // off-chart
+        let j = 0;
+        while (j < n && ms(hist[j][0]) < t) j++;
+        if (j >= n) return n - 1;
+        const tHi = ms(hist[j][0]);
+        if (tHi === t || j === 0) return j;                       // on a row
+        const tLo = ms(hist[j - 1][0]);
+        return (j - 1) + (t - tLo) / ((tHi - tLo) || 1);          // between rows
+    };
 
     // Price line. Coloured by the direction over THIS window (first vs last close)
     // so the line's colour always matches the shape on screen.
     const upWin = closes[closes.length - 1] >= closes[0];
     const dirCls = upWin ? "pc-up" : "pc-down";
-    const pts = hist.map(([d, c]) => `${X(ms(d)).toFixed(1)},${Y(c).toFixed(1)}`)
+    const pts = hist.map(([, c], i) => `${X(i).toFixed(1)},${Y(c).toFixed(1)}`)
         .join(" ");
     const lastC = closes[closes.length - 1];
-    const lx = X(t1), ly = Y(lastC);
+    const lx = X(n - 1), ly = Y(lastC);
     const lastLbl = Number(lastC).toLocaleString(undefined, {
         minimumFractionDigits: 2, maximumFractionDigits: 2,
     });
@@ -112,7 +128,9 @@ function buildChartBody(full, it, spanDays) {
         byDate.get(f.date).push(f);
     }
     const marks = [...byDate.entries()].map(([date, fs]) => {
-        const x = X(ms(date)).toFixed(1);
+        const fi = idxOf(date);
+        if (fi == null) return "";                           // off-chart -> no marker
+        const x = X(fi).toFixed(1);
         const lead = fs[0];                                  // newest that day -> click target
         // Most material form that day tints the line; dots stack importance-first.
         const ranked = [...fs].sort((a, b) => rankOf(a.form) - rankOf(b.form));
@@ -130,7 +148,7 @@ function buildChartBody(full, it, spanDays) {
             + `<line class="pc-fmark-line" x1="${x}" y1="${MARK_TOP}" x2="${x}"`
             + ` y2="${PLOT_BOT}" stroke="${col}"/>`
             + dots + `</g>`;
-    }).join("");
+    }).filter(Boolean).join("");
 
     // Legend: one chip per form type present, ordered most-important first.
     const seen = new Set();
