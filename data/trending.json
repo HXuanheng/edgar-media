@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-06-16T22:10:34Z",
+  "updated_utc": "2026-06-17T00:15:38Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "filings": "SEC EDGAR submissions API (real-time)",
@@ -7,7 +7,7 @@
   },
   "fresh_days": 7,
   "window_days": 90,
-  "count": 29,
+  "count": 30,
   "items": [
     {
       "rank": 1,
@@ -16,15 +16,15 @@
       "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
       "display_name": "Space Exploration Technologies Corp",
       "name_match": "verified",
-      "mentions": 1936,
-      "mentions_24h_ago": 539,
-      "mention_change_pct": 259.2,
-      "upvotes": 22336,
+      "mentions": 1901,
+      "mentions_24h_ago": 663,
+      "mention_change_pct": 186.7,
+      "upvotes": 22439,
       "cik": "0001181412",
       "filing": {
         "form": "8-K",
         "date": "2026-06-16",
-        "days_ago": 0,
+        "days_ago": 1,
         "fresh": true,
         "desc": "8-K",
         "summary": "Material agreement signed; Unregistered share sale",
@@ -36,7 +36,7 @@
         {
           "form": "8-K",
           "date": "2026-06-16",
-          "days_ago": 0,
+          "days_ago": 1,
           "fresh": true,
           "desc": "8-K",
           "summary": "Material agreement signed; Unregistered share sale",
@@ -47,7 +47,7 @@
         {
           "form": "8-K",
           "date": "2026-06-15",
-          "days_ago": 1,
+          "days_ago": 2,
           "fresh": true,
           "desc": "8-K",
           "summary": "Unregistered share sale; Executive / board change; Bylaw / charter change; Other material update",
@@ -58,7 +58,7 @@
         {
           "form": "424B4",
           "date": "2026-06-12",
-          "days_ago": 4,
+          "days_ago": 5,
           "fresh": true,
           "desc": "424B4",
           "summary": "IPO pricing prospectus",
@@ -69,7 +69,7 @@
         {
           "form": "S-1/A",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "S-1/A",
           "summary": "IPO registration (amended)",
@@ -80,7 +80,7 @@
         {
           "form": "S-1/A",
           "date": "2026-06-01",
-          "days_ago": 15,
+          "days_ago": 16,
           "fresh": false,
           "desc": "S-1/A",
           "summary": "IPO registration (amended)",
@@ -91,7 +91,7 @@
         {
           "form": "S-1",
           "date": "2026-05-20",
-          "days_ago": 27,
+          "days_ago": 28,
           "fresh": false,
           "desc": "S-1",
           "summary": "IPO / new securities",
@@ -133,376 +133,21 @@
       "is_fund": false
     },
     {
-      "rank": 3,
-      "ticker": "MU",
-      "name": "Micron Technology",
-      "sec_name": "MICRON TECHNOLOGY INC",
-      "display_name": "Micron Technology Inc",
-      "name_match": "verified",
-      "mentions": 393,
-      "mentions_24h_ago": 368,
-      "mention_change_pct": 6.8,
-      "upvotes": 1508,
-      "cik": "0000723125",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-06-09",
-        "days_ago": 7,
-        "fresh": true,
-        "desc": "FORM 8-K",
-        "summary": "Executive / board change",
-        "accession": "0001104659-26-071845",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/tm2617112d1_8k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/0001104659-26-071845-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-06-09",
-          "days_ago": 7,
-          "fresh": true,
-          "desc": "FORM 8-K",
-          "summary": "Executive / board change",
-          "accession": "0001104659-26-071845",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/0001104659-26-071845-index.htm",
-          "ai_summary": "Micron Technology appointed Alexis Black Björlin as an independent director and member of the Governance and Sustainability Committee."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-01",
-          "days_ago": 76,
-          "fresh": false,
-          "desc": "FORM 8-K",
-          "summary": "Other material update",
-          "accession": "0001104659-26-038249",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-25",
-          "days_ago": 83,
-          "fresh": false,
-          "desc": "FORM 8-K",
-          "summary": "Other material update",
-          "accession": "0001104659-26-034174",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926034174/0001104659-26-034174-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-03-19",
-          "days_ago": 89,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0000723125-26-000006",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/0000723125-26-000006-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-18",
-          "days_ago": 90,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000723125-26-000004",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000004/0000723125-26-000004-index.htm"
-        }
-      ],
-      "tickers": [
-        "MU"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 1020.76,
-        "prev_close": 1087.99,
-        "change_pct": -6.18,
-        "currency": "USD",
-        "spark": [
-          891.88,
-          995.87,
-          981.61,
-          1087.99,
-          1020.76
-        ],
-        "history": [
-          [
-            "2026-03-17",
-            461.69
-          ],
-          [
-            "2026-03-18",
-            461.73
-          ],
-          [
-            "2026-03-19",
-            444.27
-          ],
-          [
-            "2026-03-20",
-            422.9
-          ],
-          [
-            "2026-03-23",
-            404.35
-          ],
-          [
-            "2026-03-24",
-            395.53
-          ],
-          [
-            "2026-03-25",
-            382.09
-          ],
-          [
-            "2026-03-26",
-            355.46
-          ],
-          [
-            "2026-03-27",
-            357.22
-          ],
-          [
-            "2026-03-30",
-            321.8
-          ],
-          [
-            "2026-03-31",
-            337.84
-          ],
-          [
-            "2026-04-01",
-            367.85
-          ],
-          [
-            "2026-04-02",
-            366.24
-          ],
-          [
-            "2026-04-06",
-            377.76
-          ],
-          [
-            "2026-04-07",
-            377.58
-          ],
-          [
-            "2026-04-08",
-            406.73
-          ],
-          [
-            "2026-04-09",
-            421.51
-          ],
-          [
-            "2026-04-10",
-            420.59
-          ],
-          [
-            "2026-04-13",
-            426.56
-          ],
-          [
-            "2026-04-14",
-            465.66
-          ],
-          [
-            "2026-04-15",
-            456.23
-          ],
-          [
-            "2026-04-16",
-            457.23
-          ],
-          [
-            "2026-04-17",
-            455.07
-          ],
-          [
-            "2026-04-20",
-            448.42
-          ],
-          [
-            "2026-04-21",
-            449.38
-          ],
-          [
-            "2026-04-22",
-            487.48
-          ],
-          [
-            "2026-04-23",
-            481.72
-          ],
-          [
-            "2026-04-24",
-            496.72
-          ],
-          [
-            "2026-04-27",
-            524.56
-          ],
-          [
-            "2026-04-28",
-            504.29
-          ],
-          [
-            "2026-04-29",
-            518.46
-          ],
-          [
-            "2026-04-30",
-            517.16
-          ],
-          [
-            "2026-05-01",
-            542.21
-          ],
-          [
-            "2026-05-04",
-            576.45
-          ],
-          [
-            "2026-05-05",
-            640.2
-          ],
-          [
-            "2026-05-06",
-            666.59
-          ],
-          [
-            "2026-05-07",
-            646.63
-          ],
-          [
-            "2026-05-08",
-            746.81
-          ],
-          [
-            "2026-05-11",
-            795.33
-          ],
-          [
-            "2026-05-12",
-            766.58
-          ],
-          [
-            "2026-05-13",
-            803.63
-          ],
-          [
-            "2026-05-14",
-            776.01
-          ],
-          [
-            "2026-05-15",
-            724.66
-          ],
-          [
-            "2026-05-18",
-            681.54
-          ],
-          [
-            "2026-05-19",
-            698.74
-          ],
-          [
-            "2026-05-20",
-            731.99
-          ],
-          [
-            "2026-05-21",
-            762.1
-          ],
-          [
-            "2026-05-22",
-            751.0
-          ],
-          [
-            "2026-05-26",
-            895.88
-          ],
-          [
-            "2026-05-27",
-            928.41
-          ],
-          [
-            "2026-05-28",
-            923.52
-          ],
-          [
-            "2026-05-29",
-            971.0
-          ],
-          [
-            "2026-06-01",
-            1035.5
-          ],
-          [
-            "2026-06-02",
-            1064.1
-          ],
-          [
-            "2026-06-03",
-            1079.57
-          ],
-          [
-            "2026-06-04",
-            996.0
-          ],
-          [
-            "2026-06-05",
-            864.01
-          ],
-          [
-            "2026-06-08",
-            949.28
-          ],
-          [
-            "2026-06-09",
-            935.89
-          ],
-          [
-            "2026-06-10",
-            891.88
-          ],
-          [
-            "2026-06-11",
-            995.87
-          ],
-          [
-            "2026-06-12",
-            981.61
-          ],
-          [
-            "2026-06-15",
-            1087.99
-          ],
-          [
-            "2026-06-16",
-            1020.76
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-16"
-      },
-      "is_fund": false
-    },
-    {
-      "rank": 6,
+      "rank": 5,
       "ticker": "NVDA",
       "name": "NVIDIA",
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 169,
-      "mentions_24h_ago": 143,
-      "mention_change_pct": 18.2,
-      "upvotes": 905,
+      "mentions": 172,
+      "mentions_24h_ago": 139,
+      "mention_change_pct": 23.7,
+      "upvotes": 964,
       "cik": "0001045810",
       "filing": {
         "form": "424B5",
         "date": "2026-06-15",
-        "days_ago": 1,
+        "days_ago": 2,
         "fresh": true,
         "desc": "424B5",
         "summary": "Shelf offering prospectus",
@@ -514,7 +159,7 @@
         {
           "form": "424B5",
           "date": "2026-06-15",
-          "days_ago": 1,
+          "days_ago": 2,
           "fresh": true,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -525,7 +170,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-20",
-          "days_ago": 27,
+          "days_ago": 28,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -536,7 +181,7 @@
         {
           "form": "8-K",
           "date": "2026-05-20",
-          "days_ago": 27,
+          "days_ago": 28,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -547,7 +192,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-05-12",
-          "days_ago": 35,
+          "days_ago": 36,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -558,7 +203,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-05-12",
-          "days_ago": 35,
+          "days_ago": 36,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -569,7 +214,7 @@
         {
           "form": "8-K",
           "date": "2026-05-08",
-          "days_ago": 39,
+          "days_ago": 40,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -579,7 +224,7 @@
         {
           "form": "8-K",
           "date": "2026-04-27",
-          "days_ago": 50,
+          "days_ago": 51,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -873,15 +518,15 @@
       "sec_name": "AST SpaceMobile, Inc.",
       "display_name": "AST SpaceMobile, Inc.",
       "name_match": "verified",
-      "mentions": 108,
-      "mentions_24h_ago": 63,
-      "mention_change_pct": 71.4,
-      "upvotes": 404,
+      "mentions": 109,
+      "mentions_24h_ago": 68,
+      "mention_change_pct": 60.3,
+      "upvotes": 403,
       "cik": "0001780312",
       "filing": {
         "form": "8-K",
         "date": "2026-06-15",
-        "days_ago": 1,
+        "days_ago": 2,
         "fresh": true,
         "desc": "8-K",
         "summary": "Shareholder vote results",
@@ -893,7 +538,7 @@
         {
           "form": "8-K",
           "date": "2026-06-15",
-          "days_ago": 1,
+          "days_ago": 2,
           "fresh": true,
           "desc": "8-K",
           "summary": "Shareholder vote results",
@@ -904,7 +549,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-11",
-          "days_ago": 36,
+          "days_ago": 37,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -915,7 +560,7 @@
         {
           "form": "8-K",
           "date": "2026-05-11",
-          "days_ago": 36,
+          "days_ago": 37,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released; Other material update",
@@ -926,7 +571,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-28",
-          "days_ago": 49,
+          "days_ago": 50,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -936,7 +581,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-28",
-          "days_ago": 49,
+          "days_ago": 50,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -946,7 +591,7 @@
         {
           "form": "8-K",
           "date": "2026-04-20",
-          "days_ago": 57,
+          "days_ago": 58,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -1234,409 +879,21 @@
       "is_fund": false
     },
     {
-      "rank": 11,
-      "ticker": "DTE",
-      "name": "DTE Energy",
-      "sec_name": "DTE ENERGY CO",
-      "display_name": "Dte Energy Co",
-      "name_match": "verified",
-      "mentions": 100,
-      "mentions_24h_ago": 79,
-      "mention_change_pct": 26.6,
-      "upvotes": 782,
-      "cik": "0000936340",
-      "filing": {
-        "form": "424B5",
-        "date": "2026-06-09",
-        "days_ago": 7,
-        "fresh": true,
-        "desc": "424B5",
-        "summary": "Shelf offering prospectus",
-        "accession": "0001193125-26-263051",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/d153009d424b5.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm"
-      },
-      "filings": [
-        {
-          "form": "424B5",
-          "date": "2026-06-09",
-          "days_ago": 7,
-          "fresh": true,
-          "desc": "424B5",
-          "summary": "Shelf offering prospectus",
-          "accession": "0001193125-26-263051",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm",
-          "ai_summary": "DTE Energy is issuing unsecured junior subordinated debentures maturing July 1 2058, paying a fixed rate until 2033 then resetting to 5‑year Treasury + spread (no lower than the initial rate), with optional interest deferrals up to 10 years and redemption rights at 100‑102% of principal."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-05",
-          "days_ago": 11,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0000936340-26-000122",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm",
-          "ai_summary": "DTE Energy will meet with investors on June 8, 2026, and is providing its slide presentation and 2026 operating earnings guidance."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-15",
-          "days_ago": 32,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0000936340-26-000119",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000119/0000936340-26-000119-index.htm",
-          "ai_summary": "DTE Energy will meet with investors May 17-19, 2026, and will discuss 2026 operating earnings guidance."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-12",
-          "days_ago": 35,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0000936340-26-000115",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000115/0000936340-26-000115-index.htm",
-          "ai_summary": "DTE Energy shareholders re-elected all directors, ratified PricewaterhouseCoopers LLP as auditors, and approved executive compensation at their May 7, 2026 annual meeting."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-01",
-          "days_ago": 46,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000936340-26-000083",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000083/0000936340-26-000083-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-04-30",
-          "days_ago": 47,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0000936340-26-000081",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000081/0000936340-26-000081-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 47,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0000936340-26-000079",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000079/0000936340-26-000079-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-03-23",
-          "days_ago": 85,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0000936340-26-000071",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000071/0000936340-26-000071-index.htm"
-        }
-      ],
-      "tickers": [
-        "DTE"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 148.85,
-        "prev_close": 148.04,
-        "change_pct": 0.55,
-        "currency": "USD",
-        "spark": [
-          146.07,
-          145.79,
-          147.42,
-          148.04,
-          148.85
-        ],
-        "history": [
-          [
-            "2026-03-17",
-            149.34
-          ],
-          [
-            "2026-03-18",
-            147.01
-          ],
-          [
-            "2026-03-19",
-            147.14
-          ],
-          [
-            "2026-03-20",
-            141.57
-          ],
-          [
-            "2026-03-23",
-            142.29
-          ],
-          [
-            "2026-03-24",
-            143.32
-          ],
-          [
-            "2026-03-25",
-            143.45
-          ],
-          [
-            "2026-03-26",
-            144.39
-          ],
-          [
-            "2026-03-27",
-            144.47
-          ],
-          [
-            "2026-03-30",
-            146.06
-          ],
-          [
-            "2026-03-31",
-            146.22
-          ],
-          [
-            "2026-04-01",
-            147.12
-          ],
-          [
-            "2026-04-02",
-            148.04
-          ],
-          [
-            "2026-04-06",
-            147.67
-          ],
-          [
-            "2026-04-07",
-            148.27
-          ],
-          [
-            "2026-04-08",
-            148.78
-          ],
-          [
-            "2026-04-09",
-            150.98
-          ],
-          [
-            "2026-04-10",
-            149.68
-          ],
-          [
-            "2026-04-13",
-            147.51
-          ],
-          [
-            "2026-04-14",
-            147.74
-          ],
-          [
-            "2026-04-15",
-            146.75
-          ],
-          [
-            "2026-04-16",
-            146.97
-          ],
-          [
-            "2026-04-17",
-            146.98
-          ],
-          [
-            "2026-04-20",
-            145.87
-          ],
-          [
-            "2026-04-21",
-            143.47
-          ],
-          [
-            "2026-04-22",
-            143.57
-          ],
-          [
-            "2026-04-23",
-            147.4
-          ],
-          [
-            "2026-04-24",
-            146.88
-          ],
-          [
-            "2026-04-27",
-            146.5
-          ],
-          [
-            "2026-04-28",
-            148.58
-          ],
-          [
-            "2026-04-29",
-            147.03
-          ],
-          [
-            "2026-04-30",
-            151.69
-          ],
-          [
-            "2026-05-01",
-            148.79
-          ],
-          [
-            "2026-05-04",
-            146.73
-          ],
-          [
-            "2026-05-05",
-            143.5
-          ],
-          [
-            "2026-05-06",
-            142.44
-          ],
-          [
-            "2026-05-07",
-            142.0
-          ],
-          [
-            "2026-05-08",
-            140.6
-          ],
-          [
-            "2026-05-11",
-            142.43
-          ],
-          [
-            "2026-05-12",
-            142.58
-          ],
-          [
-            "2026-05-13",
-            142.0
-          ],
-          [
-            "2026-05-14",
-            143.8
-          ],
-          [
-            "2026-05-15",
-            139.78
-          ],
-          [
-            "2026-05-18",
-            141.35
-          ],
-          [
-            "2026-05-19",
-            143.15
-          ],
-          [
-            "2026-05-20",
-            142.77
-          ],
-          [
-            "2026-05-21",
-            143.75
-          ],
-          [
-            "2026-05-22",
-            145.3
-          ],
-          [
-            "2026-05-26",
-            144.62
-          ],
-          [
-            "2026-05-27",
-            145.27
-          ],
-          [
-            "2026-05-28",
-            143.38
-          ],
-          [
-            "2026-05-29",
-            142.87
-          ],
-          [
-            "2026-06-01",
-            139.83
-          ],
-          [
-            "2026-06-02",
-            142.65
-          ],
-          [
-            "2026-06-03",
-            141.81
-          ],
-          [
-            "2026-06-04",
-            142.73
-          ],
-          [
-            "2026-06-05",
-            145.77
-          ],
-          [
-            "2026-06-08",
-            143.11
-          ],
-          [
-            "2026-06-09",
-            145.95
-          ],
-          [
-            "2026-06-10",
-            146.07
-          ],
-          [
-            "2026-06-11",
-            145.79
-          ],
-          [
-            "2026-06-12",
-            147.42
-          ],
-          [
-            "2026-06-15",
-            148.04
-          ],
-          [
-            "2026-06-16",
-            148.85
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-06-16"
-      },
-      "is_fund": false
-    },
-    {
-      "rank": 13,
+      "rank": 14,
       "ticker": "MRVL",
       "name": "Marvell Technology Group",
       "sec_name": "Marvell Technology, Inc.",
       "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
-      "mentions": 76,
-      "mentions_24h_ago": 89,
-      "mention_change_pct": -14.6,
-      "upvotes": 191,
+      "mentions": 72,
+      "mentions_24h_ago": 86,
+      "mention_change_pct": -16.3,
+      "upvotes": 181,
       "cik": "0001835632",
       "filing": {
         "form": "DEFA14A",
         "date": "2026-06-11",
-        "days_ago": 5,
+        "days_ago": 6,
         "fresh": true,
         "desc": "DEFA14A",
         "summary": "Proxy materials (additional)",
@@ -1648,7 +905,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-06-11",
-          "days_ago": 5,
+          "days_ago": 6,
           "fresh": true,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -1659,7 +916,7 @@
         {
           "form": "8-K",
           "date": "2026-06-11",
-          "days_ago": 5,
+          "days_ago": 6,
           "fresh": true,
           "desc": "8-K",
           "summary": "Executive / board change; Other material update",
@@ -1670,7 +927,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-28",
-          "days_ago": 19,
+          "days_ago": 20,
           "fresh": false,
           "desc": "FORM 10-Q",
           "summary": "Quarterly report",
@@ -1681,7 +938,7 @@
         {
           "form": "8-K",
           "date": "2026-05-27",
-          "days_ago": 20,
+          "days_ago": 21,
           "fresh": false,
           "desc": "FORM 8-K",
           "summary": "Earnings released",
@@ -1692,7 +949,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-05-13",
-          "days_ago": 34,
+          "days_ago": 35,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -1703,7 +960,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-05-13",
-          "days_ago": 34,
+          "days_ago": 35,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -1714,7 +971,7 @@
         {
           "form": "8-K",
           "date": "2026-04-15",
-          "days_ago": 62,
+          "days_ago": 63,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed; Other material update",
@@ -1724,7 +981,7 @@
         {
           "form": "424B5",
           "date": "2026-04-06",
-          "days_ago": 71,
+          "days_ago": 72,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -1734,7 +991,7 @@
         {
           "form": "8-K",
           "date": "2026-03-31",
-          "days_ago": 77,
+          "days_ago": 78,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale; Bylaw / charter change; Other material update",
@@ -1744,7 +1001,7 @@
         {
           "form": "8-K",
           "date": "2026-03-19",
-          "days_ago": 89,
+          "days_ago": 90,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -1754,7 +1011,7 @@
         {
           "form": "8-K",
           "date": "2026-03-19",
-          "days_ago": 89,
+          "days_ago": 90,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -2042,21 +1299,21 @@
       "is_fund": false
     },
     {
-      "rank": 16,
+      "rank": 15,
       "ticker": "NBIS",
       "name": "Nebius Group",
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 64,
-      "mentions_24h_ago": 58,
-      "mention_change_pct": 10.3,
-      "upvotes": 238,
+      "mentions": 66,
+      "mentions_24h_ago": 56,
+      "mention_change_pct": 17.9,
+      "upvotes": 242,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
         "date": "2026-06-16",
-        "days_ago": 0,
+        "days_ago": 1,
         "fresh": true,
         "desc": "FORM 6-K",
         "summary": "Foreign issuer update",
@@ -2068,7 +1325,7 @@
         {
           "form": "6-K",
           "date": "2026-06-16",
-          "days_ago": 0,
+          "days_ago": 1,
           "fresh": true,
           "desc": "FORM 6-K",
           "summary": "Foreign issuer update",
@@ -2079,7 +1336,7 @@
         {
           "form": "6-K",
           "date": "2026-05-20",
-          "days_ago": 27,
+          "days_ago": 28,
           "fresh": false,
           "desc": "6-K",
           "summary": "Foreign issuer update",
@@ -2090,7 +1347,7 @@
         {
           "form": "6-K",
           "date": "2026-05-13",
-          "days_ago": 34,
+          "days_ago": 35,
           "fresh": false,
           "desc": "FORM 6-K",
           "summary": "Foreign issuer update",
@@ -2101,7 +1358,7 @@
         {
           "form": "6-K",
           "date": "2026-05-01",
-          "days_ago": 46,
+          "days_ago": 47,
           "fresh": false,
           "desc": "FORM 6-K",
           "summary": "Foreign issuer update",
@@ -2111,7 +1368,7 @@
         {
           "form": "20-F",
           "date": "2026-04-30",
-          "days_ago": 47,
+          "days_ago": 48,
           "fresh": false,
           "desc": "20-F",
           "summary": "Annual report (foreign)",
@@ -2121,22 +1378,12 @@
         {
           "form": "6-K",
           "date": "2026-03-20",
-          "days_ago": 88,
+          "days_ago": 89,
           "fresh": false,
           "desc": "FORM 6-K",
           "summary": "Foreign issuer update",
           "accession": "0001104659-26-032735",
           "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926032735/0001104659-26-032735-index.htm"
-        },
-        {
-          "form": "6-K",
-          "date": "2026-03-18",
-          "days_ago": 90,
-          "fresh": false,
-          "desc": "FORM 6-K",
-          "summary": "Foreign issuer update",
-          "accession": "0001104659-26-029863",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926029863/0001104659-26-029863-index.htm"
         }
       ],
       "tickers": [
@@ -2425,15 +1672,15 @@
       "sec_name": "WESTERN DIGITAL CORP",
       "display_name": "Western Digital Corp",
       "name_match": "verified",
-      "mentions": 60,
-      "mentions_24h_ago": 16,
-      "mention_change_pct": 275.0,
-      "upvotes": 179,
+      "mentions": 59,
+      "mentions_24h_ago": 17,
+      "mention_change_pct": 247.1,
+      "upvotes": 170,
       "cik": "0000106040",
       "filing": {
         "form": "8-K",
         "date": "2026-06-11",
-        "days_ago": 5,
+        "days_ago": 6,
         "fresh": true,
         "desc": "8-K",
         "summary": "Other material update",
@@ -2445,7 +1692,7 @@
         {
           "form": "8-K",
           "date": "2026-06-11",
-          "days_ago": 5,
+          "days_ago": 6,
           "fresh": true,
           "desc": "8-K",
           "summary": "Other material update",
@@ -2456,7 +1703,7 @@
         {
           "form": "8-K/A",
           "date": "2026-06-08",
-          "days_ago": 8,
+          "days_ago": 9,
           "fresh": false,
           "desc": "8-K/A",
           "summary": "Unregistered share sale",
@@ -2467,7 +1714,7 @@
         {
           "form": "8-K",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale; Other material update",
@@ -2477,7 +1724,7 @@
         {
           "form": "8-K",
           "date": "2026-05-28",
-          "days_ago": 19,
+          "days_ago": 20,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change; Other material update",
@@ -2487,7 +1734,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-01",
-          "days_ago": 46,
+          "days_ago": 47,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -2497,7 +1744,7 @@
         {
           "form": "8-K",
           "date": "2026-04-30",
-          "days_ago": 47,
+          "days_ago": 48,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -2791,15 +2038,15 @@
       "sec_name": "AMAZON COM INC",
       "display_name": "Amazon Com Inc",
       "name_match": "verified",
-      "mentions": 54,
-      "mentions_24h_ago": 39,
-      "mention_change_pct": 38.5,
-      "upvotes": 263,
+      "mentions": 51,
+      "mentions_24h_ago": 37,
+      "mention_change_pct": 37.8,
+      "upvotes": 255,
       "cik": "0001018724",
       "filing": {
         "form": "8-K",
         "date": "2026-06-12",
-        "days_ago": 4,
+        "days_ago": 5,
         "fresh": true,
         "desc": "FORM 8-K",
         "summary": "Other material update",
@@ -2811,7 +2058,7 @@
         {
           "form": "8-K",
           "date": "2026-06-12",
-          "days_ago": 4,
+          "days_ago": 5,
           "fresh": true,
           "desc": "FORM 8-K",
           "summary": "Other material update",
@@ -2822,7 +2069,7 @@
         {
           "form": "424B5",
           "date": "2026-06-10",
-          "days_ago": 6,
+          "days_ago": 7,
           "fresh": true,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -2833,7 +2080,7 @@
         {
           "form": "8-K",
           "date": "2026-06-10",
-          "days_ago": 6,
+          "days_ago": 7,
           "fresh": true,
           "desc": "FORM 8-K",
           "summary": "Material agreement signed; New debt obligation",
@@ -2844,7 +2091,7 @@
         {
           "form": "424B5",
           "date": "2026-06-08",
-          "days_ago": 8,
+          "days_ago": 9,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -2855,7 +2102,7 @@
         {
           "form": "8-K",
           "date": "2026-05-22",
-          "days_ago": 25,
+          "days_ago": 26,
           "fresh": false,
           "desc": "FORM 8-K",
           "summary": "Shareholder vote results",
@@ -2866,7 +2113,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-05-04",
-          "days_ago": 43,
+          "days_ago": 44,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -2876,7 +2123,7 @@
         {
           "form": "10-Q",
           "date": "2026-04-30",
-          "days_ago": 47,
+          "days_ago": 48,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -2886,7 +2133,7 @@
         {
           "form": "8-K",
           "date": "2026-04-29",
-          "days_ago": 48,
+          "days_ago": 49,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -2896,7 +2143,7 @@
         {
           "form": "8-K",
           "date": "2026-04-14",
-          "days_ago": 63,
+          "days_ago": 64,
           "fresh": false,
           "desc": "FORM 8-K",
           "summary": "Other material update",
@@ -2906,7 +2153,7 @@
         {
           "form": "8-K",
           "date": "2026-04-09",
-          "days_ago": 68,
+          "days_ago": 69,
           "fresh": false,
           "desc": "FORM 8-K",
           "summary": "Other material update",
@@ -2916,7 +2163,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-09",
-          "days_ago": 68,
+          "days_ago": 69,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -2926,7 +2173,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-09",
-          "days_ago": 68,
+          "days_ago": 69,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -3220,15 +2467,15 @@
       "sec_name": "Broadcom Inc.",
       "display_name": "Broadcom Inc.",
       "name_match": "verified",
-      "mentions": 49,
+      "mentions": 45,
       "mentions_24h_ago": 47,
-      "mention_change_pct": 4.3,
-      "upvotes": 187,
+      "mention_change_pct": -4.3,
+      "upvotes": 115,
       "cik": "0001730168",
       "filing": {
         "form": "8-K",
         "date": "2026-06-11",
-        "days_ago": 5,
+        "days_ago": 6,
         "fresh": true,
         "desc": "8-K",
         "summary": "Other material update",
@@ -3240,7 +2487,7 @@
         {
           "form": "8-K",
           "date": "2026-06-11",
-          "days_ago": 5,
+          "days_ago": 6,
           "fresh": true,
           "desc": "8-K",
           "summary": "Other material update",
@@ -3251,8 +2498,8 @@
         {
           "form": "S-4",
           "date": "2026-06-09",
-          "days_ago": 7,
-          "fresh": true,
+          "days_ago": 8,
+          "fresh": false,
           "desc": "S-4",
           "summary": "M&A / exchange registration",
           "accession": "0001193125-26-263128",
@@ -3262,8 +2509,8 @@
         {
           "form": "S-4",
           "date": "2026-06-09",
-          "days_ago": 7,
-          "fresh": true,
+          "days_ago": 8,
+          "fresh": false,
           "desc": "S-4",
           "summary": "M&A / exchange registration",
           "accession": "0001193125-26-263125",
@@ -3273,8 +2520,8 @@
         {
           "form": "10-Q",
           "date": "2026-06-09",
-          "days_ago": 7,
-          "fresh": true,
+          "days_ago": 8,
+          "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
           "accession": "0001730168-26-000054",
@@ -3284,7 +2531,7 @@
         {
           "form": "8-K",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released; Other material update",
@@ -3295,7 +2542,7 @@
         {
           "form": "8-K",
           "date": "2026-04-21",
-          "days_ago": 56,
+          "days_ago": 57,
           "fresh": false,
           "desc": "8-K",
           "summary": "Shareholder vote results",
@@ -3305,7 +2552,7 @@
         {
           "form": "8-K",
           "date": "2026-04-06",
-          "days_ago": 71,
+          "days_ago": 72,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -3315,7 +2562,7 @@
         {
           "form": "8-K",
           "date": "2026-04-02",
-          "days_ago": 75,
+          "days_ago": 76,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -3609,15 +2856,15 @@
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 61,
-      "mentions_24h_ago": 43,
-      "mention_change_pct": 41.9,
-      "upvotes": 1260,
+      "mentions": 33,
+      "mentions_24h_ago": 19,
+      "mention_change_pct": 73.7,
+      "upvotes": 1096,
       "cik": "0001652044",
       "filing": {
         "form": "8-K",
         "date": "2026-06-11",
-        "days_ago": 5,
+        "days_ago": 6,
         "fresh": true,
         "desc": "8-K",
         "summary": "Executive / board change; Shareholder vote results",
@@ -3629,7 +2876,7 @@
         {
           "form": "8-K",
           "date": "2026-06-11",
-          "days_ago": 5,
+          "days_ago": 6,
           "fresh": true,
           "desc": "8-K",
           "summary": "Executive / board change; Shareholder vote results",
@@ -3640,7 +2887,7 @@
         {
           "form": "8-K",
           "date": "2026-06-05",
-          "days_ago": 11,
+          "days_ago": 12,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed; Bylaw / charter change",
@@ -3651,7 +2898,7 @@
         {
           "form": "8-K",
           "date": "2026-06-05",
-          "days_ago": 11,
+          "days_ago": 12,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -3662,7 +2909,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-06-05",
-          "days_ago": 11,
+          "days_ago": 12,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -3673,7 +2920,7 @@
         {
           "form": "8-K",
           "date": "2026-06-04",
-          "days_ago": 12,
+          "days_ago": 13,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed; Other material update",
@@ -3684,7 +2931,7 @@
         {
           "form": "424B5",
           "date": "2026-06-04",
-          "days_ago": 12,
+          "days_ago": 13,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3695,7 +2942,7 @@
         {
           "form": "424B5",
           "date": "2026-06-04",
-          "days_ago": 12,
+          "days_ago": 13,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3706,7 +2953,7 @@
         {
           "form": "424B5",
           "date": "2026-06-04",
-          "days_ago": 12,
+          "days_ago": 13,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3717,7 +2964,7 @@
         {
           "form": "424B5",
           "date": "2026-06-02",
-          "days_ago": 14,
+          "days_ago": 15,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3728,7 +2975,7 @@
         {
           "form": "424B5",
           "date": "2026-06-02",
-          "days_ago": 14,
+          "days_ago": 15,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3739,7 +2986,7 @@
         {
           "form": "424B5",
           "date": "2026-06-02",
-          "days_ago": 14,
+          "days_ago": 15,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3750,7 +2997,7 @@
         {
           "form": "424B5",
           "date": "2026-06-02",
-          "days_ago": 14,
+          "days_ago": 15,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3761,7 +3008,7 @@
         {
           "form": "8-K",
           "date": "2026-05-21",
-          "days_ago": 26,
+          "days_ago": 27,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -3772,7 +3019,7 @@
         {
           "form": "424B5",
           "date": "2026-05-18",
-          "days_ago": 29,
+          "days_ago": 30,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3783,7 +3030,7 @@
         {
           "form": "8-K",
           "date": "2026-05-11",
-          "days_ago": 36,
+          "days_ago": 37,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -3794,7 +3041,7 @@
         {
           "form": "424B5",
           "date": "2026-05-11",
-          "days_ago": 36,
+          "days_ago": 37,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3805,7 +3052,7 @@
         {
           "form": "424B5",
           "date": "2026-05-05",
-          "days_ago": 42,
+          "days_ago": 43,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3815,7 +3062,7 @@
         {
           "form": "424B5",
           "date": "2026-05-05",
-          "days_ago": 42,
+          "days_ago": 43,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -3825,7 +3072,7 @@
         {
           "form": "10-Q",
           "date": "2026-04-30",
-          "days_ago": 47,
+          "days_ago": 48,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -3835,7 +3082,7 @@
         {
           "form": "8-K",
           "date": "2026-04-29",
-          "days_ago": 48,
+          "days_ago": 49,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -3845,7 +3092,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-24",
-          "days_ago": 53,
+          "days_ago": 54,
           "fresh": false,
           "desc": "DEFINITIVE ADDITIONAL PROXY SOLICITING MATERIALS",
           "summary": "Proxy materials (additional)",
@@ -3855,7 +3102,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-24",
-          "days_ago": 53,
+          "days_ago": 54,
           "fresh": false,
           "desc": "DEFINITIVE PROXY STATEMENT",
           "summary": "Proxy statement",
@@ -3865,7 +3112,7 @@
         {
           "form": "8-K",
           "date": "2026-04-10",
-          "days_ago": 67,
+          "days_ago": 68,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -3875,7 +3122,7 @@
         {
           "form": "8-K",
           "date": "2026-04-02",
-          "days_ago": 75,
+          "days_ago": 76,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -3884,8 +3131,7 @@
         }
       ],
       "tickers": [
-        "GOOG",
-        "GOOGL"
+        "GOOG"
       ],
       "quote_type": "EQUITY",
       "price": {
@@ -4171,14 +3417,14 @@
       "display_name": "Robinhood Markets, Inc.",
       "name_match": "verified",
       "mentions": 30,
-      "mentions_24h_ago": 38,
-      "mention_change_pct": -21.1,
-      "upvotes": 361,
+      "mentions_24h_ago": 37,
+      "mention_change_pct": -18.9,
+      "upvotes": 364,
       "cik": "0001783879",
       "filing": {
         "form": "8-K",
         "date": "2026-06-16",
-        "days_ago": 0,
+        "days_ago": 1,
         "fresh": true,
         "desc": "8-K",
         "summary": "Restructuring / costs",
@@ -4190,7 +3436,7 @@
         {
           "form": "8-K",
           "date": "2026-06-16",
-          "days_ago": 0,
+          "days_ago": 1,
           "fresh": true,
           "desc": "8-K",
           "summary": "Restructuring / costs",
@@ -4201,7 +3447,7 @@
         {
           "form": "8-K",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "8-K",
           "summary": "Shareholder vote results",
@@ -4212,7 +3458,7 @@
         {
           "form": "8-K",
           "date": "2026-05-08",
-          "days_ago": 39,
+          "days_ago": 40,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -4222,7 +3468,7 @@
         {
           "form": "10-Q",
           "date": "2026-04-29",
-          "days_ago": 48,
+          "days_ago": 49,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -4232,7 +3478,7 @@
         {
           "form": "8-K",
           "date": "2026-04-28",
-          "days_ago": 49,
+          "days_ago": 50,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -4242,7 +3488,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-22",
-          "days_ago": 55,
+          "days_ago": 56,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -4252,7 +3498,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-22",
-          "days_ago": 55,
+          "days_ago": 56,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -4262,7 +3508,7 @@
         {
           "form": "8-K/A",
           "date": "2026-03-24",
-          "days_ago": 84,
+          "days_ago": 85,
           "fresh": false,
           "desc": "8-K/A",
           "summary": "Executive / board change",
@@ -4272,7 +3518,7 @@
         {
           "form": "8-K",
           "date": "2026-03-24",
-          "days_ago": 84,
+          "days_ago": 85,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed; New debt obligation; Other material update",
@@ -4566,10 +3812,10 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 433,
-      "mentions_24h_ago": 517,
-      "mention_change_pct": -16.2,
-      "upvotes": 2037,
+      "mentions": 429,
+      "mentions_24h_ago": 501,
+      "mention_change_pct": -14.4,
+      "upvotes": 1664,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
@@ -4853,21 +4099,366 @@
       "is_fund": true
     },
     {
+      "rank": 3,
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "sec_name": "MICRON TECHNOLOGY INC",
+      "display_name": "Micron Technology Inc",
+      "name_match": "verified",
+      "mentions": 392,
+      "mentions_24h_ago": 379,
+      "mention_change_pct": 3.4,
+      "upvotes": 1539,
+      "cik": "0000723125",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-06-09",
+        "days_ago": 8,
+        "fresh": false,
+        "desc": "FORM 8-K",
+        "summary": "Executive / board change",
+        "accession": "0001104659-26-071845",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/tm2617112d1_8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/0001104659-26-071845-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 8,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Executive / board change",
+          "accession": "0001104659-26-071845",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926071845/0001104659-26-071845-index.htm",
+          "ai_summary": "Micron Technology appointed Alexis Black Björlin as an independent director and member of the Governance and Sustainability Committee."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-01",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Other material update",
+          "accession": "0001104659-26-038249",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926038249/0001104659-26-038249-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-25",
+          "days_ago": 84,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Other material update",
+          "accession": "0001104659-26-034174",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926034174/0001104659-26-034174-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-03-19",
+          "days_ago": 90,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0000723125-26-000006",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/0000723125-26-000006-index.htm"
+        }
+      ],
+      "tickers": [
+        "MU"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 1020.76,
+        "prev_close": 1087.99,
+        "change_pct": -6.18,
+        "currency": "USD",
+        "spark": [
+          891.88,
+          995.87,
+          981.61,
+          1087.99,
+          1020.76
+        ],
+        "history": [
+          [
+            "2026-03-17",
+            461.69
+          ],
+          [
+            "2026-03-18",
+            461.73
+          ],
+          [
+            "2026-03-19",
+            444.27
+          ],
+          [
+            "2026-03-20",
+            422.9
+          ],
+          [
+            "2026-03-23",
+            404.35
+          ],
+          [
+            "2026-03-24",
+            395.53
+          ],
+          [
+            "2026-03-25",
+            382.09
+          ],
+          [
+            "2026-03-26",
+            355.46
+          ],
+          [
+            "2026-03-27",
+            357.22
+          ],
+          [
+            "2026-03-30",
+            321.8
+          ],
+          [
+            "2026-03-31",
+            337.84
+          ],
+          [
+            "2026-04-01",
+            367.85
+          ],
+          [
+            "2026-04-02",
+            366.24
+          ],
+          [
+            "2026-04-06",
+            377.76
+          ],
+          [
+            "2026-04-07",
+            377.58
+          ],
+          [
+            "2026-04-08",
+            406.73
+          ],
+          [
+            "2026-04-09",
+            421.51
+          ],
+          [
+            "2026-04-10",
+            420.59
+          ],
+          [
+            "2026-04-13",
+            426.56
+          ],
+          [
+            "2026-04-14",
+            465.66
+          ],
+          [
+            "2026-04-15",
+            456.23
+          ],
+          [
+            "2026-04-16",
+            457.23
+          ],
+          [
+            "2026-04-17",
+            455.07
+          ],
+          [
+            "2026-04-20",
+            448.42
+          ],
+          [
+            "2026-04-21",
+            449.38
+          ],
+          [
+            "2026-04-22",
+            487.48
+          ],
+          [
+            "2026-04-23",
+            481.72
+          ],
+          [
+            "2026-04-24",
+            496.72
+          ],
+          [
+            "2026-04-27",
+            524.56
+          ],
+          [
+            "2026-04-28",
+            504.29
+          ],
+          [
+            "2026-04-29",
+            518.46
+          ],
+          [
+            "2026-04-30",
+            517.16
+          ],
+          [
+            "2026-05-01",
+            542.21
+          ],
+          [
+            "2026-05-04",
+            576.45
+          ],
+          [
+            "2026-05-05",
+            640.2
+          ],
+          [
+            "2026-05-06",
+            666.59
+          ],
+          [
+            "2026-05-07",
+            646.63
+          ],
+          [
+            "2026-05-08",
+            746.81
+          ],
+          [
+            "2026-05-11",
+            795.33
+          ],
+          [
+            "2026-05-12",
+            766.58
+          ],
+          [
+            "2026-05-13",
+            803.63
+          ],
+          [
+            "2026-05-14",
+            776.01
+          ],
+          [
+            "2026-05-15",
+            724.66
+          ],
+          [
+            "2026-05-18",
+            681.54
+          ],
+          [
+            "2026-05-19",
+            698.74
+          ],
+          [
+            "2026-05-20",
+            731.99
+          ],
+          [
+            "2026-05-21",
+            762.1
+          ],
+          [
+            "2026-05-22",
+            751.0
+          ],
+          [
+            "2026-05-26",
+            895.88
+          ],
+          [
+            "2026-05-27",
+            928.41
+          ],
+          [
+            "2026-05-28",
+            923.52
+          ],
+          [
+            "2026-05-29",
+            971.0
+          ],
+          [
+            "2026-06-01",
+            1035.5
+          ],
+          [
+            "2026-06-02",
+            1064.1
+          ],
+          [
+            "2026-06-03",
+            1079.57
+          ],
+          [
+            "2026-06-04",
+            996.0
+          ],
+          [
+            "2026-06-05",
+            864.01
+          ],
+          [
+            "2026-06-08",
+            949.28
+          ],
+          [
+            "2026-06-09",
+            935.89
+          ],
+          [
+            "2026-06-10",
+            891.88
+          ],
+          [
+            "2026-06-11",
+            995.87
+          ],
+          [
+            "2026-06-12",
+            981.61
+          ],
+          [
+            "2026-06-15",
+            1087.99
+          ],
+          [
+            "2026-06-16",
+            1020.76
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-16"
+      },
+      "is_fund": false
+    },
+    {
       "rank": 4,
       "ticker": "MSFT",
       "name": "Microsoft",
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 297,
-      "mentions_24h_ago": 276,
-      "mention_change_pct": 7.6,
-      "upvotes": 2239,
+      "mentions": 316,
+      "mentions_24h_ago": 256,
+      "mention_change_pct": 23.4,
+      "upvotes": 2324,
       "cik": "0000789019",
       "filing": {
         "form": "8-K",
         "date": "2026-06-05",
-        "days_ago": 11,
+        "days_ago": 12,
         "fresh": false,
         "desc": "8-K",
         "summary": "Executive / board change",
@@ -4879,7 +4470,7 @@
         {
           "form": "8-K",
           "date": "2026-06-05",
-          "days_ago": 11,
+          "days_ago": 12,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -4890,7 +4481,7 @@
         {
           "form": "8-K",
           "date": "2026-05-14",
-          "days_ago": 33,
+          "days_ago": 34,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -4901,7 +4492,7 @@
         {
           "form": "10-Q",
           "date": "2026-04-29",
-          "days_ago": 48,
+          "days_ago": 49,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -4911,7 +4502,7 @@
         {
           "form": "8-K",
           "date": "2026-04-29",
-          "days_ago": 48,
+          "days_ago": 49,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -5199,21 +4790,21 @@
       "is_fund": false
     },
     {
-      "rank": 5,
+      "rank": 6,
       "ticker": "QQQ",
       "name": "Invesco QQQ ETF",
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 172,
-      "mentions_24h_ago": 164,
-      "mention_change_pct": 4.9,
-      "upvotes": 535,
+      "mentions": 169,
+      "mentions_24h_ago": 155,
+      "mention_change_pct": 9.0,
+      "upvotes": 517,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
         "date": "2025-12-19",
-        "days_ago": 179,
+        "days_ago": 180,
         "fresh": false,
         "desc": "DEFA14A",
         "summary": "Proxy materials (additional)",
@@ -5508,15 +5099,15 @@
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 148,
-      "mentions_24h_ago": 79,
-      "mention_change_pct": 87.3,
-      "upvotes": 1016,
+      "mentions": 146,
+      "mentions_24h_ago": 92,
+      "mention_change_pct": 58.7,
+      "upvotes": 1020,
       "cik": "0001318605",
       "filing": {
         "form": "10-K/A",
         "date": "2026-04-30",
-        "days_ago": 47,
+        "days_ago": 48,
         "fresh": false,
         "desc": "FORM 10-K/A",
         "summary": "Annual report (amended)",
@@ -5528,7 +5119,7 @@
         {
           "form": "10-K/A",
           "date": "2026-04-30",
-          "days_ago": 47,
+          "days_ago": 48,
           "fresh": false,
           "desc": "FORM 10-K/A",
           "summary": "Annual report (amended)",
@@ -5538,7 +5129,7 @@
         {
           "form": "10-Q",
           "date": "2026-04-23",
-          "days_ago": 54,
+          "days_ago": 55,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -5548,7 +5139,7 @@
         {
           "form": "8-K",
           "date": "2026-04-22",
-          "days_ago": 55,
+          "days_ago": 56,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -5558,7 +5149,7 @@
         {
           "form": "8-K",
           "date": "2026-04-02",
-          "days_ago": 75,
+          "days_ago": 76,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -5852,10 +5443,10 @@
       "sec_name": null,
       "display_name": "Vanguard S&P 500 ETF",
       "name_match": "no_cik",
-      "mentions": 115,
-      "mentions_24h_ago": 37,
-      "mention_change_pct": 210.8,
-      "upvotes": 429,
+      "mentions": 111,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": 152.3,
+      "upvotes": 423,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -6142,15 +5733,15 @@
       "sec_name": "Sandisk Corp",
       "display_name": "Sandisk Corp",
       "name_match": "verified",
-      "mentions": 103,
-      "mentions_24h_ago": 148,
-      "mention_change_pct": -30.4,
-      "upvotes": 309,
+      "mentions": 101,
+      "mentions_24h_ago": 147,
+      "mention_change_pct": -31.3,
+      "upvotes": 303,
       "cik": "0002023554",
       "filing": {
         "form": "8-K",
         "date": "2026-05-15",
-        "days_ago": 32,
+        "days_ago": 33,
         "fresh": false,
         "desc": "8-K",
         "summary": "Other material update",
@@ -6162,7 +5753,7 @@
         {
           "form": "8-K",
           "date": "2026-05-15",
-          "days_ago": 32,
+          "days_ago": 33,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -6172,7 +5763,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-01",
-          "days_ago": 46,
+          "days_ago": 47,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -6182,7 +5773,7 @@
         {
           "form": "8-K",
           "date": "2026-04-30",
-          "days_ago": 47,
+          "days_ago": 48,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released; Other material update",
@@ -6192,7 +5783,7 @@
         {
           "form": "8-K",
           "date": "2026-03-25",
-          "days_ago": 83,
+          "days_ago": 84,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed; Other material update",
@@ -6480,21 +6071,409 @@
       "is_fund": false
     },
     {
+      "rank": 11,
+      "ticker": "DTE",
+      "name": "DTE Energy",
+      "sec_name": "DTE ENERGY CO",
+      "display_name": "Dte Energy Co",
+      "name_match": "verified",
+      "mentions": 100,
+      "mentions_24h_ago": 80,
+      "mention_change_pct": 25.0,
+      "upvotes": 397,
+      "cik": "0000936340",
+      "filing": {
+        "form": "424B5",
+        "date": "2026-06-09",
+        "days_ago": 8,
+        "fresh": false,
+        "desc": "424B5",
+        "summary": "Shelf offering prospectus",
+        "accession": "0001193125-26-263051",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/d153009d424b5.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm"
+      },
+      "filings": [
+        {
+          "form": "424B5",
+          "date": "2026-06-09",
+          "days_ago": 8,
+          "fresh": false,
+          "desc": "424B5",
+          "summary": "Shelf offering prospectus",
+          "accession": "0001193125-26-263051",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000119312526263051/0001193125-26-263051-index.htm",
+          "ai_summary": "DTE Energy is issuing unsecured junior subordinated debentures maturing July 1 2058, paying a fixed rate until 2033 then resetting to 5‑year Treasury + spread (no lower than the initial rate), with optional interest deferrals up to 10 years and redemption rights at 100‑102% of principal."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 12,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0000936340-26-000122",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000122/0000936340-26-000122-index.htm",
+          "ai_summary": "DTE Energy will meet with investors on June 8, 2026, and is providing its slide presentation and 2026 operating earnings guidance."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0000936340-26-000119",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000119/0000936340-26-000119-index.htm",
+          "ai_summary": "DTE Energy will meet with investors May 17-19, 2026, and will discuss 2026 operating earnings guidance."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-12",
+          "days_ago": 36,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0000936340-26-000115",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000115/0000936340-26-000115-index.htm",
+          "ai_summary": "DTE Energy shareholders re-elected all directors, ratified PricewaterhouseCoopers LLP as auditors, and approved executive compensation at their May 7, 2026 annual meeting."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-01",
+          "days_ago": 47,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0000936340-26-000083",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000083/0000936340-26-000083-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-30",
+          "days_ago": 48,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0000936340-26-000081",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000081/0000936340-26-000081-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 48,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0000936340-26-000079",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000079/0000936340-26-000079-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-03-23",
+          "days_ago": 86,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0000936340-26-000071",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/936340/000093634026000071/0000936340-26-000071-index.htm"
+        }
+      ],
+      "tickers": [
+        "DTE"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 148.85,
+        "prev_close": 148.04,
+        "change_pct": 0.55,
+        "currency": "USD",
+        "spark": [
+          146.07,
+          145.79,
+          147.42,
+          148.04,
+          148.85
+        ],
+        "history": [
+          [
+            "2026-03-17",
+            149.34
+          ],
+          [
+            "2026-03-18",
+            147.01
+          ],
+          [
+            "2026-03-19",
+            147.14
+          ],
+          [
+            "2026-03-20",
+            141.57
+          ],
+          [
+            "2026-03-23",
+            142.29
+          ],
+          [
+            "2026-03-24",
+            143.32
+          ],
+          [
+            "2026-03-25",
+            143.45
+          ],
+          [
+            "2026-03-26",
+            144.39
+          ],
+          [
+            "2026-03-27",
+            144.47
+          ],
+          [
+            "2026-03-30",
+            146.06
+          ],
+          [
+            "2026-03-31",
+            146.22
+          ],
+          [
+            "2026-04-01",
+            147.12
+          ],
+          [
+            "2026-04-02",
+            148.04
+          ],
+          [
+            "2026-04-06",
+            147.67
+          ],
+          [
+            "2026-04-07",
+            148.27
+          ],
+          [
+            "2026-04-08",
+            148.78
+          ],
+          [
+            "2026-04-09",
+            150.98
+          ],
+          [
+            "2026-04-10",
+            149.68
+          ],
+          [
+            "2026-04-13",
+            147.51
+          ],
+          [
+            "2026-04-14",
+            147.74
+          ],
+          [
+            "2026-04-15",
+            146.75
+          ],
+          [
+            "2026-04-16",
+            146.97
+          ],
+          [
+            "2026-04-17",
+            146.98
+          ],
+          [
+            "2026-04-20",
+            145.87
+          ],
+          [
+            "2026-04-21",
+            143.47
+          ],
+          [
+            "2026-04-22",
+            143.57
+          ],
+          [
+            "2026-04-23",
+            147.4
+          ],
+          [
+            "2026-04-24",
+            146.88
+          ],
+          [
+            "2026-04-27",
+            146.5
+          ],
+          [
+            "2026-04-28",
+            148.58
+          ],
+          [
+            "2026-04-29",
+            147.03
+          ],
+          [
+            "2026-04-30",
+            151.69
+          ],
+          [
+            "2026-05-01",
+            148.79
+          ],
+          [
+            "2026-05-04",
+            146.73
+          ],
+          [
+            "2026-05-05",
+            143.5
+          ],
+          [
+            "2026-05-06",
+            142.44
+          ],
+          [
+            "2026-05-07",
+            142.0
+          ],
+          [
+            "2026-05-08",
+            140.6
+          ],
+          [
+            "2026-05-11",
+            142.43
+          ],
+          [
+            "2026-05-12",
+            142.58
+          ],
+          [
+            "2026-05-13",
+            142.0
+          ],
+          [
+            "2026-05-14",
+            143.8
+          ],
+          [
+            "2026-05-15",
+            139.78
+          ],
+          [
+            "2026-05-18",
+            141.35
+          ],
+          [
+            "2026-05-19",
+            143.15
+          ],
+          [
+            "2026-05-20",
+            142.77
+          ],
+          [
+            "2026-05-21",
+            143.75
+          ],
+          [
+            "2026-05-22",
+            145.3
+          ],
+          [
+            "2026-05-26",
+            144.62
+          ],
+          [
+            "2026-05-27",
+            145.27
+          ],
+          [
+            "2026-05-28",
+            143.38
+          ],
+          [
+            "2026-05-29",
+            142.87
+          ],
+          [
+            "2026-06-01",
+            139.83
+          ],
+          [
+            "2026-06-02",
+            142.65
+          ],
+          [
+            "2026-06-03",
+            141.81
+          ],
+          [
+            "2026-06-04",
+            142.73
+          ],
+          [
+            "2026-06-05",
+            145.77
+          ],
+          [
+            "2026-06-08",
+            143.11
+          ],
+          [
+            "2026-06-09",
+            145.95
+          ],
+          [
+            "2026-06-10",
+            146.07
+          ],
+          [
+            "2026-06-11",
+            145.79
+          ],
+          [
+            "2026-06-12",
+            147.42
+          ],
+          [
+            "2026-06-15",
+            148.04
+          ],
+          [
+            "2026-06-16",
+            148.85
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-16"
+      },
+      "is_fund": false
+    },
+    {
       "rank": 12,
       "ticker": "RKLB",
       "name": "Rocket Lab USA",
       "sec_name": "Rocket Lab Corp",
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
-      "mentions": 85,
-      "mentions_24h_ago": 80,
-      "mention_change_pct": 6.2,
-      "upvotes": 289,
+      "mentions": 82,
+      "mentions_24h_ago": 79,
+      "mention_change_pct": 3.8,
+      "upvotes": 273,
       "cik": "0001819994",
       "filing": {
         "form": "8-K",
         "date": "2026-06-05",
-        "days_ago": 11,
+        "days_ago": 12,
         "fresh": false,
         "desc": "8-K",
         "summary": "Executive / board change",
@@ -6506,7 +6485,7 @@
         {
           "form": "8-K",
           "date": "2026-06-05",
-          "days_ago": 11,
+          "days_ago": 12,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -6517,7 +6496,7 @@
         {
           "form": "8-K",
           "date": "2026-05-21",
-          "days_ago": 26,
+          "days_ago": 27,
           "fresh": false,
           "desc": "8-K",
           "summary": "Shareholder vote results",
@@ -6528,7 +6507,7 @@
         {
           "form": "8-K",
           "date": "2026-05-20",
-          "days_ago": 27,
+          "days_ago": 28,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -6539,7 +6518,7 @@
         {
           "form": "424B5",
           "date": "2026-05-20",
-          "days_ago": 27,
+          "days_ago": 28,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -6550,7 +6529,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-05-12",
-          "days_ago": 35,
+          "days_ago": 36,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -6561,7 +6540,7 @@
         {
           "form": "8-K",
           "date": "2026-05-08",
-          "days_ago": 39,
+          "days_ago": 40,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -6571,7 +6550,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-07",
-          "days_ago": 40,
+          "days_ago": 41,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -6581,7 +6560,7 @@
         {
           "form": "8-K",
           "date": "2026-05-07",
-          "days_ago": 40,
+          "days_ago": 41,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -6591,7 +6570,7 @@
         {
           "form": "8-K",
           "date": "2026-04-14",
-          "days_ago": 63,
+          "days_ago": 64,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale; Other material update",
@@ -6601,7 +6580,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-06",
-          "days_ago": 71,
+          "days_ago": 72,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -6611,7 +6590,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-06",
-          "days_ago": 71,
+          "days_ago": 72,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -6621,7 +6600,7 @@
         {
           "form": "8-K",
           "date": "2026-03-30",
-          "days_ago": 78,
+          "days_ago": 79,
           "fresh": false,
           "desc": "FORM 8-K",
           "summary": "Executive / board change",
@@ -6631,7 +6610,7 @@
         {
           "form": "PRE 14A",
           "date": "2026-03-27",
-          "days_ago": 81,
+          "days_ago": 82,
           "fresh": false,
           "desc": "PRE 14A",
           "summary": "Preliminary proxy",
@@ -6919,21 +6898,21 @@
       "is_fund": false
     },
     {
-      "rank": 14,
+      "rank": 13,
       "ticker": "NFLX",
       "name": "Netflix",
       "sec_name": "NETFLIX INC",
       "display_name": "Netflix Inc",
       "name_match": "verified",
-      "mentions": 74,
+      "mentions": 78,
       "mentions_24h_ago": 8,
-      "mention_change_pct": 825.0,
-      "upvotes": 222,
+      "mention_change_pct": 875.0,
+      "upvotes": 243,
       "cik": "0001065280",
       "filing": {
         "form": "8-K",
         "date": "2026-06-05",
-        "days_ago": 11,
+        "days_ago": 12,
         "fresh": false,
         "desc": "8-K",
         "summary": "Shareholder vote results; Other material update",
@@ -6945,7 +6924,7 @@
         {
           "form": "8-K",
           "date": "2026-06-05",
-          "days_ago": 11,
+          "days_ago": 12,
           "fresh": false,
           "desc": "8-K",
           "summary": "Shareholder vote results; Other material update",
@@ -6955,7 +6934,7 @@
         {
           "form": "8-K",
           "date": "2026-04-23",
-          "days_ago": 54,
+          "days_ago": 55,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -6965,7 +6944,7 @@
         {
           "form": "10-Q",
           "date": "2026-04-17",
-          "days_ago": 60,
+          "days_ago": 61,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -6975,7 +6954,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-16",
-          "days_ago": 61,
+          "days_ago": 62,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -6985,7 +6964,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-16",
-          "days_ago": 61,
+          "days_ago": 62,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -6995,7 +6974,7 @@
         {
           "form": "8-K",
           "date": "2026-04-16",
-          "days_ago": 61,
+          "days_ago": 62,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released; Executive / board change",
@@ -7283,21 +7262,21 @@
       "is_fund": false
     },
     {
-      "rank": 15,
+      "rank": 16,
       "ticker": "AMD",
       "name": "AMD",
       "sec_name": "ADVANCED MICRO DEVICES INC",
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
-      "mentions": 66,
-      "mentions_24h_ago": 69,
-      "mention_change_pct": -4.3,
-      "upvotes": 205,
+      "mentions": 64,
+      "mentions_24h_ago": 75,
+      "mention_change_pct": -14.7,
+      "upvotes": 224,
       "cik": "0000002488",
       "filing": {
         "form": "8-K",
         "date": "2026-05-15",
-        "days_ago": 32,
+        "days_ago": 33,
         "fresh": false,
         "desc": "8-K",
         "summary": "Material agreement signed; Material agreement terminated; New debt obligation; Executive / board change; Shareholder vote results",
@@ -7309,7 +7288,7 @@
         {
           "form": "8-K",
           "date": "2026-05-15",
-          "days_ago": 32,
+          "days_ago": 33,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed; Material agreement terminated; New debt obligation; Executive / board change; Shareholder vote results",
@@ -7320,7 +7299,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-06",
-          "days_ago": 41,
+          "days_ago": 42,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -7330,7 +7309,7 @@
         {
           "form": "8-K",
           "date": "2026-05-05",
-          "days_ago": 42,
+          "days_ago": 43,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released; Other material update",
@@ -7340,7 +7319,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-03-27",
-          "days_ago": 81,
+          "days_ago": 82,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -7350,7 +7329,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-03-27",
-          "days_ago": 81,
+          "days_ago": 82,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -7644,15 +7623,15 @@
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 53,
+      "mentions": 51,
       "mentions_24h_ago": 63,
-      "mention_change_pct": -15.9,
-      "upvotes": 129,
+      "mention_change_pct": -19.0,
+      "upvotes": 124,
       "cik": "0001326801",
       "filing": {
         "form": "8-K",
         "date": "2026-05-29",
-        "days_ago": 18,
+        "days_ago": 19,
         "fresh": false,
         "desc": "8-K",
         "summary": "Shareholder vote results",
@@ -7664,7 +7643,7 @@
         {
           "form": "8-K",
           "date": "2026-05-29",
-          "days_ago": 18,
+          "days_ago": 19,
           "fresh": false,
           "desc": "8-K",
           "summary": "Shareholder vote results",
@@ -7675,7 +7654,7 @@
         {
           "form": "8-K",
           "date": "2026-05-04",
-          "days_ago": 43,
+          "days_ago": 44,
           "fresh": false,
           "desc": "8-K",
           "summary": "Other material update",
@@ -7685,7 +7664,7 @@
         {
           "form": "10-Q",
           "date": "2026-04-30",
-          "days_ago": 47,
+          "days_ago": 48,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -7695,7 +7674,7 @@
         {
           "form": "8-K",
           "date": "2026-04-29",
-          "days_ago": 48,
+          "days_ago": 49,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -7705,7 +7684,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-16",
-          "days_ago": 61,
+          "days_ago": 62,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -7715,7 +7694,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-16",
-          "days_ago": 61,
+          "days_ago": 62,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -7725,7 +7704,7 @@
         {
           "form": "8-K",
           "date": "2026-04-14",
-          "days_ago": 63,
+          "days_ago": 64,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -8019,10 +7998,10 @@
       "sec_name": null,
       "display_name": "Vanguard Group, Inc. - Vanguard Total World Stock ETF",
       "name_match": "no_cik",
-      "mentions": 38,
+      "mentions": 37,
       "mentions_24h_ago": 7,
-      "mention_change_pct": 442.9,
-      "upvotes": 151,
+      "mention_change_pct": 428.6,
+      "upvotes": 154,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -8304,390 +8283,293 @@
     },
     {
       "rank": 22,
-      "ticker": "NOW",
-      "name": "ServiceNow",
-      "sec_name": "ServiceNow, Inc.",
-      "display_name": "ServiceNow, Inc.",
-      "name_match": "verified",
+      "ticker": "VTI",
+      "name": "Vanguard Total Stock Market ETF",
+      "sec_name": null,
+      "display_name": "Vanguard Total Stock Market ETF",
+      "name_match": "no_cik",
       "mentions": 36,
-      "mentions_24h_ago": 33,
-      "mention_change_pct": 9.1,
-      "upvotes": 82,
-      "cik": "0001373715",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-05-22",
-        "days_ago": 25,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Executive / board change; Shareholder vote results",
-        "accession": "0001373715-26-000065",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/now-20260521.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/0001373715-26-000065-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-05-22",
-          "days_ago": 25,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change; Shareholder vote results",
-          "accession": "0001373715-26-000065",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/0001373715-26-000065-index.htm",
-          "ai_summary": "ServiceNow’s 2026 annual meeting approved a 38 million‑share increase to its 2021 Equity Incentive Plan and elected six directors, while ratifying PwC as auditor."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-15",
-          "days_ago": 32,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; New debt obligation; Other material update",
-          "accession": "0001193125-26-226644",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000119312526226644/0001193125-26-226644-index.htm",
-          "ai_summary": "ServiceNow issued $4 billion of senior notes (rates 4.25%‑6.30% due 2028‑2056) on May 15 2026 under a new underwriting and indenture agreement."
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-05-11",
-          "days_ago": 36,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001373715-26-000058",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000058/0001373715-26-000058-index.htm",
-          "ai_summary": "ServiceNow’s May 2026 proxy asks shareholders to approve 38 million new equity‑incentive shares, re‑elect its board, and reject a written‑consent shareholder proposal."
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-04-23",
-          "days_ago": 54,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001373715-26-000056",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000056/0001373715-26-000056-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-22",
-          "days_ago": 55,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; Earnings released; New debt obligation",
-          "accession": "0001373715-26-000054",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000054/0001373715-26-000054-index.htm"
-        },
-        {
-          "form": "DEFA14A",
-          "date": "2026-04-06",
-          "days_ago": 71,
-          "fresh": false,
-          "desc": "DEFA14A",
-          "summary": "Proxy materials (additional)",
-          "accession": "0001373715-26-000040",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000040/0001373715-26-000040-index.htm"
-        },
-        {
-          "form": "DEF 14A",
-          "date": "2026-04-06",
-          "days_ago": 71,
-          "fresh": false,
-          "desc": "DEF 14A",
-          "summary": "Proxy statement",
-          "accession": "0001373715-26-000039",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000039/0001373715-26-000039-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-04-01",
-          "days_ago": 76,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; New debt obligation",
-          "accession": "0001373715-26-000030",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000030/0001373715-26-000030-index.htm"
-        }
-      ],
-      "tickers": [
-        "NOW"
-      ],
-      "quote_type": "EQUITY",
+      "mentions_24h_ago": 20,
+      "mention_change_pct": 80.0,
+      "upvotes": 90,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "quote_type": "ETF",
       "price": {
-        "last": 101.33,
-        "prev_close": 104.15,
-        "change_pct": -2.71,
+        "last": 370.37,
+        "prev_close": 372.53,
+        "change_pct": -0.58,
         "currency": "USD",
         "spark": [
-          106.06,
-          103.08,
-          102.15,
-          104.15,
-          101.33
+          358.04,
+          364.3,
+          366.36,
+          372.53,
+          370.37
         ],
         "history": [
           [
             "2026-03-17",
-            116.72
+            330.57
           ],
           [
             "2026-03-18",
-            113.71
+            326.02
           ],
           [
             "2026-03-19",
-            113.27
+            325.44
           ],
           [
             "2026-03-20",
-            110.38
+            320.34
           ],
           [
             "2026-03-23",
-            110.95
+            324.19
           ],
           [
             "2026-03-24",
-            104.65
+            323.18
           ],
           [
             "2026-03-25",
-            103.06
+            325.15
           ],
           [
             "2026-03-26",
-            103.64
+            319.55
           ],
           [
             "2026-03-27",
-            99.41
+            313.09
           ],
           [
             "2026-03-30",
-            104.97
+            311.68
           ],
           [
             "2026-03-31",
-            104.55
+            320.81
           ],
           [
             "2026-04-01",
-            104.04
+            323.24
           ],
           [
             "2026-04-02",
-            102.0
+            323.76
           ],
           [
             "2026-04-06",
-            102.42
+            325.21
           ],
           [
             "2026-04-07",
-            100.55
+            325.43
           ],
           [
             "2026-04-08",
-            97.47
+            333.7
           ],
           [
             "2026-04-09",
-            89.81
+            335.45
           ],
           [
             "2026-04-10",
-            83.0
+            335.05
           ],
           [
             "2026-04-13",
-            89.06
+            338.67
           ],
           [
             "2026-04-14",
-            87.79
+            342.65
           ],
           [
             "2026-04-15",
-            94.19
+            345.24
           ],
           [
             "2026-04-16",
-            96.44
+            346.03
           ],
           [
             "2026-04-17",
-            96.66
+            350.53
           ],
           [
             "2026-04-20",
-            99.72
+            350.21
           ],
           [
             "2026-04-21",
-            100.14
+            347.84
           ],
           [
             "2026-04-22",
-            103.07
+            351.22
           ],
           [
             "2026-04-23",
-            84.78
+            349.8
           ],
           [
             "2026-04-24",
-            90.17
+            352.05
           ],
           [
             "2026-04-27",
-            90.45
+            352.53
           ],
           [
             "2026-04-28",
-            90.49
+            350.63
           ],
           [
             "2026-04-29",
-            88.89
+            350.21
           ],
           [
             "2026-04-30",
-            88.31
+            354.18
           ],
           [
             "2026-05-01",
-            91.16
+            355.29
           ],
           [
             "2026-05-04",
-            91.97
+            353.98
           ],
           [
             "2026-05-05",
-            92.01
+            356.99
           ],
           [
             "2026-05-06",
-            89.05
+            361.86
           ],
           [
             "2026-05-07",
-            93.59
+            360.2
           ],
           [
             "2026-05-08",
-            91.18
+            362.87
           ],
           [
             "2026-05-11",
-            91.49
+            363.63
           ],
           [
             "2026-05-12",
-            89.0
+            362.79
           ],
           [
             "2026-05-13",
-            87.05
+            364.71
           ],
           [
             "2026-05-14",
-            90.5
+            367.4
           ],
           [
             "2026-05-15",
-            95.07
+            362.74
           ],
           [
             "2026-05-18",
-            103.42
+            362.36
           ],
           [
             "2026-05-19",
-            101.83
+            360.06
           ],
           [
             "2026-05-20",
-            103.3
+            364.19
           ],
           [
             "2026-05-21",
-            99.69
+            365.09
           ],
           [
             "2026-05-22",
-            102.13
+            366.79
           ],
           [
             "2026-05-26",
-            99.92
+            369.46
           ],
           [
             "2026-05-27",
-            102.12
+            369.36
           ],
           [
             "2026-05-28",
-            108.73
+            371.66
           ],
           [
             "2026-05-29",
-            124.37
+            372.54
           ],
           [
             "2026-06-01",
-            135.86
+            373.4
           ],
           [
             "2026-06-02",
-            127.65
+            374.36
           ],
           [
             "2026-06-03",
-            117.9
+            371.65
           ],
           [
             "2026-06-04",
-            119.36
+            373.38
           ],
           [
             "2026-06-05",
-            112.45
+            363.38
           ],
           [
             "2026-06-08",
-            114.19
+            364.47
           ],
           [
             "2026-06-09",
-            106.97
+            363.67
           ],
           [
             "2026-06-10",
-            106.06
+            358.04
           ],
           [
             "2026-06-11",
-            103.08
+            364.3
           ],
           [
             "2026-06-12",
-            102.15
+            366.36
           ],
           [
             "2026-06-15",
-            104.15
+            372.53
           ],
           [
             "2026-06-16",
-            101.33
+            370.37
           ]
         ],
         "source": "yahoo",
         "as_of": "2026-06-16"
       },
-      "is_fund": false
+      "is_fund": true
     },
     {
       "rank": 23,
@@ -8699,12 +8581,12 @@
       "mentions": 36,
       "mentions_24h_ago": 27,
       "mention_change_pct": 33.3,
-      "upvotes": 99,
+      "upvotes": 96,
       "cik": "0001844452",
       "filing": {
         "form": "8-K",
         "date": "2026-06-08",
-        "days_ago": 8,
+        "days_ago": 9,
         "fresh": false,
         "desc": "8-K",
         "summary": "Shareholder vote results",
@@ -8716,7 +8598,7 @@
         {
           "form": "8-K",
           "date": "2026-06-08",
-          "days_ago": 8,
+          "days_ago": 9,
           "fresh": false,
           "desc": "8-K",
           "summary": "Shareholder vote results",
@@ -8727,7 +8609,7 @@
         {
           "form": "8-K",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed",
@@ -8738,7 +8620,7 @@
         {
           "form": "424B5",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "424B5",
           "summary": "Shelf offering prospectus",
@@ -8749,7 +8631,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-15",
-          "days_ago": 32,
+          "days_ago": 33,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -8759,7 +8641,7 @@
         {
           "form": "8-K",
           "date": "2026-05-14",
-          "days_ago": 33,
+          "days_ago": 34,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -8769,7 +8651,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-04-24",
-          "days_ago": 53,
+          "days_ago": 54,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -8779,7 +8661,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-04-24",
-          "days_ago": 53,
+          "days_ago": 54,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -8789,7 +8671,7 @@
         {
           "form": "8-K/A",
           "date": "2026-04-01",
-          "days_ago": 76,
+          "days_ago": 77,
           "fresh": false,
           "desc": "8-K/A",
           "summary": "Material event",
@@ -8799,7 +8681,7 @@
         {
           "form": "10-K",
           "date": "2026-03-19",
-          "days_ago": 89,
+          "days_ago": 90,
           "fresh": false,
           "desc": "10-K",
           "summary": "Annual report",
@@ -8809,7 +8691,7 @@
         {
           "form": "8-K",
           "date": "2026-03-19",
-          "days_ago": 89,
+          "days_ago": 90,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -9098,293 +8980,390 @@
     },
     {
       "rank": 24,
-      "ticker": "VTI",
-      "name": "Vanguard Total Stock Market ETF",
-      "sec_name": null,
-      "display_name": "Vanguard Total Stock Market ETF",
-      "name_match": "no_cik",
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "sec_name": "ServiceNow, Inc.",
+      "display_name": "ServiceNow, Inc.",
+      "name_match": "verified",
       "mentions": 35,
-      "mentions_24h_ago": 19,
-      "mention_change_pct": 84.2,
-      "upvotes": 86,
-      "cik": null,
-      "filing": null,
-      "filings": [],
-      "quote_type": "ETF",
+      "mentions_24h_ago": 28,
+      "mention_change_pct": 25.0,
+      "upvotes": 83,
+      "cik": "0001373715",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-05-22",
+        "days_ago": 26,
+        "fresh": false,
+        "desc": "8-K",
+        "summary": "Executive / board change; Shareholder vote results",
+        "accession": "0001373715-26-000065",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/now-20260521.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/0001373715-26-000065-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-05-22",
+          "days_ago": 26,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change; Shareholder vote results",
+          "accession": "0001373715-26-000065",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000065/0001373715-26-000065-index.htm",
+          "ai_summary": "ServiceNow’s 2026 annual meeting approved a 38 million‑share increase to its 2021 Equity Incentive Plan and elected six directors, while ratifying PwC as auditor."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 33,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; New debt obligation; Other material update",
+          "accession": "0001193125-26-226644",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000119312526226644/0001193125-26-226644-index.htm",
+          "ai_summary": "ServiceNow issued $4 billion of senior notes (rates 4.25%‑6.30% due 2028‑2056) on May 15 2026 under a new underwriting and indenture agreement."
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-11",
+          "days_ago": 37,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001373715-26-000058",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000058/0001373715-26-000058-index.htm",
+          "ai_summary": "ServiceNow’s May 2026 proxy asks shareholders to approve 38 million new equity‑incentive shares, re‑elect its board, and reject a written‑consent shareholder proposal."
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-04-23",
+          "days_ago": 55,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001373715-26-000056",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000056/0001373715-26-000056-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-22",
+          "days_ago": 56,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; Earnings released; New debt obligation",
+          "accession": "0001373715-26-000054",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000054/0001373715-26-000054-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-04-06",
+          "days_ago": 72,
+          "fresh": false,
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001373715-26-000040",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000040/0001373715-26-000040-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-06",
+          "days_ago": 72,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001373715-26-000039",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000039/0001373715-26-000039-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-01",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; New debt obligation",
+          "accession": "0001373715-26-000030",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000030/0001373715-26-000030-index.htm"
+        }
+      ],
+      "tickers": [
+        "NOW"
+      ],
+      "quote_type": "EQUITY",
       "price": {
-        "last": 370.37,
-        "prev_close": 372.53,
-        "change_pct": -0.58,
+        "last": 101.33,
+        "prev_close": 104.15,
+        "change_pct": -2.71,
         "currency": "USD",
         "spark": [
-          358.04,
-          364.3,
-          366.36,
-          372.53,
-          370.37
+          106.06,
+          103.08,
+          102.15,
+          104.15,
+          101.33
         ],
         "history": [
           [
             "2026-03-17",
-            330.57
+            116.72
           ],
           [
             "2026-03-18",
-            326.02
+            113.71
           ],
           [
             "2026-03-19",
-            325.44
+            113.27
           ],
           [
             "2026-03-20",
-            320.34
+            110.38
           ],
           [
             "2026-03-23",
-            324.19
+            110.95
           ],
           [
             "2026-03-24",
-            323.18
+            104.65
           ],
           [
             "2026-03-25",
-            325.15
+            103.06
           ],
           [
             "2026-03-26",
-            319.55
+            103.64
           ],
           [
             "2026-03-27",
-            313.09
+            99.41
           ],
           [
             "2026-03-30",
-            311.68
+            104.97
           ],
           [
             "2026-03-31",
-            320.81
+            104.55
           ],
           [
             "2026-04-01",
-            323.24
+            104.04
           ],
           [
             "2026-04-02",
-            323.76
+            102.0
           ],
           [
             "2026-04-06",
-            325.21
+            102.42
           ],
           [
             "2026-04-07",
-            325.43
+            100.55
           ],
           [
             "2026-04-08",
-            333.7
+            97.47
           ],
           [
             "2026-04-09",
-            335.45
+            89.81
           ],
           [
             "2026-04-10",
-            335.05
+            83.0
           ],
           [
             "2026-04-13",
-            338.67
+            89.06
           ],
           [
             "2026-04-14",
-            342.65
+            87.79
           ],
           [
             "2026-04-15",
-            345.24
+            94.19
           ],
           [
             "2026-04-16",
-            346.03
+            96.44
           ],
           [
             "2026-04-17",
-            350.53
+            96.66
           ],
           [
             "2026-04-20",
-            350.21
+            99.72
           ],
           [
             "2026-04-21",
-            347.84
+            100.14
           ],
           [
             "2026-04-22",
-            351.22
+            103.07
           ],
           [
             "2026-04-23",
-            349.8
+            84.78
           ],
           [
             "2026-04-24",
-            352.05
+            90.17
           ],
           [
             "2026-04-27",
-            352.53
+            90.45
           ],
           [
             "2026-04-28",
-            350.63
+            90.49
           ],
           [
             "2026-04-29",
-            350.21
+            88.89
           ],
           [
             "2026-04-30",
-            354.18
+            88.31
           ],
           [
             "2026-05-01",
-            355.29
+            91.16
           ],
           [
             "2026-05-04",
-            353.98
+            91.97
           ],
           [
             "2026-05-05",
-            356.99
+            92.01
           ],
           [
             "2026-05-06",
-            361.86
+            89.05
           ],
           [
             "2026-05-07",
-            360.2
+            93.59
           ],
           [
             "2026-05-08",
-            362.87
+            91.18
           ],
           [
             "2026-05-11",
-            363.63
+            91.49
           ],
           [
             "2026-05-12",
-            362.79
+            89.0
           ],
           [
             "2026-05-13",
-            364.71
+            87.05
           ],
           [
             "2026-05-14",
-            367.4
+            90.5
           ],
           [
             "2026-05-15",
-            362.74
+            95.07
           ],
           [
             "2026-05-18",
-            362.36
+            103.42
           ],
           [
             "2026-05-19",
-            360.06
+            101.83
           ],
           [
             "2026-05-20",
-            364.19
+            103.3
           ],
           [
             "2026-05-21",
-            365.09
+            99.69
           ],
           [
             "2026-05-22",
-            366.79
+            102.13
           ],
           [
             "2026-05-26",
-            369.46
+            99.92
           ],
           [
             "2026-05-27",
-            369.36
+            102.12
           ],
           [
             "2026-05-28",
-            371.66
+            108.73
           ],
           [
             "2026-05-29",
-            372.54
+            124.37
           ],
           [
             "2026-06-01",
-            373.4
+            135.86
           ],
           [
             "2026-06-02",
-            374.36
+            127.65
           ],
           [
             "2026-06-03",
-            371.65
+            117.9
           ],
           [
             "2026-06-04",
-            373.38
+            119.36
           ],
           [
             "2026-06-05",
-            363.38
+            112.45
           ],
           [
             "2026-06-08",
-            364.47
+            114.19
           ],
           [
             "2026-06-09",
-            363.67
+            106.97
           ],
           [
             "2026-06-10",
-            358.04
+            106.06
           ],
           [
             "2026-06-11",
-            364.3
+            103.08
           ],
           [
             "2026-06-12",
-            366.36
+            102.15
           ],
           [
             "2026-06-15",
-            372.53
+            104.15
           ],
           [
             "2026-06-16",
-            370.37
+            101.33
           ]
         ],
         "source": "yahoo",
         "as_of": "2026-06-16"
       },
-      "is_fund": true
+      "is_fund": false
     },
     {
       "rank": 26,
@@ -9393,15 +9372,15 @@
       "sec_name": "CXApp Inc.",
       "display_name": "CXApp Inc.",
       "name_match": "verified",
-      "mentions": 31,
-      "mentions_24h_ago": 10,
-      "mention_change_pct": 210.0,
-      "upvotes": 159,
+      "mentions": 32,
+      "mentions_24h_ago": 9,
+      "mention_change_pct": 255.6,
+      "upvotes": 173,
       "cik": "0001820875",
       "filing": {
         "form": "8-K",
         "date": "2026-06-03",
-        "days_ago": 13,
+        "days_ago": 14,
         "fresh": false,
         "desc": "8-K",
         "summary": "Unregistered share sale",
@@ -9413,7 +9392,7 @@
         {
           "form": "8-K",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale",
@@ -9423,7 +9402,7 @@
         {
           "form": "8-K",
           "date": "2026-06-03",
-          "days_ago": 13,
+          "days_ago": 14,
           "fresh": false,
           "desc": "8-K",
           "summary": "Material agreement signed; Acquisition / disposition completed; Other material update",
@@ -9433,7 +9412,7 @@
         {
           "form": "8-K",
           "date": "2026-05-28",
-          "days_ago": 19,
+          "days_ago": 20,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale",
@@ -9443,7 +9422,7 @@
         {
           "form": "8-K",
           "date": "2026-05-13",
-          "days_ago": 34,
+          "days_ago": 35,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released; Other material update",
@@ -9453,7 +9432,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-13",
-          "days_ago": 34,
+          "days_ago": 35,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -9463,7 +9442,7 @@
         {
           "form": "DEFA14A",
           "date": "2026-05-07",
-          "days_ago": 40,
+          "days_ago": 41,
           "fresh": false,
           "desc": "DEFA14A",
           "summary": "Proxy materials (additional)",
@@ -9473,7 +9452,7 @@
         {
           "form": "DEF 14A",
           "date": "2026-05-07",
-          "days_ago": 40,
+          "days_ago": 41,
           "fresh": false,
           "desc": "DEF 14A",
           "summary": "Proxy statement",
@@ -9483,7 +9462,7 @@
         {
           "form": "PRE 14A",
           "date": "2026-04-27",
-          "days_ago": 50,
+          "days_ago": 51,
           "fresh": false,
           "desc": "PRE 14A",
           "summary": "Preliminary proxy",
@@ -9493,7 +9472,7 @@
         {
           "form": "8-K",
           "date": "2026-04-17",
-          "days_ago": 60,
+          "days_ago": 61,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale",
@@ -9503,7 +9482,7 @@
         {
           "form": "8-K",
           "date": "2026-04-10",
-          "days_ago": 67,
+          "days_ago": 68,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale",
@@ -9513,7 +9492,7 @@
         {
           "form": "10-K",
           "date": "2026-03-30",
-          "days_ago": 78,
+          "days_ago": 79,
           "fresh": false,
           "desc": "10-K",
           "summary": "Annual report",
@@ -9523,7 +9502,7 @@
         {
           "form": "8-K",
           "date": "2026-03-26",
-          "days_ago": 82,
+          "days_ago": 83,
           "fresh": false,
           "desc": "8-K",
           "summary": "Unregistered share sale",
@@ -9812,20 +9791,354 @@
     },
     {
       "rank": 28,
+      "ticker": "CC",
+      "name": "Chemours",
+      "sec_name": "Chemours Co",
+      "display_name": "Chemours Co",
+      "name_match": "verified",
+      "mentions": 28,
+      "mentions_24h_ago": 4,
+      "mention_change_pct": 600.0,
+      "upvotes": 52,
+      "cik": "0001627223",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-05-05",
+        "days_ago": 43,
+        "fresh": false,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001627223-26-000011",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000011/cc-20260331.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000011/0001627223-26-000011-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-05-05",
+          "days_ago": 43,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001627223-26-000011",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000011/0001627223-26-000011-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-05",
+          "days_ago": 43,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001627223-26-000010",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000010/0001627223-26-000010-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-04-30",
+          "days_ago": 48,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change; Shareholder vote results",
+          "accession": "0001193125-26-193216",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000119312526193216/0001193125-26-193216-index.htm"
+        }
+      ],
+      "tickers": [
+        "CC"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 21.67,
+        "prev_close": 22.43,
+        "change_pct": -3.39,
+        "currency": "USD",
+        "spark": [
+          20.31,
+          21.52,
+          22.0,
+          22.43,
+          21.67
+        ],
+        "history": [
+          [
+            "2026-03-17",
+            18.99
+          ],
+          [
+            "2026-03-18",
+            19.02
+          ],
+          [
+            "2026-03-19",
+            18.94
+          ],
+          [
+            "2026-03-20",
+            17.7
+          ],
+          [
+            "2026-03-23",
+            18.5
+          ],
+          [
+            "2026-03-24",
+            20.37
+          ],
+          [
+            "2026-03-25",
+            20.77
+          ],
+          [
+            "2026-03-26",
+            21.58
+          ],
+          [
+            "2026-03-27",
+            21.6
+          ],
+          [
+            "2026-03-30",
+            21.2
+          ],
+          [
+            "2026-03-31",
+            22.03
+          ],
+          [
+            "2026-04-01",
+            21.52
+          ],
+          [
+            "2026-04-02",
+            21.55
+          ],
+          [
+            "2026-04-06",
+            21.7
+          ],
+          [
+            "2026-04-07",
+            22.34
+          ],
+          [
+            "2026-04-08",
+            21.43
+          ],
+          [
+            "2026-04-09",
+            21.84
+          ],
+          [
+            "2026-04-10",
+            22.71
+          ],
+          [
+            "2026-04-13",
+            23.05
+          ],
+          [
+            "2026-04-14",
+            22.89
+          ],
+          [
+            "2026-04-15",
+            23.03
+          ],
+          [
+            "2026-04-16",
+            23.87
+          ],
+          [
+            "2026-04-17",
+            23.18
+          ],
+          [
+            "2026-04-20",
+            23.32
+          ],
+          [
+            "2026-04-21",
+            23.72
+          ],
+          [
+            "2026-04-22",
+            24.04
+          ],
+          [
+            "2026-04-23",
+            24.19
+          ],
+          [
+            "2026-04-24",
+            26.61
+          ],
+          [
+            "2026-04-27",
+            26.48
+          ],
+          [
+            "2026-04-28",
+            25.7
+          ],
+          [
+            "2026-04-29",
+            26.34
+          ],
+          [
+            "2026-04-30",
+            26.95
+          ],
+          [
+            "2026-05-01",
+            27.73
+          ],
+          [
+            "2026-05-04",
+            27.22
+          ],
+          [
+            "2026-05-05",
+            27.94
+          ],
+          [
+            "2026-05-06",
+            23.67
+          ],
+          [
+            "2026-05-07",
+            22.41
+          ],
+          [
+            "2026-05-08",
+            23.04
+          ],
+          [
+            "2026-05-11",
+            25.26
+          ],
+          [
+            "2026-05-12",
+            24.67
+          ],
+          [
+            "2026-05-13",
+            25.18
+          ],
+          [
+            "2026-05-14",
+            24.86
+          ],
+          [
+            "2026-05-15",
+            23.13
+          ],
+          [
+            "2026-05-18",
+            22.94
+          ],
+          [
+            "2026-05-19",
+            21.75
+          ],
+          [
+            "2026-05-20",
+            22.27
+          ],
+          [
+            "2026-05-21",
+            21.44
+          ],
+          [
+            "2026-05-22",
+            21.37
+          ],
+          [
+            "2026-05-26",
+            22.1
+          ],
+          [
+            "2026-05-27",
+            22.5
+          ],
+          [
+            "2026-05-28",
+            22.72
+          ],
+          [
+            "2026-05-29",
+            22.16
+          ],
+          [
+            "2026-06-01",
+            22.32
+          ],
+          [
+            "2026-06-02",
+            23.25
+          ],
+          [
+            "2026-06-03",
+            22.61
+          ],
+          [
+            "2026-06-04",
+            21.67
+          ],
+          [
+            "2026-06-05",
+            20.5
+          ],
+          [
+            "2026-06-08",
+            20.86
+          ],
+          [
+            "2026-06-09",
+            20.22
+          ],
+          [
+            "2026-06-10",
+            20.31
+          ],
+          [
+            "2026-06-11",
+            21.52
+          ],
+          [
+            "2026-06-12",
+            22.0
+          ],
+          [
+            "2026-06-15",
+            22.43
+          ],
+          [
+            "2026-06-16",
+            21.67
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-06-16"
+      },
+      "is_fund": false
+    },
+    {
+      "rank": 29,
       "ticker": "LFVN",
       "name": "Lifevantage",
       "sec_name": "Lifevantage Corp",
       "display_name": "Lifevantage Corp",
       "name_match": "verified",
-      "mentions": 29,
+      "mentions": 28,
       "mentions_24h_ago": 48,
-      "mention_change_pct": -39.6,
-      "upvotes": 218,
+      "mention_change_pct": -41.7,
+      "upvotes": 132,
       "cik": "0000849146",
       "filing": {
         "form": "8-K",
         "date": "2026-05-06",
-        "days_ago": 41,
+        "days_ago": 42,
         "fresh": false,
         "desc": "8-K",
         "summary": "Earnings released",
@@ -9837,7 +10150,7 @@
         {
           "form": "8-K",
           "date": "2026-05-06",
-          "days_ago": 41,
+          "days_ago": 42,
           "fresh": false,
           "desc": "8-K",
           "summary": "Earnings released",
@@ -9847,7 +10160,7 @@
         {
           "form": "10-Q",
           "date": "2026-05-06",
-          "days_ago": 41,
+          "days_ago": 42,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
@@ -9857,7 +10170,7 @@
         {
           "form": "8-K",
           "date": "2026-04-16",
-          "days_ago": 61,
+          "days_ago": 62,
           "fresh": false,
           "desc": "8-K",
           "summary": "Executive / board change",
@@ -10145,332 +10458,353 @@
       "is_fund": false
     },
     {
-      "rank": 29,
-      "ticker": "CC",
-      "name": "Chemours",
-      "sec_name": "Chemours Co",
-      "display_name": "Chemours Co",
+      "rank": 30,
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "sec_name": "Palantir Technologies Inc.",
+      "display_name": "Palantir Technologies Inc.",
       "name_match": "verified",
-      "mentions": 28,
-      "mentions_24h_ago": 5,
-      "mention_change_pct": 460.0,
-      "upvotes": 82,
-      "cik": "0001627223",
+      "mentions": 27,
+      "mentions_24h_ago": 15,
+      "mention_change_pct": 80.0,
+      "upvotes": 170,
+      "cik": "0001321655",
       "filing": {
-        "form": "10-Q",
-        "date": "2026-05-05",
-        "days_ago": 42,
+        "form": "8-K",
+        "date": "2026-06-09",
+        "days_ago": 8,
         "fresh": false,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001627223-26-000011",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000011/cc-20260331.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000011/0001627223-26-000011-index.htm"
+        "desc": "8-K",
+        "summary": "Shareholder vote results",
+        "accession": "0001321655-26-000033",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000033/pltr-20260603.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000033/0001321655-26-000033-index.htm"
       },
       "filings": [
         {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 8,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001321655-26-000033",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000033/0001321655-26-000033-index.htm",
+          "ai_summary": "Palantir's 2026 annual meeting elected directors, ratified auditors, approved executive pay, and rejected three stockholder proposals."
+        },
+        {
           "form": "10-Q",
           "date": "2026-05-05",
-          "days_ago": 42,
+          "days_ago": 43,
           "fresh": false,
           "desc": "10-Q",
           "summary": "Quarterly report",
-          "accession": "0001627223-26-000011",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000011/0001627223-26-000011-index.htm"
+          "accession": "0001321655-26-000028",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000028/0001321655-26-000028-index.htm"
         },
         {
           "form": "8-K",
-          "date": "2026-05-05",
-          "days_ago": 42,
+          "date": "2026-05-04",
+          "days_ago": 44,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001627223-26-000010",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000162722326000010/0001627223-26-000010-index.htm"
+          "summary": "Earnings released; Other material update",
+          "accession": "0001321655-26-000026",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000026/0001321655-26-000026-index.htm"
         },
         {
-          "form": "8-K",
-          "date": "2026-04-30",
-          "days_ago": 47,
+          "form": "DEFA14A",
+          "date": "2026-04-24",
+          "days_ago": 54,
           "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change; Shareholder vote results",
-          "accession": "0001193125-26-193216",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1627223/000119312526193216/0001193125-26-193216-index.htm"
+          "desc": "DEFA14A",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001321655-26-000020",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000020/0001321655-26-000020-index.htm"
+        },
+        {
+          "form": "DEF 14A",
+          "date": "2026-04-24",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "DEF 14A",
+          "summary": "Proxy statement",
+          "accession": "0001321655-26-000019",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000019/0001321655-26-000019-index.htm"
         }
       ],
       "tickers": [
-        "CC"
+        "PLTR"
       ],
       "quote_type": "EQUITY",
       "price": {
-        "last": 21.67,
-        "prev_close": 22.43,
-        "change_pct": -3.39,
+        "last": 133.25,
+        "prev_close": 134.71,
+        "change_pct": -1.08,
         "currency": "USD",
         "spark": [
-          20.31,
-          21.52,
-          22.0,
-          22.43,
-          21.67
+          130.21,
+          131.08,
+          127.99,
+          134.71,
+          133.25
         ],
         "history": [
           [
             "2026-03-17",
-            18.99
+            155.08
           ],
           [
             "2026-03-18",
-            19.02
+            152.77
           ],
           [
             "2026-03-19",
-            18.94
+            155.68
           ],
           [
             "2026-03-20",
-            17.7
+            150.68
           ],
           [
             "2026-03-23",
-            18.5
+            160.84
           ],
           [
             "2026-03-24",
-            20.37
+            154.78
           ],
           [
             "2026-03-25",
-            20.77
+            154.96
           ],
           [
             "2026-03-26",
-            21.58
+            147.56
           ],
           [
             "2026-03-27",
-            21.6
+            143.06
           ],
           [
             "2026-03-30",
-            21.2
+            137.55
           ],
           [
             "2026-03-31",
-            22.03
+            146.28
           ],
           [
             "2026-04-01",
-            21.52
+            146.49
           ],
           [
             "2026-04-02",
-            21.55
+            148.46
           ],
           [
             "2026-04-06",
-            21.7
+            147.93
           ],
           [
             "2026-04-07",
-            22.34
+            150.07
           ],
           [
             "2026-04-08",
-            21.43
+            140.76
           ],
           [
             "2026-04-09",
-            21.84
+            130.49
           ],
           [
             "2026-04-10",
-            22.71
+            128.06
           ],
           [
             "2026-04-13",
-            23.05
+            132.37
           ],
           [
             "2026-04-14",
-            22.89
+            135.7
           ],
           [
             "2026-04-15",
-            23.03
+            142.15
           ],
           [
             "2026-04-16",
-            23.87
+            142.76
           ],
           [
             "2026-04-17",
-            23.18
+            146.39
           ],
           [
             "2026-04-20",
-            23.32
+            145.89
           ],
           [
             "2026-04-21",
-            23.72
+            145.97
           ],
           [
             "2026-04-22",
-            24.04
+            152.62
           ],
           [
             "2026-04-23",
-            24.19
+            141.57
           ],
           [
             "2026-04-24",
-            26.61
+            143.09
           ],
           [
             "2026-04-27",
-            26.48
+            143.1
           ],
           [
             "2026-04-28",
-            25.7
+            141.18
           ],
           [
             "2026-04-29",
-            26.34
+            137.97
           ],
           [
             "2026-04-30",
-            26.95
+            139.11
           ],
           [
             "2026-05-01",
-            27.73
+            144.07
           ],
           [
             "2026-05-04",
-            27.22
+            146.03
           ],
           [
             "2026-05-05",
-            27.94
+            135.91
           ],
           [
             "2026-05-06",
-            23.67
+            133.79
           ],
           [
             "2026-05-07",
-            22.41
+            137.05
           ],
           [
             "2026-05-08",
-            23.04
+            137.8
           ],
           [
             "2026-05-11",
-            25.26
+            136.89
           ],
           [
             "2026-05-12",
-            24.67
+            136.0
           ],
           [
             "2026-05-13",
-            25.18
+            130.05
           ],
           [
             "2026-05-14",
-            24.86
+            133.73
           ],
           [
             "2026-05-15",
-            23.13
+            133.99
           ],
           [
             "2026-05-18",
-            22.94
+            135.14
           ],
           [
             "2026-05-19",
-            21.75
+            135.26
           ],
           [
             "2026-05-20",
-            22.27
+            137.15
           ],
           [
             "2026-05-21",
-            21.44
+            137.41
           ],
           [
             "2026-05-22",
-            21.37
+            136.88
           ],
           [
             "2026-05-26",
-            22.1
+            136.6
           ],
           [
             "2026-05-27",
-            22.5
+            132.51
           ],
           [
             "2026-05-28",
-            22.72
+            143.34
           ],
           [
             "2026-05-29",
-            22.16
+            156.54
           ],
           [
             "2026-06-01",
-            22.32
+            160.65
           ],
           [
             "2026-06-02",
-            23.25
+            152.17
           ],
           [
             "2026-06-03",
-            22.61
+            142.2
           ],
           [
             "2026-06-04",
-            21.67
+            141.7
           ],
           [
             "2026-06-05",
-            20.5
+            135.53
           ],
           [
             "2026-06-08",
-            20.86
+            136.47
           ],
           [
             "2026-06-09",
-            20.22
+            132.07
           ],
           [
             "2026-06-10",
-            20.31
+            130.21
           ],
           [
             "2026-06-11",
-            21.52
+            131.08
           ],
           [
             "2026-06-12",
-            22.0
+            127.99
           ],
           [
             "2026-06-15",
-            22.43
+            134.71
           ],
           [
             "2026-06-16",
-            21.67
+            133.25
           ]
         ],
         "source": "yahoo",
