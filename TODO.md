@@ -4,46 +4,46 @@ Running list so we don't repeat ourselves between sessions. Newest ideas at top.
 
 ---
 
-## 🤖 AI persona-agents that comment on firms  (next big feature)
+## 🤖 AI persona-agents that comment on firms — ✅ BUILT (2026-06-19, pending manual setup)
 
 **Goal:** AI characters with distinct personalities + investment styles post takes
 under each trending firm. They react to the *same* filing + attention spike
-differently → debate. This is the site's strongest originality lever (Yahoo Finance
-would never do this).
+differently → debate. The site's strongest originality lever.
 
-**Personas (distinct lenses, archetypes):**
-- Value investor — moats, valuation, hype-skeptic
-- WSB momentum degen — YOLO, options, "to the moon"
-- Forensic short-seller — hunts red flags in the filing
-- Quant — base rates, "n=1, no signal"
-- (optional) Macro / sector top-down
+**Decisions made (2026-06-19):**
+- **DB-backed & interactive** (not static JSON). The hourly pipeline writes takes into
+  the Supabase `comments` table via a **service-role key** (GitHub Actions secret only,
+  never in browser/repo). Agents have real `profiles` rows → humans reply & vote with the
+  existing UI.
+- **Free models only** (NOT the Claude subscription): each agent is bound to one provider
+  in the existing `AI_PROVIDERS` chain (Gemini Flash-Lite / Groq 70B & 8B / OpenRouter).
+- **5 agents:** Prudence Vale (value · gemini-lite), DiamondHandz Dex (momentum · groq-8b),
+  Red Flag Rhea (forensic short · gemini-lite), Sigma (quant · groq-70b), Atlas (macro ·
+  openrouter). Each has a public **transparency dashboard** at `#/u/<id>`: model+provider,
+  personality dials (risk-aversion, financial-literacy, creativity=temp, diligence,
+  horizon, skepticism, verbosity) + the verbatim system prompt + disclaimer.
+- **Coverage is quota-driven**, runs AFTER summaries (higher priority) on leftover quota;
+  each agent's `diligence` dial + `MAX_AGENT_CALLS_PER_RUN` (12) bound coverage. Lazy agents
+  drain firms over later runs (like summaries do). Dedup by `(agent, cik, accession)` → no
+  reposts. Grounded on the cached `ai_summary`; instructed to say "I don't see that in the
+  filing" not invent. One scripted agent→agent debate reply per run.
 
-**Implementation routes (static GitHub Pages + Supabase — site can't hold API keys):**
-- **(a) Build-time — START HERE.** In `scripts/build_data.py`, per top-N firm call the
-  Claude API once per persona, store takes in `data/trending.json` (or a new
-  `data/agents.json`). Cheap, cacheable, fits the existing hourly pipeline.
-- **(b) Runtime — later upgrade.** Serverless fn (Supabase Edge Function / Cloudflare
-  Worker) holds the key, generates on demand, lets agents reply to human comments.
+**Where it lives:** `scripts/seed_agents.py` (roster = single source of truth) +
+`generate_agent_takes()` in `scripts/build_data.py`; frontend in `js/comments.js`
+(pinned "What the AI agents think" group + bot badges) and `js/profile.js` (dashboard);
+loud disclaimer banner in the Discussion (`js/router.js`); styles in `styles.css`.
 
-**UX:** render as special comments in the existing thread — bot badge + persona
-avatar + a one-line style tag. Let agents reply to each other (scripted mini-debate).
-Keep them visually distinct + collapsible so they don't drown real users.
+**⚠️ Manual setup required to go live (see SETUP / plan):**
+- [ ] Add GitHub Actions secrets `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`
+  (Supabase → Settings → API → `service_role`). Never paste the key into a file.
+- [ ] Run the new `supabase/schema.sql` migration (adds `is_agent` + `agent_meta` to
+  `profiles`, plus the dedup index) in the SQL editor.
+- [ ] Run the seed once: `python scripts/seed_agents.py` (with the two env vars) or the
+  manual **"Seed agents"** workflow. Confirm 5 `slug -> uuid` lines.
+- [ ] Avatars are committed under `assets/agents/`; Pages serves them after the next deploy.
 
-**Model:** Claude Haiku 4.5 for cost at scale (e.g. 10 firms × 4 personas hourly = 40
-calls); Sonnet/Opus for a few richer voices. (Check `/claude-api` skill for current
-model ids + pricing before building.)
-
-**Must-haves / guardrails:**
-- Ground every take in the real filing text — reuse the existing `ai_summary`. Instruct
-  agents to say "I don't see that in the filing" rather than invent numbers.
-- Loud, persistent **"fictional characters — entertainment/education, NOT investment
-  advice"** disclaimer. Legal + ethical.
-- Only regenerate a firm's takes when the filing / mentions materially change (cost).
-
-**Open decisions to make before coding:**
-- [ ] Build-time (a) or runtime (b) first?
-- [ ] Which personas, and how many per firm?
-- [ ] How many firms get agent takes (all, or top-N)?
+**Later upgrades:** richer/more personas; let agents reply to *human* comments (runtime
+fn); surface a one-line agent take on the home card.
 
 ---
 
@@ -126,6 +126,9 @@ unchanged) + **Financials** (income statement, balance sheet, cash flow).
   refresh (no hard reload). Forgetting = users see stale JS for ~10 min (Pages cache).
 
 ## ✅ Done (recent)
+- **AI persona-agents** (DB-backed): 5 fictional analysts post grounded, quota-budgeted
+  takes into the Supabase comments thread + debate each other; public transparency
+  dashboards at `#/u/<id>`. Built 2026-06-19 — pending manual Supabase setup (see top §).
 - **Financials tab** on the per-company page (XBRL companyfacts → build-time per-firm
   `data/financials/CIK*.json` → lazy `js/financials.js`). See section 3 above.
 - Cache-buster: import-map version token in `index.html` busts the full JS module graph + CSS.
