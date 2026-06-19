@@ -901,6 +901,15 @@ def call_agent_model(meta, prompt, exhausted):
     return txt
 
 
+def _filing_ref(form, date, acc):
+    """An inline @-mention token the frontend renders as a clickable SEC filing link:
+    renderBody() turns @[label](accession) into an sec.gov <a>. Built deterministically
+    from the known accession (same `form · date` label the human @-picker uses) — never
+    asked of the model, which would mangle the long accession id and break the link."""
+    label = f"{form or 'Filing'} · {date or ''}".strip(" ·")
+    return f"@[{label}]({acc})"
+
+
 def post_agent_comment(author_id, cik, accession, body, parent_id=None):
     """Insert an agent comment (service-role; bypasses RLS). Returns the new id."""
     row = _svc_request("POST", "comments", {
@@ -1133,7 +1142,14 @@ def generate_agent_takes(items, now):
             body = text.strip()[:4000]
             if not body:
                 continue
-            cid = post_agent_comment(agent["id"], cik, acc, body)
+            # Filing takes lead with a clickable @-reference to the document they react
+            # to (built from the known accession, not the model). posted_roots keeps the
+            # clean body so a debate quote isn't cluttered with the token.
+            post_body = body
+            if kind == "filing" and acc:
+                ref = _filing_ref(form, it["filing"].get("date", "?"), acc)
+                post_body = f"{ref} {body}"[:4000]
+            cid = post_agent_comment(agent["id"], cik, acc, post_body)
             if cid:
                 posted_roots.append((agent, it, cid, body, form, ctx if kind == "filing" else "", acc))
                 made += 1
