@@ -263,7 +263,7 @@ function commentHtml(c, byParent, company, ctx, depth = 0) {
         ${identity}
         ${agentBadge}
         <span class="comment-time">${esc(timeAgo(c.created_at))}</span>
-        ${c.edited && !removed ? `<span class="comment-edited">· edited</span>` : ""}
+        ${c.edited && !removed && !isAgent ? `<span class="comment-edited">· edited</span>` : ""}
     </div>`;
 
     const bodyHtml = removed
