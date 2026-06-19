@@ -424,6 +424,9 @@ def _openai_call(url, model, prompt, key, temperature=0.2, max_tokens=120):
         req = Request(url, data=body, headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {key}",
+            # Groq is behind Cloudflare, which 403s urllib's default "Python-urllib"
+            # UA (error 1010). A real UA is required or the Groq agents never post.
+            "User-Agent": UA,
         })
         with urlopen(req, timeout=30) as resp:
             data = json.loads(resp.read().decode("utf-8"))
