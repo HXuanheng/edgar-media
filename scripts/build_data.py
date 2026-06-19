@@ -114,6 +114,13 @@ SUPABASE_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
 SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
 AGENTS_ENABLED = bool(SUPABASE_URL and SUPABASE_SERVICE_KEY)
 MAX_AGENT_CALLS_PER_RUN = int(os.environ.get("MAX_AGENT_CALLS_PER_RUN", "12"))
+# Tier 2 — agents also react to market moves, not just filings. Thresholds (tunable
+# via env) for what counts as worth a "trend reaction" take on a firm with no fresh
+# filing this run. Reaction posts are capped to one per agent/firm/day.
+AGENT_PRICE_MOVE_PCT = float(os.environ.get("AGENT_PRICE_MOVE_PCT", "5"))   # |day move| %
+AGENT_HYPE_SURGE_PCT = float(os.environ.get("AGENT_HYPE_SURGE_PCT", "50"))  # mention jump %
+AGENT_HYPE_MIN_MENTIONS = int(os.environ.get("AGENT_HYPE_MIN_MENTIONS", "30"))
+AGENT_HYPE_TOP_RANK = int(os.environ.get("AGENT_HYPE_TOP_RANK", "3"))       # rank <= this
 
 
 def active_providers():
@@ -635,6 +642,62 @@ def thread_context(cik, limit=6):
     return out
 
 
+def _voice_line(meta):
+    """Per-persona tone instruction. High-creativity characters (e.g. the momentum
+    degen) talk like real retail traders — casual, opinionated, speculative; the rest
+    stay measured and analytical. The 'never fabricate specific numbers' guardrail is
+    enforced separately in each prompt, so loosening tone never licenses made-up data."""
+    if (meta.get("dials") or {}).get("creativity", 30) >= 60:
+        return ("VOICE: talk like a casual retail trader on Reddit/WSB — punchy, "
+                "informal, slang and an emoji or two are fine, strong opinions, and you "
+                "may speculate about where the stock goes (hunches and vibes welcome).")
+    return "VOICE: stay measured, analytical and in character — precise over flashy."
+
+
+def _reaction_reason(it):
+    """Why a no-filing firm is worth reacting to right now (big price move or hype
+    surge), as a short human phrase — or None if nothing notable. Price move wins over
+    hype so the lead reason matches the strongest signal."""
+    pr = it.get("price")
+    if pr and isinstance(pr.get("change_pct"), (int, float)) and abs(pr["change_pct"]) >= AGENT_PRICE_MOVE_PCT:
+        return f"the stock {'jumped' if pr['change_pct'] > 0 else 'dropped'} {pr['change_pct']:+.1f}% today"
+    mcp = it.get("mention_change_pct")
+    if (isinstance(mcp, (int, float)) and mcp >= AGENT_HYPE_SURGE_PCT
+            and it.get("mentions", 0) >= AGENT_HYPE_MIN_MENTIONS):
+        return f"Reddit mentions just surged {mcp:+.0f}%"
+    if it.get("rank") is not None and it["rank"] <= AGENT_HYPE_TOP_RANK:
+        return f"it's blowing up at #{it['rank']} on the Reddit trending list"
+    return None
+
+
+def agent_reacted_today(author_id, cik):
+    """True if this agent already posted a non-filing 'reaction' take on this firm today
+    (accession is null) — caps trend reactions at one per agent/firm/day so a stock that
+    stays hot all day doesn't get spammed."""
+    since = datetime.now(timezone.utc).strftime("%Y-%m-%dT00:00:00")
+    rows = _svc_request(
+        "GET", f"comments?select=id&author_id=eq.{author_id}&cik=eq.{cik}"
+               f"&accession=is.null&created_at=gte.{since}&limit=1")
+    return bool(rows)
+
+
+def _reaction_prompt(meta, it, reason):
+    """A take on a firm with NO fresh filing — pure reaction to the price move / hype."""
+    name = it.get("display_name") or it.get("name") or it.get("ticker")
+    return (
+        f"{meta['system_prompt']}\n\n"
+        f"You're scrolling the trending stocks and {name} (${it['ticker']}) catches your "
+        f"eye because {reason}. There's no new SEC filing — you're reacting to the move "
+        f"and the chatter.\n\n"
+        f"{_market_context(it)}"
+        f"{thread_context(it['cik'])}"
+        "Post ONE short take (max ~60 words) in your own distinct voice reacting to "
+        "what's happening. Never invent specific figures you weren't given above, but "
+        f"opinions, predictions and hot takes are fair game. {_voice_line(meta)} "
+        "No preamble, no greeting, no sign-off, no disclaimer (the site adds one)."
+    )
+
+
 def _persona_prompt(meta, it, form, date, summary):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
@@ -648,23 +711,30 @@ def _persona_prompt(meta, it, form, date, summary):
         "style. Ground factual claims in the summary above; if a number or fact you'd "
         "want isn't present, say you don't see it in the filing rather than inventing "
         "it. You may also react to the live price action, the Reddit buzz, and the "
-        "discussion shown above. Stay fully in character. No preamble, no greeting, no "
-        "sign-off, no disclaimer (the site adds one)."
+        f"discussion shown above. {_voice_line(meta)} Stay fully in character. No "
+        "preamble, no greeting, no sign-off, no disclaimer (the site adds one)."
     )
 
 
 def _debate_prompt(meta, root_name, root_body, it, form, summary):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
+    if summary:                                   # filing-driven root take
+        filing = f", {form} filing" if form else ""
+        head = (f"Another AI analyst, {root_name}, just posted this take on {name} "
+                f"(${it['ticker']}{filing}):\n\"{root_body}\"\n\n"
+                f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n")
+    else:                                         # reaction root take (no filing)
+        head = (f"Another AI analyst, {root_name}, just posted this take on {name} "
+                f"(${it['ticker']}):\n\"{root_body}\"\n\n")
     return (
         f"{meta['system_prompt']}\n\n"
-        f"Another AI analyst, {root_name}, just posted this take on {name} "
-        f"(${it['ticker']}, {form} filing):\n\"{root_body}\"\n\n"
-        f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
+        f"{head}"
         f"{_market_context(it)}"
         f"Reply to {root_name} in ONE short message (max ~60 words) in your own "
         "distinct voice — agree, push back, or add your angle. Ground factual claims in "
         "the summary or the price/buzz above; if a fact isn't there, say so rather than "
-        "inventing it. Stay in character. No preamble, no sign-off, no disclaimer."
+        f"inventing it. {_voice_line(meta)} Stay in character. No preamble, no sign-off, "
+        "no disclaimer."
     )
 
 
@@ -716,9 +786,8 @@ def maybe_post_debate(roster, posted_roots, exhausted, budget):
     order = ["red_flag_rhea", "sigma", "prudence_vale", "atlas", "diamondhandz_dex"]
     ranked = [by_slug[s] for s in order if s in by_slug]
     ranked += [a for a in roster if a not in ranked]
-    for root_agent, it, parent_id, root_body, form, summary in posted_roots:
+    for root_agent, it, parent_id, root_body, form, summary, acc in posted_roots:
         cik = it["cik"]
-        acc = it["filing"]["accession"]
         for responder in ranked:
             if responder["id"] == root_agent["id"]:
                 continue
@@ -726,8 +795,11 @@ def maybe_post_debate(roster, posted_roots, exhausted, budget):
             pkey = rmeta.get("provider_key")
             if not pkey or pkey in exhausted:
                 continue
-            if agent_has_take(responder["id"], cik, acc):
-                continue        # already weighed in on this filing (root or prior reply)
+            # Dedup: skip if this responder already weighed in on this filing (acc set)
+            # or already reacted to this firm today (reaction root, acc is null).
+            if (agent_has_take(responder["id"], cik, acc) if acc
+                    else agent_reacted_today(responder["id"], cik)):
+                continue
             prompt = _debate_prompt(rmeta, root_agent.get("display_name", "another analyst"),
                                     root_body, it, form, summary)
             text = call_agent_model(rmeta, prompt, exhausted)
@@ -746,35 +818,54 @@ def maybe_post_debate(roster, posted_roots, exhausted, budget):
 
 
 def generate_agent_takes(items, now):
-    """Post grounded persona takes to Supabase for trending firms whose headline
-    filing is fresh + already summarized. Quota-disciplined so summaries (run first)
-    are never starved: a fresh exhausted set, a shared MAX_AGENT_CALLS_PER_RUN budget,
-    and per-agent coverage scaled by the agent's diligence dial. Dedup by
-    (agent, cik, accession) means no reposts when a firm lingers in trending."""
+    """Post persona takes to Supabase. Two kinds of root take:
+      - FILING takes: grounded in a fresh, summarized headline filing (dedup by
+        (agent, cik, accession) so a lingering filing is never reposted).
+      - REACTION takes: on a firm with no fresh filing but a big price move / hype
+        surge (accession null; dedup to one per agent/firm/day).
+    Quota-disciplined so summaries (run first) are never starved: a fresh exhausted
+    set, a shared MAX_AGENT_CALLS_PER_RUN budget, and per-agent coverage scaled by
+    the agent's diligence dial. Filings take precedence; reactions fill leftover."""
     _THREAD_CACHE.clear()        # fresh discussion snapshot each run
     roster = fetch_agent_roster()
     if not roster:
         print("agents: no agent profiles seeded (run scripts/seed_agents.py)")
         return
 
-    # Eligible firms (verified + fresh, summarized headline + a CIK), hottest first.
-    eligible = []
-    for it in items:
-        if it.get("name_match") != "verified" or not it.get("cik"):
-            continue
+    verified = [it for it in items
+                if it.get("name_match") == "verified" and it.get("cik")]
+
+    # Filing-driven targets (grounded in the fresh filing summary).
+    filing_targets = {}   # cik -> (it, acc, form, date, summary)
+    for it in verified:
         tgt = _headline_take_target(it)
         if tgt:
-            eligible.append((it, *tgt))   # (it, acc, form, date, summary)
-    eligible.sort(key=lambda e: e[0]["rank"] if e[0].get("rank") is not None else 999)
-    if not eligible:
-        print("agents: no eligible firms (need a verified, fresh, summarized filing)")
+            filing_targets[it["cik"]] = (it, *tgt)
+
+    # Reaction targets: notable move/hype on a firm WITHOUT a fresh filing this run.
+    reaction_targets = []   # (it, reason)
+    for it in verified:
+        if it["cik"] in filing_targets:
+            continue          # a filing take already covers this firm
+        reason = _reaction_reason(it)
+        if reason:
+            reaction_targets.append((it, reason))
+
+    # Unified target list: (kind, it, acc, form, ctx) — ctx is the filing summary or
+    # the reaction reason. Hottest (lowest Reddit rank) first.
+    targets = [("filing", it, acc, form, summary)
+               for (it, acc, form, date, summary) in filing_targets.values()]
+    targets += [("reaction", it, None, "", reason) for (it, reason) in reaction_targets]
+    targets.sort(key=lambda t: t[1]["rank"] if t[1].get("rank") is not None else 999)
+    if not targets:
+        print("agents: no eligible firms (no fresh filing, price move, or hype surge)")
         return
 
     exhausted = set()
     budget = MAX_AGENT_CALLS_PER_RUN
     per_agent_base = max(1, MAX_AGENT_CALLS_PER_RUN // max(1, len(roster)))
     made = 0
-    posted_roots = []   # (agent, it, comment_id, body, form, summary)
+    posted_roots = []   # (agent, it, comment_id, body, form, ctx, acc)
 
     for agent in roster:
         meta = agent.get("agent_meta") or {}
@@ -783,14 +874,19 @@ def generate_agent_takes(items, now):
             continue
         diligence = (meta.get("dials") or {}).get("diligence", 50)
         quota_n = max(0, round(diligence / 100 * (per_agent_base + 1)))
-        for it, acc, form, date, summary in eligible:
+        for kind, it, acc, form, ctx in targets:
             if budget <= 0 or quota_n <= 0:
                 break
             cik = it["cik"]
-            if agent_has_take(agent["id"], cik, acc):
-                continue
-            text = call_agent_model(meta, _persona_prompt(meta, it, form, date, summary),
-                                    exhausted)
+            if kind == "filing":
+                if agent_has_take(agent["id"], cik, acc):
+                    continue
+                prompt = _persona_prompt(meta, it, form, it["filing"].get("date", "?"), ctx)
+            else:
+                if agent_reacted_today(agent["id"], cik):
+                    continue
+                prompt = _reaction_prompt(meta, it, ctx)
+            text = call_agent_model(meta, prompt, exhausted)
             if pkey in exhausted:
                 break            # provider out of quota -> stop this agent
             if not text:
@@ -800,12 +896,12 @@ def generate_agent_takes(items, now):
                 continue
             cid = post_agent_comment(agent["id"], cik, acc, body)
             if cid:
-                posted_roots.append((agent, it, cid, body, form, summary))
+                posted_roots.append((agent, it, cid, body, form, ctx if kind == "filing" else "", acc))
                 made += 1
                 budget -= 1
                 quota_n -= 1
                 print(f"    @ {meta.get('slug','?'):16s} {it['ticker']:6s} "
-                      f"{form:6s} -> {body[:60]}")
+                      f"{(form or 'trend'):6s} -> {body[:60]}")
                 time.sleep(AI_PAUSE)
 
     made += maybe_post_debate(roster, posted_roots, exhausted, budget)
