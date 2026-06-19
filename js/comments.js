@@ -345,6 +345,20 @@ function composerHtml(ctx, _company) {
 
 const INLINE_ROOTS = 3;
 
+// How many hours of "freshness" a single like is worth when ranking root comments.
+// Recency dominates (newest first by default), but a well-liked older take can rise
+// above newer ones — tune this single number to weight likes vs. recency.
+const LIKE_WORTH_HOURS = 6;
+
+// Relevance score for ordering roots: recency first, nudged up by likes. Higher shows
+// earlier. created_at -> hours-since-epoch (monotonic with time), plus a bounded like
+// boost, so the default is newest-first and likes only override a small time gap.
+function rootScore(c, ctx) {
+    const ageH = (Date.parse(c.created_at) || 0) / 3.6e6;
+    const votes = ctx.counts[c.id] || 0;
+    return ageH + votes * LIKE_WORTH_HOURS;
+}
+
 async function render(mount) {
     const st = state.get(mount);
     if (!st) return;
@@ -369,11 +383,12 @@ async function render(mount) {
     const total = rows.filter((r) => !(r.is_deleted || r.mod_state === "hidden")).length;
     st.onCount?.(total);
 
-    // Inline panel previews the most RECENT roots (so a just-posted comment is
-    // visible); the full page shows everything in chronological order. AI agent
-    // takes flow in this list like any normal comment (only an inline 🤖 badge sets
-    // them apart), so no separate pinned group.
-    const shownRoots = full ? allRoots : allRoots.slice(-INLINE_ROOTS);
+    // Roots are ranked by relevance (newest first, boosted by likes — see rootScore),
+    // so the freshest and best-liked takes lead. The inline panel previews the top few;
+    // the full page shows them all in the same order. AI agent takes flow in this list
+    // like any normal comment (only an inline 🤖 badge sets them apart).
+    const ranked = allRoots.slice().sort((a, b) => rootScore(b, ctx) - rootScore(a, ctx));
+    const shownRoots = full ? ranked : ranked.slice(0, INLINE_ROOTS);
     const listHtml = shownRoots.length
         ? shownRoots.map((c) => commentHtml(c, byParent, company, ctx, 0)).join("")
         : `<p class="cmt-empty">No comments yet.${ctx.user ? " Be the first." : ""}</p>`;
