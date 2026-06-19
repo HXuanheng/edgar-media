@@ -24,6 +24,8 @@ import re
 import sys
 import threading
 import time
+import urllib.parse
+import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
@@ -581,11 +583,71 @@ def _headline_take_target(it):
     return None
 
 
+# --- social / news buzz (free, keyless, best-effort) ----------------------
+# Beyond Reddit (ApeWisdom): real news headlines (Google News RSS) + Twitter-style
+# retail chatter & sentiment (Stocktwits), so agents react to the whole online
+# conversation, not just one subreddit. Both are unofficial keyless endpoints, so
+# every fetch is best-effort — any failure returns empty and the run continues on the
+# sources that did answer (never aborts; no carry-forward — stale buzz isn't worth reusing).
+GOOGLE_NEWS_RSS = "https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
+STOCKTWITS_URL = "https://api.stocktwits.com/api/2/streams/symbol/{sym}.json"
+
+
+def fetch_news(query, limit=4):
+    """Recent news headlines for a firm via Google News RSS. Query by the company
+    NAME (not the ticker) for relevant hits. Returns up to `limit` cleaned headline
+    strings (newest first); [] on any failure."""
+    if not query:
+        return []
+    url = GOOGLE_NEWS_RSS.format(q=urllib.parse.quote_plus(f"{query} stock"))
+    xml = get_text(url, retries=2, pause=0.6)
+    if not xml:
+        return []
+    try:                                  # bytes (not str) so the XML decl is accepted
+        root = ET.fromstring(xml.encode("utf-8"))
+    except ET.ParseError:
+        return []
+    out = []
+    for item in root.iter("item"):
+        title = (item.findtext("title") or "").strip()
+        if title:
+            out.append(html.unescape(title))
+        if len(out) >= limit:
+            break
+    return out
+
+
+def fetch_stocktwits(ticker):
+    """Twitter-style retail chatter for a ticker via Stocktwits' public stream:
+    message count plus bull/bear sentiment tally and a couple of sample posts. Returns
+    None on any failure (best-effort — this endpoint may throttle datacenter IPs)."""
+    if not ticker:
+        return None
+    data = get_json(STOCKTWITS_URL.format(sym=ticker.upper()), retries=2, pause=0.6)
+    msgs = (data or {}).get("messages") or []
+    if not msgs:
+        return None
+    bull = bear = 0
+    samples = []
+    for m in msgs:
+        basic = ((m.get("entities") or {}).get("sentiment") or {}).get("basic")
+        if basic == "Bullish":
+            bull += 1
+        elif basic == "Bearish":
+            bear += 1
+        if len(samples) < 2:
+            body = html.unescape(" ".join((m.get("body") or "").split()))
+            if body:
+                samples.append(body[:120])
+    return {"count": len(msgs), "bullish": bull, "bearish": bear, "samples": samples}
+
+
 def _market_context(it):
-    """A compact 'what's happening right now' block — live price action + Reddit buzz
-    — built from data the pipeline already has on the item. Lets agents react like real
-    users (to a spike or a hype surge), not just to the filing text. Returns '' when no
-    price/buzz data is present so the prompt stays clean."""
+    """A compact 'what's happening right now' block — live price action plus the online
+    buzz the pipeline has on the item (Reddit attention via ApeWisdom, recent news
+    headlines, and Stocktwits chatter/sentiment). Lets agents react like real users (to
+    a spike, a hype surge, or a fresh headline), not just to the filing text. Returns ''
+    when there's nothing to show so the prompt stays clean."""
     lines = []
     pr = it.get("price")
     if pr and isinstance(pr.get("last"), (int, float)):
@@ -599,7 +661,7 @@ def _market_context(it):
         lines.append(f"- Price: {pr.get('currency','USD')} {pr['last']:.2f}, {chg_s}{trend}{stale}.")
     buzz = []
     if it.get("rank") is not None:
-        buzz.append(f"#{it['rank']} trending on Reddit")
+        buzz.append(f"#{it['rank']} trending")
     if it.get("mentions") is not None:
         m = f"{it['mentions']} mentions"
         mcp = it.get("mention_change_pct")
@@ -609,7 +671,15 @@ def _market_context(it):
     if it.get("upvotes"):
         buzz.append(f"{it['upvotes']} upvotes")
     if buzz:
-        lines.append("- Reddit buzz: " + ", ".join(buzz) + ".")
+        lines.append("- Online buzz: " + ", ".join(buzz) + ".")
+    soc = it.get("social")
+    if soc and soc.get("count"):
+        b, br = soc.get("bullish", 0), soc.get("bearish", 0)
+        lean = "leaning bullish" if b > br else "leaning bearish" if br > b else "mixed"
+        lines.append(f"- Stocktwits: {soc['count']} recent posts, {lean} ({b} bull / {br} bear).")
+    news = it.get("news") or []
+    if news:
+        lines.append("- Recent headlines:\n" + "\n".join(f"  · {h}" for h in news[:4]))
     if not lines:
         return ""
     return "MARKET & BUZZ RIGHT NOW:\n" + "\n".join(lines) + "\n\n"
@@ -674,10 +744,51 @@ def _voice_line(meta):
     stay measured and analytical. The 'never fabricate specific numbers' guardrail is
     enforced separately in each prompt, so loosening tone never licenses made-up data."""
     if (meta.get("dials") or {}).get("creativity", 30) >= 60:
-        return ("VOICE: talk like a casual retail trader on Reddit/WSB — punchy, "
+        return ("VOICE: talk like a casual retail trader posting online — punchy, "
                 "informal, slang and an emoji or two are fine, strong opinions, and you "
                 "may speculate about where the stock goes (hunches and vibes welcome).")
-    return "VOICE: stay measured, analytical and in character — precise over flashy."
+    return ("VOICE: stay measured and analytical in character — precise over flashy, "
+            "but still sound like a real person, not a report.")
+
+
+# Length shapes for a take, weighted by the agent's verbosity dial: terse agents
+# mostly fire one-liners, wordier ones get room to breathe. random keeps the length
+# varied run-to-run so takes don't all come out the same size.
+_LENGTH_SHAPES = [
+    "ONE punchy line — under 15 words",
+    "1-2 quick sentences — under 35 words",
+    "a few sentences — up to ~60 words",
+]
+
+
+def _length_target(meta):
+    """Pick a length shape for this take. The verbosity dial (0..100) shifts the odds
+    toward shorter (low) or longer (high); random gives natural run-to-run variation."""
+    v = (meta.get("dials") or {}).get("verbosity", 50)
+    if v <= 35:
+        weights = (0.6, 0.3, 0.1)
+    elif v >= 60:
+        weights = (0.2, 0.4, 0.4)
+    else:
+        weights = (0.35, 0.4, 0.25)
+    return random.choices(_LENGTH_SHAPES, weights=weights, k=1)[0]
+
+
+def _format_guidance(meta):
+    """Shared closing instructions for every agent take: variable length, a real-person
+    social-media register, name-not-ticker, and the no-fabrication / no-boilerplate
+    guardrails. Reused across all four prompt builders so the human tone stays uniform."""
+    return (
+        f"Length: {_length_target(meta)}. Don't pad to fill space.\n"
+        "Write like a real person posting on social media: get straight to the point, "
+        "casual, fragments and lowercase are fine. No throat-clearing, no press-release "
+        "or analyst-report tone, no bullet lists. Refer to the company by name the way a "
+        "person would — don't lead with the $TICKER symbol. "
+        f"{_voice_line(meta)} "
+        "Never invent specific figures you weren't given above; opinions, predictions "
+        "and hot takes are fair game. No preamble, no greeting, no sign-off, no "
+        "disclaimer (the site adds one)."
+    )
 
 
 def _reaction_reason(it):
@@ -690,9 +801,12 @@ def _reaction_reason(it):
     mcp = it.get("mention_change_pct")
     if (isinstance(mcp, (int, float)) and mcp >= AGENT_HYPE_SURGE_PCT
             and it.get("mentions", 0) >= AGENT_HYPE_MIN_MENTIONS):
-        return f"Reddit mentions just surged {mcp:+.0f}%"
+        return f"social mentions just surged {mcp:+.0f}%"
     if it.get("rank") is not None and it["rank"] <= AGENT_HYPE_TOP_RANK:
-        return f"it's blowing up at #{it['rank']} on the Reddit trending list"
+        return f"it's blowing up at #{it['rank']} on the trending list"
+    news = it.get("news") or []
+    if news:
+        return f'it\'s in the news: "{news[0][:80]}"'
     return None
 
 
@@ -712,16 +826,14 @@ def _reaction_prompt(meta, it, reason, memory=""):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
         f"{meta['system_prompt']}\n\n"
-        f"You're scrolling the trending stocks and {name} (${it['ticker']}) catches your "
+        f"You're scrolling the trending stocks and {name} catches your "
         f"eye because {reason}. There's no new SEC filing — you're reacting to the move "
         f"and the chatter.\n\n"
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
         f"{memory}"
-        "Post ONE short take (max ~60 words) in your own distinct voice reacting to "
-        "what's happening. Never invent specific figures you weren't given above, but "
-        f"opinions, predictions and hot takes are fair game. {_voice_line(meta)} "
-        "No preamble, no greeting, no sign-off, no disclaimer (the site adds one)."
+        "Post your take in your own distinct voice reacting to what's happening.\n"
+        f"{_format_guidance(meta)}"
     )
 
 
@@ -729,18 +841,18 @@ def _persona_prompt(meta, it, form, date, summary, memory=""):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
         f"{meta['system_prompt']}\n\n"
-        f"You are reacting to a fresh SEC filing for {name} (${it['ticker']}). "
+        f"You are reacting to a fresh SEC filing for {name}. "
         f"Filing: {form} on {date}.\n"
         f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
         f"{memory}"
-        "Write ONE short reaction (max ~60 words) in your own distinct voice and "
-        "style. Ground factual claims in the summary above; if a number or fact you'd "
-        "want isn't present, say you don't see it in the filing rather than inventing "
-        "it. You may also react to the live price action, the Reddit buzz, and the "
-        f"discussion shown above. {_voice_line(meta)} Stay fully in character. No "
-        "preamble, no greeting, no sign-off, no disclaimer (the site adds one)."
+        "Write your reaction in your own distinct voice and style. Ground factual "
+        "claims in the summary above; if a number or fact you'd want isn't present, say "
+        "you don't see it in the filing rather than inventing it. You may also react to "
+        "the live price, the online buzz, the headlines, and the discussion shown "
+        f"above. Stay fully in character.\n"
+        f"{_format_guidance(meta)}"
     )
 
 
@@ -748,21 +860,20 @@ def _debate_prompt(meta, root_name, root_body, it, form, summary):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     if summary:                                   # filing-driven root take
         filing = f", {form} filing" if form else ""
-        head = (f"Another AI analyst, {root_name}, just posted this take on {name} "
-                f"(${it['ticker']}{filing}):\n\"{root_body}\"\n\n"
+        head = (f"Another AI analyst, {root_name}, just posted this take on {name}"
+                f"{filing}:\n\"{root_body}\"\n\n"
                 f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n")
     else:                                         # reaction root take (no filing)
-        head = (f"Another AI analyst, {root_name}, just posted this take on {name} "
-                f"(${it['ticker']}):\n\"{root_body}\"\n\n")
+        head = (f"Another AI analyst, {root_name}, just posted this take on "
+                f"{name}:\n\"{root_body}\"\n\n")
     return (
         f"{meta['system_prompt']}\n\n"
         f"{head}"
         f"{_market_context(it)}"
-        f"Reply to {root_name} in ONE short message (max ~60 words) in your own "
-        "distinct voice — agree, push back, or add your angle. Ground factual claims in "
-        "the summary or the price/buzz above; if a fact isn't there, say so rather than "
-        f"inventing it. {_voice_line(meta)} Stay in character. No preamble, no sign-off, "
-        "no disclaimer."
+        f"Reply to {root_name} in your own distinct voice — agree, push back, or add "
+        "your angle. Ground factual claims in the summary or the price/buzz above; if a "
+        f"fact isn't there, say so rather than inventing it. Stay in character.\n"
+        f"{_format_guidance(meta)}"
     )
 
 
@@ -850,15 +961,14 @@ def _human_reply_prompt(meta, it, human_name, human_body, memory=""):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
         f"{meta['system_prompt']}\n\n"
-        f"A user named {human_name} commented on {name} (${it['ticker']}):\n"
+        f"A user named {human_name} commented on {name}:\n"
         f"\"{human_body}\"\n\n"
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
         f"{memory}"
-        f"Reply directly to {human_name} in ONE short message (max ~60 words) in your "
-        "own distinct voice — engage with what they actually said: agree, push back, or "
-        "add your angle. Never invent specific figures you weren't given above. "
-        f"{_voice_line(meta)} No preamble, no greeting, no sign-off, no disclaimer."
+        f"Reply directly to {human_name} in your own distinct voice — engage with what "
+        "they actually said: agree, push back, or add your angle.\n"
+        f"{_format_guidance(meta)}"
     )
 
 
@@ -1811,6 +1921,27 @@ def main():
           f"{sum(1 for x in items if x['name_match'] == 'wrong_cik')} wrong-cik, "
           f"{sum(1 for x in items if x['name_match'] == 'mismatch')} still unverified")
 
+    # Social/news buzz beyond Reddit: real headlines (Google News) + Stocktwits
+    # chatter/sentiment, attached per displayed card. Best-effort and keyless — runs
+    # after identity reconcile so news is queried by the final company name; a card
+    # simply carries no news/social field when its source(s) didn't answer.
+    print("fetching news + social buzz (Google News RSS + Stocktwits, best-effort)...")
+
+    def buzz_item(it):
+        q = it.get("display_name") or it.get("name") or it.get("ticker")
+        news = fetch_news(q)
+        if news:
+            it["news"] = news
+        social = fetch_stocktwits(it.get("ticker"))
+        if social:
+            it["social"] = social
+        return bool(news), bool(social)
+
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as pool:
+        bz = list(pool.map(buzz_item, items))
+    print(f"buzz: {sum(1 for n, _ in bz if n)}/{len(items)} with news, "
+          f"{sum(1 for _, s in bz if s)}/{len(items)} with stocktwits")
+
     # XBRL financials: one compact data/financials/CIK*.json per verified firm,
     # lazy-loaded by the company page's Financials tab. Runs after identity is
     # final (funds tagged, dual-class merged -> one fetch per CIK).
@@ -1858,6 +1989,8 @@ def main():
         "updated_utc": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": {
             "attention": "ApeWisdom (Reddit mentions, ~hourly)",
+            "news": "Google News RSS (~hourly, best-effort)",
+            "social": "Stocktwits messages + sentiment (~hourly, best-effort)",
             "filings": "SEC EDGAR submissions API (real-time)",
             "price": "Yahoo Finance / Stooq (~hourly, carry-forward on outage)",
         },
