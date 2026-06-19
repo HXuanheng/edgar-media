@@ -7,11 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       comment_id:
-        description: "Comment UUID to edit"
-        required: true
+        description: "Single mode: comment UUID to edit"
+        required: false
       body:
-        description: "New body text (keep any leading @[form · date](accession) reference)"
-        required: true
+        description: "Single mode: new body (keep any leading @[form · date](accession) ref)"
+        required: false
+      edits_file:
+        description: "Batch mode: path to a JSON file [{id, body}, ...] in the repo"
+        required: false
 
 permissions:
   contents: read
@@ -26,10 +29,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Edit comment
+      - name: Edit comment(s)
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           COMMENT_ID: ${{ inputs.comment_id }}
           BODY: ${{ inputs.body }}
+          EDITS_FILE: ${{ inputs.edits_file }}
         run: python scripts/edit_comment.py

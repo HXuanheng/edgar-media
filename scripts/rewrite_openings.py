@@ -61,6 +61,13 @@ def main():
             skipped += 1
             continue
         new = out.strip().strip('"').strip()
+        low = new.lower()
+        # Guard against junk model output (e.g. "(No comment provided to process.)") —
+        # never overwrite a real take with a placeholder / too-short reply.
+        if (len(new) < 25 or "no comment" in low or "provided to process" in low
+                or "unchanged" in low or low.startswith("(")):
+            skipped += 1
+            continue
         if " ".join(new.split()).lower() == " ".join(rest.split()).lower():
             skipped += 1                      # model returned it unchanged -> already fine
             continue
