@@ -101,6 +101,20 @@ GEMINI_MAX_CHARS = 50000  # filing text fed to the model (covers an 8-K fully)
 AI_MAX_DAYS = int(os.environ.get("AI_MAX_DAYS", "10"))       # filings this recent
 MAX_AI_PER_RUN = int(os.environ.get("MAX_AI_PER_RUN", "20"))  # cap new per run
 
+# --- AI persona-agents (DB-backed, optional, free) ------------------------
+# Fictional characters (value investor, momentum degen, short-seller, quant, macro)
+# that post grounded "takes" into the Supabase comments table. They run AFTER the
+# summaries above and consume only LEFTOVER free quota, so summaries (higher priority)
+# are never starved: a small per-run cap bounds total agent LLM calls, and the same
+# 429 -> exhausted-provider short-circuit applies. Enabled only when the service-role
+# key is present (GitHub Actions secret); absent -> agents are skipped, build unaffected.
+# Agent identities + personality dials + system prompts live in the profiles table
+# (seeded by scripts/seed_agents.py) and are read back here at runtime.
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
+SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
+AGENTS_ENABLED = bool(SUPABASE_URL and SUPABASE_SERVICE_KEY)
+MAX_AGENT_CALLS_PER_RUN = int(os.environ.get("MAX_AGENT_CALLS_PER_RUN", "12"))
+
 
 def active_providers():
     """Providers whose API key env var is set, in chain order."""
@@ -349,14 +363,16 @@ def _summary_prompt(text, form):
             f"factual sentence (max 25 words), no preamble:\n\n{text}")
 
 
-def _gemini_call(model, prompt, key):
-    """One Gemini generateContent call -> (text|None, 'ok'|'quota'|'fail')."""
+def _gemini_call(model, prompt, key, temperature=0.2, max_tokens=120):
+    """One Gemini generateContent call -> (text|None, 'ok'|'quota'|'fail').
+    temperature/max_tokens default to the summary settings; the persona-agent path
+    passes per-character values."""
     url = GEMINI_URL.format(model=model, key=key)
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
-            "maxOutputTokens": 120,
-            "temperature": 0.2,
+            "maxOutputTokens": max_tokens,
+            "temperature": temperature,
             # 2.5 Flash(-Lite) is a thinking model; thinking tokens eat the
             # output budget, so disable thinking or the answer comes back empty.
             "thinkingConfig": {"thinkingBudget": 0},
@@ -379,13 +395,15 @@ def _gemini_call(model, prompt, key):
     return (txt or None), ("ok" if txt else "fail")
 
 
-def _openai_call(url, model, prompt, key):
-    """One OpenAI-compatible chat call (Groq, OpenRouter, ...) -> (text|None, status)."""
+def _openai_call(url, model, prompt, key, temperature=0.2, max_tokens=120):
+    """One OpenAI-compatible chat call (Groq, OpenRouter, ...) -> (text|None, status).
+    temperature/max_tokens default to the summary settings; the persona-agent path
+    passes per-character values."""
     body = json.dumps({
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 120,
-        "temperature": 0.2,
+        "max_tokens": max_tokens,
+        "temperature": temperature,
     }).encode("utf-8")
     try:
         req = Request(url, data=body, headers={
@@ -484,6 +502,243 @@ def attach_summaries(items, cache):
             if acc in cache:                    # attach (existing or just-made)
                 row["ai_summary"] = cache[acc]["summary"]
     return made
+
+
+# ── AI persona-agents: DB-backed grounded takes ──────────────────────────
+# These run AFTER attach_summaries on leftover free quota (summaries-first), and
+# write into the Supabase comments table via the service-role key (bypasses RLS).
+# Each agent is bound to ONE provider for transparency — we never silently swap a
+# character's model — so if its provider is exhausted/failing the agent just skips.
+
+def _svc_request(method, path, body=None, prefer=None):
+    """Supabase REST call with the service-role key. Returns parsed JSON or None.
+    Never raises (an agent failure must not kill the build)."""
+    url = f"{SUPABASE_URL}/rest/v1/{path}"
+    headers = {
+        "apikey": SUPABASE_SERVICE_KEY,
+        "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+        "Content-Type": "application/json",
+    }
+    if prefer:
+        headers["Prefer"] = prefer
+    data = json.dumps(body).encode("utf-8") if body is not None else None
+    try:
+        req = Request(url, data=data, headers=headers, method=method)
+        with urlopen(req, timeout=30) as resp:
+            raw = resp.read()
+            return json.loads(raw) if raw else None
+    except HTTPError as e:
+        detail = e.read()[:200].decode("utf-8", "replace") if hasattr(e, "read") else ""
+        print(f"    ! supabase {method} {path.split('?')[0]} -> {e.code} {detail}",
+              file=sys.stderr)
+        return None
+    except (URLError, TimeoutError, ValueError) as e:
+        print(f"    ! supabase {method} {path.split('?')[0]} -> {e}", file=sys.stderr)
+        return None
+
+
+def fetch_agent_roster():
+    """The seeded agents (profiles where is_agent), in stable id order."""
+    rows = _svc_request(
+        "GET", "profiles?select=id,display_name,agent_meta&is_agent=eq.true&order=id")
+    return rows or []
+
+
+def agent_has_take(author_id, cik, accession):
+    """True if this agent already commented on this (firm, filing) — the dedup key,
+    so a firm staying in trending with no new filing never gets a reposted take."""
+    rows = _svc_request(
+        "GET", f"comments?select=id&author_id=eq.{author_id}"
+               f"&cik=eq.{cik}&accession=eq.{accession}&limit=1")
+    return bool(rows)
+
+
+def _headline_take_target(it):
+    """For a firm's FRESH headline filing, resolve (acc, form, date, ai_summary).
+    The headline dict (it['filing']) is a copy without ai_summary, so we pull the
+    summary from the windowed it['filings'] row with the matching accession. Returns
+    None unless there's a fresh headline that already has a grounded summary."""
+    f = it.get("filing")
+    if not (f and f.get("fresh") and f.get("accession")):
+        return None
+    acc = f["accession"]
+    for row in it.get("filings", []):
+        if row.get("accession") == acc and row.get("ai_summary"):
+            return acc, f.get("form", "?"), f.get("date", "?"), row["ai_summary"]
+    return None
+
+
+def _persona_prompt(meta, it, form, date, summary):
+    name = it.get("display_name") or it.get("name") or it.get("ticker")
+    return (
+        f"{meta['system_prompt']}\n\n"
+        f"You are reacting to a fresh SEC filing for {name} (${it['ticker']}). "
+        f"Filing: {form} on {date}.\n"
+        f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
+        "Write ONE short reaction (max ~60 words) in your own distinct voice and "
+        "style. Ground every claim in the summary above; if a number or fact you'd "
+        "want isn't present, say you don't see it in the filing rather than inventing "
+        "it. Stay fully in character. No preamble, no greeting, no sign-off, no "
+        "disclaimer (the site adds one)."
+    )
+
+
+def _debate_prompt(meta, root_name, root_body, it, form, summary):
+    name = it.get("display_name") or it.get("name") or it.get("ticker")
+    return (
+        f"{meta['system_prompt']}\n\n"
+        f"Another AI analyst, {root_name}, just posted this take on {name} "
+        f"(${it['ticker']}, {form} filing):\n\"{root_body}\"\n\n"
+        f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
+        f"Reply to {root_name} in ONE short message (max ~60 words) in your own "
+        "distinct voice — agree, push back, or add your angle. Ground every claim in "
+        "the summary; if a fact isn't there, say so rather than inventing it. Stay in "
+        "character. No preamble, no sign-off, no disclaimer."
+    )
+
+
+def call_agent_model(meta, prompt, exhausted):
+    """One LLM call through the agent's assigned provider, at its creativity
+    temperature. Mutates `exhausted` on a 429. Returns the take text or None."""
+    pkey = meta.get("provider_key")
+    p = next((x for x in AI_PROVIDERS if x["name"] == pkey), None)
+    if not p or p["name"] in exhausted:
+        return None
+    key = os.environ.get(p["key_env"])
+    if not key:
+        return None
+    temp = max(0.0, min(2.0, (meta.get("dials") or {}).get("creativity", 30) / 50.0))
+    if p["kind"] == "gemini":
+        txt, status = _gemini_call(p["model"], prompt, key, temperature=temp, max_tokens=200)
+    else:
+        txt, status = _openai_call(p["url"], p["model"], prompt, key,
+                                   temperature=temp, max_tokens=200)
+    if status == "quota":
+        exhausted.add(p["name"])
+        print(f"    . agent provider {p['name']} hit 429 (quota) -> skipping",
+              file=sys.stderr)
+        return None
+    return txt
+
+
+def post_agent_comment(author_id, cik, accession, body, parent_id=None):
+    """Insert an agent comment (service-role; bypasses RLS). Returns the new id."""
+    row = _svc_request("POST", "comments", {
+        "cik": cik, "accession": accession, "author_id": author_id,
+        "parent_id": parent_id, "body": body,
+    }, prefer="return=representation")
+    if isinstance(row, list) and row:
+        return row[0].get("id")
+    return None
+
+
+def maybe_post_debate(roster, posted_roots, exhausted, budget):
+    """One scripted reply per run: a DIFFERENT persona replies to a take posted this
+    run (one-level threading), to spark a debate. For each take (hottest first) we try
+    candidate responders in a contrarian-first order, skipping any that authored the
+    take, are out of quota, or already weighed in on this filing (dedup). The first
+    viable responder posts; returns # replies posted (0 or 1)."""
+    if not posted_roots or budget <= 0:
+        return 0
+    by_slug = {(a.get("agent_meta") or {}).get("slug"): a for a in roster}
+    # Contrarian voices first — they make the liveliest rebuttal — then the rest.
+    order = ["red_flag_rhea", "sigma", "prudence_vale", "atlas", "diamondhandz_dex"]
+    ranked = [by_slug[s] for s in order if s in by_slug]
+    ranked += [a for a in roster if a not in ranked]
+    for root_agent, it, parent_id, root_body, form, summary in posted_roots:
+        cik = it["cik"]
+        acc = it["filing"]["accession"]
+        for responder in ranked:
+            if responder["id"] == root_agent["id"]:
+                continue
+            rmeta = responder.get("agent_meta") or {}
+            pkey = rmeta.get("provider_key")
+            if not pkey or pkey in exhausted:
+                continue
+            if agent_has_take(responder["id"], cik, acc):
+                continue        # already weighed in on this filing (root or prior reply)
+            prompt = _debate_prompt(rmeta, root_agent.get("display_name", "another analyst"),
+                                    root_body, it, form, summary)
+            text = call_agent_model(rmeta, prompt, exhausted)
+            if not text:
+                continue
+            body = text.strip()[:4000]
+            if not body:
+                continue
+            if post_agent_comment(responder["id"], cik, acc, body, parent_id=parent_id):
+                print(f"    @ {rmeta.get('slug','?'):16s} (reply to "
+                      f"{(root_agent.get('agent_meta') or {}).get('slug','?')}) "
+                      f"{it['ticker']:6s} -> {body[:46]}")
+                time.sleep(AI_PAUSE)
+                return 1
+    return 0
+
+
+def generate_agent_takes(items, now):
+    """Post grounded persona takes to Supabase for trending firms whose headline
+    filing is fresh + already summarized. Quota-disciplined so summaries (run first)
+    are never starved: a fresh exhausted set, a shared MAX_AGENT_CALLS_PER_RUN budget,
+    and per-agent coverage scaled by the agent's diligence dial. Dedup by
+    (agent, cik, accession) means no reposts when a firm lingers in trending."""
+    roster = fetch_agent_roster()
+    if not roster:
+        print("agents: no agent profiles seeded (run scripts/seed_agents.py)")
+        return
+
+    # Eligible firms (verified + fresh, summarized headline + a CIK), hottest first.
+    eligible = []
+    for it in items:
+        if it.get("name_match") != "verified" or not it.get("cik"):
+            continue
+        tgt = _headline_take_target(it)
+        if tgt:
+            eligible.append((it, *tgt))   # (it, acc, form, date, summary)
+    eligible.sort(key=lambda e: e[0]["rank"] if e[0].get("rank") is not None else 999)
+    if not eligible:
+        print("agents: no eligible firms (need a verified, fresh, summarized filing)")
+        return
+
+    exhausted = set()
+    budget = MAX_AGENT_CALLS_PER_RUN
+    per_agent_base = max(1, MAX_AGENT_CALLS_PER_RUN // max(1, len(roster)))
+    made = 0
+    posted_roots = []   # (agent, it, comment_id, body, form, summary)
+
+    for agent in roster:
+        meta = agent.get("agent_meta") or {}
+        pkey = meta.get("provider_key")
+        if not pkey or pkey in exhausted:
+            continue
+        diligence = (meta.get("dials") or {}).get("diligence", 50)
+        quota_n = max(0, round(diligence / 100 * (per_agent_base + 1)))
+        for it, acc, form, date, summary in eligible:
+            if budget <= 0 or quota_n <= 0:
+                break
+            cik = it["cik"]
+            if agent_has_take(agent["id"], cik, acc):
+                continue
+            text = call_agent_model(meta, _persona_prompt(meta, it, form, date, summary),
+                                    exhausted)
+            if pkey in exhausted:
+                break            # provider out of quota -> stop this agent
+            if not text:
+                continue
+            body = text.strip()[:4000]
+            if not body:
+                continue
+            cid = post_agent_comment(agent["id"], cik, acc, body)
+            if cid:
+                posted_roots.append((agent, it, cid, body, form, summary))
+                made += 1
+                budget -= 1
+                quota_n -= 1
+                print(f"    @ {meta.get('slug','?'):16s} {it['ticker']:6s} "
+                      f"{form:6s} -> {body[:60]}")
+                time.sleep(AI_PAUSE)
+
+    made += maybe_post_debate(roster, posted_roots, exhausted, budget)
+    print(f"agents: {made} new takes posted "
+          f"({', '.join(sorted(exhausted)) or 'no provider exhaustion'})")
 
 
 def strip_doc_urls(items):
@@ -1263,6 +1518,20 @@ def main():
     # AI prose layer: one-sentence summary per recent filing row, free via the
     # provider chain, cached by accession. Rows without one show the item label.
     made = attach_summaries(items, summaries)
+
+    # AI persona-agents: DB-backed grounded takes, AFTER summaries so they only use
+    # leftover free quota and never starve the (higher-priority) summary feature.
+    # Runs BEFORE strip_doc_urls only matters if agents re-fetched filing text; they
+    # ground purely on the cached ai_summary, so order is flexible. Wrapped so an
+    # agent/Supabase failure can never abort the trending build.
+    if AGENTS_ENABLED:
+        try:
+            generate_agent_takes(items, now)
+        except Exception as e:                  # noqa: BLE001 - never kill the build
+            print(f"agents: aborted ({e})", file=sys.stderr)
+    else:
+        print("agents: disabled (set SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY to enable)")
+
     strip_doc_urls(items)
     provs = active_providers()
     if provs:

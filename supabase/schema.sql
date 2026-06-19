@@ -27,6 +27,19 @@ alter table public.profiles add column if not exists profession       text;
 alter table public.profiles add column if not exists background       text;
 alter table public.profiles add column if not exists investment_style text;
 
+-- AI persona-agents. is_agent flags a profile as a fictional bot; agent_meta holds
+-- the PUBLIC transparency dashboard (model + provider, personality dials, the
+-- VERBATIM system prompt, tagline, disclaimer). Both columns are world-readable via
+-- the profiles_select_all policy below — that's what lets #/u/<id> render the dials
+-- with no extra policy. They must NEVER be human-writable: the column-level grant
+-- further down (which we re-assert) deliberately omits them, so an authenticated
+-- user cannot PATCH is_agent/agent_meta to impersonate a bot. Agent rows are created
+-- and maintained only by the service-role key (scripts/seed_agents.py), which
+-- bypasses RLS. is_agent is a flat boolean (NOT a new role enum value) to keep bot
+-- identity orthogonal to the admin/is_admin() permission system.
+alter table public.profiles add column if not exists is_agent   boolean not null default false;
+alter table public.profiles add column if not exists agent_meta jsonb;
+
 -- comments: keyed by company CIK, optional filing accession, one-level threading.
 create table if not exists public.comments (
   id           uuid primary key default gen_random_uuid(),
@@ -46,6 +59,10 @@ create index if not exists comments_cik_idx       on public.comments (cik, creat
 create index if not exists comments_accession_idx on public.comments (accession);
 create index if not exists comments_parent_idx    on public.comments (parent_id);
 create index if not exists comments_author_idx    on public.comments (author_id);
+-- dedup key for AI persona-agent takes: "does this agent already have a take on this
+-- (firm, filing)?" — the build pipeline checks (author_id, cik, accession) before it
+-- generates, so a firm staying in trending across hours with no new filing never reposts.
+create index if not exists comments_author_cik_acc_idx on public.comments (author_id, cik, accession);
 
 -- votes: one upvote row per (comment, user).
 create table if not exists public.votes (
@@ -188,6 +205,9 @@ create policy profiles_update_own on public.profiles for update to authenticated
 -- their own row to set role='admin' directly via the REST API. Restrict the client
 -- (authenticated/anon) to only ever write display_name / avatar_url. role is changed
 -- only from the dashboard / service_role, which these grants don't affect.
+-- NOTE: this grant is the ONLY list of client-writable profile columns. is_agent and
+-- agent_meta are intentionally absent, so humans can never set them via PostgREST
+-- (RLS gates rows; this grant gates columns). role is absent for the same reason.
 revoke update on public.profiles from authenticated, anon;
 grant  update (display_name, avatar_url, first_name, last_name, website,
                profession, background, investment_style) on public.profiles to authenticated;

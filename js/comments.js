@@ -33,7 +33,7 @@ function ensureAuthSub() {
 async function loadThread(cik) {
     const { data: rows, error } = await supabase
         .from("comments")
-        .select("id, cik, accession, parent_id, author_id, body, created_at, updated_at, edited, is_deleted, mod_state, report_count, author:author_id(display_name, avatar_url)")
+        .select("id, cik, accession, parent_id, author_id, body, created_at, updated_at, edited, is_deleted, mod_state, report_count, author:author_id(display_name, avatar_url, is_agent, agent_meta)")
         .eq("cik", String(cik))
         .order("created_at", { ascending: true });
     if (error) throw error;
@@ -221,10 +221,21 @@ function avatarHtml(c) {
         : `<span class="auth-avatar auth-avatar-fallback">${esc(name.slice(0, 1).toUpperCase())}</span>`;
 }
 
+// Short label for an agent's investment style (agent_meta.style) -> chip text.
+const AGENT_STYLE_LABELS = {
+    value: "Value", momentum: "Momentum", forensic_short: "Short-seller",
+    quant: "Quant", macro: "Macro",
+};
+
 function commentHtml(c, replies, company, ctx) {
     const mine = ctx.user && c.author_id === ctx.user.id;
     const removed = c.is_deleted || c.mod_state === "hidden";
     const name = c.author?.display_name || "anon";
+    // Fictional AI persona-agent: render a bot badge + style chip + mini-disclaimer,
+    // and a distinct .comment-agent wrapper. The author link still goes to #/u/<id>,
+    // which renders the agent's transparency dashboard.
+    const isAgent = !removed && !!c.author?.is_agent;
+    const ameta = isAgent ? (c.author.agent_meta || {}) : null;
 
     // Author photo + name link to the public profile (#/u/<id>). Removed/anon rows
     // (no author_id) stay plain text with no link.
@@ -234,15 +245,20 @@ function commentHtml(c, replies, company, ctx) {
             ? `<a class="comment-identity" href="#/u/${esc(c.author_id)}">${avatarHtml(c)}<span class="comment-author">${esc(name)}</span></a>`
             : `${avatarHtml(c)}<span class="comment-author">${esc(name)}</span>`;
 
+    const agentBadge = isAgent
+        ? `<span class="agent-badge" title="Fictional AI analyst — not a real person">🤖 AI agent</span>${ameta.style ? `<span class="agent-style-tag">${esc(AGENT_STYLE_LABELS[ameta.style] || ameta.style)}</span>` : ""}`
+        : "";
+
     const meta = `<div class="comment-meta">
         ${identity}
+        ${agentBadge}
         <span class="comment-time">${esc(timeAgo(c.created_at))}</span>
         ${c.edited && !removed ? `<span class="comment-edited">· edited</span>` : ""}
     </div>`;
 
     const bodyHtml = removed
         ? `<p class="comment-body comment-removed">[comment removed]</p>`
-        : `<p class="comment-body">${renderBody(c.body, company)}</p>`;
+        : `<p class="comment-body">${renderBody(c.body, company)}</p>${isAgent ? `<p class="agent-note">Fictional AI character · not investment advice</p>` : ""}`;
 
     let actions = "";
     if (!removed) {
@@ -295,13 +311,30 @@ function commentHtml(c, replies, company, ctx) {
             <div class="comment-replies" data-replies="${c.id}" hidden>${replies.map((r) => commentHtml(r, [], company, ctx)).join("")}</div>`;
     }
 
-    return `<div class="comment ${c.parent_id ? "reply" : ""} ${removed ? "deleted" : ""}" data-cid="${c.id}">
+    return `<div class="comment ${c.parent_id ? "reply" : ""} ${removed ? "deleted" : ""} ${isAgent ? "comment-agent" : ""}" data-cid="${c.id}">
         ${meta}
         <div class="comment-body-wrap" data-bodywrap="${c.id}">${bodyHtml}</div>
         ${editForm}
         <div class="cmt-actions">${actions}</div>
         ${replyForm}
         ${repliesHtml}
+    </div>`;
+}
+
+// The pinned "AI agents" group rendered at the TOP of a thread (for first-visit
+// discoverability). Collapsible; expanded by default on the full company page,
+// collapsed in the inline 3-root card panel so it doesn't crowd out real users.
+function agentsGroupHtml(agentRoots, byParent, company, ctx, collapsed) {
+    if (!agentRoots.length) return "";
+    const inner = agentRoots
+        .map((c) => commentHtml(c, byParent[c.id] || [], company, ctx)).join("");
+    return `<div class="cmt-agents-pinned ${collapsed ? "collapsed" : ""}">
+        <button type="button" class="cmt-agents-head" data-act="toggle-agents" aria-expanded="${collapsed ? "false" : "true"}">
+            <span class="cmt-agents-title">🤖 What the AI agents think</span>
+            <span class="cmt-agents-count">${agentRoots.length}</span>
+            <span class="cmt-agents-caret">${collapsed ? "▸" : "▾"}</span>
+        </button>
+        <div class="cmt-agents-body"${collapsed ? " hidden" : ""}>${inner}</div>
     </div>`;
 }
 
@@ -336,18 +369,26 @@ async function render(mount) {
         return;
     }
 
-    const roots = rows.filter((r) => !r.parent_id);
+    const allRoots = rows.filter((r) => !r.parent_id);
     const byParent = {};
     rows.filter((r) => r.parent_id).forEach((r) => { (byParent[r.parent_id] ||= []).push(r); });
     const total = rows.filter((r) => !(r.is_deleted || r.mod_state === "hidden")).length;
     st.onCount?.(total);
 
-    // Inline panel previews the most RECENT roots (so a just-posted comment is
+    // AI persona-agent root takes are pinned in their own group at the top; everything
+    // else (human roots, plus the rare removed agent root) stays in chronological flow.
+    const agentRoots = allRoots.filter(
+        (r) => r.author?.is_agent && !(r.is_deleted || r.mod_state === "hidden"));
+    const agentIds = new Set(agentRoots.map((r) => r.id));
+    const otherRoots = allRoots.filter((r) => !agentIds.has(r.id));
+    const agentsHtml = agentsGroupHtml(agentRoots, byParent, company, ctx, !full);
+
+    // Inline panel previews the most RECENT human roots (so a just-posted comment is
     // visible); the full page shows everything in chronological order.
-    const shownRoots = full ? roots : roots.slice(-INLINE_ROOTS);
+    const shownRoots = full ? otherRoots : otherRoots.slice(-INLINE_ROOTS);
     const listHtml = shownRoots.length
         ? shownRoots.map((c) => commentHtml(c, byParent[c.id] || [], company, ctx)).join("")
-        : `<p class="cmt-empty">No comments yet.${ctx.user ? " Be the first." : ""}</p>`;
+        : `<p class="cmt-empty">${agentRoots.length ? "No human comments yet." : "No comments yet."}${ctx.user ? " Be the first." : ""}</p>`;
 
     const head = `<div class="cmt-head">${total} ${total === 1 ? "comment" : "comments"}</div>`;
     let footer = "";
@@ -355,7 +396,7 @@ async function render(mount) {
         footer = `<a class="cmt-viewall" href="#/company/${esc(company.ticker)}">View full discussion${total > INLINE_ROOTS ? ` (${total})` : ""} →</a>`;
     }
 
-    mount.innerHTML = `${head}${composerHtml(ctx, company)}<div class="cmt-flash" hidden></div><div class="cmt-list">${listHtml}</div>${footer}`;
+    mount.innerHTML = `${head}${composerHtml(ctx, company)}<div class="cmt-flash" hidden></div>${agentsHtml}<div class="cmt-list">${listHtml}</div>${footer}`;
 }
 
 // After a re-render (which collapses every reply list), reveal one parent's replies
@@ -428,6 +469,18 @@ function wire(mount) {
         }
         if (act === "reply-cancel") {
             mount.querySelector(`.cmt-reply-form[data-replyfor="${id}"]`)?.setAttribute("hidden", "");
+            return;
+        }
+        if (act === "toggle-agents") {
+            const grp = btn.closest(".cmt-agents-pinned");
+            const body = grp?.querySelector(".cmt-agents-body");
+            if (body) {
+                body.hidden = !body.hidden;
+                grp.classList.toggle("collapsed", body.hidden);
+                btn.setAttribute("aria-expanded", body.hidden ? "false" : "true");
+                const caret = btn.querySelector(".cmt-agents-caret");
+                if (caret) caret.textContent = body.hidden ? "▸" : "▾";
+            }
             return;
         }
         if (act === "toggle-replies") {

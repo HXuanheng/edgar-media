@@ -1,0 +1,26 @@
+name: Seed AI agents
+
+# One-time / occasional manual run that creates (or updates) the AI persona-agent
+# auth users + profiles rows in Supabase. Re-run after editing a dial or system
+# prompt in scripts/seed_agents.py — it's idempotent and writes nothing to the repo.
+# Requires the SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY secrets (service-role key
+# lives only here, never in the repo or the browser).
+
+on:
+  workflow_dispatch:
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Seed agents
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python scripts/seed_agents.py
