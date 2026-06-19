@@ -698,6 +698,99 @@ def _filing_move_line(it, filing_date):
     return line
 
 
+def _price_trend_line(it):
+    """A compact read of the price CHART (not just the day move): % change over ~5d / 1mo
+    / 3mo plus where the last close sits in its range. Computed from the daily history so
+    an agent can talk about the trend, not just today. '' when history is too short."""
+    closes = [c for row in (it.get("price") or {}).get("history") or []
+              if isinstance(row, (list, tuple)) and len(row) == 2
+              for c in [row[1]] if isinstance(c, (int, float))]
+    if len(closes) < 6:
+        return ""
+    last = closes[-1]
+    parts = []
+    for label, n in (("5d", 5), ("1mo", 21), ("3mo", 63)):
+        if len(closes) > n and closes[-1 - n]:
+            base = closes[-1 - n]
+            parts.append(f"{(last - base) / base * 100:+.0f}% {label}")
+    hi, lo = max(closes), min(closes)
+    rng = ""
+    if hi != lo:
+        rng = (f"; {(last - hi) / hi * 100:+.0f}% vs its {len(closes)}-session high "
+               f"({hi:.2f}), range {lo:.2f}–{hi:.2f}")
+    return f"- Price trend: {', '.join(parts)}{rng}." if parts else ""
+
+
+def _fmt_usd(n):
+    """Compact money: 1.2B / 530M / 12K, sign before the $ (a loss reads -$612M)."""
+    if not isinstance(n, (int, float)):
+        return None
+    sign, a = ("-" if n < 0 else ""), abs(n)
+    if a >= 1e9:
+        return f"{sign}${a / 1e9:.1f}B"
+    if a >= 1e6:
+        return f"{sign}${a / 1e6:.0f}M"
+    if a >= 1e3:
+        return f"{sign}${a / 1e3:.0f}K"
+    return f"{sign}${a:.0f}"
+
+
+_FIN_CACHE = {}     # cik -> financials dict | None, per run
+
+
+def _load_financials(cik):
+    """The committed XBRL financials for a firm (data/financials/CIK<cik>.json), or None
+    (ETFs / firms without usable companyfacts). Cached per run."""
+    if cik in _FIN_CACHE:
+        return _FIN_CACHE[cik]
+    data = None
+    try:
+        with open(os.path.join(FIN_DIR, f"CIK{cik}.json"), encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, ValueError):
+        data = None
+    _FIN_CACHE[cik] = data
+    return data
+
+
+def _fin_values(rows, label):
+    for r in rows or []:
+        if r.get("label") == label:
+            return r.get("values") or {}
+    return {}
+
+
+def _financials_line(it):
+    """The firm's latest annual fundamentals (revenue + YoY, net income, operating cash
+    flow, cash) from the same XBRL data the site's Financials tab shows — so agents make
+    grounded fundamental points instead of being told 'don't invent numbers' with no data
+    to work from. '' when there are no financials (e.g. an ETF)."""
+    fin = _load_financials(it.get("cik")) if it.get("cik") else None
+    years = (fin or {}).get("fiscal_years") or []
+    if not years:
+        return ""
+    fy, prev = years[0], (years[1] if len(years) > 1 else None)
+    st = fin.get("statements") or {}
+    inc, bal, cf = st.get("income") or [], st.get("balance") or [], st.get("cashflow") or []
+    rev = _fin_values(inc, "Revenue").get(str(fy))
+    parts = []
+    if isinstance(rev, (int, float)):
+        pr = _fin_values(inc, "Revenue").get(str(prev)) if prev else None
+        yoy = f" ({(rev - pr) / abs(pr) * 100:+.0f}% YoY)" if isinstance(pr, (int, float)) and pr else ""
+        parts.append(f"revenue {_fmt_usd(rev)}{yoy}")
+    for label, src, pretty in (("Net income", inc, "net income"),
+                               ("Operating cash flow", cf, "op. cash flow"),
+                               ("Cash & equivalents", bal, "cash")):
+        v = _fin_values(src, label).get(str(fy))
+        if isinstance(v, (int, float)):
+            parts.append(f"{pretty} {_fmt_usd(v)}")
+    if not parts:
+        return ""
+    return (f"- Latest annual financials (FY{fy}, SEC XBRL — same data as the site's "
+            f"Financials tab): " + ", ".join(parts)
+            + ". Ground any fundamentals in THESE; don't invent other figures.")
+
+
 def _market_context(it, filing_date=None):
     """A compact 'what's happening right now' block — live price action plus the online
     buzz the pipeline has on the item (Reddit attention via ApeWisdom, recent news
@@ -713,15 +806,17 @@ def _market_context(it, filing_date=None):
         as_of = pr.get("as_of")
         when = f"on {as_of}" if as_of else "on the latest session"
         chg_s = f"{chg:+.1f}% {when}" if isinstance(chg, (int, float)) else when
-        trend = ""
-        spark = pr.get("spark") or []
-        if len(spark) >= 2 and isinstance(spark[0], (int, float)):
-            trend = " · 5-day trend up" if spark[-1] >= spark[0] else " · 5-day trend down"
         stale = " (price may be stale)" if pr.get("stale") else ""
-        lines.append(f"- Price: {pr.get('currency','USD')} {pr['last']:.2f}, {chg_s}{trend}{stale}.")
+        lines.append(f"- Price: {pr.get('currency','USD')} {pr['last']:.2f}, {chg_s}{stale}.")
+        trend = _price_trend_line(it)                # 5d/1mo/3mo trend + range (the chart)
+        if trend:
+            lines.append(trend)
         fmove = _filing_move_line(it, filing_date)   # filing-anchored move, when applicable
         if fmove:
             lines.append(fmove)
+    fin = _financials_line(it)                       # latest annual fundamentals (XBRL)
+    if fin:
+        lines.append(fin)
     buzz = []
     if it.get("rank") is not None:
         buzz.append(f"#{it['rank']} trending")
@@ -1236,6 +1331,7 @@ def generate_agent_takes(items, now):
     the agent's diligence dial. Filings take precedence; reactions fill leftover."""
     _THREAD_CACHE.clear()        # fresh discussion snapshot each run
     _MEMORY_CACHE.clear()        # fresh per-agent memory each run
+    _FIN_CACHE.clear()           # fresh financials snapshot each run
     roster = fetch_agent_roster()
     if not roster:
         print("agents: no agent profiles seeded (run scripts/seed_agents.py)")
