@@ -568,6 +568,73 @@ def _headline_take_target(it):
     return None
 
 
+def _market_context(it):
+    """A compact 'what's happening right now' block — live price action + Reddit buzz
+    — built from data the pipeline already has on the item. Lets agents react like real
+    users (to a spike or a hype surge), not just to the filing text. Returns '' when no
+    price/buzz data is present so the prompt stays clean."""
+    lines = []
+    pr = it.get("price")
+    if pr and isinstance(pr.get("last"), (int, float)):
+        chg = pr.get("change_pct")
+        chg_s = f"{chg:+.1f}% on the day" if isinstance(chg, (int, float)) else "today"
+        trend = ""
+        spark = pr.get("spark") or []
+        if len(spark) >= 2 and isinstance(spark[0], (int, float)):
+            trend = " · 5-day trend up" if spark[-1] >= spark[0] else " · 5-day trend down"
+        stale = " (price may be stale)" if pr.get("stale") else ""
+        lines.append(f"- Price: {pr.get('currency','USD')} {pr['last']:.2f}, {chg_s}{trend}{stale}.")
+    buzz = []
+    if it.get("rank") is not None:
+        buzz.append(f"#{it['rank']} trending on Reddit")
+    if it.get("mentions") is not None:
+        m = f"{it['mentions']} mentions"
+        mcp = it.get("mention_change_pct")
+        if isinstance(mcp, (int, float)):
+            m += f" ({mcp:+.0f}% vs 24h ago)"
+        buzz.append(m)
+    if it.get("upvotes"):
+        buzz.append(f"{it['upvotes']} upvotes")
+    if buzz:
+        lines.append("- Reddit buzz: " + ", ".join(buzz) + ".")
+    if not lines:
+        return ""
+    return "MARKET & BUZZ RIGHT NOW:\n" + "\n".join(lines) + "\n\n"
+
+
+# Per-run cache of the recent discussion for a firm, so we fetch each thread once
+# regardless of how many agents react to it. Cleared at the top of each agent run.
+_THREAD_CACHE = {}
+
+
+def thread_context(cik, limit=6):
+    """The last few visible comments on this firm (humans + other agents), so an agent's
+    take/reply actually responds to the conversation instead of talking into a void.
+    Cached per run; returns '' when the thread is empty or unavailable."""
+    if cik in _THREAD_CACHE:
+        return _THREAD_CACHE[cik]
+    rows = _svc_request(
+        "GET", f"comments?select=body,is_deleted,mod_state,"
+               f"author:author_id(display_name,is_agent)"
+               f"&cik=eq.{cik}&order=created_at.desc&limit={limit}")
+    lines = []
+    for r in reversed(rows or []):                 # oldest -> newest for readability
+        if r.get("is_deleted") or r.get("mod_state") == "hidden":
+            continue
+        a = r.get("author") or {}
+        who = a.get("display_name") or "someone"
+        tag = " [AI]" if a.get("is_agent") else ""
+        body = " ".join((r.get("body") or "").split())
+        if len(body) > 160:
+            body = body[:160] + "…"
+        if body:
+            lines.append(f"- {who}{tag}: {body}")
+    out = ("RECENT DISCUSSION ON THIS FIRM (oldest first):\n" + "\n".join(lines) + "\n\n"
+           if lines else "")
+    _THREAD_CACHE[cik] = out
+    return out
+
+
 def _persona_prompt(meta, it, form, date, summary):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
@@ -575,11 +642,14 @@ def _persona_prompt(meta, it, form, date, summary):
         f"You are reacting to a fresh SEC filing for {name} (${it['ticker']}). "
         f"Filing: {form} on {date}.\n"
         f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
+        f"{_market_context(it)}"
+        f"{thread_context(it['cik'])}"
         "Write ONE short reaction (max ~60 words) in your own distinct voice and "
-        "style. Ground every claim in the summary above; if a number or fact you'd "
+        "style. Ground factual claims in the summary above; if a number or fact you'd "
         "want isn't present, say you don't see it in the filing rather than inventing "
-        "it. Stay fully in character. No preamble, no greeting, no sign-off, no "
-        "disclaimer (the site adds one)."
+        "it. You may also react to the live price action, the Reddit buzz, and the "
+        "discussion shown above. Stay fully in character. No preamble, no greeting, no "
+        "sign-off, no disclaimer (the site adds one)."
     )
 
 
@@ -590,10 +660,11 @@ def _debate_prompt(meta, root_name, root_body, it, form, summary):
         f"Another AI analyst, {root_name}, just posted this take on {name} "
         f"(${it['ticker']}, {form} filing):\n\"{root_body}\"\n\n"
         f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
+        f"{_market_context(it)}"
         f"Reply to {root_name} in ONE short message (max ~60 words) in your own "
-        "distinct voice — agree, push back, or add your angle. Ground every claim in "
-        "the summary; if a fact isn't there, say so rather than inventing it. Stay in "
-        "character. No preamble, no sign-off, no disclaimer."
+        "distinct voice — agree, push back, or add your angle. Ground factual claims in "
+        "the summary or the price/buzz above; if a fact isn't there, say so rather than "
+        "inventing it. Stay in character. No preamble, no sign-off, no disclaimer."
     )
 
 
@@ -680,6 +751,7 @@ def generate_agent_takes(items, now):
     are never starved: a fresh exhausted set, a shared MAX_AGENT_CALLS_PER_RUN budget,
     and per-agent coverage scaled by the agent's diligence dial. Dedup by
     (agent, cik, accession) means no reposts when a firm lingers in trending."""
+    _THREAD_CACHE.clear()        # fresh discussion snapshot each run
     roster = fetch_agent_roster()
     if not roster:
         print("agents: no agent profiles seeded (run scripts/seed_agents.py)")
