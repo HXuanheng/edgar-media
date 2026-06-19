@@ -654,7 +654,51 @@ def fetch_stocktwits(ticker):
     return {"count": len(msgs), "bullish": bull, "bearish": bear, "samples": samples}
 
 
-def _market_context(it):
+def _filing_date_for(it, acc):
+    """The filing DATE for an accession, so a take about it can anchor the price move to
+    the filing day (not the latest session). Looks up it['filings']; falls back to the
+    headline it['filing']. None when unknown."""
+    if not acc:
+        return None
+    for f in (it.get("filings") or []):
+        if f.get("accession") == acc:
+            return f.get("date")
+    fil = it.get("filing") or {}
+    return fil.get("date") if fil.get("accession") == acc else None
+
+
+def _filing_move_line(it, filing_date):
+    """The price move ANCHORED TO A FILING instead of to the latest session: the close on
+    the filing day (vs the prior session) plus the move since. Computed from the daily
+    history so a take about a filing cites that filing's own market reaction, not whatever
+    today's change happens to be. '' when there's no usable history for that date."""
+    pr = it.get("price") or {}
+    hist = pr.get("history") or []
+    if not filing_date or len(hist) < 2:
+        return ""
+    # history is [date, close], oldest -> newest. The filing day is the first session on
+    # or after the filing date (a filing on a weekend/holiday lands on the next session).
+    idx = next((i for i, row in enumerate(hist)
+                if isinstance(row, (list, tuple)) and len(row) == 2 and row[0] >= filing_date), None)
+    if not idx:                        # None (older than history) or 0 (no prior close)
+        return ""
+    fdate, fclose = hist[idx]
+    pclose = hist[idx - 1][1]
+    last_date, last_close = hist[-1]
+    if not all(isinstance(x, (int, float)) for x in (fclose, pclose, last_close)) \
+            or pclose == 0 or fclose == 0:
+        return ""
+    day = (fclose - pclose) / pclose * 100
+    line = (f"- Filing-day move ({fdate}): closed {fclose:.2f}, {day:+.1f}% vs the prior "
+            f"session — use THIS for the filing's market reaction, NOT the latest-day "
+            f"change above.")
+    if last_date != fdate:
+        since = (last_close - fclose) / fclose * 100
+        line += f" The stock is {since:+.1f}% since the filing."
+    return line
+
+
+def _market_context(it, filing_date=None):
     """A compact 'what's happening right now' block — live price action plus the online
     buzz the pipeline has on the item (Reddit attention via ApeWisdom, recent news
     headlines, and Stocktwits chatter/sentiment). Lets agents react like real users (to
@@ -664,13 +708,20 @@ def _market_context(it):
     pr = it.get("price")
     if pr and isinstance(pr.get("last"), (int, float)):
         chg = pr.get("change_pct")
-        chg_s = f"{chg:+.1f}% on the day" if isinstance(chg, (int, float)) else "today"
+        # Date-stamp the day change so it can never be mistaken for the move on the day of
+        # a filing the take is about (which may be days earlier — see _filing_move_line).
+        as_of = pr.get("as_of")
+        when = f"on {as_of}" if as_of else "on the latest session"
+        chg_s = f"{chg:+.1f}% {when}" if isinstance(chg, (int, float)) else when
         trend = ""
         spark = pr.get("spark") or []
         if len(spark) >= 2 and isinstance(spark[0], (int, float)):
             trend = " · 5-day trend up" if spark[-1] >= spark[0] else " · 5-day trend down"
         stale = " (price may be stale)" if pr.get("stale") else ""
         lines.append(f"- Price: {pr.get('currency','USD')} {pr['last']:.2f}, {chg_s}{trend}{stale}.")
+        fmove = _filing_move_line(it, filing_date)   # filing-anchored move, when applicable
+        if fmove:
+            lines.append(fmove)
     buzz = []
     if it.get("rank") is not None:
         buzz.append(f"#{it['rank']} trending")
@@ -799,7 +850,10 @@ def _format_guidance(meta):
         "your actual point or reaction; weave the name in later only if you need it. "
         f"{_voice_line(meta)} "
         "Never invent specific figures you weren't given above; opinions, predictions "
-        "and hot takes are fair game. No preamble, no greeting, no sign-off, no "
+        "and hot takes are fair game. If what you're looking at turns out to be a "
+        "non-event, you usually don't need to say so out loud — a real person rarely "
+        "posts just to point out that nothing happened; they talk about whatever they "
+        "actually find interesting instead. No preamble, no greeting, no sign-off, no "
         "disclaimer (the site adds one)."
     )
 
@@ -854,24 +908,28 @@ def _persona_prompt(meta, it, form, date, summary, memory=""):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
         f"{meta['system_prompt']}\n\n"
-        f"You are reacting to a fresh SEC filing for {name}. "
+        f"A fresh SEC filing for {name} just put it on your radar. "
         f"Filing: {form} on {date}.\n"
         f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
-        f"{_market_context(it)}"
+        f"{_market_context(it, date)}"
         f"{thread_context(it['cik'])}"
         f"{memory}"
-        "Write your reaction in your own distinct voice and style. The filing is already "
-        "linked above your comment — do NOT recap or summarize what it says; readers can "
-        "open it. Go straight to YOUR angle/opinion, and cite a specific figure only if "
-        "it's essential to your point. Don't invent numbers; if a fact you'd want isn't "
-        "in the summary, say you don't see it rather than making it up. You may also react "
-        "to the live price, the online buzz, the headlines, and the discussion shown "
-        f"above. Stay fully in character.\n"
+        "Post like a real person scrolling the feed: the filing is what caught your eye, "
+        "not an assignment you have to review. It's already linked above your comment — "
+        "do NOT recap or summarize it. If it genuinely moves your view, give YOUR "
+        "angle/opinion on it (cite a specific figure only if it's essential to your "
+        "point). If it's a routine non-event, don't dwell on it or announce that it's "
+        "unimportant — talk about whatever you actually care about on this firm instead: "
+        "the financials, the live price, the headlines, the online buzz, or your broader "
+        "thesis. Don't invent numbers; if a fact you'd want isn't in the summary, say you "
+        "don't see it rather than making it up. If nothing here is worth posting at all "
+        "(routine filing AND no real angle in the price/news/buzz either), reply with just "
+        "the single word SKIP and nothing else. Stay fully in character.\n"
         f"{_format_guidance(meta)}"
     )
 
 
-def _debate_prompt(meta, root_name, root_body, it, form, summary):
+def _debate_prompt(meta, root_name, root_body, it, form, summary, filing_date=None):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     if summary:                                   # filing-driven root take
         filing = f", {form} filing" if form else ""
@@ -884,7 +942,7 @@ def _debate_prompt(meta, root_name, root_body, it, form, summary):
     return (
         f"{meta['system_prompt']}\n\n"
         f"{head}"
-        f"{_market_context(it)}"
+        f"{_market_context(it, filing_date if summary else None)}"
         f"Reply to {root_name} in your own distinct voice — agree, push back, or add "
         "your angle. Don't repeat what they already said and don't recap the filing "
         "(it's linked); add something new. Ground factual claims in the summary or the "
@@ -973,7 +1031,7 @@ def recent_takes(cik, limit=6):
     return out
 
 
-def _join_prompt(meta, it, takes, summary="", memory=""):
+def _join_prompt(meta, it, takes, summary="", memory="", filing_date=None):
     """Used when other takes already exist on this firm: the agent JOINS the thread like a
     real user — likes one it agrees with (optionally adding ONE new point), or posts a
     genuinely different take — instead of echoing what's already there. `takes` is the few
@@ -991,7 +1049,7 @@ def _join_prompt(meta, it, takes, summary="", memory=""):
         f"You're reading the recent discussion on {name}. People already posted:\n"
         f"{listing}\n\n"
         f"{filing_block}"
-        f"{_market_context(it)}"
+        f"{_market_context(it, filing_date if summary else None)}"
         f"{memory}"
         "Act like a real user joining the thread. Reply with EXACTLY ONE of these on the "
         "first line:\n"
@@ -1005,6 +1063,15 @@ def _join_prompt(meta, it, takes, summary="", memory=""):
         "below.\n"
         f"{_format_guidance(meta)}"
     )
+
+
+def _is_skip(text):
+    """True if an agent declined to post — it replied with just SKIP (a routine filing
+    with no angle worth a take). Tight match so a real take that merely contains the word
+    'skip' is never swallowed: the whole reply, minus surrounding punctuation/brackets,
+    must be exactly SKIP."""
+    s = (text or "").strip().strip("[](){}.!\"' ").upper()
+    return s == "SKIP"
 
 
 def _parse_join(text, n):
@@ -1049,7 +1116,8 @@ def maybe_post_debate(roster, posted_roots, exhausted, budget):
                     else agent_reacted_today(responder["id"], cik)):
                 continue
             prompt = _debate_prompt(rmeta, root_agent.get("display_name", "another analyst"),
-                                    root_body, it, form, summary)
+                                    root_body, it, form, summary,
+                                    filing_date=_filing_date_for(it, acc))
             text = call_agent_model(rmeta, prompt, exhausted)
             if not text:
                 continue
@@ -1242,7 +1310,8 @@ def generate_agent_takes(items, now):
                 # Pass the filing summary so a joining agent reacts to the actual document
                 # (a board change, say), not a free-styled unrelated thesis.
                 prompt = _join_prompt(meta, it, existing,
-                                      ctx if kind == "filing" else "", mem)
+                                      ctx if kind == "filing" else "", mem,
+                                      filing_date=it["filing"].get("date") if kind == "filing" else None)
             elif kind == "filing":
                 prompt = _persona_prompt(meta, it, form, it["filing"].get("date", "?"), ctx, mem)
             else:
@@ -1253,8 +1322,12 @@ def generate_agent_takes(items, now):
                 break            # provider out of quota -> stop this agent
             if not text or not text.strip():
                 continue
-            budget -= 1          # a model call was spent (whether it likes or posts)
+            budget -= 1          # a model call was spent (whether it likes, posts, or skips)
             quota_n -= 1
+            if _is_skip(text):   # agent looked, judged it a non-event, declined to post
+                print(f"    . {meta.get('slug','?'):16s} {it['ticker']:6s} "
+                      f"{(form or 'trend'):6s} -> skip")
+                continue
 
             # Joining: like an existing take (optionally + a reply), or fall through to a
             # genuinely new root take.
