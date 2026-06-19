@@ -234,6 +234,19 @@ function revealRow(row) {
     row.classList.add("flash");
 }
 
+// Reveal + scroll to a filing row by accession, scoped to a container. Used by the
+// chart markers and by @-filing references in comments so both behave alike. Returns
+// false if no matching row is on the page (caller can fall back, e.g. open SEC).
+export function jumpToFiling(scope, acc) {
+    if (!acc) return false;
+    const row = scope.querySelector(`.flrow[data-acc="${cssEsc(acc)}"]`);
+    if (!row) return false;
+    scope.querySelectorAll(".flrow.flash").forEach((r) => r.classList.remove("flash"));
+    revealRow(row);
+    row.scrollIntoView({ behavior: "smooth", block: "center" });
+    return true;
+}
+
 export function wireChart(companyEl, it) {
     // Listen on the .price-chart container (stable), not the SVG: switching span
     // replaces the SVG, but the container — and these listeners — persist.

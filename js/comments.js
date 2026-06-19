@@ -8,6 +8,7 @@ import { supabase, isConfigured, initClient } from "./supabaseClient.js";
 import { esc, timeAgo } from "./util.js";
 import { getUser, isAdmin, openModal, onChange } from "./auth.js";
 import { confirmDialog, promptDialog } from "./dialog.js";
+import { jumpToFiling } from "./chart.js";
 
 const state = new WeakMap();   // mount element -> { cik, company, full, onCount }
 
@@ -139,7 +140,7 @@ function renderBody(body, company) {
         let url = f?.index_url;
         if (!url && company?.cik && ACCESSION_RE.test(acc)) url = secIndexUrl(company.cik, acc);
         return url
-            ? `<a class="cmt-filing" href="${esc(url)}" target="_blank" rel="noopener">@${label} ↗</a>`
+            ? `<a class="cmt-filing" href="${esc(url)}" target="_blank" rel="noopener" data-acc="${esc(acc)}">@${label}</a>`
             : `<span class="cmt-mention-dead">@${label}</span>`;
     });
     return html;
@@ -431,6 +432,17 @@ function wire(mount) {
     mount.dataset.wired = "1";
 
     mount.addEventListener("click", async (e) => {
+        // @-filing reference -> jump to that filing's row + summary in-page (like the
+        // chart dashed line). Comments live in the same card (home) or #company-view
+        // (company page) as the filing list, so search that scope. Not on the page
+        // (old filing outside the window) -> fall through to the SEC href.
+        const fref = e.target.closest("a.cmt-filing");
+        if (fref) {
+            const scope = fref.closest(".card, #company-view") || document;
+            if (jumpToFiling(scope, fref.dataset.acc)) e.preventDefault();
+            return;
+        }
+
         const btn = e.target.closest("[data-act]");
         if (!btn || btn.tagName === "FORM") return;
         const act = btn.dataset.act;
