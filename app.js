@@ -49,6 +49,17 @@ if (fab && fabTrigger) {
     });
 }
 
+// The "show less" button at the bottom of an expanded filing list only shows while
+// expanded, so a click always means collapse. Collapsing drops a lot of height above
+// the viewport, which would strand the user mid-page -> bring the list header back into
+// view. Pure-CSS handles the toggle; this only smooths the scroll.
+document.addEventListener("click", (e) => {
+    const c = e.target.closest(".more-collapse");
+    if (!c) return;
+    const head = c.closest(".card-filings")?.querySelector(".filing-head");
+    if (head) requestAnimationFrame(() => head.scrollIntoView({ behavior: "smooth", block: "nearest" }));
+});
+
 // --- card ---
 function tickerId(it) { return (it.ticker || "").replace(/[^a-z0-9]/gi, ""); }
 

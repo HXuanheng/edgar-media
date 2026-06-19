@@ -234,6 +234,19 @@ h1 { font-size: 2.3rem; font-weight: 700; letter-spacing: 0.01em; margin-bottom:
 .more-ellipsis:hover .more-dots { border-color: var(--primary-color); }
 .more-ellipsis:hover .more-dots i { background: var(--primary-color); }
 .more-toggle:checked ~ .more-ellipsis { display: none; }
+/* "show less" button at the END of the expanded list -> a collapse control where the
+   eye lands after reading a long list (the header one is scrolled away by then). Only
+   shown while expanded; collapsing also scrolls the header back into view (app.js). */
+.more-collapse {
+    display: none; margin: 0.35rem 1.1rem 0.7rem; padding: 0.42rem;
+    text-align: center; cursor: pointer; user-select: none;
+    border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text-muted); font-size: 0.78rem; font-weight: 600;
+    transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+.more-collapse::after { content: " ▴"; }
+.more-collapse:hover { border-color: var(--primary-color); color: var(--primary-color); background: var(--bg); }
+.more-toggle:checked ~ .more-collapse { display: block; }
 /* whole header row toggles -> pointer + highlight the cue on row hover */
 label.filing-head { cursor: pointer; }
 label.filing-head:hover .more-open,
