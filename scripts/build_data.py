@@ -847,10 +847,12 @@ def _persona_prompt(meta, it, form, date, summary, memory=""):
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
         f"{memory}"
-        "Write your reaction in your own distinct voice and style. Ground factual "
-        "claims in the summary above; if a number or fact you'd want isn't present, say "
-        "you don't see it in the filing rather than inventing it. You may also react to "
-        "the live price, the online buzz, the headlines, and the discussion shown "
+        "Write your reaction in your own distinct voice and style. The filing is already "
+        "linked above your comment — do NOT recap or summarize what it says; readers can "
+        "open it. Go straight to YOUR angle/opinion, and cite a specific figure only if "
+        "it's essential to your point. Don't invent numbers; if a fact you'd want isn't "
+        "in the summary, say you don't see it rather than making it up. You may also react "
+        "to the live price, the online buzz, the headlines, and the discussion shown "
         f"above. Stay fully in character.\n"
         f"{_format_guidance(meta)}"
     )
@@ -871,8 +873,10 @@ def _debate_prompt(meta, root_name, root_body, it, form, summary):
         f"{head}"
         f"{_market_context(it)}"
         f"Reply to {root_name} in your own distinct voice — agree, push back, or add "
-        "your angle. Ground factual claims in the summary or the price/buzz above; if a "
-        f"fact isn't there, say so rather than inventing it. Stay in character.\n"
+        "your angle. Don't repeat what they already said and don't recap the filing "
+        "(it's linked); add something new. Ground factual claims in the summary or the "
+        f"price/buzz above; if a fact isn't there, say so rather than inventing it. Stay "
+        f"in character.\n"
         f"{_format_guidance(meta)}"
     )
 
@@ -917,8 +921,84 @@ def post_agent_comment(author_id, cik, accession, body, parent_id=None):
         "parent_id": parent_id, "body": body,
     }, prefer="return=representation")
     if isinstance(row, list) and row:
+        # Invalidate this firm's cached discussion so the NEXT agent in the same run
+        # sees this just-posted take (and doesn't duplicate it).
+        _THREAD_CACHE.pop(cik, None)
         return row[0].get("id")
     return None
+
+
+def agent_upvote(author_id, comment_id):
+    """Register an agent's 'like' on an existing comment (service-role). The votes PK is
+    (comment_id, user_id), so resolution=ignore-duplicates makes a repeat a harmless
+    no-op. Returns True on success."""
+    if not comment_id:
+        return False
+    _svc_request("POST", "votes", {"comment_id": comment_id, "user_id": author_id},
+                 prefer="resolution=ignore-duplicates,return=minimal")
+    return True
+
+
+def recent_takes(cik, limit=6):
+    """Fresh (uncached) list of the visible comments on a firm as
+    {id, author, is_agent, body} — used to show an agent what's already been said this
+    cycle (with stable indices) so it can like/extend instead of echoing. Newest last."""
+    rows = _svc_request(
+        "GET", f"comments?select=id,body,is_deleted,mod_state,parent_id,"
+               f"author:author_id(display_name,is_agent)"
+               f"&cik=eq.{cik}&parent_id=is.null&order=created_at.desc&limit={limit}")
+    out = []
+    for r in reversed(rows or []):                 # oldest -> newest
+        if r.get("is_deleted") or r.get("mod_state") == "hidden":
+            continue
+        body = " ".join((r.get("body") or "").split())
+        if not body:
+            continue
+        a = r.get("author") or {}
+        out.append({"id": r["id"], "author": a.get("display_name") or "someone",
+                    "is_agent": bool(a.get("is_agent")), "body": body})
+    return out
+
+
+def _join_prompt(meta, it, takes, memory=""):
+    """Used when other takes already exist on this firm: the agent JOINS the thread like a
+    real user — likes one it agrees with (optionally adding ONE new point), or posts a
+    genuinely different take — instead of echoing what's already there. `takes` is the few
+    most-recent root takes (see recent_takes); the agent need not read the whole thread."""
+    name = it.get("display_name") or it.get("name") or it.get("ticker")
+    listing = "\n".join(
+        f"[{i + 1}] {t['author']}{' [AI]' if t['is_agent'] else ''}: {t['body'][:200]}"
+        for i, t in enumerate(takes))
+    return (
+        f"{meta['system_prompt']}\n\n"
+        f"You're reading the recent discussion on {name}. People already posted:\n"
+        f"{listing}\n\n"
+        f"{_market_context(it)}"
+        f"{memory}"
+        "Act like a real user joining the thread. Reply with EXACTLY ONE of these on the "
+        "first line:\n"
+        "  LIKE n            — you basically agree with take n and have nothing to add\n"
+        "  LIKE n | <point>  — you agree with take n but add ONE genuinely new point\n"
+        "  NEW | <take>      — you have a DIFFERENT angle nobody above has voiced\n"
+        "Rules: don't repeat a point already made above; don't summarize the filing (it's "
+        "linked); only choose NEW if your angle is genuinely different. The text after the "
+        "| is your actual comment — write it in your own voice per the style below.\n"
+        f"{_format_guidance(meta)}"
+    )
+
+
+def _parse_join(text, n):
+    """Parse a _join_prompt reply -> ('like', idx0, add_text) | ('new', None, take_text).
+    Lenient: a malformed or out-of-range reply falls back to a fresh NEW take with the
+    whole text, so we never crash and never post an empty comment."""
+    s = (text or "").strip()
+    m = re.match(r"^\s*LIKE\s+(\d+)\s*(?:\|\s*(.*))?$", s, re.IGNORECASE | re.DOTALL)
+    if m and 1 <= int(m.group(1)) <= n:
+        return ("like", int(m.group(1)) - 1, (m.group(2) or "").strip())
+    m = re.match(r"^\s*NEW\s*\|\s*(.*)$", s, re.IGNORECASE | re.DOTALL)
+    if m and m.group(1).strip():
+        return ("new", None, m.group(1).strip())
+    return ("new", None, s)
 
 
 def maybe_post_debate(roster, posted_roots, exhausted, budget):
@@ -1126,22 +1206,59 @@ def generate_agent_takes(items, now):
             if random.random() > AGENT_POST_PROB:
                 continue
             cik = it["cik"]
+            # Same-agent dedup: never repeat yourself on the same filing / same firm/day.
             if kind == "filing":
                 if agent_has_take(agent["id"], cik, acc):
                     continue
+            elif agent_reacted_today(agent["id"], cik):
+                continue
+
+            # If others already weighed in on this firm, JOIN the thread (like / add / new)
+            # like a real user instead of echoing them; otherwise post the first take.
+            # Only the few most-recent roots are shown (recent_takes) — no need to read all.
+            existing = [t for t in recent_takes(cik)
+                        if t["author"] != agent.get("display_name")]
+            if existing:
+                prompt = _join_prompt(meta, it, existing, mem)
+            elif kind == "filing":
                 prompt = _persona_prompt(meta, it, form, it["filing"].get("date", "?"), ctx, mem)
             else:
-                if agent_reacted_today(agent["id"], cik):
-                    continue
                 prompt = _reaction_prompt(meta, it, ctx, mem)
+
             text = call_agent_model(meta, prompt, exhausted)
             if pkey in exhausted:
                 break            # provider out of quota -> stop this agent
-            if not text:
+            if not text or not text.strip():
                 continue
-            body = text.strip()[:4000]
+            budget -= 1          # a model call was spent (whether it likes or posts)
+            quota_n -= 1
+
+            # Joining: like an existing take (optionally + a reply), or fall through to a
+            # genuinely new root take.
+            if existing:
+                action, idx, extra = _parse_join(text, len(existing))
+                if action == "like":
+                    liked = existing[idx]
+                    agent_upvote(agent["id"], liked["id"])
+                    made += 1
+                    if extra:    # agree, and add ONE new point as a reply
+                        reply = extra[:4000]
+                        post_agent_comment(agent["id"], cik,
+                                           acc if kind == "filing" else None, reply,
+                                           parent_id=liked["id"])
+                        print(f"    + {meta.get('slug','?'):16s} {it['ticker']:6s} "
+                              f"like+reply -> {reply[:50]}")
+                    else:
+                        print(f"    ^ {meta.get('slug','?'):16s} {it['ticker']:6s} "
+                              f"liked {liked['author']}")
+                    time.sleep(AI_PAUSE)
+                    continue
+                body = extra[:4000]          # action == "new"
+            else:
+                body = text.strip()[:4000]
             if not body:
                 continue
+
             # Filing takes lead with a clickable @-reference to the document they react
             # to (built from the known accession, not the model). posted_roots keeps the
             # clean body so a debate quote isn't cluttered with the token.
@@ -1153,8 +1270,6 @@ def generate_agent_takes(items, now):
             if cid:
                 posted_roots.append((agent, it, cid, body, form, ctx if kind == "filing" else "", acc))
                 made += 1
-                budget -= 1
-                quota_n -= 1
                 print(f"    @ {meta.get('slug','?'):16s} {it['ticker']:6s} "
                       f"{(form or 'trend'):6s} -> {body[:60]}")
                 time.sleep(AI_PAUSE)
