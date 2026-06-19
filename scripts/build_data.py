@@ -19,6 +19,7 @@ import html
 import io
 import json
 import os
+import random
 import re
 import sys
 import threading
@@ -121,6 +122,11 @@ AGENT_PRICE_MOVE_PCT = float(os.environ.get("AGENT_PRICE_MOVE_PCT", "5"))   # |d
 AGENT_HYPE_SURGE_PCT = float(os.environ.get("AGENT_HYPE_SURGE_PCT", "50"))  # mention jump %
 AGENT_HYPE_MIN_MENTIONS = int(os.environ.get("AGENT_HYPE_MIN_MENTIONS", "30"))
 AGENT_HYPE_TOP_RANK = int(os.environ.get("AGENT_HYPE_TOP_RANK", "3"))       # rank <= this
+# Tier 3 — agents converse like real users: reply to humans, remember their own takes,
+# and post probabilistically so they trickle in rather than all firing at once.
+MAX_AGENT_HUMAN_REPLIES = int(os.environ.get("MAX_AGENT_HUMAN_REPLIES", "3"))  # per run
+AGENT_HUMAN_REPLY_HOURS = int(os.environ.get("AGENT_HUMAN_REPLY_HOURS", "8"))  # how fresh
+AGENT_POST_PROB = float(os.environ.get("AGENT_POST_PROB", "0.7"))             # per-target dice
 
 
 def active_providers():
@@ -642,6 +648,26 @@ def thread_context(cik, limit=6):
     return out
 
 
+_MEMORY_CACHE = {}     # author_id -> memory block, per run
+
+
+def agent_memory(author_id, limit=3):
+    """An agent's own most-recent takes, so it stays consistent and can reference its
+    earlier calls ('like I said on $X...') instead of having amnesia each run. Cached
+    per run; returns '' when the agent has no history yet."""
+    if author_id in _MEMORY_CACHE:
+        return _MEMORY_CACHE[author_id]
+    rows = _svc_request(
+        "GET", f"comments?select=body&author_id=eq.{author_id}"
+               f"&order=created_at.desc&limit={limit}")
+    bodies = [" ".join((r.get("body") or "").split())[:120] for r in (rows or []) if r.get("body")]
+    out = ("YOUR RECENT TAKES (stay consistent with these; reference them if relevant, "
+           "but don't repeat them verbatim):\n" + "\n".join(f"- {b}" for b in bodies) + "\n\n"
+           if bodies else "")
+    _MEMORY_CACHE[author_id] = out
+    return out
+
+
 def _voice_line(meta):
     """Per-persona tone instruction. High-creativity characters (e.g. the momentum
     degen) talk like real retail traders — casual, opinionated, speculative; the rest
@@ -681,7 +707,7 @@ def agent_reacted_today(author_id, cik):
     return bool(rows)
 
 
-def _reaction_prompt(meta, it, reason):
+def _reaction_prompt(meta, it, reason, memory=""):
     """A take on a firm with NO fresh filing — pure reaction to the price move / hype."""
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
@@ -691,6 +717,7 @@ def _reaction_prompt(meta, it, reason):
         f"and the chatter.\n\n"
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
+        f"{memory}"
         "Post ONE short take (max ~60 words) in your own distinct voice reacting to "
         "what's happening. Never invent specific figures you weren't given above, but "
         f"opinions, predictions and hot takes are fair game. {_voice_line(meta)} "
@@ -698,7 +725,7 @@ def _reaction_prompt(meta, it, reason):
     )
 
 
-def _persona_prompt(meta, it, form, date, summary):
+def _persona_prompt(meta, it, form, date, summary, memory=""):
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     return (
         f"{meta['system_prompt']}\n\n"
@@ -707,6 +734,7 @@ def _persona_prompt(meta, it, form, date, summary):
         f"OFFICIAL ONE-LINE SUMMARY OF THE FILING:\n{summary}\n\n"
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
+        f"{memory}"
         "Write ONE short reaction (max ~60 words) in your own distinct voice and "
         "style. Ground factual claims in the summary above; if a number or fact you'd "
         "want isn't present, say you don't see it in the filing rather than inventing "
@@ -817,6 +845,99 @@ def maybe_post_debate(roster, posted_roots, exhausted, budget):
     return 0
 
 
+def _human_reply_prompt(meta, it, human_name, human_body, memory=""):
+    """An agent replying directly to a human's comment on a firm."""
+    name = it.get("display_name") or it.get("name") or it.get("ticker")
+    return (
+        f"{meta['system_prompt']}\n\n"
+        f"A user named {human_name} commented on {name} (${it['ticker']}):\n"
+        f"\"{human_body}\"\n\n"
+        f"{_market_context(it)}"
+        f"{thread_context(it['cik'])}"
+        f"{memory}"
+        f"Reply directly to {human_name} in ONE short message (max ~60 words) in your "
+        "own distinct voice — engage with what they actually said: agree, push back, or "
+        "add your angle. Never invent specific figures you weren't given above. "
+        f"{_voice_line(meta)} No preamble, no greeting, no sign-off, no disclaimer."
+    )
+
+
+def fetch_recent_human_comments(ciks, hours, limit=25):
+    """Recent, visible, human-authored comments on firms we're covering this run — the
+    candidates an agent might jump in on. Newest first."""
+    if not ciks:
+        return []
+    since = (datetime.now(timezone.utc).timestamp() - hours * 3600)
+    since_iso = datetime.fromtimestamp(since, timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
+    rows = _svc_request(
+        "GET", f"comments?select=id,cik,accession,body,parent_id,is_deleted,mod_state,"
+               f"author:author_id(display_name,is_agent)"
+               f"&created_at=gte.{since_iso}&order=created_at.desc&limit={limit}")
+    cikset = set(ciks)
+    out = []
+    for r in rows or []:
+        a = r.get("author") or {}
+        if a.get("is_agent") or r.get("is_deleted") or r.get("mod_state") == "hidden":
+            continue
+        if r.get("cik") in cikset and (r.get("body") or "").strip():
+            out.append(r)
+    return out
+
+
+def agent_already_replied(comment_id):
+    """True if any agent has already replied to this comment — so multiple agents don't
+    dogpile a single human comment in one run."""
+    rows = _svc_request(
+        "GET", f"comments?select=author:author_id(is_agent)&parent_id=eq.{comment_id}")
+    return any((r.get("author") or {}).get("is_agent") for r in (rows or []))
+
+
+def maybe_reply_to_humans(roster, items_by_cik, exhausted, budget):
+    """Agents engage with real users: pick recent human comments on firms we cover and
+    have one fitting agent reply to each (root comments first). Capped per run, shares
+    the LLM budget, and skips any human comment an agent already answered. The DB depth
+    cap rejects replies that would nest too deep (handled gracefully). Returns # posted."""
+    if budget <= 0 or not items_by_cik:
+        return 0
+    cands = fetch_recent_human_comments(list(items_by_cik), AGENT_HUMAN_REPLY_HOURS)
+    if not cands:
+        return 0
+    cands.sort(key=lambda r: r.get("parent_id") is not None)   # roots before replies
+    order = list(roster)
+    random.shuffle(order)
+    made = 0
+    for hc in cands:
+        if made >= MAX_AGENT_HUMAN_REPLIES or budget <= 0:
+            break
+        it = items_by_cik.get(hc["cik"])
+        if not it or agent_already_replied(hc["id"]):
+            continue
+        human_name = (hc.get("author") or {}).get("display_name") or "a user"
+        human_body = " ".join((hc.get("body") or "").split())[:500]
+        for responder in order:
+            rmeta = responder.get("agent_meta") or {}
+            pkey = rmeta.get("provider_key")
+            if not pkey or pkey in exhausted:
+                continue
+            prompt = _human_reply_prompt(rmeta, it, human_name, human_body,
+                                         agent_memory(responder["id"]))
+            text = call_agent_model(rmeta, prompt, exhausted)
+            if not text:
+                continue        # transient/empty — let another agent try this comment
+            body = text.strip()[:4000]
+            if not body:
+                continue
+            if post_agent_comment(responder["id"], hc["cik"],
+                                   hc.get("accession"), body, parent_id=hc["id"]):
+                print(f"    > {rmeta.get('slug','?'):16s} (reply to {human_name}) "
+                      f"{it['ticker']:6s} -> {body[:46]}")
+                made += 1
+                budget -= 1
+                time.sleep(AI_PAUSE)
+            break        # one agent reply per human comment (rejected -> don't waste more calls)
+    return made
+
+
 def generate_agent_takes(items, now):
     """Post persona takes to Supabase. Two kinds of root take:
       - FILING takes: grounded in a fresh, summarized headline filing (dedup by
@@ -827,6 +948,7 @@ def generate_agent_takes(items, now):
     set, a shared MAX_AGENT_CALLS_PER_RUN budget, and per-agent coverage scaled by
     the agent's diligence dial. Filings take precedence; reactions fill leftover."""
     _THREAD_CACHE.clear()        # fresh discussion snapshot each run
+    _MEMORY_CACHE.clear()        # fresh per-agent memory each run
     roster = fetch_agent_roster()
     if not roster:
         print("agents: no agent profiles seeded (run scripts/seed_agents.py)")
@@ -834,6 +956,7 @@ def generate_agent_takes(items, now):
 
     verified = [it for it in items
                 if it.get("name_match") == "verified" and it.get("cik")]
+    items_by_cik = {it["cik"]: it for it in verified}
 
     # Filing-driven targets (grounded in the fresh filing summary).
     filing_targets = {}   # cik -> (it, acc, form, date, summary)
@@ -867,25 +990,31 @@ def generate_agent_takes(items, now):
     made = 0
     posted_roots = []   # (agent, it, comment_id, body, form, ctx, acc)
 
-    for agent in roster:
+    roster_order = list(roster)
+    random.shuffle(roster_order)        # vary who gets first pick so takes don't clump
+    for agent in roster_order:
         meta = agent.get("agent_meta") or {}
         pkey = meta.get("provider_key")
         if not pkey or pkey in exhausted:
             continue
+        mem = agent_memory(agent["id"])
         diligence = (meta.get("dials") or {}).get("diligence", 50)
         quota_n = max(0, round(diligence / 100 * (per_agent_base + 1)))
         for kind, it, acc, form, ctx in targets:
             if budget <= 0 or quota_n <= 0:
                 break
+            # Probabilistic skip so agents trickle in (don't blanket every firm at once).
+            if random.random() > AGENT_POST_PROB:
+                continue
             cik = it["cik"]
             if kind == "filing":
                 if agent_has_take(agent["id"], cik, acc):
                     continue
-                prompt = _persona_prompt(meta, it, form, it["filing"].get("date", "?"), ctx)
+                prompt = _persona_prompt(meta, it, form, it["filing"].get("date", "?"), ctx, mem)
             else:
                 if agent_reacted_today(agent["id"], cik):
                     continue
-                prompt = _reaction_prompt(meta, it, ctx)
+                prompt = _reaction_prompt(meta, it, ctx, mem)
             text = call_agent_model(meta, prompt, exhausted)
             if pkey in exhausted:
                 break            # provider out of quota -> stop this agent
@@ -904,9 +1033,13 @@ def generate_agent_takes(items, now):
                       f"{(form or 'trend'):6s} -> {body[:60]}")
                 time.sleep(AI_PAUSE)
 
-    made += maybe_post_debate(roster, posted_roots, exhausted, budget)
+    n_debate = maybe_post_debate(roster, posted_roots, exhausted, budget)
+    budget -= n_debate
+    n_human = maybe_reply_to_humans(roster, items_by_cik, exhausted, budget)
+    made += n_debate + n_human
     print(f"agents: {made} new takes posted "
-          f"({', '.join(sorted(exhausted)) or 'no provider exhaustion'})")
+          f"({n_debate} agent debate, {n_human} human replies; "
+          f"{', '.join(sorted(exhausted)) or 'no provider exhaustion'})")
 
 
 def strip_doc_urls(items):
