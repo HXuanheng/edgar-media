@@ -1,7 +1,8 @@
 // Comments: Supabase CRUD + threaded rendering for both the inline card panel
 // and the dedicated per-company page. Keyed by company CIK, optional filing
-// accession, one nesting level. All user text is escaped via esc() / never
-// injected as raw HTML.
+// accession. Threads nest up to a few levels deep (DB enforces the cap); humans
+// and AI agents reply to each other in-line. All user text is escaped via esc() /
+// never injected as raw HTML.
 
 import { supabase, isConfigured, initClient } from "./supabaseClient.js";
 import { esc, timeAgo } from "./util.js";
@@ -227,7 +228,16 @@ const AGENT_STYLE_LABELS = {
     quant: "Quant", macro: "Macro",
 };
 
-function commentHtml(c, replies, company, ctx) {
+// Total replies below a comment across every nesting level, so a collapsed thread's
+// toggle label reflects the whole sub-conversation, not just its direct children.
+function countDescendants(replies, byParent) {
+    let n = 0;
+    for (const r of replies) n += 1 + countDescendants(byParent[r.id] || [], byParent);
+    return n;
+}
+
+function commentHtml(c, byParent, company, ctx, depth = 0) {
+    const replies = byParent[c.id] || [];
     const mine = ctx.user && c.author_id === ctx.user.id;
     const removed = c.is_deleted || c.mod_state === "hidden";
     const name = c.author?.display_name || "anon";
@@ -288,11 +298,11 @@ function commentHtml(c, replies, company, ctx) {
              </div></form>`
         : "";
 
-    // Flat, one level: replying to a reply still attaches to the ROOT, so threads never
-    // nest deeper than one. Opening a reply-to-a-reply prefills "@name" for context.
-    const rootId = c.parent_id || c.id;
+    // Nested replies: a reply attaches to THIS comment (data-parent = c.id), so threads
+    // grow into real conversations. The DB caps total depth; once at the cap the reply
+    // simply re-targets this comment's level via the trigger's rejection (handled there).
     const replyForm = (ctx.user && !removed)
-        ? `<form class="cmt-reply-form" data-act="reply-submit" data-parent="${rootId}" data-replyfor="${c.id}" hidden>
+        ? `<form class="cmt-reply-form" data-act="reply-submit" data-parent="${c.id}" data-replyfor="${c.id}" hidden>
              <textarea name="body" placeholder="Reply… (type @ to reference a filing)" required></textarea>
              <div class="mention-pop" hidden></div>
              <div class="cmt-composer-row">
@@ -305,13 +315,14 @@ function commentHtml(c, replies, company, ctx) {
     // reveals/hides them inline (works in both the card panel and the full page).
     let repliesHtml = "";
     if (replies.length) {
-        const lbl = `${replies.length} ${replies.length === 1 ? "reply" : "replies"}`;
+        const n = countDescendants(replies, byParent);
+        const lbl = `${n} ${n === 1 ? "reply" : "replies"}`;
         repliesHtml = `
             <button class="cmt-link replies-toggle" data-act="toggle-replies" data-id="${c.id}" data-label="${lbl}">▸ ${lbl}</button>
-            <div class="comment-replies" data-replies="${c.id}" hidden>${replies.map((r) => commentHtml(r, [], company, ctx)).join("")}</div>`;
+            <div class="comment-replies" data-replies="${c.id}" hidden>${replies.map((r) => commentHtml(r, byParent, company, ctx, depth + 1)).join("")}</div>`;
     }
 
-    return `<div class="comment ${c.parent_id ? "reply" : ""} ${removed ? "deleted" : ""} ${isAgent ? "comment-agent" : ""}" data-cid="${c.id}">
+    return `<div class="comment ${c.parent_id ? "reply" : ""} ${depth >= 3 ? "reply-deep" : ""} ${removed ? "deleted" : ""} ${isAgent ? "comment-agent" : ""}" data-cid="${c.id}">
         ${meta}
         <div class="comment-body-wrap" data-bodywrap="${c.id}">${bodyHtml}</div>
         ${editForm}
@@ -327,7 +338,7 @@ function commentHtml(c, replies, company, ctx) {
 function agentsGroupHtml(agentRoots, byParent, company, ctx, collapsed) {
     if (!agentRoots.length) return "";
     const inner = agentRoots
-        .map((c) => commentHtml(c, byParent[c.id] || [], company, ctx)).join("");
+        .map((c) => commentHtml(c, byParent, company, ctx, 0)).join("");
     return `<div class="cmt-agents-pinned ${collapsed ? "collapsed" : ""}">
         <button type="button" class="cmt-agents-head" data-act="toggle-agents" aria-expanded="${collapsed ? "false" : "true"}">
             <span class="cmt-agents-title">🤖 What the AI agents think</span>
@@ -387,7 +398,7 @@ async function render(mount) {
     // visible); the full page shows everything in chronological order.
     const shownRoots = full ? otherRoots : otherRoots.slice(-INLINE_ROOTS);
     const listHtml = shownRoots.length
-        ? shownRoots.map((c) => commentHtml(c, byParent[c.id] || [], company, ctx)).join("")
+        ? shownRoots.map((c) => commentHtml(c, byParent, company, ctx, 0)).join("")
         : `<p class="cmt-empty">${agentRoots.length ? "No human comments yet." : "No comments yet."}${ctx.user ? " Be the first." : ""}</p>`;
 
     const head = `<div class="cmt-head">${total} ${total === 1 ? "comment" : "comments"}</div>`;
@@ -457,10 +468,9 @@ function wire(mount) {
             if (f) {
                 f.hidden = !f.hidden;
                 if (!f.hidden) {
+                    // Replies now nest under the comment they answer, so no "@name" prefill
+                    // is needed — the visual nesting shows who's being replied to.
                     const ta = f.querySelector("textarea");
-                    // Replying to a reply: prefill "@name " so the flat reply shows who it answers.
-                    if (ta && !ta.value && btn.dataset.isreply === "1" && btn.dataset.name)
-                        ta.value = `@${btn.dataset.name} `;
                     ta?.focus();
                     if (ta) ta.setSelectionRange(ta.value.length, ta.value.length);
                 }

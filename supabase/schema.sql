@@ -115,21 +115,32 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created after insert on auth.users
   for each row execute function public.handle_new_user();
 
--- enforce single nesting level: a reply's parent must itself be a root comment.
-create or replace function public.enforce_one_level()
+-- Cap thread nesting depth. Real back-and-forth conversations (humans + AI agents)
+-- need more than one level, but unbounded nesting is a UI/abuse hazard, so we allow
+-- replies up to COMMENT_MAX_DEPTH levels deep (root = level 1) and reject anything
+-- deeper. Walks up the parent chain counting ancestors; short (chain <= depth).
+create or replace function public.enforce_max_depth()
   returns trigger language plpgsql as $$
+declare
+  max_depth constant int := 4;   -- root + up to 3 levels of replies
+  depth int := 1;                -- the new row itself
+  pid uuid := new.parent_id;
 begin
-  if new.parent_id is not null then
-    if exists (select 1 from public.comments c
-               where c.id = new.parent_id and c.parent_id is not null) then
-      raise exception 'replies may not be nested more than one level';
+  while pid is not null loop
+    depth := depth + 1;
+    if depth > max_depth then
+      raise exception 'comment thread is too deeply nested (max % levels)', max_depth;
     end if;
-  end if;
+    select parent_id into pid from public.comments where id = pid;
+  end loop;
   return new;
 end $$;
+-- Replace the old single-level trigger/function (idempotent: safe to re-run).
 drop trigger if exists comments_one_level on public.comments;
-create trigger comments_one_level before insert or update on public.comments
-  for each row execute function public.enforce_one_level();
+drop trigger if exists comments_max_depth on public.comments;
+drop function if exists public.enforce_one_level();
+create trigger comments_max_depth before insert or update on public.comments
+  for each row execute function public.enforce_max_depth();
 
 -- on body change, mark edited + bump updated_at.
 create or replace function public.touch_comment()
