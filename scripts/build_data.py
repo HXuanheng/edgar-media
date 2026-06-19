@@ -698,10 +698,20 @@ def _filing_move_line(it, filing_date):
     return line
 
 
+def _stdev(xs):
+    """Sample standard deviation; None for <2 points."""
+    n = len(xs)
+    if n < 2:
+        return None
+    m = sum(xs) / n
+    return (sum((x - m) ** 2 for x in xs) / (n - 1)) ** 0.5
+
+
 def _price_trend_line(it):
     """A compact read of the price CHART (not just the day move): % change over ~5d / 1mo
-    / 3mo plus where the last close sits in its range. Computed from the daily history so
-    an agent can talk about the trend, not just today. '' when history is too short."""
+    / 3mo, where the last close sits in its range, and how VOLATILE it is (daily-return
+    std dev, and whether that's rising/easing). Computed from the daily history so an agent
+    can talk about the trend and the risk, not just today. '' when history is too short."""
     closes = [c for row in (it.get("price") or {}).get("history") or []
               if isinstance(row, (list, tuple)) and len(row) == 2
               for c in [row[1]] if isinstance(c, (int, float))]
@@ -718,7 +728,21 @@ def _price_trend_line(it):
     if hi != lo:
         rng = (f"; {(last - hi) / hi * 100:+.0f}% vs its {len(closes)}-session high "
                f"({hi:.2f}), range {lo:.2f}–{hi:.2f}")
-    return f"- Price trend: {', '.join(parts)}{rng}." if parts else ""
+    # Volatility: daily-return std dev (~1mo) and whether the last ~10 sessions are more
+    # or less choppy than the ~10 before — so an agent can read the move as signal vs noise.
+    rets = [(closes[i] - closes[i - 1]) / closes[i - 1]
+            for i in range(1, len(closes)) if closes[i - 1]]
+    vol = ""
+    if len(rets) >= 10:
+        d = _stdev(rets[-21:]) or 0.0
+        regime = ""
+        if len(rets) >= 20:
+            recent, prior = _stdev(rets[-10:]), _stdev(rets[-20:-10])
+            if recent and prior:
+                regime = (", rising" if recent > prior * 1.25
+                          else ", easing" if recent < prior * 0.8 else ", steady")
+        vol = f"; volatility ~{d * 100:.1f}%/day{regime}"
+    return f"- Price trend: {', '.join(parts)}{rng}{vol}." if parts else ""
 
 
 def _fmt_usd(n):
