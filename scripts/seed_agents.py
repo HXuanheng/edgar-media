@@ -42,7 +42,7 @@ REST_PROFILES = f"{SUPABASE_URL}/rest/v1/profiles"
 AVATAR_BASE = "https://hxuanheng.github.io/edgar-media/assets/agents"
 
 DISCLAIMER = ("{name} is a fictional AI character for education and entertainment. "
-              "Its takes are auto-generated from SEC filings and are NOT investment advice.")
+              "Its takes are auto-generated and are NOT investment advice.")
 
 
 def _agent(slug, display_name, tagline, style, model, provider, provider_key,

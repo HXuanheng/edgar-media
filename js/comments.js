@@ -241,9 +241,9 @@ function commentHtml(c, byParent, company, ctx, depth = 0) {
     const mine = ctx.user && c.author_id === ctx.user.id;
     const removed = c.is_deleted || c.mod_state === "hidden";
     const name = c.author?.display_name || "anon";
-    // Fictional AI persona-agent: render a bot badge + style chip + mini-disclaimer,
-    // and a distinct .comment-agent wrapper. The author link still goes to #/u/<id>,
-    // which renders the agent's transparency dashboard.
+    // Fictional AI persona-agent: render a bot badge + style chip inline, otherwise
+    // treated like any normal comment. The author link still goes to #/u/<id>, which
+    // renders the agent's full transparency dashboard + disclaimers.
     const isAgent = !removed && !!c.author?.is_agent;
     const ameta = isAgent ? (c.author.agent_meta || {}) : null;
 
@@ -268,7 +268,7 @@ function commentHtml(c, byParent, company, ctx, depth = 0) {
 
     const bodyHtml = removed
         ? `<p class="comment-body comment-removed">[comment removed]</p>`
-        : `<p class="comment-body">${renderBody(c.body, company)}</p>${isAgent ? `<p class="agent-note">Fictional AI character · not investment advice</p>` : ""}`;
+        : `<p class="comment-body">${renderBody(c.body, company)}</p>`;
 
     let actions = "";
     if (!removed) {
@@ -322,30 +322,13 @@ function commentHtml(c, byParent, company, ctx, depth = 0) {
             <div class="comment-replies" data-replies="${c.id}" hidden>${replies.map((r) => commentHtml(r, byParent, company, ctx, depth + 1)).join("")}</div>`;
     }
 
-    return `<div class="comment ${c.parent_id ? "reply" : ""} ${depth >= 3 ? "reply-deep" : ""} ${removed ? "deleted" : ""} ${isAgent ? "comment-agent" : ""}" data-cid="${c.id}">
+    return `<div class="comment ${c.parent_id ? "reply" : ""} ${depth >= 3 ? "reply-deep" : ""} ${removed ? "deleted" : ""}" data-cid="${c.id}">
         ${meta}
         <div class="comment-body-wrap" data-bodywrap="${c.id}">${bodyHtml}</div>
         ${editForm}
         <div class="cmt-actions">${actions}</div>
         ${replyForm}
         ${repliesHtml}
-    </div>`;
-}
-
-// The pinned "AI agents" group rendered at the TOP of a thread (for first-visit
-// discoverability). Collapsible; expanded by default on the full company page,
-// collapsed in the inline 3-root card panel so it doesn't crowd out real users.
-function agentsGroupHtml(agentRoots, byParent, company, ctx, collapsed) {
-    if (!agentRoots.length) return "";
-    const inner = agentRoots
-        .map((c) => commentHtml(c, byParent, company, ctx, 0)).join("");
-    return `<div class="cmt-agents-pinned ${collapsed ? "collapsed" : ""}">
-        <button type="button" class="cmt-agents-head" data-act="toggle-agents" aria-expanded="${collapsed ? "false" : "true"}">
-            <span class="cmt-agents-title">🤖 What the AI agents think</span>
-            <span class="cmt-agents-count">${agentRoots.length}</span>
-            <span class="cmt-agents-caret">${collapsed ? "▸" : "▾"}</span>
-        </button>
-        <div class="cmt-agents-body"${collapsed ? " hidden" : ""}>${inner}</div>
     </div>`;
 }
 
@@ -386,20 +369,14 @@ async function render(mount) {
     const total = rows.filter((r) => !(r.is_deleted || r.mod_state === "hidden")).length;
     st.onCount?.(total);
 
-    // AI persona-agent root takes are pinned in their own group at the top; everything
-    // else (human roots, plus the rare removed agent root) stays in chronological flow.
-    const agentRoots = allRoots.filter(
-        (r) => r.author?.is_agent && !(r.is_deleted || r.mod_state === "hidden"));
-    const agentIds = new Set(agentRoots.map((r) => r.id));
-    const otherRoots = allRoots.filter((r) => !agentIds.has(r.id));
-    const agentsHtml = agentsGroupHtml(agentRoots, byParent, company, ctx, !full);
-
-    // Inline panel previews the most RECENT human roots (so a just-posted comment is
-    // visible); the full page shows everything in chronological order.
-    const shownRoots = full ? otherRoots : otherRoots.slice(-INLINE_ROOTS);
+    // Inline panel previews the most RECENT roots (so a just-posted comment is
+    // visible); the full page shows everything in chronological order. AI agent
+    // takes flow in this list like any normal comment (only an inline 🤖 badge sets
+    // them apart), so no separate pinned group.
+    const shownRoots = full ? allRoots : allRoots.slice(-INLINE_ROOTS);
     const listHtml = shownRoots.length
         ? shownRoots.map((c) => commentHtml(c, byParent, company, ctx, 0)).join("")
-        : `<p class="cmt-empty">${agentRoots.length ? "No human comments yet." : "No comments yet."}${ctx.user ? " Be the first." : ""}</p>`;
+        : `<p class="cmt-empty">No comments yet.${ctx.user ? " Be the first." : ""}</p>`;
 
     const head = `<div class="cmt-head">${total} ${total === 1 ? "comment" : "comments"}</div>`;
     let footer = "";
@@ -407,7 +384,7 @@ async function render(mount) {
         footer = `<a class="cmt-viewall" href="#/company/${esc(company.ticker)}">View full discussion${total > INLINE_ROOTS ? ` (${total})` : ""} →</a>`;
     }
 
-    mount.innerHTML = `${head}${composerHtml(ctx, company)}<div class="cmt-flash" hidden></div>${agentsHtml}<div class="cmt-list">${listHtml}</div>${footer}`;
+    mount.innerHTML = `${head}${composerHtml(ctx, company)}<div class="cmt-flash" hidden></div><div class="cmt-list">${listHtml}</div>${footer}`;
 }
 
 // After a re-render (which collapses every reply list), reveal one parent's replies
@@ -479,18 +456,6 @@ function wire(mount) {
         }
         if (act === "reply-cancel") {
             mount.querySelector(`.cmt-reply-form[data-replyfor="${id}"]`)?.setAttribute("hidden", "");
-            return;
-        }
-        if (act === "toggle-agents") {
-            const grp = btn.closest(".cmt-agents-pinned");
-            const body = grp?.querySelector(".cmt-agents-body");
-            if (body) {
-                body.hidden = !body.hidden;
-                grp.classList.toggle("collapsed", body.hidden);
-                btn.setAttribute("aria-expanded", body.hidden ? "false" : "true");
-                const caret = btn.querySelector(".cmt-agents-caret");
-                if (caret) caret.textContent = body.hidden ? "▸" : "▾";
-            }
             return;
         }
         if (act === "toggle-replies") {

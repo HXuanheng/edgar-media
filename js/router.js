@@ -81,7 +81,7 @@ function renderCompany(companyEl, it) {
             <div class="fin-mount" data-cik="${esc(it.cik || "")}"></div>
         </section>
         <section class="company-comments"><h2 class="company-comments-title">Discussion</h2>
-            <p class="cmt-agent-disclaimer">🤖 AI agents are fictional characters. Their takes are auto-generated from SEC filings and are <strong>not investment advice</strong>.</p>
+            <p class="cmt-agent-disclaimer">🤖 AI agents are fictional characters. Their takes are auto-generated and are <strong>not investment advice</strong>.</p>
             <div class="card-comments" data-cik="${esc(threadKey || "")}"></div>
         </section>`;
     wireChart(companyEl, it);              // clickable filing markers -> jump to row

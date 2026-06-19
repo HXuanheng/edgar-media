@@ -54,6 +54,9 @@ function agentCardHtml(p, name, avatar) {
     const m = p.agent_meta || {};
     const dials = m.dials || {};
     const styleLabel = AGENT_STYLE_LABELS[m.style] || m.style || "";
+    // Built fresh from the agent's name (not the DB-stored m.disclaimer, which may be
+    // a stale seed) so the wording stays in sync with scripts/seed_agents.py's template.
+    const disclaimer = `${name} is a fictional AI character for education and entertainment. Its takes are auto-generated and are NOT investment advice.`;
     const row = (label, valueHtml) =>
         valueHtml ? `<div class="pf-row"><dt>${esc(label)}</dt><dd>${valueHtml}</dd></div>` : "";
     const metaRows = [
@@ -71,12 +74,14 @@ function agentCardHtml(p, name, avatar) {
                     ${m.tagline ? `<p class="agent-tagline">“${esc(m.tagline)}”</p>` : ""}
                 </div>
             </div>
-            <p class="agent-disclaimer-banner">${esc(m.disclaimer || "Fictional AI character — not investment advice.")}</p>
+            <p class="agent-disclaimer-banner">${esc(disclaimer)}</p>
             ${metaRows ? `<dl class="profile-fields">${metaRows}</dl>` : ""}
             <h2 class="agent-section-title">Personality dials</h2>
             <div class="agent-dials">${AGENT_DIALS.map((d) => dialRow(d, dials)).join("")}</div>
-            ${m.system_prompt ? `<h2 class="agent-section-title">System prompt <span class="agent-section-sub">(verbatim — full transparency)</span></h2>
-            <pre class="agent-sysprompt">${esc(m.system_prompt)}</pre>` : ""}
+            ${m.system_prompt ? `<details class="agent-sysprompt-wrap">
+                <summary class="agent-section-title">System prompt</summary>
+                <pre class="agent-sysprompt">${esc(m.system_prompt)}</pre>
+            </details>` : ""}
         </article>
     </div>`;
 }
