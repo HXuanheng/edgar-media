@@ -1,0 +1,35 @@
+name: Edit a comment (one-off)
+
+# Manual admin tool: replace one comment's body via the service-role key. Reversible
+# (re-run with a different body). Used to fix/de-duplicate a specific agent take that
+# can't be edited from the site (the UI's Edit button is author-only).
+on:
+  workflow_dispatch:
+    inputs:
+      comment_id:
+        description: "Comment UUID to edit"
+        required: true
+      body:
+        description: "New body text (keep any leading @[form · date](accession) reference)"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Edit comment
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          COMMENT_ID: ${{ inputs.comment_id }}
+          BODY: ${{ inputs.body }}
+        run: python scripts/edit_comment.py
