@@ -428,12 +428,21 @@ def _openai_call(url, model, prompt, key, temperature=0.2, max_tokens=120):
         with urlopen(req, timeout=30) as resp:
             data = json.loads(resp.read().decode("utf-8"))
     except HTTPError as e:
+        if e.code != 429:                          # 429 is normal quota; surface the rest
+            detail = ""
+            try:
+                detail = e.read()[:300].decode("utf-8", "replace")
+            except Exception:
+                pass
+            print(f"    ! LLM {model} -> HTTP {e.code} {detail}", file=sys.stderr)
         return None, ("quota" if e.code == 429 else "fail")
-    except (URLError, TimeoutError, ValueError):
+    except (URLError, TimeoutError, ValueError) as e:
+        print(f"    ! LLM {model} -> {type(e).__name__}: {e}", file=sys.stderr)
         return None, "fail"
     try:
         txt = (data["choices"][0]["message"]["content"] or "").strip()
     except (KeyError, IndexError, TypeError):
+        print(f"    ! LLM {model} -> unexpected response shape", file=sys.stderr)
         return None, "fail"
     return (txt or None), ("ok" if txt else "fail")
 
