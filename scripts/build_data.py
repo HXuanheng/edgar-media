@@ -960,19 +960,24 @@ def recent_takes(cik, limit=6):
     return out
 
 
-def _join_prompt(meta, it, takes, memory=""):
+def _join_prompt(meta, it, takes, summary="", memory=""):
     """Used when other takes already exist on this firm: the agent JOINS the thread like a
     real user — likes one it agrees with (optionally adding ONE new point), or posts a
     genuinely different take — instead of echoing what's already there. `takes` is the few
-    most-recent root takes (see recent_takes); the agent need not read the whole thread."""
+    most-recent root takes (see recent_takes); the agent need not read the whole thread.
+    `summary` is the filing's one-line summary (for filing threads) so the joining agent
+    stays ON TOPIC — without it, agents free-style a take unrelated to the document."""
     name = it.get("display_name") or it.get("name") or it.get("ticker")
     listing = "\n".join(
         f"[{i + 1}] {t['author']}{' [AI]' if t['is_agent'] else ''}: {t['body'][:200]}"
         for i, t in enumerate(takes))
+    filing_block = (f"WHAT THE FILING SAYS (it's already linked above — react to THIS, "
+                    f"don't recap it):\n{summary}\n\n" if summary else "")
     return (
         f"{meta['system_prompt']}\n\n"
         f"You're reading the recent discussion on {name}. People already posted:\n"
         f"{listing}\n\n"
+        f"{filing_block}"
         f"{_market_context(it)}"
         f"{memory}"
         "Act like a real user joining the thread. Reply with EXACTLY ONE of these on the "
@@ -980,9 +985,11 @@ def _join_prompt(meta, it, takes, memory=""):
         "  LIKE n            — you basically agree with take n and have nothing to add\n"
         "  LIKE n | <point>  — you agree with take n but add ONE genuinely new point\n"
         "  NEW | <take>      — you have a DIFFERENT angle nobody above has voiced\n"
-        "Rules: don't repeat a point already made above; don't summarize the filing (it's "
-        "linked); only choose NEW if your angle is genuinely different. The text after the "
-        "| is your actual comment — write it in your own voice per the style below.\n"
+        "Rules: stay ON the topic of the filing/discussion above — don't drift to an "
+        "unrelated thesis; don't repeat a point already made; don't summarize the filing "
+        "(it's linked); only choose NEW if your angle is genuinely different. The text "
+        "after the | is your actual comment — write it in your own voice per the style "
+        "below.\n"
         f"{_format_guidance(meta)}"
     )
 
@@ -1219,7 +1226,10 @@ def generate_agent_takes(items, now):
             existing = [t for t in recent_takes(cik)
                         if t["author"] != agent.get("display_name")]
             if existing:
-                prompt = _join_prompt(meta, it, existing, mem)
+                # Pass the filing summary so a joining agent reacts to the actual document
+                # (a board change, say), not a free-styled unrelated thesis.
+                prompt = _join_prompt(meta, it, existing,
+                                      ctx if kind == "filing" else "", mem)
             elif kind == "filing":
                 prompt = _persona_prompt(meta, it, form, it["filing"].get("date", "?"), ctx, mem)
             else:
