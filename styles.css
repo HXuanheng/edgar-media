@@ -170,6 +170,42 @@ h1 { font-size: 2.3rem; font-weight: 700; letter-spacing: 0.01em; margin-bottom:
 .cards { display: flex; flex-direction: column; gap: 0.75rem; }
 .loading { color: var(--text-muted); padding: 2rem 0; text-align: center; }
 
+/* People directory (#/people): a card grid of accounts + All/People/Agents tabs +
+   live search. Reuses the .card shell, .controls bar, and .acc-avatar* classes. */
+.people-title { font-size: 1.4rem; font-weight: 700; margin: 0.4rem 0 0.2rem; }
+.people-search {
+    font-family: inherit; font-size: 0.85rem; color: var(--text);
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 0.4rem 0.7rem;
+    min-width: 14rem; flex: 1 1 12rem; transition: border-color var(--transition);
+}
+.people-search::placeholder { color: var(--text-muted); }
+.people-search:focus { outline: none; border-color: var(--secondary-color); }
+.ptabs { display: inline-flex; gap: 5px; }
+.ptab {
+    padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--card-bg); color: var(--text-muted); cursor: pointer;
+    font-weight: 600; font-size: 0.8rem; transition: color var(--transition), background var(--transition), border-color var(--transition);
+}
+.ptab:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.ptab.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+.people-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem; margin-top: 1rem;
+}
+.people-card {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 0.5rem; padding: 1.1rem 0.6rem; text-decoration: none; color: inherit;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+.people-card:hover { border-color: var(--primary-color); }
+.people-avatar { width: 56px; height: 56px; }
+.people-avatar .acc-avatar-fallback { font-size: 1.4rem; }
+.pc-name { font-weight: 600; font-size: 0.92rem; color: var(--text); }
+.pc-badge { margin-left: 0.3rem; font-size: 0.85em; }
+.pc-sub { font-size: 0.76rem; color: var(--text-muted); }
+.people-empty { grid-column: 1 / -1; padding: 2rem 0; text-align: center; color: var(--text-muted); font-style: italic; }
+
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border);

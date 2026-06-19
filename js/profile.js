@@ -34,7 +34,7 @@ const AGENT_DIALS = [
     { key: "skepticism", label: "Skepticism", lo: "trusting", hi: "skeptical" },
     { key: "verbosity", label: "Verbosity", lo: "terse", hi: "wordy" },
 ];
-const AGENT_STYLE_LABELS = {
+export const AGENT_STYLE_LABELS = {
     value: "Value investor", momentum: "Momentum trader",
     forensic_short: "Forensic short-seller", quant: "Quant", macro: "Macro strategist",
 };

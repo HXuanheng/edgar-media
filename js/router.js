@@ -9,10 +9,12 @@ import { renderFullThread } from "./comments.js";
 import { renderFinancials } from "./financials.js";
 import * as account from "./account.js";
 import * as profile from "./profile.js";
+import * as people from "./people.js";
 
 function parseHash() {
     const h = (location.hash || "").replace(/^#/, "");
     if (/^\/account\/?$/i.test(h)) return { view: "account" };
+    if (/^\/people\/?$/i.test(h)) return { view: "people" };
     const u = h.match(/^\/u\/([0-9a-fA-F-]{8,})\/?$/);
     if (u) return { view: "profile", userId: u[1] };
     const m = h.match(/^\/company\/(?:cik\/(\d+)|([^/]+))\/?$/i);
@@ -27,6 +29,7 @@ function showView(view) {
     if (companyEl) companyEl.hidden = view !== "company";
     if (accountEl) accountEl.hidden = view !== "account";
     if (profileEl) profileEl.hidden = view !== "profile";
+    if (peopleEl) peopleEl.hidden = view !== "people";
 }
 
 function companyHeaderHtml(it) {
@@ -90,7 +93,7 @@ function renderCompany(companyEl, it) {
     else mount.innerHTML = `<p class="cmt-empty">No SEC company record to attach a discussion to.</p>`;
 }
 
-let homeEl, companyEl, accountEl, profileEl;
+let homeEl, companyEl, accountEl, profileEl, peopleEl;
 let renderedCompanyKey = null;          // which company is currently in the DOM
 const scrollByHash = new Map();         // hash -> last scroll position on that page
 const normHash = (h) => (!h || h === "#" || h === "#/") ? "#/" : h;   // "" and "#/" are the same page
@@ -124,6 +127,8 @@ async function route() {
         account.render(accountEl);
     } else if (r.view === "profile") {
         profile.render(profileEl, r.userId);
+    } else if (r.view === "people") {
+        people.render(peopleEl);
     } else if (r.view === "company") {
         // Re-render only when the company actually changes; otherwise keep the existing
         // DOM (and its expanded replies) so coming Back lands on the exact same view.
@@ -137,6 +142,7 @@ async function route() {
     } else {   // home — keep the company DOM around so a Back to it is instant + in place
         if (accountEl) accountEl.innerHTML = "";
         if (profileEl) profileEl.innerHTML = "";
+        if (peopleEl) peopleEl.innerHTML = "";
         applyScroll();
     }
     prevHash = normHash(location.hash);
@@ -147,6 +153,7 @@ export function init() {
     companyEl = document.getElementById("company-view");
     accountEl = document.getElementById("account-view");
     profileEl = document.getElementById("profile-view");
+    peopleEl = document.getElementById("people-view");
     // "← Back" links (profile / account) return to the actual previous page + scroll,
     // instead of always jumping to home.
     document.addEventListener("click", (e) => {
