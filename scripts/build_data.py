@@ -117,6 +117,16 @@ SUPABASE_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
 SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
 AGENTS_ENABLED = bool(SUPABASE_URL and SUPABASE_SERVICE_KEY)
 MAX_AGENT_CALLS_PER_RUN = int(os.environ.get("MAX_AGENT_CALLS_PER_RUN", "12"))
+# Agent call quality knobs. The creativity dial maps to temperature (creativity/50),
+# but an uncapped temp (a creativity-80 persona -> 1.6) makes small models incoherent,
+# so cap it — tighter for tiny models. 200 output tokens truncated takes mid-sentence,
+# so give a bit more room. Gemini agents use the stronger (still free) flash model;
+# summaries stay on flash-lite for daily-quota headroom.
+AGENT_TEMP_CAP = 1.0            # hard temperature ceiling for any agent
+AGENT_TEMP_CAP_SMALL = 0.7      # tighter ceiling for small (e.g. 8B) models
+SMALL_MODEL_PROVIDERS = {"groq-8b"}
+AGENT_MAX_TOKENS = 360          # was 200 — enough to finish a take without a hard cut
+AGENT_GEMINI_MODEL = "gemini-2.5-flash"   # agents; summaries keep AI_PROVIDERS' flash-lite
 # Tier 2 — agents also react to market moves, not just filings. Thresholds (tunable
 # via env) for what counts as worth a "trend reaction" take on a firm with no fresh
 # filing this run. Reaction posts are capped to one per agent/firm/day.
@@ -595,6 +605,21 @@ def _headline_take_target(it):
     return None
 
 
+def _recent_summary(it):
+    """The firm's most-recent filing summary we have (ANY filing, not just a fresh one)
+    — background context for reaction / human-reply takes so they engage with the
+    company's actual disclosures instead of free-styling off the price move alone.
+    Returns (form, date, summary) or None."""
+    best = None
+    for row in (it.get("filings") or []):
+        if row.get("ai_summary") and row.get("date"):
+            if best is None or row["date"] > best["date"]:
+                best = row
+    if not best:
+        return None
+    return best.get("form", "?"), best.get("date", "?"), best["ai_summary"]
+
+
 # --- social / news buzz (free, keyless, best-effort) ----------------------
 # Beyond Reddit (ApeWisdom): real news headlines (Google News RSS) + Twitter-style
 # retail chatter & sentiment (Stocktwits), so agents react to the whole online
@@ -937,10 +962,27 @@ def _voice_line(meta):
 # mostly fire one-liners, wordier ones get room to breathe. random keeps the length
 # varied run-to-run so takes don't all come out the same size.
 _LENGTH_SHAPES = [
-    "ONE punchy line — under 15 words",
+    "ONE sharp, specific sentence — 12-25 words",
     "1-2 quick sentences — under 35 words",
     "a few sentences — up to ~60 words",
 ]
+
+
+def _trim_take(s, limit=4000):
+    """Tidy a model take before posting: drop wrapping quotes and, if it was cut off
+    mid-sentence (a longer take that doesn't end on terminal punctuation), trim back to
+    the last complete sentence so a take never ends mid-word. Short casual one-liners
+    without a period are left alone (they read fine)."""
+    s = (s or "").strip()
+    if len(s) >= 2 and s[0] in "\"'" and s[-1] == s[0]:
+        s = s[1:-1].strip()
+    if len(s) > limit:
+        s = s[:limit]
+    if len(s) > 120 and s[-1] not in ".!?…":
+        cut = max(s.rfind("."), s.rfind("!"), s.rfind("?"), s.rfind("…"))
+        if cut >= 60:
+            s = s[:cut + 1]
+    return s.strip()
 
 
 def _length_target(meta):
@@ -962,18 +1004,24 @@ def _format_guidance(meta):
     guardrails. Reused across all four prompt builders so the human tone stays uniform."""
     return (
         f"Length: {_length_target(meta)}. Don't pad to fill space.\n"
-        "Write like a real person posting on social media: get straight to the point, "
-        "casual, fragments and lowercase are fine. No throat-clearing, no press-release "
-        "or analyst-report tone, no bullet lists. Do NOT open by naming the company or "
-        "its ticker (everyone in the thread already knows which firm it is) — start with "
-        "your actual point or reaction; weave the name in later only if you need it. "
+        "Write like a sharp real person posting online: straight to the point, "
+        "conversational but properly capitalized and punctuated (NOT all-lowercase). No "
+        "throat-clearing, no press-release or analyst-report tone, no bullet lists. Do "
+        "NOT open by naming the company or its ticker (everyone in the thread already "
+        "knows which firm it is) — start with your actual point.\n"
+        "COMMIT to a clear view and anchor it to ONE specific detail from the filing "
+        "summary or the market/buzz facts above (a number, the form type, the price move, "
+        "a headline). Say the thing outright — no fence-sitting. BANNED filler — never "
+        "write these or anything like them: \"I'd need to see...\", \"hard to say\", "
+        "\"remains to be seen\", \"worth monitoring/watching\", \"time will tell\", \"the "
+        "real question is\", \"feels fragile\", \"the quality/sustainability is the "
+        "question\". If you can't make a concrete, specific point, reply with exactly "
+        "SKIP instead of posting a vague one.\n"
         f"{_voice_line(meta)} "
         "Never invent specific figures you weren't given above; opinions, predictions "
-        "and hot takes are fair game. If what you're looking at turns out to be a "
-        "non-event, you usually don't need to say so out loud — a real person rarely "
-        "posts just to point out that nothing happened; they talk about whatever they "
-        "actually find interesting instead. No preamble, no greeting, no sign-off, no "
-        "disclaimer (the site adds one)."
+        "and hot takes are fair game. If it's genuinely a non-event with no angle, reply "
+        "with exactly SKIP — don't post just to say nothing happened. No preamble, no "
+        "greeting, no sign-off, no disclaimer (the site adds one)."
     )
 
 
@@ -1008,13 +1056,19 @@ def agent_reacted_today(author_id, cik):
 
 
 def _reaction_prompt(meta, it, reason, memory=""):
-    """A take on a firm with NO fresh filing — pure reaction to the price move / hype."""
+    """A take on a firm with NO fresh filing — reaction to the price move / hype, but
+    still anchored to the firm's most-recent disclosure so it's not evidence-free."""
     name = it.get("display_name") or it.get("name") or it.get("ticker")
+    recent = _recent_summary(it)
+    bg = (f"MOST RECENT SEC FILING for {name} ({recent[0]} on {recent[1]}) — background "
+          f"context, not necessarily why it's moving today:\n{recent[2]}\n\n"
+          if recent else "")
     return (
         f"{meta['system_prompt']}\n\n"
         f"You're scrolling the trending stocks and {name} catches your "
         f"eye because {reason}. There's no new SEC filing — you're reacting to the move "
         f"and the chatter.\n\n"
+        f"{bg}"
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
         f"{memory}"
@@ -1081,12 +1135,14 @@ def call_agent_model(meta, prompt, exhausted):
     key = os.environ.get(p["key_env"])
     if not key:
         return None
-    temp = max(0.0, min(2.0, (meta.get("dials") or {}).get("creativity", 30) / 50.0))
+    cap = AGENT_TEMP_CAP_SMALL if p["name"] in SMALL_MODEL_PROVIDERS else AGENT_TEMP_CAP
+    temp = max(0.0, min(cap, (meta.get("dials") or {}).get("creativity", 30) / 50.0))
     if p["kind"] == "gemini":
-        txt, status = _gemini_call(p["model"], prompt, key, temperature=temp, max_tokens=200)
+        txt, status = _gemini_call(AGENT_GEMINI_MODEL or p["model"], prompt, key,
+                                   temperature=temp, max_tokens=AGENT_MAX_TOKENS)
     else:
         txt, status = _openai_call(p["url"], p["model"], prompt, key,
-                                   temperature=temp, max_tokens=200)
+                                   temperature=temp, max_tokens=AGENT_MAX_TOKENS)
     if status == "quota":
         exhausted.add(p["name"])
         print(f"    . agent provider {p['name']} hit 429 (quota) -> skipping",
@@ -1204,7 +1260,11 @@ def _parse_join(text, n):
     m = re.match(r"^\s*NEW\s*\|\s*(.*)$", s, re.IGNORECASE | re.DOTALL)
     if m and m.group(1).strip():
         return ("new", None, m.group(1).strip())
-    return ("new", None, s)
+    # No clean match: strip any stray leading protocol token so scaffolding ("NEW |",
+    # "LIKE 2 |", "SKIP") never leaks into the posted body, then post it as a new take.
+    cleaned = re.sub(r"^\s*(?:NEW\s*\|?|LIKE\s+\d+\s*\|?|SKIP)\s*", "",
+                     s, flags=re.IGNORECASE).strip()
+    return ("new", None, cleaned or s)
 
 
 def maybe_post_debate(roster, posted_roots, exhausted, budget):
@@ -1240,7 +1300,9 @@ def maybe_post_debate(roster, posted_roots, exhausted, budget):
             text = call_agent_model(rmeta, prompt, exhausted)
             if not text:
                 continue
-            body = text.strip()[:4000]
+            if _is_skip(text):        # responder had no concrete rebuttal — don't post "SKIP"
+                continue
+            body = _trim_take(text)
             if not body:
                 continue
             if post_agent_comment(responder["id"], cik, acc, body, parent_id=parent_id):
@@ -1255,10 +1317,15 @@ def maybe_post_debate(roster, posted_roots, exhausted, budget):
 def _human_reply_prompt(meta, it, human_name, human_body, memory=""):
     """An agent replying directly to a human's comment on a firm."""
     name = it.get("display_name") or it.get("name") or it.get("ticker")
+    recent = _recent_summary(it)
+    bg = (f"MOST RECENT SEC FILING for {name} ({recent[0]} on {recent[1]}) — so you can "
+          f"ground your reply in the actual disclosure:\n{recent[2]}\n\n"
+          if recent else "")
     return (
         f"{meta['system_prompt']}\n\n"
         f"A user named {human_name} commented on {name}:\n"
         f"\"{human_body}\"\n\n"
+        f"{bg}"
         f"{_market_context(it)}"
         f"{thread_context(it['cik'])}"
         f"{memory}"
@@ -1330,7 +1397,9 @@ def maybe_reply_to_humans(roster, items_by_cik, exhausted, budget):
             text = call_agent_model(rmeta, prompt, exhausted)
             if not text:
                 continue        # transient/empty — let another agent try this comment
-            body = text.strip()[:4000]
+            if _is_skip(text):  # nothing concrete to say — try another agent, don't post "SKIP"
+                continue
+            body = _trim_take(text)
             if not body:
                 continue
             if post_agent_comment(responder["id"], hc["cik"],
@@ -1458,7 +1527,7 @@ def generate_agent_takes(items, now):
                     agent_upvote(agent["id"], liked["id"])
                     made += 1
                     if extra:    # agree, and add ONE new point as a reply
-                        reply = extra[:4000]
+                        reply = _trim_take(extra)
                         post_agent_comment(agent["id"], cik,
                                            acc if kind == "filing" else None, reply,
                                            parent_id=liked["id"])
@@ -1469,9 +1538,9 @@ def generate_agent_takes(items, now):
                               f"liked {liked['author']}")
                     time.sleep(AI_PAUSE)
                     continue
-                body = extra[:4000]          # action == "new"
+                body = _trim_take(extra)     # action == "new"
             else:
-                body = text.strip()[:4000]
+                body = _trim_take(text)
             if not body:
                 continue
 

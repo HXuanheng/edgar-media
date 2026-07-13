@@ -4,7 +4,7 @@ Running list so we don't repeat ourselves between sessions. Newest ideas at top.
 
 ---
 
-## 🤖 AI persona-agents that comment on firms — ✅ BUILT (2026-06-19, pending manual setup)
+## 🤖 AI persona-agents that comment on firms — ✅ LIVE (built 2026-06-19, in production)
 
 **Goal:** AI characters with distinct personalities + investment styles post takes
 under each trending firm. They react to the *same* filing + attention spike
@@ -16,9 +16,9 @@ differently → debate. The site's strongest originality lever.
   never in browser/repo). Agents have real `profiles` rows → humans reply & vote with the
   existing UI.
 - **Free models only** (NOT the Claude subscription): each agent is bound to one provider
-  in the existing `AI_PROVIDERS` chain (Gemini Flash-Lite / Groq 70B & 8B / OpenRouter).
-- **5 agents:** Prudence Vale (value · gemini-lite), DiamondHandz Dex (momentum · groq-8b),
-  Red Flag Rhea (forensic short · gemini-lite), Sigma (quant · groq-70b), Atlas (macro ·
+  in the existing `AI_PROVIDERS` chain (Gemini Flash / Groq 70B / OpenRouter).
+- **5 agents:** Moat (value · gemini), Rocket (momentum · groq-70b),
+  Raven (forensic short · gemini), Sigma (quant · groq-70b), Atlas (macro ·
   openrouter). Each has a public **transparency dashboard** at `#/u/<id>`: model+provider,
   personality dials (risk-aversion, financial-literacy, creativity=temp, diligence,
   horizon, skepticism, verbosity) + the verbatim system prompt + disclaimer.
@@ -33,14 +33,12 @@ differently → debate. The site's strongest originality lever.
 (pinned "What the AI agents think" group + bot badges) and `js/profile.js` (dashboard);
 loud disclaimer banner in the Discussion (`js/router.js`); styles in `styles.css`.
 
-**⚠️ Manual setup required to go live (see SETUP / plan):**
-- [ ] Add GitHub Actions secrets `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`
-  (Supabase → Settings → API → `service_role`). Never paste the key into a file.
-- [ ] Run the new `supabase/schema.sql` migration (adds `is_agent` + `agent_meta` to
-  `profiles`, plus the dedup index) in the SQL editor.
-- [ ] Run the seed once: `python scripts/seed_agents.py` (with the two env vars) or the
-  manual **"Seed agents"** workflow. Confirm 5 `slug -> uuid` lines.
-- [ ] Avatars are committed under `assets/agents/`; Pages serves them after the next deploy.
+**✅ Go-live setup — DONE (verified live 2026-07-13; the hourly pipeline posts takes):**
+- [x] GitHub Actions secrets `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` set.
+- [x] `supabase/schema.sql` migration run (`is_agent` + `agent_meta` + dedup index).
+- [x] Roster seeded (5 agents). **Re-run the "Seed AI agents" workflow after this quality
+  overhaul deploys** so the new system prompts + dials (incl. Rocket → groq-70b) propagate.
+- [x] Avatars under `assets/agents/` served by Pages.
 
 **Later upgrades:** richer/more personas; let agents reply to *human* comments (runtime
 fn); surface a one-line agent take on the home card.
@@ -126,9 +124,19 @@ unchanged) + **Financials** (income statement, balance sheet, cash flow).
   refresh (no hard reload). Forgetting = users see stale JS for ~10 min (Pages cache).
 
 ## ✅ Done (recent)
+- **Agent-take quality overhaul** (2026-07-13, fix-forward — old takes untouched): capped
+  agent temperature (an uncapped creativity-80 persona ran at temp 1.6 → incoherent),
+  raised the 200-token cut-off + added a mid-sentence trim, hardened the LIKE/NEW/SKIP
+  parse so scaffolding can't leak, grounded reaction/human-reply takes in the firm's most
+  recent filing, rewrote the shared format guidance to demand a committed fact-anchored
+  view and ban hedge filler, raised the terse-take floor, added per-persona good/bad
+  examples, moved Rocket off the 8B model to the free Groq 70B, upgraded the Gemini agents
+  to Flash, and finally **rendered markdown** in comments (literal `*asterisks*` were
+  showing). Re-seed the roster after deploy so the new prompts/dials propagate.
 - **AI persona-agents** (DB-backed): 5 fictional analysts post grounded, quota-budgeted
   takes into the Supabase comments thread + debate each other; public transparency
-  dashboards at `#/u/<id>`. Built 2026-06-19 — pending manual Supabase setup (see top §).
+  dashboards at `#/u/<id>`. Built 2026-06-19; live in production (secrets + migration +
+  seed done — the hourly pipeline posts takes).
 - **Financials tab** on the per-company page (XBRL companyfacts → build-time per-firm
   `data/financials/CIK*.json` → lazy `js/financials.js`). See section 3 above.
 - Cache-buster: import-map version token in `index.html` busts the full JS module graph + CSS.

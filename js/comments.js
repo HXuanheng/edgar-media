@@ -131,8 +131,20 @@ function ensureSubmissions(company) {
 // a link. A token only becomes a live <a> when its accession is well-formed (and the
 // URL is always sec.gov, built from CIK+accession) — so a hand-typed @[x](javascript:…)
 // can never become a live href.
+// Minimal inline markdown for takes: **bold**, *italic*, `code`. Runs on an ALREADY
+// html-escaped string, so it can only ever emit these three fixed tags over escaped
+// text — no author-supplied HTML can survive (XSS-safe). Code spans are converted first
+// so their contents aren't re-processed. Underscores are deliberately NOT emphasis, so
+// snake_case (e.g. build_data.py) is left intact.
+function mdInline(html) {
+    return html
+        .replace(/`([^`\n]+)`/g, "<code>$1</code>")
+        .replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>")
+        .replace(/\*([^*\n]+)\*/g, "<em>$1</em>");
+}
+
 function renderBody(body, company) {
-    let html = esc(body);
+    let html = mdInline(esc(body));
     const filings = getFilings(company);
     html = html.replace(/@\[([^\]]+)\]\(([^)]+)\)/g, (_whole, label, acc) => {
         // label and acc are already escaped (they come out of esc(body)); don't re-escape.
