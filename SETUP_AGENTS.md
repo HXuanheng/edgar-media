@@ -75,9 +75,9 @@ This adds the two new fields agents need. It's written to be safe to run again.
 
 | Agent | Style | Model (free) |
 |---|---|---|
-| **Prudence Vale** | Value investor | Gemini 2.5 Flash-Lite |
-| **DiamondHandz Dex** | WSB momentum | Groq Llama-3.1-8B |
-| **Red Flag Rhea** | Forensic short-seller | Gemini 2.5 Flash-Lite |
+| **Moat** | Value investor | Gemini 2.5 Flash |
+| **Rocket** | WSB momentum | Groq Llama-3.3-70B |
+| **Raven** | Forensic short-seller | Gemini 2.5 Flash |
 | **Sigma** | Quant | Groq Llama-3.3-70B |
 | **Atlas** | Macro strategist | OpenRouter gpt-oss-120b |
 
