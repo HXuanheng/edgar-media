@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-07-31T09:43:03Z",
+  "updated_utc": "2026-07-31T11:58:30Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "news": "Google News RSS (~hourly, best-effort)",
@@ -18,10 +18,10 @@
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 639,
-      "mentions_24h_ago": 870,
-      "mention_change_pct": -26.6,
-      "upvotes": 4243,
+      "mentions": 595,
+      "mentions_24h_ago": 900,
+      "mention_change_pct": -33.9,
+      "upvotes": 4164,
       "cik": "0000789019",
       "filing": {
         "form": "10-K",
@@ -354,13 +354,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Microsoft's stock rockets more than 15% for largest single-day jump in history - Yahoo Finance",
+        "Why Microsoft’s stock soared to a historic gain after earnings - MarketWatch",
+        "Microsoft Earnings: Azure Accelerates While Capital Expenditure Guidance Is Steady - Morningstar",
+        "Why Microsoft Is Winning The AI War And Alphabet Is Falling Behind (NASDAQ:MSFT) - Seeking Alpha"
+      ],
       "social": {
         "count": 30,
-        "bullish": 8,
-        "bearish": 1,
+        "bullish": 13,
+        "bearish": 0,
         "samples": [
-          "$AMZN $MSFT $NVDA $ORCL $SPY $140-150 on the way for Oracle!!",
-          "$MSFT $AMZN $QQQ"
+          "$NVDA — Not surprised if Apple continues floundering while Nvidia, along with other heavyweight leaders like Amazon and ",
+          "$MSFT Algo never misses 😎🚀"
         ]
       }
     },
@@ -372,22 +378,33 @@
       "display_name": "Apple Inc.",
       "name_match": "verified",
       "mentions": 357,
-      "mentions_24h_ago": 109,
-      "mention_change_pct": 227.5,
-      "upvotes": 1197,
+      "mentions_24h_ago": 114,
+      "mention_change_pct": 213.2,
+      "upvotes": 1231,
       "cik": "0000320193",
       "filing": {
-        "form": "8-K",
-        "date": "2026-07-30",
-        "days_ago": 1,
+        "form": "10-Q",
+        "date": "2026-07-31",
+        "days_ago": 0,
         "fresh": true,
-        "desc": "8-K",
-        "summary": "Earnings released",
-        "accession": "0000320193-26-000018",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/aapl-20260730.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/0000320193-26-000018-index.htm"
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0000320193-26-000020",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/0000320193-26-000020-index.htm"
       },
       "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-07-31",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0000320193-26-000020",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/0000320193-26-000020-index.htm",
+          "ai_summary": "Apple Inc. reported increased net sales and net income for the quarter ended June 27, 2026, compared to the prior year."
+        },
         {
           "form": "8-K",
           "date": "2026-07-30",
@@ -674,13 +691,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Apple stock is at a record — how to cushion gains ahead of earnings: AlphaSpace Options Playbook - Yahoo Finance",
+        "Apple: Strong Q3, But 41x Earnings Is A Stretch - Seeking Alpha",
+        "Oppenheimer reiterates Perform rating on Apple stock after results - Investing.com",
+        "AAPL: Apple Stock Hits New Record, Passing Nvidia as World’s Biggest Company - TradingView"
+      ],
       "social": {
         "count": 30,
-        "bullish": 5,
-        "bearish": 7,
+        "bullish": 4,
+        "bearish": 9,
         "samples": [
-          "$AAPL y'all think my 300 puts will print?",
-          "$AAPL Thats like 350 billion dollar gone."
+          "$AAPL This is 75% of my roth",
+          "$AAPL How can Apple be trading at close to a 5 trillion valuation!? It boggles the mind. Market cap is $5,000,000,000,00"
         ]
       }
     },
@@ -691,23 +714,34 @@
       "sec_name": "AMAZON COM INC",
       "display_name": "Amazon Com Inc",
       "name_match": "verified",
-      "mentions": 324,
-      "mentions_24h_ago": 64,
-      "mention_change_pct": 406.2,
-      "upvotes": 2225,
+      "mentions": 328,
+      "mentions_24h_ago": 71,
+      "mention_change_pct": 362.0,
+      "upvotes": 2344,
       "cik": "0001018724",
       "filing": {
-        "form": "8-K",
-        "date": "2026-07-30",
-        "days_ago": 1,
+        "form": "10-Q",
+        "date": "2026-07-31",
+        "days_ago": 0,
         "fresh": true,
-        "desc": "8-K",
-        "summary": "Earnings released",
-        "accession": "0001018724-26-000024",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260730.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/0001018724-26-000024-index.htm"
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001018724-26-000026",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/0001018724-26-000026-index.htm"
       },
       "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-07-31",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001018724-26-000026",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/0001018724-26-000026-index.htm",
+          "ai_summary": "Amazon's Q2 2026 filing shows significant growth in net sales and net income, driven by strong performance in AWS and other segments."
+        },
         {
           "form": "8-K",
           "date": "2026-07-30",
@@ -1092,40 +1126,57 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "META_TITLE_QUOTE - Yahoo Finance",
+        "Amazon.com Announces Second Quarter Results - Amazon Investor Relations",
+        "Amazon Stock Pops 9.5% After-Hours as AWS Fuels Earnings Beat: Jim Cramer Calls it 'Astonishing' - Benzinga",
+        "Amazon’s stock pops on roaring cloud growth and soaring AI demand - SiliconANGLE"
+      ],
       "social": {
         "count": 30,
-        "bullish": 15,
-        "bearish": 0,
+        "bullish": 14,
+        "bearish": 1,
         "samples": [
-          "$AMZN sold $255 covered calls…. Rip",
-          "$AMZN another great earning. What's new?!"
+          "$AMZN the more I look over these numbers by Amazon, absolute monster numbers.",
+          "$AMZN I’m long after Chris Camillo talk on Iced Coffee Hour"
         ]
       }
     },
     {
-      "rank": 7,
+      "rank": 6,
       "ticker": "RDDT",
       "name": "Reddit",
       "sec_name": "Reddit, Inc.",
       "display_name": "Reddit, Inc.",
       "name_match": "verified",
-      "mentions": 287,
-      "mentions_24h_ago": 39,
-      "mention_change_pct": 635.9,
-      "upvotes": 1722,
+      "mentions": 298,
+      "mentions_24h_ago": 42,
+      "mention_change_pct": 609.5,
+      "upvotes": 1796,
       "cik": "0001713445",
       "filing": {
-        "form": "8-K",
-        "date": "2026-07-30",
-        "days_ago": 1,
+        "form": "10-Q",
+        "date": "2026-07-31",
+        "days_ago": 0,
         "fresh": true,
-        "desc": "8-K",
-        "summary": "Earnings released",
-        "accession": "0001713445-26-000098",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000098/rddt-20260730.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000098/0001713445-26-000098-index.htm"
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001713445-26-000100",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000100/rddt-20260630.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000100/0001713445-26-000100-index.htm"
       },
       "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-07-31",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001713445-26-000100",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000100/0001713445-26-000100-index.htm",
+          "ai_summary": "Reddit reported significant revenue growth and net income for the six months ended June 30, 2026, compared to the prior year."
+        },
         {
           "form": "8-K",
           "date": "2026-07-30",
@@ -1423,13 +1474,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Reddit Is Due for an AI Bump. The Stock Looks Like a Buy. - Barron's",
+        "Reddit Inc's Next Earnings Report on July 30 Could Send the Stock Soaring. Here's Why. - The Motley Fool",
+        "Reddit shares sink 11% on 'choppy' search referrals even as results blow past estimates - CNBC",
+        "Reddit, Inc. Stock 12‑Month Price Target Cut to $228.81, Implies 29% Upside - TradingView"
+      ],
       "social": {
         "count": 30,
         "bullish": 15,
-        "bearish": 3,
+        "bearish": 5,
         "samples": [
-          "$RDDT buy the dip!",
-          "$RDDT 66%"
+          "$RDDT cmon dump to 150",
+          "$HOOD and $RDDT have been Netflixed. Permanently sideways until a positive catalyst"
         ]
       }
     },
@@ -1440,10 +1497,10 @@
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 244,
-      "mentions_24h_ago": 446,
-      "mention_change_pct": -45.3,
-      "upvotes": 1325,
+      "mentions": 221,
+      "mentions_24h_ago": 456,
+      "mention_change_pct": -51.5,
+      "upvotes": 1225,
       "cik": "0001326801",
       "filing": {
         "form": "10-Q",
@@ -1775,13 +1832,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Meta’s stock falls hard. Here’s why the company is in Wall Street’s doghouse. - MarketWatch",
+        "Meta Platforms Q2: The Market Sells, I Buy The Dip - Seeking Alpha",
+        "Why Meta Platforms Stock Fell 10% Today - Yahoo Finance",
+        "Is Meta Platforms a Buy After Its Latest Earnings Report? - The Motley Fool"
+      ],
       "social": {
         "count": 30,
-        "bullish": 11,
-        "bearish": 4,
+        "bullish": 9,
+        "bearish": 6,
         "samples": [
-          "$META the market is going to force Zuckerbergs hand, especially after seeing massive cloud growth due to AI from MSFT, G",
-          "$META This market is not functioning at all. The whole market is hanging on leverage, short term speculation and pair tr"
+          "$META what the heck is this: 556 straight line down",
+          "‘It’s a Trap,’ Says Investor About Meta Stock https://www.tipranks.com/news/article/its-a-trap-says-investor-about-meta-"
         ]
       }
     },
@@ -1792,10 +1855,10 @@
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 165,
-      "mentions_24h_ago": 122,
-      "mention_change_pct": 35.2,
-      "upvotes": 443,
+      "mentions": 172,
+      "mentions_24h_ago": 123,
+      "mention_change_pct": 39.8,
+      "upvotes": 479,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -2139,13 +2202,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Why Nebius Group Stock Just Gained 26% - Yahoo Finance",
+        "Why Nebius Group Stock Just Gained 26% - The Motley Fool",
+        "Nebius Stock Gets Another Wall Street Upgrade. Here’s Why Investors Are Paying Attention. - barchart.com",
+        "Nebius: PaaS Power Over Agentic Bleed - Seeking Alpha"
+      ],
       "social": {
         "count": 30,
-        "bullish": 7,
-        "bearish": 8,
+        "bullish": 14,
+        "bearish": 0,
         "samples": [
-          "$NBIS - mentioned 25% rise in just one day which was yesterday. Today up another 8% pre-market. Probably the fastest rev",
-          "$NBIS $207 short not looking bad 😎"
+          "$NBIS You need to be on suicide watch if you're shorting this thing.",
+          "$NBIS who shorted yesterday 🙂 🤣"
         ]
       }
     },
@@ -2156,10 +2225,10 @@
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 125,
-      "mentions_24h_ago": 90,
-      "mention_change_pct": 38.9,
-      "upvotes": 1020,
+      "mentions": 121,
+      "mentions_24h_ago": 92,
+      "mention_change_pct": 31.5,
+      "upvotes": 1024,
       "cik": "0000936340",
       "filing": {
         "form": "10-Q",
@@ -2536,6 +2605,12 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "DTE Energy Co. stock underperforms Thursday when compared to competitors - MarketWatch",
+        "Fund Update: 257,736 DTE ENERGY (DTE) shares added to REAVES W H & CO INC portfolio - Quiver Quantitative",
+        "DTE Energy Company (DTE) Stock Forecasts - Yahoo Finance",
+        "DTE Energy Battery Projects Support 1.5 Gigawatts in Michigan - Stock Titan"
+      ],
       "social": {
         "count": 30,
         "bullish": 5,
@@ -2553,10 +2628,10 @@
       "sec_name": "Clear Secure, Inc.",
       "display_name": "Clear Secure, Inc.",
       "name_match": "verified",
-      "mentions": 43,
-      "mentions_24h_ago": 38,
-      "mention_change_pct": 13.2,
-      "upvotes": 852,
+      "mentions": 41,
+      "mentions_24h_ago": 37,
+      "mention_change_pct": 10.8,
+      "upvotes": 896,
       "cik": "0001856314",
       "filing": {
         "form": "8-K",
@@ -2898,6 +2973,12 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "CLEAR Secure, Inc. $YOU Shares Purchased by Dimensional Fund Advisors LP - MarketBeat",
+        "Clear Secure's CEO Sold Company Shares Worth $6.4 Million. What Does That Mean for Investors? - Yahoo Finance",
+        "Clear Secure (NYSE: YOU) appoints Affirm CFO Rob O'Hare to board - Stock Titan",
+        "Clear Secure's CEO Sold Company Shares Worth $6.4 Million. What Does That Mean for Investors? - The Motley Fool"
+      ],
       "social": {
         "count": 30,
         "bullish": 14,
@@ -2915,10 +2996,10 @@
       "sec_name": "Bloom Energy Corp",
       "display_name": "Bloom Energy Corp",
       "name_match": "verified",
-      "mentions": 40,
-      "mentions_24h_ago": 23,
-      "mention_change_pct": 73.9,
-      "upvotes": 705,
+      "mentions": 39,
+      "mentions_24h_ago": 24,
+      "mention_change_pct": 62.5,
+      "upvotes": 734,
       "cik": "0001664703",
       "filing": {
         "form": "10-Q/A",
@@ -3283,27 +3364,33 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Is Bloom Energy Corp a Buy After Its Latest Earnings Report? - The Motley Fool",
+        "Bloom Energy Shares Shrug Off Hunterbrook Short Report After Record Q2 - Benzinga",
+        "Earnings call transcript: Bloom Energy tops Q2 2026 forecasts, shares jump after hours - Investing.com",
+        "Why Bloom Energy Shares Are Tanking Ahead of Earnings - The Motley Fool"
+      ],
       "social": {
         "count": 30,
-        "bullish": 17,
+        "bullish": 11,
         "bearish": 3,
         "samples": [
-          "$BE hahaha",
-          "$BE The only short theses I see here, are fiction, disregarding the again and again proven and validated (by all their p"
+          "$BE 📢📢📢📢📢📢📢📢📢📢📢📢📢📢Bloom Energy achieves profit in the second quarter as sales double RTTNews.com Bloom Energy shares: Re",
+          "$SNDK $MU $BE When a 24 year old kid runs a hedge fund but doesn't hedge! But uses 4x leverage Thanks for playing Leopol"
         ]
       }
     },
     {
-      "rank": 22,
+      "rank": 23,
       "ticker": "HOOD",
       "name": "Robinhood",
       "sec_name": "Robinhood Markets, Inc.",
       "display_name": "Robinhood Markets, Inc.",
       "name_match": "verified",
-      "mentions": 35,
-      "mentions_24h_ago": 67,
-      "mention_change_pct": -47.8,
-      "upvotes": 84,
+      "mentions": 33,
+      "mentions_24h_ago": 68,
+      "mention_change_pct": -51.5,
+      "upvotes": 74,
       "cik": "0001783879",
       "filing": {
         "form": "10-Q",
@@ -3679,13 +3766,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Robinhood Markets, Inc. $HOOD Shares Sold by Liontrust Investment Partners LLP - MarketBeat",
+        "Robinhood Markets, Inc. (HOOD) Beats Stock Market Upswing: What Investors Need to Know - Yahoo Finance",
+        "The Robinhood Ventures Fund II (RVII) IPO Roadshow Begins August 3 - robinhood.com",
+        "HOOD Stock On Track For Worst Month Since February: Why Is Retail Still Bullish? - TradingView"
+      ],
       "social": {
         "count": 30,
-        "bullish": 10,
+        "bullish": 14,
         "bearish": 2,
         "samples": [
-          "$HOOD $115 aug 21st LETS GO",
-          "$HOOD Should be a $93-$96 day minimum 📈"
+          "$HOOD and $RDDT have been Netflixed. Permanently sideways until a positive catalyst",
+          "$HOOD"
         ]
       }
     },
@@ -3696,10 +3789,10 @@
       "sec_name": "Antero Midstream Corp",
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
-      "mentions": 32,
-      "mentions_24h_ago": 37,
-      "mention_change_pct": -13.5,
-      "upvotes": 48,
+      "mentions": 31,
+      "mentions_24h_ago": 33,
+      "mention_change_pct": -6.1,
+      "upvotes": 51,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -4043,6 +4136,12 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Antero Midstream Corporation (NYSE:AM) Receives Consensus Recommendation of \"Hold\" from Analysts - MarketBeat",
+        "AM Q2 Earnings Miss on Higher Costs, Revenues Beat Estimates - TradingView",
+        "Antero Midstream Corporation 2026 Q2 - Results - Earnings Call Presentation (NYSE:AM) 2026-07-30 - Seeking Alpha",
+        "Antero Midstream Q2 2026 slides: record volumes, pipeline expansion - Investing.com"
+      ],
       "social": {
         "count": 30,
         "bullish": 5,
@@ -4054,16 +4153,465 @@
       }
     },
     {
+      "rank": 29,
+      "ticker": "AXTI",
+      "name": "AXT Inc",
+      "sec_name": "AXT INC",
+      "display_name": "Axt Inc",
+      "name_match": "verified",
+      "mentions": 27,
+      "mentions_24h_ago": 1,
+      "mention_change_pct": 2600.0,
+      "upvotes": 55,
+      "cik": "0001051627",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-07-30",
+        "days_ago": 1,
+        "fresh": true,
+        "desc": "FORM 8-K",
+        "summary": "Earnings released",
+        "accession": "0001437749-26-025061",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926025061/axti20260609_8k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926025061/0001437749-26-025061-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-07-30",
+          "days_ago": 1,
+          "fresh": true,
+          "desc": "FORM 8-K",
+          "summary": "Earnings released",
+          "accession": "0001437749-26-025061",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926025061/0001437749-26-025061-index.htm",
+          "ai_summary": "AXT, Inc. announced its financial results for the quarter ended June 30, 2026, via press release on July 30, 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-29",
+          "days_ago": 2,
+          "fresh": true,
+          "desc": "FORM 8-K",
+          "summary": "Material agreement signed",
+          "accession": "0001437749-26-024883",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926024883/0001437749-26-024883-index.htm",
+          "ai_summary": "AXT Inc. entered a six-year agreement with Lumentum Operations LLC for indium phosphide wafer substrate capacity, including substantial deposits."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-29",
+          "days_ago": 2,
+          "fresh": true,
+          "desc": "FORM 8-K",
+          "summary": "Bylaw / charter change",
+          "accession": "0001437749-26-024882",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926024882/0001437749-26-024882-index.htm",
+          "ai_summary": "AXT, Inc. amended its bylaws to lower the shareholder meeting quorum requirement from a majority to 33.33%."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-22",
+          "days_ago": 9,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Executive / board change",
+          "accession": "0001437749-26-024184",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926024184/0001437749-26-024184-index.htm",
+          "ai_summary": "AXT, Inc. appointed Jia-Bin Duh to its Board of Directors, increasing the board size to six members."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-08",
+          "days_ago": 23,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Material event",
+          "accession": "0001437749-26-022984",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926022984/0001437749-26-022984-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-02",
+          "days_ago": 29,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Material agreement signed",
+          "accession": "0001437749-26-022557",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926022557/0001437749-26-022557-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-22",
+          "days_ago": 39,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Executive / board change; Other material update",
+          "accession": "0001437749-26-021307",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926021307/0001437749-26-021307-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-17",
+          "days_ago": 44,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Material agreement signed",
+          "accession": "0001437749-26-020978",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926020978/0001437749-26-020978-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-09",
+          "days_ago": 52,
+          "fresh": false,
+          "desc": "FORM 8-K",
+          "summary": "Bylaw / charter change; Shareholder vote results",
+          "accession": "0001437749-26-020004",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926020004/0001437749-26-020004-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-18",
+          "days_ago": 74,
+          "fresh": false,
+          "desc": "DEFINITIVE ADDITIONAL MATERIALS",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001213900-26-058419",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000121390026058419/0001213900-26-058419-index.htm"
+        },
+        {
+          "form": "DEFA14A",
+          "date": "2026-05-15",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "DEFINITIVE ADDITIONAL MATERIALS",
+          "summary": "Proxy materials (additional)",
+          "accession": "0001213900-26-057123",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000121390026057123/0001213900-26-057123-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-15",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Other material update",
+          "accession": "0001213900-26-057122",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000121390026057122/0001213900-26-057122-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-14",
+          "days_ago": 78,
+          "fresh": false,
+          "desc": "FORM 10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001437749-26-017054",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926017054/0001437749-26-017054-index.htm"
+        }
+      ],
+      "tickers": [
+        "AXTI"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 46.94,
+        "prev_close": 36.97,
+        "change_pct": 26.97,
+        "currency": "USD",
+        "spark": [
+          47.23,
+          47.88,
+          42.76,
+          36.97,
+          46.94
+        ],
+        "history": [
+          [
+            "2026-04-30",
+            79.22
+          ],
+          [
+            "2026-05-01",
+            96.0
+          ],
+          [
+            "2026-05-04",
+            106.0
+          ],
+          [
+            "2026-05-05",
+            107.55
+          ],
+          [
+            "2026-05-06",
+            104.83
+          ],
+          [
+            "2026-05-07",
+            108.42
+          ],
+          [
+            "2026-05-08",
+            116.36
+          ],
+          [
+            "2026-05-11",
+            125.81
+          ],
+          [
+            "2026-05-12",
+            122.9
+          ],
+          [
+            "2026-05-13",
+            121.94
+          ],
+          [
+            "2026-05-14",
+            114.98
+          ],
+          [
+            "2026-05-15",
+            123.78
+          ],
+          [
+            "2026-05-18",
+            105.88
+          ],
+          [
+            "2026-05-19",
+            112.88
+          ],
+          [
+            "2026-05-20",
+            104.61
+          ],
+          [
+            "2026-05-21",
+            121.02
+          ],
+          [
+            "2026-05-22",
+            140.83
+          ],
+          [
+            "2026-05-26",
+            132.6
+          ],
+          [
+            "2026-05-27",
+            122.77
+          ],
+          [
+            "2026-05-28",
+            115.7
+          ],
+          [
+            "2026-05-29",
+            103.16
+          ],
+          [
+            "2026-06-01",
+            109.55
+          ],
+          [
+            "2026-06-02",
+            110.85
+          ],
+          [
+            "2026-06-03",
+            106.7
+          ],
+          [
+            "2026-06-04",
+            105.99
+          ],
+          [
+            "2026-06-05",
+            89.04
+          ],
+          [
+            "2026-06-08",
+            90.78
+          ],
+          [
+            "2026-06-09",
+            78.36
+          ],
+          [
+            "2026-06-10",
+            85.29
+          ],
+          [
+            "2026-06-11",
+            88.34
+          ],
+          [
+            "2026-06-12",
+            97.18
+          ],
+          [
+            "2026-06-15",
+            110.74
+          ],
+          [
+            "2026-06-16",
+            93.04
+          ],
+          [
+            "2026-06-17",
+            92.11
+          ],
+          [
+            "2026-06-18",
+            84.57
+          ],
+          [
+            "2026-06-22",
+            92.44
+          ],
+          [
+            "2026-06-23",
+            77.91
+          ],
+          [
+            "2026-06-24",
+            70.14
+          ],
+          [
+            "2026-06-25",
+            69.06
+          ],
+          [
+            "2026-06-26",
+            70.15
+          ],
+          [
+            "2026-06-29",
+            71.46
+          ],
+          [
+            "2026-06-30",
+            72.08
+          ],
+          [
+            "2026-07-01",
+            65.03
+          ],
+          [
+            "2026-07-02",
+            56.62
+          ],
+          [
+            "2026-07-06",
+            63.52
+          ],
+          [
+            "2026-07-07",
+            58.15
+          ],
+          [
+            "2026-07-08",
+            60.12
+          ],
+          [
+            "2026-07-09",
+            62.55
+          ],
+          [
+            "2026-07-10",
+            57.21
+          ],
+          [
+            "2026-07-13",
+            50.46
+          ],
+          [
+            "2026-07-14",
+            57.57
+          ],
+          [
+            "2026-07-15",
+            53.42
+          ],
+          [
+            "2026-07-16",
+            45.57
+          ],
+          [
+            "2026-07-17",
+            45.86
+          ],
+          [
+            "2026-07-20",
+            48.83
+          ],
+          [
+            "2026-07-21",
+            56.51
+          ],
+          [
+            "2026-07-22",
+            52.98
+          ],
+          [
+            "2026-07-23",
+            52.93
+          ],
+          [
+            "2026-07-24",
+            47.23
+          ],
+          [
+            "2026-07-27",
+            47.88
+          ],
+          [
+            "2026-07-28",
+            42.76
+          ],
+          [
+            "2026-07-29",
+            36.97
+          ],
+          [
+            "2026-07-30",
+            46.94
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-07-30"
+      },
+      "is_fund": false,
+      "news": [
+        "AXT Inc $AXTI Stock Position Decreased by E20 Capital Ltd - MarketBeat",
+        "AXT, Inc. (AXTI) Stock Rises on Q2 2026 Earnings - Quiver Quantitative",
+        "AXT, Inc. Announces Second Quarter 2026 Financial Results - Business Wire",
+        "Trending Industry Today: AXT Inc Leads Gains Pre-Market In Optical Communication Stocks - Moomoo"
+      ],
+      "social": {
+        "count": 30,
+        "bullish": 11,
+        "bearish": 0,
+        "samples": [
+          "$AXTI MAESTRO CALLED! $GIFT on HIGH ALERT STATUS",
+          "$AXTI in my 15 years of trading I haven’t seen a better setup for a continued squeeze run. This isn’t a 1-2 day move. Th"
+        ]
+      }
+    },
+    {
       "rank": 30,
       "ticker": "ES",
       "name": "Eversource Energy",
       "sec_name": "EVERSOURCE ENERGY",
       "display_name": "Eversource Energy",
       "name_match": "verified",
-      "mentions": 25,
-      "mentions_24h_ago": 36,
-      "mention_change_pct": -30.6,
-      "upvotes": 398,
+      "mentions": 26,
+      "mentions_24h_ago": 34,
+      "mention_change_pct": -23.5,
+      "upvotes": 400,
       "cik": "0000072741",
       "filing": {
         "form": "8-K",
@@ -4394,6 +4942,12 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Two charges pull Eversource’s second-quarter earnings to $53.7M - Stock Titan",
+        "Eversource Energy stock hits 52-week high at 76.42 USD - Investing.com",
+        "Eversource Energy (ES) Stock Looks Undervalued Even As The Market Stays Cautious - Yahoo Finance",
+        "Eversource Energy (D/B/A) Stock 12‑Month Price Target Raised to $73.55, Implies 2% Downside - TradingView"
+      ],
       "social": {
         "count": 30,
         "bullish": 2,
@@ -4411,10 +4965,10 @@
       "sec_name": "MICRON TECHNOLOGY INC",
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
-      "mentions": 660,
-      "mentions_24h_ago": 784,
-      "mention_change_pct": -15.8,
-      "upvotes": 5628,
+      "mentions": 604,
+      "mentions_24h_ago": 834,
+      "mention_change_pct": -27.6,
+      "upvotes": 5228,
       "cik": "0000723125",
       "filing": {
         "form": "10-Q",
@@ -4736,13 +5290,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Micron: Buy Low, Sell High (Rating Upgrade) (NASDAQ:MU) - Seeking Alpha",
+        "Micron Revenues Could Triple Again By 2030. Here’s the Math. - 24/7 Wall St.",
+        "Stock of the Day: Micron Breaks Below Key Support — More Downside Ahead? - Benzinga",
+        "Micron Stock Has Surged 637% in a Year. History Has a Clear Answer Where It Will Be in 2027. - The Motley Fool"
+      ],
       "social": {
         "count": 30,
-        "bullish": 17,
-        "bearish": 1,
+        "bullish": 11,
+        "bearish": 7,
         "samples": [
-          "$MU $NVDA $SOXX Fake news keep bullshitting bear bots. His disclosure was before when this noise news came out not yeste",
-          "$MU Wen $1240..? Lol! 😅"
+          "$MU just bought 1000",
+          "$MU Who else is buying more at open?"
         ]
       }
     },
@@ -4753,10 +5313,10 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 319,
-      "mentions_24h_ago": 494,
-      "mention_change_pct": -35.4,
-      "upvotes": 732,
+      "mentions": 305,
+      "mentions_24h_ago": 490,
+      "mention_change_pct": -37.8,
+      "upvotes": 703,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
@@ -5034,27 +5594,33 @@
         "as_of": "2026-07-30"
       },
       "is_fund": true,
+      "news": [
+        "Where The Buying Ran Strongest: 41 Small Cap Stocks At 52-Week Highs - Trefis",
+        "Stock Market Today: S&P 500, Dow Jones Futures Rise After Cooler June PCE Inflation Data—Apple, Amazon, C - Benzinga",
+        "ACXUCXX Stock Price and Chart — NASDAQ:ACXUCXX - TradingView",
+        "Should State Street SPDR S&P 500 ETF Trust (SPY) Be on Your Investing Radar? - Yahoo Finance"
+      ],
       "social": {
         "count": 30,
-        "bullish": 12,
-        "bearish": 3,
+        "bullish": 6,
+        "bearish": 8,
         "samples": [
-          "$SPY guess we are not having a correction close above 50sma is bullish",
-          "$SPY most undervalued markets since black Tuesday"
+          "$SPY the ramp camp pattern...bears hate camping but the bulls love it 🙂",
+          "$SPY Dealers would like 742 by end of day. so if we go up first then we come down or down first then up. Fun times. good"
         ]
       }
     },
     {
-      "rank": 6,
+      "rank": 7,
       "ticker": "SNDK",
       "name": "Sandisk",
       "sec_name": "Sandisk Corp",
       "display_name": "Sandisk Corp",
       "name_match": "verified",
-      "mentions": 304,
-      "mentions_24h_ago": 346,
-      "mention_change_pct": -12.1,
-      "upvotes": 1128,
+      "mentions": 291,
+      "mentions_24h_ago": 345,
+      "mention_change_pct": -15.7,
+      "upvotes": 1080,
       "cik": "0002023554",
       "filing": {
         "form": "8-K",
@@ -5353,13 +5919,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Dear Sandisk Stock Fans, Mark Your Calendars for August 5 - barchart.com",
+        "Sandisk's Biggest Opportunity Yet (NASDAQ:SNDK) - Seeking Alpha",
+        "Sandisk Stock Is Gaining Thursday: What's Going On? - Benzinga",
+        "Don’t Ignore Sandisk: This Upcoming Catalyst Could Send SNDK Stock Higher - barchart.com"
+      ],
       "social": {
         "count": 30,
-        "bullish": 18,
-        "bearish": 3,
+        "bullish": 7,
+        "bearish": 0,
         "samples": [
-          "$SNDK bullish as fuckkk",
-          "$SNDK don’t be this guy"
+          "@kharlus no really overnight $SNDK was as high as 1410. I hope it gets to 1425-1430 today.",
+          "$QQQ Market is extremely overvalued. You have a company that is worth $600 trading at $1300 with $SNDK You have US ADR f"
         ]
       }
     },
@@ -5370,10 +5942,10 @@
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 182,
-      "mentions_24h_ago": 340,
-      "mention_change_pct": -46.5,
-      "upvotes": 398,
+      "mentions": 177,
+      "mentions_24h_ago": 341,
+      "mention_change_pct": -48.1,
+      "upvotes": 354,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
@@ -5661,13 +6233,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": true,
+      "news": [
+        "QQQ Stock Price, Quote & Chart - ChartMill",
+        "SpaceX Could Leap Between Walmart And Intel In QQQ Weight — Without Stock Price Moving At All: Analyst Explains How - TradingView",
+        "Aggressive Buying On Nvidia Backing Massive OpenAI Data Center And Trump Pausing Iran Attacks - Benzinga",
+        "Think It's Too Late to Buy Invesco QQQ Trust? Here's the 1 Reason Why There's Still Time. - Yahoo Finance"
+      ],
       "social": {
         "count": 30,
-        "bullish": 5,
-        "bearish": 2,
+        "bullish": 8,
+        "bearish": 6,
         "samples": [
-          "$QQQ imagine panic selling wednesday",
-          "$DRAM $SOXX Trend is still down 🤷‍♂️ 🤷‍♂️ $QQQ"
+          "$IBM CEO pumping last night touting 1 trillion market cap incoming…on Jim Cramer channel…$SPY $QQQ",
+          "$QQQ should just be a slow grind up from here boys, all the uncertainty news gone"
         ]
       }
     },
@@ -5678,10 +6256,10 @@
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 167,
-      "mentions_24h_ago": 164,
-      "mention_change_pct": 1.8,
-      "upvotes": 453,
+      "mentions": 172,
+      "mentions_24h_ago": 168,
+      "mention_change_pct": 2.4,
+      "upvotes": 483,
       "cik": "0001045810",
       "filing": {
         "form": "8-K",
@@ -6079,13 +6657,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "NVIDIA Stock Is Still Up, But $250 Billion AI Risk Has Spooked The Debt Market - Benzinga",
+        "Planning Alternatives Ltd. ADV Purchases 5,287 Shares of NVIDIA Corporation $NVDA - MarketBeat",
+        "Nvidia: Reported OpenAI Deal Raises Circular Deal Fears, but We Think the Stock Is Undervalued - Morningstar",
+        "Zacks.com featured highlights include Micron, NVIDIA and TD SYNNEX - The Globe and Mail"
+      ],
       "social": {
         "count": 30,
-        "bullish": 12,
-        "bearish": 0,
+        "bullish": 13,
+        "bearish": 3,
         "samples": [
-          "$nvda garbage",
-          "$NVDA glad moved to AMD"
+          "$NVDA - $MUhe ’s got some balls. Michael Burry adds to Nvidia puts, Micron shorts… Not the move, I would make, but time ",
+          "$NVDA — Not surprised if Apple continues floundering while Nvidia, along with other heavyweight leaders like Amazon and "
         ]
       }
     },
@@ -6096,10 +6680,10 @@
       "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
       "display_name": "Space Exploration Technologies Corp",
       "name_match": "verified",
-      "mentions": 105,
-      "mentions_24h_ago": 92,
-      "mention_change_pct": 14.1,
-      "upvotes": 544,
+      "mentions": 104,
+      "mentions_24h_ago": 89,
+      "mention_change_pct": 16.9,
+      "upvotes": 534,
       "cik": "0001181412",
       "filing": {
         "form": "8-K",
@@ -6377,13 +6961,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "5 Charts on What to Watch in SpaceX Earnings - Morningstar",
+        "SpaceX's huge stock dive batters Elon Musk's wealth - Yahoo Finance Singapore",
+        "Is SpaceX Stock a Portfolio Must-Have Ahead of Q2 Earnings? - TradingView",
+        "SpaceX Is Down More Than 40% From All-Time Highs. Here's What a $10,000 Investment Will Be Worth If Wall Street Analysts Are Correct - The Motley Fool"
+      ],
       "social": {
-        "count": 29,
-        "bullish": 12,
-        "bearish": 3,
+        "count": 30,
+        "bullish": 8,
+        "bearish": 6,
         "samples": [
-          "$SPCX Market in a Minute-Global equities are in rally mode — Asia and Europe both green, while U.S. futures point to a s",
-          "$SPCX please ill bet it will go down more than it will go up ."
+          "$SPCX Basic supply and demand logic If retail was excited about owning SpaceX, this stock would be $200 now. You have se",
+          "$SPCX who buys at IPO prices 🤣🤣🤡🤡 that’s on you"
         ]
       }
     },
@@ -6394,10 +6984,10 @@
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 97,
-      "mentions_24h_ago": 97,
-      "mention_change_pct": 0.0,
-      "upvotes": 645,
+      "mentions": 95,
+      "mentions_24h_ago": 101,
+      "mention_change_pct": -5.9,
+      "upvotes": 662,
       "cik": "0001318605",
       "filing": {
         "form": "10-Q",
@@ -6719,13 +7309,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Tesla's Abysmal Q2 Results Point To A Bleak Future (NASDAQ:TSLA) - Seeking Alpha",
+        "Tesla Stock is Climbing Today: What's Going On? - Benzinga",
+        "After Earnings, Is Tesla Stock a Buy, a Sell, or Fairly Valued? - Morningstar",
+        "Tesla Inc Stock (TSLA) Moved Up by 3.09% on Jul 30: A Full Analysis - TradingKey"
+      ],
       "social": {
         "count": 30,
-        "bullish": 12,
-        "bearish": 3,
+        "bullish": 5,
+        "bearish": 5,
         "samples": [
-          "$TSLA",
-          "Musk Denies WSJ Report of Tesla China Separation Ahead of SpaceX Merger $TSLA https://eletric-vehicles.com/tesla/musk-de"
+          "$TSLA 🐐",
+          "$BABA Wow guys thisnis hugeeee!!! Qwen going theu testing to be used by $TSLA"
         ]
       }
     },
@@ -6736,10 +7332,10 @@
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 131,
-      "mentions_24h_ago": 111,
-      "mention_change_pct": 18.0,
-      "upvotes": 408,
+      "mentions": 132,
+      "mentions_24h_ago": 114,
+      "mention_change_pct": 15.8,
+      "upvotes": 406,
       "cik": "0001652044",
       "filing": {
         "form": "10-Q",
@@ -7247,13 +7843,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Reddit (RDDT) May Walk Away From Google’s (GOOGL) $60 Million-a-Year Deal as AI Search Eats Its Traffic - Yahoo Finance",
+        "Alphabet Stock: Selloff Misses Bigger Story (NASDAQ:GOOGL) - Seeking Alpha",
+        "After Earnings, Is Alphabet Stock a Buy, a Sell, or Fairly Valued? - Morningstar",
+        "Chip stock rout sends investors rushing back to bruised Alphabet stock - Yahoo Finance"
+      ],
       "social": {
         "count": 30,
-        "bullish": 13,
+        "bullish": 11,
         "bearish": 2,
         "samples": [
-          "$GOOG boom 💥",
-          "$BB $GOOG $BB.TSX"
+          "$GOOG Wtf!! This shit gonna open red??? Its probably because i bought",
+          "$AMZN $GOOG $MSFT $ORCL ding ding ding"
         ]
       }
     },
@@ -7267,7 +7869,7 @@
       "mentions": 85,
       "mentions_24h_ago": 62,
       "mention_change_pct": 37.1,
-      "upvotes": 333,
+      "upvotes": 353,
       "cik": "0000002488",
       "filing": {
         "form": "8-K",
@@ -7598,13 +8200,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "The Growth That Has To Land For Advanced Micro Devices Stock to Make Sense - Trefis",
+        "AMD Fell 8% as China Unveils New Technology — the Real Risk Is the Multiple, Not the Lithography - Yahoo Finance",
+        "Bank of America Corp DE Sells 2,489,248 Shares of Advanced Micro Devices, Inc. $AMD - MarketBeat",
+        "AMD Stock Has Surged 364% in 5 Years. History Suggests That It Will Become a Multibagger By 2030 - Yahoo Finance"
+      ],
       "social": {
         "count": 30,
-        "bullish": 12,
+        "bullish": 10,
         "bearish": 1,
         "samples": [
-          "$AMD 545.45 Finnish today - dats alotta fins!",
-          "$AMD 21.21 ain’t we got fun!"
+          "$AMD looking for a good push",
+          "$AMD above 500$ seems good sign for next month"
         ]
       }
     },
@@ -7615,10 +8223,10 @@
       "sec_name": null,
       "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
       "name_match": "no_cik",
-      "mentions": 73,
-      "mentions_24h_ago": 76,
-      "mention_change_pct": -3.9,
-      "upvotes": 204,
+      "mentions": 71,
+      "mentions_24h_ago": 74,
+      "mention_change_pct": -4.1,
+      "upvotes": 166,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -7893,13 +8501,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": true,
+      "news": [
+        "Why Direxion Daily Semiconductor Bull 3X ETF Keeps Crashing - The Motley Fool",
+        "Why Direxion Daily Semiconductor Bull 3X ETF Dropped - Yahoo Finance",
+        "Why Direxion Daily Semiconductor Bull 3X ETF Keeps Crashing - aol.com",
+        "Why Direxion Daily Semiconductor Bull 3X ETF Just Crashed - Yahoo Finance"
+      ],
       "social": {
         "count": 30,
         "bullish": 12,
         "bearish": 0,
         "samples": [
-          "$SOXL Me last weeks: \"I'm almost bankrupt, I'll never buy semis again, I'm sticking to an index ETF for the rest of my l",
-          "$SOXL short interest has increased 13.26% it’s a bit risky.. bearish indicator tho"
+          "WTF! KOSPI +20% They will try to push it down before the market opens. Don’t be fooled! $SPY $QQQ $SOXX $SOXL",
+          "$SOXL $SOXS $NRGU $OILD $USO The Caspian Pipeline Consortium (CPC) has discussed an indefinite halt to its oil and tanke"
         ]
       }
     },
@@ -7910,10 +8524,10 @@
       "sec_name": null,
       "display_name": "Vanguard S&P 500 ETF",
       "name_match": "no_cik",
-      "mentions": 50,
-      "mentions_24h_ago": 67,
-      "mention_change_pct": -25.4,
-      "upvotes": 1723,
+      "mentions": 52,
+      "mentions_24h_ago": 66,
+      "mention_change_pct": -21.2,
+      "upvotes": 1874,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -8188,18 +8802,24 @@
         "as_of": "2026-07-30"
       },
       "is_fund": true,
+      "news": [
+        "Is It Really Safe to Invest in the Vanguard S&P 500 ETF Right Now? Here's What History Says. - The Motley Fool",
+        "Vanguard and iShares S&P 500 ETFs Compared: Is There Really a Difference? - The Motley Fool",
+        "This Vanguard ETF Consistently Beats the S&P 500. Here's Why More Outperformance Is Possible. - Yahoo Finance",
+        "VOO stock holds near $680 as S&P 500 ETF gains 7.6% year-to-date - eciks.org"
+      ],
       "social": {
         "count": 30,
         "bullish": 2,
         "bearish": 3,
         "samples": [
-          "$VOO ... It is ready for you now 😈",
-          "$QQQ $SPY $SNDK $MSFT $VOO Cramer: This is now the best time to buy stocks 🚶🏾‍♀️🚶🏾‍♀️🚶🏾‍♀️🚶🏾‍♀️🚶🏾‍♀️🚶🏾‍♀️🚶🏾‍♀️🚶🏾‍♀️"
+          "$QQQ yeah this market is still fucked. Get us out of Iran first please. Casino Royale with Cheese. Still 100% happy I we",
+          "$VOO ... It is ready for you now 😈"
         ]
       }
     },
     {
-      "rank": 23,
+      "rank": 22,
       "ticker": "IT",
       "name": "Gartner",
       "sec_name": "GARTNER INC",
@@ -8208,7 +8828,7 @@
       "mentions": 33,
       "mentions_24h_ago": 44,
       "mention_change_pct": -25.0,
-      "upvotes": 159,
+      "upvotes": 172,
       "cik": "0000749251",
       "filing": {
         "form": "8-K",
@@ -8528,6 +9148,12 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Gartner Inc. stock outperforms competitors on strong trading day - MarketWatch",
+        "Is Gartner Inc (IT) a Bargain After 7.7% Drop? GF Value Says Und - GuruFocus",
+        "Why Gartner Stock Is Climbing Higher Today - theglobeandmail.com",
+        "Gartner Gears Up to Report Q2 Earnings: Key Takeaways for Investors - TradingView"
+      ],
       "social": {
         "count": 27,
         "bullish": 5,
@@ -8548,7 +9174,7 @@
       "mentions": 32,
       "mentions_24h_ago": 19,
       "mention_change_pct": 68.4,
-      "upvotes": 63,
+      "upvotes": 61,
       "cik": "0001341439",
       "filing": {
         "form": "424B5",
@@ -8880,13 +9506,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Oracle Corp. stock underperforms Thursday when compared to competitors despite daily gains - MarketWatch",
+        "Why Is Oracle Stock Surging on Thursday? - Benzinga",
+        "Oracle Corp Stock (ORCL) Moved Up by 6.77% on Jul 30: Drivers Behind the Movement - TradingKey",
+        "A $7 Billion Reason to Buy Oracle Stock Now - Yahoo Finance"
+      ],
       "social": {
         "count": 30,
-        "bullish": 14,
-        "bearish": 0,
+        "bullish": 6,
+        "bearish": 1,
         "samples": [
-          "$ORCL",
-          "$ORCL playing out"
+          "$ORCL exhibit A random ass posts",
+          "$ORCL these have to be bots… wtf is this morons our full force blocked"
         ]
       }
     },
@@ -8897,10 +9529,10 @@
       "sec_name": "ServiceNow, Inc.",
       "display_name": "ServiceNow, Inc.",
       "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 45,
-      "mention_change_pct": -35.6,
-      "upvotes": 63,
+      "mentions": 28,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": -36.4,
+      "upvotes": 67,
       "cik": "0001373715",
       "filing": {
         "form": "10-Q",
@@ -9244,13 +9876,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "ServiceNow Inc. stock underperforms Thursday when compared to competitors - MarketWatch",
+        "ServiceNow, Inc. $NOW Shares Purchased by Boothe Investment Group Inc. - MarketBeat",
+        "Is Trending Stock ServiceNow, Inc. (NOW) a Buy Now? - Yahoo Finance",
+        "Why Is ServiceNow Stock Soaring Monday? - Benzinga"
+      ],
       "social": {
         "count": 30,
-        "bullish": 18,
-        "bearish": 1,
+        "bullish": 14,
+        "bearish": 2,
         "samples": [
-          "$NOW why are we down so much this morning for a second day in a row? ￼",
-          "$NOW unfortunately we will be punished again today i´m afraid .. this volatility is absolutely crazy .."
+          "$NOW The buyers that actually move stock prices. Hedge funds with millions to spend are the cause of this constant rolle",
+          "$NOW"
         ]
       }
     },
@@ -9261,10 +9899,10 @@
       "sec_name": "Rocket Lab Corp",
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 37,
-      "mention_change_pct": -21.6,
-      "upvotes": 82,
+      "mentions": 28,
+      "mentions_24h_ago": 39,
+      "mention_change_pct": -28.2,
+      "upvotes": 79,
       "cik": "0001819994",
       "filing": {
         "form": "8-K",
@@ -9649,13 +10287,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "Rocket Lab Stock Pops as New Launch Deal Meets Oversold Setup - Benzinga",
+        "Rocket Lab Company Profile & Introduction - Moomoo",
+        "Rocket Lab Corporation (RKLB) Declines More Than Market: Some Information for Investors - Yahoo Finance",
+        "Rocket Lab Corporation $RKLB Shares Acquired by Bank of Nova Scotia - MarketBeat"
+      ],
       "social": {
         "count": 30,
-        "bullish": 17,
-        "bearish": 0,
+        "bullish": 18,
+        "bearish": 1,
         "samples": [
-          "$RKLB price is positioned beautifully below the kumo cloud on the 4H chart. Possible run to $77 until the earnings and a",
-          "$RKLB $ASTS space stocks are next 🚀🚀🚀"
+          "$RKLB",
+          "$RKLB"
         ]
       }
     },
@@ -9666,10 +10310,10 @@
       "sec_name": "IREN Ltd",
       "display_name": "IREN Ltd",
       "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 15,
-      "mention_change_pct": 93.3,
-      "upvotes": 96,
+      "mentions": 28,
+      "mentions_24h_ago": 17,
+      "mention_change_pct": 64.7,
+      "upvotes": 91,
       "cik": "0001878848",
       "filing": {
         "form": "8-K",
@@ -10068,377 +10712,19 @@
         "as_of": "2026-07-30"
       },
       "is_fund": false,
+      "news": [
+        "IREN Ltd. (IREN) is Gaining Momentum. This Tech Giant May Be Playing a Big Role - Yahoo Finance",
+        "Situational Awareness LP Buys 2,998,214 Shares of IREN Limited $IREN - MarketBeat",
+        "Why Is IREN Stock Surging on Thursday? - Benzinga",
+        "Infrastructure Vs. Software: Can IREN Limited Capture The Real Value In AI - Seeking Alpha"
+      ],
       "social": {
         "count": 30,
         "bullish": 15,
-        "bearish": 2,
-        "samples": [
-          "$IREN heavily shortet and putt options under 40.. expiration day. maybe i buy",
-          "$IREN number 1 trending!"
-        ]
-      }
-    },
-    {
-      "rank": 29,
-      "ticker": "ASTS",
-      "name": "AST SpaceMobile",
-      "sec_name": "AST SpaceMobile, Inc.",
-      "display_name": "AST SpaceMobile, Inc.",
-      "name_match": "verified",
-      "mentions": 27,
-      "mentions_24h_ago": 37,
-      "mention_change_pct": -27.0,
-      "upvotes": 81,
-      "cik": "0001780312",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-07-20",
-        "days_ago": 11,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Material agreement signed; New debt obligation; Unregistered share sale; Other material update",
-        "accession": "0001493152-26-033912",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/form8-k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/0001493152-26-033912-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-07-20",
-          "days_ago": 11,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; New debt obligation; Unregistered share sale; Other material update",
-          "accession": "0001493152-26-033912",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/0001493152-26-033912-index.htm",
-          "ai_summary": "AST SpaceMobile priced a $1 billion convertible senior notes offering due 2034, with capped call transactions to reduce dilution."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-07-15",
-          "days_ago": 16,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001493152-26-033365",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033365/0001493152-26-033365-index.htm",
-          "ai_summary": "AST SpaceMobile announced a proposed $1 billion convertible notes offering and preliminary June 30, 2026 cash of $2.723 billion."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-15",
-          "days_ago": 46,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001493152-26-028544",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226028544/0001493152-26-028544-index.htm",
-          "ai_summary": "AST SpaceMobile’s June 12, 2026 annual meeting saw shareholders elect all ten directors, ratify KPMG as auditor, and approve an advisory vote on executive compensation."
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-11",
-          "days_ago": 81,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-216950",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. reported a net loss of $191 million for Q1 2026, driven by increased operating expenses and a significant loss from a Block 2 BB7 satellite."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-11",
-          "days_ago": 81,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001193125-26-216946",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. announced its first quarter 2026 financial results and provided a business update via press release and presentation."
-        }
-      ],
-      "tickers": [
-        "ASTS"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 58.44,
-        "prev_close": 53.03,
-        "change_pct": 10.2,
-        "currency": "USD",
-        "spark": [
-          56.2,
-          58.29,
-          56.55,
-          53.03,
-          58.44
-        ],
-        "history": [
-          [
-            "2026-04-30",
-            73.9
-          ],
-          [
-            "2026-05-01",
-            70.89
-          ],
-          [
-            "2026-05-04",
-            68.43
-          ],
-          [
-            "2026-05-05",
-            63.87
-          ],
-          [
-            "2026-05-06",
-            70.68
-          ],
-          [
-            "2026-05-07",
-            65.35
-          ],
-          [
-            "2026-05-08",
-            75.05
-          ],
-          [
-            "2026-05-11",
-            82.55
-          ],
-          [
-            "2026-05-12",
-            72.96
-          ],
-          [
-            "2026-05-13",
-            74.81
-          ],
-          [
-            "2026-05-14",
-            83.01
-          ],
-          [
-            "2026-05-15",
-            83.67
-          ],
-          [
-            "2026-05-18",
-            86.83
-          ],
-          [
-            "2026-05-19",
-            88.1
-          ],
-          [
-            "2026-05-20",
-            89.58
-          ],
-          [
-            "2026-05-21",
-            96.23
-          ],
-          [
-            "2026-05-22",
-            105.86
-          ],
-          [
-            "2026-05-26",
-            119.7
-          ],
-          [
-            "2026-05-27",
-            129.6
-          ],
-          [
-            "2026-05-28",
-            133.09
-          ],
-          [
-            "2026-05-29",
-            113.41
-          ],
-          [
-            "2026-06-01",
-            105.65
-          ],
-          [
-            "2026-06-02",
-            118.17
-          ],
-          [
-            "2026-06-03",
-            107.73
-          ],
-          [
-            "2026-06-04",
-            107.29
-          ],
-          [
-            "2026-06-05",
-            93.6
-          ],
-          [
-            "2026-06-08",
-            92.06
-          ],
-          [
-            "2026-06-09",
-            88.71
-          ],
-          [
-            "2026-06-10",
-            87.32
-          ],
-          [
-            "2026-06-11",
-            97.56
-          ],
-          [
-            "2026-06-12",
-            82.41
-          ],
-          [
-            "2026-06-15",
-            87.57
-          ],
-          [
-            "2026-06-16",
-            82.25
-          ],
-          [
-            "2026-06-17",
-            85.43
-          ],
-          [
-            "2026-06-18",
-            80.66
-          ],
-          [
-            "2026-06-22",
-            73.19
-          ],
-          [
-            "2026-06-23",
-            72.87
-          ],
-          [
-            "2026-06-24",
-            68.01
-          ],
-          [
-            "2026-06-25",
-            65.62
-          ],
-          [
-            "2026-06-26",
-            71.45
-          ],
-          [
-            "2026-06-29",
-            86.77
-          ],
-          [
-            "2026-06-30",
-            88.86
-          ],
-          [
-            "2026-07-01",
-            86.1
-          ],
-          [
-            "2026-07-02",
-            85.13
-          ],
-          [
-            "2026-07-06",
-            80.64
-          ],
-          [
-            "2026-07-07",
-            74.21
-          ],
-          [
-            "2026-07-08",
-            74.95
-          ],
-          [
-            "2026-07-09",
-            73.88
-          ],
-          [
-            "2026-07-10",
-            73.32
-          ],
-          [
-            "2026-07-13",
-            67.58
-          ],
-          [
-            "2026-07-14",
-            68.82
-          ],
-          [
-            "2026-07-15",
-            66.31
-          ],
-          [
-            "2026-07-16",
-            55.01
-          ],
-          [
-            "2026-07-17",
-            57.8
-          ],
-          [
-            "2026-07-20",
-            57.42
-          ],
-          [
-            "2026-07-21",
-            63.34
-          ],
-          [
-            "2026-07-22",
-            61.95
-          ],
-          [
-            "2026-07-23",
-            59.18
-          ],
-          [
-            "2026-07-24",
-            56.2
-          ],
-          [
-            "2026-07-27",
-            58.29
-          ],
-          [
-            "2026-07-28",
-            56.55
-          ],
-          [
-            "2026-07-29",
-            53.03
-          ],
-          [
-            "2026-07-30",
-            58.44
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-07-30"
-      },
-      "is_fund": false,
-      "social": {
-        "count": 30,
-        "bullish": 23,
         "bearish": 1,
         "samples": [
-          "$ASTS google provided Price Levels and Resistance First major resistance: $64.00, which marks the upper boundary of the ",
-          "$ASTS up 350 now only up 2 bucks look at them trying to scare u we’re ripen today"
+          "$APLD $IREN $NBIS there is no reason for any one to join our discord. Because they like watching other's profit screen s",
+          "I still think the market may be underestimating $IREN. The key question isn’t whether $IREN is a Bitcoin miner. It’s whe"
         ]
       }
     }
