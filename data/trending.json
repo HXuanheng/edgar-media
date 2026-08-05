@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-05T21:05:54Z",
+  "updated_utc": "2026-08-05T22:56:59Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "news": "Google News RSS (~hourly, best-effort)",
@@ -18,10 +18,10 @@
       "sec_name": "Sandisk Corp",
       "display_name": "Sandisk Corp",
       "name_match": "verified",
-      "mentions": 862,
-      "mentions_24h_ago": 221,
-      "mention_change_pct": 290.0,
-      "upvotes": 2899,
+      "mentions": 961,
+      "mentions_24h_ago": 216,
+      "mention_change_pct": 344.9,
+      "upvotes": 3796,
       "cik": "0002023554",
       "filing": {
         "form": "8-K",
@@ -333,31 +333,373 @@
       "is_fund": false,
       "news": [
         "SanDisk stock sinks as revenue forecast falls short of expectations - Yahoo Finance",
-        "Sandisk slips as mixed guidance overshadows strong Q4 results (SNDK:NASDAQ) - Seeking Alpha",
         "Sandisk’s stock falls as the company’s forecast doesn’t live up to high expectations - MarketWatch",
-        "Sandisk stock steady ahead of AI highflier's earnings - Yahoo Finance"
+        "Sandisk slips as mixed guidance overshadows strong Q4 results (SNDK:NASDAQ) - Seeking Alpha",
+        "Sandisk bulls are probably eyeing this number on earnings day: AlphaSpace stat of the evening - Yahoo Finance"
       ],
       "social": {
         "count": 30,
-        "bullish": 10,
-        "bearish": 3,
+        "bullish": 9,
+        "bearish": 1,
         "samples": [
-          "$SNDK on sale today only",
-          "$SNDK opportune time for shorts to cover and longs to add. This will be above $1500 within a week"
+          "$SNDK don't get too greedy. cover your short. most of the forothiness has been expelled.",
+          "$SNDK absolute BS"
         ]
       }
     },
     {
       "rank": 3,
+      "ticker": "SPCX",
+      "name": "SpaceX",
+      "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
+      "display_name": "Space Exploration Technologies Corp",
+      "name_match": "verified",
+      "mentions": 459,
+      "mentions_24h_ago": 553,
+      "mention_change_pct": -17.0,
+      "upvotes": 2393,
+      "cik": "0001181412",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-08-04",
+        "days_ago": 1,
+        "fresh": true,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001628280-26-052535",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-08-04",
+          "days_ago": 1,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001628280-26-052535",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. reported significant cash and marketable securities, with ongoing investments in space, connectivity, and AI segments."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-08-04",
+          "days_ago": 1,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001628280-26-052515",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/0001628280-26-052515-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. announced its financial results for the quarter ended June 30, 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-26",
+          "days_ago": 40,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001628280-26-045763",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026045763/0001628280-26-045763-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. issued $23 billion in senior unsecured notes with varying interest rates and maturity dates."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-23",
+          "days_ago": 43,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001628280-26-044955",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026044955/0001628280-26-044955-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. priced a $23 billion senior unsecured notes offering to repay debt and for general corporate purposes."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-22",
+          "days_ago": 44,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001628280-26-044489",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026044489/0001628280-26-044489-index.htm",
+          "ai_summary": "SpaceX has $100.8 billion in cash and cash equivalents as of June 19, 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-17",
+          "days_ago": 49,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001628280-26-043865",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043865/0001628280-26-043865-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. appointed Roelof Botha to its Board of Directors and Audit Committee."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-16",
+          "days_ago": 50,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; Unregistered share sale",
+          "accession": "0001628280-26-043411",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043411/0001628280-26-043411-index.htm",
+          "ai_summary": "Space Exploration Technologies announced its subsidiary X67 will merge with Anysphere, making Anysphere a wholly owned subsidiary and converting Cursor shares into SpaceX stock at a $60 billion implied value, with the deal expected to close in Q3 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-15",
+          "days_ago": 51,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Unregistered share sale; Executive / board change; Bylaw / charter change; Other material update",
+          "accession": "0001628280-26-043288",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043288/0001628280-26-043288-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. completed its IPO on June 15, 2026, selling 638,888,888 Class A shares at $135 each."
+        },
+        {
+          "form": "424B4",
+          "date": "2026-06-12",
+          "days_ago": 54,
+          "fresh": false,
+          "desc": "424B4",
+          "summary": "IPO pricing prospectus",
+          "accession": "0001628280-26-042639",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/0001628280-26-042639-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. is offering 555,555,555 shares of Class A common stock at $135.00 per share."
+        },
+        {
+          "form": "S-1/A",
+          "date": "2026-06-03",
+          "days_ago": 63,
+          "fresh": false,
+          "desc": "S-1/A",
+          "summary": "IPO registration (amended)",
+          "accession": "0001628280-26-040364",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. (SpaceX) is filing an S-1/A to register 555,555,555 shares of Class A common stock for its initial public offering at an expected price of $135.00 per share."
+        },
+        {
+          "form": "S-1/A",
+          "date": "2026-06-01",
+          "days_ago": 65,
+          "fresh": false,
+          "desc": "S-1/A",
+          "summary": "IPO registration (amended)",
+          "accession": "0001628280-26-039276",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/0001628280-26-039276-index.htm",
+          "ai_summary": "Space Exploration Technologies Corp. is filing an S-1/A to register shares of Class A common stock for its initial public offering."
+        },
+        {
+          "form": "S-1",
+          "date": "2026-05-20",
+          "days_ago": 77,
+          "fresh": false,
+          "desc": "S-1",
+          "summary": "IPO / new securities",
+          "accession": "0001628280-26-036936",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
+        }
+      ],
+      "tickers": [
+        "SPCX"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 108.27,
+        "prev_close": 125.33,
+        "change_pct": -13.61,
+        "currency": "USD",
+        "spark": [
+          112.2,
+          108.37,
+          114.53,
+          125.33,
+          108.27
+        ],
+        "history": [
+          [
+            "2026-06-12",
+            160.95
+          ],
+          [
+            "2026-06-15",
+            192.5
+          ],
+          [
+            "2026-06-16",
+            211.39
+          ],
+          [
+            "2026-06-17",
+            191.82
+          ],
+          [
+            "2026-06-18",
+            185.0
+          ],
+          [
+            "2026-06-22",
+            154.6
+          ],
+          [
+            "2026-06-23",
+            156.11
+          ],
+          [
+            "2026-06-24",
+            154.54
+          ],
+          [
+            "2026-06-25",
+            153.0
+          ],
+          [
+            "2026-06-26",
+            153.23
+          ],
+          [
+            "2026-06-29",
+            164.19
+          ],
+          [
+            "2026-06-30",
+            170.86
+          ],
+          [
+            "2026-07-01",
+            157.54
+          ],
+          [
+            "2026-07-02",
+            162.0
+          ],
+          [
+            "2026-07-06",
+            160.42
+          ],
+          [
+            "2026-07-07",
+            149.47
+          ],
+          [
+            "2026-07-08",
+            148.3
+          ],
+          [
+            "2026-07-09",
+            152.16
+          ],
+          [
+            "2026-07-10",
+            145.3
+          ],
+          [
+            "2026-07-13",
+            139.14
+          ],
+          [
+            "2026-07-14",
+            136.08
+          ],
+          [
+            "2026-07-15",
+            135.27
+          ],
+          [
+            "2026-07-16",
+            131.11
+          ],
+          [
+            "2026-07-17",
+            123.99
+          ],
+          [
+            "2026-07-20",
+            119.85
+          ],
+          [
+            "2026-07-21",
+            123.54
+          ],
+          [
+            "2026-07-22",
+            115.26
+          ],
+          [
+            "2026-07-23",
+            118.24
+          ],
+          [
+            "2026-07-24",
+            115.07
+          ],
+          [
+            "2026-07-27",
+            113.5
+          ],
+          [
+            "2026-07-28",
+            116.41
+          ],
+          [
+            "2026-07-29",
+            112.55
+          ],
+          [
+            "2026-07-30",
+            112.2
+          ],
+          [
+            "2026-07-31",
+            108.37
+          ],
+          [
+            "2026-08-03",
+            114.53
+          ],
+          [
+            "2026-08-04",
+            125.33
+          ],
+          [
+            "2026-08-05",
+            108.27
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-08-05"
+      },
+      "is_fund": false,
+      "news": [
+        "SpaceX earnings takeaways: Soaring AI costs outweigh revenue beat in first report since IPO - CNBC",
+        "Analysts revise SpaceX stock price target - Finbold",
+        "SpaceX moon crash is a perfect metaphor for rocket maker’s share price, analysts say - CNBC",
+        "SpaceX Stock Drops After Weak Q2 Financial Results - Benzinga"
+      ],
+      "social": {
+        "count": 30,
+        "bullish": 8,
+        "bearish": 5,
+        "samples": [
+          "$SPCX Was $225, soon to be below $69.420",
+          "$SOUN is the squeeze $SPCX bulls thought they’d get. Time to go!"
+        ]
+      }
+    },
+    {
+      "rank": 4,
       "ticker": "AMD",
       "name": "AMD",
       "sec_name": "ADVANCED MICRO DEVICES INC",
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
-      "mentions": 605,
-      "mentions_24h_ago": 750,
-      "mention_change_pct": -19.3,
-      "upvotes": 3457,
+      "mentions": 448,
+      "mentions_24h_ago": 1017,
+      "mention_change_pct": -55.9,
+      "upvotes": 1434,
       "cik": "0000002488",
       "filing": {
         "form": "10-Q",
@@ -691,360 +1033,18 @@
       },
       "is_fund": false,
       "news": [
-        "AMD's revenue climbs 50% and data center sales doubled, but the stock is down - cnbc.com",
+        "AMD's revenue climbs 50% and data center sales doubled, but the stock is down - CNBC",
         "Advanced Micro Devices vs. Intel: Which Technology Stock Is a Better Buy in 2026? - The Motley Fool",
         "AMD: The Reset Was Overdue (NASDAQ:AMD) - Seeking Alpha",
-        "AMD Falls As Musk Picks Nvidia: BofA Says Ignore The Noise - Advanced Micro Devices (NASDAQ:AMD), NVIDIA - Benzinga"
+        "Advanced Micro Devices Inc Stock (AMD) Moved Down by 4.33% on Aug 5: What Investors Need To Know - TradingKey"
       ],
       "social": {
         "count": 30,
-        "bullish": 10,
-        "bearish": 4,
+        "bullish": 12,
+        "bearish": 3,
         "samples": [
-          "$AMD hadn't looked at MACD in awhile...",
-          "$APP get in while you can….. recovering FAST…. 450+ tomorrow!! 🍀🍀🍀🍀🚀🚀🚀🚀 $SPY $NVDA $AMD"
-        ]
-      }
-    },
-    {
-      "rank": 4,
-      "ticker": "SPCX",
-      "name": "SpaceX",
-      "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
-      "display_name": "Space Exploration Technologies Corp",
-      "name_match": "verified",
-      "mentions": 486,
-      "mentions_24h_ago": 437,
-      "mention_change_pct": 11.2,
-      "upvotes": 2459,
-      "cik": "0001181412",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-08-04",
-        "days_ago": 1,
-        "fresh": true,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001628280-26-052535",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-08-04",
-          "days_ago": 1,
-          "fresh": true,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001628280-26-052535",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. reported significant cash and marketable securities, with ongoing investments in space, connectivity, and AI segments."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-08-04",
-          "days_ago": 1,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001628280-26-052515",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/0001628280-26-052515-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. announced its financial results for the quarter ended June 30, 2026."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-26",
-          "days_ago": 40,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001628280-26-045763",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026045763/0001628280-26-045763-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. issued $23 billion in senior unsecured notes with varying interest rates and maturity dates."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-23",
-          "days_ago": 43,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001628280-26-044955",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026044955/0001628280-26-044955-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. priced a $23 billion senior unsecured notes offering to repay debt and for general corporate purposes."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-22",
-          "days_ago": 44,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001628280-26-044489",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026044489/0001628280-26-044489-index.htm",
-          "ai_summary": "SpaceX has $100.8 billion in cash and cash equivalents as of June 19, 2026."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-17",
-          "days_ago": 49,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001628280-26-043865",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043865/0001628280-26-043865-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. appointed Roelof Botha to its Board of Directors and Audit Committee."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-16",
-          "days_ago": 50,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; Unregistered share sale",
-          "accession": "0001628280-26-043411",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043411/0001628280-26-043411-index.htm",
-          "ai_summary": "Space Exploration Technologies announced its subsidiary X67 will merge with Anysphere, making Anysphere a wholly owned subsidiary and converting Cursor shares into SpaceX stock at a $60 billion implied value, with the deal expected to close in Q3 2026."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-15",
-          "days_ago": 51,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Unregistered share sale; Executive / board change; Bylaw / charter change; Other material update",
-          "accession": "0001628280-26-043288",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043288/0001628280-26-043288-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. completed its IPO on June 15, 2026, selling 638,888,888 Class A shares at $135 each."
-        },
-        {
-          "form": "424B4",
-          "date": "2026-06-12",
-          "days_ago": 54,
-          "fresh": false,
-          "desc": "424B4",
-          "summary": "IPO pricing prospectus",
-          "accession": "0001628280-26-042639",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/0001628280-26-042639-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. is offering 555,555,555 shares of Class A common stock at $135.00 per share."
-        },
-        {
-          "form": "S-1/A",
-          "date": "2026-06-03",
-          "days_ago": 63,
-          "fresh": false,
-          "desc": "S-1/A",
-          "summary": "IPO registration (amended)",
-          "accession": "0001628280-26-040364",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/0001628280-26-040364-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. (SpaceX) is filing an S-1/A to register 555,555,555 shares of Class A common stock for its initial public offering at an expected price of $135.00 per share."
-        },
-        {
-          "form": "S-1/A",
-          "date": "2026-06-01",
-          "days_ago": 65,
-          "fresh": false,
-          "desc": "S-1/A",
-          "summary": "IPO registration (amended)",
-          "accession": "0001628280-26-039276",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/0001628280-26-039276-index.htm",
-          "ai_summary": "Space Exploration Technologies Corp. is filing an S-1/A to register shares of Class A common stock for its initial public offering."
-        },
-        {
-          "form": "S-1",
-          "date": "2026-05-20",
-          "days_ago": 77,
-          "fresh": false,
-          "desc": "S-1",
-          "summary": "IPO / new securities",
-          "accession": "0001628280-26-036936",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/0001628280-26-036936-index.htm"
-        }
-      ],
-      "tickers": [
-        "SPCX"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 108.27,
-        "prev_close": 125.33,
-        "change_pct": -13.61,
-        "currency": "USD",
-        "spark": [
-          112.2,
-          108.37,
-          114.53,
-          125.33,
-          108.27
-        ],
-        "history": [
-          [
-            "2026-06-12",
-            160.95
-          ],
-          [
-            "2026-06-15",
-            192.5
-          ],
-          [
-            "2026-06-16",
-            211.39
-          ],
-          [
-            "2026-06-17",
-            191.82
-          ],
-          [
-            "2026-06-18",
-            185.0
-          ],
-          [
-            "2026-06-22",
-            154.6
-          ],
-          [
-            "2026-06-23",
-            156.11
-          ],
-          [
-            "2026-06-24",
-            154.54
-          ],
-          [
-            "2026-06-25",
-            153.0
-          ],
-          [
-            "2026-06-26",
-            153.23
-          ],
-          [
-            "2026-06-29",
-            164.19
-          ],
-          [
-            "2026-06-30",
-            170.86
-          ],
-          [
-            "2026-07-01",
-            157.54
-          ],
-          [
-            "2026-07-02",
-            162.0
-          ],
-          [
-            "2026-07-06",
-            160.42
-          ],
-          [
-            "2026-07-07",
-            149.47
-          ],
-          [
-            "2026-07-08",
-            148.3
-          ],
-          [
-            "2026-07-09",
-            152.16
-          ],
-          [
-            "2026-07-10",
-            145.3
-          ],
-          [
-            "2026-07-13",
-            139.14
-          ],
-          [
-            "2026-07-14",
-            136.08
-          ],
-          [
-            "2026-07-15",
-            135.27
-          ],
-          [
-            "2026-07-16",
-            131.11
-          ],
-          [
-            "2026-07-17",
-            123.99
-          ],
-          [
-            "2026-07-20",
-            119.85
-          ],
-          [
-            "2026-07-21",
-            123.54
-          ],
-          [
-            "2026-07-22",
-            115.26
-          ],
-          [
-            "2026-07-23",
-            118.24
-          ],
-          [
-            "2026-07-24",
-            115.07
-          ],
-          [
-            "2026-07-27",
-            113.5
-          ],
-          [
-            "2026-07-28",
-            116.41
-          ],
-          [
-            "2026-07-29",
-            112.55
-          ],
-          [
-            "2026-07-30",
-            112.2
-          ],
-          [
-            "2026-07-31",
-            108.37
-          ],
-          [
-            "2026-08-03",
-            114.53
-          ],
-          [
-            "2026-08-04",
-            125.33
-          ],
-          [
-            "2026-08-05",
-            108.27
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-08-05"
-      },
-      "is_fund": false,
-      "news": [
-        "SpaceX earnings takeaways: Soaring AI costs outweigh revenue beat in first report since IPO - cnbc.com",
-        "Analysts revise SpaceX stock price target - Finbold",
-        "Why SpaceX stock may keep tanking if history is any indication - Yahoo Finance",
-        "SpaceX Stock Drops After Weak Q2 Financial Results - Benzinga"
-      ],
-      "social": {
-        "count": 30,
-        "bullish": 8,
-        "bearish": 10,
-        "samples": [
-          "$SPCX come on space x employees where is your loyalty 🥺you will look back ten years from now and say why did I sell my s",
-          "$SPCX"
+          "$WDC $NVDA $AMD People seemed to forget about SoundHound AI until today! 🚀 $SOUN",
+          "$AMD Similar Charts"
         ]
       }
     },
@@ -1055,10 +1055,10 @@
       "sec_name": "WESTERN DIGITAL CORP",
       "display_name": "Western Digital Corp",
       "name_match": "verified",
-      "mentions": 136,
-      "mentions_24h_ago": 21,
-      "mention_change_pct": 547.6,
-      "upvotes": 345,
+      "mentions": 157,
+      "mentions_24h_ago": 25,
+      "mention_change_pct": 528.0,
+      "upvotes": 406,
       "cik": "0000106040",
       "filing": {
         "form": "8-K",
@@ -1401,32 +1401,32 @@
       },
       "is_fund": false,
       "news": [
-        "Western Digital Corp. stock underperforms Wednesday when compared to competitors - MarketWatch",
         "Western Digital Beats Q4 Estimates, Stock Falls on Guidance - Benzinga",
-        "Is Western Digital Stock a Compelling Buy Ahead of Q4 Earnings Release? - Yahoo Finance",
-        "Is Western Digital Corp (WDC) Overvalued After Q4 Earnings Beat? - GuruFocus"
+        "Western Digital Corp. stock underperforms Wednesday when compared to competitors - MarketWatch",
+        "Western Digital Corp Stock (WDC) Closed Down by 5.10% on Aug 5: Facts Behind the Movement - TradingKey",
+        "Is Western Digital Stock a Compelling Buy Ahead of Q4 Earnings Release? - Yahoo Finance"
       ],
       "social": {
         "count": 30,
-        "bullish": 6,
-        "bearish": 6,
+        "bullish": 10,
+        "bearish": 4,
         "samples": [
-          "$WDC",
-          "$MU $QQQ $SNDK $SPY $WDC Fake News"
+          "$WDC $NVDA $AMD People seemed to forget about SoundHound AI until today! 🚀 $SOUN",
+          "$WDC no more pumping for memory socks?"
         ]
       }
     },
     {
-      "rank": 9,
+      "rank": 10,
       "ticker": "DTE",
       "name": "DTE Energy",
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 128,
-      "mentions_24h_ago": 135,
-      "mention_change_pct": -5.2,
-      "upvotes": 584,
+      "mentions": 124,
+      "mentions_24h_ago": 134,
+      "mention_change_pct": -7.5,
+      "upvotes": 589,
       "cik": "0000936340",
       "filing": {
         "form": "8-K",
@@ -1818,7 +1818,7 @@
         "DTE|DTE Energy Co|Price:141.925|Chg%:+0.055 - TradingKey",
         "DTE Energy Co. stock underperforms Thursday when compared to competitors - MarketWatch",
         "DTE Energy Company 2026 Q2 - Results - Earnings Call Presentation (NYSE:DTE) 2026-07-31 - Seeking Alpha",
-        "DTE Energy (DTE) Stock Rises on Q2 2026 Earnings - Quiver Quantitative"
+        "Is DTE Energy Company (DTE) a High Growth Utility Stock to Buy on Data Center’s Opportunities? - Yahoo Finance"
       ],
       "social": {
         "count": 30,
@@ -1837,10 +1837,10 @@
       "sec_name": "AppLovin Corp",
       "display_name": "AppLovin Corp",
       "name_match": "verified",
-      "mentions": 87,
-      "mentions_24h_ago": 4,
-      "mention_change_pct": 2075.0,
-      "upvotes": 165,
+      "mentions": 102,
+      "mentions_24h_ago": 6,
+      "mention_change_pct": 1600.0,
+      "upvotes": 216,
       "cik": "0001751008",
       "filing": {
         "form": "10-Q",
@@ -2164,16 +2164,16 @@
       "news": [
         "AppLovin Stock Tumbles on Mixed Q2 Results - Benzinga",
         "AppLovin (NASDAQ:APP) Misses Q2 CY2026 Revenue Estimates, Stock Drops 21% - Yahoo Finance",
-        "AppLovin stock plunges 20% as top-line miss and soft guidance overshadow profit - Investing.com",
-        "AppLovin (APP) Stock Jumps Over 3% After Hours: Here's Why It Is Trending - TradingView"
+        "AppLovin Q2 2026 Earnings Preview: The E-Commerce Revenue Engine Is Revving Up - Seeking Alpha",
+        "AppLovin (APP) Stock Still Looks Cheap On Its Huge Three Year Run - Yahoo Finance"
       ],
       "social": {
         "count": 30,
-        "bullish": 9,
-        "bearish": 2,
+        "bullish": 6,
+        "bearish": 3,
         "samples": [
-          "$APP get in while you can….. recovering FAST…. 450+ tomorrow!! 🍀🍀🍀🍀🚀🚀🚀🚀 $SPY $NVDA $AMD",
-          "$APP oh hey $4.X above 340 pyb level🤭"
+          "EARNINGS BLOODBATH Post-earnings losers today: $FLNC -24% $HUBS -19% $FIG -17% $APP -16% $DAVE -16% Current prices may c",
+          "$APP Fundamentally, this was still a very strong quarter: Revenue grew 53% YoY to $1.92B. EPS came in at $3.76, roughly "
         ]
       }
     },
@@ -2184,10 +2184,10 @@
       "sec_name": "MICROSOFT CORP",
       "display_name": "Microsoft Corp",
       "name_match": "verified",
-      "mentions": 86,
-      "mentions_24h_ago": 178,
-      "mention_change_pct": -51.7,
-      "upvotes": 778,
+      "mentions": 87,
+      "mentions_24h_ago": 167,
+      "mention_change_pct": -47.9,
+      "upvotes": 765,
       "cik": "0000789019",
       "filing": {
         "form": "10-K",
@@ -2521,32 +2521,32 @@
       },
       "is_fund": false,
       "news": [
-        "678 Billion Reasons to Invest in Microsoft Stock - Yahoo Finance",
         "Microsoft: The Turnaround Is Finally Accelerating (NASDAQ:MSFT) - Seeking Alpha",
+        "Microsoft to pay dividends next month; Here’s how much 100 MSFT shares will earn - Finbold",
         "Microsoft Corp Stock (MSFT) Moved Up by 5.46% on Aug 3: A Full Analysis - TradingKey",
-        "Microsoft: AI Investment Is Driven By Orders Already In Hand (NASDAQ:MSFT) - Seeking Alpha"
+        "Goldman Says Microsoft Shows Wall Street How AI Bet Pays Off - bloomberg.com"
       ],
       "social": {
         "count": 30,
-        "bullish": 7,
-        "bearish": 6,
+        "bullish": 15,
+        "bearish": 5,
         "samples": [
-          "$MSFT probably could retest $470 or below .. but long term super bullish",
-          "$MSFT is the only MAG7 worth entering right now. Very undervalued compared to even NVDA, who is 2nd on the list. If the "
+          "$MSFT CMO sale is planned under a Rule 10b5-1 trading plan, which pre-schedules future sales before the insider has mate",
+          "$EOSE The most bullish near-term (12-month) Wall Street analyst price target for EOSE is $11 from Needham (Buy rating, i"
         ]
       }
     },
     {
-      "rank": 14,
+      "rank": 15,
       "ticker": "PLTR",
       "name": "Palantir",
       "sec_name": "Palantir Technologies Inc.",
       "display_name": "Palantir Technologies Inc.",
       "name_match": "verified",
-      "mentions": 81,
-      "mentions_24h_ago": 333,
-      "mention_change_pct": -75.7,
-      "upvotes": 948,
+      "mentions": 69,
+      "mentions_24h_ago": 290,
+      "mention_change_pct": -76.2,
+      "upvotes": 758,
       "cik": "0001321655",
       "filing": {
         "form": "10-Q",
@@ -2870,31 +2870,31 @@
       "is_fund": false,
       "news": [
         "Palantir Stock Soars 30% After Blowout Earnings - Investopedia",
-        "Here’s How Much Palantir Stock Is Expected to Move After Earnings - Investopedia",
+        "Markets News, Aug. 4, 2026: S&P 500, Dow Close at Records as Palantir, Caterpillar Shares Jump; Oil Drops on US-Iran Deal Optimism - Investopedia",
         "What's Going on With Palantir Stock on Wednesday? - Benzinga",
         "Palantir Stock Gained 21.6% in a Month. Can the Rally Keep Going? - Yahoo Finance UK"
       ],
       "social": {
         "count": 30,
-        "bullish": 11,
-        "bearish": 2,
+        "bullish": 6,
+        "bearish": 5,
         "samples": [
-          "$PLTR is the only reason Ukraine 🇺🇦 is not Russia already!!! $SPY Japan by Friday!!! https://youtu.be/KbwQ8YkkIUk?si=Gy6",
-          "$PLTR gets Japan Ai Defense Contract TODAY https://sih-st-charts.stocktwits-cdn.com/production/original_547234897.png"
+          "$PLTR 150 by EOD tomorrow would be nice for my short calls -:)",
+          "$PLTR 200 by the end of the month if not in a week or two."
         ]
       }
     },
     {
-      "rank": 15,
+      "rank": 16,
       "ticker": "AAPL",
       "name": "Apple",
       "sec_name": "Apple Inc.",
       "display_name": "Apple Inc.",
       "name_match": "verified",
-      "mentions": 62,
-      "mentions_24h_ago": 57,
-      "mention_change_pct": 8.8,
-      "upvotes": 121,
+      "mentions": 67,
+      "mentions_24h_ago": 49,
+      "mention_change_pct": 36.7,
+      "upvotes": 136,
       "cik": "0000320193",
       "filing": {
         "form": "10-Q",
@@ -3213,11 +3213,11 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 9,
-        "bearish": 2,
+        "bullish": 8,
+        "bearish": 4,
         "samples": [
-          "$AAPL Iphone Ultra leaked. Titanium body. Loading up. https://x.com/i/status/2084928441208705110 $SPY $QQQ $GOOGL",
-          "@Chrisfarmer21 being conservative I see. Ten is a good number. I see $AAPL $NVDA or maybe $MO numbers in the future."
+          "$AAPL $SPY great ⏰ to be a rookie 🤣",
+          "$AAPL The upcoming iPhone 18 lineup is highly anticipated to be unveiled on Wednesday, September 9, 2026. Pre-orders are"
         ]
       }
     },
@@ -3228,9 +3228,9 @@
       "sec_name": "AMAZON COM INC",
       "display_name": "Amazon Com Inc",
       "name_match": "verified",
-      "mentions": 55,
-      "mentions_24h_ago": 66,
-      "mention_change_pct": -16.7,
+      "mentions": 51,
+      "mentions_24h_ago": 62,
+      "mention_change_pct": -17.7,
       "upvotes": 102,
       "cik": "0001018724",
       "filing": {
@@ -3642,18 +3642,18 @@
       },
       "is_fund": false,
       "news": [
-        "Jeff Bezos just filed to sell $4 billion in Amazon. The shares are falling - cnbc.com",
-        "Amazon Joins Elite List of Stocks to Top $3 Trillion in Value - Bloomberg.com",
+        "Jeff Bezos just filed to sell $4 billion in Amazon. The shares are falling - CNBC",
+        "Amazon Joins Elite List of Stocks to Top $3 Trillion in Value - bloomberg.com",
         "Amazon stock hits $3 trillion market cap on Q2 cloud earnings - Yahoo Finance",
         "Amazon Stock Rally Cools After Hours as Jeff Bezos Plans Sale - Amazon.com (NASDAQ:AMZN) - Benzinga"
       ],
       "social": {
         "count": 30,
-        "bullish": 5,
-        "bearish": 6,
+        "bullish": 8,
+        "bearish": 2,
         "samples": [
-          "$QQQ $SPY Amazon’s Jeff Bezos sells $346.5 million worth of $AMZN shares.😳😳",
-          "$AMZN It’s trying but hard to fight against the Bezos Raid !"
+          "Jeff Bezos Unloads $350M Worth Of Amazon Stock In First Stake Sale This Year $AMZN https://stocktwits.com/news/equity/ma",
+          "$SOUN $AMZN $META $AMD looking scary for bears"
         ]
       }
     },
@@ -3664,10 +3664,10 @@
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
-      "mentions": 46,
-      "mentions_24h_ago": 56,
-      "mention_change_pct": -17.9,
-      "upvotes": 83,
+      "mentions": 45,
+      "mentions_24h_ago": 52,
+      "mention_change_pct": -13.5,
+      "upvotes": 85,
       "cik": "0001326801",
       "filing": {
         "form": "10-Q",
@@ -3991,31 +3991,31 @@
       "is_fund": false,
       "news": [
         "Mark Zuckerberg sends a strong message to Meta stock investors - thestreet.com",
-        "Meta Q2 earnings recap: Stock tumbles nearly 10% after profits miss Wall Street estimates - Business Insider",
+        "Meta Q2 earnings recap: Stock tumbles nearly 10% after profits miss Wall Street estimates - businessinsider.com",
         "After Earnings, Is Meta Stock a Buy, a Sell, or Fairly Valued? - Morningstar",
         "Meta Platforms Stock Has One Upside Case Big Enough To Matter - Yahoo Finance"
       ],
       "social": {
         "count": 30,
-        "bullish": 8,
-        "bearish": 5,
+        "bullish": 9,
+        "bearish": 2,
         "samples": [
-          "$META",
-          "$MSFT is the only MAG7 worth entering right now. Very undervalued compared to even NVDA, who is 2nd on the list. If the "
+          "$QNC Meta's AI model hacked another company during testing, The Information reports $META",
+          "$QQQ $META $ANTHZZX.P $OPEAZZX.P $SPY"
         ]
       }
     },
     {
-      "rank": 24,
+      "rank": 23,
       "ticker": "RDDT",
       "name": "Reddit",
       "sec_name": "Reddit, Inc.",
       "display_name": "Reddit, Inc.",
       "name_match": "verified",
-      "mentions": 32,
-      "mentions_24h_ago": 58,
-      "mention_change_pct": -44.8,
-      "upvotes": 57,
+      "mentions": 33,
+      "mentions_24h_ago": 59,
+      "mention_change_pct": -44.1,
+      "upvotes": 73,
       "cik": "0001713445",
       "filing": {
         "form": "10-Q",
@@ -4345,25 +4345,25 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 3,
-        "bearish": 9,
+        "bullish": 5,
+        "bearish": 5,
         "samples": [
-          "$RDDT Chart is looking very bearish. Market hates Reddit right now so i wouldn’t be surprised if this goes back to $130/",
-          "$RDDT Puts Paid off 😎"
+          "@sojubear @Padi0612 did i say that? i said u missed $RDDT bounce on friday!",
+          "$RUM $RDDT $GME Taking profits at any level below $20 is just silly. 27 million short shares have no outlet to cover tha"
         ]
       }
     },
     {
-      "rank": 25,
+      "rank": 24,
       "ticker": "AM",
       "name": "Antero Midstream",
       "sec_name": "Antero Midstream Corp",
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
-      "mentions": 31,
+      "mentions": 32,
       "mentions_24h_ago": 25,
-      "mention_change_pct": 24.0,
-      "upvotes": 72,
+      "mention_change_pct": 28.0,
+      "upvotes": 96,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -4710,8 +4710,8 @@
       "news": [
         "Is Antero Midstream Stock Worth Buying Despite Its Premium Valuation? - Yahoo Finance",
         "Antero Midstream Corporation $AM Shares Sold by Amundi - MarketBeat",
-        "Antero Midstream Corp (NYSE:AM) Shows Rare Technical Breakout Setup With Perfect Ratings - ChartMill",
-        "Antero Midstream Announces First Quarter 2026 Financial and Operating Results - PR Newswire"
+        "Price to sales forward of Antero Midstream Corp. – FWB:5711 - TradingView",
+        "Antero Midstream Corp (NYSE:AM) Shows Rare Technical Breakout Setup With Perfect Ratings - ChartMill"
       ],
       "social": {
         "count": 30,
@@ -4724,6 +4724,373 @@
       }
     },
     {
+      "rank": 25,
+      "ticker": "FIG",
+      "name": "Figma",
+      "sec_name": "Figma, Inc.",
+      "display_name": "Figma, Inc.",
+      "name_match": "verified",
+      "mentions": 32,
+      "mentions_24h_ago": 5,
+      "mention_change_pct": 540.0,
+      "upvotes": 84,
+      "cik": "0001579878",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-08-05",
+        "days_ago": 0,
+        "fresh": true,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001628280-26-053348",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053348/fig-20260630.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053348/0001628280-26-053348-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-08-05",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001628280-26-053348",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053348/0001628280-26-053348-index.htm",
+          "ai_summary": "Figma reported a net loss of $112.2 million for the quarter ended June 30, 2026, compared to net income of $28.2 million in the prior year."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-08-05",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001628280-26-053331",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053331/0001628280-26-053331-index.htm",
+          "ai_summary": "Figma, Inc. announced its financial results for the quarter ended June 30, 2026, via press release on August 5, 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-04",
+          "days_ago": 62,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001628280-26-040792",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026040792/0001628280-26-040792-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-14",
+          "days_ago": 83,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001628280-26-035209",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026035209/0001628280-26-035209-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-14",
+          "days_ago": 83,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001628280-26-035087",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026035087/0001628280-26-035087-index.htm"
+        }
+      ],
+      "tickers": [
+        "FIG"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 28.15,
+        "prev_close": 27.12,
+        "change_pct": 3.8,
+        "currency": "USD",
+        "spark": [
+          23.76,
+          24.32,
+          24.92,
+          27.12,
+          28.15
+        ],
+        "history": [
+          [
+            "2026-05-06",
+            19.29
+          ],
+          [
+            "2026-05-07",
+            20.56
+          ],
+          [
+            "2026-05-08",
+            20.66
+          ],
+          [
+            "2026-05-11",
+            20.05
+          ],
+          [
+            "2026-05-12",
+            19.33
+          ],
+          [
+            "2026-05-13",
+            18.94
+          ],
+          [
+            "2026-05-14",
+            20.24
+          ],
+          [
+            "2026-05-15",
+            22.92
+          ],
+          [
+            "2026-05-18",
+            24.36
+          ],
+          [
+            "2026-05-19",
+            23.27
+          ],
+          [
+            "2026-05-20",
+            22.58
+          ],
+          [
+            "2026-05-21",
+            21.59
+          ],
+          [
+            "2026-05-22",
+            22.71
+          ],
+          [
+            "2026-05-26",
+            21.96
+          ],
+          [
+            "2026-05-27",
+            21.34
+          ],
+          [
+            "2026-05-28",
+            23.46
+          ],
+          [
+            "2026-05-29",
+            25.5
+          ],
+          [
+            "2026-06-01",
+            27.12
+          ],
+          [
+            "2026-06-02",
+            24.29
+          ],
+          [
+            "2026-06-03",
+            22.79
+          ],
+          [
+            "2026-06-04",
+            22.51
+          ],
+          [
+            "2026-06-05",
+            21.75
+          ],
+          [
+            "2026-06-08",
+            21.1
+          ],
+          [
+            "2026-06-09",
+            20.49
+          ],
+          [
+            "2026-06-10",
+            19.79
+          ],
+          [
+            "2026-06-11",
+            19.34
+          ],
+          [
+            "2026-06-12",
+            18.54
+          ],
+          [
+            "2026-06-15",
+            18.51
+          ],
+          [
+            "2026-06-16",
+            17.98
+          ],
+          [
+            "2026-06-17",
+            18.65
+          ],
+          [
+            "2026-06-18",
+            18.88
+          ],
+          [
+            "2026-06-22",
+            19.08
+          ],
+          [
+            "2026-06-23",
+            18.99
+          ],
+          [
+            "2026-06-24",
+            18.64
+          ],
+          [
+            "2026-06-25",
+            16.84
+          ],
+          [
+            "2026-06-26",
+            18.62
+          ],
+          [
+            "2026-06-29",
+            19.08
+          ],
+          [
+            "2026-06-30",
+            18.09
+          ],
+          [
+            "2026-07-01",
+            19.49
+          ],
+          [
+            "2026-07-02",
+            21.34
+          ],
+          [
+            "2026-07-06",
+            21.08
+          ],
+          [
+            "2026-07-07",
+            22.19
+          ],
+          [
+            "2026-07-08",
+            21.67
+          ],
+          [
+            "2026-07-09",
+            22.26
+          ],
+          [
+            "2026-07-10",
+            21.11
+          ],
+          [
+            "2026-07-13",
+            23.65
+          ],
+          [
+            "2026-07-14",
+            23.86
+          ],
+          [
+            "2026-07-15",
+            23.5
+          ],
+          [
+            "2026-07-16",
+            23.41
+          ],
+          [
+            "2026-07-17",
+            23.95
+          ],
+          [
+            "2026-07-20",
+            24.02
+          ],
+          [
+            "2026-07-21",
+            21.93
+          ],
+          [
+            "2026-07-22",
+            21.47
+          ],
+          [
+            "2026-07-23",
+            20.0
+          ],
+          [
+            "2026-07-24",
+            21.12
+          ],
+          [
+            "2026-07-27",
+            22.94
+          ],
+          [
+            "2026-07-28",
+            24.38
+          ],
+          [
+            "2026-07-29",
+            24.76
+          ],
+          [
+            "2026-07-30",
+            23.76
+          ],
+          [
+            "2026-07-31",
+            24.32
+          ],
+          [
+            "2026-08-03",
+            24.92
+          ],
+          [
+            "2026-08-04",
+            27.12
+          ],
+          [
+            "2026-08-05",
+            28.15
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-08-05"
+      },
+      "is_fund": false,
+      "news": [
+        "Figma Stock Falls Despite Beat-and-Raise Quarter - Benzinga",
+        "Figma Announces Second Quarter 2026 Financial Results - Business Wire",
+        "Figma Q2 Earnings Preview: Adobe Is A Better Option (NYSE:FIG) - Seeking Alpha",
+        "Figma, Inc. (FIG) Earnings Expected to Grow: Should You Buy? - Yahoo Finance"
+      ],
+      "social": {
+        "count": 30,
+        "bullish": 5,
+        "bearish": 8,
+        "samples": [
+          "$FIG i expect analysts upgrades",
+          "EARNINGS BLOODBATH Post-earnings losers today: $FLNC -24% $HUBS -19% $FIG -17% $APP -16% $DAVE -16% Current prices may c"
+        ]
+      }
+    },
+    {
       "rank": 26,
       "ticker": "SHOP",
       "name": "Shopify",
@@ -4731,9 +5098,9 @@
       "display_name": "Shopify Inc.",
       "name_match": "verified",
       "mentions": 29,
-      "mentions_24h_ago": 8,
-      "mention_change_pct": 262.5,
-      "upvotes": 75,
+      "mentions_24h_ago": 7,
+      "mention_change_pct": 314.3,
+      "upvotes": 69,
       "cik": "0001594805",
       "filing": {
         "form": "10-Q",
@@ -5085,423 +5452,45 @@
       },
       "is_fund": false,
       "news": [
-        "Shopify Q2 2026 earnings beat revenue estimates, stock surges - Yahoo Finance",
+        "SHOP Stock Soars Toward Best Single-Day Gain Since 2015 After ‘Monster Quarter’ - Yahoo Finance",
         "Shopify skyrockets after posting +30% revenue and GMV growth (SHOP:NASDAQ) - Seeking Alpha",
-        "Shopify’s stock heads for best day in a year after the company ‘left no doubt’ about its growth trajectory - MarketWatch",
-        "Shopify Shares Soar as Revenue Outlook Beats Estimates - The Business of Fashion"
+        "Shopify Shares Soar as Revenue Outlook Beats Estimates - The Business of Fashion",
+        "Shopify’s stock heads for best day in a year after the company ‘left no doubt’ about its growth trajectory - MarketWatch"
       ],
       "social": {
         "count": 30,
-        "bullish": 10,
-        "bearish": 4,
+        "bullish": 11,
+        "bearish": 3,
         "samples": [
-          "$SHOP They can afford to run it up 17% in one day because most of the bag holders are at $150 - yes, I remember this sto",
-          "$SHOP big day tomorrow and Friday. Should see some good upgrades and future potential! Really hope we get to ATH and blo"
-        ]
-      }
-    },
-    {
-      "rank": 27,
-      "ticker": "FIG",
-      "name": "Figma",
-      "sec_name": "Figma, Inc.",
-      "display_name": "Figma, Inc.",
-      "name_match": "verified",
-      "mentions": 29,
-      "mentions_24h_ago": 6,
-      "mention_change_pct": 383.3,
-      "upvotes": 53,
-      "cik": "0001579878",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-08-05",
-        "days_ago": 0,
-        "fresh": true,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001628280-26-053348",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053348/fig-20260630.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053348/0001628280-26-053348-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-08-05",
-          "days_ago": 0,
-          "fresh": true,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001628280-26-053348",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053348/0001628280-26-053348-index.htm",
-          "ai_summary": "Figma reported a net loss of $112.2 million for the quarter ended June 30, 2026, compared to net income of $28.2 million in the prior year."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-08-05",
-          "days_ago": 0,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001628280-26-053331",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026053331/0001628280-26-053331-index.htm",
-          "ai_summary": "Figma, Inc. announced its financial results for the quarter ended June 30, 2026, via press release on August 5, 2026."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-04",
-          "days_ago": 62,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001628280-26-040792",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026040792/0001628280-26-040792-index.htm"
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-14",
-          "days_ago": 83,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001628280-26-035209",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026035209/0001628280-26-035209-index.htm"
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-14",
-          "days_ago": 83,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001628280-26-035087",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1579878/000162828026035087/0001628280-26-035087-index.htm"
-        }
-      ],
-      "tickers": [
-        "FIG"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 28.15,
-        "prev_close": 27.12,
-        "change_pct": 3.8,
-        "currency": "USD",
-        "spark": [
-          23.76,
-          24.32,
-          24.92,
-          27.12,
-          28.15
-        ],
-        "history": [
-          [
-            "2026-05-06",
-            19.29
-          ],
-          [
-            "2026-05-07",
-            20.56
-          ],
-          [
-            "2026-05-08",
-            20.66
-          ],
-          [
-            "2026-05-11",
-            20.05
-          ],
-          [
-            "2026-05-12",
-            19.33
-          ],
-          [
-            "2026-05-13",
-            18.94
-          ],
-          [
-            "2026-05-14",
-            20.24
-          ],
-          [
-            "2026-05-15",
-            22.92
-          ],
-          [
-            "2026-05-18",
-            24.36
-          ],
-          [
-            "2026-05-19",
-            23.27
-          ],
-          [
-            "2026-05-20",
-            22.58
-          ],
-          [
-            "2026-05-21",
-            21.59
-          ],
-          [
-            "2026-05-22",
-            22.71
-          ],
-          [
-            "2026-05-26",
-            21.96
-          ],
-          [
-            "2026-05-27",
-            21.34
-          ],
-          [
-            "2026-05-28",
-            23.46
-          ],
-          [
-            "2026-05-29",
-            25.5
-          ],
-          [
-            "2026-06-01",
-            27.12
-          ],
-          [
-            "2026-06-02",
-            24.29
-          ],
-          [
-            "2026-06-03",
-            22.79
-          ],
-          [
-            "2026-06-04",
-            22.51
-          ],
-          [
-            "2026-06-05",
-            21.75
-          ],
-          [
-            "2026-06-08",
-            21.1
-          ],
-          [
-            "2026-06-09",
-            20.49
-          ],
-          [
-            "2026-06-10",
-            19.79
-          ],
-          [
-            "2026-06-11",
-            19.34
-          ],
-          [
-            "2026-06-12",
-            18.54
-          ],
-          [
-            "2026-06-15",
-            18.51
-          ],
-          [
-            "2026-06-16",
-            17.98
-          ],
-          [
-            "2026-06-17",
-            18.65
-          ],
-          [
-            "2026-06-18",
-            18.88
-          ],
-          [
-            "2026-06-22",
-            19.08
-          ],
-          [
-            "2026-06-23",
-            18.99
-          ],
-          [
-            "2026-06-24",
-            18.64
-          ],
-          [
-            "2026-06-25",
-            16.84
-          ],
-          [
-            "2026-06-26",
-            18.62
-          ],
-          [
-            "2026-06-29",
-            19.08
-          ],
-          [
-            "2026-06-30",
-            18.09
-          ],
-          [
-            "2026-07-01",
-            19.49
-          ],
-          [
-            "2026-07-02",
-            21.34
-          ],
-          [
-            "2026-07-06",
-            21.08
-          ],
-          [
-            "2026-07-07",
-            22.19
-          ],
-          [
-            "2026-07-08",
-            21.67
-          ],
-          [
-            "2026-07-09",
-            22.26
-          ],
-          [
-            "2026-07-10",
-            21.11
-          ],
-          [
-            "2026-07-13",
-            23.65
-          ],
-          [
-            "2026-07-14",
-            23.86
-          ],
-          [
-            "2026-07-15",
-            23.5
-          ],
-          [
-            "2026-07-16",
-            23.41
-          ],
-          [
-            "2026-07-17",
-            23.95
-          ],
-          [
-            "2026-07-20",
-            24.02
-          ],
-          [
-            "2026-07-21",
-            21.93
-          ],
-          [
-            "2026-07-22",
-            21.47
-          ],
-          [
-            "2026-07-23",
-            20.0
-          ],
-          [
-            "2026-07-24",
-            21.12
-          ],
-          [
-            "2026-07-27",
-            22.94
-          ],
-          [
-            "2026-07-28",
-            24.38
-          ],
-          [
-            "2026-07-29",
-            24.76
-          ],
-          [
-            "2026-07-30",
-            23.76
-          ],
-          [
-            "2026-07-31",
-            24.32
-          ],
-          [
-            "2026-08-03",
-            24.92
-          ],
-          [
-            "2026-08-04",
-            27.12
-          ],
-          [
-            "2026-08-05",
-            28.15
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-08-05"
-      },
-      "is_fund": false,
-      "news": [
-        "Figma Announces Second Quarter 2026 Financial Results - businesswire.com",
-        "Figma Q2 Earnings Preview: Adobe Is A Better Option (NYSE:FIG) - Seeking Alpha",
-        "Figma, Inc. (FIG) Earnings Expected to Grow: Should You Buy? - Yahoo Finance",
-        "Figma, Inc. (FIG) CTO withholds 61,962 shares to settle RSU tax liability - Stock Titan"
-      ],
-      "social": {
-        "count": 30,
-        "bullish": 9,
-        "bearish": 6,
-        "samples": [
-          "$FIG it will go back to 35$",
-          "$FIG"
+          "$SHOP did the @stockpivot dude delete his 54$ PT post ? 🤡 what happened he stopped probably posting on this thread , mus",
+          "$SHOP $SOUN $EBAY great outlook"
         ]
       }
     },
     {
       "rank": 28,
-      "ticker": "YOU",
-      "name": "CLEAR Secure",
-      "sec_name": "Clear Secure, Inc.",
-      "display_name": "Clear Secure, Inc.",
+      "ticker": "SOUN",
+      "name": "SoundHound AI",
+      "sec_name": "SOUNDHOUND AI, INC.",
+      "display_name": "Soundhound Ai, Inc.",
       "name_match": "verified",
       "mentions": 27,
-      "mentions_24h_ago": 27,
-      "mention_change_pct": 0.0,
-      "upvotes": 83,
-      "cik": "0001856314",
+      "mentions_24h_ago": 2,
+      "mention_change_pct": 1250.0,
+      "upvotes": 46,
+      "cik": "0001840856",
       "filing": {
-        "form": "10-Q",
+        "form": "8-K",
         "date": "2026-08-05",
         "days_ago": 0,
         "fresh": true,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001856314-26-000042",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000042/you-20260630.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000042/0001856314-26-000042-index.htm"
+        "desc": "8-K",
+        "summary": "Earnings released",
+        "accession": "0001840856-26-000019",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1840856/000184085626000019/soun-20260805.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000184085626000019/0001840856-26-000019-index.htm"
       },
       "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-08-05",
-          "days_ago": 0,
-          "fresh": true,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001856314-26-000042",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000042/0001856314-26-000042-index.htm",
-          "ai_summary": "Clear Secure, Inc. reported increased revenue and net income for the six months ending June 30, 2026, compared to the prior year."
-        },
         {
           "form": "8-K",
           "date": "2026-08-05",
@@ -5509,389 +5498,69 @@
           "fresh": true,
           "desc": "8-K",
           "summary": "Earnings released",
-          "accession": "0001856314-26-000039",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000039/0001856314-26-000039-index.htm",
-          "ai_summary": "Clear Secure, Inc. announced its June 30, 2026, quarterly financial results via press release on August 5, 2026."
+          "accession": "0001840856-26-000019",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000184085626000019/0001840856-26-000019-index.htm",
+          "ai_summary": "SoundHound AI, Inc. reported its second quarter 2026 financial results and operational highlights on August 5, 2026."
         },
         {
           "form": "8-K",
-          "date": "2026-07-30",
-          "days_ago": 6,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001856314-26-000033",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000033/0001856314-26-000033-index.htm",
-          "ai_summary": "Clear Secure, Inc. appointed Rob O’Hare to its board of directors and Audit Committee, effective July 30, 2026."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-23",
-          "days_ago": 43,
+          "date": "2026-07-24",
+          "days_ago": 12,
           "fresh": false,
-          "desc": "FORM 8-K",
-          "summary": "Material agreement signed; New debt obligation",
-          "accession": "0000950142-26-001859",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000095014226001859/0000950142-26-001859-index.htm",
-          "ai_summary": "Clear Secure amended its credit agreement, reducing lender commitments to $50 million."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-10",
-          "days_ago": 56,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Bylaw / charter change; Shareholder vote results",
-          "accession": "0001856314-26-000020",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000020/0001856314-26-000020-index.htm",
-          "ai_summary": "Clear Secure, Inc. amended its charter to remove supermajority vote requirements and clarify officer exculpation."
-        }
-      ],
-      "tickers": [
-        "YOU"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 56.46,
-        "prev_close": 55.73,
-        "change_pct": 1.31,
-        "currency": "USD",
-        "spark": [
-          56.1,
-          55.24,
-          55.15,
-          55.73,
-          56.46
-        ],
-        "history": [
-          [
-            "2026-05-06",
-            60.94
-          ],
-          [
-            "2026-05-07",
-            58.17
-          ],
-          [
-            "2026-05-08",
-            56.81
-          ],
-          [
-            "2026-05-11",
-            56.89
-          ],
-          [
-            "2026-05-12",
-            57.64
-          ],
-          [
-            "2026-05-13",
-            55.54
-          ],
-          [
-            "2026-05-14",
-            57.21
-          ],
-          [
-            "2026-05-15",
-            58.89
-          ],
-          [
-            "2026-05-18",
-            59.18
-          ],
-          [
-            "2026-05-19",
-            60.14
-          ],
-          [
-            "2026-05-20",
-            62.01
-          ],
-          [
-            "2026-05-21",
-            61.1
-          ],
-          [
-            "2026-05-22",
-            60.06
-          ],
-          [
-            "2026-05-26",
-            62.36
-          ],
-          [
-            "2026-05-27",
-            56.54
-          ],
-          [
-            "2026-05-28",
-            56.72
-          ],
-          [
-            "2026-05-29",
-            55.45
-          ],
-          [
-            "2026-06-01",
-            57.43
-          ],
-          [
-            "2026-06-02",
-            56.78
-          ],
-          [
-            "2026-06-03",
-            56.08
-          ],
-          [
-            "2026-06-04",
-            54.48
-          ],
-          [
-            "2026-06-05",
-            54.52
-          ],
-          [
-            "2026-06-08",
-            54.98
-          ],
-          [
-            "2026-06-09",
-            53.19
-          ],
-          [
-            "2026-06-10",
-            51.97
-          ],
-          [
-            "2026-06-11",
-            51.0
-          ],
-          [
-            "2026-06-12",
-            50.25
-          ],
-          [
-            "2026-06-15",
-            51.66
-          ],
-          [
-            "2026-06-16",
-            52.76
-          ],
-          [
-            "2026-06-17",
-            50.77
-          ],
-          [
-            "2026-06-18",
-            51.45
-          ],
-          [
-            "2026-06-22",
-            51.96
-          ],
-          [
-            "2026-06-23",
-            52.73
-          ],
-          [
-            "2026-06-24",
-            52.95
-          ],
-          [
-            "2026-06-25",
-            53.18
-          ],
-          [
-            "2026-06-26",
-            55.17
-          ],
-          [
-            "2026-06-29",
-            56.03
-          ],
-          [
-            "2026-06-30",
-            55.73
-          ],
-          [
-            "2026-07-01",
-            55.66
-          ],
-          [
-            "2026-07-02",
-            53.79
-          ],
-          [
-            "2026-07-06",
-            56.74
-          ],
-          [
-            "2026-07-07",
-            55.91
-          ],
-          [
-            "2026-07-08",
-            55.48
-          ],
-          [
-            "2026-07-09",
-            56.12
-          ],
-          [
-            "2026-07-10",
-            55.22
-          ],
-          [
-            "2026-07-13",
-            53.08
-          ],
-          [
-            "2026-07-14",
-            53.54
-          ],
-          [
-            "2026-07-15",
-            54.65
-          ],
-          [
-            "2026-07-16",
-            54.43
-          ],
-          [
-            "2026-07-17",
-            56.03
-          ],
-          [
-            "2026-07-20",
-            57.18
-          ],
-          [
-            "2026-07-21",
-            56.9
-          ],
-          [
-            "2026-07-22",
-            52.3
-          ],
-          [
-            "2026-07-23",
-            51.85
-          ],
-          [
-            "2026-07-24",
-            52.24
-          ],
-          [
-            "2026-07-27",
-            53.23
-          ],
-          [
-            "2026-07-28",
-            53.84
-          ],
-          [
-            "2026-07-29",
-            58.39
-          ],
-          [
-            "2026-07-30",
-            56.1
-          ],
-          [
-            "2026-07-31",
-            55.24
-          ],
-          [
-            "2026-08-03",
-            55.15
-          ],
-          [
-            "2026-08-04",
-            55.73
-          ],
-          [
-            "2026-08-05",
-            56.46
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-08-05"
-      },
-      "is_fund": false,
-      "news": [
-        "CLEAR Secure (NYSE:YOU) Reports Strong Q2 CY2026, Stock Soars - Yahoo Finance",
-        "Arkadios Wealth Advisors Lowers Stock Position in CLEAR Secure, Inc. $YOU - MarketBeat",
-        "Clear Secure (NYSE: YOU) boosts 2026 cash flow outlook after strong Q2 - Stock Titan",
-        "Clear Secure stock rises 6% on earnings beat, raised guidance By Investing.com - Investing.com Nigeria"
-      ],
-      "social": {
-        "count": 30,
-        "bullish": 2,
-        "bearish": 0,
-        "samples": [
-          "$YOU Nasty what they did to this today lol",
-          "$BBAI this or $YOU ?? Not bothe, I want to know which one is the future. Any thoughts from the room?"
-        ]
-      }
-    },
-    {
-      "rank": 30,
-      "ticker": "LLY",
-      "name": "Eli Lilly",
-      "sec_name": "ELI LILLY & Co",
-      "display_name": "ELI LILLY & Co",
-      "name_match": "verified",
-      "mentions": 22,
-      "mentions_24h_ago": 9,
-      "mention_change_pct": 144.4,
-      "upvotes": 39,
-      "cik": "0000059478",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-08-05",
-        "days_ago": 0,
-        "fresh": true,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0000059478-26-000081",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/0000059478-26-000081-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-08-05",
-          "days_ago": 0,
-          "fresh": true,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0000059478-26-000081",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/0000059478-26-000081-index.htm",
-          "ai_summary": "Eli Lilly and Company reported significant revenue growth and net income for the six months ended June 30, 2026, compared to the prior year."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-08-05",
-          "days_ago": 0,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0000059478-26-000077",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/0000059478-26-000077-index.htm",
-          "ai_summary": "Eli Lilly announced its financial results for the quarter ended June 30, 2026, via a press release."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-20",
-          "days_ago": 77,
-          "fresh": false,
-          "desc": "8-K",
+          "desc": "CURRENT REPORT",
           "summary": "Other material update",
-          "accession": "0001193125-26-232707",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/59478/000119312526232707/0001193125-26-232707-index.htm"
+          "accession": "0001213900-26-081088",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000121390026081088/0001213900-26-081088-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-13",
+          "days_ago": 23,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Material event",
+          "accession": "0001213900-26-077663",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000121390026077663/0001213900-26-077663-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-02",
+          "days_ago": 34,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Material agreement signed",
+          "accession": "0001213900-26-075086",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000121390026075086/0001213900-26-075086-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-27",
+          "days_ago": 70,
+          "fresh": false,
+          "desc": "CURRENT REPORT",
+          "summary": "Bylaw / charter change; Shareholder vote results; Other material update",
+          "accession": "0001213900-26-061610",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000121390026061610/0001213900-26-061610-index.htm"
+        },
+        {
+          "form": "S-4",
+          "date": "2026-05-27",
+          "days_ago": 70,
+          "fresh": false,
+          "desc": "REGISTRATION STATEMENT",
+          "summary": "M&A / exchange registration",
+          "accession": "0001213900-26-061593",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000121390026061593/0001213900-26-061593-index.htm"
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-11",
+          "days_ago": 86,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001840856-26-000015",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000184085626000015/0001840856-26-000015-index.htm"
         },
         {
           "form": "8-K",
@@ -5899,279 +5568,279 @@
           "days_ago": 90,
           "fresh": false,
           "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0000059478-26-000048",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000048/0000059478-26-000048-index.htm"
+          "summary": "Earnings released",
+          "accession": "0001840856-26-000012",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1840856/000184085626000012/0001840856-26-000012-index.htm"
         }
       ],
       "tickers": [
-        "LLY"
+        "SOUN"
       ],
       "quote_type": "EQUITY",
       "price": {
-        "last": 1169.86,
-        "prev_close": 1115.68,
-        "change_pct": 4.86,
+        "last": 6.43,
+        "prev_close": 6.51,
+        "change_pct": -1.23,
         "currency": "USD",
         "spark": [
-          1154.97,
-          1148.84,
-          1121.36,
-          1115.68,
-          1169.86
+          6.14,
+          6.13,
+          6.1,
+          6.51,
+          6.43
         ],
         "history": [
           [
             "2026-05-06",
-            987.05
+            9.37
           ],
           [
             "2026-05-07",
-            974.96
+            9.63
           ],
           [
             "2026-05-08",
-            948.45
+            8.88
           ],
           [
             "2026-05-11",
-            966.99
+            8.45
           ],
           [
             "2026-05-12",
-            989.87
+            8.06
           ],
           [
             "2026-05-13",
-            1015.75
+            8.42
           ],
           [
             "2026-05-14",
-            1006.7
+            8.52
           ],
           [
             "2026-05-15",
-            1004.92
+            8.41
           ],
           [
             "2026-05-18",
-            988.09
+            8.35
           ],
           [
             "2026-05-19",
-            1021.41
+            8.45
           ],
           [
             "2026-05-20",
-            1018.87
+            8.45
           ],
           [
             "2026-05-21",
-            1041.65
+            8.32
           ],
           [
             "2026-05-22",
-            1065.0
+            8.17
           ],
           [
             "2026-05-26",
-            1064.74
+            8.13
           ],
           [
             "2026-05-27",
-            1082.92
+            8.08
           ],
           [
             "2026-05-28",
-            1126.8
+            8.56
           ],
           [
             "2026-05-29",
-            1105.0
+            9.0
           ],
           [
             "2026-06-01",
-            1082.2
+            9.25
           ],
           [
             "2026-06-02",
-            1064.15
+            8.82
           ],
           [
             "2026-06-03",
-            1078.78
+            8.08
           ],
           [
             "2026-06-04",
-            1125.27
+            8.01
           ],
           [
             "2026-06-05",
-            1131.42
+            7.39
           ],
           [
             "2026-06-08",
-            1149.15
+            7.49
           ],
           [
             "2026-06-09",
-            1144.68
+            7.02
           ],
           [
             "2026-06-10",
-            1136.37
+            6.75
           ],
           [
             "2026-06-11",
-            1160.95
+            7.0
           ],
           [
             "2026-06-12",
-            1133.0
+            6.9
           ],
           [
             "2026-06-15",
-            1129.35
+            7.33
           ],
           [
             "2026-06-16",
-            1122.5
+            7.03
           ],
           [
             "2026-06-17",
-            1112.0
+            6.96
           ],
           [
             "2026-06-18",
-            1098.57
+            7.12
           ],
           [
             "2026-06-22",
-            1102.08
+            6.88
           ],
           [
             "2026-06-23",
-            1107.08
+            6.44
           ],
           [
             "2026-06-24",
-            1117.26
+            6.34
           ],
           [
             "2026-06-25",
-            1127.69
+            6.21
           ],
           [
             "2026-06-26",
-            1208.12
+            6.41
           ],
           [
             "2026-06-29",
-            1229.93
+            6.4
           ],
           [
             "2026-06-30",
-            1199.43
+            6.47
           ],
           [
             "2026-07-01",
-            1191.74
+            6.68
           ],
           [
             "2026-07-02",
-            1213.91
+            6.55
           ],
           [
             "2026-07-06",
-            1200.06
+            6.96
           ],
           [
             "2026-07-07",
-            1235.56
+            6.64
           ],
           [
             "2026-07-08",
-            1215.83
+            6.8
           ],
           [
             "2026-07-09",
-            1216.95
+            6.68
           ],
           [
             "2026-07-10",
-            1188.58
+            6.64
           ],
           [
             "2026-07-13",
-            1181.87
+            6.49
           ],
           [
             "2026-07-14",
-            1152.54
+            6.69
           ],
           [
             "2026-07-15",
-            1156.63
+            6.5
           ],
           [
             "2026-07-16",
-            1169.17
+            6.31
           ],
           [
             "2026-07-17",
-            1179.11
+            6.27
           ],
           [
             "2026-07-20",
-            1146.9
+            6.31
           ],
           [
             "2026-07-21",
-            1175.41
+            6.55
           ],
           [
             "2026-07-22",
-            1163.01
+            6.46
           ],
           [
             "2026-07-23",
-            1185.87
+            6.22
           ],
           [
             "2026-07-24",
-            1196.03
+            6.16
           ],
           [
             "2026-07-27",
-            1197.53
+            6.41
           ],
           [
             "2026-07-28",
-            1220.66
+            6.24
           ],
           [
             "2026-07-29",
-            1210.02
+            5.7
           ],
           [
             "2026-07-30",
-            1154.97
+            6.14
           ],
           [
             "2026-07-31",
-            1148.84
+            6.13
           ],
           [
             "2026-08-03",
-            1121.36
+            6.1
           ],
           [
             "2026-08-04",
-            1115.68
+            6.51
           ],
           [
             "2026-08-05",
-            1169.86
+            6.43
           ]
         ],
         "source": "yahoo",
@@ -6179,18 +5848,386 @@
       },
       "is_fund": false,
       "news": [
-        "Eli Lilly and Co Stock (LLY) Moved Up by 6.32% on Aug 5: A Full Analysis - TradingKey",
-        "Why Is Eli Lilly Stock Gaining Wednesday? - Eli Lilly (NYSE:LLY) - Benzinga",
-        "Why is Eli Lilly stock surging today? - Investing.com",
-        "Eli Lilly Ripe for Stock Split After Obesity Drug-Fueled Rally - Bloomberg.com"
+        "SoundHound AI Reports Record Q2 and All Time High Revenue of $61.9 Million, Up 45%, Raises Full Year Outlook - GlobeNewswire",
+        "SoundHound AI (SOUN) Stock Rises on Q2 2026 Earnings - Quiver Quantitative",
+        "SoundHound AI's Next Earnings Report on Aug. 5 Could Send the Stock Soaring. Here's Why. - Yahoo Finance",
+        "SoundHound AI faces earnings test as losses expected to widen By Investing.com - Investing.com Nigeria"
       ],
       "social": {
         "count": 30,
-        "bullish": 10,
+        "bullish": 24,
         "bearish": 0,
         "samples": [
-          "Unusual S&P 500 Options Activity: AMD, Eli Lilly, and Uber $AMD , $LLY , $UBER https://www.stockoptionschannel.com/artic",
-          "$LLY LLY is absolutely bound to cross ATHs very soon with these results and pipeline coming. LLY is clearly grabbing mor"
+          "$SOUN boys $10 tmrw mark this post",
+          "$SOUN Let’s go!"
+        ]
+      }
+    },
+    {
+      "rank": 30,
+      "ticker": "UBER",
+      "name": "Uber",
+      "sec_name": "Uber Technologies, Inc",
+      "display_name": "Uber Technologies, Inc",
+      "name_match": "verified",
+      "mentions": 24,
+      "mentions_24h_ago": 17,
+      "mention_change_pct": 41.2,
+      "upvotes": 75,
+      "cik": "0001543151",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-08-05",
+        "days_ago": 0,
+        "fresh": true,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001543151-26-000032",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000032/uber-20260630.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000032/0001543151-26-000032-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-08-05",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001543151-26-000032",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000032/0001543151-26-000032-index.htm",
+          "ai_summary": "Uber Technologies, Inc. reported increased revenue and income from operations for the second quarter of 2026 compared to the prior year."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-08-05",
+          "days_ago": 0,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001543151-26-000027",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000027/0001543151-26-000027-index.htm",
+          "ai_summary": "Uber Technologies announced its second quarter 2026 financial results on August 5, 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-16",
+          "days_ago": 20,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; New debt obligation; Other material update",
+          "accession": "0001552781-26-000382",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1543151/000155278126000382/0001552781-26-000382-index.htm",
+          "ai_summary": "Uber entered a $14.2 billion agreement to acquire Delivery Hero SE, funded by cash and debt."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 86,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001552781-26-000320",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1543151/000155278126000320/0001552781-26-000320-index.htm"
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-08",
+          "days_ago": 89,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001552781-26-000314",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1543151/000155278126000314/0001552781-26-000314-index.htm"
+        }
+      ],
+      "tickers": [
+        "UBER"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 68.18,
+        "prev_close": 71.99,
+        "change_pct": -5.29,
+        "currency": "USD",
+        "spark": [
+          70.37,
+          70.36,
+          71.61,
+          71.99,
+          68.18
+        ],
+        "history": [
+          [
+            "2026-05-06",
+            79.17
+          ],
+          [
+            "2026-05-07",
+            76.73
+          ],
+          [
+            "2026-05-08",
+            75.45
+          ],
+          [
+            "2026-05-11",
+            76.15
+          ],
+          [
+            "2026-05-12",
+            76.36
+          ],
+          [
+            "2026-05-13",
+            74.7
+          ],
+          [
+            "2026-05-14",
+            74.69
+          ],
+          [
+            "2026-05-15",
+            75.09
+          ],
+          [
+            "2026-05-18",
+            75.08
+          ],
+          [
+            "2026-05-19",
+            74.09
+          ],
+          [
+            "2026-05-20",
+            74.6
+          ],
+          [
+            "2026-05-21",
+            73.61
+          ],
+          [
+            "2026-05-22",
+            71.82
+          ],
+          [
+            "2026-05-26",
+            70.12
+          ],
+          [
+            "2026-05-27",
+            70.73
+          ],
+          [
+            "2026-05-28",
+            70.92
+          ],
+          [
+            "2026-05-29",
+            70.4
+          ],
+          [
+            "2026-06-01",
+            73.77
+          ],
+          [
+            "2026-06-02",
+            71.62
+          ],
+          [
+            "2026-06-03",
+            71.69
+          ],
+          [
+            "2026-06-04",
+            72.21
+          ],
+          [
+            "2026-06-05",
+            70.71
+          ],
+          [
+            "2026-06-08",
+            70.06
+          ],
+          [
+            "2026-06-09",
+            70.38
+          ],
+          [
+            "2026-06-10",
+            68.61
+          ],
+          [
+            "2026-06-11",
+            69.55
+          ],
+          [
+            "2026-06-12",
+            68.85
+          ],
+          [
+            "2026-06-15",
+            72.85
+          ],
+          [
+            "2026-06-16",
+            73.25
+          ],
+          [
+            "2026-06-17",
+            70.91
+          ],
+          [
+            "2026-06-18",
+            71.64
+          ],
+          [
+            "2026-06-22",
+            71.43
+          ],
+          [
+            "2026-06-23",
+            69.67
+          ],
+          [
+            "2026-06-24",
+            73.85
+          ],
+          [
+            "2026-06-25",
+            72.25
+          ],
+          [
+            "2026-06-26",
+            76.2
+          ],
+          [
+            "2026-06-29",
+            75.5
+          ],
+          [
+            "2026-06-30",
+            72.16
+          ],
+          [
+            "2026-07-01",
+            72.66
+          ],
+          [
+            "2026-07-02",
+            74.43
+          ],
+          [
+            "2026-07-06",
+            72.42
+          ],
+          [
+            "2026-07-07",
+            74.33
+          ],
+          [
+            "2026-07-08",
+            73.6
+          ],
+          [
+            "2026-07-09",
+            74.35
+          ],
+          [
+            "2026-07-10",
+            74.54
+          ],
+          [
+            "2026-07-13",
+            74.26
+          ],
+          [
+            "2026-07-14",
+            72.08
+          ],
+          [
+            "2026-07-15",
+            72.67
+          ],
+          [
+            "2026-07-16",
+            74.04
+          ],
+          [
+            "2026-07-17",
+            72.46
+          ],
+          [
+            "2026-07-20",
+            72.17
+          ],
+          [
+            "2026-07-21",
+            71.55
+          ],
+          [
+            "2026-07-22",
+            70.33
+          ],
+          [
+            "2026-07-23",
+            68.91
+          ],
+          [
+            "2026-07-24",
+            65.94
+          ],
+          [
+            "2026-07-27",
+            68.18
+          ],
+          [
+            "2026-07-28",
+            70.74
+          ],
+          [
+            "2026-07-29",
+            71.2
+          ],
+          [
+            "2026-07-30",
+            70.37
+          ],
+          [
+            "2026-07-31",
+            70.36
+          ],
+          [
+            "2026-08-03",
+            71.61
+          ],
+          [
+            "2026-08-04",
+            71.99
+          ],
+          [
+            "2026-08-05",
+            68.18
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-08-05"
+      },
+      "is_fund": false,
+      "news": [
+        "Get Paid 13% A Year To Hold UBER Stock You Already Own - Trefis",
+        "Uber Technologies, Inc. stock Analysis: Bearish Trend Deepening in Q3 2024 - The Cryptonomist",
+        "Uber stock drops as bookings guidance disappoints; CEO bets on robotaxi push to grow overall business - Yahoo Finance",
+        "Uber Technologies Inc Stock (UBER) Moved Down by 6.36% on Aug 5: A Full Analysis - TradingKey"
+      ],
+      "social": {
+        "count": 30,
+        "bullish": 9,
+        "bearish": 6,
+        "samples": [
+          "$SOUN entering energy in automotive already and healthcare $CYPH $BAC $UBER",
+          "$UBER the market hates this stock."
         ]
       }
     },
@@ -6201,10 +6238,10 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 747,
-      "mentions_24h_ago": 819,
-      "mention_change_pct": -8.8,
-      "upvotes": 3728,
+      "mentions": 726,
+      "mentions_24h_ago": 849,
+      "mention_change_pct": -14.5,
+      "upvotes": 3229,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
@@ -6484,17 +6521,17 @@
       "is_fund": true,
       "news": [
         "How the Largest Stock ETFs Performed - Morningstar",
-        "The 52-Week-Low List: 3 S&P 500 Names On Tuesday - trefis.com",
+        "The 52-Week-Low List: 3 S&P 500 Names On Tuesday - Trefis",
         "Should State Street SPDR S&P 500 ETF Trust (SPY) Be on Your Investing Radar? - Yahoo Finance",
-        "Stock Market Today: S&P 500, Dow Futures Gain After Scott Bessent Signals Strait of Hormuz Deal With Iran - Benzinga"
+        "Stock Market: Will S&P 500 Open Up or Down Today? - State Street SPDR S&P 500 ETF Trust (ARCA:SPY) - Benzinga"
       ],
       "social": {
         "count": 30,
-        "bullish": 9,
+        "bullish": 4,
         "bearish": 2,
         "samples": [
-          "$SPY Completely confused about Iran negotiations...I give up",
-          "$DAVE Raised growth estimates. 9 Quarters with 30% growth or more. Insane opportunity here. $SPY"
+          "$VIX $UVXY $SPY $QQQ",
+          "$SPY is that a paper plate with a plastic fork and knife"
         ]
       }
     },
@@ -6505,10 +6542,10 @@
       "sec_name": "MICRON TECHNOLOGY INC",
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
-      "mentions": 333,
-      "mentions_24h_ago": 440,
-      "mention_change_pct": -24.3,
-      "upvotes": 1611,
+      "mentions": 345,
+      "mentions_24h_ago": 443,
+      "mention_change_pct": -22.1,
+      "upvotes": 1838,
       "cik": "0000723125",
       "filing": {
         "form": "10-Q",
@@ -6834,15 +6871,15 @@
         "Micron Technology Stock Is Falling Wednesday: What's Going On? - Benzinga",
         "Micron Slips 9% in a Month: Is This the Right Time to Buy MU Stock? - Yahoo Finance",
         "Micron Technology Inc Stock (MU) Moved Up by 3.58% on Aug 5: Key Drivers Unveiled - TradingKey",
-        "How To Bank 14% On MU Stock Before Buying A Single Share - trefis.com"
+        "How To Bank 14% On MU Stock Before Buying A Single Share - Trefis"
       ],
       "social": {
         "count": 30,
-        "bullish": 8,
-        "bearish": 7,
+        "bullish": 14,
+        "bearish": 0,
         "samples": [
-          "$MU $SNDK Sorry, I was busy with wife all morning … still shorting",
-          "$SNDK $SOXL $MU $NVDA $AMD - Pay close attention to the sell offs after ERs … this is not your traditional sell off - ju"
+          "$MU the run isn’t done yet $SOUN $SPCX $NVDA",
+          "$MU they trained retail to expect pump during earnings, then suddenly reverse it. its nothing even regarding fundamental"
         ]
       }
     },
@@ -6853,10 +6890,10 @@
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 291,
-      "mentions_24h_ago": 141,
-      "mention_change_pct": 106.4,
-      "upvotes": 1201,
+      "mentions": 250,
+      "mentions_24h_ago": 194,
+      "mention_change_pct": 28.9,
+      "upvotes": 1109,
       "cik": "0001045810",
       "filing": {
         "form": "8-K",
@@ -7255,18 +7292,18 @@
       },
       "is_fund": false,
       "news": [
-        "Nvidia Stock: This Onetime Market Darling Is Now Surprisingly Undervalued - Morningstar",
-        "Musk Praises Vera Rubin Platform on SpaceX Earnings Call, Nvidia Stock Climbs - Benzinga",
         "Nvidia stock rises after Musk says SpaceX will exclusively use company's chips - Yahoo Finance",
-        "NVIDIA Corporation $NVDA Shares Sold by Saturna Capital Corp - MarketBeat"
+        "Nvidia Stock: This Onetime Market Darling Is Now Surprisingly Undervalued - Morningstar",
+        "Nvidia Stock Climbs After SpaceX Goes Exclusive With the Chip Maker - WSJ",
+        "'The Big Short' Investor Michael Burry Holds His Ground on Nvidia, Tesla and Other Shorts— Warns Of 1987 - Benzinga"
       ],
       "social": {
         "count": 30,
-        "bullish": 16,
-        "bearish": 6,
+        "bullish": 15,
+        "bearish": 5,
         "samples": [
-          "$APP get in while you can….. recovering FAST…. 450+ tomorrow!! 🍀🍀🍀🍀🚀🚀🚀🚀 $SPY $NVDA $AMD",
-          "$SNDK $SOXL $MU $NVDA $AMD - Pay close attention to the sell offs after ERs … this is not your traditional sell off - ju"
+          "$NVDA sub 200 soon",
+          "$WDC $NVDA $AMD People seemed to forget about SoundHound AI until today! 🚀 $SOUN"
         ]
       }
     },
@@ -7277,10 +7314,10 @@
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 165,
-      "mentions_24h_ago": 176,
-      "mention_change_pct": -6.2,
-      "upvotes": 641,
+      "mentions": 164,
+      "mentions_24h_ago": 185,
+      "mention_change_pct": -11.4,
+      "upvotes": 763,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
@@ -7576,25 +7613,25 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 5,
-        "bearish": 8,
+        "bullish": 7,
+        "bearish": 7,
         "samples": [
-          "$QQQ $SNDK market is about to tank leading into $NVDA ER",
-          "$MU $QQQ $SNDK $SPY $WDC Fake News"
+          "$VIX $UVXY $SPY $QQQ",
+          "$NVDA $QQQ $SPY what do you think ?"
         ]
       }
     },
     {
-      "rank": 10,
+      "rank": 9,
       "ticker": "GOOGL",
       "name": "Alphabet (Google)",
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 231,
-      "mentions_24h_ago": 76,
-      "mention_change_pct": 203.9,
-      "upvotes": 727,
+      "mentions": 230,
+      "mentions_24h_ago": 77,
+      "mention_change_pct": 198.7,
+      "upvotes": 739,
       "cik": "0001652044",
       "filing": {
         "form": "10-Q",
@@ -8083,32 +8120,32 @@
       },
       "is_fund": false,
       "news": [
-        "Alphabet’s stock drops as Google loses another key AI executive - MarketWatch",
         "Google stock drops amid DeepMind leadership shake-up - Yahoo Finance",
-        "DeepMind's Hassabis Steps Down, Adding To Worries Over Google's AI Push - Investor's Business Daily",
-        "Alphabet stock drops after the Google parent reshuffles top AI leadership - Business Insider"
+        "Alphabet’s stock drops as Google loses another key AI executive - MarketWatch",
+        "DeepMind's Hassabis Steps Down. Key AI Scientist Departs. Google Stock Falls. - Investor's Business Daily",
+        "Alphabet stock drops after the Google parent reshuffles top AI leadership - businessinsider.com"
       ],
       "social": {
         "count": 30,
-        "bullish": 5,
-        "bearish": 5,
+        "bullish": 9,
+        "bearish": 3,
         "samples": [
-          "$GOOGL is it crazy to think most of us have done better in the market then situation awareness lol",
-          "$AAPL Iphone Ultra leaked. Titanium body. Loading up. https://x.com/i/status/2084928441208705110 $SPY $QQQ $GOOGL"
+          "$GOOGL The Dip King of stocks. Filled gap. Now it’s a party coming",
+          "$GOOGL I’m interested in it for sure but it’s up so much over the past 3 years? Is it really worth the risk?"
         ]
       }
     },
     {
-      "rank": 16,
+      "rank": 14,
       "ticker": "VOO",
       "name": "Vanguard S&P 500 ETF",
       "sec_name": null,
       "display_name": "Vanguard S&P 500 ETF",
       "name_match": "no_cik",
-      "mentions": 60,
-      "mentions_24h_ago": 66,
-      "mention_change_pct": -9.1,
-      "upvotes": 201,
+      "mentions": 73,
+      "mentions_24h_ago": 61,
+      "mention_change_pct": 19.7,
+      "upvotes": 389,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -8387,15 +8424,15 @@
         "Where Will the Vanguard S&P 500 ETF (VOO) Be in 2036? History Has Good and Bad News for Investors. - Yahoo Finance",
         "Prediction: Vanguard's S&P 500 ETF Will Be Back Above $1 Trillion in Assets Before the Year Is Out. Here's the Math. - The Motley Fool",
         "VOO vs. SPY: Which S&P 500 ETF is The Better Bet? - The Motley Fool",
-        "7 Top-Performing US Equity ETFs - Morningstar"
+        "How the Largest Stock ETFs Performed - Morningstar"
       ],
       "social": {
         "count": 30,
-        "bullish": 7,
-        "bearish": 4,
+        "bullish": 6,
+        "bearish": 5,
         "samples": [
-          "$VOO looks like the crash will be soon",
-          "$DIA $NVDA $SPX $SPY $VOO This is another reason i know with 99.99% certainty it’s all a scam. How the fuck is a country"
+          "$SPY $SPX $QQQ $DIA $VOO Get to the sidelines.",
+          "$VOO looks like the crash will be soon"
         ]
       }
     },
@@ -8406,10 +8443,10 @@
       "sec_name": "Rocket Lab Corp",
       "display_name": "Rocket Lab Corp",
       "name_match": "verified",
-      "mentions": 52,
-      "mentions_24h_ago": 44,
-      "mention_change_pct": 18.2,
-      "upvotes": 129,
+      "mentions": 50,
+      "mentions_24h_ago": 45,
+      "mention_change_pct": 11.1,
+      "upvotes": 125,
       "cik": "0001819994",
       "filing": {
         "form": "8-K",
@@ -8805,323 +8842,22 @@
         "bullish": 15,
         "bearish": 0,
         "samples": [
-          "$RDW What is $RKLB aquires it and prioritizes itself over sending parts to $SPCX and delay their launches?",
-          "$RKLB SPCX and RKLB are 2 different companies. Size doesn’t dictate the share price."
+          "$RDW Oh oh. It's waking up shorts. Could do a $VOYG or $RKLB and go up $3.X tomorrow. Or like $ASTS $7.",
+          "$RKLB 🤣🤡"
         ]
       }
     },
     {
       "rank": 19,
-      "ticker": "SOXL",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "sec_name": null,
-      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-      "name_match": "no_cik",
-      "mentions": 48,
-      "mentions_24h_ago": 97,
-      "mention_change_pct": -50.5,
-      "upvotes": 1219,
-      "cik": null,
-      "filing": null,
-      "filings": [],
-      "quote_type": "ETF",
-      "price": {
-        "last": 132.07,
-        "prev_close": 139.9,
-        "change_pct": -5.6,
-        "currency": "USD",
-        "spark": [
-          114.72,
-          114.72,
-          116.71,
-          139.9,
-          132.07
-        ],
-        "history": [
-          [
-            "2026-05-06",
-            165.85
-          ],
-          [
-            "2026-05-07",
-            152.1
-          ],
-          [
-            "2026-05-08",
-            176.94
-          ],
-          [
-            "2026-05-11",
-            190.42
-          ],
-          [
-            "2026-05-12",
-            172.52
-          ],
-          [
-            "2026-05-13",
-            184.24
-          ],
-          [
-            "2026-05-14",
-            186.19
-          ],
-          [
-            "2026-05-15",
-            164.18
-          ],
-          [
-            "2026-05-18",
-            151.75
-          ],
-          [
-            "2026-05-19",
-            151.89
-          ],
-          [
-            "2026-05-20",
-            173.2
-          ],
-          [
-            "2026-05-21",
-            178.39
-          ],
-          [
-            "2026-05-22",
-            190.56
-          ],
-          [
-            "2026-05-26",
-            225.79
-          ],
-          [
-            "2026-05-27",
-            217.98
-          ],
-          [
-            "2026-05-28",
-            224.63
-          ],
-          [
-            "2026-05-29",
-            224.34
-          ],
-          [
-            "2026-06-01",
-            227.03
-          ],
-          [
-            "2026-06-02",
-            266.32
-          ],
-          [
-            "2026-06-03",
-            280.54
-          ],
-          [
-            "2026-06-04",
-            262.7
-          ],
-          [
-            "2026-06-05",
-            182.54
-          ],
-          [
-            "2026-06-08",
-            211.44
-          ],
-          [
-            "2026-06-09",
-            201.68
-          ],
-          [
-            "2026-06-10",
-            180.65
-          ],
-          [
-            "2026-06-11",
-            223.99
-          ],
-          [
-            "2026-06-12",
-            234.68
-          ],
-          [
-            "2026-06-15",
-            272.5
-          ],
-          [
-            "2026-06-16",
-            226.19
-          ],
-          [
-            "2026-06-17",
-            233.86
-          ],
-          [
-            "2026-06-18",
-            279.29
-          ],
-          [
-            "2026-06-22",
-            300.77
-          ],
-          [
-            "2026-06-23",
-            231.42
-          ],
-          [
-            "2026-06-24",
-            229.57
-          ],
-          [
-            "2026-06-25",
-            252.61
-          ],
-          [
-            "2026-06-26",
-            215.6
-          ],
-          [
-            "2026-06-29",
-            236.52
-          ],
-          [
-            "2026-06-30",
-            266.71
-          ],
-          [
-            "2026-07-01",
-            217.55
-          ],
-          [
-            "2026-07-02",
-            181.47
-          ],
-          [
-            "2026-07-06",
-            194.65
-          ],
-          [
-            "2026-07-07",
-            165.28
-          ],
-          [
-            "2026-07-08",
-            174.82
-          ],
-          [
-            "2026-07-09",
-            192.45
-          ],
-          [
-            "2026-07-10",
-            192.26
-          ],
-          [
-            "2026-07-13",
-            165.37
-          ],
-          [
-            "2026-07-14",
-            176.66
-          ],
-          [
-            "2026-07-15",
-            165.55
-          ],
-          [
-            "2026-07-16",
-            142.48
-          ],
-          [
-            "2026-07-17",
-            135.47
-          ],
-          [
-            "2026-07-20",
-            136.81
-          ],
-          [
-            "2026-07-21",
-            158.54
-          ],
-          [
-            "2026-07-22",
-            160.99
-          ],
-          [
-            "2026-07-23",
-            157.5
-          ],
-          [
-            "2026-07-24",
-            136.81
-          ],
-          [
-            "2026-07-27",
-            128.15
-          ],
-          [
-            "2026-07-28",
-            109.54
-          ],
-          [
-            "2026-07-29",
-            91.99
-          ],
-          [
-            "2026-07-30",
-            114.72
-          ],
-          [
-            "2026-07-31",
-            114.72
-          ],
-          [
-            "2026-08-03",
-            116.71
-          ],
-          [
-            "2026-08-04",
-            139.9
-          ],
-          [
-            "2026-08-05",
-            132.07
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-08-05"
-      },
-      "is_fund": true,
-      "news": [
-        "Why Direxion Daily Semiconductor Bull 3X ETF Jumped Today - The Motley Fool",
-        "Why Direxion Daily Semiconductor Bull 3X ETF Just Crashed - Yahoo Finance",
-        "Why Direxion Daily Semiconductor Bull 3X ETF Dropped - Yahoo Finance",
-        "Why Direxion Daily Semiconductor Bull 3X ETF Keeps Crashing - AOL.com"
-      ],
-      "social": {
-        "count": 30,
-        "bullish": 15,
-        "bearish": 6,
-        "samples": [
-          "$SNDK $SOXL $MU $NVDA $AMD - Pay close attention to the sell offs after ERs … this is not your traditional sell off - ju",
-          "$SOXL was wrong earlier thank God sandisk ain't in here now we can fly. Omg not financial advice jus my opinion"
-        ]
-      }
-    },
-    {
-      "rank": 21,
       "ticker": "TSLA",
       "name": "Tesla",
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 45,
-      "mentions_24h_ago": 42,
-      "mention_change_pct": 7.1,
-      "upvotes": 602,
+      "mentions": 46,
+      "mentions_24h_ago": 43,
+      "mention_change_pct": 7.0,
+      "upvotes": 614,
       "cik": "0001318605",
       "filing": {
         "form": "10-Q",
@@ -9451,395 +9187,326 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 10,
-        "bearish": 2,
+        "bullish": 7,
+        "bearish": 5,
         "samples": [
-          "$TSLA $SPCX Lets say fuck you to the employees and blame it on Jobs report.. $SPX",
-          "$SPCX going down over night another $3 Guaranteed $TSLA"
+          "$SOUN wowww good report ! 8 figure deal. $ANTHZZX.P $TSLA $NVDA",
+          "$TSLA $315?"
         ]
       }
     },
     {
-      "rank": 22,
-      "ticker": "ASTS",
-      "name": "AST SpaceMobile",
-      "sec_name": "AST SpaceMobile, Inc.",
-      "display_name": "AST SpaceMobile, Inc.",
-      "name_match": "verified",
-      "mentions": 36,
-      "mentions_24h_ago": 52,
-      "mention_change_pct": -30.8,
-      "upvotes": 68,
-      "cik": "0001780312",
-      "filing": {
-        "form": "8-K",
-        "date": "2026-07-20",
-        "days_ago": 16,
-        "fresh": false,
-        "desc": "8-K",
-        "summary": "Material agreement signed; New debt obligation; Unregistered share sale; Other material update",
-        "accession": "0001493152-26-033912",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/form8-k.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/0001493152-26-033912-index.htm"
-      },
-      "filings": [
-        {
-          "form": "8-K",
-          "date": "2026-07-20",
-          "days_ago": 16,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Material agreement signed; New debt obligation; Unregistered share sale; Other material update",
-          "accession": "0001493152-26-033912",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/0001493152-26-033912-index.htm",
-          "ai_summary": "AST SpaceMobile priced a $1 billion convertible senior notes offering due 2034, with capped call transactions to reduce dilution."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-07-15",
-          "days_ago": 21,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001493152-26-033365",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033365/0001493152-26-033365-index.htm",
-          "ai_summary": "AST SpaceMobile announced a proposed $1 billion convertible notes offering and preliminary June 30, 2026 cash of $2.723 billion."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-15",
-          "days_ago": 51,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Shareholder vote results",
-          "accession": "0001493152-26-028544",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226028544/0001493152-26-028544-index.htm",
-          "ai_summary": "AST SpaceMobile’s June 12, 2026 annual meeting saw shareholders elect all ten directors, ratify KPMG as auditor, and approve an advisory vote on executive compensation."
-        },
-        {
-          "form": "10-Q",
-          "date": "2026-05-11",
-          "days_ago": 86,
-          "fresh": false,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-216950",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. reported a net loss of $191 million for Q1 2026, driven by increased operating expenses and a significant loss from a Block 2 BB7 satellite."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-05-11",
-          "days_ago": 86,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released; Other material update",
-          "accession": "0001193125-26-216946",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm",
-          "ai_summary": "AST SpaceMobile, Inc. announced its first quarter 2026 financial results and provided a business update via press release and presentation."
-        }
-      ],
-      "tickers": [
-        "ASTS"
-      ],
-      "quote_type": "EQUITY",
+      "rank": 21,
+      "ticker": "SOXL",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "sec_name": null,
+      "display_name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "name_match": "no_cik",
+      "mentions": 41,
+      "mentions_24h_ago": 97,
+      "mention_change_pct": -57.7,
+      "upvotes": 1203,
+      "cik": null,
+      "filing": null,
+      "filings": [],
+      "quote_type": "ETF",
       "price": {
-        "last": 68.38,
-        "prev_close": 70.31,
-        "change_pct": -2.74,
+        "last": 132.07,
+        "prev_close": 139.9,
+        "change_pct": -5.6,
         "currency": "USD",
         "spark": [
-          58.44,
-          58.98,
-          63.52,
-          70.31,
-          68.38
+          114.72,
+          114.72,
+          116.71,
+          139.9,
+          132.07
         ],
         "history": [
           [
             "2026-05-06",
-            70.68
+            165.85
           ],
           [
             "2026-05-07",
-            65.35
+            152.1
           ],
           [
             "2026-05-08",
-            75.05
+            176.94
           ],
           [
             "2026-05-11",
-            82.55
+            190.42
           ],
           [
             "2026-05-12",
-            72.96
+            172.52
           ],
           [
             "2026-05-13",
-            74.81
+            184.24
           ],
           [
             "2026-05-14",
-            83.01
+            186.19
           ],
           [
             "2026-05-15",
-            83.67
+            164.18
           ],
           [
             "2026-05-18",
-            86.83
+            151.75
           ],
           [
             "2026-05-19",
-            88.1
+            151.89
           ],
           [
             "2026-05-20",
-            89.58
+            173.2
           ],
           [
             "2026-05-21",
-            96.23
+            178.39
           ],
           [
             "2026-05-22",
-            105.86
+            190.56
           ],
           [
             "2026-05-26",
-            119.7
+            225.79
           ],
           [
             "2026-05-27",
-            129.6
+            217.98
           ],
           [
             "2026-05-28",
-            133.09
+            224.63
           ],
           [
             "2026-05-29",
-            113.41
+            224.34
           ],
           [
             "2026-06-01",
-            105.65
+            227.03
           ],
           [
             "2026-06-02",
-            118.17
+            266.32
           ],
           [
             "2026-06-03",
-            107.73
+            280.54
           ],
           [
             "2026-06-04",
-            107.29
+            262.7
           ],
           [
             "2026-06-05",
-            93.6
+            182.54
           ],
           [
             "2026-06-08",
-            92.06
+            211.44
           ],
           [
             "2026-06-09",
-            88.71
+            201.68
           ],
           [
             "2026-06-10",
-            87.32
+            180.65
           ],
           [
             "2026-06-11",
-            97.56
+            223.99
           ],
           [
             "2026-06-12",
-            82.41
+            234.68
           ],
           [
             "2026-06-15",
-            87.57
+            272.5
           ],
           [
             "2026-06-16",
-            82.25
+            226.19
           ],
           [
             "2026-06-17",
-            85.43
+            233.86
           ],
           [
             "2026-06-18",
-            80.66
+            279.29
           ],
           [
             "2026-06-22",
-            73.19
+            300.77
           ],
           [
             "2026-06-23",
-            72.87
+            231.42
           ],
           [
             "2026-06-24",
-            68.01
+            229.57
           ],
           [
             "2026-06-25",
-            65.62
+            252.61
           ],
           [
             "2026-06-26",
-            71.45
+            215.6
           ],
           [
             "2026-06-29",
-            86.77
+            236.52
           ],
           [
             "2026-06-30",
-            88.86
+            266.71
           ],
           [
             "2026-07-01",
-            86.1
+            217.55
           ],
           [
             "2026-07-02",
-            85.13
+            181.47
           ],
           [
             "2026-07-06",
-            80.64
+            194.65
           ],
           [
             "2026-07-07",
-            74.21
+            165.28
           ],
           [
             "2026-07-08",
-            74.95
+            174.82
           ],
           [
             "2026-07-09",
-            73.88
+            192.45
           ],
           [
             "2026-07-10",
-            73.32
+            192.26
           ],
           [
             "2026-07-13",
-            67.58
+            165.37
           ],
           [
             "2026-07-14",
-            68.82
+            176.66
           ],
           [
             "2026-07-15",
-            66.31
+            165.55
           ],
           [
             "2026-07-16",
-            55.01
+            142.48
           ],
           [
             "2026-07-17",
-            57.8
+            135.47
           ],
           [
             "2026-07-20",
-            57.42
+            136.81
           ],
           [
             "2026-07-21",
-            63.34
+            158.54
           ],
           [
             "2026-07-22",
-            61.95
+            160.99
           ],
           [
             "2026-07-23",
-            59.18
+            157.5
           ],
           [
             "2026-07-24",
-            56.2
+            136.81
           ],
           [
             "2026-07-27",
-            58.29
+            128.15
           ],
           [
             "2026-07-28",
-            56.55
+            109.54
           ],
           [
             "2026-07-29",
-            53.03
+            91.99
           ],
           [
             "2026-07-30",
-            58.44
+            114.72
           ],
           [
             "2026-07-31",
-            58.98
+            114.72
           ],
           [
             "2026-08-03",
-            63.52
+            116.71
           ],
           [
             "2026-08-04",
-            70.31
+            139.9
           ],
           [
             "2026-08-05",
-            68.38
+            132.07
           ]
         ],
         "source": "yahoo",
         "as_of": "2026-08-05"
       },
-      "is_fund": false,
+      "is_fund": true,
       "news": [
-        "AST SpaceMobile Launches Three BlueBird Satellites Into Orbit - Benzinga",
-        "Royal Bank of Canada Raises Stock Holdings in AST SpaceMobile, Inc. $ASTS - MarketBeat",
-        "Will AST SpaceMobile, Inc. (ASTS) Report Negative Earnings Next Week? What You Should Know - Yahoo Finance",
-        "AST SpaceMobile Is Entering Its Defining Year (NASDAQ:ASTS) - Seeking Alpha"
+        "Why Direxion Daily Semiconductor Bull 3X ETF Jumped Today - The Motley Fool",
+        "Why Direxion Daily Semiconductor Bull 3X ETF Just Crashed - Yahoo Finance",
+        "Why Direxion Daily Semiconductor Bull 3X ETF Dropped - Yahoo Finance",
+        "Why Direxion Daily Semiconductor Bull 3X ETF Keeps Crashing - AOL.com"
       ],
       "social": {
         "count": 30,
         "bullish": 12,
-        "bearish": 2,
+        "bearish": 5,
         "samples": [
-          "$ASTS Swing Traders and \"Sell the News\" crowd. We're used to this. But the T- Mobile, META, J- LEO, FirstNet, HALO, CJAD",
-          "$ASTS https://www.youtube.com/watch?v=NTcBN0ZxdOI"
+          "$SOXL $SOXS $TQQQ $SQQQ $UVIX No one listens to Trump anymore! https://youtu.be/BRfq-AON7PU?si=mOzRn2l-MRPCEeXB",
+          "$SOXL $SOXS $TQQQ $SQQQ $SPY Trump now has no weapons to attack Iran! https://youtu.be/ORjI73u1vxA?si=42KN6vVrLibibK53"
         ]
       }
     },
     {
-      "rank": 23,
+      "rank": 22,
       "ticker": "NOW",
       "name": "ServiceNow",
       "sec_name": "ServiceNow, Inc.",
       "display_name": "ServiceNow, Inc.",
       "name_match": "verified",
-      "mentions": 35,
-      "mentions_24h_ago": 21,
-      "mention_change_pct": 66.7,
-      "upvotes": 97,
+      "mentions": 36,
+      "mentions_24h_ago": 22,
+      "mention_change_pct": 63.6,
+      "upvotes": 96,
       "cik": "0001373715",
       "filing": {
         "form": "10-Q",
@@ -10186,16 +9853,386 @@
       "news": [
         "ServiceNow Drops 23% Year to Date: Time to Hold the Stock or Fold? - Yahoo Finance",
         "ServiceNow Inc. stock outperforms competitors on strong trading day - MarketWatch",
-        "BDF Gestion Sells 17,824 Shares of ServiceNow, Inc. $NOW - MarketBeat",
-        "Software company soars amid plans to cut 1,000 jobs - thestreet.com"
+        "Software company soars amid plans to cut 1,000 jobs - thestreet.com",
+        "BDF Gestion Sells 17,824 Shares of ServiceNow, Inc. $NOW - MarketBeat"
       ],
       "social": {
         "count": 30,
-        "bullish": 12,
-        "bearish": 1,
+        "bullish": 10,
+        "bearish": 0,
         "samples": [
-          "$NOW BS EVERY DAY",
-          "$NOW why"
+          "$NOW My favorite type of dip, the fake one 😂😂😂😎✌️",
+          "I’ll only say it once. These are the names I’m watching for the next phase of the AI and technology cycle: $AMD → $515 S"
+        ]
+      }
+    },
+    {
+      "rank": 27,
+      "ticker": "ASTS",
+      "name": "AST SpaceMobile",
+      "sec_name": "AST SpaceMobile, Inc.",
+      "display_name": "AST SpaceMobile, Inc.",
+      "name_match": "verified",
+      "mentions": 27,
+      "mentions_24h_ago": 60,
+      "mention_change_pct": -55.0,
+      "upvotes": 50,
+      "cik": "0001780312",
+      "filing": {
+        "form": "8-K",
+        "date": "2026-07-20",
+        "days_ago": 16,
+        "fresh": false,
+        "desc": "8-K",
+        "summary": "Material agreement signed; New debt obligation; Unregistered share sale; Other material update",
+        "accession": "0001493152-26-033912",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/form8-k.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/0001493152-26-033912-index.htm"
+      },
+      "filings": [
+        {
+          "form": "8-K",
+          "date": "2026-07-20",
+          "days_ago": 16,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Material agreement signed; New debt obligation; Unregistered share sale; Other material update",
+          "accession": "0001493152-26-033912",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033912/0001493152-26-033912-index.htm",
+          "ai_summary": "AST SpaceMobile priced a $1 billion convertible senior notes offering due 2034, with capped call transactions to reduce dilution."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-15",
+          "days_ago": 21,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001493152-26-033365",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226033365/0001493152-26-033365-index.htm",
+          "ai_summary": "AST SpaceMobile announced a proposed $1 billion convertible notes offering and preliminary June 30, 2026 cash of $2.723 billion."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-15",
+          "days_ago": 51,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Shareholder vote results",
+          "accession": "0001493152-26-028544",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000149315226028544/0001493152-26-028544-index.htm",
+          "ai_summary": "AST SpaceMobile’s June 12, 2026 annual meeting saw shareholders elect all ten directors, ratify KPMG as auditor, and approve an advisory vote on executive compensation."
+        },
+        {
+          "form": "10-Q",
+          "date": "2026-05-11",
+          "days_ago": 86,
+          "fresh": false,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001193125-26-216950",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216950/0001193125-26-216950-index.htm",
+          "ai_summary": "AST SpaceMobile, Inc. reported a net loss of $191 million for Q1 2026, driven by increased operating expenses and a significant loss from a Block 2 BB7 satellite."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-05-11",
+          "days_ago": 86,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released; Other material update",
+          "accession": "0001193125-26-216946",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526216946/0001193125-26-216946-index.htm",
+          "ai_summary": "AST SpaceMobile, Inc. announced its first quarter 2026 financial results and provided a business update via press release and presentation."
+        }
+      ],
+      "tickers": [
+        "ASTS"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 68.38,
+        "prev_close": 70.31,
+        "change_pct": -2.74,
+        "currency": "USD",
+        "spark": [
+          58.44,
+          58.98,
+          63.52,
+          70.31,
+          68.38
+        ],
+        "history": [
+          [
+            "2026-05-06",
+            70.68
+          ],
+          [
+            "2026-05-07",
+            65.35
+          ],
+          [
+            "2026-05-08",
+            75.05
+          ],
+          [
+            "2026-05-11",
+            82.55
+          ],
+          [
+            "2026-05-12",
+            72.96
+          ],
+          [
+            "2026-05-13",
+            74.81
+          ],
+          [
+            "2026-05-14",
+            83.01
+          ],
+          [
+            "2026-05-15",
+            83.67
+          ],
+          [
+            "2026-05-18",
+            86.83
+          ],
+          [
+            "2026-05-19",
+            88.1
+          ],
+          [
+            "2026-05-20",
+            89.58
+          ],
+          [
+            "2026-05-21",
+            96.23
+          ],
+          [
+            "2026-05-22",
+            105.86
+          ],
+          [
+            "2026-05-26",
+            119.7
+          ],
+          [
+            "2026-05-27",
+            129.6
+          ],
+          [
+            "2026-05-28",
+            133.09
+          ],
+          [
+            "2026-05-29",
+            113.41
+          ],
+          [
+            "2026-06-01",
+            105.65
+          ],
+          [
+            "2026-06-02",
+            118.17
+          ],
+          [
+            "2026-06-03",
+            107.73
+          ],
+          [
+            "2026-06-04",
+            107.29
+          ],
+          [
+            "2026-06-05",
+            93.6
+          ],
+          [
+            "2026-06-08",
+            92.06
+          ],
+          [
+            "2026-06-09",
+            88.71
+          ],
+          [
+            "2026-06-10",
+            87.32
+          ],
+          [
+            "2026-06-11",
+            97.56
+          ],
+          [
+            "2026-06-12",
+            82.41
+          ],
+          [
+            "2026-06-15",
+            87.57
+          ],
+          [
+            "2026-06-16",
+            82.25
+          ],
+          [
+            "2026-06-17",
+            85.43
+          ],
+          [
+            "2026-06-18",
+            80.66
+          ],
+          [
+            "2026-06-22",
+            73.19
+          ],
+          [
+            "2026-06-23",
+            72.87
+          ],
+          [
+            "2026-06-24",
+            68.01
+          ],
+          [
+            "2026-06-25",
+            65.62
+          ],
+          [
+            "2026-06-26",
+            71.45
+          ],
+          [
+            "2026-06-29",
+            86.77
+          ],
+          [
+            "2026-06-30",
+            88.86
+          ],
+          [
+            "2026-07-01",
+            86.1
+          ],
+          [
+            "2026-07-02",
+            85.13
+          ],
+          [
+            "2026-07-06",
+            80.64
+          ],
+          [
+            "2026-07-07",
+            74.21
+          ],
+          [
+            "2026-07-08",
+            74.95
+          ],
+          [
+            "2026-07-09",
+            73.88
+          ],
+          [
+            "2026-07-10",
+            73.32
+          ],
+          [
+            "2026-07-13",
+            67.58
+          ],
+          [
+            "2026-07-14",
+            68.82
+          ],
+          [
+            "2026-07-15",
+            66.31
+          ],
+          [
+            "2026-07-16",
+            55.01
+          ],
+          [
+            "2026-07-17",
+            57.8
+          ],
+          [
+            "2026-07-20",
+            57.42
+          ],
+          [
+            "2026-07-21",
+            63.34
+          ],
+          [
+            "2026-07-22",
+            61.95
+          ],
+          [
+            "2026-07-23",
+            59.18
+          ],
+          [
+            "2026-07-24",
+            56.2
+          ],
+          [
+            "2026-07-27",
+            58.29
+          ],
+          [
+            "2026-07-28",
+            56.55
+          ],
+          [
+            "2026-07-29",
+            53.03
+          ],
+          [
+            "2026-07-30",
+            58.44
+          ],
+          [
+            "2026-07-31",
+            58.98
+          ],
+          [
+            "2026-08-03",
+            63.52
+          ],
+          [
+            "2026-08-04",
+            70.31
+          ],
+          [
+            "2026-08-05",
+            68.38
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-08-05"
+      },
+      "is_fund": false,
+      "news": [
+        "A Meta Executive Just Gave AST SpaceMobile a Shoutout. What It Means for ASTS Stock. - Barchart.com",
+        "AST SpaceMobile Launches Three BlueBird Satellites Into Orbit - Benzinga",
+        "Amundi Purchases 99,236 Shares of AST SpaceMobile, Inc. $ASTS - MarketBeat",
+        "Will AST SpaceMobile, Inc. (ASTS) Report Negative Earnings Next Week? What You Should Know - Yahoo Finance"
+      ],
+      "social": {
+        "count": 30,
+        "bullish": 17,
+        "bearish": 6,
+        "samples": [
+          "$ASTS FCC Brendan Carr says that the United States wants to be the leader in D2D NTN 5G in the World. Well guess what? A",
+          "$ASTS Not fazed by today's price action in the least! Looks like we hit about $73 in the pre-market. Not too shabby!! Ex"
         ]
       }
     },
@@ -10206,10 +10243,10 @@
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 26,
-      "mentions_24h_ago": 54,
-      "mention_change_pct": -51.9,
-      "upvotes": 72,
+      "mentions": 25,
+      "mentions_24h_ago": 49,
+      "mention_change_pct": -49.0,
+      "upvotes": 70,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -10562,10 +10599,10 @@
       "social": {
         "count": 30,
         "bullish": 8,
-        "bearish": 4,
+        "bearish": 6,
         "samples": [
-          "$SNDK $MU $NBIS Kospi gets murdered tonight. Will drag it all with it",
-          "$NBIS too much bullish here. Never a good sign. Crash after earnings next week."
+          "$NBIS Key levels traders should watch. The second tag is a moving level along the trendline, which is important to consi",
+          "$NBIS looks like the fake pump is out of gas"
         ]
       }
     }
