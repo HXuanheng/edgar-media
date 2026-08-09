@@ -1,0 +1,101 @@
+{
+  "cik": "0002007825",
+  "ticker": "INFQ",
+  "currency": "USD",
+  "schema": 3,
+  "fiscal_years": [
+    2025,
+    2024
+  ],
+  "updated": "2026-08-09T23:29:31Z",
+  "source": "SEC EDGAR XBRL companyfacts",
+  "statements": {
+    "income": [
+      {
+        "label": "Operating income",
+        "unit": "USD",
+        "values": {
+          "2024": -51910,
+          "2025": -8035205
+        }
+      },
+      {
+        "label": "Net income",
+        "unit": "USD",
+        "values": {
+          "2024": -51910,
+          "2025": -66931068
+        }
+      }
+    ],
+    "balance": [
+      {
+        "label": "Total assets",
+        "unit": "USD",
+        "values": {
+          "2024": 157937,
+          "2025": 424866229
+        }
+      },
+      {
+        "label": "Current assets",
+        "unit": "USD",
+        "values": {
+          "2024": 0,
+          "2025": 1069583
+        }
+      },
+      {
+        "label": "Total liabilities",
+        "unit": "USD",
+        "values": {
+          "2024": 184847,
+          "2025": 78795575
+        }
+      },
+      {
+        "label": "Current liabilities",
+        "unit": "USD",
+        "values": {
+          "2024": 184847,
+          "2025": 75795575
+        }
+      },
+      {
+        "label": "Stockholders' equity",
+        "unit": "USD",
+        "values": {
+          "2024": -26910,
+          "2025": -77618849
+        }
+      }
+    ],
+    "cashflow": [
+      {
+        "label": "Operating cash flow",
+        "unit": "USD",
+        "values": {
+          "2024": 0,
+          "2025": -2272729
+        }
+      },
+      {
+        "label": "Investing cash flow",
+        "unit": "USD",
+        "values": {
+          "2024": 0,
+          "2025": -413000000
+        }
+      },
+      {
+        "label": "Financing cash flow",
+        "unit": "USD",
+        "values": {
+          "2024": 0,
+          "2025": 415974883
+        }
+      }
+    ]
+  },
+  "based_on_accession": "0001193125-26-227206"
+}
