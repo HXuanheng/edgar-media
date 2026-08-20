@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-20T04:34:47Z",
+  "updated_utc": "2026-08-20T05:28:24Z",
   "source": {
     "attention": "ApeWisdom (Reddit mentions, ~hourly)",
     "news": "Google News RSS (~hourly, best-effort)",
@@ -13,15 +13,347 @@
   "items": [
     {
       "rank": 4,
+      "ticker": "RNA",
+      "name": "Avidity Biosciences",
+      "sec_name": "Atrium Therapeutics, Inc.",
+      "display_name": "Atrium Therapeutics, Inc.",
+      "name_match": "verified",
+      "mentions": 143,
+      "mentions_24h_ago": 1,
+      "mention_change_pct": 14200.0,
+      "upvotes": 3399,
+      "cik": "0002093101",
+      "filing": {
+        "form": "10-Q",
+        "date": "2026-08-13",
+        "days_ago": 7,
+        "fresh": true,
+        "desc": "10-Q",
+        "summary": "Quarterly report",
+        "accession": "0001193125-26-349488",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349488/rna-20260630.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349488/0001193125-26-349488-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-Q",
+          "date": "2026-08-13",
+          "days_ago": 7,
+          "fresh": true,
+          "desc": "10-Q",
+          "summary": "Quarterly report",
+          "accession": "0001193125-26-349488",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349488/0001193125-26-349488-index.htm",
+          "ai_summary": "Atrium Therapeutics reported a net loss of $20.2 million for the quarter ended June 30, 2026, with $263.9 million in cash and investments."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-08-13",
+          "days_ago": 7,
+          "fresh": true,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001193125-26-349482",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349482/0001193125-26-349482-index.htm",
+          "ai_summary": "Atrium Therapeutics announced its financial results for the quarter ended June 30, 2026, via press release."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-14",
+          "days_ago": 37,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Other material update",
+          "accession": "0001193125-26-303393",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526303393/0001193125-26-303393-index.htm"
+        }
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 13.71,
+        "prev_close": 12.84,
+        "change_pct": 6.78,
+        "currency": "USD",
+        "spark": [
+          12.33,
+          12.84,
+          12.96,
+          12.84,
+          13.71
+        ],
+        "history": [
+          [
+            "2026-05-20",
+            12.72
+          ],
+          [
+            "2026-05-21",
+            13.04
+          ],
+          [
+            "2026-05-22",
+            13.09
+          ],
+          [
+            "2026-05-26",
+            13.06
+          ],
+          [
+            "2026-05-27",
+            13.0
+          ],
+          [
+            "2026-05-28",
+            13.36
+          ],
+          [
+            "2026-05-29",
+            13.0
+          ],
+          [
+            "2026-06-01",
+            12.68
+          ],
+          [
+            "2026-06-02",
+            12.25
+          ],
+          [
+            "2026-06-03",
+            12.17
+          ],
+          [
+            "2026-06-04",
+            12.3
+          ],
+          [
+            "2026-06-05",
+            11.8
+          ],
+          [
+            "2026-06-08",
+            11.55
+          ],
+          [
+            "2026-06-09",
+            11.76
+          ],
+          [
+            "2026-06-10",
+            11.67
+          ],
+          [
+            "2026-06-11",
+            12.43
+          ],
+          [
+            "2026-06-12",
+            12.37
+          ],
+          [
+            "2026-06-15",
+            12.75
+          ],
+          [
+            "2026-06-16",
+            12.61
+          ],
+          [
+            "2026-06-17",
+            12.48
+          ],
+          [
+            "2026-06-18",
+            12.66
+          ],
+          [
+            "2026-06-22",
+            12.94
+          ],
+          [
+            "2026-06-23",
+            12.81
+          ],
+          [
+            "2026-06-24",
+            12.83
+          ],
+          [
+            "2026-06-25",
+            12.78
+          ],
+          [
+            "2026-06-26",
+            13.19
+          ],
+          [
+            "2026-06-29",
+            13.65
+          ],
+          [
+            "2026-06-30",
+            13.45
+          ],
+          [
+            "2026-07-01",
+            13.3
+          ],
+          [
+            "2026-07-02",
+            13.65
+          ],
+          [
+            "2026-07-06",
+            13.01
+          ],
+          [
+            "2026-07-07",
+            13.24
+          ],
+          [
+            "2026-07-08",
+            13.37
+          ],
+          [
+            "2026-07-09",
+            12.91
+          ],
+          [
+            "2026-07-10",
+            12.46
+          ],
+          [
+            "2026-07-13",
+            12.22
+          ],
+          [
+            "2026-07-14",
+            12.22
+          ],
+          [
+            "2026-07-15",
+            12.3
+          ],
+          [
+            "2026-07-16",
+            12.16
+          ],
+          [
+            "2026-07-17",
+            12.15
+          ],
+          [
+            "2026-07-20",
+            11.76
+          ],
+          [
+            "2026-07-23",
+            11.91
+          ],
+          [
+            "2026-07-24",
+            11.49
+          ],
+          [
+            "2026-07-27",
+            11.57
+          ],
+          [
+            "2026-07-28",
+            11.49
+          ],
+          [
+            "2026-07-29",
+            11.18
+          ],
+          [
+            "2026-07-30",
+            11.46
+          ],
+          [
+            "2026-08-03",
+            11.33
+          ],
+          [
+            "2026-08-04",
+            11.54
+          ],
+          [
+            "2026-08-05",
+            11.74
+          ],
+          [
+            "2026-08-06",
+            12.11
+          ],
+          [
+            "2026-08-07",
+            12.34
+          ],
+          [
+            "2026-08-10",
+            12.24
+          ],
+          [
+            "2026-08-11",
+            12.27
+          ],
+          [
+            "2026-08-12",
+            12.17
+          ],
+          [
+            "2026-08-13",
+            12.33
+          ],
+          [
+            "2026-08-14",
+            12.84
+          ],
+          [
+            "2026-08-17",
+            12.96
+          ],
+          [
+            "2026-08-18",
+            12.84
+          ],
+          [
+            "2026-08-19",
+            13.71
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-08-19"
+      },
+      "is_fund": false,
+      "news": [
+        "Atrium Therapeutics, Inc. (RNA) Stock Analysis: 94.70% Potential Upside Catches Investor Attention - DirectorsTalk Interviews",
+        "Atrium Therapeutics (RNA): RA Capital and affiliates report 0% beneficial ownership - Stock Titan",
+        "Atrium Therapeutics (RNA) Inches Higher: 0.93% Gain Reinforces Support Zone - Dark Pool Sentiment - Vinanet",
+        "Atrium Therapeutics Reports First Quarter 2026 Financial Results - PR Newswire"
+      ],
+      "social": {
+        "count": 30,
+        "bullish": 12,
+        "bearish": 0,
+        "samples": [
+          "$RNA Atrium Therapeutics announced Q2 2026 financial results.",
+          "👁 $CADL $RNA $FRMM $QUCY $ONDS"
+        ]
+      }
+    },
+    {
+      "rank": 5,
       "ticker": "NBIS",
       "name": "Nebius Group",
       "sec_name": "Nebius Group N.V.",
       "display_name": "Nebius Group N.V.",
       "name_match": "verified",
-      "mentions": 144,
-      "mentions_24h_ago": 101,
-      "mention_change_pct": 42.6,
-      "upvotes": 288,
+      "mentions": 141,
+      "mentions_24h_ago": 100,
+      "mention_change_pct": 41.0,
+      "upvotes": 275,
       "cik": "0001513845",
       "filing": {
         "form": "6-K",
@@ -384,351 +716,11 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 15,
-        "bearish": 4,
+        "bullish": 20,
+        "bearish": 1,
         "samples": [
-          "$NBIS Their first tranche of notes, a year ago, when the stock was $40, paid out at$60. Maybe those are the ones in the ",
-          "$NBIS Anyone thinking that private offering was bearish after that earnings call had to be delusional."
-        ]
-      }
-    },
-    {
-      "rank": 5,
-      "ticker": "RNA",
-      "name": "Avidity Biosciences",
-      "sec_name": "Atrium Therapeutics, Inc.",
-      "display_name": "Atrium Therapeutics, Inc.",
-      "name_match": "verified",
-      "mentions": 142,
-      "mentions_24h_ago": 1,
-      "mention_change_pct": 14100.0,
-      "upvotes": 3380,
-      "cik": "0002093101",
-      "filing": {
-        "form": "10-Q",
-        "date": "2026-08-13",
-        "days_ago": 7,
-        "fresh": true,
-        "desc": "10-Q",
-        "summary": "Quarterly report",
-        "accession": "0001193125-26-349488",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349488/rna-20260630.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349488/0001193125-26-349488-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-Q",
-          "date": "2026-08-13",
-          "days_ago": 7,
-          "fresh": true,
-          "desc": "10-Q",
-          "summary": "Quarterly report",
-          "accession": "0001193125-26-349488",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349488/0001193125-26-349488-index.htm",
-          "ai_summary": "Atrium Therapeutics reported a net loss of $20.2 million for the quarter ended June 30, 2026, with $263.9 million in cash and investments."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-08-13",
-          "days_ago": 7,
-          "fresh": true,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001193125-26-349482",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526349482/0001193125-26-349482-index.htm",
-          "ai_summary": "Atrium Therapeutics announced its financial results for the quarter ended June 30, 2026, via press release."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-07-14",
-          "days_ago": 37,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Other material update",
-          "accession": "0001193125-26-303393",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/2093101/000119312526303393/0001193125-26-303393-index.htm"
-        }
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 13.71,
-        "prev_close": 12.84,
-        "change_pct": 6.78,
-        "currency": "USD",
-        "spark": [
-          12.33,
-          12.84,
-          12.96,
-          12.84,
-          13.71
-        ],
-        "history": [
-          [
-            "2026-05-20",
-            12.72
-          ],
-          [
-            "2026-05-21",
-            13.04
-          ],
-          [
-            "2026-05-22",
-            13.09
-          ],
-          [
-            "2026-05-26",
-            13.06
-          ],
-          [
-            "2026-05-27",
-            13.0
-          ],
-          [
-            "2026-05-28",
-            13.36
-          ],
-          [
-            "2026-05-29",
-            13.0
-          ],
-          [
-            "2026-06-01",
-            12.68
-          ],
-          [
-            "2026-06-02",
-            12.25
-          ],
-          [
-            "2026-06-03",
-            12.17
-          ],
-          [
-            "2026-06-04",
-            12.3
-          ],
-          [
-            "2026-06-05",
-            11.8
-          ],
-          [
-            "2026-06-08",
-            11.55
-          ],
-          [
-            "2026-06-09",
-            11.76
-          ],
-          [
-            "2026-06-10",
-            11.67
-          ],
-          [
-            "2026-06-11",
-            12.43
-          ],
-          [
-            "2026-06-12",
-            12.37
-          ],
-          [
-            "2026-06-15",
-            12.75
-          ],
-          [
-            "2026-06-16",
-            12.61
-          ],
-          [
-            "2026-06-17",
-            12.48
-          ],
-          [
-            "2026-06-18",
-            12.66
-          ],
-          [
-            "2026-06-22",
-            12.94
-          ],
-          [
-            "2026-06-23",
-            12.81
-          ],
-          [
-            "2026-06-24",
-            12.83
-          ],
-          [
-            "2026-06-25",
-            12.78
-          ],
-          [
-            "2026-06-26",
-            13.19
-          ],
-          [
-            "2026-06-29",
-            13.65
-          ],
-          [
-            "2026-06-30",
-            13.45
-          ],
-          [
-            "2026-07-01",
-            13.3
-          ],
-          [
-            "2026-07-02",
-            13.65
-          ],
-          [
-            "2026-07-06",
-            13.01
-          ],
-          [
-            "2026-07-07",
-            13.24
-          ],
-          [
-            "2026-07-08",
-            13.37
-          ],
-          [
-            "2026-07-09",
-            12.91
-          ],
-          [
-            "2026-07-10",
-            12.46
-          ],
-          [
-            "2026-07-13",
-            12.22
-          ],
-          [
-            "2026-07-14",
-            12.22
-          ],
-          [
-            "2026-07-15",
-            12.3
-          ],
-          [
-            "2026-07-16",
-            12.16
-          ],
-          [
-            "2026-07-17",
-            12.15
-          ],
-          [
-            "2026-07-20",
-            11.76
-          ],
-          [
-            "2026-07-21",
-            12.29
-          ],
-          [
-            "2026-07-22",
-            12.17
-          ],
-          [
-            "2026-07-23",
-            11.91
-          ],
-          [
-            "2026-07-24",
-            11.49
-          ],
-          [
-            "2026-07-27",
-            11.57
-          ],
-          [
-            "2026-07-28",
-            11.49
-          ],
-          [
-            "2026-07-29",
-            11.18
-          ],
-          [
-            "2026-07-30",
-            11.46
-          ],
-          [
-            "2026-07-31",
-            11.35
-          ],
-          [
-            "2026-08-03",
-            11.33
-          ],
-          [
-            "2026-08-04",
-            11.54
-          ],
-          [
-            "2026-08-05",
-            11.74
-          ],
-          [
-            "2026-08-06",
-            12.11
-          ],
-          [
-            "2026-08-07",
-            12.34
-          ],
-          [
-            "2026-08-10",
-            12.24
-          ],
-          [
-            "2026-08-12",
-            12.17
-          ],
-          [
-            "2026-08-13",
-            12.33
-          ],
-          [
-            "2026-08-14",
-            12.84
-          ],
-          [
-            "2026-08-17",
-            12.96
-          ],
-          [
-            "2026-08-18",
-            12.84
-          ],
-          [
-            "2026-08-19",
-            13.71
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-08-19"
-      },
-      "is_fund": false,
-      "news": [
-        "Atrium Therapeutics, Inc. (RNA) Stock Analysis: 94.70% Potential Upside Catches Investor Attention - DirectorsTalk Interviews",
-        "Atrium Therapeutics (RNA): RA Capital and affiliates report 0% beneficial ownership - Stock Titan",
-        "Atrium Therapeutics (RNA) Inches Higher: 0.93% Gain Reinforces Support Zone - Dark Pool Sentiment - Vinanet",
-        "Atrium Therapeutics Reports First Quarter 2026 Financial Results - PR Newswire"
-      ],
-      "social": {
-        "count": 30,
-        "bullish": 12,
-        "bearish": 0,
-        "samples": [
-          "$RNA Atrium Therapeutics announced Q2 2026 financial results.",
-          "👁 $CADL $RNA $FRMM $QUCY $ONDS"
+          "$NBIS is approaching a major level. Bull case: 299.86 Resistance: 233.41 Support: 192.31 https://x.com/hhuynhs/status/20",
+          "$NBIS you not bullish enough"
         ]
       }
     },
@@ -739,10 +731,10 @@
       "sec_name": "Sandisk Corp",
       "display_name": "Sandisk Corp",
       "name_match": "verified",
-      "mentions": 124,
-      "mentions_24h_ago": 202,
-      "mention_change_pct": -38.6,
-      "upvotes": 588,
+      "mentions": 123,
+      "mentions_24h_ago": 194,
+      "mention_change_pct": -36.6,
+      "upvotes": 607,
       "cik": "0002023554",
       "filing": {
         "form": "10-K",
@@ -1056,16 +1048,16 @@
       "news": [
         "Why Did Sandisk Stock Drop Today? - Yahoo Finance",
         "Sandisk: We Retain Skepticism on Longer-Term Targets - Morningstar",
-        "SanDisk Corporation Stock (SNDK) Opened Up by 3.37% on Aug 19: A Full Analysis - TradingKey",
-        "What's Going On With Sandisk Stock Tuesday? - Benzinga"
+        "Why Did Sandisk Stock Drop Today? - fool.com",
+        "SanDisk Corporation Stock (SNDK) Opened Up by 3.37% on Aug 19: A Full Analysis - TradingKey"
       ],
       "social": {
         "count": 30,
         "bullish": 19,
         "bearish": 2,
         "samples": [
-          "$SNDK did you momma schit all over you when you were born?",
-          "$SNDK"
+          "$SNDK please i need this to hold up, please!!!!",
+          "$SNDK Less than 6 hours until the pre-market opens and the shorts stampede to \"buy to cover\". I'd like to see $1,725 by "
         ]
       }
     },
@@ -1076,10 +1068,10 @@
       "sec_name": "Webull Corp",
       "display_name": "Webull Corp",
       "name_match": "verified",
-      "mentions": 103,
+      "mentions": 104,
       "mentions_24h_ago": 15,
-      "mention_change_pct": 586.7,
-      "upvotes": 328,
+      "mention_change_pct": 593.3,
+      "upvotes": 337,
       "cik": "0001866364",
       "filing": {
         "form": "6-K",
@@ -1380,32 +1372,32 @@
       },
       "is_fund": false,
       "news": [
+        "BULL Stock Surges Overnight: Webull CEO Calls End Of PDT Rule A 'Defining Event' Of Record Q2 - Stocktwits",
         "Webull Stock Rises With Crypto Rally Ahead of Q2 Earnings - Benzinga",
         "Earnings Flash (BULL) Webull Corporation Reports Q2 Revenue $198.8M, vs. FactSet Est of $183.0M - marketscreener.com",
-        "Webull (NASDAQ: BULL) logs strongest quarter yet as trading hits records - Stock Titan",
-        "Experience real-time quotes, in-depth charts, and analyst ratings - webull.com"
+        "Dear Webull Stock Fans, Mark Your Calendars for August 19 - Yahoo Finance"
       ],
       "social": {
         "count": 30,
-        "bullish": 16,
-        "bearish": 2,
+        "bullish": 17,
+        "bearish": 3,
         "samples": [
-          "$BULL stock is still very low I’m not understanding",
-          "$BULL congrats to all the bulls!! It has been a longtime in the making."
+          "$BULL ok hear me out....",
+          "$BULL $SOFI I’m absolutely sick to my stomach seeing all these stocks go up except SoFi now this POs bull wtf!!!"
         ]
       }
     },
     {
-      "rank": 9,
+      "rank": 10,
       "ticker": "NVDA",
       "name": "NVIDIA",
       "sec_name": "NVIDIA CORP",
       "display_name": "Nvidia Corp",
       "name_match": "verified",
-      "mentions": 90,
+      "mentions": 89,
       "mentions_24h_ago": 103,
-      "mention_change_pct": -12.6,
-      "upvotes": 212,
+      "mention_change_pct": -13.6,
+      "upvotes": 214,
       "cik": "0001045810",
       "filing": {
         "form": "8-K",
@@ -1764,29 +1756,29 @@
         "Going Into Earnings, Is Nvidia Stock a Buy, a Sell, or Fairly Valued? - Morningstar",
         "8 Stocks Nvidia Has Invested In - US News Money",
         "Nvidia Holds More Than 122 Million Shares of SPCX Stock After Q2. Barchart Data Shows It’s Making a High-Upside Bet. - Barchart.com",
-        "BofA Sees Nvidia Trading at Up to 50% Discount on AI Risks - Bloomberg"
+        "BofA Sees Nvidia Trading at Up to 50% Discount on AI Risks - Bloomberg.com"
       ],
       "social": {
         "count": 30,
-        "bullish": 13,
-        "bearish": 5,
+        "bullish": 11,
+        "bearish": 4,
         "samples": [
-          "$MU this is frustrating stock now, like $NVDA MMs will milk it everyday at expense of clueless options buyers",
-          "$NVDA Price target: circa $300.00 and above!"
+          "$BB one qtr closer to $NVDA chip robotics with QNX functional safety.",
+          "$NVDA results on August 26 is the key date for AI/Semis rally NVDA trading at forward PE of 25 will determine how the ec"
         ]
       }
     },
     {
-      "rank": 11,
+      "rank": 12,
       "ticker": "MRVL",
       "name": "Marvell Technology Group",
       "sec_name": "Marvell Technology, Inc.",
       "display_name": "Marvell Technology, Inc.",
       "name_match": "verified",
-      "mentions": 85,
+      "mentions": 83,
       "mentions_24h_ago": 15,
-      "mention_change_pct": 466.7,
-      "upvotes": 644,
+      "mention_change_pct": 453.3,
+      "upvotes": 643,
       "cik": "0001835632",
       "filing": {
         "form": "8-K",
@@ -2153,9 +2145,9 @@
       },
       "is_fund": false,
       "news": [
-        "Marvell Gives Client Google Right to Buy $12.2 Billion Stock - Bloomberg",
+        "Marvell Gives Client Google Right to Buy $12.2 Billion Stock - Bloomberg.com",
         "Marvell Technology (MRVL) Stock Trades Up, Here Is Why - Yahoo Finance",
-        "Marvell Technology Stock Jumps As AI Memory Push Accelerates - stockstotrade.com",
+        "Marvell Technology Stock Jumps As AI Memory Push Accelerates - StocksToTrade",
         "Marvell Technology, Google Expand AI Silicon Pact; Google Receives Warrant for 58.97M Shares at $206.58 - TradingView"
       ],
       "social": {
@@ -2175,10 +2167,10 @@
       "sec_name": "ADVANCED MICRO DEVICES INC",
       "display_name": "Advanced Micro Devices Inc",
       "name_match": "verified",
-      "mentions": 61,
-      "mentions_24h_ago": 24,
-      "mention_change_pct": 154.2,
-      "upvotes": 373,
+      "mentions": 60,
+      "mentions_24h_ago": 23,
+      "mention_change_pct": 160.9,
+      "upvotes": 367,
       "cik": "0000002488",
       "filing": {
         "form": "8-K",
@@ -2545,7 +2537,7 @@
       },
       "is_fund": false,
       "news": [
-        "Where Will AMD Stock Be in 5 Years? - The Motley Fool",
+        "Where Will AMD Stock Be in 5 Years? - fool.com",
         "Advanced Micro Devices (AMD) Raises $5b For AI As Its Valuation Debate Heats Up - Yahoo Finance",
         "What's Going On With AMD Stock Wednesday? - Benzinga",
         "Advanced Micro Devices, Inc. $AMD Stock Position Decreased by Insight Advisors LLC PA - MarketBeat"
@@ -2561,16 +2553,16 @@
       }
     },
     {
-      "rank": 19,
+      "rank": 18,
       "ticker": "MSTR",
       "name": "MicroStrategy",
       "sec_name": "Strategy Inc",
       "display_name": "Strategy Inc",
       "name_match": "verified",
-      "mentions": 49,
+      "mentions": 51,
       "mentions_24h_ago": 11,
-      "mention_change_pct": 345.5,
-      "upvotes": 126,
+      "mention_change_pct": 363.6,
+      "upvotes": 129,
       "cik": "0001050446",
       "filing": {
         "form": "8-K",
@@ -3142,25 +3134,25 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 16,
+        "bullish": 15,
         "bearish": 6,
         "samples": [
-          "$MSTR parabolic 2.0 coming...MSTR is too big to fail",
-          "$MSTR shorts are fuuucked here."
+          "$MSTR this is just subsidizing preferred share holders. No div. Heavy dilution as its business model. There’s suppose to",
+          "$MSTR parabolic 2.0 coming...MSTR is too big to fail"
         ]
       }
     },
     {
-      "rank": 23,
+      "rank": 20,
       "ticker": "SPCX",
       "name": "SpaceX",
       "sec_name": "SPACE EXPLORATION TECHNOLOGIES CORP",
       "display_name": "Space Exploration Technologies Corp",
       "name_match": "verified",
-      "mentions": 45,
-      "mentions_24h_ago": 57,
-      "mention_change_pct": -21.1,
-      "upvotes": 149,
+      "mentions": 49,
+      "mentions_24h_ago": 55,
+      "mention_change_pct": -10.9,
+      "upvotes": 150,
       "cik": "0001181412",
       "filing": {
         "form": "8-K",
@@ -3518,18 +3510,18 @@
       },
       "is_fund": false,
       "news": [
-        "Elon Musk Holds Over 48% of SpaceX— But Says His Actual Vested Stake Is Lower: SPCX Stock Rises 2% in Friday Premarket - Yahoo Finance",
+        "SpaceX Is Back Trading Near Its Opening-Day Price. History Says Shares Will Be Worth This Much in 1 Year. - Yahoo Finance",
         "SpaceX Stock Jumps After Multibillion-Dollar Stakes Revealed - SpaceX (NASDAQ:SPCX) - Benzinga",
         "SpaceX: One Thing Most People Are Missing When It Comes To The Reported Stakes (SPCX) - Seeking Alpha",
-        "Elon Musk Can't Sell SpaceX Stock Until June 2027 -- But 6 Billion More Shares Could Flood the Market Before Then - The Motley Fool"
+        "Elon Musk Can't Sell SpaceX Stock Until June 2027 -- But 6 Billion More Shares Could Flood the Market Before Then - fool.com"
       ],
       "social": {
         "count": 30,
-        "bullish": 11,
-        "bearish": 4,
+        "bullish": 8,
+        "bearish": 5,
         "samples": [
-          "$SPCX",
-          "$SPCX CFO"
+          "$SPCX fair value is about $5-7 share. It will reach there by end of year. You heard it here first.",
+          "$SPCX over to you Captain Elongated Musketeer!"
         ]
       }
     },
@@ -3540,10 +3532,10 @@
       "sec_name": "Moderna, Inc.",
       "display_name": "Moderna, Inc.",
       "name_match": "verified",
-      "mentions": 844,
+      "mentions": 850,
       "mentions_24h_ago": 1,
-      "mention_change_pct": 84300.0,
-      "upvotes": 14595,
+      "mention_change_pct": 84900.0,
+      "upvotes": 14875,
       "cik": "0001682852",
       "filing": {
         "form": "10-Q",
@@ -3865,16 +3857,16 @@
       "news": [
         "Why Is Moderna (MRNA) Stock Rocketing Higher Today - Yahoo Finance",
         "Moderna (MRNA): Buy, Sell, or Hold Post Q2 Earnings? - Yahoo Finance",
-        "Moderna’s 177% Surge Burns Shorts in ‘Painful’ $5.5 Billion Loss - Bloomberg",
-        "Moderna stock more than doubles after melanoma vaccine trial shows \"landmark moment\" - CBS News"
+        "Moderna’s 177% Surge Burns Shorts in ‘Painful’ $5.5 Billion Loss - Bloomberg.com",
+        "Moderna Is Now S&P 500’s No. 2 Stock This Year — Wall Street, Jim Cramer And Elon Musk Cheer Cancer Vaccine Breakthrough - Yahoo Finance"
       ],
       "social": {
         "count": 30,
-        "bullish": 7,
-        "bearish": 3,
+        "bullish": 15,
+        "bearish": 2,
         "samples": [
-          "$MRNA Please go get in line for your boosters.",
-          "$MRNA one specific kind, Skin Cancer eat healthy, cover skin, read ingredient labels"
+          "$MRNA Anyone else remember the Las Vegas car dealership years ago that “cured cancer”. That was quite the run. LOL.",
+          "$MRNA congrats to those who rode the move. Certainly not buying it after a +180% in a week we know the gains were made."
         ]
       }
     },
@@ -3885,10 +3877,10 @@
       "sec_name": "SPDR S&P 500 ETF TRUST",
       "display_name": "Spdr S&P 500 Etf Trust",
       "name_match": "verified",
-      "mentions": 270,
-      "mentions_24h_ago": 379,
-      "mention_change_pct": -28.8,
-      "upvotes": 715,
+      "mentions": 268,
+      "mentions_24h_ago": 378,
+      "mention_change_pct": -29.1,
+      "upvotes": 714,
       "cik": "0000884394",
       "filing": null,
       "filings": [],
@@ -4167,18 +4159,18 @@
       },
       "is_fund": true,
       "news": [
-        "14 S&P 500 Stocks Just Made New 52-Week Highs - Trefis",
+        "Where The Selling Ran Deepest: 5 S&P 500 Stocks At 52-Week Lows - Trefis",
         "3 Sectors Investors Should Buy Now as S&P 500 Stumbles — Strategist Sees 15%-18% Upside - Benzinga",
-        "US Stock Index Futures Climb As Yields Cool Off Amid Treasury Support — NVDA, MRNA, MRVL, LOWE In Focus - TradingView",
+        "SPDR S&P 500 ETF (SPY) Stock Price | Quotes & News - Moomoo",
         "Jefferies Group's Top Q2 2026 Move: State Street SPDR S&P 500 ETF Trust at a 2. ... - Yahoo Finance"
       ],
       "social": {
         "count": 30,
-        "bullish": 7,
+        "bullish": 3,
         "bearish": 3,
         "samples": [
-          "Spy $SPY Revelation 3:21 21. The one who conquers, I will grant him to sit with me on my throne, as I also conquered and",
-          "$SPY $QQQ This is fine"
+          "$SOXL $SOXS $TQQQ $SQQQ $SPY The Specter Of 'Economic Death' Looms Over All Of Us In Late-Stage Surveillance Capitalism ",
+          "$SPY They’ll be a reckoning one day. But it won’t be tomorrow. Futes rippin’. 😎📈💰🔥👍"
         ]
       }
     },
@@ -4189,10 +4181,10 @@
       "sec_name": "MICRON TECHNOLOGY INC",
       "display_name": "Micron Technology Inc",
       "name_match": "verified",
-      "mentions": 192,
-      "mentions_24h_ago": 221,
-      "mention_change_pct": -13.1,
-      "upvotes": 511,
+      "mentions": 190,
+      "mentions_24h_ago": 220,
+      "mention_change_pct": -13.6,
+      "upvotes": 503,
       "cik": "0000723125",
       "filing": {
         "form": "10-Q",
@@ -4525,8 +4517,8 @@
         "bullish": 18,
         "bearish": 2,
         "samples": [
-          "@Capitalist_Overlord @RunGal This is far out of the normal, Cramer usually enters very late to provide exit liquidity to",
-          "$MU this is frustrating stock now, like $NVDA MMs will milk it everyday at expense of clueless options buyers"
+          "$MU",
+          "$MU I would guess price climbs all day tomorrow."
         ]
       }
     },
@@ -4537,10 +4529,10 @@
       "sec_name": "Reddit, Inc.",
       "display_name": "Reddit, Inc.",
       "name_match": "verified",
-      "mentions": 92,
-      "mentions_24h_ago": 79,
-      "mention_change_pct": 16.5,
-      "upvotes": 263,
+      "mentions": 91,
+      "mentions_24h_ago": 77,
+      "mention_change_pct": 18.2,
+      "upvotes": 267,
       "cik": "0001713445",
       "filing": {
         "form": "8-K",
@@ -4890,16 +4882,16 @@
       }
     },
     {
-      "rank": 10,
+      "rank": 9,
       "ticker": "META",
       "name": "Meta Platforms (Facebook)",
       "sec_name": "Meta Platforms, Inc.",
       "display_name": "Meta Platforms, Inc.",
       "name_match": "verified",
       "mentions": 89,
-      "mentions_24h_ago": 172,
-      "mention_change_pct": -48.3,
-      "upvotes": 162,
+      "mentions_24h_ago": 173,
+      "mention_change_pct": -48.6,
+      "upvotes": 161,
       "cik": "0001326801",
       "filing": {
         "form": "10-Q",
@@ -5225,29 +5217,29 @@
         "Why Meta Platforms Stock Crashed Today - Yahoo Finance",
         "Meta: If You’re Bearish Now, You’re Selling At The Bottom (NASDAQ:META) - Seeking Alpha",
         "Meta Platforms, Inc. $META Shares Bought by ARS Wealth Advisors Group LLC - MarketBeat",
-        "Meta stock sinks as landmark social media addiction trial gets underway. What's at stake for the tech giant? - fastcompany.com"
+        "Meta stock sinks as landmark social media addiction trial gets underway. What's at stake for the tech giant? - Fast Company"
       ],
       "social": {
         "count": 30,
-        "bullish": 4,
+        "bullish": 6,
         "bearish": 8,
         "samples": [
-          "$META range bound?. Jaded lizzzzzard play?????",
-          "$META you’d have to be nuts to buy this right now. https://youtu.be/WcXDHumN4S4"
+          "$META Just a reminder. Mark Zuckerberg is jewish In the freshman years Mark Zuckerberg was a member of Harvard Chabad. H",
+          "$META $500 Friday"
         ]
       }
     },
     {
-      "rank": 12,
+      "rank": 11,
       "ticker": "QQQ",
       "name": "Invesco QQQ ETF",
       "sec_name": "INVESCO QQQ TRUST, SERIES 1",
       "display_name": "Invesco Qqq Trust, Series 1",
       "name_match": "verified",
-      "mentions": 83,
+      "mentions": 84,
       "mentions_24h_ago": 116,
-      "mention_change_pct": -28.4,
-      "upvotes": 644,
+      "mention_change_pct": -27.6,
+      "upvotes": 705,
       "cik": "0001067839",
       "filing": {
         "form": "DEFA14A",
@@ -5543,11 +5535,11 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 4,
-        "bearish": 8,
+        "bullish": 6,
+        "bearish": 6,
         "samples": [
-          "$SPY $QQQ This is fine",
-          "$SPY $QQQ Only broke people use debit cards"
+          "$DJT $SPY $QQQ Just what you want to hear from president right? ROFL. Man impeach this idiot Trump: ‘Every Time I Hear O",
+          "$DJT $SPY $QQQ Can we impeach this idiot and give him a minimum wage job of taking care of flag poles then? https://www."
         ]
       }
     },
@@ -5558,10 +5550,10 @@
       "sec_name": "DTE ENERGY CO",
       "display_name": "Dte Energy Co",
       "name_match": "verified",
-      "mentions": 75,
-      "mentions_24h_ago": 66,
-      "mention_change_pct": 13.6,
-      "upvotes": 397,
+      "mentions": 72,
+      "mentions_24h_ago": 67,
+      "mention_change_pct": 7.5,
+      "upvotes": 392,
       "cik": "0000936340",
       "filing": {
         "form": "8-K",
@@ -5953,7 +5945,7 @@
       "mentions": 66,
       "mentions_24h_ago": 3,
       "mention_change_pct": 2100.0,
-      "upvotes": 186,
+      "upvotes": 188,
       "cik": "0001390478",
       "filing": {
         "form": "8-K",
@@ -6309,17 +6301,17 @@
       "is_fund": false,
       "news": [
         "SELLAS Life Sciences Group (SLS) Nears Key Phase 3 Readout On A Pricey Valuation - simplywall.st",
+        "SLS Short Interest Hits All-Time High: Sellas Bulls Smell A Short Squeeze As Executive Contract Changes Fuel Buyout Chatter - Stocktwits",
         "SELLAS Life Sciences Group (SLS) Stock Looks Priced At A Premium - Yahoo Finance",
-        "SELLAS Life Sciences: The Ownership Structure Has Changed Before The Defining Catalyst - Seeking Alpha",
-        "SELLAS Life Sciences Group Stock (SLS) Opinions on Technical Breakout and Phase 3 Prospects - Quiver Quantitative"
+        "SELLAS Life Sciences: The Ownership Structure Has Changed Before The Defining Catalyst - Seeking Alpha"
       ],
       "social": {
         "count": 30,
-        "bullish": 16,
+        "bullish": 13,
         "bearish": 7,
         "samples": [
-          "@UpperRight Ahhhh, go to Clinical Trials.gov, look up the trial, focus on changes from Rev. 7 to Rev. 8. That's the big ",
-          "$SLS This tells me everything about your knowledge and I don't believe you are an MD. Nice AI summaries earlier but why "
+          "$SLS gonna be a good day!",
+          "@Idfkytm I find it amusing that this board ran on \"models\" for months, and now it appears everyone is (rightfully) disca"
         ]
       }
     },
@@ -6333,7 +6325,7 @@
       "mentions": 62,
       "mentions_24h_ago": 30,
       "mention_change_pct": 106.7,
-      "upvotes": 62,
+      "upvotes": 65,
       "cik": "0001657853",
       "filing": {
         "form": "10-Q",
@@ -6725,18 +6717,18 @@
       },
       "is_fund": false,
       "news": [
-        "Robbins LLP Encourages HTZ Stockholders With Significant - globenewswire.com",
-        "Hertz Global Holdings Inc (HTZ) News, Articles, Events & Latest Updates - Stocktwits",
-        "Millennials Are Nearly 4 Times More Likely Than Boomers to Use Rental Cars, Hertz Finds - Stock Titan",
-        "Hertz Announces Proposed Offering of $100 Million of Common Stock - - Hertz Newsroom"
+        "Hertz Global Holdings, Inc. Class Action Lawsuit: Investors Face September 22, 2026, Deadline - Contact Kessler Topaz Meltzer & Check, LLP - NewMediaWire",
+        "Price to earnings forward of Hertz Global Holdings, Inc – NASDAQ:HTZWW - TradingView",
+        "Robbins LLP Encourages HTZ Stockholders With Significant - GlobeNewswire",
+        "Hertz Global Holdings Inc (HTZ) News, Articles, Events & Latest Updates - Stocktwits"
       ],
       "social": {
         "count": 30,
         "bullish": 10,
-        "bearish": 2,
+        "bearish": 1,
         "samples": [
-          "$HTZ $CABO effective-float thesis: Institutions and insiders appear to control roughly 5.47M of 5.67M outstanding shares",
-          "$HTZ deez nuts 🥜 are ready for tomorrow"
+          "$HTZ Ya need to understand the process by which Hertz loaned JP Morgan 37 million shares which they were selling at $2.7",
+          "$HTZ A news with new investor or potential buyout will be welcome.. United Rental $URI could buy it.. They have a lot of"
         ]
       }
     },
@@ -6748,8 +6740,8 @@
       "display_name": "Broadcom Inc.",
       "name_match": "verified",
       "mentions": 53,
-      "mentions_24h_ago": 13,
-      "mention_change_pct": 307.7,
+      "mentions_24h_ago": 12,
+      "mention_change_pct": 341.7,
       "upvotes": 102,
       "cik": "0001730168",
       "filing": {
@@ -7117,23 +7109,23 @@
       },
       "is_fund": false,
       "news": [
-        "Why Broadcom (AVGO) Stock Is Trading Lower Today - Yahoo Finance",
+        "Why Broadcom Stock Crashed Today - Yahoo Finance",
         "I Changed My Mind, Broadcom And Semiconductors Have Peaked For Now (NASDAQ:AVGO) - Seeking Alpha",
         "ALAB vs. AVGO: Which AI Infrastructure Stock Is the Better Buy Now? - TradingView",
-        "Marvell’s stock pops on news of Google chip deal — and Broadcom’s falls - MarketWatch"
+        "NVIDIA vs. Broadcom: The AI Stock You Should Buy Right Now - Zacks Investment Research"
       ],
       "social": {
         "count": 30,
         "bullish": 14,
         "bearish": 1,
         "samples": [
-          "$NBIS $AVGO market is so fake. Wait for the perfectly timed strategic upgrades now that the offering and the speculative",
-          "$AVGO $MRVL $GOOG Hopped on to read posts on Marvel and I am shocked that not 1 AVGO bull has posted here or bought shar"
+          "$AVGO Great opportunity to buy at this price",
+          "$NBIS $AVGO market is so fake. Wait for the perfectly timed strategic upgrades now that the offering and the speculative"
         ]
       }
     },
     {
-      "rank": 18,
+      "rank": 19,
       "ticker": "AAPL",
       "name": "Apple",
       "sec_name": "Apple Inc.",
@@ -7464,21 +7456,21 @@
         "bullish": 8,
         "bearish": 2,
         "samples": [
-          "$AAPL 📊 USAEquityResearch ▲ 316.83 (+2.19%) Trend: Bullish 📈 RSI (14): 37.6 — weak momentum, approaching oversold MACD: ",
-          "Just as I stated two days ago. The rest of the market began to weaken, not so much $MRVL , but definitely $SNDK $SPX & $"
+          "$AAPL GNS. GNS. GNS",
+          "$AMZN $AAPL $META $GOOGL $NVDA Quantative easing is here and last time a yield curve was used to fight no one buying our"
         ]
       }
     },
     {
-      "rank": 20,
+      "rank": 21,
       "ticker": "GOOG",
       "name": "Alphabet (Google)",
       "sec_name": "Alphabet Inc.",
       "display_name": "Alphabet Inc.",
       "name_match": "verified",
-      "mentions": 94,
-      "mentions_24h_ago": 95,
-      "mention_change_pct": -1.1,
+      "mentions": 93,
+      "mentions_24h_ago": 96,
+      "mention_change_pct": -3.1,
       "upvotes": 216,
       "cik": "0001652044",
       "filing": {
@@ -7957,10 +7949,10 @@
       },
       "is_fund": false,
       "news": [
-        "Marvell Gives Client Google Right to Buy $12.2 Billion Stock - Bloomberg",
+        "Marvell Gives Client Google Right to Buy $12.2 Billion Stock - Bloomberg.com",
         "Alphabet Stock: A Berkshire Hathaway-Style Compounder Hiding In Plain Sight (NASDAQ:GOOG) - Seeking Alpha",
         "Berkshire Raised Its Alphabet Share Count by 658% in a Single Quarter. Here’s Where The Stock is Headed - Yahoo Finance",
-        "Berkshire Hathaway Boosted Its Alphabet Stake 83%—Buffett Said the Investment Was His Idea - Investopedia"
+        "Berkshire Hathaway Boosted Its Alphabet Stake 83%—Buffett Said the Investment Was His Idea - investopedia.com"
       ],
       "social": {
         "count": 30,
@@ -7973,16 +7965,16 @@
       }
     },
     {
-      "rank": 21,
+      "rank": 23,
       "ticker": "TSLA",
       "name": "Tesla",
       "sec_name": "Tesla, Inc.",
       "display_name": "Tesla, Inc.",
       "name_match": "verified",
-      "mentions": 46,
+      "mentions": 45,
       "mentions_24h_ago": 37,
-      "mention_change_pct": 24.3,
-      "upvotes": 78,
+      "mention_change_pct": 21.6,
+      "upvotes": 77,
       "cik": "0001318605",
       "filing": {
         "form": "10-Q",
@@ -8312,11 +8304,11 @@
       ],
       "social": {
         "count": 30,
-        "bullish": 13,
+        "bullish": 11,
         "bearish": 3,
         "samples": [
-          "$TSLA",
-          "$SPCX $SNK $TSLA $TSLQ LandSpace pulled off the same rocket landing that made SpaceX untouchable, hours before 319,000,0"
+          "Tesla Stock Revs Up On Cybercab Buzz: Analyst Sees ‘Good Entry Point’ As Robotaxis Drive 30% Of Bull Case $TSLA $TSLL $T",
+          "$TSLA nake America more indebted bubble is building fast"
         ]
       }
     },
@@ -8327,10 +8319,10 @@
       "sec_name": null,
       "display_name": "Vanguard S&P 500 ETF",
       "name_match": "no_cik",
-      "mentions": 44,
-      "mentions_24h_ago": 45,
-      "mention_change_pct": -2.2,
-      "upvotes": 121,
+      "mentions": 43,
+      "mentions_24h_ago": 44,
+      "mention_change_pct": -2.3,
+      "upvotes": 109,
       "cik": null,
       "filing": null,
       "filings": [],
@@ -8606,9 +8598,9 @@
       },
       "is_fund": true,
       "news": [
-        "Where Will the Vanguard S&P 500 ETF Be in 20 Years? History Has Good and Bad News for Investors. - The Motley Fool",
-        "Meet the Vanguard ETF That's Crushing the S&P 500 and Nasdaq-100 Despite Not Owning Micron, Sandisk, or Any of the \"Magnificent Seven\" Stocks - The Motley Fool",
-        "The Vanguard S&P 500 ETF (VOO) Beat the Vanguard Morningstar Total Stock Market ETF (VTI) for 4 Straight Years. Here's Why That's About to Change. - The Motley Fool",
+        "Where Will the Vanguard S&P 500 ETF Be in 20 Years? History Has Good and Bad News for Investors. - fool.com",
+        "Meet the Vanguard ETF That's Crushing the S&P 500 and Nasdaq-100 Despite Not Owning Micron, Sandisk, or Any of the \"Magnificent Seven\" Stocks - fool.com",
+        "The Vanguard S&P 500 ETF (VOO) Beat the Vanguard Morningstar Total Stock Market ETF (VTI) for 4 Straight Years. Here's Why That's About to Change. - fool.com",
         "The Best S&P 500 ETFs to Buy Now - Morningstar"
       ],
       "social": {
@@ -8623,363 +8615,15 @@
     },
     {
       "rank": 25,
-      "ticker": "MSFT",
-      "name": "Microsoft",
-      "sec_name": "MICROSOFT CORP",
-      "display_name": "Microsoft Corp",
-      "name_match": "verified",
-      "mentions": 40,
-      "mentions_24h_ago": 42,
-      "mention_change_pct": -4.8,
-      "upvotes": 126,
-      "cik": "0000789019",
-      "filing": {
-        "form": "10-K",
-        "date": "2026-07-29",
-        "days_ago": 22,
-        "fresh": false,
-        "desc": "10-K",
-        "summary": "Annual report",
-        "accession": "0001193125-26-323660",
-        "doc_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
-        "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/0001193125-26-323660-index.htm"
-      },
-      "filings": [
-        {
-          "form": "10-K",
-          "date": "2026-07-29",
-          "days_ago": 22,
-          "fresh": false,
-          "desc": "10-K",
-          "summary": "Annual report",
-          "accession": "0001193125-26-323660",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/0001193125-26-323660-index.htm",
-          "ai_summary": "Microsoft's 10-K filing details its fiscal year performance, focusing on AI, cloud, productivity, and personal computing segments."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-07-29",
-          "days_ago": 22,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Earnings released",
-          "accession": "0001193125-26-323632",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/0001193125-26-323632-index.htm",
-          "ai_summary": "Microsoft announced its fiscal quarter and year-end financial results for June 30, 2026, on July 29, 2026."
-        },
-        {
-          "form": "8-K",
-          "date": "2026-06-05",
-          "days_ago": 76,
-          "fresh": false,
-          "desc": "8-K",
-          "summary": "Executive / board change",
-          "accession": "0001193125-26-258667",
-          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/0001193125-26-258667-index.htm",
-          "ai_summary": "Microsoft director Reid Hoffman will not seek re-election at the 2026 annual shareholder meeting, with no stated disagreement with management."
-        }
-      ],
-      "tickers": [
-        "MSFT"
-      ],
-      "quote_type": "EQUITY",
-      "price": {
-        "last": 484.31,
-        "prev_close": 481.63,
-        "change_pct": 0.56,
-        "currency": "USD",
-        "spark": [
-          496.88,
-          495.4,
-          480.35,
-          481.63,
-          484.31
-        ],
-        "history": [
-          [
-            "2026-05-20",
-            421.06
-          ],
-          [
-            "2026-05-21",
-            419.09
-          ],
-          [
-            "2026-05-22",
-            418.57
-          ],
-          [
-            "2026-05-26",
-            416.03
-          ],
-          [
-            "2026-05-27",
-            412.67
-          ],
-          [
-            "2026-05-28",
-            426.99
-          ],
-          [
-            "2026-05-29",
-            450.24
-          ],
-          [
-            "2026-06-01",
-            460.52
-          ],
-          [
-            "2026-06-02",
-            441.31
-          ],
-          [
-            "2026-06-03",
-            427.34
-          ],
-          [
-            "2026-06-04",
-            428.05
-          ],
-          [
-            "2026-06-05",
-            416.67
-          ],
-          [
-            "2026-06-08",
-            411.74
-          ],
-          [
-            "2026-06-09",
-            403.41
-          ],
-          [
-            "2026-06-10",
-            397.36
-          ],
-          [
-            "2026-06-11",
-            390.34
-          ],
-          [
-            "2026-06-12",
-            390.74
-          ],
-          [
-            "2026-06-15",
-            399.76
-          ],
-          [
-            "2026-06-16",
-            393.83
-          ],
-          [
-            "2026-06-17",
-            378.91
-          ],
-          [
-            "2026-06-18",
-            379.4
-          ],
-          [
-            "2026-06-22",
-            367.34
-          ],
-          [
-            "2026-06-23",
-            373.94
-          ],
-          [
-            "2026-06-24",
-            365.46
-          ],
-          [
-            "2026-06-25",
-            352.83
-          ],
-          [
-            "2026-06-26",
-            372.97
-          ],
-          [
-            "2026-06-29",
-            368.57
-          ],
-          [
-            "2026-06-30",
-            373.02
-          ],
-          [
-            "2026-07-01",
-            384.28
-          ],
-          [
-            "2026-07-02",
-            390.49
-          ],
-          [
-            "2026-07-06",
-            386.74
-          ],
-          [
-            "2026-07-07",
-            388.84
-          ],
-          [
-            "2026-07-08",
-            383.34
-          ],
-          [
-            "2026-07-09",
-            384.36
-          ],
-          [
-            "2026-07-10",
-            385.1
-          ],
-          [
-            "2026-07-13",
-            390.99
-          ],
-          [
-            "2026-07-14",
-            384.93
-          ],
-          [
-            "2026-07-15",
-            395.63
-          ],
-          [
-            "2026-07-16",
-            401.1
-          ],
-          [
-            "2026-07-17",
-            393.82
-          ],
-          [
-            "2026-07-20",
-            402.29
-          ],
-          [
-            "2026-07-21",
-            397.75
-          ],
-          [
-            "2026-07-22",
-            390.34
-          ],
-          [
-            "2026-07-23",
-            381.58
-          ],
-          [
-            "2026-07-24",
-            381.7
-          ],
-          [
-            "2026-07-27",
-            389.1
-          ],
-          [
-            "2026-07-28",
-            393.35
-          ],
-          [
-            "2026-07-29",
-            390.54
-          ],
-          [
-            "2026-07-30",
-            451.1
-          ],
-          [
-            "2026-07-31",
-            464.72
-          ],
-          [
-            "2026-08-03",
-            487.65
-          ],
-          [
-            "2026-08-04",
-            492.81
-          ],
-          [
-            "2026-08-05",
-            487.46
-          ],
-          [
-            "2026-08-06",
-            499.86
-          ],
-          [
-            "2026-08-07",
-            499.99
-          ],
-          [
-            "2026-08-10",
-            506.06
-          ],
-          [
-            "2026-08-11",
-            503.81
-          ],
-          [
-            "2026-08-12",
-            492.43
-          ],
-          [
-            "2026-08-13",
-            496.88
-          ],
-          [
-            "2026-08-14",
-            495.4
-          ],
-          [
-            "2026-08-17",
-            480.35
-          ],
-          [
-            "2026-08-18",
-            481.63
-          ],
-          [
-            "2026-08-19",
-            484.31
-          ]
-        ],
-        "source": "yahoo",
-        "as_of": "2026-08-19"
-      },
-      "is_fund": false,
-      "news": [
-        "Should You Buy Microsoft Stock Now or Wait for a Dip? - Yahoo Finance",
-        "Is Microsoft Corp (MSFT) a Bargain After 3.0% Drop? GF Value Says Undervalued - GuruFocus",
-        "Microsoft Corp Stock (MSFT) Moved Down by 3.17% on Aug 17: What Signal Does It Send? - TradingKey",
-        "Tech workers may be better off selling their company stock - Business Insider"
-      ],
-      "social": {
-        "count": 30,
-        "bullish": 12,
-        "bearish": 2,
-        "samples": [
-          "$SPY $MSFT $GOOG $IGV Good news to all: we are not yet close to our limit to Bully, beg, or borrow",
-          "$PLTR Was 82.2% TUTES prior to ER CC 2 weeks ago!!! 17% and change RETAIL SHOULD BE LOADING THE SHIP UNDER $200!!! PLTR "
-        ]
-      }
-    },
-    {
-      "rank": 26,
       "ticker": "GLD",
       "name": "SSgA SPDR Gold Shares",
       "sec_name": "SPDR GOLD TRUST",
       "display_name": "Spdr Gold Trust",
       "name_match": "verified",
       "mentions": 40,
-      "mentions_24h_ago": 10,
-      "mention_change_pct": 300.0,
-      "upvotes": 208,
+      "mentions_24h_ago": 9,
+      "mention_change_pct": 344.4,
+      "upvotes": 216,
       "cik": "0001222333",
       "filing": {
         "form": "10-Q",
@@ -9280,9 +8924,9 @@
       },
       "is_fund": true,
       "news": [
-        "SPDR Gold ETF (GLD) Stock Price | Quotes & News - Moomoo",
         "The Cheapest Gold ETFs to Buy for Diversification - Kiplinger",
-        "Which Gold ETF Is the Better Buy: iShares' IAU or State Street's GLD? - The Motley Fool",
+        "SPDR Gold ETF (GLD) Stock Price | Quotes & News - Moomoo",
+        "Which Gold ETF Is the Better Buy: iShares' IAU or State Street's GLD? - fool.com",
         "Stock Market Today: Moderna Doubles, Gold Rallies, Dollar Sinks - SPDR Gold Shares (ARCA:GLD) - Benzinga"
       ],
       "social": {
@@ -9296,7 +8940,7 @@
       }
     },
     {
-      "rank": 27,
+      "rank": 26,
       "ticker": "NFLX",
       "name": "Netflix",
       "sec_name": "NETFLIX INC",
@@ -9663,7 +9307,7 @@
         "Netflix Inc Stock (NFLX) Moved Up by 3.56% on Aug 19: What Investors Need To Know - TradingKey",
         "What's Going On With Netflix Stock Wednesday? - Benzinga",
         "A Look at Netflix Inc (NFLX) After 3.1% Gain -- GF Value $100.74 vs Price $80.22 - GuruFocus",
-        "Meeder Advisory Services Inc. Buys New Shares in Netflix, Inc. $NFLX - MarketBeat"
+        "Netflix Stock Is Down Nearly 40%. What's Going On? - Yahoo Finance"
       ],
       "social": {
         "count": 30,
@@ -9676,15 +9320,363 @@
       }
     },
     {
+      "rank": 27,
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "sec_name": "MICROSOFT CORP",
+      "display_name": "Microsoft Corp",
+      "name_match": "verified",
+      "mentions": 38,
+      "mentions_24h_ago": 42,
+      "mention_change_pct": -9.5,
+      "upvotes": 118,
+      "cik": "0000789019",
+      "filing": {
+        "form": "10-K",
+        "date": "2026-07-29",
+        "days_ago": 22,
+        "fresh": false,
+        "desc": "10-K",
+        "summary": "Annual report",
+        "accession": "0001193125-26-323660",
+        "doc_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/0001193125-26-323660-index.htm"
+      },
+      "filings": [
+        {
+          "form": "10-K",
+          "date": "2026-07-29",
+          "days_ago": 22,
+          "fresh": false,
+          "desc": "10-K",
+          "summary": "Annual report",
+          "accession": "0001193125-26-323660",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/0001193125-26-323660-index.htm",
+          "ai_summary": "Microsoft's 10-K filing details its fiscal year performance, focusing on AI, cloud, productivity, and personal computing segments."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-07-29",
+          "days_ago": 22,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Earnings released",
+          "accession": "0001193125-26-323632",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/0001193125-26-323632-index.htm",
+          "ai_summary": "Microsoft announced its fiscal quarter and year-end financial results for June 30, 2026, on July 29, 2026."
+        },
+        {
+          "form": "8-K",
+          "date": "2026-06-05",
+          "days_ago": 76,
+          "fresh": false,
+          "desc": "8-K",
+          "summary": "Executive / board change",
+          "accession": "0001193125-26-258667",
+          "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/0001193125-26-258667-index.htm",
+          "ai_summary": "Microsoft director Reid Hoffman will not seek re-election at the 2026 annual shareholder meeting, with no stated disagreement with management."
+        }
+      ],
+      "tickers": [
+        "MSFT"
+      ],
+      "quote_type": "EQUITY",
+      "price": {
+        "last": 484.31,
+        "prev_close": 481.63,
+        "change_pct": 0.56,
+        "currency": "USD",
+        "spark": [
+          496.88,
+          495.4,
+          480.35,
+          481.63,
+          484.31
+        ],
+        "history": [
+          [
+            "2026-05-20",
+            421.06
+          ],
+          [
+            "2026-05-21",
+            419.09
+          ],
+          [
+            "2026-05-22",
+            418.57
+          ],
+          [
+            "2026-05-26",
+            416.03
+          ],
+          [
+            "2026-05-27",
+            412.67
+          ],
+          [
+            "2026-05-28",
+            426.99
+          ],
+          [
+            "2026-05-29",
+            450.24
+          ],
+          [
+            "2026-06-01",
+            460.52
+          ],
+          [
+            "2026-06-02",
+            441.31
+          ],
+          [
+            "2026-06-03",
+            427.34
+          ],
+          [
+            "2026-06-04",
+            428.05
+          ],
+          [
+            "2026-06-05",
+            416.67
+          ],
+          [
+            "2026-06-08",
+            411.74
+          ],
+          [
+            "2026-06-09",
+            403.41
+          ],
+          [
+            "2026-06-10",
+            397.36
+          ],
+          [
+            "2026-06-11",
+            390.34
+          ],
+          [
+            "2026-06-12",
+            390.74
+          ],
+          [
+            "2026-06-15",
+            399.76
+          ],
+          [
+            "2026-06-16",
+            393.83
+          ],
+          [
+            "2026-06-17",
+            378.91
+          ],
+          [
+            "2026-06-18",
+            379.4
+          ],
+          [
+            "2026-06-22",
+            367.34
+          ],
+          [
+            "2026-06-23",
+            373.94
+          ],
+          [
+            "2026-06-24",
+            365.46
+          ],
+          [
+            "2026-06-25",
+            352.83
+          ],
+          [
+            "2026-06-26",
+            372.97
+          ],
+          [
+            "2026-06-29",
+            368.57
+          ],
+          [
+            "2026-06-30",
+            373.02
+          ],
+          [
+            "2026-07-01",
+            384.28
+          ],
+          [
+            "2026-07-02",
+            390.49
+          ],
+          [
+            "2026-07-06",
+            386.74
+          ],
+          [
+            "2026-07-07",
+            388.84
+          ],
+          [
+            "2026-07-08",
+            383.34
+          ],
+          [
+            "2026-07-09",
+            384.36
+          ],
+          [
+            "2026-07-10",
+            385.1
+          ],
+          [
+            "2026-07-13",
+            390.99
+          ],
+          [
+            "2026-07-14",
+            384.93
+          ],
+          [
+            "2026-07-15",
+            395.63
+          ],
+          [
+            "2026-07-16",
+            401.1
+          ],
+          [
+            "2026-07-17",
+            393.82
+          ],
+          [
+            "2026-07-20",
+            402.29
+          ],
+          [
+            "2026-07-21",
+            397.75
+          ],
+          [
+            "2026-07-22",
+            390.34
+          ],
+          [
+            "2026-07-23",
+            381.58
+          ],
+          [
+            "2026-07-24",
+            381.7
+          ],
+          [
+            "2026-07-27",
+            389.1
+          ],
+          [
+            "2026-07-28",
+            393.35
+          ],
+          [
+            "2026-07-29",
+            390.54
+          ],
+          [
+            "2026-07-30",
+            451.1
+          ],
+          [
+            "2026-07-31",
+            464.72
+          ],
+          [
+            "2026-08-03",
+            487.65
+          ],
+          [
+            "2026-08-04",
+            492.81
+          ],
+          [
+            "2026-08-05",
+            487.46
+          ],
+          [
+            "2026-08-06",
+            499.86
+          ],
+          [
+            "2026-08-07",
+            499.99
+          ],
+          [
+            "2026-08-10",
+            506.06
+          ],
+          [
+            "2026-08-11",
+            503.81
+          ],
+          [
+            "2026-08-12",
+            492.43
+          ],
+          [
+            "2026-08-13",
+            496.88
+          ],
+          [
+            "2026-08-14",
+            495.4
+          ],
+          [
+            "2026-08-17",
+            480.35
+          ],
+          [
+            "2026-08-18",
+            481.63
+          ],
+          [
+            "2026-08-19",
+            484.31
+          ]
+        ],
+        "source": "yahoo",
+        "as_of": "2026-08-19"
+      },
+      "is_fund": false,
+      "news": [
+        "Should You Buy Microsoft Stock Now or Wait for a Dip? - Yahoo Finance",
+        "Is Microsoft Corp (MSFT) a Bargain After 3.0% Drop? GF Value Says Undervalued - GuruFocus",
+        "Microsoft Corp Stock (MSFT) Moved Down by 3.17% on Aug 17: What Signal Does It Send? - TradingKey",
+        "Tech workers may be better off selling their company stock - Business Insider"
+      ],
+      "social": {
+        "count": 30,
+        "bullish": 12,
+        "bearish": 2,
+        "samples": [
+          "$SPY $MSFT $GOOG $IGV Good news to all: we are not yet close to our limit to Bully, beg, or borrow",
+          "$PLTR Was 82.2% TUTES prior to ER CC 2 weeks ago!!! 17% and change RETAIL SHOULD BE LOADING THE SHIP UNDER $200!!! PLTR "
+        ]
+      }
+    },
+    {
       "rank": 28,
       "ticker": "TLT",
       "name": "BlackRock Institutional Trust Company N.A. - BTC iShares 20+ Year Trea",
       "sec_name": null,
       "display_name": "BlackRock Institutional Trust Company N.A. - BTC iShares 20+ Year Trea",
       "name_match": "no_cik",
-      "mentions": 36,
-      "mentions_24h_ago": 20,
-      "mention_change_pct": 80.0,
+      "mentions": 37,
+      "mentions_24h_ago": 21,
+      "mention_change_pct": 76.2,
       "upvotes": 65,
       "cik": null,
       "filing": null,
@@ -9963,16 +9955,16 @@
       "news": [
         "BlackRock Canada Announces July 2026 Cash Distributions for iShares ETFs on TSX and Cboe Canada - Quiver Quantitative",
         "BlackRock® Canada Announces April Cash Distributions for the iShares® ETFs - Yahoo Finance",
-        "ETF Inflows Top $1 Trillion at the Halfway Point of 2026 - ETF.com",
-        "BlackRock® Canada Announces Estimated 2025 Annual Reinvested Capital Gains Distributions for the iShares® ETFs - globenewswire.com"
+        "ETF Inflows Top $1 Trillion at the Halfway Point of 2026 - etf.com",
+        "BlackRock® Canada Announces Estimated 2025 Annual Reinvested Capital Gains Distributions for the iShares® ETFs - GlobeNewswire"
       ],
       "social": {
         "count": 30,
         "bullish": 7,
         "bearish": 1,
         "samples": [
-          "The Fed minutes sharpened the policy risk: several officials favored a hike in July, while many said further tightening ",
-          "$BND $SGOV $SPY $TLT “Don’t fight the Fed”. If they want long rates lower they will make it happen and they will steamro"
+          "$QQQ $SPX $SPY $TLT $TNX US debt is 100% dogshit. Yeah, I’m sure if the math. 🧮 💩",
+          "The Fed minutes sharpened the policy risk: several officials favored a hike in July, while many said further tightening "
         ]
       }
     },
@@ -9983,10 +9975,10 @@
       "sec_name": "Antero Midstream Corp",
       "display_name": "Antero Midstream Corp",
       "name_match": "verified",
-      "mentions": 35,
-      "mentions_24h_ago": 34,
-      "mention_change_pct": 2.9,
-      "upvotes": 327,
+      "mentions": 36,
+      "mentions_24h_ago": 30,
+      "mention_change_pct": 20.0,
+      "upvotes": 341,
       "cik": "0001623925",
       "filing": {
         "form": "8-K",
@@ -10227,14 +10219,6 @@
             22.6
           ],
           [
-            "2026-07-21",
-            22.51
-          ],
-          [
-            "2026-07-22",
-            22.85
-          ],
-          [
             "2026-07-23",
             23.01
           ],
@@ -10259,10 +10243,6 @@
             21.55
           ],
           [
-            "2026-07-31",
-            21.97
-          ],
-          [
             "2026-08-03",
             21.98
           ],
@@ -10285,6 +10265,10 @@
           [
             "2026-08-10",
             21.94
+          ],
+          [
+            "2026-08-11",
+            22.1
           ],
           [
             "2026-08-12",
@@ -10681,9 +10665,9 @@
       },
       "is_fund": false,
       "news": [
-        "symbol__ Stock Quote Price and Forecast - CNN",
-        "FreeCast Stock Surges 144% on 11x Volume Amidst Quiet Filing Activity - ts2.tech",
+        "FreeCast Stock Surges 144% on 11x Volume Amidst Quiet Filing Activity - TechStock²",
         "FreeCast Stock Skyrockets Tuesday: What's Driving the Action? - Sahm",
+        "FreeCast Stock Skyrockets Tuesday: What's Driving the Action? - Benzinga",
         "CAST Stock Pulls Back After 420% Rally Last Week – But Retail Bulls Are Not Backing Down - Stocktwits"
       ],
       "social": {
@@ -10691,8 +10675,8 @@
         "bullish": 15,
         "bearish": 3,
         "samples": [
-          "$CAST anyone alive here????",
-          "$CAST $QTEX Best ticker heading into tomorrow PWCM! This Crypto play is setting up for a monster move, insanely small fl"
+          "$CAST willing to add another 10k shares tomorrow. I have a high pt here",
+          "$CAST What is the short narrative exactly? Do you honestly think that either the DIRECTV and Starlink deals, 210 DMAs, Z"
         ]
       }
     }
