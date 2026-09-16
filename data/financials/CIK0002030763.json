@@ -1,0 +1,155 @@
+{
+  "cik": "0002030763",
+  "ticker": "MEDS",
+  "currency": "USD",
+  "schema": 3,
+  "fiscal_years": [
+    2025,
+    2024,
+    2023,
+    2022
+  ],
+  "updated": "2026-09-16T17:58:50Z",
+  "source": "SEC EDGAR XBRL companyfacts",
+  "statements": {
+    "income": [
+      {
+        "label": "Revenue",
+        "unit": "USD",
+        "values": {
+          "2024": 18128831,
+          "2025": 23337860
+        }
+      },
+      {
+        "label": "Cost of revenue",
+        "unit": "USD",
+        "values": {
+          "2024": 16361517,
+          "2025": 29764279
+        }
+      },
+      {
+        "label": "Gross profit",
+        "unit": "USD",
+        "values": {
+          "2024": 1767314,
+          "2025": -6426419
+        }
+      },
+      {
+        "label": "Operating income",
+        "unit": "USD",
+        "values": {
+          "2023": -2880603,
+          "2024": -6145132,
+          "2025": -93749097
+        }
+      },
+      {
+        "label": "Net income",
+        "unit": "USD",
+        "values": {
+          "2023": -2895684,
+          "2024": -6856226,
+          "2025": -101274530
+        }
+      },
+      {
+        "label": "Diluted EPS",
+        "unit": "USD/shares",
+        "values": {
+          "2023": -0.06,
+          "2024": -0.15,
+          "2025": -1.43
+        }
+      }
+    ],
+    "balance": [
+      {
+        "label": "Total assets",
+        "unit": "USD",
+        "values": {
+          "2023": 338364,
+          "2024": 57332650,
+          "2025": 30459449
+        }
+      },
+      {
+        "label": "Current assets",
+        "unit": "USD",
+        "values": {
+          "2023": 338364,
+          "2024": 15168668,
+          "2025": 2819216
+        }
+      },
+      {
+        "label": "Total liabilities",
+        "unit": "USD",
+        "values": {
+          "2023": 3238798,
+          "2024": 50598204,
+          "2025": 42907250
+        }
+      },
+      {
+        "label": "Current liabilities",
+        "unit": "USD",
+        "values": {
+          "2023": 2888798,
+          "2024": 38046747,
+          "2025": 29780128
+        }
+      },
+      {
+        "label": "Stockholders' equity",
+        "unit": "USD",
+        "values": {
+          "2022": -5250,
+          "2023": -2900434,
+          "2024": 6734446,
+          "2025": -12447801
+        }
+      },
+      {
+        "label": "Cash & equivalents",
+        "unit": "USD",
+        "values": {
+          "2023": 1364,
+          "2024": 1028336,
+          "2025": 42571
+        }
+      }
+    ],
+    "cashflow": [
+      {
+        "label": "Operating cash flow",
+        "unit": "USD",
+        "values": {
+          "2023": -349136,
+          "2024": -1224993,
+          "2025": -10855029
+        }
+      },
+      {
+        "label": "Investing cash flow",
+        "unit": "USD",
+        "values": {
+          "2024": 469072,
+          "2025": -881526
+        }
+      },
+      {
+        "label": "Financing cash flow",
+        "unit": "USD",
+        "values": {
+          "2023": 350500,
+          "2024": 1782893,
+          "2025": 10750790
+        }
+      }
+    ]
+  },
+  "based_on_accession": "0001493152-26-038581"
+}
