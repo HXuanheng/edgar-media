@@ -1,0 +1,172 @@
+{
+  "cik": "0001951070",
+  "ticker": "MH",
+  "currency": "USD",
+  "schema": 3,
+  "fiscal_years": [
+    2026,
+    2025,
+    2024,
+    2023
+  ],
+  "updated": "2026-10-09T17:19:25Z",
+  "source": "SEC EDGAR XBRL companyfacts",
+  "statements": {
+    "income": [
+      {
+        "label": "Revenue",
+        "unit": "USD",
+        "values": {
+          "2024": 1960478000,
+          "2025": 2101299000,
+          "2026": 2102781000
+        }
+      },
+      {
+        "label": "Cost of revenue",
+        "unit": "USD",
+        "values": {
+          "2024": 420331000,
+          "2025": 422294000,
+          "2026": 401139000
+        }
+      },
+      {
+        "label": "Gross profit",
+        "unit": "USD",
+        "values": {
+          "2024": 1540147000,
+          "2025": 1679005000,
+          "2026": 1701642000
+        }
+      },
+      {
+        "label": "Operating income",
+        "unit": "USD",
+        "values": {
+          "2024": 155298000,
+          "2025": 306807000,
+          "2026": 276780000
+        }
+      },
+      {
+        "label": "R&D expense",
+        "unit": "USD",
+        "values": {
+          "2024": 263416000,
+          "2025": 284429000,
+          "2026": 276253000
+        }
+      },
+      {
+        "label": "Net income",
+        "unit": "USD",
+        "values": {
+          "2024": -193019000,
+          "2025": -85839000,
+          "2026": 35320000
+        }
+      },
+      {
+        "label": "Diluted EPS",
+        "unit": "USD/shares",
+        "values": {
+          "2024": -1.16,
+          "2025": -0.52,
+          "2026": 0.19
+        }
+      }
+    ],
+    "balance": [
+      {
+        "label": "Total assets",
+        "unit": "USD",
+        "values": {
+          "2025": 5757760000,
+          "2026": 5485521000
+        }
+      },
+      {
+        "label": "Current assets",
+        "unit": "USD",
+        "values": {
+          "2025": 1052631000,
+          "2026": 973649000
+        }
+      },
+      {
+        "label": "Total liabilities",
+        "unit": "USD",
+        "values": {
+          "2025": 5477516000,
+          "2026": 4759303000
+        }
+      },
+      {
+        "label": "Current liabilities",
+        "unit": "USD",
+        "values": {
+          "2025": 1330419000,
+          "2026": 1266549000
+        }
+      },
+      {
+        "label": "Stockholders' equity",
+        "unit": "USD",
+        "values": {
+          "2023": 558130000,
+          "2024": 368754000,
+          "2025": 280244000,
+          "2026": 726218000
+        }
+      },
+      {
+        "label": "Cash & equivalents",
+        "unit": "USD",
+        "values": {
+          "2025": 389830000,
+          "2026": 253519000
+        }
+      }
+    ],
+    "cashflow": [
+      {
+        "label": "Operating cash flow",
+        "unit": "USD",
+        "values": {
+          "2024": 236156000,
+          "2025": 646284000,
+          "2026": 331173000
+        }
+      },
+      {
+        "label": "Investing cash flow",
+        "unit": "USD",
+        "values": {
+          "2024": -136109000,
+          "2025": -167062000,
+          "2026": -203863000
+        }
+      },
+      {
+        "label": "Financing cash flow",
+        "unit": "USD",
+        "values": {
+          "2024": -77243000,
+          "2025": -294680000,
+          "2026": -264867000
+        }
+      },
+      {
+        "label": "Capital expenditure",
+        "unit": "USD",
+        "values": {
+          "2024": 81953000,
+          "2025": 71062000,
+          "2026": 84862000
+        }
+      }
+    ]
+  },
+  "based_on_accession": "0001951070-26-000039"
+}
