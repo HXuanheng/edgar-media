@@ -1,0 +1,136 @@
+{
+  "cik": "0002067129",
+  "ticker": "NP",
+  "currency": "USD",
+  "schema": 3,
+  "fiscal_years": [
+    2025,
+    2024,
+    2023,
+    2022
+  ],
+  "updated": "2026-11-26T20:57:04Z",
+  "source": "SEC EDGAR XBRL companyfacts",
+  "statements": {
+    "income": [
+      {
+        "label": "Revenue",
+        "unit": "USD",
+        "values": {
+          "2023": 84870000,
+          "2024": 119299000,
+          "2025": 159551000
+        }
+      },
+      {
+        "label": "Operating income",
+        "unit": "USD",
+        "values": {
+          "2023": 45431000,
+          "2024": 68446000,
+          "2025": 70955000
+        }
+      },
+      {
+        "label": "Net income",
+        "unit": "USD",
+        "values": {
+          "2023": 17886000,
+          "2024": 34592000,
+          "2025": 37413000
+        }
+      },
+      {
+        "label": "Diluted EPS",
+        "unit": "USD/shares",
+        "values": {
+          "2023": 0.1,
+          "2024": 0.16,
+          "2025": -0.26
+        }
+      }
+    ],
+    "balance": [
+      {
+        "label": "Total assets",
+        "unit": "USD",
+        "values": {
+          "2024": 48152000,
+          "2025": 65299000
+        }
+      },
+      {
+        "label": "Current assets",
+        "unit": "USD",
+        "values": {
+          "2024": 35225000,
+          "2025": 52462000
+        }
+      },
+      {
+        "label": "Total liabilities",
+        "unit": "USD",
+        "values": {
+          "2024": 173667000,
+          "2025": 292793000
+        }
+      },
+      {
+        "label": "Current liabilities",
+        "unit": "USD",
+        "values": {
+          "2024": 48566000,
+          "2025": 52793000
+        }
+      },
+      {
+        "label": "Stockholders' equity",
+        "unit": "USD",
+        "values": {
+          "2022": -58371000,
+          "2023": -387602000,
+          "2024": -365988000,
+          "2025": -227494000
+        }
+      },
+      {
+        "label": "Cash & equivalents",
+        "unit": "USD",
+        "values": {
+          "2024": 7094000,
+          "2025": 8036000
+        }
+      }
+    ],
+    "cashflow": [
+      {
+        "label": "Operating cash flow",
+        "unit": "USD",
+        "values": {
+          "2023": 18647000,
+          "2024": 49926000,
+          "2025": 51670000
+        }
+      },
+      {
+        "label": "Investing cash flow",
+        "unit": "USD",
+        "values": {
+          "2023": -4030000,
+          "2024": -3713000,
+          "2025": -3977000
+        }
+      },
+      {
+        "label": "Financing cash flow",
+        "unit": "USD",
+        "values": {
+          "2023": -9866000,
+          "2024": -42468000,
+          "2025": -35210000
+        }
+      }
+    ]
+  },
+  "based_on_accession": "0001628280-26-066930"
+}
